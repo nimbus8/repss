@@ -37,6 +37,7 @@ constexpr int strcmp_ce(char a[], char b[])
 {
         return (strlen_ce(a)!=strlen_ce(b)?-1:strcmp_ceImpl(a,b,0));
 }
+
 }
 
 #endif
