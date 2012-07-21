@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-#include "repss.hpp"
+#include "includes/repss.hpp"
 #include "tests/test_repss_string.cpp"
 
 int main(int argc, char* argv[]) {
