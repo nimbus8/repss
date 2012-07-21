@@ -2,18 +2,20 @@
 #define _REPSS_STR_
 
 /**
- * namespace repss_str - Warning: Because of compiler restrictions, strings of a certain length may void evaluation of constexpr functions at runtime
+ * namespace repss_str - Warning: Because of compiler restrictions, strings of a certain length may void evaluation of constexpr functions at compiletime
 */
 namespace repss_str
 {
+#define EOS '\0'
+
 constexpr int charEquals(char a, char b)
 {
-        return a == b ? (a=='\0'?0:1) : -1;
+        return a==b?(a==EOS?0:1):-1;
 }
 
 constexpr int charEqualsEOS(char a)
 {
-        return a=='\0'?0:-1;
+        return a==EOS?0:-1;
 }
 
 constexpr int strlen_ceImpl(char str[], int count)
