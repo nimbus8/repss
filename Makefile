@@ -10,7 +10,7 @@ TARGET	= repss
 CC		= clang++
 
 # Compiler Flags
-CFLAGS	= -std=c++11 -stdlib=libc++ -O0 -Wall -pedantic 
+CFLAGS	= -g -std=c++11 -stdlib=libc++ -O0 -Wall -pedantic 
 
 # Linker Flags
 LFLAGS	= 
