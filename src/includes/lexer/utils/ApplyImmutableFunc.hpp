@@ -41,8 +41,9 @@ private:
         }
 public:
 
-        ApplyImmutableFunc() : AggregateAndApplyFuncBase<T>(), _noFunc(true){}
-        ApplyImmutableFunc(std::function<bool (AggregateAndApplyFuncBase<T>&) > &func, const size_t num, ...) : AggregateAndApplyFuncBase<T>(num), _func(func), _noFunc(false)
+        ApplyImmutableFunc() : AggregateAndApplyFuncBase<T>(), _func(nullptr),  _noFunc(true) {}
+        ApplyImmutableFunc(std::function<bool (AggregateAndApplyFuncBase<T>&) > &func, const size_t num, ...) 
+		: AggregateAndApplyFuncBase<T>(num), _func(func), _noFunc(false)
         {
                 va_list arguments;
                 va_start(arguments, num);
@@ -60,16 +61,27 @@ public:
                 _handleVargs(num,arguments);
 
                 va_end(arguments);
-
-                _noFunc = true;
-
                 std::cout << std::endl;
         }
 
         ~ApplyImmutableFunc() {}
 
         bool apply() { if (this->size() == 0) {return false;} return _func(*this); }
-        bool apply(std::function<bool (AggregateAndApplyFuncBase<T>&)> &func) { if (this->size() == 0) {return false;} if (!_noFunc) {std::cout << "A func hs already been associated with this Apply Obj ... Exiting" << std::endl; exit(1);} return func(*this); }
+        bool apply(std::function<bool (AggregateAndApplyFuncBase<T>&)> &func) 
+	{ 
+		if (this->size() == 0) 
+		{
+			return false;
+		} 
+
+		if (!_noFunc) 
+		{
+			std::cout << "A func hs already been associated with this Apply Obj ... Exiting" << std::endl;
+			exit(1);
+		} 
+
+		return func(*this); 
+	}
 };
 
 #endif

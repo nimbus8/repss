@@ -41,7 +41,7 @@ protected:
         void addAt(size_t index, T element) { elements[index] = element;}
 public:
         AggregateAndApplyFuncBase() : _size(0) {elements = nullptr;}
-        AggregateAndApplyFuncBase(size_t num, ...) : _size(num)
+        AggregateAndApplyFuncBase(size_t num) : _size(num)
         {
                 if (num == 0)
                 {
@@ -52,9 +52,26 @@ public:
                         elements = new T[num];
                 }
         };
-        ~AggregateAndApplyFuncBase() { for (size_t i = 0; i < size(); i++) { std::cout << "setting member (" << i << ") to null" << std::endl;} std::cout << "deleting array with delete[]" << std::endl;  delete elements; }
+        ~AggregateAndApplyFuncBase() 
+	{
+		for (size_t i = 0; i < size(); i++) 
+		{
+			std::cout << "setting member (" << i << ") to null" << std::endl;
+		}
+		
+		std::cout << "deleting array with delete[]" << std::endl;  delete elements;
+	}
 
-        T getAt(size_t index) const { if (elements == nullptr) {std::cout << "error - ::getAt in AggregateAndApplyFuncBase - Invalid use"; exit(1);} return elements[index]; }
+        T getAt(size_t index) const 
+	{ 
+		if (elements == nullptr) 
+		{
+			std::cout << "error - ::getAt in AggregateAndApplyFuncBase - Invalid use" << std::endl;
+			exit(1);
+		} 
+
+		return elements[index];
+	}
         size_t size() const { return _size; };
 };
 
