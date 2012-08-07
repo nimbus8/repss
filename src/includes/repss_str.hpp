@@ -18,8 +18,8 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _REPSS_STR_
-#define _REPSS_STR_
+#ifndef REPSS_STR_HPP_
+#define REPSS_STR_HPP_
 
 /**
  * namespace repss_str - Warning: Because of compiler restrictions, strings of a certain

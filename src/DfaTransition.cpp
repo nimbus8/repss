@@ -5,7 +5,7 @@
  This file is part of REPSS.
 
  REPSS is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
+ it under the terms of the   GNU General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
  (at your option) any later version.
 
@@ -18,20 +18,10 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "repss_str.hpp"
-#include "file_handler/file_handler.hpp"
-#include "memory_operations.hpp"
+#include "includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/DfaTransition.hpp"
 
-#ifndef REPSS_HPP_
-#define REPSS_HPP_
-
-#define REPSS_PERCENT "%"
-#define REPSS_DOUBLE_PERCENT "%%"
-
-#define DEF_REPSS_SYMB_1 REPSS_PERCENT
-#define DEF_REPSS_SYMB_2 REPSS_DOUBLE_PERCENT
-
-//S - symbol in input, N - name in code, T - positive result, F - false result
-#define closureCase(S,N,T,F) repss_str::strcmp_ce((S),(N))==0?(T):(F)
-
-#endif
+DfaTransition* CreateDfaTransition(StateAndInput<int,char>* stateAndInput,lexer_dfa* dfa_ptr)
+{
+        DfaTransition* ret = new DfaTransition(stateAndInput , dfa_ptr);
+        return ret;
+}

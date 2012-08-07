@@ -1,0 +1,11 @@
+%sample.cpp% woohhaaa
+this is sample.cp
+p
+maybe this 
+is %so long% or maybe thi
+s is j
+ust
+%just maybe yearly%
+bi-anual
+quarterly report%sar%
+e due friday%

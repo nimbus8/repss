@@ -5,7 +5,7 @@
  This file is part of REPSS.
 
  REPSS is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
+ it under the terms of the   GNU General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
  (at your option) any later version.
 
@@ -18,20 +18,14 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "repss_str.hpp"
-#include "file_handler/file_handler.hpp"
-#include "memory_operations.hpp"
+#ifndef IO_HPP_
+#define IO_HPP_
 
-#ifndef REPSS_HPP_
-#define REPSS_HPP_
+namespace REPSS_IO
+{
+#include "file_handler.hpp"
 
-#define REPSS_PERCENT "%"
-#define REPSS_DOUBLE_PERCENT "%%"
+typedef
+}
 
-#define DEF_REPSS_SYMB_1 REPSS_PERCENT
-#define DEF_REPSS_SYMB_2 REPSS_DOUBLE_PERCENT
-
-//S - symbol in input, N - name in code, T - positive result, F - false result
-#define closureCase(S,N,T,F) repss_str::strcmp_ce((S),(N))==0?(T):(F)
-
-#endif
+#endif /* IO_HPP_ */
