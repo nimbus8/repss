@@ -204,6 +204,8 @@ namespace ThreadTesting
 
 int main(int argc, char* argv[])
 {
+	try
+	{
 	std::cout << "== REPSS ==\n" << endl;
 
 	vector<char> character_stream = { 'a', 'b', 'c', 'd', 'e', 'f' };
@@ -239,6 +241,11 @@ int main(int argc, char* argv[])
 	//initializing lexer
         lexer_configuration config;
         lexer_manager lexMan(&config);
+	}
+	catch (std::exception& e) 
+	{ 
+		std::cout << e.what() << std::endl;; 
+	}
 
 	return 0;
 }

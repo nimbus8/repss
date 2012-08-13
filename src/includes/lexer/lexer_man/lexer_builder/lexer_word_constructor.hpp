@@ -28,7 +28,9 @@
 #include <unordered_map>
 
 #include "model_representation/finite_autonoma/lexer_dfa.hpp"
+#include "model_representation/dfa_manager.hpp"
 #include "lexer_dfa_builder.hpp"
+#include "../../utils/AggregatePtrsAndDelete.hpp"
 
 #ifndef _LEXER_WORD_CONSTRUCTOR_
 #define _LEXER_WORD_CONSTRUCTOR_
@@ -37,23 +39,22 @@
 class lexer_word_constructor
 {
 private:
-        std::vector<lexer_word_repr*> _words;
+        std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>> _words;
+	DfaManager dfaManager;	//dfa manager handles references, create/destroy fn pairs
         lexer_dfa_builder* _lexer_builder;
 
-        lexer_word_repr* _constructPercentReps();
+        std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*> _constructPercentReps();
+	void _destructPercentReps();
 
         void _initWords();
 public:
         lexer_word_constructor()
         {
-                lexer_word_repr* initDfa1 = new lexer_word_repr(13);
-                _words.push_back(initDfa1);
-
                 _initWords();
         }
         ~lexer_word_constructor() { }
 
-        std::vector<lexer_word_repr*>& getWords() { return _words; }
+        std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>& getWords() { return _words; }
 };
 
 #endif

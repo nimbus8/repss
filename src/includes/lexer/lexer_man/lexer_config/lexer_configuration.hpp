@@ -44,7 +44,7 @@ public:
 
         void init() {}
 
-        std::vector<lexer_word_repr*>& getLexicalWords() { return (_wordConstructor->getWords()); }
+        std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>& getLexicalWords() { return (_wordConstructor->getWords()); }
 };
 
 #endif

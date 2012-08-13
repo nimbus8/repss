@@ -37,9 +37,14 @@ private:
         lexer_configuration* _config;
 
         lexer_word_repr* _current_dfa;
-        std::vector<lexer_word_repr*>* _lexer_words;
+        std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>* _lexer_words;
 public:
-        lexer_manager(lexer_configuration* config) { _config = config; _lexer_words = &(config->getLexicalWords()); std::cout << "Lexer_Word_Count " << _lexer_words->size() << std::endl;  }
+        lexer_manager(lexer_configuration* config)
+	{
+		_config = config;
+		_lexer_words = &(config->getLexicalWords());
+		std::cout << "Lexer_Word_Count " << _lexer_words->size() << std::endl;  
+	}
         ~lexer_manager() {}
 };
 

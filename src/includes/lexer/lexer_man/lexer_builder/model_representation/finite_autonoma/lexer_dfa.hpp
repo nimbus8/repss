@@ -27,6 +27,8 @@
 #include <functional>
 #include <unordered_map>
 
+#include <memory>
+
 #include "states/StateAndInput.hpp"
 #include "state_functors.hpp"
 
@@ -49,13 +51,52 @@ public:
 
         lexer_dfa* getNextDfa(StateAndInput<int,char> stateAndInput)
         {
-                return _nextStates.at(stateAndInput);
+		lexer_dfa* ret;
+		std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals>::const_iterator fetched 
+			= _nextStates.find(stateAndInput);
+
+		if (fetched == _nextStates.end())
+		{
+			StateAndInput<int,char> stateAndEmptyCharInput(stateAndInput.getState(), '\0');
+		
+			std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals>::const_iterator fetchedEmptyChar 
+				= _nextStates.find(stateAndEmptyCharInput);			
+
+			if (fetchedEmptyChar != _nextStates.end())
+			{
+				std::cout << "found empty char!!!" << std::endl;
+				ret = fetchedEmptyChar->second;
+			}
+			else
+			{
+				std::cout << "key not found" << std::endl;
+				ret = nullptr;
+			}
+		}
+		else
+		{
+			ret = fetched->second;
+		}
+
+		return ret;
         }
 
         //debug
         int getId() const { return _id; }
 };
 
+//phasing out the below calls (moving them to DfaMan)
+
+inline lexer_dfa* CreateDfa(int id)
+{
+	return new lexer_dfa(id);
+}
+
 typedef lexer_dfa lexer_word_repr;
+
+inline lexer_word_repr* CreateLexerWord(int id)
+{
+	return new lexer_word_repr(id);
+}
 
 #endif

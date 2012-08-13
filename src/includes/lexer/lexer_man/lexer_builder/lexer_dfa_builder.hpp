@@ -62,17 +62,11 @@ public:
                                         word_base->add_next_dfa(*(stateInputAndDfa->getStateAndInput()), stateInputAndDfa->getDfaNode());
                                 }
 
-                                std::cout << "\nWoot: " << aggr.getAt(0)->getDfaNode()->getId() << " "
-                                        << aggr.getAt(1)->getDfaNode()->getId() << std::endl;
+                                std::cout << "\nWoot::debug first element: " << aggr.getAt(0)->getDfaNode()->getId() << std::endl;
                                 return true;
                         };
 
                 bool wasSuccess = applyObj.apply(applyFunc);
-
-                if (wasSuccess)
-                {
-                        std::cout << "Hooray, managed to add dfa to word_base" << std::endl;
-                }
 
                 return wasSuccess;
         }
