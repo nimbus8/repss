@@ -10,18 +10,18 @@ class DfaManager
 {
 private:
 	std::vector<lexer_dfa*> _dfas;
-	std::vector<DfaTransition*> _transitions;
+	std::vector<const DfaTransition*> _transitions;
 public:
 	DfaManager() {}
 	~DfaManager() {}
 
-	lexer_dfa* createDfa(int id) 
+	lexer_dfa* createDfa(const int id) 
 	{
 		lexer_dfa* ret = new lexer_dfa(id);
 		_dfas.push_back(ret);
 		return ret;
 	}
-	lexer_word_repr* createLexerWordRepr(int id) {return createDfa(id);}
+	lexer_word_repr* createLexerWordRepr(const int id) {return createDfa(id);}
 
 	bool destroyDfa(lexer_dfa* toBeDestroyed) 
 	{
@@ -52,13 +52,13 @@ public:
 			wasDfaDestroyed = true;
 		}
 
-		return true;
+		return wasDfaDestroyed;
 	}
 
-	DfaTransition* createDfaTransition(StateAndInput<int,char>* stateAndInput,
-		lexer_dfa* dfa_ptr)
+	const DfaTransition* createDfaTransition(const StateAndInput<int,char>* stateAndInput,
+		const lexer_dfa* dfa_ptr)
 	{
-        	DfaTransition* ret = new DfaTransition(stateAndInput , dfa_ptr);
+        	const DfaTransition* ret = new DfaTransition(stateAndInput , dfa_ptr);
 		_transitions.push_back(ret);
         	return ret;
 	}
@@ -68,15 +68,16 @@ public:
                 bool wasTransitionDestroyed = false;
 
                 size_t removeIndex;
-                DfaTransition* entryToBeDestroyed = nullptr;
+                const DfaTransition* entryToBeDestroyed = nullptr;
 		const size_t transitionsSize = _transitions.size();
                 for (size_t index = 0; index < transitionsSize; index++)
                 {
-                        DfaTransition* entry = _transitions.at(index);
+                        const DfaTransition* const entry = _transitions.at(index);
                         if (entry == toBeDestroyed)
                         {
                                 removeIndex = index;
                                 entryToBeDestroyed = entry;
+
                                 toBeDestroyed = nullptr;
                                 break;
                         }
@@ -93,7 +94,7 @@ public:
                         wasTransitionDestroyed = true;
                 }
 
-                return true;		
+                return wasTransitionDestroyed;		
 	}
 };
 

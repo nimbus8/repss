@@ -47,9 +47,13 @@ public:
         explicit lexer_dfa(int id) : _id(id) {}
         ~lexer_dfa() {}
 
-        void add_next_dfa(StateAndInput<int,char> stateAndInput, lexer_dfa* nextDfa) { _nextStates.emplace(std::pair<StateAndInput<int,char>, lexer_dfa*>{stateAndInput, nextDfa}); }
+        void add_next_dfa(const StateAndInput<int,char> stateAndInput, const lexer_dfa* nextDfa) 
+	{
+		std::pair<StateAndInput<int,char>, lexer_dfa*> stateInputAndDfa{stateAndInput, const_cast<lexer_dfa*>(nextDfa)}; 
+		_nextStates.emplace(stateInputAndDfa); 
+	}
 
-        lexer_dfa* getNextDfa(StateAndInput<int,char> stateAndInput)
+        const lexer_dfa* getNextDfa(const StateAndInput<int,char> stateAndInput) const
         {
 		lexer_dfa* ret;
 		std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals>::const_iterator fetched 

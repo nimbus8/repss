@@ -20,7 +20,7 @@
 
 #include "includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/DfaTransition.hpp"
 
-DfaTransition* CreateDfaTransition(StateAndInput<int,char>* stateAndInput,lexer_dfa* dfa_ptr)
+DfaTransition* CreateDfaTransition(const StateAndInput<int,char>* stateAndInput, const lexer_dfa* dfa_ptr)
 {
         DfaTransition* ret = new DfaTransition(stateAndInput , dfa_ptr);
         return ret;

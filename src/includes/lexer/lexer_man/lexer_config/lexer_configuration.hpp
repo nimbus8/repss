@@ -47,7 +47,10 @@ public:
 
         void init() {}
 
-        std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>& getLexicalWords() { return (_wordConstructor->getWords()); }
+        const std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>& getLexicalWords() const
+	{ 
+		return _wordConstructor->getWords();
+	}
 };
 
 #endif

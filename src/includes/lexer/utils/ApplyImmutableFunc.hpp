@@ -66,8 +66,8 @@ public:
 
         ~ApplyImmutableFunc() {}
 
-        bool apply() { if (this->size() == 0) {return false;} return _func(*this); }
-        bool apply(std::function<bool (AggregateAndApplyFuncBase<T>&)> &func) 
+        bool apply() const { if (this->size() == 0) {return false;} return _func(*this); }
+        bool apply(std::function<bool (const AggregateAndApplyFuncBase<T>*)> &func) const 
 	{ 
 		if (this->size() == 0) 
 		{
@@ -80,7 +80,8 @@ public:
 			exit(1);
 		} 
 
-		return func(*this); 
+		const ApplyImmutableFunc* myself = this;
+		return func(myself); 
 	}
 };
 

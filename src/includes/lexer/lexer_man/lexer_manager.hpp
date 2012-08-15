@@ -34,12 +34,12 @@
 class lexer_manager
 {
 private:
-        lexer_configuration* _config;
+        const lexer_configuration* _config;
 
-        lexer_word_repr* _current_dfa;
-        std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>* _lexer_words;
+        const lexer_word_repr* _current_dfa;
+        const std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>* _lexer_words;
 public:
-        lexer_manager(lexer_configuration* config)
+        lexer_manager(const lexer_configuration* config)
 	{
 		_config = config;
 		_lexer_words = &(config->getLexicalWords());

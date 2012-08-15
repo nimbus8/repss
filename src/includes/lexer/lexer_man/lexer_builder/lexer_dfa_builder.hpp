@@ -44,16 +44,10 @@ public:
         lexer_dfa_builder() : id_counter(0) {}
         ~lexer_dfa_builder() {}
 
-        lexer_dfa* makeDfaNode(int i)
+        bool addDfa(lexer_word_repr* word_base, const ApplyImmutableFunc<DfaTransition*>& applyObj) const
         {
-                lexer_dfa* retDfa = new lexer_dfa(i);
-                return retDfa;
-        }
-
-        bool addDfa(lexer_word_repr* word_base, ApplyImmutableFunc<DfaTransition*>& applyObj)
-        {
-                std::function<bool (AggregateAndApplyFuncBase<DfaTransition*>&)> applyFunc =
-                        [&word_base,applyObj](AggregateAndApplyFuncBase<DfaTransition*>& aggr)->bool
+                std::function<bool (const AggregateAndApplyFuncBase<DfaTransition*>*)> applyFunc =
+                        [&word_base,applyObj](const AggregateAndApplyFuncBase<DfaTransition*>* aggr)->bool
                         {
                                 //adds to the word base, all InputAndDfaNode objects defined in args list
                                 for (int index = 0; index < applyObj.size(); index++)

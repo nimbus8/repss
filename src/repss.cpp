@@ -239,8 +239,8 @@ int main(int argc, char* argv[])
 	ThreadTesting::testAsync(vector<double> { 1.0, 2.0 });
 
 	//initializing lexer
-        lexer_configuration config;
-        lexer_manager lexMan(&config);
+        const lexer_configuration config;
+        const lexer_manager lexMan(&config);
 	}
 	catch (std::exception& e) 
 	{ 

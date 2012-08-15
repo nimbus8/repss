@@ -26,18 +26,18 @@
 class DfaTransition
 {
 private:
-        StateAndInput<int,char>* _stateAndInput;
-        lexer_dfa* _dfaNode;
+        const StateAndInput<int,char>* _stateAndInput;
+        const lexer_dfa* _dfaNode;
 public:
-        DfaTransition(StateAndInput<int,char>* stateAndInput, lexer_dfa* dfaNode)
+        DfaTransition(const StateAndInput<int,char>* stateAndInput, const lexer_dfa* dfaNode)
                 : _stateAndInput(stateAndInput), _dfaNode(dfaNode) {}
 
-        StateAndInput<int,char>* getStateAndInput() { return _stateAndInput; }
-        lexer_dfa* getDfaNode() { return _dfaNode; }
+        const StateAndInput<int,char>* getStateAndInput() const { return _stateAndInput; }
+        const lexer_dfa* getDfaNode() const { return _dfaNode; }
 
         ~DfaTransition() {}
 };
 
-DfaTransition* CreateDfaTransition(StateAndInput<int,char>* stateAndInput,lexer_dfa* dfa_ptr);
+DfaTransition* CreateDfaTransition(const StateAndInput<int,char>* stateAndInput, const lexer_dfa* dfa_ptr);
 
 #endif
