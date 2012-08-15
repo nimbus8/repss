@@ -39,4 +39,7 @@ Icon?
 ehthumbs.db
 Thumbs.db
 
+.project
+.cproject
+.settings
 code_style.xml

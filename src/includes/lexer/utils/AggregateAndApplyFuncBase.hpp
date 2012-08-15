@@ -54,12 +54,15 @@ public:
         };
         ~AggregateAndApplyFuncBase() 
 	{
+		std::cout << "Desructor for AggregateAndApplyFuncBase called"
+			<< std::endl;
 		for (size_t i = 0; i < size(); i++) 
 		{
 			std::cout << "setting member (" << i << ") to null" << std::endl;
 		}
 		
-		std::cout << "deleting array with delete[]" << std::endl;  delete elements;
+		std::cout << "deleting array with delete[]" << std::endl;  
+		delete elements;
 	}
 
         T getAt(size_t index) const 

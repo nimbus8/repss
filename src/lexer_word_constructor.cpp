@@ -22,7 +22,8 @@
 
 #include "includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/states/StateAndInput.hpp"
 #include "includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/DfaTransition.hpp"
-
+#include "includes/lexer/lexer_man/lexer_builder/AggregateDfasAndDelete.hpp"
+#include "includes/lexer/lexer_man/lexer_builder/AggregateDfaTransitionsAndDelete.hpp"
 //todo: should be moved to lexer_word_constructor.hpp file
 //EMPTY CHAR AKA the ANY char, doesn't move the chains just accepts everything as input
 #define EMPTY_CHAR '\0'
@@ -32,7 +33,7 @@ void debug_printDfa(lexer_word_repr* word)
 {
 	int count = 0;
 	int state = 0;
-	char seq[] = { '%', 'r', 'q', 'p','s', ' ', 'H' };
+	char seq[] = { '%', 'r', 'e', 'p','s', ' ', 'H' };
 	const size_t seq_length = 7;
 
 	StateAndInput<int,char> si0(state++, seq[count++]);
@@ -72,7 +73,7 @@ void debug_printDfa(lexer_word_repr* word)
 	}
 }
 
-std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*> lexer_word_constructor::_constructPercentReps()
+std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> lexer_word_constructor::_constructPercentReps()
 {
 	const int ST_ERROR = -1;
 	const int ST_BASE = 0, ST_A = 1, ST_B = 2, ST_C = 3, ST_D = 4, ST_E = 5;
@@ -168,31 +169,62 @@ std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*> lexer_word_cons
 	//AggregatePtrsAndDelete. Think of passing func or dfaManager to constructor.
 
 	AggregatePtrsAndDelete<lexer_dfa*>* aggrAndDel =
-		new AggregatePtrsAndDelete<lexer_dfa*>(7, word_base,
+		new AggregateDfasAndDelete<lexer_dfa*>(7, word_base,
 			A, B, C, D, E, F);
 
         std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*> ret (word_base, aggrAndDel);
 
-        return ret;
+	AggregatePtrsAndDelete<DfaTransition*>* aggrAndDelDfaTransitions =
+		new AggregateDfaTransitionsAndDelete<DfaTransition*>(6, 
+			idfa1, idfa2, idfa3, idfa4, idfa5, idfa6);
+
+	std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> ret2(ret, aggrAndDelDfaTransitions);
+	
+
+        return ret2;
 }
 
 void lexer_word_constructor::_initWords()
 {
         auto percentReps = _constructPercentReps();
-        _words.push_back(percentReps);
+
+	//the first in container is a pair with lexer_dfa accessible
+        _words.push_back(percentReps.first);
+
+	//the second in container is a reminder for us to delete DfaTransitions when we're done
+	_dfaTransitions.push_back(percentReps.second);
 }
 
 void lexer_word_constructor::_destructPercentReps()
 {
-	while (_words.size() > 0)
+	if (_words.size() != _dfaTransitions.size())
+	{
+		std::cout << "Error, Unintended Implementation" << std::endl
+			<< "the number of lexical words should be equal to number of DfaTransition groups.";
+
+		exit(1);
+	}
+
+	while (_words.size() > 0 && _dfaTransitions.size() > 0)
 	{
 		auto entryPair = _words.back();
 		auto aggregateAndDeleteObj = entryPair.second;
 	
 		//this takes care of all the dfas, including entryPair.first
-		aggregateAndDeleteObj->applyDelete();
+		aggregateAndDeleteObj->applyDelete(dfaManager);
 		delete aggregateAndDeleteObj;
-		aggregateAndDeleteObj = nullptr;	
+		aggregateAndDeleteObj = nullptr;
+
+		_words.pop_back();
+                std::cout << "Deleted one lexer_word successfully" << std::endl;
+
+                auto aggregateAndDeleteTransObj = _dfaTransitions.back();
+                aggregateAndDeleteTransObj->applyDelete(dfaManager);
+                delete aggregateAndDeleteTransObj;
+                aggregateAndDeleteTransObj = nullptr;
+
+                _dfaTransitions.pop_back();
+                std::cout << "Deleted a group of DfaTransitions successfully" << std::endl;
 	}
 }
 

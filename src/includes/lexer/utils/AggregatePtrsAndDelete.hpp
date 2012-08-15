@@ -19,6 +19,7 @@
  */
 
 #include "AggregateAndApplyFuncBase.hpp"
+#include "../lexer_man/lexer_builder/model_representation/dfa_manager.hpp"
 
 #ifndef _APPLY_MUTABLE_FUNC_
 #define _APPLY_MUTABLE_FUNC_
@@ -27,6 +28,8 @@ template<class T>
 class AggregatePtrsAndDelete : public AggregateAndApplyFuncBase<T>
 {
 private:
+	bool _initEnabled;
+
         void _handleVargs(size_t num, va_list arglist)
         {
                 for (size_t n = 0; n < num; n++)
@@ -35,11 +38,23 @@ private:
                         this->addAt(n, argval);
                 }
         }
+
+protected:
+        void init(const size_t num, va_list arglist)
+        {
+		if (_initEnabled)
+		{
+                	_handleVargs(num, arglist);
+			_initEnabled = false;
+		}
+		//throw exception or warning
+        }
 public:
 
         AggregatePtrsAndDelete() : AggregateAndApplyFuncBase<T>() {}
+	/*
         AggregatePtrsAndDelete(const size_t num, ...) 
-		: AggregateAndApplyFuncBase<T>(num)
+		: AggregateAndApplyFuncBase<T>(num), _initEnabled(false)
         {
                 va_list arguments;
                 va_start(arguments, num);
@@ -48,9 +63,18 @@ public:
 
                 va_end(arguments);
                 std::cout << std::endl;
-        }
+        }*/
 
-        ~AggregatePtrsAndDelete() {}
+	explicit AggregatePtrsAndDelete(const size_t num)
+		: AggregateAndApplyFuncBase<T>(num), _initEnabled(true)
+	{
+		//init needs to be called by subclass
+	}
+
+        virtual ~AggregatePtrsAndDelete() 
+	{
+		std::cout << "Destructor for AggregatePtrsAndDelete called" << std::endl;
+	}
 
         bool applyDelete() {
 		if (this->size() == 0) 
@@ -67,6 +91,8 @@ public:
 
 		return true; 
 	}
+
+	virtual bool applyDelete(DfaManager&) = 0;
 };
 
 #endif
