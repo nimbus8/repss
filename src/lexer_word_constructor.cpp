@@ -75,9 +75,9 @@ void debug_printDfa(lexer_word_repr* word)
 
 std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> lexer_word_constructor::_constructPercentReps()
 {
-	const int ST_ERROR = -1;
+	//const int ST_ERROR = -1;
 	const int ST_BASE = 0, ST_A = 1, ST_B = 2, ST_C = 3, ST_D = 4, ST_E = 5;
-	const int ST_F = 6;
+	//const int ST_F = 6;
 
         lexer_word_repr* word_base = dfaManager.createLexerWordRepr(ST_BASE);
 

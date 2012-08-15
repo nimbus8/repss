@@ -27,12 +27,12 @@ template<class S, class I>
 class StateAndInput
 {
 private:
-        S _state;
-        I _input;
+        const S _state;
+        const I _input;
 public:
-        StateAndInput(S state, I input) : _state(state), _input(input) {}
-        StateAndInput(StateAndInput&  other) : _state(other._state), _input(other._input) {}
-        StateAndInput(StateAndInput&& other) : _state(other._state), _input(other._input) {}
+        StateAndInput(const S state, const I input) : _state(state), _input(input) {}
+        StateAndInput(const StateAndInput&  other) : _state(other._state), _input(other._input) {}
+        StateAndInput(const StateAndInput&& other) : _state(other._state), _input(other._input) {}
 
         S getState() const { return _state; }
         I getInput() const { return _input; }

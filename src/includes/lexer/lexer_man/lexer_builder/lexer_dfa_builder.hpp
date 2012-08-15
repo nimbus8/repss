@@ -62,7 +62,6 @@ public:
                                         word_base->add_next_dfa(*(stateInputAndDfa->getStateAndInput()), stateInputAndDfa->getDfaNode());
                                 }
 
-                                std::cout << "\nWoot::debug first element: " << aggr.getAt(0)->getDfaNode()->getId() << std::endl;
                                 return true;
                         };
 
