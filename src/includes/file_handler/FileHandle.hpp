@@ -18,43 +18,44 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef FILE_HANDLE_HPP_
-#define FILE_HANDLE_HPP_
+#ifndef FILE_HANDLE_
+#define FILE_HANDLE_
 
 #include <stdio.h>
-#include "file_io_error.hpp"
+#include "FileIOError.hpp"
 
+namespace REPSS_FileHandler
+{
 
-class File_Handle
+class FileHandle
 {
 private:
 	FILE *_file;
 public:
-	File_Handle(const char *filename, const char *permissions)
+	FileHandle(const char *filename, const char *permissions)
 	{
 		_file = fopen(filename, permissions);
-		//if (_file==0) exit(1);
-		doSomething(filename);
-
-		if (_file == 0) throw File_Not_Found_Error(filename);
+		if (_file == 0)
+		{
+			throw FileNotFoundError(filename);
+		}
 	}
 
-	File_Handle(const std::string& filename, const char *permissions)
+	FileHandle(const std::string& filename, const std::string& permissions)
 	{
-		_file = fopen(filename.c_str(), permissions);
-		//if (_file==0) exit(1);
-
-		doSomething(filename.c_str());
-
-		if (_file == 0) throw File_Not_Found_Error(filename);
+		_file = fopen(filename.c_str(), permissions.c_str());
+		if (_file == 0)
+		{
+			throw FileNotFoundError(filename);
+		}
 	}
 
-	~File_Handle()
+	~FileHandle()
 	{
 		fclose(_file);
 	}
 
-	File_Handle(const File_Handle& src) :
+	FileHandle(const FileHandle& src) :
 			_file(src._file)
 	{
 	}
@@ -64,5 +65,6 @@ public:
 		return _file;
 	}
 };
+}
 
 #endif /* FILE_HANDLER_HPP_ */

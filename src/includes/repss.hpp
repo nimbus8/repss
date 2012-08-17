@@ -19,7 +19,8 @@
  */
 
 #include "repss_str.hpp"
-#include "file_handler/file_handler.hpp"
+//#include "file_handler/file_handler.hpp"
+#include "file_handler/FileHandler.hpp"
 #include "memory_operations.hpp"
 
 #ifndef REPSS_HPP_

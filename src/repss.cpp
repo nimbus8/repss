@@ -33,9 +33,14 @@ using namespace std;
 
 #include "includes/lexer/lexer_man/lexer_config/lexer_configuration.hpp"
 #include "includes/lexer/lexer_man/lexer_manager.hpp"
+#include "includes/lexer/Scanner.hpp"
 
-namespace TATest
+namespace ImplTest
 {
+	/*
+		Much of the below, although cool, unfortunately became somewhat hectic. 
+		todo: Erase much of the below.	The Scanner tests stays.
+	*/
 	char REPSS_SYMB_1[10];
 	char REPSS_SYMB_2[10];
 	char REPSS_SYMB_3[10];
@@ -93,71 +98,22 @@ namespace TATest
 	{
 	}
 
-	/* Fixed + Dynamic - Processor */
 	int _currentStage = 0;
 	void process(int argc, char *argv[])
 	{
-		const unsigned int BUFFER_LEN = 256;
-		char buffer[BUFFER_LEN];
-		unsigned int buffer_count = 0;
-		string bufferStr = "";
-
 		if (argc < 4)
 		{
-			std::cerr
-					<< "Error, correct usage:  repss str_cmp1 str_cmp2 input_file"
-					<< std::endl;
+			std::cerr << "Error, correct usage:  repss str_cmp1 str_cmp2 input_file" << std::endl;
 		}
 
-		try
-		{
-			File_Handler::File_Handle fileHandle { argv[3], "rt" };
+		const string filename{argv[3]};
+		const string permissions{"rt"};
 
-			auto isEndOfFile = File_Handler::rpss_feofFunc(fileHandle);
-			auto getCharacter = File_Handler::rpss_fgetcFunc(fileHandle);
-
-			auto appendToBuffer = Arrays::rpss_appendToArrayFunc(buffer,
-					buffer_count); //[&buffer,&buffer_count](char c)->void {buffer[buffer_count++];};
-			auto clearBuffer = [&buffer](unsigned int n)->void
-			{	memset(buffer, '\0', n);};
-
-			clearBuffer(BUFFER_LEN);
-
-			while (!isEndOfFile())
-			{
-				char c = getCharacter();
-				std::cout << "read: " << c << std::endl;
-
-				/* for some reason I can't address indices in the buffer over 16?!!?!!
-				 * 	maybe its because I'm low on memory???
-				 */
-				if (!isEndOfFile() && c != '%'
-						&& c != '\n' /*&& buffer_count < 16*/)
-				{
-					appendToBuffer(c);
-				}
-				else
-				{
-					printf("Captured: %s\n", buffer);
-					clearBuffer(BUFFER_LEN);
-					buffer_count = 0;
-					std::cout << "Found something!!" << std::endl;
-				}
-
-				std::cout << "done bit";
-			}
-		}
-
-		catch (File_Handler::File_Not_Found_Error e)
-		{
-			std::cout << e.what();
-			exit(1);
-		}
-
-//	processImpl(c, getStackEntryIndex(_currentStage,
+		Scanner scanner;
+		scanner.processFile(filename, permissions);		
 	}
 
-	void runTATest(int argc, char *argv[])
+	void runClosureAndScanTests(int argc, char *argv[])
 	{
 		char a[] = "%%";
 
@@ -206,42 +162,44 @@ int main(int argc, char* argv[])
 {
 	try
 	{
-	std::cout << "== REPSS ==\n" << endl;
+		std::cout << "== REPSS ==\n" << endl;
 
-	vector<char> character_stream = { 'a', 'b', 'c', 'd', 'e', 'f' };
-	vector<char> output_stream;
+		vector<char> character_stream = { 'a', 'b', 'c', 'd', 'e', 'f' };
+		vector<char> output_stream;
 
-	auto i = 2;
-	auto lambda_func = [&output_stream,&i] (char x, int y) ->int
-	{
-		output_stream.push_back(x+y+i);
-		return i+1;
-	};
+		auto i = 2;
+		auto lambda_func = [&output_stream,&i] (char x, int y) ->int
+		{
+			output_stream.push_back(x+y+i);
+			return i+1;
+		};
 
-	std::cout << "(input-stream): " << std::endl;
+		std::cout << "(input-stream): " << std::endl;
 
-	for (auto v : character_stream)
-	{
-		std::cout << v << "\t";
-		i = lambda_func(v, 1);
-	}
+		for (auto v : character_stream)
+		{
+			std::cout << v << "\t";
+			i = lambda_func(v, 1);
+		}
 
-	std::cout << "\n\n(output-stream): " << std::endl;
+		std::cout << "\n\n(output-stream): " << std::endl;
 
-	for (int k = 0; k < output_stream.size(); k++)
-		std::cout << output_stream[k] << "\t";
+		for (int k = 0; k < output_stream.size(); k++)
+			std::cout << output_stream[k] << "\t";
 
-	std::cout << std::endl << std::endl;
+		std::cout << std::endl << std::endl;
 
-	repss_str_test(argc, argv);
+		repss_str_test(argc, argv);
 
-	TATest::runTATest(argc, argv);
-	ThreadTesting::testAsync(vector<double> { 1.0, 2.0 });
+		ThreadTesting::testAsync(vector<double> { 1.0, 2.0 });
 
-	//initializing lexer
-        const lexer_configuration config;
-        const lexer_manager lexMan(&config);
-	}
+		//configuring & initializing lexer
+	        const lexer_configuration config;
+	        const lexer_manager lexMan(&config);
+
+		ImplTest::runClosureAndScanTests(argc, argv);
+
+}
 	catch (std::exception& e) 
 	{ 
 		std::cout << e.what() << std::endl;; 

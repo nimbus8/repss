@@ -21,6 +21,11 @@
 #ifndef FILE_HANDLER_HPP_
 #define FILE_HANDLER_HPP_
 
+/*
+ * Aug 15 2012
+ * This File is being REORGANIZED, if unsuccessful it will be taken out
+ */
+
 namespace File_Handler
 {
 #include <functional>
