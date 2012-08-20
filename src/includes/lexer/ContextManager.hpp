@@ -102,12 +102,8 @@ public:
 	public:
         	void doMe() { Context::doMe(ContextType::NoType); }
 
-		void appendToAnnotatedData(const std::string& data) {
-			std::cout << "FUCKKK" << std::endl;
-		}
-		void printAnnotatedData() const {
-			std::cout << "WTF" << std::endl;
-		};
+		void appendToAnnotatedData(const std::string& data) {}
+		void printAnnotatedData() const {}
 	};
 
 	//default template for getContext - rest in implementation file
