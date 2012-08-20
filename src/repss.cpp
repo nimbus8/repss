@@ -31,6 +31,7 @@ using namespace std;
 #include "includes/repss.hpp"
 #include "tests/test_repss_string.cpp"
 
+#include "includes/lexer/ContextManager.hpp"
 #include "includes/lexer/lexer_man/lexer_config/lexer_configuration.hpp"
 #include "includes/lexer/lexer_man/lexer_manager.hpp"
 #include "includes/lexer/Scanner.hpp"
@@ -99,7 +100,7 @@ namespace ImplTest
 	}
 
 	int _currentStage = 0;
-	void process(int argc, char *argv[])
+	void process(ContextManager* const contextMan, int argc, char *argv[])
 	{
 		if (argc < 4)
 		{
@@ -109,11 +110,12 @@ namespace ImplTest
 		const string filename{argv[3]};
 		const string permissions{"rt"};
 
-		Scanner scanner;
+		auto context = contextMan->getContext<ContextType::AllowedTypes, ContextType::Lexer>();
+		Scanner scanner(&context);
 		scanner.processFile(filename, permissions);		
 	}
 
-	void runClosureAndScanTests(int argc, char *argv[])
+	void runClosureAndScanTests(ContextManager* const contextMan, int argc, char *argv[])
 	{
 		char a[] = "%%";
 
@@ -132,7 +134,7 @@ namespace ImplTest
 		std::cout << "Stack entry - nextState: " << stackEntry1.getNextState()
 				<< std::endl;
 
-		process(argc, argv);
+		process(contextMan, argc, argv);
 	}
 }
 
@@ -194,10 +196,13 @@ int main(int argc, char* argv[])
 		ThreadTesting::testAsync(vector<double> { 1.0, 2.0 });
 
 		//configuring & initializing lexer
+		ContextManager contextManager;
 	        const lexer_configuration config;
 	        const lexer_manager lexMan(&config);
 
-		ImplTest::runClosureAndScanTests(argc, argv);
+		TestContextMan();
+
+		ImplTest::runClosureAndScanTests(&contextManager,argc, argv);
 
 }
 	catch (std::exception& e) 

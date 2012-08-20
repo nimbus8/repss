@@ -2,12 +2,10 @@
 
 void Scanner::printAnotatedData() const
 {
-	std::cout << std::endl << "Printing annotated aata" << std::endl;
+	std::cout << std::endl << "Printing Annotated Data" << std::endl;
 
-	for (auto blockStr : _annotatedData)
-	{
-		std::cout << blockStr << std::endl;
-	}
+
+	_context->printAnnotatedData();
 
 	std::cout << std::endl << "Finished printing anotated data" <<std::endl;
 }

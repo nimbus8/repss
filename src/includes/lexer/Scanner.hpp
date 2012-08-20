@@ -23,8 +23,11 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <iostream>
+
 #include "../file_handler/FileHandler.hpp"
 #include "../memory_operations.hpp"
+
+#include "ContextManager.hpp"
 
 #ifndef _SCANNER_HPP_
 #define _SCANNER_HPP_
@@ -56,16 +59,17 @@ public:
 class Scanner
 {
 private:
+	ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer>* _context;
+
 	PartsOfGrammer _partsOfGrammer;
 
 	std::unordered_set<std::string> _validKeywords;
 	std::unordered_map<std::string, std::string> _keywordToPartOfGrammer;
 
-	std::vector<std::string> _annotatedData;	
-
 	void _appendToAnnotatedData(const std::string& data)
 	{
-		_annotatedData.push_back(data);	
+		std::cout << "Appending!!!" << std::endl;
+		_context->appendToAnnotatedData(data);	
 	}
 
 	void captureBufferAndWrapData(char* const buffer, size_t& bufferCount, const size_t BUFFER_LEN, const bool isKeyword)
@@ -109,7 +113,8 @@ private:
                 return wrappedString;
         }
 public:
-	Scanner() : _annotatedData() {}
+	Scanner() : _context(nullptr) {}
+	explicit Scanner(ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer>* context) : _context(context) {}
 	~Scanner() {}
 
         void processFile(const std::string& filename, const std::string& permissions);
