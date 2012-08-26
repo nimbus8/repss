@@ -19,7 +19,7 @@
  */
 
 #include "AggregateAndApplyFuncBase.hpp"
-#include "../lexer_man/lexer_builder/model_representation/dfa_manager.hpp"
+#include "../lexer/lexer_man/lexer_builder/model_representation/dfa_manager.hpp"
 
 #ifndef _APPLY_MUTABLE_FUNC_
 #define _APPLY_MUTABLE_FUNC_

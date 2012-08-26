@@ -30,7 +30,7 @@
 #include "model_representation/finite_autonoma/lexer_dfa.hpp"
 #include "model_representation/dfa_manager.hpp"
 #include "lexer_dfa_builder.hpp"
-#include "../../utils/AggregatePtrsAndDelete.hpp"
+#include "../../../utils/AggregatePtrsAndDelete.hpp"
 
 #ifndef _LEXER_WORD_CONSTRUCTOR_
 #define _LEXER_WORD_CONSTRUCTOR_
@@ -46,7 +46,9 @@ private:
         lexer_dfa_builder* _lexer_builder;
 
         std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructPercentReps();	
-	void _destructPercentReps();
+	void _destructDfasAndTransitions();
+
+       std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructSquareBracketReps();  
 
         void _initWords();
 public:
@@ -57,7 +59,7 @@ public:
         ~lexer_word_constructor()
 	{
 		std::cout << "Destructor for Lexer Word Constructor called" << std::endl; 
-		_destructPercentReps();
+		_destructDfasAndTransitions();
 		std::cout << "Destructor for Lexer Word Constructor was successfull" << std::endl;
 	}
 

@@ -27,8 +27,8 @@
 #include <functional>
 #include <unordered_map>
 
-#include "../../utils/AggregateAndApplyFuncBase.hpp"
-#include "../../utils/ApplyImmutableFunc.hpp"
+#include "../../../utils/AggregateAndApplyFuncBase.hpp"
+#include "../../../utils/ApplyImmutableFunc.hpp"
 
 #include "model_representation/finite_autonoma/lexer_dfa.hpp"
 #include "model_representation/finite_autonoma/DfaTransition.hpp"
