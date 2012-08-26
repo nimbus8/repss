@@ -18,12 +18,12 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "includes/lexer/lexer_man/lexer_builder/lexer_word_constructor.hpp"
+#include "deps/includes/lexer/lexer_man/lexer_builder/lexer_word_constructor.hpp"
 
-#include "includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/states/StateAndInput.hpp"
-#include "includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/DfaTransition.hpp"
-#include "includes/lexer/lexer_man/lexer_builder/AggregateDfasAndDelete.hpp"
-#include "includes/lexer/lexer_man/lexer_builder/AggregateDfaTransitionsAndDelete.hpp"
+#include "deps/includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/states/StateAndInput.hpp"
+#include "deps/includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/DfaTransition.hpp"
+#include "deps/includes/lexer/lexer_man/lexer_builder/AggregateDfasAndDelete.hpp"
+#include "deps/includes/lexer/lexer_man/lexer_builder/AggregateDfaTransitionsAndDelete.hpp"
 //todo: should be moved to lexer_word_constructor.hpp file
 //EMPTY CHAR AKA the ANY char, doesn't move the chains just accepts everything as input
 #define EMPTY_CHAR '\0'

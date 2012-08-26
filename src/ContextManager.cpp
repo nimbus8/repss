@@ -21,7 +21,7 @@
 #include <iostream>
 #include <string>
 
-#include "includes/lexer/ContextManager.hpp"
+#include "deps/includes/lexer/ContextManager.hpp"
 
 int TestContextMan()
 {

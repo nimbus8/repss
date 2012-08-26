@@ -28,13 +28,13 @@
 using namespace std;
 #include <stdio.h>
 
-#include "includes/repss.hpp"
+#include "deps/includes/repss.hpp"
 #include "tests/test_repss_string.cpp"
 
-#include "includes/lexer/ContextManager.hpp"
-#include "includes/lexer/lexer_man/lexer_config/lexer_configuration.hpp"
-#include "includes/lexer/lexer_man/lexer_manager.hpp"
-#include "includes/lexer/Scanner.hpp"
+#include "deps/includes/lexer/ContextManager.hpp"
+#include "deps/includes/lexer/lexer_man/lexer_config/lexer_configuration.hpp"
+#include "deps/includes/lexer/lexer_man/lexer_manager.hpp"
+#include "deps/includes/lexer/Scanner.hpp"
 
 namespace ImplTest
 {

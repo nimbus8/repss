@@ -1,4 +1,4 @@
-#include "includes/lexer/Scanner.hpp"
+#include "deps/includes/lexer/Scanner.hpp"
 
 void Scanner::printAnotatedData() const
 {
