@@ -35,16 +35,27 @@
 #ifndef _LEXER_DFA_
 #define _LEXER_DFA_
 
+class LexerDfaType
+{
+public:
+	typedef enum {
+		NORMAL=0, RANGED 		
+	} ValidTypes;
+};
+
 class lexer_dfa
 {
 private:
         std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals> _nextStates;
 
+	const LexerDfaType::ValidTypes _type;
+
         //debug
         int _id;
-
 public:
-        explicit lexer_dfa(int id) : _id(id) {}
+        lexer_dfa(LexerDfaType::ValidTypes type, int id) : _type(type), _id(id) {}
+        explicit lexer_dfa(int id) : _type(LexerDfaType::NORMAL), _id(id) {}
+
         ~lexer_dfa() {}
 
         void add_next_dfa(const StateAndInput<int,char> stateAndInput, const lexer_dfa* nextDfa) 
@@ -96,11 +107,21 @@ inline lexer_dfa* CreateDfa(int id)
 	return new lexer_dfa(id);
 }
 
+inline lexer_dfa* CreateRangedDfa(int id)
+{
+	return new lexer_dfa(LexerDfaType::RANGED, id);
+}
+
 typedef lexer_dfa lexer_word_repr;
 
 inline lexer_word_repr* CreateLexerWord(int id)
 {
 	return new lexer_word_repr(id);
+}
+
+inline lexer_word_repr* CreateRangedLexerWord(int id)
+{
+	return new lexer_word_repr(LexerDfaType::RANGED, id); 
 }
 
 #endif

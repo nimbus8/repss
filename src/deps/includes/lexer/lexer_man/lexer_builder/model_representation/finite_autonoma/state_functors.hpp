@@ -29,12 +29,12 @@
 //todo: move this into a more relevatnt class
 //number of dinstict symbols: number defined below (15 as of now) may be a bit small - adjust as needed
 //	1. 0 2. 1-9 3. a-z 4. A-Z, etc..
-#define STATE_FUNCTORS_number_of_distinct_symbols 15
+#define STATE_FUNCTORS_number_of_distinct_symbols 257
 
 class StateAndInputHashFunction {
   public:
     ::std::size_t operator ()(const StateAndInput<int,char> &stateAndInput) const {
-        return (size_t) STATE_FUNCTORS_number_of_distinct_symbols*stateAndInput.getState() + stateAndInput.getInput();
+        return (size_t) STATE_FUNCTORS_number_of_distinct_symbols * (stateAndInput.getIsRanged()? 2 : 1) * stateAndInput.getState() + stateAndInput.getInput();
     }
 };
 
