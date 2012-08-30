@@ -24,7 +24,6 @@ void Scanner::printAnotatedData() const
 {
 	std::cout << std::endl << "Printing Annotated Data" << std::endl;
 
-
 	_context->printAnnotatedData();
 
 	std::cout << std::endl << "Finished printing anotated data" <<std::endl;
@@ -46,16 +45,16 @@ void Scanner::printAnotatedData() const
                         while (!REPSS_FileHandler::isEndOfFile(fileHandle))
                         {
                                 char c = REPSS_FileHandler::getCharacter(fileHandle);
-                                std::cout << "read: " << c << std::endl;
+                                //std::cout << "read: " << c << std::endl;
 
                                 if (!REPSS_FileHandler::isEndOfFile(fileHandle)
                                         && c != '%' && c != '\n')
                                 {
-                                        std::cout << "Appended To Array" << std::endl;
+                                        //std::cout << "Appended To Array" << std::endl;
 
                                         Arrays::appendCharacter(buffer,buffer_count++,c);
 
-                                        std::cout << buffer << std::endl;
+                                        //std::cout << buffer << std::endl;
                                 }
                                 else
                                 {
@@ -73,17 +72,13 @@ void Scanner::printAnotatedData() const
 
                                         captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
                                 }
-
-                                std::cout << "done bit";
                         }
                 }
-
                 catch (REPSS_FileHandler::FileNotFoundError e)
                 {
                         std::cout << e.what();
                         exit(1);
                 }
-
 
                 printAnotatedData();
         }

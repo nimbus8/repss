@@ -32,7 +32,7 @@
 void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length)
 {
     int count = 0;
-	int state = 0;
+    int state = word->getId(); //start state (for a specific test) is word_base's identifier
 
     auto curr = word;
     
@@ -41,13 +41,13 @@ void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length)
     //search for a beginning
     do
     {
-	    StateAndInput<int,char> si0(state, seq[count]);
-    	std::cout << "(seq,c): " << count << " " << seq[count] << std::endl;
+	StateAndInput<int,char> si0(state, seq[count]);
+    	std::cout << "(state, seq,c): " << state << ", " << count << ", " << seq[count] << std::endl;
     	count++;
     	auto aNextDfa = curr->getNextDfa(si0);
     	if (aNextDfa != nullptr) 
     	{
-    		state++;
+    		state = aNextDfa->getId(); //state++;
     		nextDfa = aNextDfa;
     		break;
     	}
@@ -59,35 +59,43 @@ void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length)
     //if a beginning is found, try and match next however many characters with rest of dfa
     while ((nextDfa != nullptr) && (nextDfa->getId() != ST_ACCEPT && count < seq_length))
     {
-        std::cout << seq[count-1] << " - DfaNode(" << curr->getId() << ")" << std::endl;
+	std::cout << "'" << seq[count-1] << "' - DfaNode(" << curr->getId() << ")"
+		<< " ~ stateAndInput=(state, seq,c): (" << state << ", " << count << ", " << seq[count] << ")" << std::endl;
 
         curr = nextDfa;
         const StateAndInput<int,char> si(state,seq[count]);
         nextDfa = curr->getNextDfa(si);
 
-    	state++;
     	count++;
 
         if (nextDfa == nullptr) 
         {	
-            //reset dfa to keep on looking
-            nextDfa = word;
-            state = 0;
+            //reset state to state at word_base
+            state = word->getId();
 
-            //search for a beginning
-            	
+            //search for a beginning            	
             do
             {
+		//reset current dfa
+		curr = word;
+
+		std::cout << "'" << seq[count-1] << "' - DfaNode(" << curr->getId() << ")"
+			<< " ~ stateAndInput=(state, seq,c): (" << state << ", " << count << ", " << seq[count] << ")" << std::endl;
+
                 StateAndInput<int,char> si0(state, seq[count++]);
                 auto aNextDfa = curr->getNextDfa(si0);
                 if (aNextDfa != nullptr) 
                 {
-                    state++;
+                    state = aNextDfa->getId(); //state++;
                     nextDfa = aNextDfa;
                     break;
                 }
              } while(count < seq_length);
         }
+	else
+	{
+        	state = nextDfa->getId(); //state++;
+	}
     }
 
     if (nextDfa == nullptr)
@@ -290,27 +298,25 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
     auto DFA_5 = dfaManager.createDfa(ST_5);
     auto DFA_6 = dfaManager.createDfa(ST_6);
     auto DFA_7 = dfaManager.createDfa(ST_7);
-    auto DFA_8 = dfaManager.createDfa(ST_8);
+    auto DFA_8 = dfaManager.createDfa(ST_ACCEPT);
     
-    auto word_end = dfaManager.createDfa(ST_ACCEPT);	
-
-    StateAndInput<int,char> stateInput_ST_BASE_SI_CHARS_ANY(ST_BASE, SI_CHARS_ANY);
-    	StateAndInput<int,char> stateInput_ST_1_SI_CHARS_ANY(ST_1, SI_CHARS_ANY);
+    StateAndInput<int,char> stateInput_ST_BASE_SI_CHARS_ANY(ST_BASE, 'a'/*SI_CHARS_ANY, true*/);
+    	StateAndInput<int,char> stateInput_ST_1_SI_CHARS_ANY(ST_1, SI_CHARS_ANY, true);
     		StateAndInput<int,char> stateInput_ST_1_equals(ST_1, '=');
-    			StateAndInput<int,char> stateInput_ST_2_SI_NUMBERS_1to9(ST_2, SI_NUMBERS_1to9);
-    				StateAndInput<int,char> stateInput_ST_3_SI_NUMBERS_1to9(ST_3, SI_NUMBERS_1to9);
+    			StateAndInput<int,char> stateInput_ST_2_SI_NUMBERS_1to9(ST_2, SI_NUMBERS_1to9, true);
+    				StateAndInput<int,char> stateInput_ST_3_SI_NUMBERS_1to9(ST_3, SI_NUMBERS_1to9, true);
     				StateAndInput<int,char> stateInput_ST_3_colon(ST_3, ':');
-    			StateAndInput<int,char> stateInput_ST_2_SI_NUMBERS_0(ST_2, SI_NUMBERS_0);
+    			StateAndInput<int,char> stateInput_ST_2_SI_NUMBERS_0(ST_2, SI_NUMBERS_0, true);
     				StateAndInput<int,char> stateInput_ST_4_colon(ST_4, ':');
-    					StateAndInput<int,char> stateInput_ST_5_SI_NUMBERS_1to9(ST_5, SI_NUMBERS_1to9);
-    						StateAndInput<int,char> stateInput_ST_6_SI_NUMBERS_0to9(ST_6, SI_NUMBERS_0to9);
+    					StateAndInput<int,char> stateInput_ST_5_SI_NUMBERS_1to9(ST_5, SI_NUMBERS_1to9, true);
+    						StateAndInput<int,char> stateInput_ST_6_SI_NUMBERS_0to9(ST_6, SI_NUMBERS_0to9, true);
     						StateAndInput<int,char> stateInput_ST_6_space(ST_6, ' ');
     						StateAndInput<int,char> stateInput_ST_6_newline(ST_6, '\n');
-    					StateAndInput<int,char> stateInput_ST_5_SI_NUMBERS_0(ST_5, SI_NUMBERS_0);
+    					StateAndInput<int,char> stateInput_ST_5_SI_NUMBERS_0(ST_5, SI_NUMBERS_0, true);
     						StateAndInput<int,char> stateInput_ST_7_space(ST_7, ' ');
     						StateAndInput<int,char> stateInput_ST_7_newline(ST_7, '\n');
     
-    StateAndInput<int,char> stateInput_ST_ACCEPT_EMPTY_CHAR(ST_ACCEPT, EMPTY_CHAR);
+    //StateAndInput<int,char> stateInput_ST_ACCEPT_EMPTY_CHAR(ST_ACCEPT, EMPTY_CHAR);
 
 	//todo: think about changing function signature so that the caller does some of the hardwork,
 	//			basically at the end we'll return word_base, and leave to them to connect their last
@@ -333,8 +339,7 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
 	    				auto idfa14 = dfaManager.createDfaTransition(&stateInput_ST_7_space, DFA_8);
 	    				auto idfa15 = dfaManager.createDfaTransition(&stateInput_ST_7_newline, DFA_8);
 
-	//todo: make transition to toDfa ptr with stateInput_ST_ACCEPT_EMPTY_CHAR 
-	
+
     const ApplyImmutableFunc<DfaTransition*> applyObj(1,idfa1);
     bool wasSuccess =  _lexer_builder->addDfa(word_base, applyObj);
 
@@ -353,12 +358,12 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
     const ApplyImmutableFunc<DfaTransition*> applyObj5to67(2,idfa9,idfa13);
     bool wasSuccess6 = _lexer_builder->addDfa(DFA_5, applyObj5to67);
  
-    const ApplyImmutableFunc<DfaTransition*> applyObj6to688(1,idfa10,idfa11,idfa12);
+    const ApplyImmutableFunc<DfaTransition*> applyObj6to688(3,idfa10,idfa11,idfa12);
     bool wasSuccess7 = _lexer_builder->addDfa(DFA_6, applyObj6to688);
  
-    const ApplyImmutableFunc<DfaTransition*> applyObj7to88(1,idfa14,idfa15);
+    const ApplyImmutableFunc<DfaTransition*> applyObj7to88(2,idfa14,idfa15);
     bool wasSuccess8 = _lexer_builder->addDfa(DFA_7, applyObj7to88);
-    
+
     if (wasSuccess && wasSuccess2 && wasSuccess3 && wasSuccess4 && wasSuccess5 && wasSuccess6
                    && wasSuccess7 && wasSuccess8)
     {

@@ -1,0 +1,427 @@
+== REPSS ==
+
+(input-stream): 
+a	b	c	d	e	f	
+
+(output-stream): 
+d	f	h	j	l	n	
+
+./repss
+abc==abc: 0 len(a): 3
+==%%: -1
+%==%%: -1
+woot==toot: -1, len(a):4 len(b):4
+%%==%%: 0
+%!==%%: -1
+%%==%%: 0
+%%==%%: 0
+foo1: 1, foo2: 2
+
+
+
+
+
+
+
+
+Successfully constructed [reps] Dfa: Base To A
+Successfully constructed [reps] Dfa: A To B
+Successfully constructed [reps] Dfa: B To C
+Successfully constructed [reps] Dfa: C To D
+Successfully constructed [reps] Dfa: D To E
+Successfully constructed [reps] Dfa: E To F
+Successfully constructed [reps] Dfa: F To G
+(state, seq,c): 0, 0, k
+	Hash(stateAndInput) = 107
+	_nextStates::size = 1
+	(<0, [, ranged?(no)>, dfa-id(1))	- hash(91)
+	Checking lowerase ranged
+			Hash(rangedInput) = 97
+		lexer_dfa::getNextState(...): (state,input) = (0, SI_CHARS_LOWER)
+			Hash(rangedInput2) = 110
+		lexer_dfa::getNextState(...): (state,input) = (0, SI_CHARS_ANY)
+			Hash(stateAndEmptyInput) = 0
+	key not found
+(state, seq,c): 0, 1, 
+
+	Hash(stateAndInput) = 10
+	_nextStates::size = 1
+	(<0, [, ranged?(no)>, dfa-id(1))	- hash(91)
+			Hash(stateAndEmptyInput) = 0
+	key not found
+(state, seq,c): 0, 2, [
+	Hash(stateAndInput) = 91
+	_nextStates::size = 1
+	(<0, [, ranged?(no)>, dfa-id(1))	- hash(91)
+pass the point
+'[' - DfaNode(0) ~ stateAndInput=(state, seq,c): (1, 3, r)
+	Hash(stateAndInput) = 371
+	_nextStates::size = 1
+	(<1, r, ranged?(no)>, dfa-id(2))	- hash(371)
+'r' - DfaNode(1) ~ stateAndInput=(state, seq,c): (2, 4, e)
+	Hash(stateAndInput) = 615
+	_nextStates::size = 1
+	(<2, e, ranged?(no)>, dfa-id(3))	- hash(615)
+'e' - DfaNode(2) ~ stateAndInput=(state, seq,c): (3, 5, p)
+	Hash(stateAndInput) = 883
+	_nextStates::size = 1
+	(<3, p, ranged?(no)>, dfa-id(4))	- hash(883)
+'p' - DfaNode(3) ~ stateAndInput=(state, seq,c): (4, 6, s)
+	Hash(stateAndInput) = 1143
+	_nextStates::size = 1
+	(<4, s, ranged?(no)>, dfa-id(5))	- hash(1143)
+'s' - DfaNode(4) ~ stateAndInput=(state, seq,c): (5, 7, ])
+	Hash(stateAndInput) = 1378
+	_nextStates::size = 1
+	(<5, ], ranged?(no)>, dfa-id(6))	- hash(1378)
+']' - DfaNode(5) ~ stateAndInput=(state, seq,c): (6, 8,  )
+	Hash(stateAndInput) = 1574
+	_nextStates::size = 1
+	(<6,  , ranged?(no)>, dfa-id(1001))	- hash(1574)
+found word!
+
+
+
+
+
+
+
+
+
+Successfully constructed [reps] Dfas idfa[1-15]
+(state, seq,c): 0, 0, k
+	Hash(stateAndInput) = 107
+	_nextStates::size = 1
+	(<0, a, ranged?(no)>, dfa-id(1))	- hash(97)
+	Checking lowerase ranged
+			Hash(rangedInput) = 97
+		lexer_dfa::getNextState(...): (state,input) = (0, SI_CHARS_LOWER)
+	Found rangedChars:[a-z]
+pass the point
+'k' - DfaNode(0) ~ stateAndInput=(state, seq,c): (1, 1, 
+)
+	Hash(stateAndInput) = 267
+	_nextStates::size = 2
+	(<1, =, ranged?(no)>, dfa-id(2))	- hash(318)
+	(<1, n, ranged?(yes)>, dfa-id(0))	- hash(624)
+			Hash(stateAndEmptyInput) = 257
+	key not found
+'
+' - DfaNode(0) ~ stateAndInput=(state, seq,c): (0, 2, a)
+	Hash(stateAndInput) = 97
+	_nextStates::size = 1
+	(<0, a, ranged?(no)>, dfa-id(1))	- hash(97)
+'a' - DfaNode(0) ~ stateAndInput=(state, seq,c): (1, 3, =)
+	Hash(stateAndInput) = 318
+	_nextStates::size = 2
+	(<1, =, ranged?(no)>, dfa-id(2))	- hash(318)
+	(<1, n, ranged?(yes)>, dfa-id(0))	- hash(624)
+'=' - DfaNode(1) ~ stateAndInput=(state, seq,c): (2, 4, 1)
+	Hash(stateAndInput) = 563
+	_nextStates::size = 2
+	(<2, 0, ranged?(yes)>, dfa-id(4))	- hash(1076)
+	(<2, 1, ranged?(yes)>, dfa-id(3))	- hash(1077)
+'1' - DfaNode(2) ~ stateAndInput=(state, seq,c): (3, 5, :)
+	Hash(stateAndInput) = 829
+	_nextStates::size = 2
+	(<3, :, ranged?(no)>, dfa-id(5))	- hash(829)
+	(<3, 1, ranged?(yes)>, dfa-id(3))	- hash(1591)
+':' - DfaNode(3) ~ stateAndInput=(state, seq,c): (5, 6, 1)
+	Hash(stateAndInput) = 1334
+	_nextStates::size = 2
+	(<5, 0, ranged?(yes)>, dfa-id(7))	- hash(2618)
+	(<5, 1, ranged?(yes)>, dfa-id(6))	- hash(2619)
+			Hash(rangedInputNumbers0to9) = 2620
+			Hash(rangedInputNumbers1to9) = 2619
+	rangedNumber:[1-9]
+'1' - DfaNode(5) ~ stateAndInput=(state, seq,c): (6, 7, 0)
+	Hash(stateAndInput) = 1590
+	_nextStates::size = 3
+	(<6, 
+, ranged?(no)>, dfa-id(1001))	- hash(1552)
+	(<6,  , ranged?(no)>, dfa-id(1001))	- hash(1574)
+	(<6, 2, ranged?(yes)>, dfa-id(6))	- hash(3134)
+			Hash(rangedInput) = 3132
+			Hash(SI_NUMBERS_0to9) = 3134
+	rangedNumber:[0-9]
+'0' - DfaNode(6) ~ stateAndInput=(state, seq,c): (6, 8,  )
+	Hash(stateAndInput) = 1574
+	_nextStates::size = 3
+	(<6, 
+, ranged?(no)>, dfa-id(1001))	- hash(1552)
+	(<6,  , ranged?(no)>, dfa-id(1001))	- hash(1574)
+	(<6, 2, ranged?(yes)>, dfa-id(6))	- hash(3134)
+found word!
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+
+
+
+
+
+
+
+Successfully contructed Reps Dfa: Base To A
+Successfully contructed Reps Dfa: A To B
+Successfully contructed Reps Dfa: B To C
+Successfully contructed Reps Dfa: C To D
+Successfully contructed Reps Dfa: D To E
+Successfully contructed Reps Dfa: E To F
+(state, seq,c): 0, 0, %
+	Hash(stateAndInput) = 37
+	_nextStates::size = 1
+	(<0, %, ranged?(no)>, dfa-id(1))	- hash(37)
+pass the point
+'%' - DfaNode(0) ~ stateAndInput=(state, seq,c): (1, 1, r)
+	Hash(stateAndInput) = 371
+	_nextStates::size = 1
+	(<1, r, ranged?(no)>, dfa-id(2))	- hash(371)
+'r' - DfaNode(1) ~ stateAndInput=(state, seq,c): (2, 2, e)
+	Hash(stateAndInput) = 615
+	_nextStates::size = 1
+	(<2, e, ranged?(no)>, dfa-id(3))	- hash(615)
+'e' - DfaNode(2) ~ stateAndInput=(state, seq,c): (3, 3, p)
+	Hash(stateAndInput) = 883
+	_nextStates::size = 1
+	(<3, p, ranged?(no)>, dfa-id(4))	- hash(883)
+'p' - DfaNode(3) ~ stateAndInput=(state, seq,c): (4, 4, s)
+	Hash(stateAndInput) = 1143
+	_nextStates::size = 1
+	(<4, s, ranged?(no)>, dfa-id(5))	- hash(1143)
+'s' - DfaNode(4) ~ stateAndInput=(state, seq,c): (5, 5,  )
+	Hash(stateAndInput) = 1317
+	_nextStates::size = 1
+	(<5,  , ranged?(no)>, dfa-id(1001))	- hash(1317)
+found word!
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Lexer_Word_Count 2
+23
+Lexeme!
+Parse!
+Lexeme!
+Lexeme!
+ClosureCase Result: 556
+Stack entry index: 11
+Stack entry - nextState: 2
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared ArrayCtxMan TypedContext <> addToAnnotatedData
+cleared Array
+Printing Annotated Data
+CtxMan TypedContext <> printAnnotatedData
+{key_word:%}
+{data_line:sample.cpp}
+{key_word:%}
+{data_line: Not but a week prior in a place not far from here, men in cardigans sat about a fire consuming roaches. The fire itself was unremarkable, fire to them merely a tool necessary to their occupations. The flames danced in and about their pupils as the men devoured roach after roach of the worlds finest breed. These roaches, you see, were no ordinary roaches. Few roaches can be considered ordinary to begin with, but we recognize these roaches by the attention they command - the delicacy with which they are handled. You see, most don't like roaches. They can't examplain }
+{key_word:%}
+{data_line:why}
+{key_word:%}
+{data_line:, but you see it is only because they've been conditioned.  The lengths to which these cardigan clad men went in the pursuit of the finest breeds bordered on insanity. That same vigor with which we are all familiar, interestingly enough, has actually tempered relations between neighbouring states and provinces the world over.}
+{data_line:Those who cared - the *artisans*, the *connaisseurs*, *the politicians* - were never interested in their local varieties. The stench of familiarity is so great, even amoung the most enthused, that governments and private contractors chartered steamboats, military jets, and lunar space shuttles to be packed to tilt. The roaches were transported from the far reaches of the congo to the dirty underground basements }
+{key_word:%}
+{data_line:where the cardigan clad men would congregate}
+{key_word:%}
+{data_line:, often sporting beaded masks in a lazy attempt to hide their }
+{key_word:%}
+{data_line:identities}
+{key_word:%}
+{data_line:. Needless to say the }
+{key_word:%}
+{data_line:boatsmen}
+{key_word:%}
+{data_line:, }
+{key_word:%}
+{data_line:pilots}
+{key_word:%}
+{data_line:, and }
+{key_word:%}
+{data_line:astronauts}
+{key_word:%}
+{data_line: were never in such precarious situations - they were paid gold bricks by the dozen for each roach they didn't devour.}
+{data_line:What's that you say? Do }
+{key_word:%}
+{data_line: you doubt me?? }
+{key_word:%}
+{data_line:empty_str}
+{data_line:empty_str}
+
+Finished printing anotated data
+Destructor for Lexer Word Constructor called
+Destroying Dfa id(0x103b01630) the RIGHT way.
+Destroying Dfa id(0x103b01660) the RIGHT way.
+Destroying Dfa id(0x103b01690) the RIGHT way.
+Destroying Dfa id(0x103b016c0) the RIGHT way.
+Destroying Dfa id(0x103b016f0) the RIGHT way.
+Destroying Dfa id(0x103b01720) the RIGHT way.
+Destroying Dfa id(0x103b01750) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x103b00c40) the RIGHT way.
+Destroying Dfa Transition id(0x103b00c80) the RIGHT way.
+Destroying Dfa Transition id(0x103b00cc0) the RIGHT way.
+Destroying Dfa Transition id(0x103b00d00) the RIGHT way.
+Destroying Dfa Transition id(0x103b00d40) the RIGHT way.
+Destroying Dfa Transition id(0x103b011f0) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x103b00930) the RIGHT way.
+Destroying Dfa id(0x103b00960) the RIGHT way.
+Destroying Dfa id(0x103b009a0) the RIGHT way.
+Destroying Dfa id(0x103b009f0) the RIGHT way.
+Destroying Dfa id(0x103b00a40) the RIGHT way.
+Destroying Dfa id(0x103b00ab0) the RIGHT way.
+Destroying Dfa id(0x103b00ae0) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x103b00990) the RIGHT way.
+Destroying Dfa Transition id(0x103b00a20) the RIGHT way.
+Destroying Dfa Transition id(0x103b008a0) the RIGHT way.
+Destroying Dfa Transition id(0x103b00a30) the RIGHT way.
+Destroying Dfa Transition id(0x103b00b40) the RIGHT way.
+Destroying Dfa Transition id(0x103b00b90) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destructor for Lexer Word Constructor was successfull

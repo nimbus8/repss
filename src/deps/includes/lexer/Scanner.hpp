@@ -68,13 +68,12 @@ private:
 
 	void _appendToAnnotatedData(const std::string& data)
 	{
-		std::cout << "Appending!!!" << std::endl;
 		_context->appendToAnnotatedData(data);	
 	}
 
 	void captureBufferAndWrapData(char* const buffer, size_t& bufferCount, const size_t BUFFER_LEN, const bool isKeyword)
 	{
-		printf("Captured: %s\n", buffer);
+		//printf("Captured: %s\n", buffer);
 
 		bool emptyBuffer = strlen(buffer) == 0? true : false;
 
@@ -98,8 +97,6 @@ private:
 
 		Arrays::clearCharacters(buffer,BUFFER_LEN);
                 bufferCount = 0;
-	
-		std::cout << "Found something!!" << std::endl;
 	}
 
         std::string wrapKeyword(const std::string& partOfGrammer, const char* const keyWord) const
