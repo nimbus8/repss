@@ -18,7 +18,7 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "states/StateAndInput.hpp"
+#include "StateAndInput.hpp"
 #include <string>
 
 #ifndef _STATE_FUNCTORS_

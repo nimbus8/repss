@@ -29,8 +29,10 @@
 
 #include <memory>
 
-#include "states/StateAndInput.hpp"
+#include "StateAndInput.hpp"
 #include "state_functors.hpp"
+
+#include "../../../../LexerStateAndInput.hpp"
 
 #ifndef _LEXER_DFA_
 #define _LEXER_DFA_
@@ -84,8 +86,10 @@ public:
 		_nextStates.emplace(stateInputAndDfa); 
 	}
 
-        const lexer_dfa* getNextDfa(const StateAndInput<int,char> stateAndInput) const
+        const lexer_dfa* getNextDfa(const LexerStateAndInput& lexerStateAndInput) const
         {
+		const StateAndInput<int,char> stateAndInput(lexerStateAndInput.getState(), lexerStateAndInput.getInput(), false);
+
 		_printInputHash(stateAndInput, "stateAndInput");
 
 		std::cout << "\t_nextStates::size = " << _nextStates.size() << std::endl;

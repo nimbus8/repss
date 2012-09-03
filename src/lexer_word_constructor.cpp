@@ -19,10 +19,11 @@
  */
 
 #include "deps/includes/lexer/lexer_man/lexer_builder/lexer_word_constructor.hpp"
-#include "deps/includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/states/StateAndInput.hpp"
+#include "deps/includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/StateAndInput.hpp"
 #include "deps/includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/DfaTransition.hpp"
 #include "deps/includes/lexer/lexer_man/lexer_builder/AggregateDfasAndDelete.hpp"
 #include "deps/includes/lexer/lexer_man/lexer_builder/AggregateDfaTransitionsAndDelete.hpp"
+#include "deps/includes/lexer/LexerStateAndInput.hpp"
 
 //todo: should be moved to lexer_word_constructor.hpp file
 //EMPTY CHAR AKA the ANY char, doesn't move the chains just accepts everything as input
@@ -41,7 +42,7 @@ void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length)
     //search for a beginning
     do
     {
-	StateAndInput<int,char> si0(state, seq[count]);
+	LexerStateAndInput si0(state, seq[count]);
     	std::cout << "(state, seq,c): " << state << ", " << count << ", " << seq[count] << std::endl;
     	count++;
     	auto aNextDfa = curr->getNextDfa(si0);
@@ -53,17 +54,14 @@ void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length)
     	}
     } while(count < seq_length);
     
-    //todo: Check this out. Very strange, without this cout below I get segmentation fault 11! wtf?
-    std::cout << "pass the point" << std::endl;
-    
-    //if a beginning is found, try and match next however many characters with rest of dfa
     while ((nextDfa != nullptr) && (nextDfa->getId() != ST_ACCEPT && count < seq_length))
     {
 	std::cout << "'" << seq[count-1] << "' - DfaNode(" << curr->getId() << ")"
-		<< " ~ stateAndInput=(state, seq,c): (" << state << ", " << count << ", " << seq[count] << ")" << std::endl;
+		<< " ~ stateAndInput=(state, seq,c): (" << state << ", " 
+		<< count << ", " << seq[count] << ")" << std::endl;
 
         curr = nextDfa;
-        const StateAndInput<int,char> si(state,seq[count]);
+        const LexerStateAndInput si(state,seq[count]);
         nextDfa = curr->getNextDfa(si);
 
     	count++;
@@ -80,9 +78,10 @@ void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length)
 		curr = word;
 
 		std::cout << "'" << seq[count-1] << "' - DfaNode(" << curr->getId() << ")"
-			<< " ~ stateAndInput=(state, seq,c): (" << state << ", " << count << ", " << seq[count] << ")" << std::endl;
+			<< " ~ stateAndInput=(state, seq,c): (" << state << ", " 
+			<< count << ", " << seq[count] << ")" << std::endl;
 
-                StateAndInput<int,char> si0(state, seq[count++]);
+                LexerStateAndInput si0(state, seq[count++]);
                 auto aNextDfa = curr->getNextDfa(si0);
                 if (aNextDfa != nullptr) 
                 {
@@ -128,7 +127,6 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
 	auto E = dfaManager.createDfa(ST_E);
 	auto F = dfaManager.createDfa(ST_ACCEPT);	
 
-    //todo: we need to make objects that keep track of state for those closure expressions
     StateAndInput<int,char> stateInput1(ST_BASE,'%');
     StateAndInput<int,char> stateInput2(ST_A,'r');
 	StateAndInput<int,char> stateInput3(ST_B,'e');
