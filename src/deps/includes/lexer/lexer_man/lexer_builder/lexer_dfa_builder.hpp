@@ -38,10 +38,8 @@
 
 class lexer_dfa_builder
 {
-private:
-        int id_counter;
 public:
-        lexer_dfa_builder() : id_counter(0) {}
+        lexer_dfa_builder() {}
         ~lexer_dfa_builder() {}
 
         bool addDfa(lexer_word_repr* word_base, const ApplyImmutableFunc<DfaTransition*>& applyObj) const

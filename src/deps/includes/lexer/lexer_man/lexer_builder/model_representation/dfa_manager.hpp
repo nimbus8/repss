@@ -9,19 +9,34 @@
 class DfaManager
 {
 private:
+	int _idCount;
+
 	std::vector<lexer_dfa*> _dfas;
 	std::vector<const DfaTransition*> _transitions;
+
+	std::unordered_map<int, std::string> _endStateNameMap;
+
 public:
-	DfaManager() {}
+	DfaManager() : _idCount(0) {}
 	~DfaManager() {}
 
-	lexer_dfa* createDfa(const int id) 
+	lexer_dfa* createDfa() 
 	{
-		lexer_dfa* ret = new lexer_dfa(id);
+		lexer_dfa* ret = new lexer_dfa(_idCount++);
 		_dfas.push_back(ret);
 		return ret;
 	}
-	lexer_word_repr* createLexerWordRepr(const int id) {return createDfa(id);}
+
+	lexer_dfa* createAcceptingDfa()
+	{
+		//todo: change this...1001 refers to const defined in word construction
+		//	we want to change this to taking in a string to defined a named
+		//	accepting state.
+                lexer_dfa* ret = new lexer_dfa(1001);
+                _dfas.push_back(ret);
+                return ret;
+	}
+	lexer_word_repr* createLexerWordRepr() {return createDfa();}
 
 	bool destroyDfa(lexer_dfa* toBeDestroyed) 
 	{
