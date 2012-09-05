@@ -38,6 +38,8 @@ private:
 
         const lexer_word_repr* _current_dfa;
         const std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>* _lexer_words;
+
+        void mergeDfas();
 public:
         lexer_manager(const lexer_configuration* config)
 	{

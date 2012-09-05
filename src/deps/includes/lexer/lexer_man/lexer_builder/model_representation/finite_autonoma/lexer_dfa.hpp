@@ -45,6 +45,29 @@ public:
 	} ValidTypes;
 };
 
+class lexer_dfa;
+
+class LexerTransition
+{
+private:
+        const StateAndInput<int,char> _stateAndInput;
+        const lexer_dfa* _dfaNode;
+public:
+        LexerTransition(const StateAndInput<int,char> stateAndInput, const lexer_dfa* dfaNode)
+                : _stateAndInput(stateAndInput), _dfaNode(dfaNode) {}
+
+        LexerTransition(const LexerTransition& other) : _stateAndInput(other._stateAndInput), _dfaNode(other._dfaNode) {}
+        LexerTransition(const LexerTransition&& other) : _stateAndInput(other._stateAndInput), _dfaNode(other._dfaNode) {}
+        const LexerStateAndInput getStateAndInput() const {
+            LexerStateAndInput lexerStateAndInput(_stateAndInput.getState(), _stateAndInput.getInput());
+            return lexerStateAndInput;
+        }
+        const lexer_dfa* getDfaNode() const { return _dfaNode; }
+        bool getIsRanged() { return _stateAndInput.getIsRanged(); }
+
+        ~LexerTransition() {}
+};
+
 class lexer_dfa
 {
 private:
@@ -259,7 +282,26 @@ public:
 
         //debug
         int getId() const { return _id; }
+
+std::vector<LexerTransition> getTransitions()
+{
+    std::vector<LexerTransition> allTransitions;
+
+    for (auto iter : _nextStates)
+    {
+        auto inputKey = iter.first;
+        auto dfaPtr = iter.second;
+
+        LexerTransition aTransition(inputKey, dfaPtr);
+        allTransitions.push_back(aTransition);
+    }
+
+    return allTransitions;
+}
+
 };
+
+
 
 //phasing out the below calls (moving them to DfaMan)
 

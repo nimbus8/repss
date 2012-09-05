@@ -39,37 +39,53 @@
 class lexer_word_constructor
 {
 private:
-        std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>> _words;
-	std::vector<AggregatePtrsAndDelete<DfaTransition*>*> _dfaTransitions;
+    std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>> _words;
+    std::vector<AggregatePtrsAndDelete<DfaTransition*>*> _dfaTransitions;
 
-	DfaManager dfaManager;	//dfa manager handles references, create/destroy fn pairs
-        lexer_dfa_builder* _lexer_builder;
+    DfaManager dfaManager;	//dfa manager handles references, create/destroy fn pairs
+    lexer_dfa_builder* _lexer_builder;
 
-        std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructPercentReps();	
+    lexer_word_repr* _startWordForMergedRepr;
+  
+    std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructPercentReps();	
 
-       std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructSquareBracketReps();  
+    std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructSquareBracketReps();  
 
-	std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> __insertNamedRepitionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa);
+    std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> __insertNamedRepitionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa);
 
-        void _destructDfasAndTransitions();
+    void _destructDfasAndTransitions();
 
-        void _initWords();
+    void _initWords();
 public:
-        lexer_word_constructor()
-        {
-                _initWords();
-        }
-        ~lexer_word_constructor()
-	{
-		std::cout << "Destructor for Lexer Word Constructor called" << std::endl; 
-		_destructDfasAndTransitions();
-		std::cout << "Destructor for Lexer Word Constructor was successfull" << std::endl;
-	}
+    lexer_word_constructor()
+    {
+        _initWords();
+    }
+    ~lexer_word_constructor()
+    {
+        std::cout << "Destructor for Lexer Word Constructor called" << std::endl; 
+        _destructDfasAndTransitions();
+        std::cout << "Destructor for Lexer Word Constructor was successfull" << std::endl;
 
-        const std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>& getWords() 
-	{ 
-		return _words;
-	}
+        delete _lexer_builder;
+    }
+
+    const std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>& getWords() 
+    { 
+        return _words;
+    }
+
+    void mergeWords()
+    {
+        std::vector<lexer_dfa*> dfaWords(_words.size());
+        for (auto aWordTuple : _words)
+        {
+            dfaWords.push_back(aWordTuple.first);
+        }
+
+        _startWordForMergedRepr = _lexer_builder->mergeDfas(dfaWords, dfaManager);
+    }
+
 };
 
 #endif

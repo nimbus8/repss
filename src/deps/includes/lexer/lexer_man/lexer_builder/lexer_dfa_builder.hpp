@@ -30,11 +30,14 @@
 #include "../../../utils/AggregateAndApplyFuncBase.hpp"
 #include "../../../utils/ApplyImmutableFunc.hpp"
 
+#include "model_representation/dfa_manager.hpp"
 #include "model_representation/finite_autonoma/lexer_dfa.hpp"
 #include "model_representation/finite_autonoma/DfaTransition.hpp"
 
 #ifndef _LEXER_DFA_BUILDER_
 #define _LEXER_DFA_BUILDER_
+
+//Helper class for lexer_word_constructor
 
 class lexer_dfa_builder
 {
@@ -57,11 +60,12 @@ public:
                                 return true;
                         };
 
-                bool wasSuccess = applyObj.apply(applyFunc);
+                const bool wasSuccess = applyObj.apply(applyFunc);
 
                 return wasSuccess;
         }
 
+        lexer_word_repr* mergeDfas(std::vector<lexer_word_repr*>& words, DfaManager& dfaManager);
 };
 
 #endif

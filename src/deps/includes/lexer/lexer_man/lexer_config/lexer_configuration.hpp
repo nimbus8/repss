@@ -37,20 +37,20 @@
 class lexer_configuration
 {
 private:
-        lexer_word_constructor* _wordConstructor;
+    lexer_word_constructor* _wordConstructor;
 public:
-        lexer_configuration() { _wordConstructor = new lexer_word_constructor(); }
-        ~lexer_configuration() 
-	{
-		delete _wordConstructor;
-	}
+    lexer_configuration() { _wordConstructor = new lexer_word_constructor(); }
+    ~lexer_configuration() 
+    {
+        delete _wordConstructor;
+    }
 
-        void init() {}
+    void init() {}
 
-        const std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>& getLexicalWords() const
-	{ 
-		return _wordConstructor->getWords();
-	}
+    const std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>& getLexicalWords() const
+    { 
+        return _wordConstructor->getWords();
+    }
 };
 
 #endif
