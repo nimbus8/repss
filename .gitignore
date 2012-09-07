@@ -43,3 +43,4 @@ Thumbs.db
 .cproject
 .settings
 code_style.xml
+*.swp

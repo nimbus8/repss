@@ -76,8 +76,9 @@ lexer_word_repr* lexer_dfa_builder::mergeDfas(std::vector<lexer_word_repr*>& wor
             {
                 if (nextMergeToDfaPtr == nullptr)
                 {
-                    nextMergeToDfaPtr->add_next_dfa(transitionFromCurrMergeFromDfaPtr.getStateAndInput(),
-                        nextMergeFromDfaPtr);
+                    LexerStateAndInput aLexerStateAndInput = transitionFromCurrMergeFromDfaPtr.getStateAndInput();
+                    StateAndInput<int,char> aStateAndInput(aLexerStateAndInput.getState(), aLexerStateAndInput.getInput(), transitionFromCurrMergeFromDfaPtr.getIsRanged());
+                    nextMergeToDfaPtr->add_next_dfa(aStateAndInput, nextMergeFromDfaPtr);
                 }
                 else
                 {
