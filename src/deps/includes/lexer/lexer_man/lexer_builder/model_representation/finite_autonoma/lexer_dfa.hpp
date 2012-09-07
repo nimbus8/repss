@@ -130,29 +130,6 @@ public:
     }
 };
 
-//phasing out the below calls (moving them to DfaMan)
-inline lexer_dfa* CreateDfa(int id)
-{
-	return new lexer_dfa(id);
-}
-
-//this really doesn't make sense any more, only really for easier identification, well be branching
-//behaviour based on type of StateAndInput instead.
-inline lexer_dfa* CreateRangedDfa(int id)
-{
-	return new lexer_dfa(LexerDfaType::RANGED, id);
-}
-
 typedef lexer_dfa lexer_word_repr;
-
-inline lexer_word_repr* CreateLexerWord(int id)
-{
-	return new lexer_word_repr(id);
-}
-
-inline lexer_word_repr* CreateRangedLexerWord(int id)
-{
-	return new lexer_word_repr(LexerDfaType::RANGED, id); 
-}
 
 #endif
