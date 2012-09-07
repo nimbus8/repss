@@ -65,7 +65,7 @@ public:
                 return wasSuccess;
         }
 
-        lexer_word_repr* mergeDfas(std::vector<lexer_word_repr*>& words, DfaManager& dfaManager);
+        lexer_word_repr* mergeDfas(const std::vector<lexer_word_repr*>* words, DfaManager& dfaManager);
 };
 
 #endif

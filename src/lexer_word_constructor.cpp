@@ -279,7 +279,7 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
 {
     lexer_word_repr* word_base = dfaManager.createLexerWordRepr();
 
-    lexer_dfa* DFA_1 = dfaManager.createDfa();
+    lexer_dfa* DFA_1 = dfaManager.createDfa(); //we DONT use createStartingDfa here, because its not meant to be a starting dfa, its always intermediate from this point of view.
     auto DFA_2 = dfaManager.createDfa();
     auto DFA_3 = dfaManager.createDfa();
     auto DFA_4 = dfaManager.createDfa();
