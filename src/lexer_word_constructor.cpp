@@ -125,12 +125,12 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
     const auto ST_BASE = word_base->getId();
     const auto ST_A = A->getId(), ST_B = B->getId(), ST_C = C->getId(), ST_D = D->getId(), ST_E = E->getId();
 
-    StateAndInput<int,char> stateInput1(ST_BASE,'%');
-    StateAndInput<int,char> stateInput2(ST_A,'r');
-    StateAndInput<int,char> stateInput3(ST_B,'e');
-    StateAndInput<int,char> stateInput4(ST_C,'p');
-    StateAndInput<int,char> stateInput5(ST_D,'s');
-    StateAndInput<int,char> stateInput6(ST_E,' ');
+    StateAndInput<int,char> stateInput1(ST_BASE,'/');
+    StateAndInput<int,char> stateInput2(ST_A,'[');
+    StateAndInput<int,char> stateInput3(ST_B,'r');
+    StateAndInput<int,char> stateInput4(ST_C,'e');
+    StateAndInput<int,char> stateInput5(ST_D,'p');
+    StateAndInput<int,char> stateInput6(ST_E,']');
     StateAndInput<int,char> stateInput7(ST_ACCEPT, EMPTY_CHAR);
 
     const DfaTransition* idfa1 = dfaManager.createDfaTransition(&stateInput1,A);
@@ -169,7 +169,7 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
 
         std::cout << std::endl;
 
-        char seq[] = { '%', 'r', 'e', 'p','s', ' ', 'H' };
+        char seq[] = { '/', '[', 'r', 'e','p', ']', 'H' };
         const size_t seq_length = 7;
        	debug_printDfa(word_base, seq, seq_length);
     }
@@ -203,11 +203,11 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
     const auto ST_A = A->getId(), ST_B = B->getId(), ST_C = C->getId(), ST_D = D->getId(), ST_E = E->getId();
     const auto ST_F = F->getId();
 	
-    StateAndInput<int,char> stateInput1(ST_BASE,'[');
-    StateAndInput<int,char> stateInput2(ST_A,'r');
-    StateAndInput<int,char> stateInput3(ST_B,'e');
-    StateAndInput<int,char> stateInput4(ST_C,'p');
-    StateAndInput<int,char> stateInput5(ST_D,'s');
+    StateAndInput<int,char> stateInput1(ST_BASE,'/');
+    StateAndInput<int,char> stateInput2(ST_A,'[');
+    StateAndInput<int,char> stateInput3(ST_B,'s');
+    StateAndInput<int,char> stateInput4(ST_C,'c');
+    StateAndInput<int,char> stateInput5(ST_D,'o');
     StateAndInput<int,char> stateInput6(ST_E,']');
     StateAndInput<int,char> stateInput7(ST_F,' ');
     StateAndInput<int,char> stateInput8(ST_ACCEPT, EMPTY_CHAR);
@@ -255,7 +255,7 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
 
         std::cout << std::endl;
 
-        char seq[] = { 'k', '\n','[', 'r', 'e', 'p','s', ']', ' ', 'H' };
+        char seq[] = { 'k', '\n','[', 's', 'c', 'o',']', ' ', ' ', 'H' };
         const size_t seq_length = 10;
         debug_printDfa(word_base, seq, seq_length);
     }

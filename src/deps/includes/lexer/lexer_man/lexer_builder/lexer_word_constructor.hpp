@@ -55,13 +55,11 @@ private:
 {
     const int ST_ACCEPT = 1001;
     auto word = _startWordForMergedRepr;
-    const char seq[] = {'%', 'r', 'e', 'p','s', ' ', 'H'};
+    //const char seq[] = {'/', '[', 'r', 'e','p', ']', 'H'};
+    const char seq[] = {'/', '[', 's', 'c','o', ']', ' '};
     const size_t seq_length = 7;
 
-
     int count = 0;
-    int state = word->getId(); //start state (for a specific test) is word_base's identifier
-
     auto curr = word;
 
     const lexer_word_repr* nextDfa;
@@ -69,32 +67,32 @@ private:
     //search for a beginning
     do
     {
-        LexerStateAndInput si0(state, seq[count]);
-        std::cout << "(state, seq,c): " << state << ", " << count << ", " << seq[count] << std::endl;
-        count++;
-        auto aNextDfa = curr->getNextDfa(si0);
-        if (aNextDfa != nullptr)
+        std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+        //change the origanization of this to just use input and not state
+        auto aNextDfa = curr->getNextDfaForInput(seq[count]);
+        count++; 
+
+       if (aNextDfa != nullptr)
         {
-                state = aNextDfa->getId(); //state++;
                 nextDfa = aNextDfa;
+
+                std::cout << "break" << std::endl;
+
                 break;
         }
     } while(count < seq_length);
 
     while ((nextDfa != nullptr) && (nextDfa->getId() != ST_ACCEPT && count < seq_length))
     {
-        std::cout << "'" << seq[count-1] << "' - DfaNode(" << curr->getId() << ")"
-                << " ~ stateAndInput=(state, seq,c): (" << state << ", "
-                << count << ", " << seq[count] << ")" << std::endl;
-
         curr = const_cast<lexer_dfa*>(nextDfa);
-        const LexerStateAndInput si(state,seq[count]);
-        nextDfa = curr->getNextDfa(si);
+        nextDfa = curr->getNextDfaForInput(seq[count]);
+
+        std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
 
         if (nextDfa == nullptr)
         {
             //reset state to state at word_base
-            state = word->getId();
+            curr = word;
 
             //search for a beginning
             do
@@ -102,23 +100,24 @@ private:
                 //reset current dfa
                 curr = word;
 
-                std::cout << "'" << seq[count-1] << "' - DfaNode(" << curr->getId() << ")"
-                        << " ~ stateAndInput=(state, seq,c): (" << state << ", "
-                        << count << ", " << seq[count] << ")" << std::endl;
+                std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
 
-                LexerStateAndInput si0(state, seq[count++]);
-                auto aNextDfa = curr->getNextDfa(si0);
+                auto aNextDfa = curr->getNextDfaForInput(seq[count]);
                 if (aNextDfa != nullptr)
                 {
-                    state = aNextDfa->getId(); //state++;
                     nextDfa = aNextDfa;
+                    count++;
                     break;
+                }
+                else
+                {
+                    count++;
                 }
              } while(count < seq_length);
         }
         else
         {
-                state = nextDfa->getId(); //state++;
+                count++;
         }
     }
 

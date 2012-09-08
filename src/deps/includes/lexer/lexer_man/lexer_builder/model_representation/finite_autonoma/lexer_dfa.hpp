@@ -76,6 +76,7 @@ private:
     const LexerDfaType::ValidTypes _type;
     int _id;
 
+/*
     //debug
     void _printTransitions() const
     {
@@ -89,18 +90,30 @@ private:
                 << "\t- hash(" << hashFunc(inputKey)  << ")" << std::endl;
         }
     }
-
+*/
     void _printInputHash(const StateAndInput<int,char>& stateAndInput, const std::string& name) const
     {
         StateAndInputHashFunction hashFunc;
         std::cout << "\tHash(" << name << ") = " << hashFunc(stateAndInput) << std::endl;
     }
-
 public:
     lexer_dfa(LexerDfaType::ValidTypes type, int id) : _type(type), _id(id) {}
     explicit lexer_dfa(int id) : _type(LexerDfaType::NORMAL), _id(id) {}
 
     ~lexer_dfa() {}
+
+    void _printTransitions() const
+    {
+        StateAndInputHashFunction hashFunc;
+        for (auto iter : _nextStates)
+        {
+            auto inputKey = iter.first;
+            auto dfaPtr = iter.second;
+            std::cout << "\t(<" << inputKey.getState() << ", " << inputKey.getInput() << ", ranged?(" << (inputKey.getIsRanged()? "yes" : "no") << ")>, "
+                << "dfa-id(" << dfaPtr->getId() << "))"
+                << "\t- hash(" << hashFunc(inputKey)  << ")" << std::endl;
+        }
+    }
 
     void add_next_dfa(const StateAndInput<int,char> stateAndInput, const lexer_dfa* nextDfa) const 
     {
@@ -108,10 +121,49 @@ public:
         _nextStates.emplace(stateInputAndDfa); 
     }
 
-    const lexer_dfa* getNextDfa(const LexerStateAndInput& lexerStateAndInput) const;
 
-    //debug
+
     int getId() const { return _id; }
+
+    //this function is relatively expensive, remember that lexer_dfa is for language description
+    //todo: create a similar class that is solel for language traversal (lighter, faster), e.g. similar
+    //func to the one below who NOT enumerate all possible values in map
+    bool hasNextDfaForInput(const char input) const
+    {
+        for (auto iter : _nextStates)
+        {
+            const auto inputKey = iter.first;
+            const auto inputKeyValue = inputKey.getInput();
+            if (inputKeyValue == input)
+            {
+                return true;
+            }
+       }
+
+        return false;
+    }
+
+    //like the above function, this is only really meant to be used in the dfa merge process.
+    //afterwards, during lexing, there should be a different interface (if not a completely new class)
+    //that makes this operation quick
+    const lexer_dfa* getNextDfaForInput(const char input) const
+    {
+        for (auto iter : _nextStates)
+        {
+            const auto inputKey = iter.first;
+            const auto inputKeyValue = inputKey.getInput();
+            if (inputKeyValue == input)
+            {
+                const auto retDfaPtr = iter.second;
+                return retDfaPtr;
+            }
+       }
+
+        return nullptr;
+    }
+   
+
+    const lexer_dfa* getNextDfa(const LexerStateAndInput& lexerStateAndInput) const;
 
     std::vector<LexerTransition> getTransitions() const
     {

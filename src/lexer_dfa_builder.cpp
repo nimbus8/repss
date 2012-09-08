@@ -37,12 +37,7 @@ lexer_word_repr* lexer_dfa_builder::mergeDfas(const std::vector<lexer_word_repr*
         jobQueue->push_back(jobVector);
     }
 
-    std::cout << "Merging dfas to one, words size: " << words->size() << std::endl;
-
-    if (jobQueue->size() != words->size())
-    {
-        std::cout << "What the fuck jobQueue.size() != words->size())" << std::endl;
-    }
+    std::cout << std::endl << "Merging dfas to one, words size: " << words->size() << std::endl;
 
     //iterate through words
     int jobLineIndex = 0;
@@ -61,10 +56,6 @@ lexer_word_repr* lexer_dfa_builder::mergeDfas(const std::vector<lexer_word_repr*
 
         for (auto transition : nextTransitions)
         {
-            std::cout << "Getting ino out of transition" << std::endl;
-            const auto si = transition.getStateAndInput();
-            const LexerStateAndInput stateAndInput(si.getState(), si.getInput());
-            
             std::cout << "Adding job to job Queue" << std::endl;
 
             std::pair<lexer_dfa*, LexerTransition> job(mergeToDfaPtr, transition);
@@ -91,9 +82,12 @@ lexer_word_repr* lexer_dfa_builder::mergeDfas(const std::vector<lexer_word_repr*
             auto nextMergeFromDfaPtr = transitionFromCurrMergeFromDfaPtr.getDfaNode();
 
             const auto si = transitionFromCurrMergeFromDfaPtr.getStateAndInput();
-            const LexerStateAndInput stateAndInput(si.getState(), si.getInput());
-            auto nextMergeToDfaPtr = currMergeToDfaPtr->getNextDfa(stateAndInput);
+            auto nextMergeToDfaPtr = (currMergeToDfaPtr != nullptr? currMergeToDfaPtr->getNextDfaForInput(si.getInput()) : nullptr);
           
+            currMergeToDfaPtr->_printTransitions();
+            std::cout << "is there nextDfaPtr? " << (currMergeToDfaPtr->getNextDfaForInput(si.getInput()) != nullptr ? "yes" : "no")
+                      << nextMergeToDfaPtr << std::endl;
+
             if (nextMergeFromDfaPtr != nullptr)
             {
                 if (nextMergeToDfaPtr == nullptr)
@@ -112,10 +106,8 @@ lexer_word_repr* lexer_dfa_builder::mergeDfas(const std::vector<lexer_word_repr*
                     for (auto transitionFromNextMergeFromDfa : nextTransitions)
                     {
                         const auto si = transitionFromNextMergeFromDfa.getStateAndInput();
-                        const LexerStateAndInput stateAndInput(si.getState(), si.getInput());
-
-                        auto nextMergeToDfaPtr = currMergeToDfaPtr->getNextDfa(stateAndInput);
-        
+      
+                        std::cout << "Couldn't find an opening, pushing back job" << std::endl;
                         std::pair<lexer_dfa*, LexerTransition> job(const_cast<lexer_dfa*>(nextMergeToDfaPtr), transitionFromNextMergeFromDfa);
                         jobVector->push_back(job);
                     }
