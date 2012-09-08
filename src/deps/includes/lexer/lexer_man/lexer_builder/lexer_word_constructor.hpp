@@ -49,99 +49,10 @@ private:
     std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructPercentReps();
     std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructSquareBracketReps();
     std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> __insertNamedRepitionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa);
+
     void _destructDfasAndTransitions();
     void _initWords();
-    bool _testMergedRepresentation()
-{
-    const int ST_ACCEPT = 1001;
-    auto word = _startWordForMergedRepr;
-    //const char seq[] = {'/', '[', 'r', 'e','p', ']', 'H'};
-    const char seq[] = {'/', '[', 's', 'c','o', ']', ' '};
-    const size_t seq_length = 7;
-
-    int count = 0;
-    auto curr = word;
-
-    const lexer_word_repr* nextDfa;
-
-    //search for a beginning
-    do
-    {
-        std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
-        //change the origanization of this to just use input and not state
-        auto aNextDfa = curr->getNextDfaForInput(seq[count]);
-        count++; 
-
-       if (aNextDfa != nullptr)
-        {
-                nextDfa = aNextDfa;
-
-                std::cout << "break" << std::endl;
-
-                break;
-        }
-    } while(count < seq_length);
-
-    while ((nextDfa != nullptr) && (nextDfa->getId() != ST_ACCEPT && count < seq_length))
-    {
-        curr = const_cast<lexer_dfa*>(nextDfa);
-        nextDfa = curr->getNextDfaForInput(seq[count]);
-
-        std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
-
-        if (nextDfa == nullptr)
-        {
-            //reset state to state at word_base
-            curr = word;
-
-            //search for a beginning
-            do
-            {
-                //reset current dfa
-                curr = word;
-
-                std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
-
-                auto aNextDfa = curr->getNextDfaForInput(seq[count]);
-                if (aNextDfa != nullptr)
-                {
-                    nextDfa = aNextDfa;
-                    count++;
-                    break;
-                }
-                else
-                {
-                    count++;
-                }
-             } while(count < seq_length);
-        }
-        else
-        {
-                count++;
-        }
-    }
-
-    if (nextDfa == nullptr)
-    {
-        std::cout << "nothing" << std::endl;
-        return false;
-    }
-    else if (nextDfa->getId() == ST_ACCEPT)
-    {
-        std::cout << "found word!" << std::endl;
-        return true;
-    }
-    else if (count >= seq_length)
-    {
-        std::cout << "reached end of input" << std::endl;
-        return false;
-    }
-    else
-    {
-        return false;
-    }
-}
-     
+    bool _testMergedRepresentation();    
     bool _mergeWords()
     {
         std::vector<lexer_dfa*>* dfaWords = new std::vector<lexer_dfa*>();

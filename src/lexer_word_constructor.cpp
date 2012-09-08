@@ -111,6 +111,110 @@ void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length)
     }
 }
 
+bool lexer_word_constructor::_testMergedRepresentation()
+{
+    bool retResult = true;
+    const char seq1[] = {'/', '[', 'r', 'e','p', ']', 'H', '\0'};
+    const char seq2[] = {'b','/', '[', 's', 'c','o', ']', ' ', '\0'};
+
+    for (int k = 0; k < 2; k++)
+    {
+
+    auto word = _startWordForMergedRepr;
+    char seq[10];
+    strcpy(seq, (k==0? seq1 : seq2));
+
+
+    const size_t seq_length = (k == 0? 7 : 8);
+
+    int count = 0;
+    auto curr = word;
+
+    const lexer_word_repr* nextDfa;
+
+    //search for a beginning
+    do
+    {
+        std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+        //change the origanization of this to just use input and not state
+        auto aNextDfa = curr->getNextDfaForInput(seq[count]);
+        count++; 
+
+       if (aNextDfa != nullptr)
+        {
+                nextDfa = aNextDfa;
+
+                std::cout << "break" << std::endl;
+
+                break;
+        }
+    } while(count < seq_length);
+
+    while ((nextDfa != nullptr) && (nextDfa->getId() != ST_ACCEPT && count < seq_length))
+    {
+        curr = const_cast<lexer_dfa*>(nextDfa);
+        nextDfa = curr->getNextDfaForInput(seq[count]);
+
+        std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+
+        if (nextDfa == nullptr)
+        {
+            //reset state to state at word_base
+            curr = word;
+
+            //search for a beginning
+            do
+            {
+                //reset current dfa
+                curr = word;
+
+                std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+
+                auto aNextDfa = curr->getNextDfaForInput(seq[count]);
+                if (aNextDfa != nullptr)
+                {
+                    nextDfa = aNextDfa;
+                    count++;
+                    break;
+                }
+                else
+                {
+                    count++;
+                }
+             } while(count < seq_length);
+        }
+        else
+        {
+                count++;
+        }
+    }
+
+    if (nextDfa == nullptr)
+    {
+        std::cout << "nothing" << std::endl;
+        retResult = retResult && false;
+    }
+    else if (nextDfa->getId() == ST_ACCEPT)
+    {
+        std::cout << "found word!" << std::endl;
+        retResult = retResult && true;
+    }
+    else if (count >= seq_length)
+    {
+        std::cout << "reached end of input" << std::endl;
+        retResult = retResult && false;
+    }
+    else
+    {
+        retResult = retResult && false;
+    }
+
+    std::cout << std::endl;
+    }
+
+    return retResult;
+}
+
 std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> lexer_word_constructor::_constructPercentReps()
 {
     lexer_word_repr* word_base = dfaManager.createLexerWordRepr();
