@@ -1,3 +1,22 @@
+/*
+ REPSS
+ Copyright (C) 2012  Khalique Williams
+
+ This file is part of REPSS.
+
+ REPSS is free software: you can redistribute it and/or modify
+ it under the terms of the   GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ REPSS is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 #include <vector>
 #include "finite_autonoma/lexer_dfa.hpp"
@@ -9,25 +28,41 @@
 class DfaManager
 {
 private:
-	int _idCount;
+    int _idCount;
 
-	std::vector<lexer_dfa*> _dfas;
-	std::vector<const DfaTransition*> _transitions;
+    std::vector<lexer_dfa*> _dfas;
+    std::vector<const DfaTransition*> _transitions;
 
-	std::unordered_map<int, std::string> _endStateNameMap;
 
+    class DfaIdHashFunction {
+    public:
+        ::std::size_t operator ()(const unsigned int &id) const
+        {
+            return (size_t) id;
+        } 
+    };
+
+    class DfaIdEquals {
+    public:
+        bool operator ()(const unsigned int &lhs, const unsigned int &rhs) const
+        {
+            return lhs == rhs;
+        }
+    };
+
+    std::unordered_map<int, std::string, DfaIdHashFunction, DfaIdEquals> _endStateNameMap;
 public:
-	DfaManager() : _idCount(0) {}
-	~DfaManager() {}
+    DfaManager() : _idCount(0) {}
+    ~DfaManager() {}
 
-	lexer_dfa* createDfa() 
-	{
-		lexer_dfa* ret = new lexer_dfa(_idCount++);
-		_dfas.push_back(ret);
-		return ret;
-	}
+    lexer_dfa* createDfa() 
+    {
+        lexer_dfa* ret = new lexer_dfa(_idCount++);
+        _dfas.push_back(ret);
+        return ret;
+    }
 
-	lexer_dfa* createAcceptingDfa()
+	lexer_dfa* createAcceptingDfa(const std::string endStateName)
 	{
 		//todo: change this...1001 refers to const defined in word construction
 		//	we want to change this to taking in a string to defined a named

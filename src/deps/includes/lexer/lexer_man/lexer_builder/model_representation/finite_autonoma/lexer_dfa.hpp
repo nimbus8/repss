@@ -76,21 +76,6 @@ private:
     const LexerDfaType::ValidTypes _type;
     int _id;
 
-/*
-    //debug
-    void _printTransitions() const
-    {
-        StateAndInputHashFunction hashFunc;
-        for (auto iter : _nextStates)
-        {
-            auto inputKey = iter.first;
-            auto dfaPtr = iter.second;
-            std::cout << "\t(<" << inputKey.getState() << ", " << inputKey.getInput() << ", ranged?(" << (inputKey.getIsRanged()? "yes" : "no") << ")>, " 
-                << "dfa-id(" << dfaPtr->getId() << "))"
-                << "\t- hash(" << hashFunc(inputKey)  << ")" << std::endl;
-        }
-    }
-*/
     void _printInputHash(const StateAndInput<int,char>& stateAndInput, const std::string& name) const
     {
         StateAndInputHashFunction hashFunc;

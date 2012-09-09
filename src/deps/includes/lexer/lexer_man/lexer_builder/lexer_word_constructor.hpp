@@ -30,6 +30,7 @@
 #include "model_representation/finite_autonoma/lexer_dfa.hpp"
 #include "model_representation/dfa_manager.hpp"
 #include "lexer_dfa_builder.hpp"
+#include "ScanWordsBuilder.hpp"
 
 #include "../../../utils/AggregatePtrsAndDelete.hpp"
 
