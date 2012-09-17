@@ -24,13 +24,12 @@
 #include <unordered_set>
 #include <iostream>
 
-#include "../file_handler/FileHandler.hpp"
-#include "../memory_operations.hpp"
-
-#include "ContextManager.hpp"
-
 #ifndef _SCANNER_HPP_
 #define _SCANNER_HPP_
+
+#include "../repss.hpp"
+
+#include "ContextManager.hpp"
 
 #define stringify( name ) # name
 

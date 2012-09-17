@@ -42,18 +42,33 @@ class lexer_word_constructor
 {
 private:
     DfaManager dfaManager;      //dfa manager handles references, create/destroy fn pairs
+    lexer_dfa_builder* _lexer_builder; //helper class, helps connect dfas together
+
+    //first phase of construction - language component definition & aggregation
     std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>> _words;
     std::vector<AggregatePtrsAndDelete<DfaTransition*>*> _dfaTransitions;
-    lexer_dfa_builder* _lexer_builder;
+
+    //second phase of construction - merging of aggregated language components
     lexer_word_repr* _startWordForMergedRepr;
+
+    //third/final phase of construction - run time optimization / (maybe todo: phase 1 & 2 cleanup)
+    ScanWords* _scanWords;
   
+    //intermediate functions for first phase
     std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructPercentReps();
     std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructSquareBracketReps();
     std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> __insertNamedRepitionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa);
 
     void _destructDfasAndTransitions();
+
+    //intermediate functions for second phase
+    bool _testMergedRepresentation();
+
+    //intermediate functions for third/final phase
+    bool testScanWords();
+
+    //internal interface functions for each phase
     void _initWords();
-    bool _testMergedRepresentation();    
     bool _mergeWords()
     {
         std::vector<lexer_dfa*>* dfaWords = new std::vector<lexer_dfa*>();
@@ -69,11 +84,13 @@ private:
         
         return resultOfMergedDataTest;
     }
+    bool _constructScanWords();
 public:
     lexer_word_constructor()
     {
         _initWords();
         _mergeWords();
+        _constructScanWords();
     }
 
     ~lexer_word_constructor()
@@ -82,7 +99,14 @@ public:
         _destructDfasAndTransitions();
         std::cout << "Destructor for Lexer Word Constructor was successfull" << std::endl;
 
+        delete  _startWordForMergedRepr;
+
+        std::cout << "Successfully deleted start word for merged representation" << std::endl;
+
         delete _lexer_builder;
+
+        std::cout << "Successfully deleted lexer builder -- from lexer word constructor" 
+                  << "Sucessfully deleted lexer word constructor!" << std::endl;
     }
 
     const std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>& getWords() 

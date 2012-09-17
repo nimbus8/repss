@@ -30,86 +30,13 @@
 #define EMPTY_CHAR '\0'
 #define ST_ACCEPT 1001
 
-void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length)
+void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length);
+
+bool lexer_word_constructor::_constructScanWords()
 {
-    int count = 0;
-    int state = word->getId(); //start state (for a specific test) is word_base's identifier
-
-    auto curr = word;
-    
-    const lexer_word_repr* nextDfa;
-    
-    //search for a beginning
-    do
-    {
-	LexerStateAndInput si0(state, seq[count]);
-    	std::cout << "(state, seq,c): " << state << ", " << count << ", " << seq[count] << std::endl;
-    	count++;
-    	auto aNextDfa = curr->getNextDfa(si0);
-    	if (aNextDfa != nullptr) 
-    	{
-    		state = aNextDfa->getId(); //state++;
-    		nextDfa = aNextDfa;
-    		break;
-    	}
-    } while(count < seq_length);
-    
-    while ((nextDfa != nullptr) && (nextDfa->getId() != ST_ACCEPT && count < seq_length))
-    {
-	std::cout << "'" << seq[count-1] << "' - DfaNode(" << curr->getId() << ")"
-		<< " ~ stateAndInput=(state, seq,c): (" << state << ", " 
-		<< count << ", " << seq[count] << ")" << std::endl;
-
-        curr = nextDfa;
-        const LexerStateAndInput si(state,seq[count]);
-        nextDfa = curr->getNextDfa(si);
-
-    	count++;
-
-        if (nextDfa == nullptr) 
-        {	
-            //reset state to state at word_base
-            state = word->getId();
-
-            //search for a beginning            	
-            do
-            {
-		//reset current dfa
-		curr = word;
-
-		std::cout << "'" << seq[count-1] << "' - DfaNode(" << curr->getId() << ")"
-			<< " ~ stateAndInput=(state, seq,c): (" << state << ", " 
-			<< count << ", " << seq[count] << ")" << std::endl;
-
-                LexerStateAndInput si0(state, seq[count++]);
-                auto aNextDfa = curr->getNextDfa(si0);
-                if (aNextDfa != nullptr) 
-                {
-                    state = aNextDfa->getId(); //state++;
-                    nextDfa = aNextDfa;
-                    break;
-                }
-             } while(count < seq_length);
-        }
-	else
-	{
-        	state = nextDfa->getId(); //state++;
-	}
-    }
-
-    if (nextDfa == nullptr)
-    {
-    	std::cout << "nothing" << std::endl;
-    }
-    else if (nextDfa->getId() == ST_ACCEPT)
-    {
-    	std::cout << "found word!" << std::endl;
-    }
-    else if (count >= seq_length)
-    {
-            std::cout << "reached end of input" << std::endl;
-    }
+    return false;
 }
+
 
 bool lexer_word_constructor::_testMergedRepresentation()
 {
@@ -217,6 +144,9 @@ bool lexer_word_constructor::_testMergedRepresentation()
 
 std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> lexer_word_constructor::_constructPercentReps()
 {
+    const std::string WORD_NAME("[REP]");
+
+    //Note the following is very verbose, we could make it less so - but I think there would be some expense that comes with that. Its kindof the point*.
     lexer_word_repr* word_base = dfaManager.createLexerWordRepr();
 
     lexer_dfa* A = dfaManager.createDfa();
@@ -224,7 +154,7 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
     auto C = dfaManager.createDfa();
     auto D = dfaManager.createDfa();
     auto E = dfaManager.createDfa();
-    auto F = dfaManager.createAcceptingDfa();	
+    auto F = dfaManager.createAcceptingDfa(WORD_NAME);	
 
     const auto ST_BASE = word_base->getId();
     const auto ST_A = A->getId(), ST_B = B->getId(), ST_C = C->getId(), ST_D = D->getId(), ST_E = E->getId();
@@ -293,6 +223,8 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
 
 std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> lexer_word_constructor::_constructSquareBracketReps()
 {
+    const std::string WORD_NAME("[SCO]");
+
     lexer_word_repr* word_base = dfaManager.createLexerWordRepr();
 
     lexer_dfa* A = dfaManager.createDfa();
@@ -301,7 +233,7 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
     auto D = dfaManager.createDfa();
     auto E = dfaManager.createDfa();
     auto F = dfaManager.createDfa();	
-    auto G = dfaManager.createAcceptingDfa();
+    auto G = dfaManager.createAcceptingDfa(WORD_NAME);
 
     const auto ST_BASE = word_base->getId();
     const auto ST_A = A->getId(), ST_B = B->getId(), ST_C = C->getId(), ST_D = D->getId(), ST_E = E->getId();
@@ -381,6 +313,7 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
 
 std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> lexer_word_constructor::__insertNamedRepitionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa)
 {
+    const std::string WORD_NAME("NAMED_REPITITION");
     lexer_word_repr* word_base = dfaManager.createLexerWordRepr();
 
     lexer_dfa* DFA_1 = dfaManager.createDfa(); //we DONT use createStartingDfa here, because its not meant to be a starting dfa, its always intermediate from this point of view.
@@ -390,7 +323,7 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
     auto DFA_5 = dfaManager.createDfa();
     auto DFA_6 = dfaManager.createDfa();
     auto DFA_7 = dfaManager.createDfa();
-    auto DFA_8 = dfaManager.createAcceptingDfa();
+    auto DFA_8 = dfaManager.createAcceptingDfa(WORD_NAME);
     
     const auto ST_BASE = word_base->getId();
     const auto ST_1 = DFA_1->getId(), ST_2 = DFA_2->getId(), ST_3 = DFA_3->getId(), ST_4 = DFA_4->getId();
@@ -530,3 +463,87 @@ void lexer_word_constructor::_initWords()
     _words.push_back(percentReps.first);
     _dfaTransitions.push_back(percentReps.second);
 }
+
+void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length)
+{
+    int count = 0;
+    int state = word->getId(); //start state (for a specific test) is word_base's identifier
+
+    auto curr = word;
+
+    const lexer_word_repr* nextDfa;
+
+    //search for a beginning
+    do
+    {
+        LexerStateAndInput si0(state, seq[count]);
+        std::cout << "(state, seq,c): " << state << ", " << count << ", " << seq[count] << std::endl;
+        count++;
+        auto aNextDfa = curr->getNextDfa(si0);
+        if (aNextDfa != nullptr)
+        {
+                state = aNextDfa->getId(); //state++;
+                nextDfa = aNextDfa;
+                break;
+        }
+    } while(count < seq_length);
+
+    while ((nextDfa != nullptr) && (nextDfa->getId() != ST_ACCEPT && count < seq_length))
+    {
+        std::cout << "'" << seq[count-1] << "' - DfaNode(" << curr->getId() << ")"
+                << " ~ stateAndInput=(state, seq,c): (" << state << ", "
+                << count << ", " << seq[count] << ")" << std::endl;
+
+        curr = nextDfa;
+        const LexerStateAndInput si(state,seq[count]);
+        nextDfa = curr->getNextDfa(si);
+
+        count++;
+
+        if (nextDfa == nullptr)
+        {
+            //reset state to state at word_base
+            state = word->getId();
+
+            //search for a beginning
+            do
+            {
+                //reset current dfa
+                curr = word;
+
+                std::cout << "'" << seq[count-1] << "' - DfaNode(" << curr->getId() << ")"
+                        << " ~ stateAndInput=(state, seq,c): (" << state << ", "
+                        << count << ", " << seq[count] << ")" << std::endl;
+
+                LexerStateAndInput si0(state, seq[count++]);
+                auto aNextDfa = curr->getNextDfa(si0);
+                if (aNextDfa != nullptr)
+                {
+                    state = aNextDfa->getId(); //state++;
+                    nextDfa = aNextDfa;
+                    break;
+                }
+             } while(count < seq_length);
+        }
+        else
+        {
+                state = nextDfa->getId(); //state++;
+        }
+    }
+
+    if (nextDfa == nullptr)
+    {
+        std::cout << "nothing" << std::endl;
+    }
+    else if (nextDfa->getId() == ST_ACCEPT)
+    {
+        std::cout << "found word!" << std::endl;
+    }
+    else if (count >= seq_length)
+    {
+            std::cout << "reached end of input" << std::endl;
+    }
+}
+
+//Footnotes:
+//[1] It's why we're building our own lexer instead of using the 'lex' tool (a fine tool btw).

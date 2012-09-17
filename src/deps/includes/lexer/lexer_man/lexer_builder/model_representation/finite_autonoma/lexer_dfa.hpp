@@ -29,13 +29,13 @@
 
 #include <memory>
 
+#ifndef _LEXER_DFA_
+#define _LEXER_DFA_
+
 #include "StateAndInput.hpp"
 #include "state_functors.hpp"
 
 #include "../../../../LexerStateAndInput.hpp"
-
-#ifndef _LEXER_DFA_
-#define _LEXER_DFA_
 
 class LexerDfaType
 {

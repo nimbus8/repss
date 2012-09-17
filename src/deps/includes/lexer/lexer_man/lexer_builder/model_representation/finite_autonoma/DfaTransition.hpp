@@ -18,10 +18,10 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "lexer_dfa.hpp"
-
 #ifndef _DFA_TRANSITION_
 #define _DFA_TRANSITION_
+
+#include "lexer_dfa.hpp"
 
 class DfaTransition
 {

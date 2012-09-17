@@ -18,11 +18,11 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "StateAndInput.hpp"
-#include <string>
-
 #ifndef _STATE_FUNCTORS_
 #define _STATE_FUNCTORS_
+
+#include "StateAndInput.hpp"
+#include <string>
 
 //specialized functors for handling state objects.
 
@@ -32,15 +32,17 @@
 #define STATE_FUNCTORS_number_of_distinct_symbols 257
 
 class StateAndInputHashFunction {
-  public:
-    ::std::size_t operator ()(const StateAndInput<int,char> &stateAndInput) const {
+public:
+    ::std::size_t operator ()(const StateAndInput<int,char> &stateAndInput) const 
+    {
         return (size_t) STATE_FUNCTORS_number_of_distinct_symbols * (stateAndInput.getIsRanged()? 2 : 1) * stateAndInput.getState() + stateAndInput.getInput();
     }
 };
 
 class StateAndInputEquals {
-  public:
-    bool operator ()(const StateAndInput<int,char> &lhs, const StateAndInput<int,char> &rhs) const {
+public:
+    bool operator ()(const StateAndInput<int,char> &lhs, const StateAndInput<int,char> &rhs) const 
+    {
         if ((lhs.getState() != rhs.getState()) || (lhs.getInput() != rhs.getInput()))
                 return false;
 

@@ -23,6 +23,8 @@
 
 //-- Low Tier Interface --//
 
+//todo:will change this please, I don't like the defines here
+
 #define SI_EMPTY 'e'
 #define SI_CHARS_LOWER 'a'
 #define SI_CHARS_UPPER 'Z'

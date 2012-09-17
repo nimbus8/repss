@@ -19,11 +19,12 @@
  */
 
 #include <vector>
-#include "finite_autonoma/lexer_dfa.hpp"
-#include "finite_autonoma/DfaTransition.hpp"
 
 #ifndef _DFA_MANAGER_
 #define _DFA_MANAGER_
+
+#include "finite_autonoma/lexer_dfa.hpp"
+#include "finite_autonoma/DfaTransition.hpp"
 
 class DfaManager
 {
@@ -33,22 +34,21 @@ private:
     std::vector<lexer_dfa*> _dfas;
     std::vector<const DfaTransition*> _transitions;
 
-
     class DfaIdHashFunction {
     public:
-        ::std::size_t operator ()(const unsigned int &id) const
+        ::std::size_t operator ()(const int &id) const
         {
             return (size_t) id;
-        } 
+        }
     };
 
     class DfaIdEquals {
     public:
-        bool operator ()(const unsigned int &lhs, const unsigned int &rhs) const
+        bool operator ()(const int &lhs, const int &rhs) const
         {
             return lhs == rhs;
         }
-    };
+    };	
 
     std::unordered_map<int, std::string, DfaIdHashFunction, DfaIdEquals> _endStateNameMap;
 public:
@@ -64,12 +64,17 @@ public:
 
 	lexer_dfa* createAcceptingDfa(const std::string endStateName)
 	{
-		//todo: change this...1001 refers to const defined in word construction
-		//	we want to change this to taking in a string to defined a named
-		//	accepting state.
-                lexer_dfa* ret = new lexer_dfa(1001);
-                _dfas.push_back(ret);
-                return ret;
+	    //todo: change this...1001 refers to const defined in word construction
+	    //	we want to change this to taking in a string to defined a named
+            //	accepting state. - Done (now testing)
+	    int nextIdCount = _idCount + 1;
+
+            std::pair<int, std::string> idToEndStateName{nextCount, endStateName};
+            _endStateNameMap.emplace(idToEndStateName);
+
+            lexer_dfa* ret = new lexer_dfa(nextIdCount);
+            _dfas.push_back(ret);
+            return ret;
 	}
 	lexer_word_repr* createLexerWordRepr() {return createDfa();}
 

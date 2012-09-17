@@ -18,6 +18,9 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _SCAN_WORDS_NODE_
+#define _SCAN_WORDS_NODE_
+
 #include "ScanWordNode.hpp"
 
 class ScanWordsBuilder
@@ -26,3 +29,5 @@ private:
 
 public:
 };
+
+#endif

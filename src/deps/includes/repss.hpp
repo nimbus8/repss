@@ -18,10 +18,9 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "repss_str.hpp"
-//#include "file_handler/file_handler.hpp"
+#include "runtime_utils/repss_str.hpp"
 #include "file_handler/FileHandler.hpp"
-#include "memory_operations.hpp"
+#include "runtime_utils/memory_operations.hpp"
 
 #ifndef REPSS_HPP_
 #define REPSS_HPP_
