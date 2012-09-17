@@ -64,12 +64,13 @@ public:
 
 	lexer_dfa* createAcceptingDfa(const std::string endStateName)
 	{
-	    //todo: change this...1001 refers to const defined in word construction
-	    //	we want to change this to taking in a string to defined a named
+            //todo: change this...1001 refers to const defined in word construction
+            //	we want to change this to taking in a string to defined a named
             //	accepting state. - Done (now testing)
-	    int nextIdCount = _idCount + 1;
+            int nextIdCount = _idCount + 1;
 
-            std::pair<int, std::string> idToEndStateName{nextCount, endStateName};
+            //define pair for map
+            std::pair<int, std::string> idToEndStateName{nextIdCount, endStateName};
             _endStateNameMap.emplace(idToEndStateName);
 
             lexer_dfa* ret = new lexer_dfa(nextIdCount);
