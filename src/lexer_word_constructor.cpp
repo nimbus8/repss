@@ -34,7 +34,114 @@ void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, 
 
 bool lexer_word_constructor::_testScanWords()
 {
-    return false;
+    bool retResult = true;
+    const char seq1[] = {'/', '[', 'r', 'e','p', ']', 'H', '\0'};
+    const char seq2[] = {'b','/', '[', 's', 'c','o', ']', ' ', '\0'};
+
+    std::cout << std::endl;
+    std::cout << "Starting Scan Words Test" << std::endl
+              << "------------------------" << std::endl;
+    for (int k = 0; k < 2; k++)
+    {
+        auto word = _scanWords;
+        char seq[10];
+        strcpy(seq, (k==0? seq1 : seq2));
+
+        const size_t seq_length = (k == 0? 7 : 8);
+
+        int count = 0;
+        auto curr = word;
+
+        const ScanWordNode* nextDfa;
+
+        do
+        {//search for a beginning
+            std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+            auto aNextDfa = curr->getNextScanWordNode(seq[count]);
+            count++;
+
+            if (aNextDfa != nullptr)
+            {
+                nextDfa = aNextDfa;
+                std::cout << "break" << std::endl;
+                break;
+            }
+        } while(count < seq_length);
+
+        while ((nextDfa != nullptr) && (!dfaManager.isAcceptingNode(nextDfa->getId()) && count < seq_length))
+        {
+            curr = const_cast<ScanWordNode*>(nextDfa);
+            nextDfa = curr->getNextScanWordNode(seq[count]);
+
+            std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+
+            if (nextDfa == nullptr)
+            {
+
+                curr = word; //reset 'state' to 'state' at wordbase
+
+                do
+                {//search for a beginning
+                    curr = word;    //reset 'state' to 'state' at worbase | reset current dfa
+
+                    std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+
+                    auto aNextDfa = curr->getNextScanWordNode(seq[count]);
+                    if (aNextDfa != nullptr)
+                    {
+                        nextDfa = aNextDfa;
+                        count++;
+                        break;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                } while(count < seq_length);
+            }
+            else
+            {
+                count++;
+            }
+        }
+
+        std::cout << "done search while loop" << std::endl;
+
+        if (nextDfa == nullptr)
+        {
+            std::cout << "nothing" << std::endl;
+            retResult = retResult && false;
+        }
+        else if (dfaManager.isAcceptingNode(nextDfa->getId()))
+        {
+            auto foundWord = dfaManager.getAcceptingNodeName(nextDfa->getId());
+            std::cout << "found word! word=(" << foundWord << ")" << std::endl;
+            retResult = retResult && true;
+        }
+        else if (count >= seq_length)
+        {
+            auto isAcceptingBool = dfaManager.isAcceptingNode(curr->getId());
+
+            if (isAcceptingBool)
+            {
+                std::cout << "found word!!" << std::endl;
+                retResult = retResult && true;
+            }
+            else
+            {
+                std::cout << "reached end of input" << std::endl;
+                retResult = retResult && false;
+            }
+        }
+        else
+        {
+            retResult = retResult && false;
+        }
+
+        std::cout << std::endl;
+    }
+
+    return retResult;
 }
 
 bool lexer_word_constructor::_constructScanWords()

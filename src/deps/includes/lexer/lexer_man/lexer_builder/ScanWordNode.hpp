@@ -65,11 +65,11 @@ public:
     //-ScanWordNodes, so we know not to create one (with existing id) explicitly or even 
     //-implicitly (hence vector param in init()) - if one already exists we just use the existing reference.
     //maybe we can actually, move all this init stuff into constructor make ScanWordNode const??
-    void init(std::vector<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd)
-    {
+    void init(std::vector<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd);
+/*    {
         if (_lexerDfa == nullptr)
         {
-            std::cout << "API Misuse: Cannot assign null to ScanWordNode" << std::endl;
+            std::cout << "API Misuse: Either init has already been called, or nullptr was given to ScanWordNode constructor. Both bad." << std::endl;
             exit(1);
         }
 
@@ -82,7 +82,6 @@ public:
             auto input = stateAndInput.getInput();
 
             //check if the transition points to lexer_dfa for which a ScanWordNode already exists (has same id)
-            //...
 
             auto nextDfa = aTransition.getDfaNode();
             auto nextDfaId = nextDfa->getId();
@@ -98,6 +97,7 @@ public:
             }
 
             //if transition already exists in vector param, use it
+
             if (nextScanWordNode == nullptr)
             {//if no corresponding ScanWordNode already exists in vector param, create it, place in toBeInitd
                 nextScanWordNode = new ScanWordNode(nextDfa);
@@ -107,12 +107,31 @@ public:
 
             std::pair<char, ScanWordNode*> inputToScanWordNode{input, nextScanWordNode};
             _nextScanWordNode.emplace(inputToScanWordNode);
-        } 
-    }
+        }
+
+        _lexerDfa = nullptr; //we don't need lexerDfa anymore. todo: after scanwords are made lexerDfas not needed at all
+    }*/
 
     int getId() const
     {
         return _id;
+    }
+
+    ScanWordNode* getNextScanWordNode(const char input) const
+    {
+        auto fetched = _nextScanWordNode.find(input);
+
+        ScanWordNode* ret;
+        if (fetched == _nextScanWordNode.end())
+        {
+            ret = nullptr;
+        }
+        else
+        {
+            ret = fetched->second;
+        }
+
+        return ret;
     }
 };
 
