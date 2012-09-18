@@ -68,6 +68,7 @@ public:
         //	we want to change this to taking in a string to defined a named
         //	accepting state. - Done (now testing)
         int nextIdCount = _idCount + 1;
+        _idCount++;
 
         std::cout << "CREATING end state mapping: endStateToName=(" << nextIdCount
                   << "=>" << endStateName << ")" << std::endl; 

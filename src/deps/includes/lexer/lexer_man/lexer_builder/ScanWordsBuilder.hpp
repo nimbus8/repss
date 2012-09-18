@@ -28,6 +28,15 @@ class ScanWordsBuilder
 private:
 
 public:
+    ScanWordsBuilder()
+    {
+    }
+
+    ~ScanWordsBuilder()
+    {
+    }
+
+    
 };
 
 #endif

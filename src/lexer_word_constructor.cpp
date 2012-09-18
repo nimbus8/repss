@@ -32,8 +32,43 @@
 
 void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, char seq[], size_t seq_length);
 
+bool lexer_word_constructor::_testScanWords()
+{
+    return false;
+}
+
 bool lexer_word_constructor::_constructScanWords()
 {
+    std::vector<ScanWordNode*> existingScanWordNodes;
+    std::vector<ScanWordNode*> nodesToBeInitd;
+
+    auto word = _startWordForMergedRepr;
+
+    //note: aggregate and delete for scan nodes may be necessary
+    ScanWordNode* startScanWordNode = new ScanWordNode(_startWordForMergedRepr);
+    _scanWords = startScanWordNode;
+
+    existingScanWordNodes.push_back(startScanWordNode);
+    nodesToBeInitd.push_back(startScanWordNode);
+
+    while (nodesToBeInitd.size() > 0)
+    {
+        auto wordNode = nodesToBeInitd.back();
+        nodesToBeInitd.pop_back();
+
+        std::cout << "Popped Back (nodesToBeInitd): id=(" << wordNode->getId() << ")" << std::endl;
+        wordNode->init(existingScanWordNodes, nodesToBeInitd);
+    }
+
+    _testScanWords();
+
+    //this is just for now: we need to find a good spot to delete objects
+    for (int i = 0; i < existingScanWordNodes.size(); i++)
+    {
+        auto scanWordNode = existingScanWordNodes.at(i);
+        delete scanWordNode;
+    }
+
     return false;
 }
 

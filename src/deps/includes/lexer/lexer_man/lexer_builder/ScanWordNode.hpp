@@ -25,7 +25,7 @@
 
 //Scan Word is simply meant to be a simpler interface of lexer_dfa. 
 //most importantly, its a bit of a runtime optimization: 
-//  the nextScanWordNode(...) call runs in ~ O(1), instead of the nextDfa(...) running in ~ O(n)
+//  the nextScanWordNode(...) call runs in ~ O(1), whereas nextDfa(...) runs in ~ O(n)
 class ScanWordNode
 {
 private:
@@ -64,8 +64,8 @@ public:
     //-so as it goes, outside this class, we'll maintain a list of implicitly/explicitly created
     //-ScanWordNodes, so we know not to create one (with existing id) explicitly or even 
     //-implicitly (hence vector param in init()) - if one already exists we just use the existing reference.
-    //maybe we call actually, move all this init stuff into constructor make ScanWordNode const??
-    void init(std::vector<ScanWordNode*> existingScanWordNodes)
+    //maybe we can actually, move all this init stuff into constructor make ScanWordNode const??
+    void init(std::vector<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd)
     {
         if (_lexerDfa == nullptr)
         {
@@ -84,15 +84,35 @@ public:
             //check if the transition points to lexer_dfa for which a ScanWordNode already exists (has same id)
             //...
 
-            ScanWordNode* nextScanWordNode;
+            auto nextDfa = aTransition.getDfaNode();
+            auto nextDfaId = nextDfa->getId();
+
+            ScanWordNode* nextScanWordNode = nullptr;
+            for (auto existingScanWord : existingScanWordNodes)
+            {
+                if (existingScanWord->getId() == nextDfaId)
+                {
+                    nextScanWordNode = existingScanWord;
+                    break;
+                }
+            }
 
             //if transition already exists in vector param, use it
-
-            //if corresponding ScanWordNode does not already exist in vector param, create it 
+            if (nextScanWordNode == nullptr)
+            {//if no corresponding ScanWordNode already exists in vector param, create it, place in toBeInitd
+                nextScanWordNode = new ScanWordNode(nextDfa);
+                wordsToBeInitd.push_back(nextScanWordNode);
+                existingScanWordNodes.push_back(nextScanWordNode); 
+            }
 
             std::pair<char, ScanWordNode*> inputToScanWordNode{input, nextScanWordNode};
             _nextScanWordNode.emplace(inputToScanWordNode);
         } 
+    }
+
+    int getId() const
+    {
+        return _id;
     }
 };
 

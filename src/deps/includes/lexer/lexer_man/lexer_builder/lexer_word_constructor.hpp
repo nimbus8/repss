@@ -65,7 +65,7 @@ private:
     bool _testMergedRepresentation();
 
     //intermediate functions for third/final phase
-    bool testScanWords();
+    bool _testScanWords();
 
     //internal interface functions for each phase
     void _initWords();
