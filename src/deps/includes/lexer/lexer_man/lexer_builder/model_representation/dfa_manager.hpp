@@ -62,62 +62,92 @@ public:
         return ret;
     }
 
-	lexer_dfa* createAcceptingDfa(const std::string endStateName)
-	{
-            //todo: change this...1001 refers to const defined in word construction
-            //	we want to change this to taking in a string to defined a named
-            //	accepting state. - Done (now testing)
-            int nextIdCount = _idCount + 1;
+    lexer_dfa* createAcceptingDfa(const std::string endStateName)
+    {
+        //todo: change this...1001 refers to const defined in word construction
+        //	we want to change this to taking in a string to defined a named
+        //	accepting state. - Done (now testing)
+        int nextIdCount = _idCount + 1;
 
-            //define pair for map
-            std::pair<int, std::string> idToEndStateName{nextIdCount, endStateName};
-            _endStateNameMap.emplace(idToEndStateName);
+        std::cout << "CREATING end state mapping: endStateToName=(" << nextIdCount
+                  << "=>" << endStateName << ")" << std::endl; 
 
-            lexer_dfa* ret = new lexer_dfa(nextIdCount);
-            _dfas.push_back(ret);
-            return ret;
-	}
-	lexer_word_repr* createLexerWordRepr() {return createDfa();}
+        std::pair<int, std::string> idToEndStateName{nextIdCount, endStateName};
+        _endStateNameMap.emplace(idToEndStateName);
 
-	bool destroyDfa(lexer_dfa* toBeDestroyed) 
-	{
-		bool wasDfaDestroyed = false;
+        lexer_dfa* ret = new lexer_dfa(nextIdCount);
+        _dfas.push_back(ret);
+        return ret;
+    }
 
-		size_t removeIndex; 
-		lexer_dfa* entryToBeDestroyed = nullptr;
-                for (size_t index = 0; index < _dfas.size(); index++)
-		{
-			lexer_dfa* entry = _dfas.at(index);
-                        if (entry == toBeDestroyed)
-			{
-				removeIndex = index;
-				entryToBeDestroyed = entry;
-				toBeDestroyed = nullptr;
-				break;
-			}
-                }	
+    bool isAcceptingNode(const int id) const
+    {
+        std::cout << "isAcceptingNode called: id=(" << id << ")" << std::endl;
+        auto fetched = _endStateNameMap.find(id);
 
-		if (toBeDestroyed != nullptr)
-		{
-			wasDfaDestroyed = false;
-		} 
-		else 
-		{
-			_dfas.erase(_dfas.begin()+removeIndex);
-			delete entryToBeDestroyed;
-			wasDfaDestroyed = true;
-		}
+        if (fetched == _endStateNameMap.end())
+        {
+            std::cout << "isAcceptingNode RESPONSE false" << std::endl;
+            return false;
+        }
 
-		return wasDfaDestroyed;
-	}
+        std::cout << "isAcceptingNode RESPONSE: true" << std::endl;
+        return true;
+    }
 
-	const DfaTransition* createDfaTransition(const StateAndInput<int,char>* stateAndInput,
-		const lexer_dfa* dfa_ptr)
-	{
-        	const DfaTransition* ret = new DfaTransition(stateAndInput , dfa_ptr);
-		_transitions.push_back(ret);
-        	return ret;
-	}
+    std::string getAcceptingNodeName(const int id) const
+    {
+        auto fetched = _endStateNameMap.find(id);
+        if (fetched == _endStateNameMap.end())
+        {
+            std::string blankString("");
+            return blankString;
+        }
+
+        return fetched->second;
+    }
+
+    lexer_word_repr* createLexerWordRepr() {return createDfa();}
+
+    bool destroyDfa(lexer_dfa* toBeDestroyed) 
+    {
+        bool wasDfaDestroyed = false;
+
+        size_t removeIndex; 
+        lexer_dfa* entryToBeDestroyed = nullptr;
+        for (size_t index = 0; index < _dfas.size(); index++)
+        {
+            lexer_dfa* entry = _dfas.at(index);
+            if (entry == toBeDestroyed)
+            {
+                removeIndex = index;
+                entryToBeDestroyed = entry;
+                toBeDestroyed = nullptr;
+                break;
+            }
+        }	
+
+        if (toBeDestroyed != nullptr)
+        {
+            wasDfaDestroyed = false;
+        } 
+        else 
+        {
+            _dfas.erase(_dfas.begin()+removeIndex);
+            delete entryToBeDestroyed;
+            wasDfaDestroyed = true;
+        }
+
+        return wasDfaDestroyed;
+    }
+
+    const DfaTransition* createDfaTransition(const StateAndInput<int,char>* stateAndInput,
+        const lexer_dfa* dfa_ptr)
+    {
+        const DfaTransition* ret = new DfaTransition(stateAndInput , dfa_ptr);
+        _transitions.push_back(ret);
+        return ret;
+    }
 
 	bool destroyDfaTransition(DfaTransition* toBeDestroyed)
 	{

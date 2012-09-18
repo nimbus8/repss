@@ -81,7 +81,9 @@ private:
 
         _startWordForMergedRepr = _lexer_builder->mergeDfas(dfaWords, dfaManager);
         bool resultOfMergedDataTest = _testMergedRepresentation();
-        
+ 
+        std::cout << "Merge Test " << (resultOfMergedDataTest? "SUCCEEDED!" : "FAILED!!") << std::endl << std::endl;
+    
         return resultOfMergedDataTest;
     }
     bool _constructScanWords();

@@ -44,99 +44,106 @@ bool lexer_word_constructor::_testMergedRepresentation()
     const char seq1[] = {'/', '[', 'r', 'e','p', ']', 'H', '\0'};
     const char seq2[] = {'b','/', '[', 's', 'c','o', ']', ' ', '\0'};
 
+    std::cout << "Starting Merged Representation Test" << std::endl
+              << "-----------------------------------" << std::endl;
     for (int k = 0; k < 2; k++)
     {
+        auto word = _startWordForMergedRepr;
+        char seq[10];
+        strcpy(seq, (k==0? seq1 : seq2));
 
-    auto word = _startWordForMergedRepr;
-    char seq[10];
-    strcpy(seq, (k==0? seq1 : seq2));
+        const size_t seq_length = (k == 0? 7 : 8);
 
+        int count = 0;
+        auto curr = word;
 
-    const size_t seq_length = (k == 0? 7 : 8);
+        const lexer_word_repr* nextDfa;
 
-    int count = 0;
-    auto curr = word;
-
-    const lexer_word_repr* nextDfa;
-
-    //search for a beginning
-    do
-    {
-        std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
-        //change the origanization of this to just use input and not state
-        auto aNextDfa = curr->getNextDfaForInput(seq[count]);
-        count++; 
-
-       if (aNextDfa != nullptr)
+        //search for a beginning
+        do
         {
+            std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+            auto aNextDfa = curr->getNextDfaForInput(seq[count]);
+            count++; 
+
+            if (aNextDfa != nullptr)
+            {
                 nextDfa = aNextDfa;
-
                 std::cout << "break" << std::endl;
-
                 break;
+            }
+        } while(count < seq_length);
+
+        while ((nextDfa != nullptr) && (!dfaManager.isAcceptingNode(nextDfa->getId()) /*(nextDfa->getId() != ST_ACCEPT*/ && count < seq_length))
+        {
+            curr = const_cast<lexer_dfa*>(nextDfa);
+            nextDfa = curr->getNextDfaForInput(seq[count]);
+
+            std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+
+            if (nextDfa == nullptr)
+            {
+                curr = word; //reset 'state' to 'state' at wordbase
+
+                do
+                {//search for a beginning
+                    curr = word;    //reset 'state' to 'state' at worbase | reset current dfa
+
+                    std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+
+                    auto aNextDfa = curr->getNextDfaForInput(seq[count]);
+                    if (aNextDfa != nullptr)
+                    {
+                        nextDfa = aNextDfa;
+                        count++;
+                        break;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                } while(count < seq_length);
+            }
+            else
+            {
+                count++;
+            }
         }
-    } while(count < seq_length);
 
-    while ((nextDfa != nullptr) && (nextDfa->getId() != ST_ACCEPT && count < seq_length))
-    {
-        curr = const_cast<lexer_dfa*>(nextDfa);
-        nextDfa = curr->getNextDfaForInput(seq[count]);
-
-        std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+        std::cout << "done search while loop" << std::endl;
 
         if (nextDfa == nullptr)
         {
-            //reset state to state at word_base
-            curr = word;
+            std::cout << "nothing" << std::endl;
+            retResult = retResult && false;
+        }
+        else if (dfaManager.isAcceptingNode(nextDfa->getId()))
+        {
+            auto foundWord = dfaManager.getAcceptingNodeName(nextDfa->getId());
+            std::cout << "found word! word=(" << foundWord << ")" << std::endl;
+            retResult = retResult && true;
+        }
+        else if (count >= seq_length)
+        {
+            auto isAcceptingBool = dfaManager.isAcceptingNode(curr->getId());
 
-            //search for a beginning
-            do
+            if (isAcceptingBool)
             {
-                //reset current dfa
-                curr = word;
-
-                std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
-
-                auto aNextDfa = curr->getNextDfaForInput(seq[count]);
-                if (aNextDfa != nullptr)
-                {
-                    nextDfa = aNextDfa;
-                    count++;
-                    break;
-                }
-                else
-                {
-                    count++;
-                }
-             } while(count < seq_length);
+                std::cout << "found word!!" << std::endl;
+                retResult = retResult && true;
+            }
+            else
+            {
+                std::cout << "reached end of input" << std::endl;
+                retResult = retResult && false;
+            }
         }
         else
         {
-                count++;
+            retResult = retResult && false;
         }
-    }
 
-    if (nextDfa == nullptr)
-    {
-        std::cout << "nothing" << std::endl;
-        retResult = retResult && false;
-    }
-    else if (nextDfa->getId() == ST_ACCEPT)
-    {
-        std::cout << "found word!" << std::endl;
-        retResult = retResult && true;
-    }
-    else if (count >= seq_length)
-    {
-        std::cout << "reached end of input" << std::endl;
-        retResult = retResult && false;
-    }
-    else
-    {
-        retResult = retResult && false;
-    }
-
-    std::cout << std::endl;
+        std::cout << std::endl;
     }
 
     return retResult;
