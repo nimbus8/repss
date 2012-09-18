@@ -57,7 +57,7 @@ public:
 
     lexer_dfa* createDfa() 
     {
-        lexer_dfa* ret = new lexer_dfa(_idCount++);
+        lexer_dfa* ret = new lexer_dfa(++_idCount);
         _dfas.push_back(ret);
         return ret;
     }

@@ -30,13 +30,12 @@
 #define EMPTY_CHAR '\0'
 #define ST_ACCEPT 1001
 
-void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length);
+void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, char seq[], size_t seq_length);
 
 bool lexer_word_constructor::_constructScanWords()
 {
     return false;
 }
-
 
 bool lexer_word_constructor::_testMergedRepresentation()
 {
@@ -59,9 +58,8 @@ bool lexer_word_constructor::_testMergedRepresentation()
 
         const lexer_word_repr* nextDfa;
 
-        //search for a beginning
         do
-        {
+        {//search for a beginning
             std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
             auto aNextDfa = curr->getNextDfaForInput(seq[count]);
             count++; 
@@ -74,7 +72,7 @@ bool lexer_word_constructor::_testMergedRepresentation()
             }
         } while(count < seq_length);
 
-        while ((nextDfa != nullptr) && (!dfaManager.isAcceptingNode(nextDfa->getId()) /*(nextDfa->getId() != ST_ACCEPT*/ && count < seq_length))
+        while ((nextDfa != nullptr) && (!dfaManager.isAcceptingNode(nextDfa->getId()) && count < seq_length))
         {
             curr = const_cast<lexer_dfa*>(nextDfa);
             nextDfa = curr->getNextDfaForInput(seq[count]);
@@ -153,7 +151,7 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
 {
     const std::string WORD_NAME("[REP]");
 
-    //Note the following is very verbose, we could make it less so - but I think there would be some expense that comes with that. Its kindof the point*.
+    //Note the following is very verbose, we could make it less so - but I think there would be some expense that comes with that. Its kindof the point *[1].
     lexer_word_repr* word_base = dfaManager.createLexerWordRepr();
 
     lexer_dfa* A = dfaManager.createDfa();
@@ -201,18 +199,11 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
  
     if (wasSuccess && wasSuccess2 && wasSuccess3 && wasSuccess4 && wasSuccess5 && wasSuccess6)
     {
-        std::cout << std::endl << "Successfully contructed Reps Dfa: Base To A";
-        std::cout << std::endl << "Successfully contructed Reps Dfa: A To B";
-        std::cout << std::endl << "Successfully contructed Reps Dfa: B To C";
-        std::cout << std::endl << "Successfully contructed Reps Dfa: C To D";
-        std::cout << std::endl << "Successfully contructed Reps Dfa: D To E";
-        std::cout << std::endl << "Successfully contructed Reps Dfa: E To F";
+        std::cout << "Constructed [rep] " << std::endl;
 
-        std::cout << std::endl;
-
-        char seq[] = { '/', '[', 'r', 'e','p', ']', 'H' };
-        const size_t seq_length = 7;
-       	debug_printDfa(word_base, seq, seq_length);
+        char seq[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', 'H' };
+        const size_t seq_length = 10;
+       	debug_printDfa(dfaManager,word_base, seq, seq_length);
     }
 
     AggregatePtrsAndDelete<lexer_dfa*>* aggrAndDel =
@@ -288,19 +279,12 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
     if (wasSuccess && wasSuccess2 && wasSuccess3 && wasSuccess4 && wasSuccess5 && wasSuccess6
         && wasSuccess7)
     {
-        std::cout << std::endl << "Successfully constructed [reps] Dfa: Base To A";
-        std::cout << std::endl << "Successfully constructed [reps] Dfa: A To B";
-        std::cout << std::endl << "Successfully constructed [reps] Dfa: B To C";
-        std::cout << std::endl << "Successfully constructed [reps] Dfa: C To D";
-        std::cout << std::endl << "Successfully constructed [reps] Dfa: D To E";
-        std::cout << std::endl << "Successfully constructed [reps] Dfa: E To F";
-        std::cout << std::endl << "Successfully constructed [reps] Dfa: F To G";
 
-        std::cout << std::endl;
+        std::cout << std::endl << "Constructed SCO" << std::endl;
 
-        char seq[] = { 'k', '\n','[', 's', 'c', 'o',']', ' ', ' ', 'H' };
+        char seq[] = { 'k', '\n','/', '[', 's', 'c','o', ']', ' ', 'H' };
         const size_t seq_length = 10;
-        debug_printDfa(word_base, seq, seq_length);
+        debug_printDfa(dfaManager, word_base, seq, seq_length);
     }
 
     __insertNamedRepitionParamsDfa(A,B);	
@@ -353,10 +337,9 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
     						StateAndInput<int,char> stateInput_ST_7_newline(ST_7, '\n');
     
     //StateAndInput<int,char> stateInput_ST_ACCEPT_EMPTY_CHAR(ST_ACCEPT, EMPTY_CHAR);
-
-	//todo: think about changing function signature so that the caller does some of the hardwork,
-	//			basically at the end we'll return word_base, and leave to them to connect their last
-	//			dfa node to word_base.
+    //todo: think about changing function signature so that the caller does some of the hardwork,
+    //			basically at the end we'll return word_base, and leave to them to connect their last
+    //			dfa node to word_base.
 
     const DfaTransition* idfa1 = dfaManager.createDfaTransition(&stateInput_ST_BASE_SI_CHARS_ANY, DFA_1);
     
@@ -403,58 +386,57 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
     if (wasSuccess && wasSuccess2 && wasSuccess3 && wasSuccess4 && wasSuccess5 && wasSuccess6
                    && wasSuccess7 && wasSuccess8)
     {
-        std::cout << std::endl << "Successfully constructed [reps] Dfas idfa[1-15]" << std::endl;
+        std::cout << std::endl << "Successfully constructed name=x:y" << std::endl;
+        char seq[] = { 'k',	'\n','a', '=', '1', ':','1', '0', ' ', 'H', '\n' };
+        const size_t seq_length = 11;
+        debug_printDfa(dfaManager, word_base, seq, seq_length);
+    }
 
-		char seq[] = { 'k',	'\n','a', '=', '1', ':','1', '0', ' ', 'H', '\n' };
-    	const size_t seq_length = 11;
-		debug_printDfa(word_base, seq, seq_length);
-	}
-
-	AggregatePtrsAndDelete<lexer_dfa*>* aggrAndDel =
+    AggregatePtrsAndDelete<lexer_dfa*>* aggrAndDel =
 		new AggregateDfasAndDelete<lexer_dfa*>(9, word_base,
 			DFA_1, DFA_2, DFA_3, DFA_4, DFA_5, DFA_6, DFA_7, DFA_8);
     std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*> innerRet (word_base, aggrAndDel);
 
-	AggregatePtrsAndDelete<DfaTransition*>* aggrAndDelDfaTransitions =
+    AggregatePtrsAndDelete<DfaTransition*>* aggrAndDelDfaTransitions =
 		new AggregateDfaTransitionsAndDelete<DfaTransition*>(15, 
 			idfa1, idfa2, idfa3, idfa4, idfa5, idfa6, idfa7, idfa8, idfa9, idfa10,
 			idfa11, idfa12, idfa13, idfa14, idfa15);
-	std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> ret(innerRet, aggrAndDelDfaTransitions);
+    std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> ret(innerRet, aggrAndDelDfaTransitions);
 
-	return ret;
+    return ret;
 }
 
 void lexer_word_constructor::_destructDfasAndTransitions()
 {
-	if (_words.size() != _dfaTransitions.size())
-	{
-		std::cout << "Error, Unintended Implementation" << std::endl
-			<< "the number of lexical words should be equal to number of DfaTransition groups.";
+    if (_words.size() != _dfaTransitions.size())
+    {
+        std::cout << "Error, Unintended Implementation" << std::endl
+        << "the number of lexical words should be equal to number of DfaTransition groups.";
 
-		exit(1);
-	}
+        exit(1);
+    }
 
-	while (_words.size() > 0 && _dfaTransitions.size() > 0)
-	{
-		auto entryPair = _words.back();
-		auto aggregateAndDeleteObj = entryPair.second;
+    while (_words.size() > 0 && _dfaTransitions.size() > 0)
+    {
+        auto entryPair = _words.back();
+        auto aggregateAndDeleteObj = entryPair.second;
 	
-		//this takes care of all the dfas, including entryPair.first
-		aggregateAndDeleteObj->applyDelete(dfaManager);
-		delete aggregateAndDeleteObj;
-		aggregateAndDeleteObj = nullptr;
+        //this takes care of all the dfas, including entryPair.first
+        aggregateAndDeleteObj->applyDelete(dfaManager);
+        delete aggregateAndDeleteObj;
+        aggregateAndDeleteObj = nullptr;
 
-		_words.pop_back();
-		std::cout << "Deleted one lexer_word successfully" << std::endl;
+        _words.pop_back();
+        std::cout << "Deleted one lexer_word successfully" << std::endl;
 
-		auto aggregateAndDeleteTransObj = _dfaTransitions.back();
+        auto aggregateAndDeleteTransObj = _dfaTransitions.back();
         aggregateAndDeleteTransObj->applyDelete(dfaManager);
         delete aggregateAndDeleteTransObj;
         aggregateAndDeleteTransObj = nullptr;
 
         _dfaTransitions.pop_back();
         std::cout << "Deleted a group of DfaTransitions successfully" << std::endl;
-	}
+    }
 }
 
 void lexer_word_constructor::_initWords()
@@ -471,12 +453,15 @@ void lexer_word_constructor::_initWords()
     _dfaTransitions.push_back(percentReps.second);
 }
 
-void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length)
+void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, char seq[], size_t seq_length)
 {
+    std::cout << "Construction Test: (," << seq << ", " << seq_length << ")" << std::endl;
+
     int count = 0;
     int state = word->getId(); //start state (for a specific test) is word_base's identifier
-
     auto curr = word;
+
+    std::cout << "Starting state: " << state << ", startingDfaId: " << curr->getId() << std::endl;
 
     const lexer_word_repr* nextDfa;
 
@@ -484,7 +469,7 @@ void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length)
     do
     {
         LexerStateAndInput si0(state, seq[count]);
-        std::cout << "(state, seq,c): " << state << ", " << count << ", " << seq[count] << std::endl;
+        std::cout << "search for a beginning: (state, seq,c): " << state << ", " << count << ", " << seq[count] << std::endl;
         count++;
         auto aNextDfa = curr->getNextDfa(si0);
         if (aNextDfa != nullptr)
@@ -495,7 +480,7 @@ void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length)
         }
     } while(count < seq_length);
 
-    while ((nextDfa != nullptr) && (nextDfa->getId() != ST_ACCEPT && count < seq_length))
+    while ((nextDfa != nullptr) && (!dfaManager.isAcceptingNode(state) && count < seq_length))
     {
         std::cout << "'" << seq[count-1] << "' - DfaNode(" << curr->getId() << ")"
                 << " ~ stateAndInput=(state, seq,c): (" << state << ", "
@@ -509,15 +494,12 @@ void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length)
 
         if (nextDfa == nullptr)
         {
-            //reset state to state at word_base
-            state = word->getId();
+            state = word->getId(); //reset state to state at word_base
 
-            //search for a beginning
             do
-            {
-                //reset current dfa
-                curr = word;
-
+            {//search for a beginning
+                curr = word; //reset current dfa
+                
                 std::cout << "'" << seq[count-1] << "' - DfaNode(" << curr->getId() << ")"
                         << " ~ stateAndInput=(state, seq,c): (" << state << ", "
                         << count << ", " << seq[count] << ")" << std::endl;
@@ -534,21 +516,22 @@ void debug_printDfa(const lexer_word_repr*  word, char seq[], size_t seq_length)
         }
         else
         {
-                state = nextDfa->getId(); //state++;
+            state = nextDfa->getId(); //state++;
         }
     }
 
     if (nextDfa == nullptr)
     {
-        std::cout << "nothing" << std::endl;
+        std::cout << "nothing" << std::endl << std::endl;
     }
-    else if (nextDfa->getId() == ST_ACCEPT)
+    else if (dfaManager.isAcceptingNode(state))
     {
-        std::cout << "found word!" << std::endl;
+        auto foundWord = dfaManager.getAcceptingNodeName(nextDfa->getId());
+        std::cout << "found word!" << "word=(" << foundWord << ")" << std::endl << std::endl;
     }
     else if (count >= seq_length)
     {
-            std::cout << "reached end of input" << std::endl;
+        std::cout << "reached end of input" << std::endl << std::endl;
     }
 }
 
