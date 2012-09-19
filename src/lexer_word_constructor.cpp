@@ -25,6 +25,8 @@
 #include "deps/includes/lexer/lexer_man/lexer_builder/AggregateDfaTransitionsAndDelete.hpp"
 #include "deps/includes/lexer/LexerStateAndInput.hpp"
 
+#include "deps/includes/utils/Stopwatch.hpp"
+
 //todo: should be moved to lexer_word_constructor.hpp file
 //EMPTY CHAR AKA the ANY char, doesn't move the chains just accepts everything as input
 #define EMPTY_CHAR '\0'
@@ -41,6 +43,10 @@ bool lexer_word_constructor::_testScanWords()
     std::cout << std::endl;
     std::cout << "Starting Scan Words Test" << std::endl
               << "------------------------" << std::endl;
+
+    StopWatch stopwatch;
+    stopwatch.start();
+
     for (int k = 0; k < 2; k++)
     {
         auto word = _scanWords;
@@ -141,6 +147,8 @@ bool lexer_word_constructor::_testScanWords()
         std::cout << std::endl;
     }
 
+    stopwatch.getElapsedAndPrintfd("ScanWordTest: done ALL search while loops in %d milliseconds");
+
     return retResult;
 }
 
@@ -187,6 +195,10 @@ bool lexer_word_constructor::_testMergedRepresentation()
 
     std::cout << "Starting Merged Representation Test" << std::endl
               << "-----------------------------------" << std::endl;
+
+    StopWatch stopwatch;
+    stopwatch.start();
+
     for (int k = 0; k < 2; k++)
     {
         auto word = _startWordForMergedRepr;
@@ -250,7 +262,7 @@ bool lexer_word_constructor::_testMergedRepresentation()
             }
         }
 
-        std::cout << "done search while loop" << std::endl;
+        std::cout << "done search while loop in ";
 
         if (nextDfa == nullptr)
         {
@@ -285,6 +297,8 @@ bool lexer_word_constructor::_testMergedRepresentation()
 
         std::cout << std::endl;
     }
+
+    stopwatch.getElapsedAndPrintfd("Merged Word Repr Test: done ALL search while loops in %d milliseconds");
 
     return retResult;
 }
