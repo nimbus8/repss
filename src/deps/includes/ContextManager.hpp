@@ -26,15 +26,15 @@
 #define _CONTEXT_MANAGER_
 
 #include "lexer/construction/ScanWordNode.hpp" 
-#include "lexer/lexer_context/LexerContext.hpp"
+#include "lexer/ILexerContext.hpp"
 
 class ContextType
 {
 public:
-	typedef enum
-	{
-		NoType=1, Lexer, Parser
-	} AllowedTypes;
+    typedef enum
+    {
+        NoType=1, Lexer, Parser
+    } AllowedTypes;
 };
 
 class Context
@@ -70,16 +70,21 @@ protected:
         return _scanWords;
     }
 
-    void appendToAnnotatedData(ContextType::AllowedTypes contextTypeAsLexer,
-        const std::string& data)
+    void setAnnotatedDataImpl(ContextType::AllowedTypes contextTypeAsLexer,
+        const std::vector<std::string>& data)
     {
         if (contextTypeAsLexer == ContextType::Lexer)
         {
-            _annotatedData.push_back(data);
+            size_t numOfEntries = data.size();
+            for (int i = 0; i < numOfEntries; i++)
+            {
+               const std::string entry(data.at(i));
+                _annotatedData.push_back(entry);
+            }
         }
     }
 
-    void printAnnotatedData(ContextType::AllowedTypes contextTypeAsLexer) const
+    void printAnnotatedDataImpl(ContextType::AllowedTypes contextTypeAsLexer) const
     {
         if (contextTypeAsLexer == ContextType::Lexer)
         {
@@ -116,7 +121,6 @@ protected:
             break;
         }
     };
-
 public:
 	Context() {}
 	~Context() {}
@@ -133,11 +137,6 @@ public:
 	class TypedContext : public Context
 	{
 	public:
-//                virtual void initScanWords(const ScanWords* const scanWords);
-//                virtual const ScanWords* const getScanWords() const;
-		void appendToAnnotatedData(const std::string& data) {}
-		void printAnnotatedData() const {}
-
                 void doMe() { Context::doMe(ContextType::NoType); }
 	};
 
@@ -157,29 +156,42 @@ class ContextManager::TypedContext <ContextType::AllowedTypes, ContextType::Lexe
     : public Context, public ILexerContext
 {
 public:
-        virtual void initScanWords(const ScanWords* const scanWords)
-        {
-            Context::initScanWordsImpl(ContextType::Lexer, scanWords);
-        }
+    virtual void initScanWords(const ScanWords* const scanWords)
+    {
+        Context::initScanWordsImpl(ContextType::Lexer, scanWords);
+    }
 
-        virtual const ScanWords* const getScanWords() const
-        {
-            std::cout << "CtxMan TypedContext <> getScanWords" << std::endl;
-            return Context::getScanWordsImpl(ContextType::Lexer);
-        }
+    virtual void setAnnotatedData(const std::vector<std::string>& data)
+    {
+        std::cout << "CtxMan TypedContext <> setAnnotatedData" << std::endl;
+        Context::setAnnotatedDataImpl(ContextType::Lexer, data);
+    }
 
-        void appendToAnnotatedData(const std::string& data)
-        {
-                std::cout << "CtxMan TypedContext <> addToAnnotatedData" << std::endl;
-                Context::appendToAnnotatedData(ContextType::Lexer, data);
-        }
-        void printAnnotatedData() const
-        {
-                std::cout << "CtxMan TypedContext <> printAnnotatedData" << std::endl;
-                Context::printAnnotatedData(ContextType::Lexer);
-        }
+    virtual void printAnnotatedData() const 
+    {
+        std::cout << "CtxMan TypedContext <> printAnnotatedData" << std::endl;
+        Context::printAnnotatedDataImpl(ContextType::Lexer);
+    }
 
-        void doMe() { Context::doMe(ContextType::Lexer); }
+    virtual const ScanWords* const getScanWords() const
+    {
+        std::cout << "CtxMan TypedContext <> getScanWords" << std::endl;
+        return Context::getScanWordsImpl(ContextType::Lexer);
+    }
+
+    /*
+    void appendToAnnotatedData(const std::string& data)
+    {
+        std::cout << "CtxMan TypedContext <> addToAnnotatedData" << std::endl;
+        Context::appendToAnnotatedData(ContextType::Lexer, data);
+    }
+    void printAnnotatedData() const
+    {
+        std::cout << "CtxMan TypedContext <> printAnnotatedData" << std::endl;
+        Context::printAnnotatedData(ContextType::Lexer);
+    }*/
+
+    void doMe() { Context::doMe(ContextType::Lexer); }
 };
 
 template<>

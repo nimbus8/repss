@@ -75,6 +75,8 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
         }
 
         stopwatch.getElapsedAndPrintfd("\n\nScanning: done scanning in %3.3f milliseconds\n");
+
+        saveAnnotatedData();
     }
     catch (REPSS_FileHandler::FileNotFoundError e)
     {
@@ -131,6 +133,8 @@ void Scanner::processFileTest(const std::string& filename, const std::string& pe
         }
 
         stopwatch.getElapsedAndPrintfd("\n\nScanning: done scanning in %d milliseconds\n");
+
+        saveAnnotatedData();
     }
     catch (REPSS_FileHandler::FileNotFoundError e)
     {

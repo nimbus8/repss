@@ -21,10 +21,14 @@
 #ifndef _ILEXER_CONTEXT_
 #define _ILEXER_CONTEXT_
 
+#include "construction/ScanWordNode.hpp"
+
 class ILexerContext
 {
 public:
     virtual void initScanWords(const ScanWords* const scanWords) {};
+    virtual void setAnnotatedData(const std::vector<std::string>& data) {}
+    virtual void printAnnotatedData() const {}
     virtual const ScanWords* const getScanWords() const { return nullptr;};
 };
 

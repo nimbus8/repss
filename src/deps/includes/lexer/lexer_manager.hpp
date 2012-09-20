@@ -32,18 +32,18 @@
 #include "lexer_configuration.hpp"
 
 //todo:will change this to LexerContext - find where it defined
-#include "../ContextManager.hpp"
+#include "ILexerContext.hpp"
 
 //todo:will put context manager in here...
 class lexer_manager
 {
 private:
-        ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer>* _context; //todo: typedef this
+        ILexerContext* _context;
         const lexer_configuration* _config;
 
         void mergeDfas();
 public:
-        lexer_manager(ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer>* context, const lexer_configuration* config)
+        lexer_manager(ILexerContext* context, const lexer_configuration* config)
         {
             _context = context;
             _config = config;

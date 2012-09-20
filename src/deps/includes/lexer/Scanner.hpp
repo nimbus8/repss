@@ -29,7 +29,8 @@
 
 //todo:will really think about not doing this
 #include "../repss.hpp"
-#include "../ContextManager.hpp"
+
+#include "ILexerContext.hpp"
 
 #define stringify( name ) # name
 
@@ -58,16 +59,28 @@ public:
 class Scanner
 {
 private:
-    ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer>* _context;
+    ILexerContext* _context;
 
     PartsOfGrammer _partsOfGrammer;
 
     std::unordered_set<std::string> _validKeywords;
     std::unordered_map<std::string, std::string> _keywordToPartOfGrammer;
 
+    std::vector<std::string> _annotatedDataBuffer;
+
     void _appendToAnnotatedData(const std::string& data)
     {
-        _context->appendToAnnotatedData(data);	
+        _annotatedDataBuffer.push_back(data);
+    }
+
+    void saveAnnotatedData() const
+    {
+        _context->setAnnotatedData(_annotatedDataBuffer);
+    }
+
+    void cleanup()
+    {
+        _annotatedDataBuffer.clear();
     }
 
     void captureBufferAndWrapData(char* const buffer, size_t& bufferCount, const size_t BUFFER_LEN, const bool isKeyword)
@@ -109,7 +122,7 @@ private:
     }
 public:
     Scanner() : _context(nullptr) {}
-    explicit Scanner(ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer>* context) : _context(context) {}
+    explicit Scanner(ILexerContext* context) : _context(context) {}
     ~Scanner() {}
 
     void processFileTest(const std::string& filename, const std::string& permissions);
