@@ -27,8 +27,8 @@
 #include <functional>
 #include <unordered_map>
 
-#include "../../../utils/AggregateAndApplyFuncBase.hpp"
-#include "../../../utils/ApplyImmutableFunc.hpp"
+#include "../../utils/AggregateAndApplyFuncBase.hpp"
+#include "../../utils/ApplyImmutableFunc.hpp"
 
 #include "model_representation/dfa_manager.hpp"
 #include "model_representation/finite_autonoma/lexer_dfa.hpp"
@@ -65,7 +65,7 @@ public:
                 return wasSuccess;
         }
 
-        lexer_word_repr* mergeDfas(const std::vector<lexer_word_repr*>* words, DfaManager& dfaManager);
+        lexer_word_repr* mergeDfas(const std::vector<lexer_word_repr*>* words, DfaManager& dfaManager) const;
 };
 
 #endif

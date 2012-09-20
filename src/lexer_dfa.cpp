@@ -18,7 +18,7 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "deps/includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/lexer_dfa.hpp"
+#include "deps/includes/lexer/lexer_builder/model_representation/finite_autonoma/lexer_dfa.hpp"
 
 const lexer_dfa* lexer_dfa::getNextDfa(const LexerStateAndInput& lexerStateAndInput) const
 {

@@ -18,12 +18,12 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "deps/includes/lexer/lexer_man/lexer_builder/lexer_word_constructor.hpp"
-#include "deps/includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/StateAndInput.hpp"
-#include "deps/includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/DfaTransition.hpp"
-#include "deps/includes/lexer/lexer_man/lexer_builder/AggregateDfasAndDelete.hpp"
-#include "deps/includes/lexer/lexer_man/lexer_builder/AggregateDfaTransitionsAndDelete.hpp"
-#include "deps/includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/LexerStateAndInput.hpp"
+#include "deps/includes/lexer/lexer_builder/lexer_word_constructor.hpp"
+#include "deps/includes/lexer/lexer_builder/model_representation/finite_autonoma/StateAndInput.hpp"
+#include "deps/includes/lexer/lexer_builder/model_representation/finite_autonoma/DfaTransition.hpp"
+#include "deps/includes/lexer/lexer_builder/AggregateDfasAndDelete.hpp"
+#include "deps/includes/lexer/lexer_builder/AggregateDfaTransitionsAndDelete.hpp"
+#include "deps/includes/lexer/lexer_builder/model_representation/finite_autonoma/LexerStateAndInput.hpp"
 
 #include "deps/includes/utils/Stopwatch.hpp"
 
@@ -333,23 +333,24 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
     auto idfa5 = dfaManager.createDfaTransition(&stateInput5,E);
     auto idfa6 = dfaManager.createDfaTransition(&stateInput6,F);	
 
+    const lexer_dfa_builder lexer_builder;
     const ApplyImmutableFunc<DfaTransition*> applyObj(1,idfa1);
-    bool wasSuccess =  _lexer_builder->addDfa(word_base, applyObj);
+    bool wasSuccess =  lexer_builder.addDfa(word_base, applyObj);
 
     const ApplyImmutableFunc<DfaTransition*> applyObjAtoB(1,idfa2);
-    bool wasSuccess2 = _lexer_builder->addDfa(A, applyObjAtoB);
+    bool wasSuccess2 = lexer_builder.addDfa(A, applyObjAtoB);
 
     const ApplyImmutableFunc<DfaTransition*> applyObjBtoC(1,idfa3);
-    bool wasSuccess3 = _lexer_builder->addDfa(B, applyObjBtoC);
+    bool wasSuccess3 = lexer_builder.addDfa(B, applyObjBtoC);
 
     const ApplyImmutableFunc<DfaTransition*> applyObjCtoD(1,idfa4);
-    bool wasSuccess4 = _lexer_builder->addDfa(C, applyObjCtoD);
+    bool wasSuccess4 = lexer_builder.addDfa(C, applyObjCtoD);
 
     const ApplyImmutableFunc<DfaTransition*> applyObjDtoE(1,idfa5);
-    bool wasSuccess5 = _lexer_builder->addDfa(D, applyObjDtoE);
+    bool wasSuccess5 = lexer_builder.addDfa(D, applyObjDtoE);
 
     const ApplyImmutableFunc<DfaTransition*> applyObjEtoF(1,idfa6);
-    bool wasSuccess6 = _lexer_builder->addDfa(E, applyObjEtoF);
+    bool wasSuccess6 = lexer_builder.addDfa(E, applyObjEtoF);
  
     if (wasSuccess && wasSuccess2 && wasSuccess3 && wasSuccess4 && wasSuccess5 && wasSuccess6)
     {
@@ -408,27 +409,27 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
     auto idfa6 = dfaManager.createDfaTransition(&stateInput6,F);	
     auto idfa7 = dfaManager.createDfaTransition(&stateInput7,G);	
 
-
+    const lexer_dfa_builder lexer_builder;
     const ApplyImmutableFunc<DfaTransition*> applyObj(1,idfa1);
-    bool wasSuccess =  _lexer_builder->addDfa(word_base, applyObj);
+    bool wasSuccess =  lexer_builder.addDfa(word_base, applyObj);
 
     const ApplyImmutableFunc<DfaTransition*> applyObjAtoB(1,idfa2);
-    bool wasSuccess2 = _lexer_builder->addDfa(A, applyObjAtoB);
+    bool wasSuccess2 = lexer_builder.addDfa(A, applyObjAtoB);
 
     const ApplyImmutableFunc<DfaTransition*> applyObjBtoC(1,idfa3);
-    bool wasSuccess3 = _lexer_builder->addDfa(B, applyObjBtoC);
+    bool wasSuccess3 = lexer_builder.addDfa(B, applyObjBtoC);
 
     const ApplyImmutableFunc<DfaTransition*> applyObjCtoD(1,idfa4);
-    bool wasSuccess4 = _lexer_builder->addDfa(C, applyObjCtoD);
+    bool wasSuccess4 = lexer_builder.addDfa(C, applyObjCtoD);
 
     const ApplyImmutableFunc<DfaTransition*> applyObjDtoE(1,idfa5);
-    bool wasSuccess5 = _lexer_builder->addDfa(D, applyObjDtoE);
+    bool wasSuccess5 = lexer_builder.addDfa(D, applyObjDtoE);
 
     const ApplyImmutableFunc<DfaTransition*> applyObjEtoF(1,idfa6);
-    bool wasSuccess6 = _lexer_builder->addDfa(E, applyObjEtoF);
+    bool wasSuccess6 = lexer_builder.addDfa(E, applyObjEtoF);
  
     const ApplyImmutableFunc<DfaTransition*> applyObjFtoG(1,idfa7);
-    bool wasSuccess7 = _lexer_builder->addDfa(F, applyObjFtoG);
+    bool wasSuccess7 = lexer_builder.addDfa(F, applyObjFtoG);
  
     if (wasSuccess && wasSuccess2 && wasSuccess3 && wasSuccess4 && wasSuccess5 && wasSuccess6
         && wasSuccess7)
@@ -513,29 +514,31 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
 	    				auto idfa15 = dfaManager.createDfaTransition(&stateInput_ST_7_newline, DFA_8);
 
 
+    const lexer_dfa_builder lexer_builder;
+
     const ApplyImmutableFunc<DfaTransition*> applyObj(1,idfa1);
-    bool wasSuccess =  _lexer_builder->addDfa(word_base, applyObj);
+    bool wasSuccess =  lexer_builder.addDfa(word_base, applyObj);
 
     const ApplyImmutableFunc<DfaTransition*> applyObj1to23(2,idfa2,idfa3);
-    bool wasSuccess2 = _lexer_builder->addDfa(DFA_1, applyObj1to23);
+    bool wasSuccess2 = lexer_builder.addDfa(DFA_1, applyObj1to23);
 
     const ApplyImmutableFunc<DfaTransition*> applyObj2to34(2,idfa4,idfa7);
-    bool wasSuccess3 = _lexer_builder->addDfa(DFA_2, applyObj2to34);
+    bool wasSuccess3 = lexer_builder.addDfa(DFA_2, applyObj2to34);
 
     const ApplyImmutableFunc<DfaTransition*> applyObj3to35(2,idfa5,idfa6);
-    bool wasSuccess4 = _lexer_builder->addDfa(DFA_3, applyObj3to35);
+    bool wasSuccess4 = lexer_builder.addDfa(DFA_3, applyObj3to35);
 
     const ApplyImmutableFunc<DfaTransition*> applyObj4to5(1,idfa8);
-    bool wasSuccess5 = _lexer_builder->addDfa(DFA_4, applyObj4to5);
+    bool wasSuccess5 = lexer_builder.addDfa(DFA_4, applyObj4to5);
 
     const ApplyImmutableFunc<DfaTransition*> applyObj5to67(2,idfa9,idfa13);
-    bool wasSuccess6 = _lexer_builder->addDfa(DFA_5, applyObj5to67);
+    bool wasSuccess6 = lexer_builder.addDfa(DFA_5, applyObj5to67);
  
     const ApplyImmutableFunc<DfaTransition*> applyObj6to688(3,idfa10,idfa11,idfa12);
-    bool wasSuccess7 = _lexer_builder->addDfa(DFA_6, applyObj6to688);
+    bool wasSuccess7 = lexer_builder.addDfa(DFA_6, applyObj6to688);
  
     const ApplyImmutableFunc<DfaTransition*> applyObj7to88(2,idfa14,idfa15);
-    bool wasSuccess8 = _lexer_builder->addDfa(DFA_7, applyObj7to88);
+    bool wasSuccess8 = lexer_builder.addDfa(DFA_7, applyObj7to88);
 
     if (wasSuccess && wasSuccess2 && wasSuccess3 && wasSuccess4 && wasSuccess5 && wasSuccess6
                    && wasSuccess7 && wasSuccess8)

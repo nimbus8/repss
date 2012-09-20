@@ -18,7 +18,7 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "deps/includes/lexer/lexer_man/Scanner.hpp"
+#include "deps/includes/lexer/Scanner.hpp"
 #include "deps/includes/utils/Stopwatch.hpp"
 
 void Scanner::printAnotatedData() const

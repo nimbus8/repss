@@ -26,12 +26,13 @@
 #include <utility>
 #include <functional>
 
-#include "lexer_config/lexer_configuration.hpp"
-
 #ifndef _LEX_MANAGER_
 #define _LEX_MANAGER_
 
-#include "../../ContextManager.hpp"
+#include "lexer_config/lexer_configuration.hpp"
+
+//todo:will change this to LexerContext - find where it defined
+#include "../ContextManager.hpp"
 
 //todo:will put context manager in here...
 class lexer_manager

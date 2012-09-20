@@ -18,7 +18,7 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "deps/includes/lexer/lexer_man/lexer_builder/ScanWordNode.hpp"
+#include "deps/includes/lexer/lexer_builder/ScanWordNode.hpp"
 
 
     //todo:will note, not liking how we modify existingScanWordNodes, make const and let the calling function manage

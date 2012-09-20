@@ -18,14 +18,14 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "deps/includes/lexer/lexer_man/lexer_builder/lexer_dfa_builder.hpp"
-#include "deps/includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/LexerStateAndInput.hpp"
+#include "deps/includes/lexer/lexer_builder/lexer_dfa_builder.hpp"
+#include "deps/includes/lexer/lexer_builder/model_representation/finite_autonoma/LexerStateAndInput.hpp"
 
 #include <vector>
 #include <iostream>
 
 //merges dfas to one dfa for traversal
-lexer_word_repr* lexer_dfa_builder::mergeDfas(const std::vector<lexer_word_repr*>* const words, DfaManager& dfaManager)
+lexer_word_repr* lexer_dfa_builder::mergeDfas(const std::vector<lexer_word_repr*>* const words, DfaManager& dfaManager) const
 {
     lexer_word_repr* start = dfaManager.createLexerWordRepr();
 

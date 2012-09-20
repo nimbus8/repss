@@ -32,9 +32,9 @@ using namespace std;
 #include "tests/test_repss_string.cpp"
 
 #include "deps/includes/ContextManager.hpp"
-#include "deps/includes/lexer/lexer_man/lexer_config/lexer_configuration.hpp"
-#include "deps/includes/lexer/lexer_man/lexer_manager.hpp"
-#include "deps/includes/lexer/lexer_man/Scanner.hpp"
+#include "deps/includes/lexer/lexer_config/lexer_configuration.hpp"
+#include "deps/includes/lexer/lexer_manager.hpp"
+#include "deps/includes/lexer/Scanner.hpp"
 
 namespace ImplTest
 {

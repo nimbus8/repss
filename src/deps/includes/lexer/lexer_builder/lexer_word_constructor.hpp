@@ -32,7 +32,7 @@
 #include "lexer_dfa_builder.hpp"
 #include "ScanWordsBuilder.hpp"
 
-#include "../../../utils/AggregatePtrsAndDelete.hpp"
+#include "../../utils/AggregatePtrsAndDelete.hpp"
 
 #ifndef _LEXER_WORD_CONSTRUCTOR_
 #define _LEXER_WORD_CONSTRUCTOR_
@@ -42,7 +42,6 @@ class lexer_word_constructor
 {
 private:
     DfaManager dfaManager;      //dfa manager handles references, create/destroy fn pairs
-    lexer_dfa_builder* _lexer_builder; //helper class, helps connect dfas together
 
     //first phase of construction - language component definition & aggregation
     std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>> _words;
@@ -79,7 +78,8 @@ private:
             dfaWords->push_back(aWordTuple.first);
         }
 
-        _startWordForMergedRepr = _lexer_builder->mergeDfas(dfaWords, dfaManager);
+        const lexer_dfa_builder lexerBuilder;
+        _startWordForMergedRepr = lexerBuilder.mergeDfas(dfaWords, dfaManager);
         bool resultOfMergedDataTest = _testMergedRepresentation();
  
         std::cout << "Merge Test " << (resultOfMergedDataTest? "SUCCEEDED!" : "FAILED!!") << std::endl << std::endl;
@@ -97,21 +97,13 @@ public:
 
     ~lexer_word_constructor()
     {
-        std::cout << "Destructor for Lexer Word Constructor called" << std::endl; 
         _destructDfasAndTransitions();
-        std::cout << "Destructor for Lexer Word Constructor was successfull" << std::endl;
-
         delete  _startWordForMergedRepr;
 
-        std::cout << "Successfully deleted start word for merged representation" << std::endl;
-
-        delete _lexer_builder;
-
-        std::cout << "Successfully deleted lexer builder -- from lexer word constructor" 
-                  << "Sucessfully deleted lexer word constructor!" << std::endl;
+        std::cout << "Sucessfully deleted lexer word constructor!" << std::endl;
     }
 
-    const ScanWords* getScanWords() const
+    const ScanWords* const getScanWords() const
     {
         return _scanWords;
     }
