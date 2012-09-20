@@ -27,8 +27,8 @@
 #include <functional>
 #include <unordered_map>
 
-#include "lexer_builder/lexer_word_constructor.hpp"
-#include "lexer_builder/ScanWordNode.hpp"
+#include "construction/lexer_word_constructor.hpp"
+#include "construction/ScanWordNode.hpp"
 
 //-- Configuration --//
 

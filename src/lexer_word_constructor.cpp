@@ -18,12 +18,12 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "deps/includes/lexer/lexer_builder/lexer_word_constructor.hpp"
-#include "deps/includes/lexer/lexer_builder/model_representation/finite_autonoma/StateAndInput.hpp"
-#include "deps/includes/lexer/lexer_builder/model_representation/finite_autonoma/DfaTransition.hpp"
-#include "deps/includes/lexer/lexer_builder/AggregateDfasAndDelete.hpp"
-#include "deps/includes/lexer/lexer_builder/AggregateDfaTransitionsAndDelete.hpp"
-#include "deps/includes/lexer/lexer_builder/model_representation/finite_autonoma/LexerStateAndInput.hpp"
+#include "deps/includes/lexer/construction/lexer_word_constructor.hpp"
+#include "deps/includes/lexer/construction/model_representation/finite_autonoma/StateAndInput.hpp"
+#include "deps/includes/lexer/construction/model_representation/finite_autonoma/DfaTransition.hpp"
+#include "deps/includes/lexer/construction/AggregateDfasAndDelete.hpp"
+#include "deps/includes/lexer/construction/AggregateDfaTransitionsAndDelete.hpp"
+#include "deps/includes/lexer/construction/model_representation/finite_autonoma/LexerStateAndInput.hpp"
 
 #include "deps/includes/utils/Stopwatch.hpp"
 

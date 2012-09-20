@@ -25,7 +25,7 @@
 #ifndef _CONTEXT_MANAGER_
 #define _CONTEXT_MANAGER_
 
-#include "lexer/lexer_builder/ScanWordNode.hpp" 
+#include "lexer/construction/ScanWordNode.hpp" 
 #include "lexer/lexer_context/LexerContext.hpp"
 
 class ContextType
