@@ -31,21 +31,28 @@
 #ifndef _LEX_MANAGER_
 #define _LEX_MANAGER_
 
+#include "../ContextManager.hpp"
+
+//todo:will put context manager in here...
 class lexer_manager
 {
 private:
+        ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer>* _context; //todo: typedef this
         const lexer_configuration* _config;
-
-        const lexer_word_repr* _current_dfa;
-        const std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>* _lexer_words;
 
         void mergeDfas();
 public:
-        lexer_manager(const lexer_configuration* config)
-	{
-		_config = config;
-		_lexer_words = &(config->getLexicalWords());
-		std::cout << "Lexer_Word_Count " << _lexer_words->size() << std::endl;  
+        lexer_manager(ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer>* context, const lexer_configuration* config)
+        {
+            _context = context;
+            _config = config;
+
+            //lexer word dont so much matter anymore at this stage, perhaps just return scan words
+	    _lexer_words = &(config->getLexicalWords());
+
+            auto scanWords = config->getScanWords();
+            //start scanning here
+            //...
 	}
         ~lexer_manager() {}
 };

@@ -111,6 +111,11 @@ public:
                   << "Sucessfully deleted lexer word constructor!" << std::endl;
     }
 
+    const ScanWords* getScanWords() const
+    {
+        return _scanWords;
+    }
+
     const std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>& getWords() 
     { 
         return _words;

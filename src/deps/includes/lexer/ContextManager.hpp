@@ -25,6 +25,8 @@
 #ifndef _CONTEXT_MANAGER_
 #define _CONTEXT_MANAGER_
 
+#include "lexer_man/lexer_builder/ScanWordNode.hpp" 
+
 class ContextType
 {
 public:
@@ -37,52 +39,71 @@ public:
 class Context
 {
 private:
-	std::vector<std::string> _annotatedData;
+    std::vector<std::string> _annotatedData;
+    const ScanWords* _scanWords;
+
 protected:
-	void appendToAnnotatedData(ContextType::AllowedTypes contextTypeAsLexer,
-		const std::string& data)
-	{
-		if (contextTypeAsLexer == ContextType::Lexer)
-		{
-			_annotatedData.push_back(data);
-		}
-	}
-	void printAnnotatedData(ContextType::AllowedTypes contextTypeAsLexer) const
-	{
-                if (contextTypeAsLexer == ContextType::Lexer)
-		{
-                	for (auto blockStr : _annotatedData)
-                	{
-                        	std::cout << blockStr << std::endl;
-                	}
-		}
-	}
+    void initScanWords(ScanWords* scanWords)
+    {
+        _scanWords = scanWords;
+    }
 
-	void doMe(int something)
-	{ 
-		std::cout << "Ooops. Way off - Context Not Being Retrieved Correctly." 
-			<< std::endl; 
-	}
-	void doMe(ContextType::AllowedTypes something) {
-		switch(something)
-		{
-			case ContextType::Lexer:
-				std::cout << "Lexeme!" << std::endl;
-			break;
+    const ScanWords* getScanWords(ContextType::AllowedTypes contextTypeAsLexer) const
+    {
+        if (contextTypeAsLexer != ContextType::Lexer)
+        {
+            return nullptr;
+        }
 
-			case ContextType::Parser:
-				std::cout << "Parse!" << std::endl;
-			break;
+        return _scanWords;
+    }
 
-			case ContextType::NoType:
-				std::cout << "No Type - Invalid" << std::endl;
-			break;
+    void appendToAnnotatedData(ContextType::AllowedTypes contextTypeAsLexer,
+        const std::string& data)
+    {
+        if (contextTypeAsLexer == ContextType::Lexer)
+        {
+            _annotatedData.push_back(data);
+        }
+    }
 
-			default:
-				std::cout << "Wrong usage of API - AlloweTypes::" << std::endl;
-			break;
-		}
-	};
+    void printAnnotatedData(ContextType::AllowedTypes contextTypeAsLexer) const
+    {
+        if (contextTypeAsLexer == ContextType::Lexer)
+        {
+            for (auto blockStr : _annotatedData)
+            {
+                std::cout << blockStr << std::endl;
+            }
+        }
+    }
+
+    //example: doMe - how and how not to
+    void doMe(int something)
+    { 
+        std::cout << "Ooops. Way off - Context Not Being Retrieved Correctly." 
+                  << std::endl; 
+    }
+    void doMe(ContextType::AllowedTypes something) {
+        switch(something)
+        {
+            case ContextType::Lexer:
+            std::cout << "Lexeme!" << std::endl;
+            break;
+
+            case ContextType::Parser:
+            std::cout << "Parse!" << std::endl;
+            break;
+
+            case ContextType::NoType:
+            std::cout << "No Type - Invalid" << std::endl;
+            break;
+
+            default:
+            std::cout << "Wrong usage of API - AlloweTypes::" << std::endl;
+            break;
+        }
+    };
 
 public:
 	Context() {}
@@ -100,10 +121,11 @@ public:
 	class TypedContext : public Context
 	{
 	public:
-        	void doMe() { Context::doMe(ContextType::NoType); }
-
+                const ScanWords* getScanWords() const {}
 		void appendToAnnotatedData(const std::string& data) {}
 		void printAnnotatedData() const {}
+
+                void doMe() { Context::doMe(ContextType::NoType); }
 	};
 
 	//default template for getContext - rest in implementation file
@@ -121,7 +143,11 @@ template<>
 class ContextManager::TypedContext <ContextType::AllowedTypes, ContextType::Lexer> : public Context
 {
 public:
-        void doMe() { Context::doMe(ContextType::Lexer); }
+        const ScanWords* getScanWords() const
+        {
+            std::cout << "CtxMan TypedContext <> getScanWords" << std::endl;
+            return Context::getScanWords(ContextType::Lexer);
+        }
 
         void appendToAnnotatedData(const std::string& data)
         {
@@ -133,6 +159,8 @@ public:
                 std::cout << "CtxMan TypedContext <> printAnnotatedData" << std::endl;
                 Context::printAnnotatedData(ContextType::Lexer);
         }
+
+        void doMe() { Context::doMe(ContextType::Lexer); }
 };
 
 template<>

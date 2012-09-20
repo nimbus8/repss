@@ -28,6 +28,7 @@
 #include <unordered_map>
 
 #include "../lexer_builder/lexer_word_constructor.hpp"
+#include "../lexer_builder/ScanWordNode.hpp"
 
 //-- Configuration --//
 
@@ -46,6 +47,11 @@ public:
     }
 
     void init() {}
+
+    const ScanWords* getScanWords() const
+    {
+       return _wordConstructor->getScanWords();
+    }
 
     const std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>& getLexicalWords() const
     { 

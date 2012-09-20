@@ -18,6 +18,9 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _SCAN_WORD_NODE_
+#define _SCAN_WORD_NODE_
+
 #include <unordered_map>
 #include <vector>
 
@@ -137,3 +140,4 @@ public:
 
 typedef ScanWordNode ScanWords;
 
+#endif

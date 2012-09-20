@@ -198,7 +198,7 @@ int main(int argc, char* argv[])
 		//configuring & initializing lexer
 		ContextManager contextManager;
 	        const lexer_configuration config;
-	        const lexer_manager lexMan(&config);
+	        const lexer_manager lexMan(&contextManager, &config);
 
 		TestContextMan();
 

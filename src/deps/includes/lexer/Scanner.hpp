@@ -36,85 +36,85 @@
 class PartsOfGrammer
 {
 private:
-	enum defns
-  	{
-		eempty_str = 0,
-		ekey_word,
-		edata_line
-	};
+    enum defns
+    {
+        eempty_str = 0,
+        ekey_word,
+        edata_line
+    };
 
-	const char* enumToString[3] = 
-	{
-		stringify( empty_str ),
-		stringify( key_word ),
-		stringify( data_line )
-	};
+    const char* enumToString[3] = 
+    {
+        stringify( empty_str ),
+        stringify( key_word ),
+        stringify( data_line )
+    };
 public:
-	std::string emptyString() { return std::string(enumToString[eempty_str]); }
-	std::string keyword() { return std::string(enumToString[ekey_word]); }
-	std::string dataLine() { return std::string(enumToString[edata_line]); }
+    std::string emptyString() { return std::string(enumToString[eempty_str]); }
+    std::string keyword() { return std::string(enumToString[ekey_word]); }
+    std::string dataLine() { return std::string(enumToString[edata_line]); }
 };
 
 class Scanner
 {
 private:
-	ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer>* _context;
+    ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer>* _context;
 
-	PartsOfGrammer _partsOfGrammer;
+    PartsOfGrammer _partsOfGrammer;
 
-	std::unordered_set<std::string> _validKeywords;
-	std::unordered_map<std::string, std::string> _keywordToPartOfGrammer;
+    std::unordered_set<std::string> _validKeywords;
+    std::unordered_map<std::string, std::string> _keywordToPartOfGrammer;
 
-	void _appendToAnnotatedData(const std::string& data)
-	{
-		_context->appendToAnnotatedData(data);	
-	}
+    void _appendToAnnotatedData(const std::string& data)
+    {
+        _context->appendToAnnotatedData(data);	
+    }
 
-	void captureBufferAndWrapData(char* const buffer, size_t& bufferCount, const size_t BUFFER_LEN, const bool isKeyword)
-	{
-		//printf("Captured: %s\n", buffer);
+    void captureBufferAndWrapData(char* const buffer, size_t& bufferCount, const size_t BUFFER_LEN, const bool isKeyword)
+    {
+        //printf("Captured: %s\n", buffer);
+        bool emptyBuffer = strlen(buffer) == 0? true : false;
 
-		bool emptyBuffer = strlen(buffer) == 0? true : false;
+        const std::string wrappedData{ 
+            wrapKeyword(
+                (
+                    emptyBuffer?
+                    _partsOfGrammer.dataLine()  
+                    : (isKeyword? _partsOfGrammer.keyword() : _partsOfGrammer.dataLine())
+                )
+                , 
+                (
+                    emptyBuffer?
+                    _partsOfGrammer.emptyString().c_str()
+                    : buffer 
+                )
+            )
+        };
 
-                const std::string wrappedData{ 
-			wrapKeyword(
-				(
-					emptyBuffer?
-					_partsOfGrammer.dataLine()  
-					: (isKeyword? _partsOfGrammer.keyword() : _partsOfGrammer.dataLine())
-				)
-				, 
-				(
-					emptyBuffer?
-					_partsOfGrammer.emptyString().c_str()
-					: buffer 
-				)
-			)
-		};
+        _appendToAnnotatedData(wrappedData);
 
-                _appendToAnnotatedData(wrappedData);
+        Arrays::clearCharacters(buffer,BUFFER_LEN);
+        bufferCount = 0;
+    }
 
-		Arrays::clearCharacters(buffer,BUFFER_LEN);
-                bufferCount = 0;
-	}
+    std::string wrapKeyword(const std::string& partOfGrammer, const char* const keyWord) const
+    {
+        std::string wrappedString("{");
+        wrappedString.append(partOfGrammer);
+        wrappedString.append(":");
+        wrappedString.append(keyWord);
+        wrappedString.append("}");
 
-        std::string wrapKeyword(const std::string& partOfGrammer, const char* const keyWord) const
-        {
-                std::string wrappedString("{");
-                wrappedString.append(partOfGrammer);
-                wrappedString.append(":");
-                wrappedString.append(keyWord);
-                wrappedString.append("}");
-
-                return wrappedString;
-        }
+        return wrappedString;
+    }
 public:
-	Scanner() : _context(nullptr) {}
-	explicit Scanner(ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer>* context) : _context(context) {}
-	~Scanner() {}
+    Scanner() : _context(nullptr) {}
+    explicit Scanner(ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer>* context) : _context(context) {}
+    ~Scanner() {}
 
-        void processFile(const std::string& filename, const std::string& permissions);
-	void printAnotatedData() const;
+    void processFileTest(const std::string& filename, const std::string& permissions);
+    void processFile(const std::string& filename, const std::string& permissions);
+    void printAnotatedData() const;
 };
 
 #endif
