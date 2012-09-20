@@ -29,7 +29,7 @@
 #ifndef _LEX_MANAGER_
 #define _LEX_MANAGER_
 
-#include "lexer_config/lexer_configuration.hpp"
+#include "lexer_configuration.hpp"
 
 //todo:will change this to LexerContext - find where it defined
 #include "../ContextManager.hpp"

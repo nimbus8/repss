@@ -32,7 +32,7 @@ using namespace std;
 #include "tests/test_repss_string.cpp"
 
 #include "deps/includes/ContextManager.hpp"
-#include "deps/includes/lexer/lexer_config/lexer_configuration.hpp"
+#include "deps/includes/lexer/lexer_configuration.hpp"
 #include "deps/includes/lexer/lexer_manager.hpp"
 #include "deps/includes/lexer/Scanner.hpp"
 
