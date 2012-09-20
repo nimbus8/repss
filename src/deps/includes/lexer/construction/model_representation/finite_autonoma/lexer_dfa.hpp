@@ -34,17 +34,7 @@
 
 #include "StateAndInput.hpp"
 #include "state_functors.hpp"
-
 #include "LexerStateAndInput.hpp"
-
-//todo: are we using this...I dont think so, see if can delete this
-class LexerDfaType
-{
-public:
-    typedef enum {
-        NORMAL=0, RANGED 		
-    } ValidTypes;
-};
 
 class lexer_dfa;
 
@@ -74,7 +64,6 @@ class lexer_dfa
 private:
     mutable std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals> _nextStates;
 
-    const LexerDfaType::ValidTypes _type;
     int _id;
 
     void _printInputHash(const StateAndInput<int,char>& stateAndInput, const std::string& name) const
@@ -83,8 +72,7 @@ private:
         std::cout << "\tHash(" << name << ") = " << hashFunc(stateAndInput) << std::endl;
     }
 public:
-    lexer_dfa(LexerDfaType::ValidTypes type, int id) : _type(type), _id(id) {}
-    explicit lexer_dfa(int id) : _type(LexerDfaType::NORMAL), _id(id) {}
+    explicit lexer_dfa(int id) : _id(id) {}
 
     ~lexer_dfa() {}
 
@@ -106,8 +94,6 @@ public:
         std::pair<StateAndInput<int,char>, lexer_dfa*> stateInputAndDfa{stateAndInput, const_cast<lexer_dfa*>(nextDfa)}; 
         _nextStates.emplace(stateInputAndDfa); 
     }
-
-
 
     int getId() const { return _id; }
 
@@ -147,7 +133,6 @@ public:
 
         return nullptr;
     }
-   
 
     const lexer_dfa* getNextDfa(const LexerStateAndInput& lexerStateAndInput) const;
 

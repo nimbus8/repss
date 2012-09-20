@@ -24,7 +24,6 @@
 #include "deps/includes/lexer/construction/AggregateDfasAndDelete.hpp"
 #include "deps/includes/lexer/construction/AggregateDfaTransitionsAndDelete.hpp"
 #include "deps/includes/lexer/construction/model_representation/finite_autonoma/LexerStateAndInput.hpp"
-
 #include "deps/includes/utils/Stopwatch.hpp"
 
 //todo: should be moved to lexer_word_constructor.hpp file

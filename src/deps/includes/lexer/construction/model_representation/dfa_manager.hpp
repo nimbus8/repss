@@ -18,10 +18,10 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <vector>
-
 #ifndef _DFA_MANAGER_
 #define _DFA_MANAGER_
+
+#include <vector>
 
 #include "finite_autonoma/lexer_dfa.hpp"
 #include "finite_autonoma/DfaTransition.hpp"
@@ -64,9 +64,6 @@ public:
 
     lexer_dfa* createAcceptingDfa(const std::string endStateName)
     {
-        //todo: change this...1001 refers to const defined in word construction
-        //	we want to change this to taking in a string to defined a named
-        //	accepting state. - Done (now testing)
         int nextIdCount = _idCount + 1;
         _idCount++;
 
@@ -108,7 +105,7 @@ public:
         return fetched->second;
     }
 
-    lexer_word_repr* createLexerWordRepr() {return createDfa();}
+    lexer_word_repr* createLexerWordRepr() { return createDfa(); }
 
     bool destroyDfa(lexer_dfa* toBeDestroyed) 
     {
@@ -150,39 +147,39 @@ public:
         return ret;
     }
 
-	bool destroyDfaTransition(DfaTransition* toBeDestroyed)
-	{
-                bool wasTransitionDestroyed = false;
+    bool destroyDfaTransition(DfaTransition* toBeDestroyed)
+    {
+        bool wasTransitionDestroyed = false;
 
-                size_t removeIndex;
-                const DfaTransition* entryToBeDestroyed = nullptr;
-		const size_t transitionsSize = _transitions.size();
-                for (size_t index = 0; index < transitionsSize; index++)
-                {
-                        const DfaTransition* const entry = _transitions.at(index);
-                        if (entry == toBeDestroyed)
-                        {
-                                removeIndex = index;
-                                entryToBeDestroyed = entry;
+        size_t removeIndex;
+        const DfaTransition* entryToBeDestroyed = nullptr;
+        const size_t transitionsSize = _transitions.size();
+        for (size_t index = 0; index < transitionsSize; index++)
+        {
+            const DfaTransition* const entry = _transitions.at(index);
+            if (entry == toBeDestroyed)
+            {
+                removeIndex = index;
+                entryToBeDestroyed = entry;
 
-                                toBeDestroyed = nullptr;
-                                break;
-                        }
-                }
+                toBeDestroyed = nullptr;
+                break;
+            }
+        }
 
-                if (toBeDestroyed != nullptr)
-                {
-                        wasTransitionDestroyed = false;
-                }
-                else
-                {
-                        _transitions.erase(_transitions.begin()+removeIndex);
-                        delete entryToBeDestroyed;
-                        wasTransitionDestroyed = true;
-                }
+        if (toBeDestroyed != nullptr)
+        {
+            wasTransitionDestroyed = false;
+        }
+        else
+        {
+            _transitions.erase(_transitions.begin()+removeIndex);
+            delete entryToBeDestroyed;
+            wasTransitionDestroyed = true;
+        }
 
-                return wasTransitionDestroyed;		
-	}
+        return wasTransitionDestroyed;		
+    }
 };
 
 #endif
