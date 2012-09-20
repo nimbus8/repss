@@ -18,23 +18,7 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <iostream>
-#include <string>
-
-#include "deps/includes/ContextManager.hpp"
-
-int TestContextMan()
+class PhasedExecution
 {
-	std::cout << ContextType::Lexer << ContextType::Parser << std::endl;
 
-	ContextManager man;
-
-	man.getContext<ContextType::AllowedTypes, ContextType::Lexer>().doMe();
-	man.getContext<ContextType::AllowedTypes, ContextType::Parser>().doMe();
-        man.getContext<ContextType::AllowedTypes, ContextType::Lexer>().doMe();
-
-	ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer> ctx;
-	ctx.doMe();
-
-	return 0;
-}
+};

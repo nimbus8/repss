@@ -19,7 +19,7 @@
  */
 
 #include "deps/includes/lexer/lexer_man/lexer_builder/lexer_dfa_builder.hpp"
-#include "deps/includes/lexer/LexerStateAndInput.hpp"
+#include "deps/includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/LexerStateAndInput.hpp"
 
 #include <vector>
 #include <iostream>

@@ -31,10 +31,10 @@ using namespace std;
 #include "deps/includes/repss.hpp"
 #include "tests/test_repss_string.cpp"
 
-#include "deps/includes/lexer/ContextManager.hpp"
+#include "deps/includes/ContextManager.hpp"
 #include "deps/includes/lexer/lexer_man/lexer_config/lexer_configuration.hpp"
 #include "deps/includes/lexer/lexer_man/lexer_manager.hpp"
-#include "deps/includes/lexer/Scanner.hpp"
+#include "deps/includes/lexer/lexer_man/Scanner.hpp"
 
 namespace ImplTest
 {
@@ -198,7 +198,9 @@ int main(int argc, char* argv[])
 		//configuring & initializing lexer
 		ContextManager contextManager;
 	        const lexer_configuration config;
-	        const lexer_manager lexMan(&contextManager, &config);
+
+                auto lexerContext = contextManager.getContext<ContextType::AllowedTypes, ContextType::Lexer>();
+	        const lexer_manager lexMan(&lexerContext,&config);
 
 		TestContextMan();
 

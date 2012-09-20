@@ -18,23 +18,14 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <iostream>
-#include <string>
+#ifndef _ILEXER_CONTEXT_
+#define _ILEXER_CONTEXT_
 
-#include "deps/includes/ContextManager.hpp"
-
-int TestContextMan()
+class ILexerContext
 {
-	std::cout << ContextType::Lexer << ContextType::Parser << std::endl;
+public:
+    virtual void initScanWords(const ScanWords* const scanWords) {};
+    virtual const ScanWords* const getScanWords() const { return nullptr;};
+};
 
-	ContextManager man;
-
-	man.getContext<ContextType::AllowedTypes, ContextType::Lexer>().doMe();
-	man.getContext<ContextType::AllowedTypes, ContextType::Parser>().doMe();
-        man.getContext<ContextType::AllowedTypes, ContextType::Lexer>().doMe();
-
-	ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer> ctx;
-	ctx.doMe();
-
-	return 0;
-}
+#endif

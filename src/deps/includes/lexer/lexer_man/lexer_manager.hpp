@@ -31,7 +31,7 @@
 #ifndef _LEX_MANAGER_
 #define _LEX_MANAGER_
 
-#include "../ContextManager.hpp"
+#include "../../ContextManager.hpp"
 
 //todo:will put context manager in here...
 class lexer_manager
@@ -47,10 +47,8 @@ public:
             _context = context;
             _config = config;
 
-            //lexer word dont so much matter anymore at this stage, perhaps just return scan words
-	    _lexer_words = &(config->getLexicalWords());
-
             auto scanWords = config->getScanWords();
+            std::cout << "LexerManager:: First ScanWordNode (id: " << scanWords->getId() << ")" << std::endl;    
             //start scanning here
             //...
 	}

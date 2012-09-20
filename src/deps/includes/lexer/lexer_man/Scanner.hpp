@@ -27,9 +27,9 @@
 #ifndef _SCANNER_HPP_
 #define _SCANNER_HPP_
 
-#include "../repss.hpp"
+#include "../../repss.hpp"
 
-#include "ContextManager.hpp"
+#include "../../ContextManager.hpp"
 
 #define stringify( name ) # name
 

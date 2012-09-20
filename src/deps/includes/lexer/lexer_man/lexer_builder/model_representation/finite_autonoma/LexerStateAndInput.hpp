@@ -20,21 +20,21 @@
 #ifndef _LEXER_STATE_AND_INPUT_
 #define _LEXER_STATE_AND_INPUT_
 
+
+//what seperates this from StateAndInput is there is no concept of ranged.
 class LexerStateAndInput
 {
 private:
-        const int _state;
-        const char _input;
-
+    const int _state;
+    const char _input;
 public:
-        LexerStateAndInput(const int state, const char input) : _state(state), _input(input) {}
-        LexerStateAndInput(const LexerStateAndInput&  other) : _state(other._state), _input(other._input) {}
-        LexerStateAndInput(const LexerStateAndInput&& other) : _state(other._state), _input(other._input) {}
+    LexerStateAndInput(const int state, const char input) : _state(state), _input(input) {}
+    LexerStateAndInput(const LexerStateAndInput&  other) : _state(other._state), _input(other._input) {}
+    LexerStateAndInput(const LexerStateAndInput&& other) : _state(other._state), _input(other._input) {}
+    ~LexerStateAndInput() {}
 
-        int getState() const { return _state; }
-        char getInput() const { return _input; }
-
-        ~LexerStateAndInput() {}
+    int getState() const { return _state; }
+    char getInput() const { return _input; }
 };
 
 #endif

@@ -38,12 +38,12 @@ public:
 
     }
 
-    int getElapsed() //can be called multiple of times
+    float getElapsed() //can be called multiple of times
     {
         auto currentTime = clock();
         auto diff = currentTime - startTime;
 
-        int millisecs = diff; //* 1000 / CLOCKS_PER_SEC;
+        auto millisecs = (float)diff * (1000.0f/CLOCKS_PER_SEC);
         return millisecs;
     }
 

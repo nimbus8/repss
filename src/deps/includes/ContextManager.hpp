@@ -25,7 +25,8 @@
 #ifndef _CONTEXT_MANAGER_
 #define _CONTEXT_MANAGER_
 
-#include "lexer_man/lexer_builder/ScanWordNode.hpp" 
+#include "lexer/lexer_man/lexer_builder/ScanWordNode.hpp" 
+#include "lexer/lexer_man/lexer_context/LexerContext.hpp"
 
 class ContextType
 {
@@ -40,15 +41,26 @@ class Context
 {
 private:
     std::vector<std::string> _annotatedData;
-    const ScanWords* _scanWords;
+    ScanWords* _scanWords;
 
 protected:
-    void initScanWords(ScanWords* scanWords)
+    void initScanWordsImpl(ContextType::AllowedTypes contextTypeAsLexer, const ScanWords* const scanWords)
     {
-        _scanWords = scanWords;
+        if (contextTypeAsLexer != ContextType::Lexer)
+        {
+            return;
+        }
+
+        if (_scanWords != nullptr)
+        {
+            std::cout << "Warning, trying to initialize context TWICE - this is NOT allowed" << std::endl;
+            return;
+        }
+
+        _scanWords = const_cast<ScanWords*>(scanWords);
     }
 
-    const ScanWords* getScanWords(ContextType::AllowedTypes contextTypeAsLexer) const
+    const ScanWords* const getScanWordsImpl(ContextType::AllowedTypes contextTypeAsLexer) const
     {
         if (contextTypeAsLexer != ContextType::Lexer)
         {
@@ -121,7 +133,8 @@ public:
 	class TypedContext : public Context
 	{
 	public:
-                const ScanWords* getScanWords() const {}
+//                virtual void initScanWords(const ScanWords* const scanWords);
+//                virtual const ScanWords* const getScanWords() const;
 		void appendToAnnotatedData(const std::string& data) {}
 		void printAnnotatedData() const {}
 
@@ -140,13 +153,19 @@ public:
 };
 
 template<>
-class ContextManager::TypedContext <ContextType::AllowedTypes, ContextType::Lexer> : public Context
+class ContextManager::TypedContext <ContextType::AllowedTypes, ContextType::Lexer>
+    : public Context, public ILexerContext
 {
 public:
-        const ScanWords* getScanWords() const
+        virtual void initScanWords(const ScanWords* const scanWords)
+        {
+            Context::initScanWordsImpl(ContextType::Lexer, scanWords);
+        }
+
+        virtual const ScanWords* const getScanWords() const
         {
             std::cout << "CtxMan TypedContext <> getScanWords" << std::endl;
-            return Context::getScanWords(ContextType::Lexer);
+            return Context::getScanWordsImpl(ContextType::Lexer);
         }
 
         void appendToAnnotatedData(const std::string& data)

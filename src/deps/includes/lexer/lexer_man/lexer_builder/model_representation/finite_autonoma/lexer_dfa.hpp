@@ -35,14 +35,15 @@
 #include "StateAndInput.hpp"
 #include "state_functors.hpp"
 
-#include "../../../../LexerStateAndInput.hpp"
+#include "LexerStateAndInput.hpp"
 
+//todo: are we using this...I dont think so, see if can delete this
 class LexerDfaType
 {
 public:
-	typedef enum {
-		NORMAL=0, RANGED 		
-	} ValidTypes;
+    typedef enum {
+        NORMAL=0, RANGED 		
+    } ValidTypes;
 };
 
 class lexer_dfa;

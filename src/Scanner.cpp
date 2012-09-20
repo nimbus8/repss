@@ -18,7 +18,7 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "deps/includes/lexer/Scanner.hpp"
+#include "deps/includes/lexer/lexer_man/Scanner.hpp"
 #include "deps/includes/utils/Stopwatch.hpp"
 
 void Scanner::printAnotatedData() const
@@ -74,7 +74,7 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
             }
         }
 
-        stopwatch.getElapsedAndPrintfd("\n\nScanning: done scanning in %d milliseconds\n");
+        stopwatch.getElapsedAndPrintfd("\n\nScanning: done scanning in %3.3f milliseconds\n");
     }
     catch (REPSS_FileHandler::FileNotFoundError e)
     {

@@ -37,22 +37,19 @@ template<class S, class I>
 class StateAndInput
 {
 private:
-        const S _state;
-        const I _input;
-
-	const bool _isRanged;
+    const S _state;
+    const I _input;
+    const bool _isRanged;
 public:
-        StateAndInput(const S state, const I input) : _state(state), _input(input), _isRanged(false) {}
-	StateAndInput(const S state, const I input, bool isRanged) : _state(state), _input(input), _isRanged(isRanged) {}
-        StateAndInput(const StateAndInput&  other) : _state(other._state), _input(other._input), _isRanged(other._isRanged) {}
-        StateAndInput(const StateAndInput&& other) : _state(other._state), _input(other._input), _isRanged(other._isRanged) {}
+    StateAndInput(const S state, const I input) : _state(state), _input(input), _isRanged(false) {}
+    StateAndInput(const S state, const I input, bool isRanged) : _state(state), _input(input), _isRanged(isRanged) {}
+    StateAndInput(const StateAndInput&  other) : _state(other._state), _input(other._input), _isRanged(other._isRanged) {}
+    StateAndInput(const StateAndInput&& other) : _state(other._state), _input(other._input), _isRanged(other._isRanged) {}
+    ~StateAndInput() {}
 
-        S getState() const { return _state; }
-        I getInput() const { return _input; }
-
-	bool getIsRanged() const { return _isRanged; }
-
-        ~StateAndInput() {}
+    S getState() const { return _state; }
+    I getInput() const { return _input; }
+    bool getIsRanged() const { return _isRanged; }
 };
 
 #endif

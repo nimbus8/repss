@@ -23,7 +23,7 @@
 #include "deps/includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/DfaTransition.hpp"
 #include "deps/includes/lexer/lexer_man/lexer_builder/AggregateDfasAndDelete.hpp"
 #include "deps/includes/lexer/lexer_man/lexer_builder/AggregateDfaTransitionsAndDelete.hpp"
-#include "deps/includes/lexer/LexerStateAndInput.hpp"
+#include "deps/includes/lexer/lexer_man/lexer_builder/model_representation/finite_autonoma/LexerStateAndInput.hpp"
 
 #include "deps/includes/utils/Stopwatch.hpp"
 
@@ -147,7 +147,7 @@ bool lexer_word_constructor::_testScanWords()
         std::cout << std::endl;
     }
 
-    stopwatch.getElapsedAndPrintfd("ScanWordTest: done ALL search while loops in %d milliseconds");
+    stopwatch.getElapsedAndPrintfd("ScanWordTest: done ALL search while loops in %3.3f milliseconds\n\n");
 
     return retResult;
 }
@@ -156,8 +156,6 @@ bool lexer_word_constructor::_constructScanWords()
 {
     std::vector<ScanWordNode*> existingScanWordNodes;
     std::vector<ScanWordNode*> nodesToBeInitd;
-
-    auto word = _startWordForMergedRepr;
 
     //note: aggregate and delete for scan nodes may be necessary
     ScanWordNode* startScanWordNode = new ScanWordNode(_startWordForMergedRepr);
@@ -298,7 +296,7 @@ bool lexer_word_constructor::_testMergedRepresentation()
         std::cout << std::endl;
     }
 
-    stopwatch.getElapsedAndPrintfd("Merged Word Repr Test: done ALL search while loops in %d milliseconds");
+    stopwatch.getElapsedAndPrintfd("Merged Word Repr Test: done ALL search while loops in %3.3f milliseconds\n\n");
 
     return retResult;
 }
