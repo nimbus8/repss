@@ -5,8 +5,7 @@
  This file is part of REPSS.
 
  REPSS is free software: you can redistribute it and/or modify
- it under the terms of the   GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
+ it under the terms of the   GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or
  (at your option) any later version.
 
  REPSS is distributed in the hope that it will be useful,
@@ -15,21 +14,27 @@
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
- */
+ along with REPSS.  If not, see <http://www.gnu.org/licenses/>. */
+
 
 #ifndef _ILEXER_CONTEXT_
 #define _ILEXER_CONTEXT_
 
+#include "../ILexerDataProxy.hpp"
 #include "construction/ScanWordNode.hpp"
 
 class ILexerContext
 {
 public:
-    virtual void initScanWords(const ScanWords* const scanWords) {};
-    virtual void setAnnotatedData(const std::vector<std::string>& data) {}
-    virtual void printAnnotatedData() const {}
-    virtual const ScanWords* const getScanWords() const { return nullptr;};
+    virtual void initLexerDataProxy(ILexerDataProxy* lexerDataProxy) = 0;
+    virtual const ILexerDataProxy* getLexerDataProxy() const = 0;
+
+    virtual void initScanWords(const ScanWords* const scanWords) = 0;
+    virtual const ScanWords* const getScanWords() const = 0;
+
+    virtual void setAnnotatedData(const std::vector<std::string>& data) = 0;
+
+    virtual void printAnnotatedData() const = 0;
 };
 
 #endif

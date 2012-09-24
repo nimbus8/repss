@@ -18,8 +18,18 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <stdio.h>
+
 #include "deps/includes/lexer/Scanner.hpp"
 #include "deps/includes/utils/Stopwatch.hpp"
+
+#define DEBUG YES
+
+#ifdef DEBUG
+    #define DLOG(str) printf("%d:%s", __LINE__, str)
+#else
+    #define DLOG(str) 
+#endif
 
 void Scanner::printAnotatedData() const
 {
@@ -33,45 +43,150 @@ void Scanner::printAnotatedData() const
 void Scanner::processFile(const std::string& filename, const std::string& permissions)
 {
     const size_t BUFFER_LEN = 1048576;
+
     char buffer[BUFFER_LEN];
     size_t buffer_count = 0;
-    std::string bufferStr = "";
 
+    std::string bufferForPossibleKeyword; 
+    //used to hold candidate keywords: the minute we begin to FOLLOW a scan word (advance past startScanWordNode), we start adding to this. 
+    //and if we error out while FOLLOWING when shift the contents of the candidateKeyWordBuffer onto main buffer.
+    //If we reach an accepting node while the contents of the candidateKeyWordBuffer is non empty, this just means
+    //that we've successfully recognized a keyword and we make note of that. Emptying the candidate buffer AND
+    //before that, making note of what was in the normal (if there is anything in) buffer and clearing it.
+    std::string candidateKeyWordBuffer;
+
+    std::string bufferStr = ""; //is this being used?
+
+    DLOG("Starting Scanner::processFile\n"); 
+
+    //okay below, we need to let ILexerDataProxy from ILexerContext
+    auto dataProxy = _context->getLexerDataProxy();
+    DLOG(" Rerieved lexer data proxy\n");
+
+    auto dfaManager = dataProxy->getDfaManager();
+    DLOG(" Retrieved Dfa Manager\n");
     try
     {
         REPSS_FileHandler::FileHandle fileHandle{filename, permissions};
 
         Arrays::clearCharacters(buffer, BUFFER_LEN);
 
+        auto scanWords = _context->getScanWords();
+        
+        auto startPlace = scanWords;
+        auto currentPlace = startPlace;
+
         StopWatch stopwatch;
         stopwatch.start();
 
+        bool isFollowingKeyWord = false;
+
         while (!REPSS_FileHandler::isEndOfFile(fileHandle))
         {
-            char c = REPSS_FileHandler::getCharacter(fileHandle);
+            const char c = REPSS_FileHandler::getCharacter(fileHandle);
+            auto nextScanWordNode = (currentPlace == nullptr? nullptr : currentPlace->getNextScanWordNode(c));
 
-            if (!REPSS_FileHandler::isEndOfFile(fileHandle)
-                  && c != '%' && c != '\n')
+            if (nextScanWordNode != nullptr)
             {
-                Arrays::appendCharacter(buffer,buffer_count++,c);
-                //std::cout << buffer << std::endl;
-            }
-            else
-            {
-                bool isKeyword = false;
-                if (c == '%')
+                //first, if after reading character we care NOT at end of file
+                // and second check where we are in terms of scanwords and line breaks.
+                if (/* case 0: */ !REPSS_FileHandler::isEndOfFile(fileHandle)
+                    /* case 1: */ && currentPlace != startPlace
+                    /* case 2: */ && !(dfaManager->isAcceptingNode(nextScanWordNode->getId()))
+                    /* case 3: */ && c != '\n')
                 {
-                    if (strlen(buffer) != 0)
+                    //- If case for where after we've read a character and we know it
+                    //doesn't look like a keyword is present at this point (already determined
+                    //we're NOT at startplace/acceptingplace or a newline/endoffile) so further
+                    //we're not (in the process of) following the progression of a certain scanword
+                    //past the startplace. So we add to main buffer.
+                    //- else case where we ARE following the progression of some scanword(could be just one 
+                    //or even a group - the group representing scanwords(recognized keywords) with identical 
+                    //uninterrupted transitions from the startplace). In this case we add to the candidateKeyWord buffer.
+
+                    if (!isFollowingKeyWord)
+                    {    
+                        Arrays::appendCharacter(buffer,buffer_count++,c); 
+                        DLOG(buffer);
+                    }
+                    else
                     {
-                        captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
+                        candidateKeyWordBuffer.append(&c, 1);
+                        DLOG((candidateKeyWordBuffer.c_str()));
+                    }
+                }
+                else
+                {
+                    bool isKeyword = false;
+
+                    if (currentPlace == startPlace)
+                    {
+                        //we start recording
+                        //Arrays::appendCharacter(buffer,buffer_count++,c);
+                        candidateKeyWordBuffer.append(&c, 1);
+                        currentPlace = nextScanWordNode;
+
+                        DLOG((candidateKeyWordBuffer.c_str()));
+                    }
+                    else
+                    {
+                        bool isKeyword = false;
+
+                        char scanWordNameBuffer[50];
+                        scanWordNameBuffer[0] = '\0';
+
+                        if (dfaManager->isAcceptingNode(nextScanWordNode->getId()))
+                        {
+                            //we stop recording, label with end state name
+                            if (strlen(buffer) > 0)
+                            {
+                                //oh yeah it should be clear that capture is to "take, basically clearing".
+                                //not too obvious...name change required
+                                captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
+                            }
+
+                            //here we must add the keyword "the official name"
+                            std::string scanWordName(dfaManager->getAcceptingNodeName(nextScanWordNode->getId()));
+                            strcpy(scanWordNameBuffer, scanWordName.c_str());
+                        }
+
+                        size_t nameBufferLen = strlen(scanWordNameBuffer);
+                        captureBufferAndWrapData(scanWordNameBuffer, nameBufferLen, 50, isKeyword);
+
+                        currentPlace = startPlace;
                     }
 
-                    Arrays::appendCharacter(buffer,buffer_count++,c);
-                    isKeyword = true;
-                }
+                    /*
+                    if (c == '%')
+                    {
+                        if (strlen(buffer) != 0)
+                        {
+                            //oh yeah it should be clear that capture is to "take, basically clearing".
+                            //not too obvious...name change required
+                            captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
+                        }
 
-                captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
+                        Arrays::appendCharacter(buffer,buffer_count++,c);
+                        isKeyword = true;
+                    }
+
+                    captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
+                    */
+                }
             }
+        }
+
+        //check if there is still anything in the keyword buffer, if there is add it to main buffer
+        //and it as the contents of a dataline
+        if (candidateKeyWordBuffer.size() > 0)
+        {
+            //...
+        }
+        
+        if (strlen(buffer))
+        {
+            //if there is still stuff in the buffer append to annotation data as a dataline
+            //...
         }
 
         stopwatch.getElapsedAndPrintfd("\n\nScanning: done scanning in %3.3f milliseconds\n");

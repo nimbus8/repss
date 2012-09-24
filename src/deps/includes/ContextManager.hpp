@@ -40,10 +40,33 @@ public:
 class Context
 {
 private:
+    //Lexer Specific
+    ILexerDataProxy* _lexerDataProxy; //this is to access constant objects of dfaManager, scanWords, etc
     std::vector<std::string> _annotatedData;
-    ScanWords* _scanWords;
+    ScanWords* _scanWords; //put this into LexerDataProxy
 
 protected:
+    void initLexerDataProxyImpl(ContextType::AllowedTypes contextTypeAsLexer, const ILexerDataProxy* const lexerDataProxy)
+    {
+        if (contextTypeAsLexer != ContextType::Lexer)
+        {
+            return;
+        }
+
+        if (_lexerDataProxy != nullptr)
+        {
+            std::cout << "Warning, trying to initialized lexerDataProxy TWICE - this is NOT allowed" << std::endl;
+            return;
+        }
+
+        _lexerDataProxy = const_cast<ILexerDataProxy*>(lexerDataProxy);
+    }
+
+    const ILexerDataProxy* const getLexerDataProxyImpl(ContextType::AllowedTypes) const
+    {
+        return _lexerDataProxy;
+    }
+
     void initScanWordsImpl(ContextType::AllowedTypes contextTypeAsLexer, const ScanWords* const scanWords)
     {
         if (contextTypeAsLexer != ContextType::Lexer)
@@ -155,7 +178,18 @@ template<>
 class ContextManager::TypedContext <ContextType::AllowedTypes, ContextType::Lexer>
     : public Context, public ILexerContext
 {
+    ILexerDataProxy* _lexerDataProxy;
 public:
+    virtual void initLexerDataProxy(ILexerDataProxy* lexerDataProxy)
+    {
+        Context::initLexerDataProxyImpl(ContextType::Lexer, lexerDataProxy);
+    }
+
+    virtual const ILexerDataProxy* getLexerDataProxy() const
+    {
+        return Context::getLexerDataProxyImpl(ContextType::Lexer);
+    }
+
     virtual void initScanWords(const ScanWords* const scanWords)
     {
         Context::initScanWordsImpl(ContextType::Lexer, scanWords);
