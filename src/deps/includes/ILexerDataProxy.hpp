@@ -29,7 +29,8 @@
 class ILexerDataProxy
 {
 public:
-    virtual const DfaManager* const getDfaManager() const = 0;    
+    virtual ~ILexerDataProxy() {}
+    virtual const DfaManager* getDfaManager() const = 0;    
 };
 
 #endif

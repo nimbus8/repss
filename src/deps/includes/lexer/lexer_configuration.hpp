@@ -53,6 +53,11 @@ public:
        return _wordConstructor->getScanWords();
     }
 
+    const DfaManager* const getDfaManager() const
+    {
+        return _wordConstructor->getDfaManager();
+    }
+
     const std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>& getLexicalWords() const
     { 
         return _wordConstructor->getWords();

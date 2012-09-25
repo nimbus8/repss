@@ -30,10 +30,10 @@ class LexerDataProxy : public ILexerDataProxy
 private:
     const DfaManager* _dfaManager;
 public:
-    LexerDataProxy(const DfaManager* const dfaManager) : _dfaManager(dfaManager) {}
-    ~LexerDataProxy() {}
-
-    const DfaManager* const getDfaManager() const { return _dfaManager; }    
+    LexerDataProxy() : _dfaManager(nullptr) {}
+    explicit LexerDataProxy(const DfaManager* dfaManager) : _dfaManager(dfaManager) {}
+    virtual ~LexerDataProxy() {}
+    virtual const DfaManager* getDfaManager() const { return _dfaManager; }    
 };
 
 #endif

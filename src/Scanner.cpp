@@ -22,11 +22,12 @@
 
 #include "deps/includes/lexer/Scanner.hpp"
 #include "deps/includes/utils/Stopwatch.hpp"
+#include "deps/includes/lexer/construction/model_representation/dfa_manager.hpp"
 
 #define DEBUG YES
 
 #ifdef DEBUG
-    #define DLOG(str) printf("%d:%s", __LINE__, str)
+    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
 #else
     #define DLOG(str) 
 #endif
@@ -60,10 +61,19 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
     DLOG("Starting Scanner::processFile\n"); 
 
     //okay below, we need to let ILexerDataProxy from ILexerContext
-    auto dataProxy = _context->getLexerDataProxy();
+    const ILexerDataProxy* dataProxy = _context->getLexerDataProxy();
     DLOG(" Rerieved lexer data proxy\n");
 
-    auto dfaManager = dataProxy->getDfaManager();
+    if (dataProxy == nullptr)
+    {
+        DLOG("Data proxy is null! Oy...\n");
+    }
+    else
+    {
+        DLOG("Data proxy is NOT null! GREAT!\n");
+    }
+
+    const DfaManager* dfaManager = dataProxy->getDfaManager();
     DLOG(" Retrieved Dfa Manager\n");
     try
     {
@@ -72,7 +82,9 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
         Arrays::clearCharacters(buffer, BUFFER_LEN);
 
         auto scanWords = _context->getScanWords();
-        
+       
+        DLOG("Scan words retrieved\n");
+  
         auto startPlace = scanWords;
         auto currentPlace = startPlace;
 

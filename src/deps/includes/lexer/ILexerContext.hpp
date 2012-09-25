@@ -26,7 +26,7 @@
 class ILexerContext
 {
 public:
-    virtual void initLexerDataProxy(ILexerDataProxy* lexerDataProxy) = 0;
+    virtual void initLexerDataProxy(const ILexerDataProxy* lexerDataProxy) = 0;
     virtual const ILexerDataProxy* getLexerDataProxy() const = 0;
 
     virtual void initScanWords(const ScanWords* const scanWords) = 0;

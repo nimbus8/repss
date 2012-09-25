@@ -46,7 +46,7 @@ private:
     ScanWords* _scanWords; //put this into LexerDataProxy
 
 protected:
-    void initLexerDataProxyImpl(ContextType::AllowedTypes contextTypeAsLexer, const ILexerDataProxy* const lexerDataProxy)
+    void initLexerDataProxyImpl(ContextType::AllowedTypes contextTypeAsLexer, const ILexerDataProxy* lexerDataProxy)
     {
         if (contextTypeAsLexer != ContextType::Lexer)
         {
@@ -62,7 +62,7 @@ protected:
         _lexerDataProxy = const_cast<ILexerDataProxy*>(lexerDataProxy);
     }
 
-    const ILexerDataProxy* const getLexerDataProxyImpl(ContextType::AllowedTypes) const
+    const ILexerDataProxy* getLexerDataProxyImpl(ContextType::AllowedTypes) const
     {
         return _lexerDataProxy;
     }
@@ -160,6 +160,7 @@ public:
 	class TypedContext : public Context
 	{
 	public:
+                //explicit TypedContext(Context ctx) : _globalContext(ctx) {}
                 void doMe() { Context::doMe(ContextType::NoType); }
 	};
 
@@ -178,9 +179,9 @@ template<>
 class ContextManager::TypedContext <ContextType::AllowedTypes, ContextType::Lexer>
     : public Context, public ILexerContext
 {
-    ILexerDataProxy* _lexerDataProxy;
+    //ILexerDataProxy* _lexerDataProxy;
 public:
-    virtual void initLexerDataProxy(ILexerDataProxy* lexerDataProxy)
+    virtual void initLexerDataProxy(const ILexerDataProxy* lexerDataProxy)
     {
         Context::initLexerDataProxyImpl(ContextType::Lexer, lexerDataProxy);
     }

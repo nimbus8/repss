@@ -30,9 +30,18 @@
 #define _LEX_MANAGER_
 
 #include "lexer_configuration.hpp"
+#include "LexerDataProxy.hpp"
 
 //todo:will change this to LexerContext - find where it defined
 #include "ILexerContext.hpp"
+
+#define DEBUG YES
+
+#ifdef DEBUG
+    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
+#else
+    #define DLOG(str)
+#endif
 
 //todo:will put context manager in here...
 class lexer_manager
@@ -40,7 +49,7 @@ class lexer_manager
 private:
         ILexerContext* _context;
         const lexer_configuration* _config;
-
+        const LexerDataProxy* _lexerDataProxy;
         void mergeDfas();
 public:
         lexer_manager(ILexerContext* context, const lexer_configuration* config)
@@ -52,7 +61,25 @@ public:
             std::cout << "LexerManager:: First ScanWordNode (id: " << scanWords->getId() << ")" << std::endl;    
             //start scanning here
             //...
+            //actually with dataproxy construct, scanning doesn't necessarily need to be done here.
+            // it could actually just be done in a phased execution engine of some sort - just
+            // so that most of important functionality is in the same place.
+            // so this 'manager' would jsut be to initialize the dataproxy (I'm gonna admit my ignorance here
+            // I have no idea whether we need to (here) keep track lexerdataproxy to allow it to be deleted
+            // properly from memory (its liek another part of it is living somewhere else, but can we ensure
+            // that the 'substance' is being deleted if we don't delete the derived class(LexerContext)
+            // in a context that we KNOW the derived class (here)? - I think this may be where virtual
+            // constructors come in...I hope so. (check it out).
+            auto dfaManager = config->getDfaManager();
+            _lexerDataProxy = new LexerDataProxy(dfaManager);
+            auto secondDfaManager = _lexerDataProxy->getDfaManager();
+            context->initLexerDataProxy((const ILexerDataProxy*)_lexerDataProxy);
+            auto secondLexerDataProxy = context->getLexerDataProxy();
+            auto thirdDfaManager = _lexerDataProxy->getDfaManager();
+
+            DLOG("Initialized lexer data proxy\n");
 	}
+
         ~lexer_manager() {}
 };
 

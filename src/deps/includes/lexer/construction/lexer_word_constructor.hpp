@@ -108,6 +108,12 @@ public:
         return _scanWords;
     }
 
+    const DfaManager* const getDfaManager() const
+    {
+        const DfaManager* const retDfaManager = &dfaManager;
+        return retDfaManager;
+    }
+
     const std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>>& getWords() 
     { 
         return _words;

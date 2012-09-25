@@ -201,10 +201,20 @@ int main(int argc, char* argv[])
 
                 auto lexerContext = contextManager.getContext<ContextType::AllowedTypes, ContextType::Lexer>();
 	        const lexer_manager lexMan(&lexerContext,&config);
+                
+                if (argc < 4)
+                {
+                        std::cerr << "Error, correct usage:  repss str_cmp1 str_cmp2 input_file" << std::endl;
+                }
 
-		TestContextMan();
+                const string filename{argv[3]};
+                const string permissions{"rt"};
 
-		ImplTest::runClosureAndScanTests(&contextManager,argc, argv);
+                Scanner scanner(&lexerContext);
+                scanner.processFile(filename, permissions);
+
+		//TestContextMan();
+		//ImplTest::runClosureAndScanTests(&contextManager,argc, argv);
 
 }
 	catch (std::exception& e) 
