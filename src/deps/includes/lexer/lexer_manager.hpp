@@ -71,11 +71,12 @@ public:
             // in a context that we KNOW the derived class (here)? - I think this may be where virtual
             // constructors come in...I hope so. (check it out).
             auto dfaManager = config->getDfaManager();
-            _lexerDataProxy = new LexerDataProxy(dfaManager);
-            auto secondDfaManager = _lexerDataProxy->getDfaManager();
+
+            _lexerDataProxy = new LexerDataProxy(dfaManager, scanWords);
+
             context->initLexerDataProxy((const ILexerDataProxy*)_lexerDataProxy);
-            auto secondLexerDataProxy = context->getLexerDataProxy();
-            auto thirdDfaManager = _lexerDataProxy->getDfaManager();
+            context->initScanWords(scanWords);
+
 
             DLOG("Initialized lexer data proxy\n");
 	}

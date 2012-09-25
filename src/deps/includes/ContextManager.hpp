@@ -191,7 +191,7 @@ public:
         return Context::getLexerDataProxyImpl(ContextType::Lexer);
     }
 
-    virtual void initScanWords(const ScanWords* const scanWords)
+    virtual void initScanWords(const ScanWords* scanWords)
     {
         Context::initScanWordsImpl(ContextType::Lexer, scanWords);
     }
@@ -208,7 +208,7 @@ public:
         Context::printAnnotatedDataImpl(ContextType::Lexer);
     }
 
-    virtual const ScanWords* const getScanWords() const
+    virtual const ScanWords* getScanWords() const
     {
         std::cout << "CtxMan TypedContext <> getScanWords" << std::endl;
         return Context::getScanWordsImpl(ContextType::Lexer);

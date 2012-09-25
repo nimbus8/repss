@@ -103,14 +103,14 @@ public:
         std::cout << "Sucessfully deleted lexer word constructor!" << std::endl;
     }
 
-    const ScanWords* const getScanWords() const
+    const ScanWords* getScanWords() const
     {
         return _scanWords;
     }
 
-    const DfaManager* const getDfaManager() const
+    const DfaManager* getDfaManager() const
     {
-        const DfaManager* const retDfaManager = &dfaManager;
+        const DfaManager* retDfaManager = &dfaManager;
         return retDfaManager;
     }
 

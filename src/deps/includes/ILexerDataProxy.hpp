@@ -25,12 +25,14 @@
 // to 'speak' with eachother.
 
 #include "lexer/construction/model_representation/dfa_manager.hpp"
+#include "lexer/construction/ScanWordNode.hpp"
 
 class ILexerDataProxy
 {
 public:
     virtual ~ILexerDataProxy() {}
     virtual const DfaManager* getDfaManager() const = 0;    
+    virtual const ScanWords* getRecognizedKeywords() const = 0;
 };
 
 #endif

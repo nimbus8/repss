@@ -81,8 +81,17 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
 
         Arrays::clearCharacters(buffer, BUFFER_LEN);
 
-        auto scanWords = _context->getScanWords();
+        auto scanWords = dataProxy->getRecognizedKeywords();
        
+        if (scanWords == nullptr)
+        {
+            DLOG("scanWords == nullptr, CRAP!\n");
+        }
+        else
+        {
+            DLOG("scanWords != nullptr, GOOD!\n");
+        }
+  
         DLOG("Scan words retrieved\n");
   
         auto startPlace = scanWords;
@@ -95,8 +104,11 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
 
         while (!REPSS_FileHandler::isEndOfFile(fileHandle))
         {
+            DLOG("Reading input\n");
             const char c = REPSS_FileHandler::getCharacter(fileHandle);
-            auto nextScanWordNode = (currentPlace == nullptr? nullptr : currentPlace->getNextScanWordNode(c));
+            DLOG("calling getNextScanWordNode(c)\n");
+            const ScanWordNode* nextScanWordNode = (currentPlace == nullptr? nullptr : currentPlace->getNextScanWordNode(c));
+            DLOG("getScanWordNode called and returned successfully\n");
 
             if (nextScanWordNode != nullptr)
             {

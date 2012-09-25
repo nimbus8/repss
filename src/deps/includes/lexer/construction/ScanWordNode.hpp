@@ -26,6 +26,14 @@
 
 #include "model_representation/finite_autonoma/lexer_dfa.hpp"
 
+#ifdef DEBUG
+     #ifndef DLOG(str)
+         #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
+     #endif
+#else
+    #define DLOG(str)
+#endif
+
 //Scan Word is simply meant to be a simpler interface of lexer_dfa. 
 //most importantly, its a bit of a runtime optimization: 
 //  the nextScanWordNode(...) call runs in ~ O(1), whereas nextDfa(...) runs in ~ O(n)
@@ -122,7 +130,9 @@ public:
 
     ScanWordNode* getNextScanWordNode(const char input) const
     {
+        DLOG("before call to _nextScanWordNode.find(input)\n");
         auto fetched = _nextScanWordNode.find(input);
+        DLOG("after call to _nextScanWordNode.find(input)\n");
 
         ScanWordNode* ret;
         if (fetched == _nextScanWordNode.end())
@@ -133,6 +143,8 @@ public:
         {
             ret = fetched->second;
         }
+
+        DLOG("ScanWordNode::getNextScanWordNode(...) before return\n");
 
         return ret;
     }

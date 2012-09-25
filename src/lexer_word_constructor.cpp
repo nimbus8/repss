@@ -158,7 +158,7 @@ bool lexer_word_constructor::_constructScanWords()
 
     //note: aggregate and delete for scan nodes may be necessary
     ScanWordNode* startScanWordNode = new ScanWordNode(_startWordForMergedRepr);
-    _scanWords = startScanWordNode;
+    //_scanWords = startScanWordNode;
 
     existingScanWordNodes.push_back(startScanWordNode);
     nodesToBeInitd.push_back(startScanWordNode);
@@ -172,16 +172,20 @@ bool lexer_word_constructor::_constructScanWords()
         wordNode->init(existingScanWordNodes, nodesToBeInitd);
     }
 
+    _scanWords = startScanWordNode;
+
     _testScanWords();
 
+    /*
     //this is just for now: we need to find a good spot to delete objects
     for (int i = 0; i < existingScanWordNodes.size(); i++)
     {
         auto scanWordNode = existingScanWordNodes.at(i);
         delete scanWordNode;
     }
+    */
 
-    return false;
+    return true;
 }
 
 bool lexer_word_constructor::_testMergedRepresentation()

@@ -29,11 +29,13 @@ class LexerDataProxy : public ILexerDataProxy
 {
 private:
     const DfaManager* _dfaManager;
+    const ScanWords* _recognizedKeywords;
 public:
     LexerDataProxy() : _dfaManager(nullptr) {}
-    explicit LexerDataProxy(const DfaManager* dfaManager) : _dfaManager(dfaManager) {}
+    LexerDataProxy(const DfaManager* dfaManager, const ScanWords* recognizedKeywords) : _dfaManager(dfaManager), _recognizedKeywords(recognizedKeywords) {}
     virtual ~LexerDataProxy() {}
     virtual const DfaManager* getDfaManager() const { return _dfaManager; }    
+    virtual const ScanWords* getRecognizedKeywords() const { return _recognizedKeywords; }
 };
 
 #endif
