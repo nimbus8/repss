@@ -20,5 +20,42 @@
 
 class PhasedExecution
 {
+private:
+    lexer_configuration* _config;
 
+    //lexing
+    void executePhase1()
+    {
+
+    }
+
+    void executePhase2()
+    {
+
+    }
+public:
+    PhasedExecution()
+    {
+        ContextManager contextManager;
+        const lexer_configuration config;
+
+        auto lexerContext = contextManager.getContext<ContextType::AllowedTypes, ContextType::Lexer>();
+        const lexer_manager lexMan(&lexerContext,&config);
+
+        DLOG("past lexer manager creation.\n");
+
+        if (argc < 4)
+        {
+            std::cerr << "Error, correct usage:  repss str_cmp1 str_cmp2 input_file" << std::endl;
+        }
+
+        const string filename{argv[3]};
+        const string permissions{"rt"};
+
+        Scanner *scanner = new Scanner(&lexerContext);
+
+        scanner->processFile(filename, permissions);
+
+    }
+    void execute();
 };

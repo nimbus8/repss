@@ -212,11 +212,7 @@ int main(int argc, char* argv[])
                 const string filename{argv[3]};
                 const string permissions{"rt"};
 
-                DLOG("past permissions creation.\n");
-
                 Scanner *scanner = new Scanner(&lexerContext);
-
-                DLOG("past scanner creation.\n");
 
                 scanner->processFile(filename, permissions);
 

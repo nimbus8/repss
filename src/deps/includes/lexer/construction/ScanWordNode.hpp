@@ -77,51 +77,6 @@ public:
     //-implicitly (hence vector param in init()) - if one already exists we just use the existing reference.
     //maybe we can actually, move all this init stuff into constructor make ScanWordNode const??
     void init(std::vector<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd);
-/*    {
-        if (_lexerDfa == nullptr)
-        {
-            std::cout << "API Misuse: Either init has already been called, or nullptr was given to ScanWordNode constructor. Both bad." << std::endl;
-            exit(1);
-        }
-
-        _id = _lexerDfa->getId();
-        auto transitions = _lexerDfa->getTransitions();
-
-        for (auto aTransition : transitions)
-        {
-            auto stateAndInput = aTransition.getStateAndInput();
-            auto input = stateAndInput.getInput();
-
-            //check if the transition points to lexer_dfa for which a ScanWordNode already exists (has same id)
-
-            auto nextDfa = aTransition.getDfaNode();
-            auto nextDfaId = nextDfa->getId();
-
-            ScanWordNode* nextScanWordNode = nullptr;
-            for (auto existingScanWord : existingScanWordNodes)
-            {
-                if (existingScanWord->getId() == nextDfaId)
-                {
-                    nextScanWordNode = existingScanWord;
-                    break;
-                }
-            }
-
-            //if transition already exists in vector param, use it
-
-            if (nextScanWordNode == nullptr)
-            {//if no corresponding ScanWordNode already exists in vector param, create it, place in toBeInitd
-                nextScanWordNode = new ScanWordNode(nextDfa);
-                wordsToBeInitd.push_back(nextScanWordNode);
-                existingScanWordNodes.push_back(nextScanWordNode); 
-            }
-
-            std::pair<char, ScanWordNode*> inputToScanWordNode{input, nextScanWordNode};
-            _nextScanWordNode.emplace(inputToScanWordNode);
-        }
-
-        _lexerDfa = nullptr; //we don't need lexerDfa anymore. todo: after scanwords are made lexerDfas not needed at all
-    }*/
 
     int getId() const
     {
