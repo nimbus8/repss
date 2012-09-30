@@ -31,11 +31,29 @@ private:
     const DfaManager* _dfaManager;
     const ScanWords* _recognizedKeywords;
 public:
-    LexerDataProxy() : _dfaManager(nullptr) {}
+    LexerDataProxy() : _dfaManager(nullptr), _recognizedKeywords(nullptr) {}
     LexerDataProxy(const DfaManager* dfaManager, const ScanWords* recognizedKeywords) : _dfaManager(dfaManager), _recognizedKeywords(recognizedKeywords) {}
-    virtual ~LexerDataProxy() {}
-    virtual const DfaManager* getDfaManager() const { return _dfaManager; }    
-    virtual const ScanWords* getRecognizedKeywords() const { return _recognizedKeywords; }
+
+    virtual ~LexerDataProxy();
+
+    virtual const DfaManager* getDfaManager() const;    
+    virtual const ScanWords* getRecognizedKeywords() const;
 };
+
+LexerDataProxy::~LexerDataProxy()
+{
+}
+
+const DfaManager* LexerDataProxy::getDfaManager() const
+{
+    std::cout << "getDfaManager()" << std::endl;
+    return _dfaManager;
+}
+
+const ScanWords* LexerDataProxy::getRecognizedKeywords() const
+{
+    std::cout << "getRecognizedKeywords()" << std::endl;
+    return _recognizedKeywords;
+}
 
 #endif

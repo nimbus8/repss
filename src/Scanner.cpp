@@ -18,6 +18,7 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <iostream>
 #include <stdio.h>
 
 #include "deps/includes/lexer/Scanner.hpp"
@@ -43,6 +44,11 @@ void Scanner::printAnotatedData() const
 
 void Scanner::processFile(const std::string& filename, const std::string& permissions)
 {
+    DLOG("Starting Scanner::processFile\n");
+
+
+    std::cout << "processFile(...)" << std::endl;
+
     const size_t BUFFER_LEN = 1048576;
 
     char buffer[BUFFER_LEN];
@@ -56,7 +62,7 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
     //before that, making note of what was in the normal (if there is anything in) buffer and clearing it.
     std::string candidateKeyWordBuffer;
 
-    std::string bufferStr = ""; //is this being used?
+    std::string bufferStr(""); //is this being used?
 
     DLOG("Starting Scanner::processFile\n"); 
 
@@ -104,11 +110,23 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
 
         while (!REPSS_FileHandler::isEndOfFile(fileHandle))
         {
-            DLOG("Reading input\n");
+            DLOG("Reading input: ");
             const char c = REPSS_FileHandler::getCharacter(fileHandle);
+
+            std::cout << c << std::endl;
             DLOG("calling getNextScanWordNode(c)\n");
             const ScanWordNode* nextScanWordNode = (currentPlace == nullptr? nullptr : currentPlace->getNextScanWordNode(c));
             DLOG("getScanWordNode called and returned successfully\n");
+
+            if (nextScanWordNode == nullptr)
+                DLOG("NextScanWordNode == nullptr\n");
+            else
+                DLOG("NextScanWordNode != nullptr\n");
+
+            if (currentPlace != startPlace)
+                DLOG("currentPlace != startPlace\n");
+            else
+                DLOG("currentPlace == startPlace\n");
 
             if (nextScanWordNode != nullptr)
             {
@@ -128,6 +146,8 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                     //or even a group - the group representing scanwords(recognized keywords) with identical 
                     //uninterrupted transitions from the startplace). In this case we add to the candidateKeyWord buffer.
 
+                    DLOG("currentPlace != startPlace && NOT ACCEPTING NODE && NOT NEWLINE\n");
+
                     if (!isFollowingKeyWord)
                     {    
                         Arrays::appendCharacter(buffer,buffer_count++,c); 
@@ -136,9 +156,12 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                     else
                     {
                         candidateKeyWordBuffer.append(&c, 1);
+                        DLOG("Candidate keyword buffer: ");
                         DLOG((candidateKeyWordBuffer.c_str()));
+ 
+                        currentPlace = nextScanWordNode;
                     }
-                }
+                }   
                 else
                 {
                     bool isKeyword = false;
@@ -150,7 +173,10 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                         candidateKeyWordBuffer.append(&c, 1);
                         currentPlace = nextScanWordNode;
 
+                        DLOG("Started recording...:\n");
                         DLOG((candidateKeyWordBuffer.c_str()));
+                        std::cout << std::endl;
+                        isFollowingKeyWord = true;
                     }
                     else
                     {
@@ -178,6 +204,7 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                         captureBufferAndWrapData(scanWordNameBuffer, nameBufferLen, 50, isKeyword);
 
                         currentPlace = startPlace;
+                        isFollowingKeyWord = false;
                     }
 
                     /*
@@ -197,6 +224,34 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                     captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
                     */
                 }
+            }
+            else
+            {
+                bool isKeyword = false;
+                std::cout << "no leads" << std::endl;
+
+                if (c == '\n' || c == '%')
+                {
+                if (c == '\n')
+                {
+                    std::cout << "Lexer is line based so at every linebreak we cut it off" << std::endl;
+                }
+
+                if (c == '%')
+                {
+                    if (strlen(buffer) != 0)
+                    {
+                        captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
+                    }
+
+                    Arrays::appendCharacter(buffer,buffer_count++,c);
+                    isKeyword = true;
+                }
+
+                captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
+                }
+
+                currentPlace = startPlace;
             }
         }
 

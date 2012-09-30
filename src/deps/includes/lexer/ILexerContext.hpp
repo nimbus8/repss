@@ -25,6 +25,9 @@
 
 class ILexerContext
 {
+protected:
+    virtual ~ILexerContext() {}
+
 public:
     virtual void initLexerDataProxy(const ILexerDataProxy* lexerDataProxy) = 0;
     virtual const ILexerDataProxy* getLexerDataProxy() const = 0;

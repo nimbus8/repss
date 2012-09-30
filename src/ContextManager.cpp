@@ -33,7 +33,7 @@ int TestContextMan()
 	man.getContext<ContextType::AllowedTypes, ContextType::Parser>().doMe();
         man.getContext<ContextType::AllowedTypes, ContextType::Lexer>().doMe();
 
-	ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer> ctx;
+	ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer> ctx(nullptr);
 	ctx.doMe();
 
 	return 0;

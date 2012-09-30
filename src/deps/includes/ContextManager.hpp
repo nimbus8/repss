@@ -45,11 +45,14 @@ private:
     std::vector<std::string> _annotatedData;
     ScanWords* _scanWords; //put this into LexerDataProxy
 
-protected:
+public:
+    Context() : _lexerDataProxy(nullptr), _scanWords(nullptr) {}
+
     void initLexerDataProxyImpl(ContextType::AllowedTypes contextTypeAsLexer, const ILexerDataProxy* lexerDataProxy)
     {
         if (contextTypeAsLexer != ContextType::Lexer)
         {
+            std::cout << "initLexerDataProxImpl:: not ContextType::Lexer" << std::endl;
             return;
         }
 
@@ -58,6 +61,8 @@ protected:
             std::cout << "Warning, trying to initialized lexerDataProxy TWICE - this is NOT allowed" << std::endl;
             return;
         }
+
+        std::cout << "initLexerDataProxyImpl:: just about to initialize lexer data proxy with const cast" << std::endl;
 
         _lexerDataProxy = const_cast<ILexerDataProxy*>(lexerDataProxy);
     }
@@ -99,6 +104,7 @@ protected:
         if (contextTypeAsLexer == ContextType::Lexer)
         {
             size_t numOfEntries = data.size();
+            std::cout << "Setting annotated data with vector size = " << numOfEntries << std::endl;
             for (int i = 0; i < numOfEntries; i++)
             {
                const std::string entry(data.at(i));
@@ -144,9 +150,14 @@ protected:
             break;
         }
     };
-public:
-	Context() {}
-	~Context() {}
+
+    Context(Context* ctx)
+    {
+        _lexerDataProxy = ctx->_lexerDataProxy;
+        _annotatedData = ctx->_annotatedData;
+        _scanWords = ctx->_scanWords;      
+    }
+    ~Context() {}
 };	
 
 class ContextManager
@@ -157,61 +168,74 @@ public:
         typedef ContextType::AllowedTypes _AllowedTypes_;
 
 	template<class T, T V>
-	class TypedContext : public Context
+	class TypedContext
 	{
+        private:
+            Context* _refContext;
 	public:
-                //explicit TypedContext(Context ctx) : _globalContext(ctx) {}
-                void doMe() { Context::doMe(ContextType::NoType); }
+            TypedContext() : _refContext(nullptr) {}   
+            explicit TypedContext(Context* ctx) : _refContext(ctx) {}
+            ~TypedContext() {}
+            //void doMe() { Context::doMe(ContextType::NoType); }
 	};
 
 	//default template for getContext - rest in implementation file
 	template<class T, T V>
 	TypedContext<T, V> getContext()
 	{
-		TypedContext<T, V> ret;
+		TypedContext<T, V> ret(&_globalContext);
 		return ret;
 	}
 
-	Context& requestContext(ContextType type);
+	//Context& requestContext(ContextType type);
 };
 
 template<>
 class ContextManager::TypedContext <ContextType::AllowedTypes, ContextType::Lexer>
-    : public Context, public ILexerContext
+    : virtual public ILexerContext
 {
+private:
+    Context* _refContext;
     //ILexerDataProxy* _lexerDataProxy;
 public:
+    ContextManager::TypedContext() {}
+    explicit TypedContext(Context* ctx) : _refContext(ctx) {}
+
+    ~TypedContext()
+    {
+    }
+
     virtual void initLexerDataProxy(const ILexerDataProxy* lexerDataProxy)
     {
-        Context::initLexerDataProxyImpl(ContextType::Lexer, lexerDataProxy);
+        _refContext->initLexerDataProxyImpl(ContextType::Lexer, lexerDataProxy);
     }
 
     virtual const ILexerDataProxy* getLexerDataProxy() const
     {
-        return Context::getLexerDataProxyImpl(ContextType::Lexer);
+        return _refContext->getLexerDataProxyImpl(ContextType::Lexer);
     }
 
     virtual void initScanWords(const ScanWords* scanWords)
     {
-        Context::initScanWordsImpl(ContextType::Lexer, scanWords);
+        _refContext->initScanWordsImpl(ContextType::Lexer, scanWords);
     }
 
     virtual void setAnnotatedData(const std::vector<std::string>& data)
     {
         std::cout << "CtxMan TypedContext <> setAnnotatedData" << std::endl;
-        Context::setAnnotatedDataImpl(ContextType::Lexer, data);
+        _refContext->setAnnotatedDataImpl(ContextType::Lexer, data);
     }
 
     virtual void printAnnotatedData() const 
     {
         std::cout << "CtxMan TypedContext <> printAnnotatedData" << std::endl;
-        Context::printAnnotatedDataImpl(ContextType::Lexer);
+        _refContext->printAnnotatedDataImpl(ContextType::Lexer);
     }
 
     virtual const ScanWords* getScanWords() const
     {
         std::cout << "CtxMan TypedContext <> getScanWords" << std::endl;
-        return Context::getScanWordsImpl(ContextType::Lexer);
+        return _refContext->getScanWordsImpl(ContextType::Lexer);
     }
 
     /*
@@ -223,24 +247,37 @@ public:
     void printAnnotatedData() const
     {
         std::cout << "CtxMan TypedContext <> printAnnotatedData" << std::endl;
-        Context::printAnnotatedData(ContextType::Lexer);
+        _refContext->printAnnotatedData(ContextType::Lexer);
     }*/
 
-    void doMe() { Context::doMe(ContextType::Lexer); }
+    void doMe() { _refContext->doMe(ContextType::Lexer); }
 };
 
 template<>
 class ContextManager::TypedContext <ContextType::AllowedTypes, ContextType::Parser> : public Context
 {
+private:
+    Context* _refContext;
 public:
-        void doMe() { Context::doMe(ContextType::Parser); }
+    TypedContext() {}
+    explicit TypedContext(Context* ctx) : _refContext(ctx) {}
+    void doMe() { _refContext->doMe(11); }
 };
 
 template<>
 class ContextManager::TypedContext <ContextType::AllowedTypes, ContextType::NoType> : public Context
 {
+private:
+    Context* _refContext;
 public:
-        void doMe() { Context::doMe(ContextType::NoType); }
+    TypedContext() {}
+    explicit TypedContext(Context* ctx) : _refContext(ctx) {}
+
+    ~TypedContext()
+    {
+    }
+
+    void doMe() { Context::doMe(ContextType::NoType); }
 };
 
 int TestContextMan();

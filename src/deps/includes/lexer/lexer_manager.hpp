@@ -74,11 +74,21 @@ public:
 
             _lexerDataProxy = new LexerDataProxy(dfaManager, scanWords);
 
+            DLOG("Initializing lexer data proxy\n");
+
             context->initLexerDataProxy((const ILexerDataProxy*)_lexerDataProxy);
-            context->initScanWords(scanWords);
+//            context->initScanWords(scanWords);
 
+            DLOG("initialized lexer data proxy successfully\n");
 
-            DLOG("Initialized lexer data proxy\n");
+            auto dataProxy = context->getLexerDataProxy();
+
+            DLOG("got lexer data proxy from context\n");
+
+            auto recKeys = dataProxy->getRecognizedKeywords();
+
+            DLOG(" finished intializing lexer_manager\n");
+           
 	}
 
         ~lexer_manager() {}
