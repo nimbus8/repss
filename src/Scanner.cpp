@@ -46,43 +46,21 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
 {
     DLOG("Starting Scanner::processFile\n");
 
-
-//    std::cout << "processFile(...)" << std::endl;
-
     const size_t BUFFER_LEN = 1048576;
 
     char buffer[BUFFER_LEN];
     size_t buffer_count = 0;
 
-    std::string bufferForPossibleKeyword; 
     //used to hold candidate keywords: the minute we begin to FOLLOW a scan word (advance past startScanWordNode), we start adding to this. 
-    //and if we error out while FOLLOWING when shift the contents of the candidateKeyWordBuffer onto main buffer.
+    //and if we error out while FOLLOWING we shift the contents of the candidateKeyWordBuffer onto main buffer.
     //If we reach an accepting node while the contents of the candidateKeyWordBuffer is non empty, this just means
     //that we've successfully recognized a keyword and we make note of that. Emptying the candidate buffer AND
-    //before that, making note of what was in the normal (if there is anything in) buffer and clearing it.
+    //before that, making note of what was in the normal buffer (if anything) and clearing it.
     std::string candidateKeyWordBuffer;
 
-    std::string bufferStr(""); //is this being used?
-
-//    DLOG("Starting Scanner::processFile\n"); 
-
-    //okay below, we need to let ILexerDataProxy from ILexerContext
     const ILexerDataProxy* dataProxy = _context->getLexerDataProxy();
-
-/*
-    DLOG(" Rerieved lexer data proxy\n");
-
-    if (dataProxy == nullptr)
-    {
-        DLOG("Data proxy is null! Oy...\n");
-    }
-    else
-    {
-        DLOG("Data proxy is NOT null! GREAT!\n");
-    }
-*/
     const DfaManager* dfaManager = dataProxy->getDfaManager();
-//    DLOG(" Retrieved Dfa Manager\n");
+
     try
     {
         REPSS_FileHandler::FileHandle fileHandle{filename, permissions};
@@ -91,18 +69,6 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
 
         auto scanWords = dataProxy->getRecognizedKeywords();
 
-/*       
-        if (scanWords == nullptr)
-        {
-            DLOG("scanWords == nullptr, CRAP!\n");
-        }
-        else
-        {
-            DLOG("scanWords != nullptr, GOOD!\n");
-        }
-*/  
-//        DLOG("Scan words retrieved\n");
-  
         auto startPlace = scanWords;
         auto currentPlace = startPlace;
 
@@ -113,25 +79,9 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
 
         while (!REPSS_FileHandler::isEndOfFile(fileHandle))
         {
-//            DLOG("Reading input: ");
             const char c = REPSS_FileHandler::getCharacter(fileHandle);
 
-//            std::cout << c << std::endl;
-//            DLOG("calling getNextScanWordNode(c)\n");
             const ScanWordNode* nextScanWordNode = (currentPlace == nullptr? nullptr : currentPlace->getNextScanWordNode(c));
-//            DLOG("getScanWordNode called and returned successfully\n");
-
-/*
-            if (nextScanWordNode == nullptr)
-                DLOG("NextScanWordNode == nullptr\n");
-            else
-                DLOG("NextScanWordNode != nullptr\n");
-
-            if (currentPlace != startPlace)
-                DLOG("currentPlace != startPlace\n");
-            else
-                DLOG("currentPlace == startPlace\n");
-*/
 
             if (nextScanWordNode != nullptr)
             {
@@ -142,27 +92,15 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                     /* case 2: */ && !(dfaManager->isAcceptingNode(nextScanWordNode->getId()))
                     /* case 3: */ && c != '\n')
                 {
-                    //- If case for where after we've read a character and we know it
-                    //doesn't look like a keyword is present at this point (already determined
-                    //we're NOT at startplace/acceptingplace or a newline/endoffile) so further
-                    //we're not (in the process of) following the progression of a certain scanword
-                    //past the startplace. So we add to main buffer.
-                    //- else case where we ARE following the progression of some scanword(could be just one 
-                    //or even a group - the group representing scanwords(recognized keywords) with identical 
-                    //uninterrupted transitions from the startplace). In this case we add to the candidateKeyWord buffer.
-
                     DLOG("currentPlace != startPlace && NOT ACCEPTING NODE && NOT NEWLINE\n");
 
                     if (!isFollowingKeyWord)
                     {    
                         Arrays::appendCharacter(buffer,buffer_count++,c); 
-//                        DLOG(buffer);
                     }
                     else
                     {
                         candidateKeyWordBuffer.append(&c, 1);
-//                        DLOG("Candidate keyword buffer: ");
-//                        DLOG((candidateKeyWordBuffer.c_str()));
  
                         currentPlace = nextScanWordNode;
                     }
@@ -174,13 +112,9 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                     if (currentPlace == startPlace)
                     {
                         //we start recording
-                        //Arrays::appendCharacter(buffer,buffer_count++,c);
                         candidateKeyWordBuffer.append(&c, 1);
                         currentPlace = nextScanWordNode;
 
-//                        DLOG("Started recording...:\n");
-//                        DLOG((candidateKeyWordBuffer.c_str()));
-//                        std::cout << std::endl;
                         isFollowingKeyWord = true;
                     }
                     else
@@ -195,12 +129,12 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                             //we stop recording, label with end state name
                             if (strlen(buffer) > 0)
                             {
-                                //oh yeah it should be clear that capture is to "take, basically clearing".
+                                //oh yeah it should be clear that capture is to "take, and to clear".
                                 //not too obvious...name change required
                                 captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
                             }
 
-                            //here we must add the keyword "the official name"
+                            //here we must add the keyword's "official name"
                             std::string scanWordName(dfaManager->getAcceptingNodeName(nextScanWordNode->getId()));
                             strcpy(scanWordNameBuffer, scanWordName.c_str());
                         }
@@ -212,29 +146,11 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                         isFollowingKeyWord = false;
                         candidateKeyWordBuffer.clear();
                     }
-
-                    /*
-                    if (c == '%')
-                    {
-                        if (strlen(buffer) != 0)
-                        {
-                            //oh yeah it should be clear that capture is to "take, basically clearing".
-                            //not too obvious...name change required
-                            captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
-                        }
-
-                        Arrays::appendCharacter(buffer,buffer_count++,c);
-                        isKeyword = true;
-                    }
-
-                    captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
-                    */
                 }
             }
             else
             {
                 bool isKeyword = false;
-//                std::cout << "no leads" << std::endl;
 
                 //transfer whatever (if anything) is in the 
                 if (candidateKeyWordBuffer.size() > 0)
@@ -252,11 +168,6 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
  
                 if (c == '\n' || c == '%')
                 {
-                    if (c == '\n')
-                    {
-//                        std::cout << "Lexer is line based so at every linebreak we cut it off" << std::endl;
-                    }
-
                     if (c == '%')
                     {
                         if (strlen(buffer) != 0)
