@@ -18,6 +18,8 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <unordered_set>
+
 #include "deps/includes/lexer/construction/lexer_word_constructor.hpp"
 #include "deps/includes/lexer/construction/model_representation/finite_autonoma/StateAndInput.hpp"
 #include "deps/includes/lexer/construction/model_representation/finite_autonoma/DfaTransition.hpp"
@@ -151,16 +153,30 @@ bool lexer_word_constructor::_testScanWords()
     return retResult;
 }
 
+//at the end of this function, the toSet will have all the elements in fromVector.
+//the reverse isn't necessarily true
+//todo:will, this may be a cool thing to put under until...maybe (maybe also support vector to vector transfer)
+void transferDifference(std::unordered_set<ScanWordNode*>& toSet, const std::vector<ScanWordNode*>& fromVector)
+{
+    for (auto element : fromVector)
+    {
+        //transfer only elements in fromVector, not in toSet, to toSet
+        if (toSet.find(element) == toSet.end())
+        {
+            toSet.emplace(element);
+        }
+    }
+}
+
 bool lexer_word_constructor::_constructScanWords()
 {
-    std::vector<ScanWordNode*> existingScanWordNodes;
+    std::unordered_set<ScanWordNode*> existingScanWordNodes;
     std::vector<ScanWordNode*> nodesToBeInitd;
 
-    //note: aggregate and delete for scan nodes may be necessary
+    //note: todo:will aggregate and delete for scan nodes may be necessary
     ScanWordNode* startScanWordNode = new ScanWordNode(_startWordForMergedRepr);
-    //_scanWords = startScanWordNode;
 
-    existingScanWordNodes.push_back(startScanWordNode);
+    existingScanWordNodes.emplace(startScanWordNode);
     nodesToBeInitd.push_back(startScanWordNode);
 
     while (nodesToBeInitd.size() > 0)
@@ -170,20 +186,13 @@ bool lexer_word_constructor::_constructScanWords()
 
         std::cout << "Popped Back (nodesToBeInitd): id=(" << wordNode->getId() << ")" << std::endl;
         wordNode->init(existingScanWordNodes, nodesToBeInitd);
+
+        transferDifference(existingScanWordNodes, nodesToBeInitd);
     }
 
     _scanWords = startScanWordNode;
 
     _testScanWords();
-
-    /*
-    //this is just for now: we need to find a good spot to delete objects
-    for (int i = 0; i < existingScanWordNodes.size(); i++)
-    {
-        auto scanWordNode = existingScanWordNodes.at(i);
-        delete scanWordNode;
-    }
-    */
 
     return true;
 }

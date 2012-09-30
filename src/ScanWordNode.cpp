@@ -23,8 +23,10 @@
 
 //todo:will note, not liking how we modify existingScanWordNodes, make const and let the calling function manage
 //transferring the difference at the end of this call to existingScanWordNodes.
-void ScanWordNode::init(std::vector<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd)
+void ScanWordNode::init(const std::unordered_set<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd)
 {
+    std::unordered_set<ScanWordNode*> locallyCreatedScanWordNodes;
+
     if (_lexerDfa == nullptr)
     {
         std::cout << "API Misuse: Either init has already been called, or nullptr was given to ScanWordNode constructor. Both bad." << std::endl;
@@ -44,6 +46,13 @@ void ScanWordNode::init(std::vector<ScanWordNode*>& existingScanWordNodes, std::
         auto nextDfa = aTransition.getDfaNode();
         auto nextDfaId = nextDfa->getId();
 
+        //note: I made a change so that now we DON'T alter, existingScanWordNodes container(was a vector before)
+        //       in the previous implementation in the case where there were two transitions from THIS node
+        //       that pointed to the same dfa (sorted of like partially ranged input), we DID NOT discriminate 
+        //       based on input character and I assume that the second transition encountered would be lost.
+        //       This is not so important now, but should we ever want to support this (accepting partially
+        //       ranged input - construction is already possible) [todo:will we] may want to test it to see 
+        //       if what we're doing here is acceptable. Maybe we need to check the code for the merge process as well.
         ScanWordNode* nextScanWordNode = nullptr;
         for (auto existingScanWord : existingScanWordNodes)
         {
@@ -59,8 +68,8 @@ void ScanWordNode::init(std::vector<ScanWordNode*>& existingScanWordNodes, std::
         if (nextScanWordNode == nullptr)
         {//if no corresponding ScanWordNode already exists in vector param, create it, place in toBeInitd
             nextScanWordNode = new ScanWordNode(nextDfa);
-            wordsToBeInitd.push_back(nextScanWordNode);
-            existingScanWordNodes.push_back(nextScanWordNode);
+            wordsToBeInitd.push_back(nextScanWordNode); //the calling function should take care of transferring elements in wordsToBeInitd to existingScanWordNodes
+            //existingScanWordNodes.emplace(nextScanWordNode);
         }
 
         std::pair<char, ScanWordNode*> inputToScanWordNode{input, nextScanWordNode};

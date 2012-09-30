@@ -22,6 +22,7 @@
 #define _SCAN_WORD_NODE_
 
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 #include "model_representation/finite_autonoma/lexer_dfa.hpp"
@@ -76,7 +77,7 @@ public:
     //-ScanWordNodes, so we know not to create one (with existing id) explicitly or even 
     //-implicitly (hence vector param in init()) - if one already exists we just use the existing reference.
     //maybe we can actually, move all this init stuff into constructor make ScanWordNode const??
-    void init(std::vector<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd);
+    void init(const std::unordered_set<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd);
 
     int getId() const
     {

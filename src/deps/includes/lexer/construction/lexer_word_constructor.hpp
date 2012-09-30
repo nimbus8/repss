@@ -80,6 +80,7 @@ private:
 
         const lexer_dfa_builder lexerBuilder;
         _startWordForMergedRepr = lexerBuilder.mergeDfas(dfaWords, dfaManager);
+
         bool resultOfMergedDataTest = _testMergedRepresentation();
  
         std::cout << "Merge Test " << (resultOfMergedDataTest? "SUCCEEDED!" : "FAILED!!") << std::endl << std::endl;
