@@ -47,7 +47,7 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
     DLOG("Starting Scanner::processFile\n");
 
 
-    std::cout << "processFile(...)" << std::endl;
+//    std::cout << "processFile(...)" << std::endl;
 
     const size_t BUFFER_LEN = 1048576;
 
@@ -64,10 +64,12 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
 
     std::string bufferStr(""); //is this being used?
 
-    DLOG("Starting Scanner::processFile\n"); 
+//    DLOG("Starting Scanner::processFile\n"); 
 
     //okay below, we need to let ILexerDataProxy from ILexerContext
     const ILexerDataProxy* dataProxy = _context->getLexerDataProxy();
+
+/*
     DLOG(" Rerieved lexer data proxy\n");
 
     if (dataProxy == nullptr)
@@ -78,9 +80,9 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
     {
         DLOG("Data proxy is NOT null! GREAT!\n");
     }
-
+*/
     const DfaManager* dfaManager = dataProxy->getDfaManager();
-    DLOG(" Retrieved Dfa Manager\n");
+//    DLOG(" Retrieved Dfa Manager\n");
     try
     {
         REPSS_FileHandler::FileHandle fileHandle{filename, permissions};
@@ -88,7 +90,8 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
         Arrays::clearCharacters(buffer, BUFFER_LEN);
 
         auto scanWords = dataProxy->getRecognizedKeywords();
-       
+
+/*       
         if (scanWords == nullptr)
         {
             DLOG("scanWords == nullptr, CRAP!\n");
@@ -97,8 +100,8 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
         {
             DLOG("scanWords != nullptr, GOOD!\n");
         }
-  
-        DLOG("Scan words retrieved\n");
+*/  
+//        DLOG("Scan words retrieved\n");
   
         auto startPlace = scanWords;
         auto currentPlace = startPlace;
@@ -110,14 +113,15 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
 
         while (!REPSS_FileHandler::isEndOfFile(fileHandle))
         {
-            DLOG("Reading input: ");
+//            DLOG("Reading input: ");
             const char c = REPSS_FileHandler::getCharacter(fileHandle);
 
-            std::cout << c << std::endl;
-            DLOG("calling getNextScanWordNode(c)\n");
+//            std::cout << c << std::endl;
+//            DLOG("calling getNextScanWordNode(c)\n");
             const ScanWordNode* nextScanWordNode = (currentPlace == nullptr? nullptr : currentPlace->getNextScanWordNode(c));
-            DLOG("getScanWordNode called and returned successfully\n");
+//            DLOG("getScanWordNode called and returned successfully\n");
 
+/*
             if (nextScanWordNode == nullptr)
                 DLOG("NextScanWordNode == nullptr\n");
             else
@@ -127,6 +131,7 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                 DLOG("currentPlace != startPlace\n");
             else
                 DLOG("currentPlace == startPlace\n");
+*/
 
             if (nextScanWordNode != nullptr)
             {
@@ -151,13 +156,13 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                     if (!isFollowingKeyWord)
                     {    
                         Arrays::appendCharacter(buffer,buffer_count++,c); 
-                        DLOG(buffer);
+//                        DLOG(buffer);
                     }
                     else
                     {
                         candidateKeyWordBuffer.append(&c, 1);
-                        DLOG("Candidate keyword buffer: ");
-                        DLOG((candidateKeyWordBuffer.c_str()));
+//                        DLOG("Candidate keyword buffer: ");
+//                        DLOG((candidateKeyWordBuffer.c_str()));
  
                         currentPlace = nextScanWordNode;
                     }
@@ -173,9 +178,9 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                         candidateKeyWordBuffer.append(&c, 1);
                         currentPlace = nextScanWordNode;
 
-                        DLOG("Started recording...:\n");
-                        DLOG((candidateKeyWordBuffer.c_str()));
-                        std::cout << std::endl;
+//                        DLOG("Started recording...:\n");
+//                        DLOG((candidateKeyWordBuffer.c_str()));
+//                        std::cout << std::endl;
                         isFollowingKeyWord = true;
                     }
                     else
@@ -205,6 +210,7 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
 
                         currentPlace = startPlace;
                         isFollowingKeyWord = false;
+                        candidateKeyWordBuffer.clear();
                     }
 
                     /*
@@ -228,27 +234,45 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
             else
             {
                 bool isKeyword = false;
-                std::cout << "no leads" << std::endl;
+//                std::cout << "no leads" << std::endl;
 
-                if (c == '\n' || c == '%')
+                //transfer whatever (if anything) is in the 
+                if (candidateKeyWordBuffer.size() > 0)
                 {
-                if (c == '\n')
-                {
-                    std::cout << "Lexer is line based so at every linebreak we cut it off" << std::endl;
-                }
-
-                if (c == '%')
-                {
-                    if (strlen(buffer) != 0)
+                    //this really means that we chased a keyword and came up short
+                    //so transfer contents
+                    size_t candidateKeyWordBufferSize = candidateKeyWordBuffer.size();
+                    for (size_t i = 0; i < candidateKeyWordBufferSize; i++)
                     {
-                        captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
+                        buffer[buffer_count++] = candidateKeyWordBuffer.at(i);
                     }
 
-                    Arrays::appendCharacter(buffer,buffer_count++,c);
-                    isKeyword = true;
+                    candidateKeyWordBuffer.clear();
                 }
+ 
+                if (c == '\n' || c == '%')
+                {
+                    if (c == '\n')
+                    {
+//                        std::cout << "Lexer is line based so at every linebreak we cut it off" << std::endl;
+                    }
 
-                captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
+                    if (c == '%')
+                    {
+                        if (strlen(buffer) != 0)
+                        {
+                            captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
+                        }
+
+                        Arrays::appendCharacter(buffer,buffer_count++,c);
+                        isKeyword = true;
+                    }
+
+                    captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
+                }
+                else
+                {
+                    Arrays::appendCharacter(buffer, buffer_count++,c);
                 }
 
                 currentPlace = startPlace;
