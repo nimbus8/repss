@@ -25,13 +25,18 @@
 //transferring the difference at the end of this call to existingScanWordNodes.
 void ScanWordNode::init(const std::unordered_set<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd)
 {
-    std::unordered_set<ScanWordNode*> locallyCreatedScanWordNodes;
-
     if (_lexerDfa == nullptr)
     {
         std::cout << "API Misuse: Either init has already been called, or nullptr was given to ScanWordNode constructor. Both bad." << std::endl;
         exit(1);
     }
+
+    //note: To handle case where two transitions point to same lexer dfa ( say with different
+    //       inputs, eg: partially ranged input (a|b|c)->some_lexer_dfa ) we have locallyCreatedScanWordNodes.
+    //note: This is not so important now, but should we ever want to support accepting partially
+    //       ranged input (construction is already possible) [todo:will] we may want to test to see     
+    //       if what we're doing here is acceptable. Maybe we need to check the code for the merge process as well.
+    std::vector<ScanWordNode*> locallyCreatedScanWordNodes;
 
     _id = _lexerDfa->getId();
     auto transitions = _lexerDfa->getTransitions();
@@ -46,31 +51,41 @@ void ScanWordNode::init(const std::unordered_set<ScanWordNode*>& existingScanWor
         auto nextDfa = aTransition.getDfaNode();
         auto nextDfaId = nextDfa->getId();
 
-        //note: I made a change so that now we DON'T alter, existingScanWordNodes container(was a vector before)
-        //       in the previous implementation in the case where there were two transitions from THIS node
-        //       that pointed to the same dfa (sorted of like partially ranged input), we DID NOT discriminate 
-        //       based on input character and I assume that the second transition encountered would be lost.
-        //       This is not so important now, but should we ever want to support this (accepting partially
-        //       ranged input - construction is already possible) [todo:will we] may want to test it to see 
-        //       if what we're doing here is acceptable. Maybe we need to check the code for the merge process as well.
         ScanWordNode* nextScanWordNode = nullptr;
-        for (auto existingScanWord : existingScanWordNodes)
+
+        //check locally created scan words first
+        for (auto existingScanWordNode : locallyCreatedScanWordNodes)
         {
-            if (existingScanWord->getId() == nextDfaId)
+            if (existingScanWordNode->getId() == nextDfaId)
             {
-                nextScanWordNode = existingScanWord;
+                nextScanWordNode = existingScanWordNode;
                 break;
             }
         }
 
-        //if transition already exists in vector param, use it
-
+        //if scan word node was already created locally, we can skip ahead
         if (nextScanWordNode == nullptr)
-        {//if no corresponding ScanWordNode already exists in vector param, create it, place in toBeInitd
-            nextScanWordNode = new ScanWordNode(nextDfa);
-            wordsToBeInitd.push_back(nextScanWordNode); //the calling function should take care of transferring elements in wordsToBeInitd to existingScanWordNodes
-            //existingScanWordNodes.emplace(nextScanWordNode);
+        {
+            //if transition already exists in unordered_set param, use it
+            for (auto existingScanWordNode : existingScanWordNodes)
+            {
+                if (existingScanWordNode->getId() == nextDfaId)
+                {
+                    nextScanWordNode = existingScanWordNode;
+                    break;
+                }
+            }
+
+            //if it exists it neither unordered_set param and not in locallyCreatedScanWordNodes container, we make it
+            if (nextScanWordNode == nullptr)
+            {//if no corresponding ScanWordNode already exists in vector param, create it, place in toBeInitd
+                nextScanWordNode = new ScanWordNode(nextDfa);
+                wordsToBeInitd.push_back(nextScanWordNode); //the calling function should take care of transferring elements in wordsToBeInitd to existingScanWordNodes
+                locallyCreatedScanWordNodes.push_back(nextScanWordNode); //to handle case where two transitions point to same lexer dfa (say with different inputs)
+            }
         }
+
+        //at this point nextScanWordNode is guaranteed to be set to something (not nullptr)
 
         std::pair<char, ScanWordNode*> inputToScanWordNode{input, nextScanWordNode};
         _nextScanWordNode.emplace(inputToScanWordNode);
