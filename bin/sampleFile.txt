@@ -4,13 +4,20 @@ lowly rolly polly olly.
 
 /[/]
 
-lowly rolly polly olly. %sample.cpp% Not but a week prior in a place not far from here, men in cardigans sat about a fire consuming roaches. The fire itself was unremarkable, fire to them merely a tool necessary to their occupations. The flames danced in and about the darkness of their eyes as the men devoured roach after roach of the worlds finest breed. These roaches, you see, were no ordinary roaches. Few roaches can be considered ordinary to begin with, but we recognize these roaches by the attention they command - the delicacy with which they are handled. You see, most don't like roaches. They can't examplain %why%, but you see it is only because they've been conditioned.  The lengths to which these cardigan clad men went in the pursuit of the finest breeds bordered on insanity. That same vigor with which we are all familiar, interestingly enough, has actually tempered relations between neighbouring states and provinces the world over.
+lowly rolly polly olly. %sample.cpp% I assure you not nearly a week has passed. Not since men in cardigans sat about a fire consuming/enjoying roaches. The fire itself was unremarkable. All that felt it's warmth, thought it unremarkable. Fire to them merely a tool necessary to their occupations; to be jetesonned, lampooned, left on it's own to simmer - ensuring no seed could ever prosper in it's wake etcera etcera. A means to a ruinous end. There at that moment, its purpose was equally self-serving. The flames danced in and about the dark pits of their eyes as the men devoured roach after roach one at a time, like (a true group of) dining philosophers - a joke repeated often. These roaches, you see, were no ordinary roaches. Few roaches can be considered ordinary to begin with, but we recognize these roaches by the attention that they command - the delicacy with which they are handled. For many there exists no greater horror... They can't examplain %why% exactly, it's a just one of those deep feelings of revulsion - an involuntary reflex if you will. The result of persuasive conditioning.  It's worth noting the extent to which these cardigan clad men came and went in pursuit of so called "rarified breeds" - it bordered on insanity. That same vigor with which we are all familiar, interestingly enough, has actually tempered relations between neighbouring states and provinces the world over.
 /[rep] second half /[/]
-Those who cared - the *artisans*, the *connaisseurs*, *the politicians* - were never interested in their local varieties. The stench of familiarity is so great, even amoung the most enthused, that governments and private contractors chartered steamboats, military jets, and lunar space shuttles to be packed to the tilt. The roaches were transported from the far reaches of the congo to the dirty underground basements %where the cardigan clad men would congregate%, often sporting beaded masks in a lazy attempt to hide their %identities%. Needless to say the %boatsmen%, %pilots%, and %astronauts% were never in such precarious situations - every man received a gold brick for each roach they kept their hands off of. All went home poor, but you in know in this world there are much more important things.
+Those who cared - the *artisans*, the *connaisseurs*, *the politicians* - were never so interested in their local varieties. The stench of familiarity so great, even amoung the most enthused, that governments and private contractors chartered steamboats, military jets, and lunar space shuttles to be packed to the tilt. The roaches were transported from the far reaches of the congo to the dirty underground basements %where the cardigan clad men would congregate%, often sporting beaded masks in a lazy attempt to hide their %identities% [1]. Needless to say the %boatsmen%, %pilots%, and %astronauts% were never in such precarious situations - every man received a gold brick for each roach they kept their hands off of. All went home poor, but you in know in this world there are much more important things.
 /[sco] 
-/[rep]  
+    /[rep]  
         this is it.
+    /[/]
+/[rep]
+        that is all.
 /[/]
 /[/]
-What's that you say? Do % you doubt me?? %
 
+Unbelievable eh? That's Adawe fo you! The innocent stay away.
+
+
+[1]
+In Belgium every second sunday is rarely referred to as "nuit de pieds nu". (one might hear colloquialisms of the same humour spoken elsewhere)
