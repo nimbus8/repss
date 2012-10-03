@@ -137,6 +137,7 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                             //here we must add the keyword's "official name"
                             std::string scanWordName(dfaManager->getAcceptingNodeName(nextScanWordNode->getId()));
                             strcpy(scanWordNameBuffer, scanWordName.c_str());
+                            isKeyword = true;
                         }
 
                         size_t nameBufferLen = strlen(scanWordNameBuffer);

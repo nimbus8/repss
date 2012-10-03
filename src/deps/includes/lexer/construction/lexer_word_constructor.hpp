@@ -37,6 +37,8 @@
 #ifndef _LEXER_WORD_CONSTRUCTOR_
 #define _LEXER_WORD_CONSTRUCTOR_
 
+typedef std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> wordrepr_and_transition_Pair_t;
+
 //lexer_word constructor
 class lexer_word_constructor
 {
@@ -53,10 +55,13 @@ private:
     //third/final phase of construction - run time optimization / (maybe todo: phase 1 & 2 cleanup)
     ScanWords* _scanWords;
   
+    typedef std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> wordrepr_and_transition_Pair_t;
+
     //intermediate functions for first phase
     std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructPercentReps();
     std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructSquareBracketReps();
     std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> __insertNamedRepitionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa);
+    wordrepr_and_transition_Pair_t _constructEnd();
 
     void _destructDfasAndTransitions();
 

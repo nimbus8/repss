@@ -50,9 +50,13 @@ private:
         }
     };	
 
+    const unsigned int START_KEY_VALUE_FOR_TENTATIVE_NAME = 128000;
+    unsigned int _lastTentativeNameKeyCreated;
+
+    std::unordered_map<int, int> _tentativeNameKeyToEndStateIdMap;
     std::unordered_map<int, std::string, DfaIdHashFunction, DfaIdEquals> _endStateNameMap;
 public:
-    DfaManager() : _idCount(0) {}
+    DfaManager() : _idCount(0), _lastTentativeNameKeyCreated(0) {}
     ~DfaManager() {}
 
     lexer_dfa* createDfa() 
@@ -76,6 +80,57 @@ public:
         lexer_dfa* ret = new lexer_dfa(nextIdCount);
         _dfas.push_back(ret);
         return ret;
+    }
+
+    //we return a pair of lexer_dfa and an unsigned integer - the latter acts as a key, needed to update tentative
+    //name.
+    //todo:will weds oct 3, 2012 - test this -
+    std::pair<lexer_dfa*, unsigned int> createAcceptingDfaTentativelyNamed(const std::string initialTentativeName)
+    {
+        auto lexerDfa = createAcceptingDfa(initialTentativeName);
+
+        unsigned int tentativeNameKey;
+        if (_lastTentativeNameKeyCreated >= START_KEY_VALUE_FOR_TENTATIVE_NAME)
+        {
+            tentativeNameKey = _lastTentativeNameKeyCreated + 1;
+            _lastTentativeNameKeyCreated = tentativeNameKey;
+        }
+        else
+        {
+            tentativeNameKey = START_KEY_VALUE_FOR_TENTATIVE_NAME;
+            _lastTentativeNameKeyCreated = tentativeNameKey;
+        }
+
+        std::pair<unsigned int, int> tentativeNameKeyAndEndStateId{tentativeNameKey, lexerDfa->getId()};
+        _tentativeNameKeyToEndStateIdMap.emplace(tentativeNameKeyAndEndStateId);
+
+        std::pair<lexer_dfa*,unsigned int> ret{lexerDfa, tentativeNameKey};
+        return ret;
+    }
+
+    //append to tentative name using only the tentative name key
+    //todo:will weds oct 3,2012 - test this -
+    bool appendToTentativeName(const unsigned int key, const std::string endStateNameAppend)
+    {
+        bool result = false;
+        //...
+        auto idFetched = _tentativeNameKeyToEndStateIdMap.find(key);
+        if (idFetched != _tentativeNameKeyToEndStateIdMap.end())
+        {
+            const auto identifier = idFetched->second;
+            auto tentativeNameFetched = _endStateNameMap.find(identifier);
+            if (tentativeNameFetched != _endStateNameMap.end())
+            {
+                const std::string oldTentativeName = tentativeNameFetched->second;
+                const std::string updatedTentativeName = oldTentativeName + endStateNameAppend;
+                std::pair<int,std::string> idAndUpdatedTentativeStateName{identifier, updatedTentativeName};
+                _endStateNameMap.emplace(idAndUpdatedTentativeStateName);
+
+                result = true;
+            }
+        }
+        
+        return result;
     }
 
     bool isAcceptingNode(const int id) const
