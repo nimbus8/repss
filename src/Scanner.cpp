@@ -134,11 +134,21 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                                 captureBufferAndWrapData(buffer, buffer_count, BUFFER_LEN, isKeyword);
                             }
 
+                            candidateKeyWordBuffer.append(&c, 1);
+
                             //here we must add the keyword's "official name"
                             std::string scanWordName(dfaManager->getAcceptingNodeName(nextScanWordNode->getId()));
+                            scanWordName.append("=<'");
+                            scanWordName.append(candidateKeyWordBuffer);
+                            scanWordName.append("'>");
                             strcpy(scanWordNameBuffer, scanWordName.c_str());
                             isKeyword = true;
                         }
+                        
+                        //currently the only other case we handle here, without entering above block
+                        //i.e. we're not at accepting state - but we've been following scanword lead
+                        //if the current character is \n, theres no point in adding it as it's implied
+                        //(line delimited scanning)
 
                         size_t nameBufferLen = strlen(scanWordNameBuffer);
                         captureBufferAndWrapData(scanWordNameBuffer, nameBufferLen, 50, isKeyword);

@@ -60,8 +60,10 @@ private:
     //intermediate functions for first phase
     std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructPercentReps();
     std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructSquareBracketReps();
-    std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> __insertNamedRepitionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa);
+
+    wordrepr_and_transition_Pair_t __insertNamedRepitionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, unsigned int tentativeNameKey);
     wordrepr_and_transition_Pair_t _constructEnd();
+    wordrepr_and_transition_Pair_t _constructKeyword_REPS_WithNamedIteration();
 
     void _destructDfasAndTransitions();
 

@@ -122,9 +122,15 @@ public:
             if (tentativeNameFetched != _endStateNameMap.end())
             {
                 const std::string oldTentativeName = tentativeNameFetched->second;
-                const std::string updatedTentativeName = oldTentativeName + endStateNameAppend;
+                const std::string updatedTentativeName = oldTentativeName + "." + endStateNameAppend;
                 std::pair<int,std::string> idAndUpdatedTentativeStateName{identifier, updatedTentativeName};
+
+                _endStateNameMap.erase(identifier);
                 _endStateNameMap.emplace(idAndUpdatedTentativeStateName);
+
+                auto fetchedPair = _endStateNameMap.find(identifier);
+
+                std::cout << "\nSuccessfully appended '" << endStateNameAppend << "' to tentative end state name => '" << fetchedPair->second << "'" << std::endl;
 
                 result = true;
             }
