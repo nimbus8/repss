@@ -33,6 +33,8 @@
 #define SI_NUMBERS_1to9 '1'
 #define SI_NUMBERS_0to9 '2'
 
+#define NUMBER_OF_RANGED_SI_CATEGORIES 7
+
 template<class S, class I>
 class StateAndInput
 {

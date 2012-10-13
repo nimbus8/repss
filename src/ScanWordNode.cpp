@@ -20,9 +20,14 @@
 
 #include "deps/includes/lexer/construction/ScanWordNode.hpp"
 
-
-//todo:will note, not liking how we modify existingScanWordNodes, make const and let the calling function manage
-//transferring the difference at the end of this call to existingScanWordNodes.
+//this is a bit tricky, haven't thought about it too deeply. (something tells me this isn't trivial)
+//-we create a ScanWordNode with a lexerDfa reference that we hold on to.
+//-this is basically only because we want to have a list of ScanWordNode objects we
+//-create implicitly as a consequence of creating a ScanWordNode explicitly.
+//-so as it goes, outside this class, we'll maintain a list of implicitly/explicitly created
+//-ScanWordNodes, so we know not to create one (with existing id) explicitly or even
+//-implicitly (hence vector param in init()) - if one already exists we just use the existing reference.
+//maybe we can actually, move all this init stuff into constructor make ScanWordNode const??
 void ScanWordNode::init(const std::unordered_set<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd)
 {
     if (_lexerDfa == nullptr)
@@ -41,15 +46,17 @@ void ScanWordNode::init(const std::unordered_set<ScanWordNode*>& existingScanWor
     _id = _lexerDfa->getId();
     auto transitions = _lexerDfa->getTransitions();
 
+    _lexerDfa->_printTransitions();
+
     for (auto aTransition : transitions)
     {
-        auto stateAndInput = aTransition.getStateAndInput();
-        auto input = stateAndInput.getInput();
+        const auto stateAndInput = aTransition.getStateAndInput();
+        const auto input = stateAndInput.getInput();
 
-        //check if the transition points to lexer_dfa for which a ScanWordNode already exists (has same id)
+        //1) check if the transition points to lexer_dfa for which a ScanWordNode already exists (has same id)
 
         auto nextDfa = aTransition.getDfaNode();
-        auto nextDfaId = nextDfa->getId();
+        const auto nextDfaId = nextDfa->getId();
 
         ScanWordNode* nextScanWordNode = nullptr;
 
@@ -85,10 +92,80 @@ void ScanWordNode::init(const std::unordered_set<ScanWordNode*>& existingScanWor
             }
         }
 
-        //at this point nextScanWordNode is guaranteed to be set to something (not nullptr)
+        //2) at this point nextScanWordNode is guaranteed to be set to something (not nullptr)
 
-        std::pair<char, ScanWordNode*> inputToScanWordNode{input, nextScanWordNode};
-        _nextScanWordNode.emplace(inputToScanWordNode);
+        //we need to check to see if input is ranged for this state (stateAndInput). If so we MUST accomodate for this
+        //begining: oct 11, 2012
+
+        //todo: make this a private method, and use (maybe) in _getNext...RangedInput(..) to map category to index       
+        std::function<size_t (char)> rangedSIToIndex = 
+            [](char rangedSItype)->size_t
+            {
+                size_t index;
+
+                switch (rangedSItype)
+                {
+                    case SI_EMPTY:
+                        index = 0;
+                        break;
+                    case SI_CHARS_LOWER:
+                        index = 1;
+                        break;
+                    case SI_CHARS_UPPER:
+                        index = 2;
+                        break;
+                    case SI_CHARS_ANY:
+                        index = 3;
+                        break;
+                    case SI_NUMBERS_0:
+                        index = 4;
+                        break;
+                    case SI_NUMBERS_1to9:
+                        index = 5;
+                        break;
+                    case SI_NUMBERS_0to9:
+                        index = 6;
+                        break;
+                    default:
+                        index = 7; //should never happen, but if so lets have it blow up
+                        break;
+                };
+
+                return index;
+            };
+ 
+        auto isRangedTransition = aTransition.getIsRanged();
+        if (isRangedTransition)
+        {
+            std::cout << "\tisRangedTransition=true" << std::endl;
+
+            //for ranged transitions we have a special data structure in place (an array :o)
+            //btw: rangedSItoIndex is fn internal to ScanWord
+            auto rangedInputCategory = stateAndInput.getInput();
+
+            std::cout << "\tabout to get proper index in ranged transitions for category '"
+                      << rangedInputCategory << "'" << std::endl;
+            auto indexInRangedTransitions = rangedSIToIndex(rangedInputCategory);
+
+            //make constant for 7, or maybe just one past the number of ranged categories (or the number itself since indexed from 0)
+            if (indexInRangedTransitions == 7)
+            {
+                std::cout << "Error in ScanWordNode, rangedInputCategory unrecognized" << std::endl;
+                exit(1);
+            }
+
+            std::cout << "\tabout to set value for index '" << indexInRangedTransitions
+                      << "' in array _rangedTransitionsByCategory" << std::endl;
+            _rangedTransitionsByCategory[indexInRangedTransitions] = nextScanWordNode;
+            std::cout << "\tSuccessfully set value for index in _RangedTransitionsByCategory" << std::endl;
+        }
+        else
+        {
+            std::cout << "\tisRangedTransition=false" << std::endl;
+
+            std::pair<char, ScanWordNode*> inputToScanWordNode{input, nextScanWordNode};
+            _nextScanWordNode.emplace(inputToScanWordNode);
+        }
     }
 
     _lexerDfa = nullptr; //we don't need lexerDfa anymore. todo: after scanwords are made lexerDfas not needed at all

@@ -38,9 +38,9 @@ void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, 
 bool lexer_word_constructor::_testScanWords()
 {
     bool retResult = false;
-    const char seq1[] = {'/', '[', 'r', 'e','p', ']', 'H', '\0'};
+    const char seq1[] = {'5', '/','/', '[','/', ']', 'H', '\0'};
     const char seq2[] = {'b','/', '[', 's', 'c','o', ']', ' ', '\0'};
-    const char seq3[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', 'H','H','/','[','/',']', '\0' }; 
+    const char seq3[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ','a','=','2',':','1', '0', '\n', '\0' }; 
 
     std::cout << std::endl;
     std::cout << "Starting Scan Words Test" << std::endl
@@ -55,7 +55,7 @@ bool lexer_word_constructor::_testScanWords()
         char seq[20];
         strcpy(seq, (k==0? seq1 : (k==1? seq2 : seq3)));
 
-        const size_t seq_length = (k == 0? 7 : (k==1? 8 : 15));
+        const size_t seq_length = (k == 0? 7 : (k==1? 8 : 17));
 
         int count = 0;
         auto curr = word;
@@ -173,6 +173,9 @@ void transferDifference(std::unordered_set<ScanWordNode*>& toSet, const std::vec
 
 bool lexer_word_constructor::_constructScanWords()
 {
+    std::cout << "\nConstructing ScanWords" << std::endl;
+    std::cout << "......................" << std::endl << std::endl;
+
     std::unordered_set<ScanWordNode*> existingScanWordNodes;
     std::vector<ScanWordNode*> nodesToBeInitd;
 
@@ -187,13 +190,16 @@ bool lexer_word_constructor::_constructScanWords()
         auto wordNode = nodesToBeInitd.back();
         nodesToBeInitd.pop_back();
 
-        std::cout << "Popped Back (nodesToBeInitd): id=(" << wordNode->getId() << ")" << std::endl;
+        std::cout << "Popped back from 'nodesToBeInitd': node{ id=(" << wordNode->getId() << ")}" << std::endl;
         wordNode->init(existingScanWordNodes, nodesToBeInitd);
 
+        std::cout << "Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'" << std::endl; 
         transferDifference(existingScanWordNodes, nodesToBeInitd);
     }
 
     _scanWords = startScanWordNode;
+
+    std::cout << "Beginning ScanWord Test" << std::endl;
 
     auto result = _testScanWords();
 
@@ -205,8 +211,14 @@ bool lexer_word_constructor::_constructScanWords()
 bool lexer_word_constructor::_testMergedRepresentation()
 {
     bool retResult = true;
-    const char seq1[] = {'/', '[', 'r', 'e','p', ']', 'H', '\0'};
+
+    const char seq1[] = {'5', '/','/', '[','/', ']', 'H', '\0'};
     const char seq2[] = {'b','/', '[', 's', 'c','o', ']', ' ', '\0'};
+    const char seq3[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ','a','=','2',':','1', '0', '\n', '\0' };
+
+    //const char seq1[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ','a','=','0',':','1', ' ', ' ', '\0' };
+    ////const char seq1[] = {'/', '[', 'r', 'e','p', ']', ' ', 'a', '=', '1', ':', '8', '\n', '\0'};
+    //const char seq2[] = {'b','/', '[', 's', 'c','o', ']', ' ', '\0'};
 
     std::cout << "Starting Merged Representation Test" << std::endl
               << "-----------------------------------" << std::endl;
@@ -214,13 +226,16 @@ bool lexer_word_constructor::_testMergedRepresentation()
     StopWatch stopwatch;
     stopwatch.start();
 
-    for (int k = 0; k < 2; k++)
+    for (int k = 0; k < 3; k++)
     {
         auto word = _startWordForMergedRepr;
-        char seq[10];
-        strcpy(seq, (k==0? seq1 : seq2));
+        //char seq[17];
+        //strcpy(seq, (k==0? seq1 : seq2));
+        //const size_t seq_length = (k == 0? 17 : 8);
 
-        const size_t seq_length = (k == 0? 7 : 8);
+        char seq[20];
+        strcpy(seq, (k==0? seq1 : (k==1? seq2 : seq3)));
+        const size_t seq_length = (k == 0? 7 : (k==1? 8 : 17));
 
         int count = 0;
         auto curr = word;
@@ -778,6 +793,10 @@ void lexer_word_constructor::_initWords()
     //the first in container is a pair with lexer_dfa accessible
     //the second in container is a reminder for us to delete DfaTransitions when we're done
 
+    auto repWordNamedIteration = _constructKeyword_REPS_WithNamedIteration();
+    _words.push_back(repWordNamedIteration.first);
+    _dfaTransitions.push_back(repWordNamedIteration.second);
+
     //scope
     auto scopeWord = _constructSquareBracketReps();
     _words.push_back(scopeWord.first);
@@ -794,9 +813,11 @@ void lexer_word_constructor::_initWords()
     _words.push_back(endWord.first);
     _dfaTransitions.push_back(endWord.second);
 
+    /*
     auto repWordNamedIteration = _constructKeyword_REPS_WithNamedIteration();
     _words.push_back(repWordNamedIteration.first);
     _dfaTransitions.push_back(repWordNamedIteration.second);
+    */
 }
 
 void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, char seq[], size_t seq_length)
