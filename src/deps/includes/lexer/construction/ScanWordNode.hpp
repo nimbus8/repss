@@ -155,8 +155,8 @@ public:
         InputHashFunction hashFunc;
         for (auto iter : _nextScanWordNode)
         {
-            auto inputKey = iter.first;
-            auto scanWordPtr = iter.second;
+            //auto inputKey = iter.first;
+            //auto scanWordPtr = iter.second;
             //std::cout << "\t(<" << inputKey << ", ranged?(no)>, "
                 //<< "id(" << scanWordPtr->getId() << "))"
                 //<< "\t- hash(" << hashFunc(inputKey)  << ")" << std::endl; //commented in order to benchmark diff between ScanWords
@@ -169,7 +169,7 @@ public:
 
             if (scanWordPtr != nullptr)
             {
-                const auto inputKey = i;
+                //const auto inputKey = i;
                 //std::cout << "\t(<" << inputKey << ", ranged?(yes)>, "
                     //<< "id(" << scanWordPtr->getId() << "))" << std::endl; //commented in order to benchmark diff between ScanWords
             }

@@ -333,6 +333,20 @@ bool lexer_word_constructor::_testMergedRepresentation()
     return retResult;
 }
 
+
+wordrepr_and_transition_Pair_t _constructAlteration()
+{
+   /*
+     /[(something|or|another)]
+   */
+}
+wordrepr_and_transition_Pair_t _constructAlterationAndJoin()
+{
+}
+wordrepr_and_transition_Pair_t __insertListParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, int tentativeNameKey)
+{
+}
+
 wordrepr_and_transition_Pair_t lexer_word_constructor::_constructEnd()
 {
     const std::string WORD_NAME("general_end");

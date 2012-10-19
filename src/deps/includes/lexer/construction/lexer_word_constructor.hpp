@@ -64,6 +64,8 @@ private:
     wordrepr_and_transition_Pair_t __insertNamedRepitionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, unsigned int tentativeNameKey);
     wordrepr_and_transition_Pair_t _constructEnd();
     wordrepr_and_transition_Pair_t _constructKeyword_REPS_WithNamedIteration();
+    wordrepr_and_transition_Pair_t _constructAlteration();
+    wordrepr_and_transition_Pair_t _constructAlterationAndJoin();
 
     void _destructDfasAndTransitions();
 
