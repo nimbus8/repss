@@ -2,7 +2,6 @@
 #define _SCAN_WORD_TRANSITION_MAP_HPP_
 
 #include <unordered_map>
-#include "ScanWordNode.hpp"
 
 #define SCAN_WORD_TRANSITION_MAP_number_of_distinct_symbols 257
 
@@ -40,13 +39,11 @@ public:
     }
 };
 
+class ScanWordNode;
+
 class ScanWordTransitionMap
 {
 private:
-    static ScanWordTransitionMap* _self;
-
-    int count;
-    char c;
 protected:
     class TransitionInputKeyHashFunction {
     public:
@@ -133,15 +130,14 @@ protected:
 
 public:
 
-    ScanWordTransitionMap() : count(0),  c('a') {}
-
-    static ScanWordTransitionMap* getInstance();
-
+    ScanWordTransitionMap() {}
     ~ScanWordTransitionMap() {}
 
     void emplace(std::pair<TransitionInputKey, ScanWordNode*>& keyAndValue)
     {
         _nextScanWordNode.emplace(keyAndValue);
+
+        std::cout << "ScanWordTransitionMap::emplace(...) called. Size now: " << _nextScanWordNode.size() << std::endl;
     }
 
     ScanWordNode* getNextScanWordNode(const TransitionInputKey &key) const
@@ -159,8 +155,6 @@ public:
             ret = nullptr;
         }
     }
-
-    int incr() {return ++count;} 
 
     friend class ScanWordNode;
 };

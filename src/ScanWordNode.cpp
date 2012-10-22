@@ -28,7 +28,7 @@
 //-ScanWordNodes, so we know not to create one (with existing id) explicitly or even
 //-implicitly (hence vector param in init()) - if one already exists we just use the existing reference.
 //maybe we can actually, move all this init stuff into constructor make ScanWordNode const??
-void ScanWordNode::init(const std::unordered_set<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd)
+void ScanWordNode::init(ScanWordTransitionMap *transitionMap, const std::unordered_set<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd)
 {
     if (_lexerDfa == nullptr)
     {
@@ -133,6 +133,8 @@ void ScanWordNode::init(const std::unordered_set<ScanWordNode*>& existingScanWor
 
                 return index;
             };
+
+        //todo:will remember we have to check for isAnythingBut and then handle that case
  
         auto isRangedTransition = aTransition.getIsRanged();
         if (isRangedTransition)
@@ -156,7 +158,12 @@ void ScanWordNode::init(const std::unordered_set<ScanWordNode*>& existingScanWor
 
             std::cout << "\tabout to set value for index '" << indexInRangedTransitions
                       << "' in array _rangedTransitionsByCategory" << std::endl;
-            _rangedTransitionsByCategory[indexInRangedTransitions] = nextScanWordNode;
+            _rangedTransitionsByCategory[indexInRangedTransitions] = nextScanWordNode; //this is being deprecated
+
+            TransitionInputKey transitionMapKey(nextScanWordNode->getId(), rangedInputCategory, true, false);
+            std::pair<TransitionInputKey, ScanWordNode*> transitionMapKeyAndValue{ transitionMapKey, nextScanWordNode };
+            transitionMap->emplace(transitionMapKeyAndValue);
+
             std::cout << "\tSuccessfully set value for index in _RangedTransitionsByCategory" << std::endl;
         }
         else
@@ -164,7 +171,11 @@ void ScanWordNode::init(const std::unordered_set<ScanWordNode*>& existingScanWor
             std::cout << "\tisRangedTransition=false" << std::endl;
 
             std::pair<char, ScanWordNode*> inputToScanWordNode{input, nextScanWordNode};
-            _nextScanWordNode.emplace(inputToScanWordNode);
+            _nextScanWordNode.emplace(inputToScanWordNode); //being deprecated
+
+            TransitionInputKey transitionMapKey(nextScanWordNode->getId(), input, false, false);
+            std::pair<TransitionInputKey, ScanWordNode*> transitionMapKeyAndValue{ transitionMapKey, nextScanWordNode };
+            transitionMap->emplace(transitionMapKeyAndValue);
         }
     }
 

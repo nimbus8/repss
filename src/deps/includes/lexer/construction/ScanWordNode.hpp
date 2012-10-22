@@ -26,6 +26,8 @@
 #include <vector>
 
 #include "model_representation/finite_autonoma/lexer_dfa.hpp"
+#include "ScanWordTransitionMap.hpp"
+
 
 #ifdef DEBUG
      #ifndef DLOG(str)
@@ -147,7 +149,7 @@ public:
         __fnIsInputWithinRange = lexerDfa->getFnIsInputWithinRange();
     }
 
-    void init(const std::unordered_set<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd);
+    void init(ScanWordTransitionMap* transitionMap, const std::unordered_set<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd);
 
     void _printTransitions() const
     {

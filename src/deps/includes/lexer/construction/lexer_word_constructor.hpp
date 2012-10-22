@@ -31,6 +31,7 @@
 #include "model_representation/dfa_manager.hpp"
 #include "lexer_dfa_builder.hpp"
 #include "ScanWordNode.hpp"
+#include "ScanWordTransitionMap.hpp"
 
 #include "../../utils/AggregatePtrsAndDelete.hpp"
 
@@ -53,6 +54,7 @@ private:
     lexer_word_repr* _startWordForMergedRepr;
 
     //third/final phase of construction - run time optimization / (maybe todo: phase 1 & 2 cleanup)
+    ScanWordTransitionMap* _scanWordTransitionMap;
     ScanWords* _scanWords;
   
     typedef std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> wordrepr_and_transition_Pair_t;
@@ -109,6 +111,8 @@ public:
     {
         _destructDfasAndTransitions();
         delete  _startWordForMergedRepr;
+
+        delete _scanWordTransitionMap;
 
         std::cout << "Sucessfully deleted lexer word constructor!" << std::endl;
     }

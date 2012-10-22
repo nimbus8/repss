@@ -173,6 +173,8 @@ void transferDifference(std::unordered_set<ScanWordNode*>& toSet, const std::vec
 
 bool lexer_word_constructor::_constructScanWords()
 {
+    _scanWordTransitionMap = new ScanWordTransitionMap();
+
     std::cout << "\nConstructing ScanWords" << std::endl;
     std::cout << "......................" << std::endl << std::endl;
 
@@ -191,7 +193,7 @@ bool lexer_word_constructor::_constructScanWords()
         nodesToBeInitd.pop_back();
 
         std::cout << "Popped back from 'nodesToBeInitd': node{ id=(" << wordNode->getId() << ")}" << std::endl;
-        wordNode->init(existingScanWordNodes, nodesToBeInitd);
+        wordNode->init(_scanWordTransitionMap, existingScanWordNodes, nodesToBeInitd); //we pass in transition map, to let ScanWord add to it
 
         std::cout << "Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'" << std::endl; 
         transferDifference(existingScanWordNodes, nodesToBeInitd);
