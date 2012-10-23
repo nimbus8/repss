@@ -32,8 +32,8 @@ public:
     virtual void initLexerDataProxy(const ILexerDataProxy* lexerDataProxy) = 0;
     virtual const ILexerDataProxy* getLexerDataProxy() const = 0;
 
-    virtual void initScanWords(const ScanWords* scanWords) = 0;
-    virtual const ScanWords* getScanWords() const = 0;
+    virtual void initScanWords(const ScanWords* scanWords) = 0; //I think this may be deprecated in favour of ILexerDataProxy
+    virtual const ScanWords* getScanWords() const = 0;  //I think this is deprecated in favour of ILexerDataProxy
 
     virtual void setAnnotatedData(const std::vector<std::string>& data) = 0;
 

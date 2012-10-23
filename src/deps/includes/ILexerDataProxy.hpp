@@ -32,6 +32,7 @@ class ILexerDataProxy
 public:
     virtual ~ILexerDataProxy() {};
     virtual const DfaManager* getDfaManager() const = 0;    
+    virtual const ScanWordTransitionMap* getScanWordTransitionMap() const = 0;
     virtual const ScanWords* getRecognizedKeywords() const = 0;
 };
 

@@ -117,6 +117,11 @@ public:
         std::cout << "Sucessfully deleted lexer word constructor!" << std::endl;
     }
 
+    const ScanWordTransitionMap* getScanWordTransitionMap() const
+    {
+        return _scanWordTransitionMap;
+    }
+
     const ScanWords* getScanWords() const
     {
         return _scanWords;

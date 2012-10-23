@@ -60,6 +60,7 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
 
     const ILexerDataProxy* dataProxy = _context->getLexerDataProxy();
     const DfaManager* dfaManager = dataProxy->getDfaManager();
+    const auto scanWordTransitionMap = dataProxy->getScanWordTransitionMap();
 
     try
     {
@@ -81,7 +82,7 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
         {
             const char c = REPSS_FileHandler::getCharacter(fileHandle);
 
-            const ScanWordNode* nextScanWordNode = (currentPlace == nullptr? nullptr : currentPlace->getNextScanWordNode(c));
+            const ScanWordNode* nextScanWordNode = (currentPlace == nullptr? nullptr : currentPlace->getNextScanWordNode(scanWordTransitionMap, c));
 
             if (nextScanWordNode != nullptr)
             {

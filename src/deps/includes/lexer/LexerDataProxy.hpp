@@ -29,14 +29,16 @@ class LexerDataProxy : public ILexerDataProxy
 {
 private:
     const DfaManager* _dfaManager;
+    const ScanWordTransitionMap* _scanWordTransitionMap;
     const ScanWords* _recognizedKeywords;
 public:
-    LexerDataProxy() : _dfaManager(nullptr), _recognizedKeywords(nullptr) {}
-    LexerDataProxy(const DfaManager* dfaManager, const ScanWords* recognizedKeywords) : _dfaManager(dfaManager), _recognizedKeywords(recognizedKeywords) {}
+    LexerDataProxy() : _dfaManager(nullptr), _scanWordTransitionMap(nullptr), _recognizedKeywords(nullptr) {}
+    LexerDataProxy(const DfaManager* dfaManager, const ScanWordTransitionMap* scanWordTransitionMap, const ScanWords* recognizedKeywords) : _dfaManager(dfaManager), _scanWordTransitionMap(scanWordTransitionMap), _recognizedKeywords(recognizedKeywords) {}
 
     virtual ~LexerDataProxy();
 
-    virtual const DfaManager* getDfaManager() const;    
+    virtual const DfaManager* getDfaManager() const;
+    virtual const ScanWordTransitionMap* getScanWordTransitionMap() const; 
     virtual const ScanWords* getRecognizedKeywords() const;
 };
 
@@ -48,6 +50,12 @@ const DfaManager* LexerDataProxy::getDfaManager() const
 {
     std::cout << "getDfaManager()" << std::endl;
     return _dfaManager;
+}
+
+const ScanWordTransitionMap* LexerDataProxy::getScanWordTransitionMap() const
+{
+    std::cout << "getScanWordTransitionMap()" << std::endl;
+    return _scanWordTransitionMap;
 }
 
 const ScanWords* LexerDataProxy::getRecognizedKeywords() const

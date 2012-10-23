@@ -57,6 +57,7 @@ public:
             _context = context;
             _config = config;
 
+            auto scanWordTransitionMap = config->getScanWordTransitionMap();
             auto scanWords = config->getScanWords();
             std::cout << "LexerManager:: First ScanWordNode (id: " << scanWords->getId() << ")" << std::endl;    
             //start scanning here
@@ -72,7 +73,7 @@ public:
             // constructors come in...I hope so. (check it out).
             auto dfaManager = config->getDfaManager();
 
-            _lexerDataProxy = new LexerDataProxy(dfaManager, scanWords);
+            _lexerDataProxy = new LexerDataProxy(dfaManager, scanWordTransitionMap, scanWords);
 
             DLOG("Initializing lexer data proxy\n");
 
@@ -86,6 +87,8 @@ public:
             DLOG("got lexer data proxy from context\n");
 
             auto recKeys = dataProxy->getRecognizedKeywords();
+
+            auto scanTransMap = dataProxy->getScanWordTransitionMap();
 
             DLOG(" finished intializing lexer_manager\n");
            

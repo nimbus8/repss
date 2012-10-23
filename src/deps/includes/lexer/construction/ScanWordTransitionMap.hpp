@@ -13,9 +13,12 @@ private:
     bool _isRanged;
     bool _isAnythingBut;
     char _inputCharacter;
+
+    bool _isDefn;
 public:
+    TransitionInputKey(unsigned int scanWordId, char inputCharacter, bool isRanged, bool isAnythingBut, bool isDefn) : _scanWordId(scanWordId), _isRanged(isRanged), _isAnythingBut(isAnythingBut), _inputCharacter(inputCharacter), _isDefn(isDefn) {}
     TransitionInputKey(unsigned int scanWordId, char inputCharacter, bool isRanged, bool isAnythingBut) 
-       : _scanWordId(scanWordId), _isRanged(isRanged), _isAnythingBut(isAnythingBut), _inputCharacter(inputCharacter){}
+       : _scanWordId(scanWordId), _isRanged(isRanged), _isAnythingBut(isAnythingBut), _inputCharacter(inputCharacter), _isDefn(false){}
     ~TransitionInputKey() {}
 
     unsigned int getScanWordId() const
@@ -36,6 +39,11 @@ public:
     char getInputCharacter() const
     {
         return _inputCharacter;
+    }
+
+    bool isDefn() const
+    {
+        return _isDefn;
     }
 };
 
@@ -68,48 +76,96 @@ protected:
                 //do the calculation to determine just which ordinal need be used
                 size_t index;
 
-                switch (inputCharacter)
+                //we index the defn differently, as the defn will ALWAYS come with a limited alphabet
+                //  when we run on the fly, we get the full alphabet and that needs to be sorted into one of the entries in the limited alphabet
+                if (transInputKey.isDefn())
                 {
-                    case SI_EMPTY:
-                        index = 0;
-                        break;
-                    case SI_CHARS_LOWER:
-                        index = 1;
-                        break;
-                    case SI_CHARS_UPPER:
-                        index = 2;
-                        break;
-                    case SI_CHARS_ANY:
-                        index = 3;
-                        break;
-                    case SI_NUMBERS_0:
-                        index = 4;
-                        break;
-                    case SI_NUMBERS_1to9:
-                        index = 5;
-                        break;
-                    case SI_NUMBERS_0to9:
-                        index = 6;
-                        break;
-                    default:
-                        index = 7; //should never happen, but if so lets have it blow up
-                        break;
-                };
+                    switch (inputCharacter)
+                    {
+                        case SI_EMPTY:
+                            index = 0;
+                            break;
+                        case SI_CHARS_LOWER:
+                            index = 1;
+                            break;
+                        case SI_CHARS_UPPER:
+                            index = 2;
+                            break;
+                        case SI_CHARS_ANY:
+                            index = 3;
+                            break;
+                        case SI_NUMBERS_0:
+                            index = 4;
+                            break;
+                        case SI_NUMBERS_1to9:
+                            index = 5;
+                            break;
+                        case SI_NUMBERS_0to9:
+                            index = 6;
+                            break;
+                        default:
+                            index = 7; //should never happen, but if so lets have it blow up
+                            break;
+                    };
 
-                if (index != 7)
-                {
-                    hashIndex = scanWordId*_SPACE_ALOTTED_TO_EACH_SCANWORD + index;
+                    if (index != 7)
+                    {
+                        hashIndex =(size_t) 1 + (size_t)scanWordId*_SPACE_ALOTTED_TO_EACH_SCANWORD + (size_t)index;
+                        std::cout << "\t\tDefn: Defined - Ranged ScanWord-Hash: " << hashIndex << std::endl;
+                    }
+                    else
+                    {
+                        std::cout << "Not So Serious Afterall (see what happens): could not find index mapping.::ScanWordTransitionMap" << std::endl;
+                        //hashIndex = 0; //we'll guves this to mismatch
+                        std::cout << "\t\tDefn: Failed to define == 7 - case - ScanWord-Hash: " << hashIndex << std::endl;
+
+                       //fallback to normal
+                hashIndex = (size_t)1 + ((size_t)scanWordId)*_SPACE_ALOTTED_TO_EACH_SCANWORD + (isAnythingBut? _SIZE_OF_RANGED_ALPHABET + _SIZE_OF_NORMAL_ALPHABET : _SIZE_OF_RANGED_ALPHABET) + (size_t)inputCharacter;
+
+                std::cout << "\t\tNormal ScanWord-Hash: " << hashIndex << std::endl;
+                    }
                 }
                 else
                 {
-                    std::cout << "Serious Error: could not find index mapping.::ScanWordTransitionMap" << std::endl;
-                    exit(1); 
+                    if (islower(inputCharacter))
+                    {
+                        index = 1;
+                    }
+                    else if (isupper(inputCharacter))
+                    {
+                        index = 2;
+                    }
+                    else if (isalpha(inputCharacter))
+                    {
+                        index = 3;
+                    }
+                    else if (inputCharacter == '0')
+                    {
+                        index = 4;
+                    }
+                    else if (inputCharacter >= '1' && inputCharacter <= '9')
+                    {
+                        index = 5;
+                    }
+                    else if (inputCharacter >= '0' && 'inputCharacter <= 9')
+                    {
+                        index = 6;
+                    }
+                    else
+                    {
+                        index = 0;
+                    }
+
+                    hashIndex = (size_t)1 + (size_t)scanWordId*_SPACE_ALOTTED_TO_EACH_SCANWORD + (size_t)index;
+                    std::cout << "\t\tRanged ScanWord-Hash: " << hashIndex << std::endl;
                 }
             }
             else
             {
                 //this looks about right
-                hashIndex = ((size_t)scanWordId)*_SPACE_ALOTTED_TO_EACH_SCANWORD + (isAnythingBut? _SIZE_OF_RANGED_ALPHABET + _SIZE_OF_NORMAL_ALPHABET : _SIZE_OF_RANGED_ALPHABET) + (size_t)inputCharacter;
+                hashIndex = (size_t)1 + ((size_t)scanWordId)*_SPACE_ALOTTED_TO_EACH_SCANWORD + (isAnythingBut? _SIZE_OF_RANGED_ALPHABET + _SIZE_OF_NORMAL_ALPHABET : _SIZE_OF_RANGED_ALPHABET) + (size_t)inputCharacter;
+
+                std::cout << "\t\tNormal ScanWord-Hash: " << hashIndex << std::endl;
            }
 
             return hashIndex;
@@ -120,9 +176,10 @@ protected:
     public:
         bool operator ()(const TransitionInputKey &lhs, const TransitionInputKey &rhs) const
         {
-            return ((lhs.getIsRanged() == rhs.getIsRanged()) &&
-                    (lhs.getIsAnythingBut() == rhs.getIsAnythingBut()) &&
-                    (lhs.getInputCharacter() == rhs.getInputCharacter()));
+          TransitionInputKeyHashFunction hashFunc;
+
+          return hashFunc(lhs) == hashFunc(rhs);
+
         }
     };
 
@@ -138,10 +195,16 @@ public:
         _nextScanWordNode.emplace(keyAndValue);
 
         std::cout << "ScanWordTransitionMap::emplace(...) called. Size now: " << _nextScanWordNode.size() << std::endl;
+        std::cout << "\t { " << keyAndValue.first.getScanWordId() << ", " << keyAndValue.first.getIsRanged() << ","
+                  << keyAndValue.first.getIsAnythingBut() << ", " << keyAndValue.first.getInputCharacter()
+                  << " } -> Scan-Word()" << std::endl;
     }
 
     ScanWordNode* getNextScanWordNode(const TransitionInputKey &key) const
     {
+        std::cout << "\t ::ScanWordTransitionMap with input { " << key.getScanWordId() << ", " << key.getIsRanged() << ","
+                  << key.getIsAnythingBut() << ", " << key.getInputCharacter() << " }" << std::endl;
+
         ScanWordNode* ret;
 
         auto fetched = _nextScanWordNode.find(key);
@@ -149,11 +212,16 @@ public:
         if (fetched != _nextScanWordNode.end())
         {
             ret = fetched->second;
+
+            std::cout << "FOUND a match!" << std::endl;
         }
         else
         {
             ret = nullptr;
+            std::cout << "Could NOT find match" << std::endl;
         }
+
+       return ret;
     }
 
     friend class ScanWordNode;

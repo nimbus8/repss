@@ -65,7 +65,7 @@ bool lexer_word_constructor::_testScanWords()
         do
         {//search for a beginning
             std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
-            auto aNextDfa = curr->getNextScanWordNode(seq[count]);
+            auto aNextDfa = curr->getNextScanWordNode(_scanWordTransitionMap, seq[count]);
             count++;
 
             if (aNextDfa != nullptr)
@@ -79,7 +79,7 @@ bool lexer_word_constructor::_testScanWords()
         while ((nextDfa != nullptr) && (!dfaManager.isAcceptingNode(nextDfa->getId()) && count < seq_length))
         {
             curr = const_cast<ScanWordNode*>(nextDfa);
-            nextDfa = curr->getNextScanWordNode(seq[count]);
+            nextDfa = curr->getNextScanWordNode(_scanWordTransitionMap, seq[count]);
 
             std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
 
@@ -94,7 +94,7 @@ bool lexer_word_constructor::_testScanWords()
 
                     std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
 
-                    auto aNextDfa = curr->getNextScanWordNode(seq[count]);
+                    auto aNextDfa = curr->getNextScanWordNode(_scanWordTransitionMap, seq[count]);
                     if (aNextDfa != nullptr)
                     {
                         nextDfa = aNextDfa;

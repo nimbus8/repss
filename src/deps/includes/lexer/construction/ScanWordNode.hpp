@@ -59,8 +59,11 @@ private:
         }
     };
 
-    int _id; //ok so you may ask why have id, when its the same in _lexerDfa? well, we may want to delete lexer_dfa, and use this class as preferred representation (thats the plan). if we move the init into constructor, we wouldn't even need to hold ont to reference to lexer_dfa.
+    unsigned int _id; //ok so you may ask why have id, when its the same in _lexerDfa? well, we may want to delete lexer_dfa, and use this class as preferred representation (thats the plan). if we move the init into constructor, we wouldn't even need to hold ont to reference to lexer_dfa.
     const lexer_dfa* _lexerDfa;
+
+    bool _hasAnythingButTransition;
+    bool _hasRangedTransition;
 
     //maps *unranged* input to a ScanWordNode
     std::unordered_map<char, ScanWordNode*, InputHashFunction, InputEquals> _nextScanWordNode;
@@ -135,7 +138,7 @@ private:
         return mappedNode;
     }
 public:
-    ScanWordNode() { _id = -1; _lexerDfa = nullptr; }
+    ScanWordNode() { _id = -1; _lexerDfa = nullptr; _hasAnythingButTransition = false; _hasRangedTransition = false; }
     explicit ScanWordNode(const lexer_dfa* lexerDfa)
     {
         _id = lexerDfa->getId();
@@ -147,6 +150,9 @@ public:
         }
 
         __fnIsInputWithinRange = lexerDfa->getFnIsInputWithinRange();
+
+        _hasAnythingButTransition = false;
+        _hasRangedTransition = false;
     }
 
     void init(ScanWordTransitionMap* transitionMap, const std::unordered_set<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd);
@@ -178,16 +184,16 @@ public:
         }
     }
 
-    int getId() const
+    unsigned int getId() const
     {
         return _id;
     }
 
-    ScanWordNode* getNextScanWordNode(const char input) const
+    ScanWordNode* getNextScanWordNode(const ScanWordTransitionMap* transitionMap, const char input) const
     {
         //_printTransitions();
 
-        ScanWordNode* ret;
+        ScanWordNode* ret = nullptr;
 
         //1) check for ranged
 
@@ -200,6 +206,7 @@ public:
         //.....actually this change wouldn't be so difficult to implement, mostly architecture considerations 
         //todo:will create a ScanWordProgressionDataMan, give all created scanword(s) a reference to it (maybe take advntage of friend relationships or something...figure it out) or make it a singleton]
 
+        /*
         ret = _getNextScanWordNodeOrNullForRangedInput(input);
 
         if (ret == nullptr)
@@ -214,6 +221,38 @@ public:
             {
                 ret = fetched->second;
             }
+        }*/
+
+        const auto theIdInKey = getId();
+
+        if (_hasRangedTransition && !_hasAnythingButTransition)
+        {
+            std::cout << "\t::Trying Ranged" << std::endl;
+            TransitionInputKey transitionMapKey(theIdInKey, input, true, false);
+            ret = transitionMap->getNextScanWordNode(transitionMapKey);
+        }
+
+        if (ret == nullptr && _hasRangedTransition && _hasAnythingButTransition)
+        {
+            std::cout << "\t::Trying Ranged and HasAnythingBut" << std::endl;
+            TransitionInputKey transitionMapKey(theIdInKey, input, true, true);
+            ret = transitionMap->getNextScanWordNode(transitionMapKey);
+        }
+
+        if (ret == nullptr && _hasAnythingButTransition)
+        {
+            std::cout << "\t::Trying hasAnythingbut" << std::endl;
+           //iunno this is to say it has an anything but, but this wasn't covered w/ the rnge
+            TransitionInputKey transitionMapKey(theIdInKey, input, false, true);
+            ret = transitionMap->getNextScanWordNode(transitionMapKey); 
+        }
+
+        if (ret == nullptr)
+        {
+            std::cout << "\t::Trying normal way" <<std::endl;
+            //finally, if all else fails - try normal case
+            TransitionInputKey transitionMapKey(theIdInKey, input, false, false);
+            ret = transitionMap->getNextScanWordNode(transitionMapKey);
         }
 
         return ret;

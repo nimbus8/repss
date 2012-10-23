@@ -160,9 +160,11 @@ void ScanWordNode::init(ScanWordTransitionMap *transitionMap, const std::unorder
                       << "' in array _rangedTransitionsByCategory" << std::endl;
             _rangedTransitionsByCategory[indexInRangedTransitions] = nextScanWordNode; //this is being deprecated
 
-            TransitionInputKey transitionMapKey(nextScanWordNode->getId(), rangedInputCategory, true, false);
+            TransitionInputKey transitionMapKey(getId(), rangedInputCategory, true, false, true);
             std::pair<TransitionInputKey, ScanWordNode*> transitionMapKeyAndValue{ transitionMapKey, nextScanWordNode };
             transitionMap->emplace(transitionMapKeyAndValue);
+
+            _hasRangedTransition = true;
 
             std::cout << "\tSuccessfully set value for index in _RangedTransitionsByCategory" << std::endl;
         }
@@ -173,7 +175,7 @@ void ScanWordNode::init(ScanWordTransitionMap *transitionMap, const std::unorder
             std::pair<char, ScanWordNode*> inputToScanWordNode{input, nextScanWordNode};
             _nextScanWordNode.emplace(inputToScanWordNode); //being deprecated
 
-            TransitionInputKey transitionMapKey(nextScanWordNode->getId(), input, false, false);
+            TransitionInputKey transitionMapKey(getId(), input, false, false, true);
             std::pair<TransitionInputKey, ScanWordNode*> transitionMapKeyAndValue{ transitionMapKey, nextScanWordNode };
             transitionMap->emplace(transitionMapKeyAndValue);
         }

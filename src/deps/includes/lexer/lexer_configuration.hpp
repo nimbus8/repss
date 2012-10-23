@@ -48,6 +48,11 @@ public:
 
     void init() {}
 
+    const ScanWordTransitionMap* getScanWordTransitionMap() const
+    {
+        return _wordConstructor->getScanWordTransitionMap();
+    }
+
     const ScanWords* getScanWords() const
     {
        return _wordConstructor->getScanWords();
