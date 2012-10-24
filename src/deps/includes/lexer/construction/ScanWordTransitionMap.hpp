@@ -111,18 +111,18 @@ protected:
                     if (index != 7)
                     {
                         hashIndex =(size_t) 1 + (size_t)scanWordId*_SPACE_ALOTTED_TO_EACH_SCANWORD + (size_t)index;
-                        std::cout << "\t\tDefn: Defined - Ranged ScanWord-Hash: " << hashIndex << std::endl;
+                        //std::cout << "\t\tDefn: Defined - Ranged ScanWord-Hash: " << hashIndex << std::endl;
                     }
                     else
                     {
-                        std::cout << "Not So Serious Afterall (see what happens): could not find index mapping.::ScanWordTransitionMap" << std::endl;
+                        //std::cout << "Not So Serious Afterall (see what happens): could not find index mapping.::ScanWordTransitionMap" << std::endl;
                         //hashIndex = 0; //we'll guves this to mismatch
-                        std::cout << "\t\tDefn: Failed to define == 7 - case - ScanWord-Hash: " << hashIndex << std::endl;
+                        //std::cout << "\t\tDefn: Failed to define == 7 - case - ScanWord-Hash: " << hashIndex << std::endl;
 
                        //fallback to normal
                 hashIndex = (size_t)1 + ((size_t)scanWordId)*_SPACE_ALOTTED_TO_EACH_SCANWORD + (isAnythingBut? _SIZE_OF_RANGED_ALPHABET + _SIZE_OF_NORMAL_ALPHABET : _SIZE_OF_RANGED_ALPHABET) + (size_t)inputCharacter;
 
-                std::cout << "\t\tNormal ScanWord-Hash: " << hashIndex << std::endl;
+                //std::cout << "\t\tNormal ScanWord-Hash: " << hashIndex << std::endl;
                     }
                 }
                 else
@@ -187,7 +187,7 @@ protected:
                     }
 */
                     hashIndex = (size_t)1 + (size_t)scanWordId*_SPACE_ALOTTED_TO_EACH_SCANWORD + (size_t)index;
-                    std::cout << "\t\tRanged ScanWord-Hash: " << hashIndex << std::endl;
+                    //std::cout << "\t\tRanged ScanWord-Hash: " << hashIndex << std::endl;
                 }
             }
             else
@@ -195,7 +195,7 @@ protected:
                 //this looks about right
                 hashIndex = (size_t)1 + ((size_t)scanWordId)*_SPACE_ALOTTED_TO_EACH_SCANWORD + (isAnythingBut? _SIZE_OF_RANGED_ALPHABET + _SIZE_OF_NORMAL_ALPHABET : _SIZE_OF_RANGED_ALPHABET) + (size_t)inputCharacter;
 
-                std::cout << "\t\tNormal ScanWord-Hash: " << hashIndex << std::endl;
+                //std::cout << "\t\tNormal ScanWord-Hash: " << hashIndex << std::endl;
            }
 
             return hashIndex;
@@ -224,18 +224,18 @@ public:
     {
         _nextScanWordNode.emplace(keyAndValue);
 
-        std::cout << "ScanWordTransitionMap::emplace(...) called. Size now: " << _nextScanWordNode.size() << std::endl;
-        std::cout << "\t { " << keyAndValue.first.getScanWordId() << ", " << keyAndValue.first.getIsRanged() << ","
-                  << keyAndValue.first.getIsAnythingBut() << ", " << keyAndValue.first.getInputCharacter()
-                  << " } -> Scan-Word()" << std::endl;
+        //std::cout << "ScanWordTransitionMap::emplace(...) called. Size now: " << _nextScanWordNode.size() << std::endl;
+        //std::cout << "\t { " << keyAndValue.first.getScanWordId() << ", " << keyAndValue.first.getIsRanged() << ","
+        //          << keyAndValue.first.getIsAnythingBut() << ", " << keyAndValue.first.getInputCharacter()
+        //          << " } -> Scan-Word()" << std::endl;
     }
 
 
     //We may want to split transition key into TransitionDefnKey and TransitionAccessKey as a further abstraction, we'l convert TransitionDefn key to TransitionAccessKey to set table. Also, access key...we may want to load more info on it, even if said info wont be used as ordinal in hashfunc. idunno, maybe nonsense, think about it - maybe through function overloading(or not) take in RangedTransactionAccessKey and UnrangedTransactionAccessKey, it seems like this func below balloons.
     ScanWordNode* getNextScanWordNode(const TransitionInputKey &key) const
     {
-        std::cout << "\t ::ScanWordTransitionMap::getNextScanWordNode with input { " << key.getScanWordId() << ", " << key.getIsRanged() << ","
-                  << key.getIsAnythingBut() << ", " << key.getInputCharacter() << " }" << std::endl;
+       // std::cout << "\t ::ScanWordTransitionMap::getNextScanWordNode with input { " << key.getScanWordId() << ", " << key.getIsRanged() << ","
+       //           << key.getIsAnythingBut() << ", " << key.getInputCharacter() << " }" << std::endl;
 
         ScanWordNode* ret = nullptr;
 
@@ -256,7 +256,7 @@ public:
                             {
                                 ret = fetched->second;
 
-                                std::cout << "FOUND a match!" << std::endl;
+                                //std::cout << "FOUND a match!" << std::endl;
                             }
                         }
                         else if (isupper(inputCharacter))
@@ -268,7 +268,7 @@ public:
                             {
                                 ret = fetched->second;
 
-                                std::cout << "FOUND a match!" << std::endl;
+                                //std::cout << "FOUND a match!" << std::endl;
                             }
                         }
          
@@ -282,7 +282,7 @@ public:
                             { 
                                 ret = fetched->second;
 
-                                std::cout << "FOUND a match!" << std::endl;
+                                //std::cout << "FOUND a match!" << std::endl;
                             }
                         }
                     }
@@ -295,7 +295,7 @@ public:
                             {
                                 ret = fetched->second;
 
-                                std::cout << "FOUND a match!" << std::endl;
+                                //std::cout << "FOUND a match!" << std::endl;
                             }
                             else
                             {
@@ -321,7 +321,7 @@ public:
                             {
                                 ret = fetchedZeroToNine->second;
 
-                                std::cout << "FOUND a match!" << std::endl;
+                                //std::cout << "FOUND a match!" << std::endl;
                             }
                             else
                             {
@@ -349,12 +349,12 @@ public:
         {
             ret = fetched->second;
 
-            std::cout << "FOUND a match!" << std::endl;
+            //std::cout << "FOUND a match!" << std::endl;
         }
         else
         {
             ret = nullptr;
-            std::cout << "Could NOT find match" << std::endl;
+            //std::cout << "Could NOT find match" << std::endl;
         }
         }
 

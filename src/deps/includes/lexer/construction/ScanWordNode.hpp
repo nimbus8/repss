@@ -218,21 +218,21 @@ public:
 
         if (_hasRangedTransition && !_hasAnythingButTransition)
         {
-            std::cout << "\t::Trying Ranged" << std::endl;
+            //std::cout << "\t::Trying Ranged" << std::endl;
             TransitionInputKey transitionMapKey(theIdInKey, input, true, false, false);
             ret = transitionMap->getNextScanWordNode(transitionMapKey);
         }
 
         if (ret == nullptr && _hasRangedTransition && _hasAnythingButTransition)
         {
-            std::cout << "\t::Trying Ranged and HasAnythingBut" << std::endl;
+            //std::cout << "\t::Trying Ranged and HasAnythingBut" << std::endl;
             TransitionInputKey transitionMapKey(theIdInKey, input, true, true, false);
             ret = transitionMap->getNextScanWordNode(transitionMapKey);
         }
 
         if (ret == nullptr && _hasAnythingButTransition)
         {
-            std::cout << "\t::Trying hasAnythingbut" << std::endl;
+            //std::cout << "\t::Trying hasAnythingbut" << std::endl;
            //iunno this is to say it has an anything but, but this wasn't covered w/ the rnge
             TransitionInputKey transitionMapKey(theIdInKey, input, false, true, false);
             ret = transitionMap->getNextScanWordNode(transitionMapKey); 
@@ -240,7 +240,7 @@ public:
 
         if (ret == nullptr)
         {
-            std::cout << "\t::Trying normal way" <<std::endl;
+            //std::cout << "\t::Trying normal way" <<std::endl;
             //finally, if all else fails - try normal case
             TransitionInputKey transitionMapKey(theIdInKey, input, false, false, false);
             ret = transitionMap->getNextScanWordNode(transitionMapKey);
