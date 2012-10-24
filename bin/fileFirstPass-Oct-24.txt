@@ -8,7 +8,7 @@ d	f	h	j	l	n
 
 ./repss
 abc==abc: 0 len(a): 3
-==%%: -1
+==%%: -1
 %==%%: -1
 woot==hoot: -1, len(a):4 len(b):4
 %%==%%: 0
@@ -31,7 +31,7 @@ Successfully appended 'named_iteration' to tentative end state name => 'repetiti
 Successfully constructed name=x:y
 Construction Test: (,k
 a=1:10 H
-eÿ, 11)
+`ÿ, 11)
 Starting state: 9, startingDfaId: 9
 search for a beginning: (state, seq,c): 9, 0, k
 search for a beginning: (state, seq,c): 9, 1, 
@@ -187,7 +187,7 @@ CREATING end state mapping: endStateToName=(24=>scope)
 
 Constructed SCO
 Construction Test: (,k
-/[sco] H@2ð, 10)
+/[sco] Hà[ˆ, 10)
 Starting state: 17, startingDfaId: 17
 search for a beginning: (state, seq,c): 17, 0, k
 search for a beginning: (state, seq,c): 17, 1, 
@@ -298,17 +298,17 @@ Pushing back dfa to mergeDfas parameter: dfa(17)
 Pushing back dfa to mergeDfas parameter: dfa(25)
 
 Merging dfas to one, words size: 3
-0x7ff0324001a0
+0x7f885be001a0
 1
 is word null?? false
 Getting transitions for word
 Adding job to job Queue
-0x7ff032400d70
+0x7f885be00d70
 17
 is word null?? false
 Getting transitions for word
 Adding job to job Queue
-0x7ff032401240
+0x7f885be01240
 25
 is word null?? false
 Getting transitions for word
@@ -320,20 +320,20 @@ is there nextDfaPtr? no0x0
 ::adding transition([1, '/']->2) to dfa(30)
 Processing Job line #1
 There are 1 in job vector. Processing Job #2
-is there nextDfaPtr? yes0x7ff0324001d0
+is there nextDfaPtr? yes0x7f885be001d0
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #2
-is there nextDfaPtr? yes0x7ff032400000
+is there nextDfaPtr? yes0x7f885be00000
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #2
 is there nextDfaPtr? no0x0
 ::adding transition([19, 's']->20) to dfa(3)
 Processing Job line #2
 There are 1 in job vector. Processing Job #3
-is there nextDfaPtr? yes0x7ff0324001d0
+is there nextDfaPtr? yes0x7f885be001d0
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #3
-is there nextDfaPtr? yes0x7ff032400000
+is there nextDfaPtr? yes0x7f885be00000
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #3
 is there nextDfaPtr? no0x0
@@ -342,7 +342,7 @@ Finished jobs!
 
 Starting Merged Representation Test
 -----------------------------------
-4014
+4679
 (id, input-idx, input): 30, 0, 5
 (id, input-idx, input): 30, 1, /
 break
@@ -443,7 +443,7 @@ done search while loop in isAcceptingNode called: id=(8)
 isAcceptingNode RESPONSE: true
 found word! word=(repetition.named_iteration)
 
-Merged Word Repr Test: done ALL search while loops in 0.488 milliseconds
+Merged Word Repr Test: done ALL search while loops in 0.832 milliseconds
 
 Merge Test SUCCEEDED!
 
@@ -537,7 +537,7 @@ Beginning ScanWord Test
 
 Starting Scan Words Test
 ------------------------
-5383
+6747
 (id, input-idx, input): 30, 0, 5
 (id, input-idx, input): 30, 1, /
 break
@@ -641,7 +641,7 @@ isAcceptingNode called: id=(8)
 isAcceptingNode RESPONSE: true
 found word! word=(repetition.named_iteration)
 
-ScanWordTest: done ALL search while loops in 0.621 milliseconds
+ScanWordTest: done ALL search while loops in 0.520 milliseconds
 
 --about to return 0
 Done Scan Word Test - result:0
@@ -658,7 +658,7 @@ src/Scanner.cpp 47:Starting Scanner::processFile
 getDfaManager()
 getScanWordTransitionMap()
 cleared ArraygetRecognizedKeywords()
-6145
+7365
 cleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared ArrayisAcceptingNode called: id=(3)
 isAcceptingNode RESPONSE false
 src/Scanner.cpp 96:currentPlace != startPlace && NOT ACCEPTING NODE && NOT NEWLINE
@@ -896,7 +896,7 @@ isAcceptingNode called: id=(29)
 isAcceptingNode RESPONSE: true
 cleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Arraycleared Array
 
-Scanning: done scanning in 2.050 milliseconds
+Scanning: done scanning in 3.242 milliseconds
 CtxMan TypedContext <> setAnnotatedData
 Setting annotated data with vector size = 103
 
@@ -934,26 +934,26 @@ CtxMan TypedContext <> printAnnotatedData
 {data_line:The fire itself was unremarkable. All that felt it's warmth thought it unremarkable.}
 {data_line:Fire to them merely a tool necessary to their occupations; to be jettisoned, lampooned, and left on it's own -}
 {data_line:to simmer - ensuring no seed cwould ever prosper in it's wake etcetera etc. }
-{data_line:A means to a ruinous end essentially. Therein that moment, its purpose was equally as self-serving. }
+{data_line:A means to a ruinous end essentially. Therein that moment, its purpose was as equally self-serving. }
 {data_line:The flames danced in and about the dark pits of their eyes (the pupils) as the men devoured roach after roach}
 {data_line:one at a time, (like) a true group of dining philosophers - a joke often repeated. }
-{data_line:Roaches were on the menu, and these roaches, I tell you, were no ordinary roaches.}
-{data_line:Few roaches can be considered ordinary to begin with, but we recognize these roaches by the attention that they command}
-{data_line:- the delicacy with which they are handled. For many there exists no greater horror...for these men that horror was ecstacy. }
+{data_line:That night roaches were on the menu, and these roaches, I tell you, were no ordinary roaches.}
+{data_line:Few roaches can be considered ordinary to begin, but we recognize these roaches by the attention that they command}
+{data_line:- the delicacy with which they're handled. For many there exists no greater horror...for these men that horror was ecstacy. }
 {data_line:I nor they themselves can explain just }
 {key_word:%}
 {data_line:why}
 {key_word:%}
 {data_line: exactly, one gets that deep feeling of revulsion}
 {data_line:- an involuntary reflex if you will - that causes [the] blood to flee the part of the brain that gives us calm, -}
-{data_line:that small peice of mind. Encoded (indel)lably our biology, no doubt.  }
+{data_line:that small peice of mind. Encoded (indel)lably in our biology, no doubt.  }
 {key_word:repetition.named_iteration=<'/[rep] a=0:8 '>}
-{data_line:f ye fo fum }
+{data_line:f ye fo fum fout }
 {key_word:general_end=<'/[/]'>}
 {data_line:empty_str}
 {data_line:It's worth noting the extent to which these cardigan clad men came and went in pursuit of the so called "rarified breeds" }
 {data_line:- it bordered on insanity. That same vigor with which we are all familiar, interestingly enough, -}
-{data_line:has actually tempered relations between neighbouring states and provinces the world over.}
+{data_line:has (actually) tempered relations between neighbouring states and provinces the world over.}
 {key_word:repetition.named_iteration=<'/[rep] a=10:1 '>}
 {data_line:empty_str}
 {data_line:second half }
@@ -984,8 +984,8 @@ CtxMan TypedContext <> printAnnotatedData
 {data_line:astronauts}
 {key_word:%}
 {data_line: were never in such precarious situations }
-{data_line:- every man/woman/andindivudual received a gold brick for each roach they kept their hands off of.}
-{data_line:All went home poorer than they left, but you know in this world there are much more important things...}
+{data_line:- every man/woman/andindivudual received a gold brick for every roach they kept their hands off of.}
+{data_line:All went home poorer than they left. But you know in this world there are much more important things...}
 {key_word:scope=<'/[sco] '>}
 {data_line:empty_str}
 {data_line:/[rep]  }
@@ -1007,11 +1007,11 @@ CtxMan TypedContext <> printAnnotatedData
 {data_line:     (one might hear colloquialisms of the same humour spoken elsewhere of similar events)}
 
 Finished printing anotated data
-Destroying Dfa id(0x7ff032401240) the RIGHT way.
-Destroying Dfa id(0x7ff032401270) the RIGHT way.
-Destroying Dfa id(0x7ff0324012a0) the RIGHT way.
-Destroying Dfa id(0x7ff0324012d0) the RIGHT way.
-Destroying Dfa id(0x7ff032401360) the RIGHT way.
+Destroying Dfa id(0x7f885be01240) the RIGHT way.
+Destroying Dfa id(0x7f885be01270) the RIGHT way.
+Destroying Dfa id(0x7f885be012a0) the RIGHT way.
+Destroying Dfa id(0x7f885be012d0) the RIGHT way.
+Destroying Dfa id(0x7f885be01360) the RIGHT way.
 Destructor for AggregateDfasAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -1022,10 +1022,10 @@ setting member (3) to null
 setting member (4) to null
 deleting array with delete[]
 Deleted one lexer_word successfully
-Destroying Dfa Transition id(0x7ff0324000b0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff0324005e0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff032401030) the RIGHT way.
-Destroying Dfa Transition id(0x7ff032400380) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be000b0) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be005e0) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be01030) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be00380) the RIGHT way.
 Destructor for AggregateDfaTransitionsAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -1035,13 +1035,13 @@ setting member (2) to null
 setting member (3) to null
 deleting array with delete[]
 Deleted a group of DfaTransitions successfully
-Destroying Dfa id(0x7ff032400d70) the RIGHT way.
-Destroying Dfa id(0x7ff032400ea0) the RIGHT way.
-Destroying Dfa id(0x7ff032400ed0) the RIGHT way.
-Destroying Dfa id(0x7ff032400f00) the RIGHT way.
-Destroying Dfa id(0x7ff032400f30) the RIGHT way.
-Destroying Dfa id(0x7ff032400f60) the RIGHT way.
-Destroying Dfa id(0x7ff032400f90) the RIGHT way.
+Destroying Dfa id(0x7f885be00d70) the RIGHT way.
+Destroying Dfa id(0x7f885be00ea0) the RIGHT way.
+Destroying Dfa id(0x7f885be00ed0) the RIGHT way.
+Destroying Dfa id(0x7f885be00f00) the RIGHT way.
+Destroying Dfa id(0x7f885be00f30) the RIGHT way.
+Destroying Dfa id(0x7f885be00f60) the RIGHT way.
+Destroying Dfa id(0x7f885be00f90) the RIGHT way.
 Destructor for AggregateDfasAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -1054,12 +1054,12 @@ setting member (5) to null
 setting member (6) to null
 deleting array with delete[]
 Deleted one lexer_word successfully
-Destroying Dfa Transition id(0x7ff032400620) the RIGHT way.
-Destroying Dfa Transition id(0x7ff032400bd0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff032400c10) the RIGHT way.
-Destroying Dfa Transition id(0x7ff032400c50) the RIGHT way.
-Destroying Dfa Transition id(0x7ff032400c90) the RIGHT way.
-Destroying Dfa Transition id(0x7ff032400bb0) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be00620) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be00bd0) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be00c10) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be00c50) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be00c90) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be00bb0) the RIGHT way.
 Destructor for AggregateDfaTransitionsAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -1071,13 +1071,13 @@ setting member (4) to null
 setting member (5) to null
 deleting array with delete[]
 Deleted a group of DfaTransitions successfully
-Destroying Dfa id(0x7ff0324001a0) the RIGHT way.
-Destroying Dfa id(0x7ff0324001d0) the RIGHT way.
-Destroying Dfa id(0x7ff032400000) the RIGHT way.
-Destroying Dfa id(0x7ff032400050) the RIGHT way.
-Destroying Dfa id(0x7ff032400080) the RIGHT way.
-Destroying Dfa id(0x7ff032400240) the RIGHT way.
-Destroying Dfa id(0x7ff032400270) the RIGHT way.
+Destroying Dfa id(0x7f885be001a0) the RIGHT way.
+Destroying Dfa id(0x7f885be001d0) the RIGHT way.
+Destroying Dfa id(0x7f885be00000) the RIGHT way.
+Destroying Dfa id(0x7f885be00050) the RIGHT way.
+Destroying Dfa id(0x7f885be00080) the RIGHT way.
+Destroying Dfa id(0x7f885be00240) the RIGHT way.
+Destroying Dfa id(0x7f885be00270) the RIGHT way.
 Destructor for AggregateDfasAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -1090,13 +1090,13 @@ setting member (5) to null
 setting member (6) to null
 deleting array with delete[]
 Deleted one lexer_word successfully
-Destroying Dfa Transition id(0x7ff0324006a0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff032400570) the RIGHT way.
-Destroying Dfa Transition id(0x7ff032400730) the RIGHT way.
-Destroying Dfa Transition id(0x7ff032400790) the RIGHT way.
-Destroying Dfa Transition id(0x7ff0324007f0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff032400830) the RIGHT way.
-Destroying Dfa Transition id(0x7ff0324008d0) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be006a0) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be00570) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be00730) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be00790) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be007f0) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be00830) the RIGHT way.
+Destroying Dfa Transition id(0x7f885be008d0) the RIGHT way.
 Destructor for AggregateDfaTransitionsAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
