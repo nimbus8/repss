@@ -82,7 +82,13 @@ void ScanWordNode::init(ScanWordTransitionMap *transitionMap, const std::unorder
                     break;
                 }
             }
-
+/*
+            if (getId() == nextDfaId)
+            {
+                std::cout << "ScanWordNode: Pointing to 'this' with trans{" << getId() << " ->" << nextDfaId << std::endl; 
+                nextScanWordNode = this;
+            }
+*/
             //if it exists it neither unordered_set param and not in locallyCreatedScanWordNodes container, we make it
             if (nextScanWordNode == nullptr)
             {//if no corresponding ScanWordNode already exists in vector param, create it, place in toBeInitd
@@ -145,6 +151,7 @@ void ScanWordNode::init(ScanWordTransitionMap *transitionMap, const std::unorder
             //btw: rangedSItoIndex is fn internal to ScanWord
             auto rangedInputCategory = stateAndInput.getInput();
 
+/*
             std::cout << "\tabout to get proper index in ranged transitions for category '"
                       << rangedInputCategory << "'" << std::endl;
             auto indexInRangedTransitions = rangedSIToIndex(rangedInputCategory);
@@ -159,12 +166,51 @@ void ScanWordNode::init(ScanWordTransitionMap *transitionMap, const std::unorder
             std::cout << "\tabout to set value for index '" << indexInRangedTransitions
                       << "' in array _rangedTransitionsByCategory" << std::endl;
             _rangedTransitionsByCategory[indexInRangedTransitions] = nextScanWordNode; //this is being deprecated
+*/
 
-            TransitionInputKey transitionMapKey(getId(), rangedInputCategory, true, false, true);
-            std::pair<TransitionInputKey, ScanWordNode*> transitionMapKeyAndValue{ transitionMapKey, nextScanWordNode };
-            transitionMap->emplace(transitionMapKeyAndValue);
+            char rangedPossibilities[] = {SI_CHARS_LOWER, SI_CHARS_UPPER, SI_CHARS_ANY, SI_NUMBERS_0, SI_NUMBERS_1to9, SI_NUMBERS_0to9, SI_EMPTY};
 
-            _hasRangedTransition = true;
+
+            for (auto possibility : rangedPossibilities)
+            {
+                bool shouldAddToTransitionMap;
+                switch (possibility)
+                {
+                    case SI_EMPTY:
+                        shouldAddToTransitionMap = false;
+                        break;
+                    case SI_CHARS_LOWER:
+                        shouldAddToTransitionMap = islower(rangedInputCategory);
+                        break;
+                    case SI_CHARS_UPPER:
+                        shouldAddToTransitionMap = isupper(rangedInputCategory);
+                        break;
+                    case SI_CHARS_ANY:
+                        shouldAddToTransitionMap = isalpha(rangedInputCategory);
+                        break;
+                    case SI_NUMBERS_0:
+                        shouldAddToTransitionMap = rangedInputCategory == '0';
+                        break;
+                    case SI_NUMBERS_1to9:
+                        shouldAddToTransitionMap = (rangedInputCategory >= '1' && rangedInputCategory <= '9');
+                        break;
+                    case SI_NUMBERS_0to9:
+                        shouldAddToTransitionMap = (rangedInputCategory >= '1' && rangedInputCategory <= '9');
+                        break;
+                    default:
+                        shouldAddToTransitionMap = false;
+                        break;
+                };
+
+                if (shouldAddToTransitionMap)
+                {
+                    TransitionInputKey transitionMapKey(getId(), possibility, true, false, true);
+                    std::pair<TransitionInputKey, ScanWordNode*> transitionMapKeyAndValue{ transitionMapKey, nextScanWordNode };
+                    transitionMap->emplace(transitionMapKeyAndValue);
+
+                    _hasRangedTransition = true;
+                }
+            }
 
             std::cout << "\tSuccessfully set value for index in _RangedTransitionsByCategory" << std::endl;
         }

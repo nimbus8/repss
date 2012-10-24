@@ -216,7 +216,7 @@ bool lexer_word_constructor::_testMergedRepresentation()
 
     const char seq1[] = {'5', '/','/', '[','/', ']', 'H', '\0'};
     const char seq2[] = {'b','/', '[', 's', 'c','o', ']', ' ', '\0'};
-    const char seq3[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ','a','=','2',':','1', '0', '\n', '\0' };
+    const char seq3[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ','a','=','2',':','8', '1', '\n', '\0' };
 
     //const char seq1[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ','a','=','0',':','1', ' ', ' ', '\0' };
     ////const char seq1[] = {'/', '[', 'r', 'e','p', ']', ' ', 'a', '=', '1', ':', '8', '\n', '\0'};
@@ -483,7 +483,7 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructKeyword_REPS_Wi
     {
         std::cout << "Constructed [rep] var=1:10" << std::endl;
 
-        char seq[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ', 'a', '=', '2', ':', '8', ' ', 'H' };
+        char seq[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ', 'a', '=', '2', ':', '8', '1', ' ' };
         const size_t seq_length = 17;
         debug_printDfa(dfaManager,word_base, seq, seq_length);
     }

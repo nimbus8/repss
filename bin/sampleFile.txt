@@ -38,11 +38,12 @@ Few roaches can be considered ordinary to begin with, but we recognize these roa
 I nor they themselves can explain just %why% exactly, one gets that deep feeling of revulsion
 - an involuntary reflex if you will - that causes [the] blood to flee the part of the brain that gives us calm, -
 that small peice of mind. Encoded (indel)lably our biology, no doubt.  
-/[rep] f ye fo fum /[/]
+/[rep] a=0:8 f ye fo fum /[/]
 It's worth noting the extent to which these cardigan clad men came and went in pursuit of the so called "rarified breeds" 
 - it bordered on insanity. That same vigor with which we are all familiar, interestingly enough, -
 has actually tempered relations between neighbouring states and provinces the world over.
-/[rep] second half /[/]
+/[rep] a=10:1 
+second half /[/]
 Those who cared - the *artisans*, the *connaisseurs*, *the politicians* - were never so interested in their local varieties.
 The stench of familiarity so great, even amoungst the most enthused, that governments and private contractors -
 chartered steamboats, military jets, and lunar space shuttles to be packed to the tilt. 
@@ -55,7 +56,7 @@ All went home poorer than they left, but you know in this world there are much m
 /[rep]  
         this isnt it.
 /[/]
-/[rep] a=3:0
+/[rep] a=21:8020 
         that is all.
 /[/]
 /[/]

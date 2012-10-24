@@ -197,15 +197,6 @@ public:
 
         //1) check for ranged
 
-        //Problem CONFIRMED! oct 13 2012 early morning
-        //oct 13: it seems like any speed bump I was hoping for is negated by linear search through ranged states,
-        //  and it looks like its now consistently (slightly) slower than the merged dfa impl...which defeats the purpose(or point w.e)
-        //..starting to think that a a global table(unordered map with composite keys*) is best/easiest soln. 
-        //Beter than 'heavy' unordered_maps for EVERY scanword - scanword was supposed to be lightweight alternative to lexer_dfa (why even bother? we can realy prdict how large and differentiated language will be...still thinking about it)
-        //[Details:*composite key would compose of : { id, input } and {id, rangedCategory} for unranged and ranged respectively - with an appropriate hash function (no collisions)).
-        //.....actually this change wouldn't be so difficult to implement, mostly architecture considerations 
-        //todo:will create a ScanWordProgressionDataMan, give all created scanword(s) a reference to it (maybe take advntage of friend relationships or something...figure it out) or make it a singleton]
-
         /*
         ret = _getNextScanWordNodeOrNullForRangedInput(input);
 
@@ -228,14 +219,14 @@ public:
         if (_hasRangedTransition && !_hasAnythingButTransition)
         {
             std::cout << "\t::Trying Ranged" << std::endl;
-            TransitionInputKey transitionMapKey(theIdInKey, input, true, false);
+            TransitionInputKey transitionMapKey(theIdInKey, input, true, false, false);
             ret = transitionMap->getNextScanWordNode(transitionMapKey);
         }
 
         if (ret == nullptr && _hasRangedTransition && _hasAnythingButTransition)
         {
             std::cout << "\t::Trying Ranged and HasAnythingBut" << std::endl;
-            TransitionInputKey transitionMapKey(theIdInKey, input, true, true);
+            TransitionInputKey transitionMapKey(theIdInKey, input, true, true, false);
             ret = transitionMap->getNextScanWordNode(transitionMapKey);
         }
 
@@ -243,7 +234,7 @@ public:
         {
             std::cout << "\t::Trying hasAnythingbut" << std::endl;
            //iunno this is to say it has an anything but, but this wasn't covered w/ the rnge
-            TransitionInputKey transitionMapKey(theIdInKey, input, false, true);
+            TransitionInputKey transitionMapKey(theIdInKey, input, false, true, false);
             ret = transitionMap->getNextScanWordNode(transitionMapKey); 
         }
 
@@ -251,7 +242,7 @@ public:
         {
             std::cout << "\t::Trying normal way" <<std::endl;
             //finally, if all else fails - try normal case
-            TransitionInputKey transitionMapKey(theIdInKey, input, false, false);
+            TransitionInputKey transitionMapKey(theIdInKey, input, false, false, false);
             ret = transitionMap->getNextScanWordNode(transitionMapKey);
         }
 

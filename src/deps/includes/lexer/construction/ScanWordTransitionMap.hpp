@@ -127,6 +127,36 @@ protected:
                 }
                 else
                 {
+
+                    switch (inputCharacter)
+                    {
+                        case SI_EMPTY:
+                            index = 0;
+                            break;
+                        case SI_CHARS_LOWER:
+                            index = 1;
+                            break;
+                        case SI_CHARS_UPPER:
+                            index = 2;
+                            break;
+                        case SI_CHARS_ANY:
+                            index = 3;
+                            break;
+                        case SI_NUMBERS_0:
+                            index = 4;
+                            break;
+                        case SI_NUMBERS_1to9:
+                            index = 5;
+                            break;
+                        case SI_NUMBERS_0to9:
+                            index = 6;
+                            break;
+                        default:
+                            index = 0; //should never happen, but if so lets have it blow up
+                            break;
+                    };
+
+/*
                     if (islower(inputCharacter))
                     {
                         index = 1;
@@ -155,7 +185,7 @@ protected:
                     {
                         index = 0;
                     }
-
+*/
                     hashIndex = (size_t)1 + (size_t)scanWordId*_SPACE_ALOTTED_TO_EACH_SCANWORD + (size_t)index;
                     std::cout << "\t\tRanged ScanWord-Hash: " << hashIndex << std::endl;
                 }
@@ -200,13 +230,119 @@ public:
                   << " } -> Scan-Word()" << std::endl;
     }
 
+
+    //We may want to split transition key into TransitionDefnKey and TransitionAccessKey as a further abstraction, we'l convert TransitionDefn key to TransitionAccessKey to set table. Also, access key...we may want to load more info on it, even if said info wont be used as ordinal in hashfunc. idunno, maybe nonsense, think about it - maybe through function overloading(or not) take in RangedTransactionAccessKey and UnrangedTransactionAccessKey, it seems like this func below balloons.
     ScanWordNode* getNextScanWordNode(const TransitionInputKey &key) const
     {
-        std::cout << "\t ::ScanWordTransitionMap with input { " << key.getScanWordId() << ", " << key.getIsRanged() << ","
+        std::cout << "\t ::ScanWordTransitionMap::getNextScanWordNode with input { " << key.getScanWordId() << ", " << key.getIsRanged() << ","
                   << key.getIsAnythingBut() << ", " << key.getInputCharacter() << " }" << std::endl;
 
-        ScanWordNode* ret;
+        ScanWordNode* ret = nullptr;
 
+        //recent: for ranged in particular we have to handle the sub cases, things are only defined specifcally as [0-9] or [1-9], 1 being in both for eg.
+
+        if (key.getIsRanged())
+        {
+            const auto inputCharacter = key.getInputCharacter();
+
+                    if (isalpha(inputCharacter))
+                    {
+                        if (islower(inputCharacter))
+                        {
+                            const TransitionInputKey lowerCaseKey(key.getScanWordId(), SI_CHARS_LOWER, key.getIsRanged(), key.getIsAnythingBut());
+                            auto fetched = _nextScanWordNode.find(lowerCaseKey);
+
+                            if (fetched != _nextScanWordNode.end())
+                            {
+                                ret = fetched->second;
+
+                                std::cout << "FOUND a match!" << std::endl;
+                            }
+                        }
+                        else if (isupper(inputCharacter))
+                        {
+                            const TransitionInputKey upperCaseKey(key.getScanWordId(), SI_CHARS_UPPER, key.getIsRanged(), key.getIsAnythingBut());
+                            auto fetched = _nextScanWordNode.find(upperCaseKey);
+
+                            if (fetched != _nextScanWordNode.end())
+                            {
+                                ret = fetched->second;
+
+                                std::cout << "FOUND a match!" << std::endl;
+                            }
+                        }
+         
+                        //put this first???? prob right?
+                        if (ret == nullptr)
+                        {
+                            const TransitionInputKey lowerCaseKey(key.getScanWordId(), SI_CHARS_ANY, key.getIsRanged(), key.getIsAnythingBut());
+                            auto fetched = _nextScanWordNode.find(key);
+
+                            if (fetched != _nextScanWordNode.end())
+                            { 
+                                ret = fetched->second;
+
+                                std::cout << "FOUND a match!" << std::endl;
+                            }
+                        }
+                    }
+                    else if (inputCharacter == '0')
+                    {
+                            const TransitionInputKey zeroKey(key.getScanWordId(), SI_NUMBERS_0, key.getIsRanged(), key.getIsAnythingBut());
+                            auto fetched = _nextScanWordNode.find(zeroKey);
+
+                            if (fetched != _nextScanWordNode.end())
+                            {
+                                ret = fetched->second;
+
+                                std::cout << "FOUND a match!" << std::endl;
+                            }
+                            else
+                            {
+                                const TransitionInputKey allDigitsKey(key.getScanWordId(), SI_NUMBERS_0to9, key.getIsRanged(), key.getIsAnythingBut());
+                                auto fetchedZeroToNine = _nextScanWordNode.find(allDigitsKey);
+
+                                if (fetchedZeroToNine != _nextScanWordNode.end())
+                                {
+                                    ret = fetchedZeroToNine->second;
+                                }
+                                else
+                                {
+                                    ret = nullptr;
+                                }
+                            }
+                    }
+                    else if (inputCharacter >= '1' && inputCharacter <= '9')
+                    {
+                            const TransitionInputKey allDigitsKey(key.getScanWordId(), SI_NUMBERS_0to9, key.getIsRanged(), key.getIsAnythingBut());
+                            auto fetchedZeroToNine = _nextScanWordNode.find(allDigitsKey);
+
+                            if (fetchedZeroToNine != _nextScanWordNode.end())
+                            {
+                                ret = fetchedZeroToNine->second;
+
+                                std::cout << "FOUND a match!" << std::endl;
+                            }
+                            else
+                            {
+                                const TransitionInputKey oneToNineKey(key.getScanWordId(), SI_NUMBERS_1to9, key.getIsRanged(), key.getIsAnythingBut());
+                                auto fetchedOneToNine = _nextScanWordNode.find(oneToNineKey);
+                    
+                                if (fetchedOneToNine != _nextScanWordNode.end())
+                                {
+                                    ret = fetchedOneToNine->second;
+                                }
+                                else
+                                {
+                                    ret = nullptr;
+                                }
+                            }
+                    }
+        }
+  
+     if (ret == nullptr)
+       {
+        
         auto fetched = _nextScanWordNode.find(key);
 
         if (fetched != _nextScanWordNode.end())
@@ -219,6 +355,7 @@ public:
         {
             ret = nullptr;
             std::cout << "Could NOT find match" << std::endl;
+        }
         }
 
        return ret;
