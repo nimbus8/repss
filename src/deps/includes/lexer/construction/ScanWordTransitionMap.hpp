@@ -55,6 +55,8 @@ private:
 protected:
     class TransitionInputKeyHashFunction {
     public:
+        TransitionInputKeyHashFunction() {}
+
         ::std::size_t operator ()(const TransitionInputKey &transInputKey) const
         {
             const size_t _SIZE_OF_RANGED_ALPHABET = 8;
@@ -156,36 +158,6 @@ protected:
                             break;
                     };
 
-/*
-                    if (islower(inputCharacter))
-                    {
-                        index = 1;
-                    }
-                    else if (isupper(inputCharacter))
-                    {
-                        index = 2;
-                    }
-                    else if (isalpha(inputCharacter))
-                    {
-                        index = 3;
-                    }
-                    else if (inputCharacter == '0')
-                    {
-                        index = 4;
-                    }
-                    else if (inputCharacter >= '1' && inputCharacter <= '9')
-                    {
-                        index = 5;
-                    }
-                    else if (inputCharacter >= '0' && 'inputCharacter <= 9')
-                    {
-                        index = 6;
-                    }
-                    else
-                    {
-                        index = 0;
-                    }
-*/
                     hashIndex = (size_t)1 + (size_t)scanWordId*_SPACE_ALOTTED_TO_EACH_SCANWORD + (size_t)index;
                     //std::cout << "\t\tRanged ScanWord-Hash: " << hashIndex << std::endl;
                 }
@@ -206,7 +178,7 @@ protected:
     public:
         bool operator ()(const TransitionInputKey &lhs, const TransitionInputKey &rhs) const
         {
-          TransitionInputKeyHashFunction hashFunc;
+          const TransitionInputKeyHashFunction hashFunc;
 
           return hashFunc(lhs) == hashFunc(rhs);
 
@@ -220,7 +192,7 @@ public:
     ScanWordTransitionMap() {}
     ~ScanWordTransitionMap() {}
 
-    void emplace(std::pair<TransitionInputKey, ScanWordNode*>& keyAndValue)
+    void emplace(const std::pair<TransitionInputKey, ScanWordNode*>& keyAndValue)
     {
         _nextScanWordNode.emplace(keyAndValue);
 
@@ -232,24 +204,28 @@ public:
 
 
     //We may want to split transition key into TransitionDefnKey and TransitionAccessKey as a further abstraction, we'l convert TransitionDefn key to TransitionAccessKey to set table. Also, access key...we may want to load more info on it, even if said info wont be used as ordinal in hashfunc. idunno, maybe nonsense, think about it - maybe through function overloading(or not) take in RangedTransactionAccessKey and UnrangedTransactionAccessKey, it seems like this func below balloons.
-    ScanWordNode* getNextScanWordNode(const TransitionInputKey &key) const
+    const ScanWordNode* getNextScanWordNode(const TransitionInputKey &key) const
     {
        // std::cout << "\t ::ScanWordTransitionMap::getNextScanWordNode with input { " << key.getScanWordId() << ", " << key.getIsRanged() << ","
        //           << key.getIsAnythingBut() << ", " << key.getInputCharacter() << " }" << std::endl;
 
-        ScanWordNode* ret = nullptr;
+        const ScanWordNode* ret = nullptr;
 
         //recent: for ranged in particular we have to handle the sub cases, things are only defined specifcally as [0-9] or [1-9], 1 being in both for eg.
 
-        if (key.getIsRanged())
+        const auto isKeyRanged = key.getIsRanged();
+
+        if (isKeyRanged)
         {
+            const auto scanWordId = key.getScanWordId();
             const auto inputCharacter = key.getInputCharacter();
+            const auto isKeyAnythingBut = key.getIsAnythingBut();
 
                     if (isalpha(inputCharacter))
                     {
                         if (islower(inputCharacter))
                         {
-                            const TransitionInputKey lowerCaseKey(key.getScanWordId(), SI_CHARS_LOWER, key.getIsRanged(), key.getIsAnythingBut());
+                            const TransitionInputKey lowerCaseKey(scanWordId, SI_CHARS_LOWER, isKeyRanged, isKeyAnythingBut);
                             auto fetched = _nextScanWordNode.find(lowerCaseKey);
 
                             if (fetched != _nextScanWordNode.end())
@@ -261,7 +237,7 @@ public:
                         }
                         else if (isupper(inputCharacter))
                         {
-                            const TransitionInputKey upperCaseKey(key.getScanWordId(), SI_CHARS_UPPER, key.getIsRanged(), key.getIsAnythingBut());
+                            const TransitionInputKey upperCaseKey(scanWordId, SI_CHARS_UPPER, isKeyRanged, isKeyAnythingBut);
                             auto fetched = _nextScanWordNode.find(upperCaseKey);
 
                             if (fetched != _nextScanWordNode.end())
@@ -275,7 +251,7 @@ public:
                         //put this first???? prob right?
                         if (ret == nullptr)
                         {
-                            const TransitionInputKey lowerCaseKey(key.getScanWordId(), SI_CHARS_ANY, key.getIsRanged(), key.getIsAnythingBut());
+                            const TransitionInputKey lowerCaseKey(scanWordId, SI_CHARS_ANY, isKeyRanged, isKeyAnythingBut);
                             auto fetched = _nextScanWordNode.find(key);
 
                             if (fetched != _nextScanWordNode.end())
@@ -288,7 +264,7 @@ public:
                     }
                     else if (inputCharacter == '0')
                     {
-                            const TransitionInputKey zeroKey(key.getScanWordId(), SI_NUMBERS_0, key.getIsRanged(), key.getIsAnythingBut());
+                            const TransitionInputKey zeroKey(scanWordId, SI_NUMBERS_0, isKeyRanged, isKeyAnythingBut);
                             auto fetched = _nextScanWordNode.find(zeroKey);
 
                             if (fetched != _nextScanWordNode.end())
@@ -299,7 +275,7 @@ public:
                             }
                             else
                             {
-                                const TransitionInputKey allDigitsKey(key.getScanWordId(), SI_NUMBERS_0to9, key.getIsRanged(), key.getIsAnythingBut());
+                                const TransitionInputKey allDigitsKey(scanWordId, SI_NUMBERS_0to9, isKeyRanged, isKeyAnythingBut);
                                 auto fetchedZeroToNine = _nextScanWordNode.find(allDigitsKey);
 
                                 if (fetchedZeroToNine != _nextScanWordNode.end())
@@ -314,7 +290,7 @@ public:
                     }
                     else if (inputCharacter >= '1' && inputCharacter <= '9')
                     {
-                            const TransitionInputKey allDigitsKey(key.getScanWordId(), SI_NUMBERS_0to9, key.getIsRanged(), key.getIsAnythingBut());
+                            const TransitionInputKey allDigitsKey(scanWordId, SI_NUMBERS_0to9, isKeyRanged, isKeyAnythingBut);
                             auto fetchedZeroToNine = _nextScanWordNode.find(allDigitsKey);
 
                             if (fetchedZeroToNine != _nextScanWordNode.end())
@@ -325,7 +301,7 @@ public:
                             }
                             else
                             {
-                                const TransitionInputKey oneToNineKey(key.getScanWordId(), SI_NUMBERS_1to9, key.getIsRanged(), key.getIsAnythingBut());
+                                const TransitionInputKey oneToNineKey(scanWordId, SI_NUMBERS_1to9, isKeyRanged, isKeyAnythingBut);
                                 auto fetchedOneToNine = _nextScanWordNode.find(oneToNineKey);
                     
                                 if (fetchedOneToNine != _nextScanWordNode.end())

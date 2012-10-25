@@ -34,7 +34,7 @@ public:
     void start() //also acts as reset and start
     {
         startTime = clock();
-        std::cout << startTime << std::endl;
+//        std::cout << startTime << std::endl;
 
     }
 

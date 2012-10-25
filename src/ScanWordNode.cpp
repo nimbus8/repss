@@ -28,7 +28,7 @@
 //-ScanWordNodes, so we know not to create one (with existing id) explicitly or even
 //-implicitly (hence vector param in init()) - if one already exists we just use the existing reference.
 //maybe we can actually, move all this init stuff into constructor make ScanWordNode const??
-void ScanWordNode::init(ScanWordTransitionMap *transitionMap, const std::unordered_set<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd)
+void ScanWordNode::init(ScanWordTransitionMap* const transitionMap, const std::unordered_set<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd)
 {
     if (_lexerDfa == nullptr)
     {
@@ -55,7 +55,7 @@ void ScanWordNode::init(ScanWordTransitionMap *transitionMap, const std::unorder
 
         //1) check if the transition points to lexer_dfa for which a ScanWordNode already exists (has same id)
 
-        auto nextDfa = aTransition.getDfaNode();
+        const auto nextDfa = aTransition.getDfaNode();
         const auto nextDfaId = nextDfa->getId();
 
         ScanWordNode* nextScanWordNode = nullptr;
@@ -82,13 +82,7 @@ void ScanWordNode::init(ScanWordTransitionMap *transitionMap, const std::unorder
                     break;
                 }
             }
-/*
-            if (getId() == nextDfaId)
-            {
-                std::cout << "ScanWordNode: Pointing to 'this' with trans{" << getId() << " ->" << nextDfaId << std::endl; 
-                nextScanWordNode = this;
-            }
-*/
+
             //if it exists it neither unordered_set param and not in locallyCreatedScanWordNodes container, we make it
             if (nextScanWordNode == nullptr)
             {//if no corresponding ScanWordNode already exists in vector param, create it, place in toBeInitd
@@ -143,6 +137,8 @@ void ScanWordNode::init(ScanWordTransitionMap *transitionMap, const std::unorder
         //todo:will remember we have to check for isAnythingBut and then handle that case
  
         auto isRangedTransition = aTransition.getIsRanged();
+        auto isAnythingBut = aTransition.getIsAnythingBut();        
+
         if (isRangedTransition)
         {
             std::cout << "\tisRangedTransition=true" << std::endl;
@@ -151,25 +147,7 @@ void ScanWordNode::init(ScanWordTransitionMap *transitionMap, const std::unorder
             //btw: rangedSItoIndex is fn internal to ScanWord
             auto rangedInputCategory = stateAndInput.getInput();
 
-/*
-            std::cout << "\tabout to get proper index in ranged transitions for category '"
-                      << rangedInputCategory << "'" << std::endl;
-            auto indexInRangedTransitions = rangedSIToIndex(rangedInputCategory);
-
-            //make constant for 7, or maybe just one past the number of ranged categories (or the number itself since indexed from 0)
-            if (indexInRangedTransitions == 7)
-            {
-                std::cout << "Error in ScanWordNode, rangedInputCategory unrecognized" << std::endl;
-                exit(1);
-            }
-
-            std::cout << "\tabout to set value for index '" << indexInRangedTransitions
-                      << "' in array _rangedTransitionsByCategory" << std::endl;
-            _rangedTransitionsByCategory[indexInRangedTransitions] = nextScanWordNode; //this is being deprecated
-*/
-
             char rangedPossibilities[] = {SI_CHARS_LOWER, SI_CHARS_UPPER, SI_CHARS_ANY, SI_NUMBERS_0, SI_NUMBERS_1to9, SI_NUMBERS_0to9, SI_EMPTY};
-
 
             for (auto possibility : rangedPossibilities)
             {
@@ -177,7 +155,7 @@ void ScanWordNode::init(ScanWordTransitionMap *transitionMap, const std::unorder
                 switch (possibility)
                 {
                     case SI_EMPTY:
-                        shouldAddToTransitionMap = false;
+                        shouldAddToTransitionMap = false; //revisit this. keep false. maybe treat in same spirit as _anythingBut
                         break;
                     case SI_CHARS_LOWER:
                         shouldAddToTransitionMap = islower(rangedInputCategory);
@@ -217,9 +195,6 @@ void ScanWordNode::init(ScanWordTransitionMap *transitionMap, const std::unorder
         else
         {
             std::cout << "\tisRangedTransition=false" << std::endl;
-
-            std::pair<char, ScanWordNode*> inputToScanWordNode{input, nextScanWordNode};
-            _nextScanWordNode.emplace(inputToScanWordNode); //being deprecated
 
             TransitionInputKey transitionMapKey(getId(), input, false, false, true);
             std::pair<TransitionInputKey, ScanWordNode*> transitionMapKeyAndValue{ transitionMapKey, nextScanWordNode };

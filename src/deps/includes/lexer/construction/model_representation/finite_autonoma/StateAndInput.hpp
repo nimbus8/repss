@@ -42,16 +42,20 @@ private:
     const S _state;
     const I _input;
     const bool _isRanged;
+    const bool _isAnythingBut;
 public:
-    StateAndInput(const S state, const I input) : _state(state), _input(input), _isRanged(false) {}
-    StateAndInput(const S state, const I input, bool isRanged) : _state(state), _input(input), _isRanged(isRanged) {}
-    StateAndInput(const StateAndInput&  other) : _state(other._state), _input(other._input), _isRanged(other._isRanged) {}
-    StateAndInput(const StateAndInput&& other) : _state(other._state), _input(other._input), _isRanged(other._isRanged) {}
+    StateAndInput(const S state, const I input) : _state(state), _input(input), _isRanged(false), _isAnythingBut(false) {}
+    StateAndInput(const S state, const I input, bool isRanged) : _state(state), _input(input), _isRanged(isRanged), _isAnythingBut(false) {}
+    StateAndInput(const S state, const I input, bool isRanged, bool isAnythingBut) : _state(state), _input(input), _isRanged(isRanged), _isAnythingBut(isAnythingBut) {}
+    StateAndInput(const StateAndInput&  other) : _state(other._state), _input(other._input), _isRanged(other._isRanged), _isAnythingBut(other._isAnythingBut) {}
+    StateAndInput(const StateAndInput&& other) : _state(other._state), _input(other._input), _isRanged(other._isRanged), _isAnythingBut(other._isAnythingBut) {}
     ~StateAndInput() {}
 
     S getState() const { return _state; }
     I getInput() const { return _input; }
+
     bool getIsRanged() const { return _isRanged; }
+    bool getIsAnythingBut() const { return _isAnythingBut; }
 };
 
 #endif

@@ -35,12 +35,40 @@
 
 void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, char seq[], size_t seq_length);
 
+void lexer_word_constructor::_initWords()
+{
+    //the first in container is a pair with lexer_dfa accessible
+    //the second in container is a reminder for us to delete DfaTransitions when we're done
+
+    //reps with named iteration
+    auto repWordNamedIteration = _constructKeyword_REPS_WithNamedIteration();
+    _words.push_back(repWordNamedIteration.first);
+    _dfaTransitions.push_back(repWordNamedIteration.second);
+
+    //scope todo:will change the method name
+    auto scopeWord = _constructSquareBracketReps();
+    _words.push_back(scopeWord.first);
+    _dfaTransitions.push_back(scopeWord.second);
+
+    //general end
+    auto endWord = _constructEnd();
+    _words.push_back(endWord.first);
+    _dfaTransitions.push_back(endWord.second);
+}
+
+
 bool lexer_word_constructor::_testScanWords()
 {
-    bool retResult = false;
+    bool retResult = true;
+
     const char seq1[] = {'5', '/','/', '[','/', ']', 'H', '\0'};
     const char seq2[] = {'b','/', '[', 's', 'c','o', ']', ' ', '\0'};
-    const char seq3[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ','a','=','2',':','1', '0', '\n', '\0' }; 
+    const char seq3[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ','a','=','2',':','8', '1', '\n', '\0' };
+
+
+//    const char seq1[] = {'5', '/','/', '[','/', ']', 'H', '\0'};
+//    const char seq2[] = {'b','/', '[', 's', 'c','o', ']', ' ', '\0'};
+//    const char seq3[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ','a','=','2',':','1', '0', '\n', '\0' }; 
 
     std::cout << std::endl;
     std::cout << "Starting Scan Words Test" << std::endl
@@ -49,6 +77,8 @@ bool lexer_word_constructor::_testScanWords()
     StopWatch stopwatch;
     stopwatch.start();
 
+    for (int round = 0; round < 10000; round++)
+    { 
     for (int k = 0; k < 3; k++)
     {
         auto word = _scanWords;
@@ -64,14 +94,14 @@ bool lexer_word_constructor::_testScanWords()
 
         do
         {//search for a beginning
-            std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
-            auto aNextDfa = curr->getNextScanWordNode(_scanWordTransitionMap, seq[count]);
+            //std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+            const auto aNextDfa = curr->getNextScanWordNode(_scanWordTransitionMap, seq[count]);
             count++;
 
             if (aNextDfa != nullptr)
             {
                 nextDfa = aNextDfa;
-                std::cout << "break" << std::endl;
+                //std::cout << "break" << std::endl;
                 break;
             }
         } while(count < seq_length);
@@ -81,7 +111,7 @@ bool lexer_word_constructor::_testScanWords()
             curr = const_cast<ScanWordNode*>(nextDfa);
             nextDfa = curr->getNextScanWordNode(_scanWordTransitionMap, seq[count]);
 
-            std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+            //std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
 
             if (nextDfa == nullptr)
             {
@@ -92,9 +122,9 @@ bool lexer_word_constructor::_testScanWords()
                 {//search for a beginning
                     curr = word;    //reset 'state' to 'state' at worbase | reset current dfa
 
-                    std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+                    //std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
 
-                    auto aNextDfa = curr->getNextScanWordNode(_scanWordTransitionMap, seq[count]);
+                    const auto aNextDfa = curr->getNextScanWordNode(_scanWordTransitionMap, seq[count]);
                     if (aNextDfa != nullptr)
                     {
                         nextDfa = aNextDfa;
@@ -113,17 +143,17 @@ bool lexer_word_constructor::_testScanWords()
             }
         }
 
-        std::cout << "done search while loop" << std::endl;
+        //std::cout << "done search while loop" << std::endl;
 
         if (nextDfa == nullptr)
         {
-            std::cout << "nothing" << std::endl;
+            //std::cout << "nothing" << std::endl;
             retResult = retResult && false;
         }
         else if (dfaManager.isAcceptingNode(nextDfa->getId()))
         {
             auto foundWord = dfaManager.getAcceptingNodeName(nextDfa->getId());
-            std::cout << "found word! word=(" << foundWord << ")" << std::endl;
+            //std::cout << "found word! word=(" << foundWord << ")" << std::endl;
             retResult = retResult && true;
         }
         else if (count >= seq_length)
@@ -132,12 +162,12 @@ bool lexer_word_constructor::_testScanWords()
 
             if (isAcceptingBool)
             {
-                std::cout << "found word!!" << std::endl;
+                //std::cout << "found word!!" << std::endl;
                 retResult = retResult && true;
             }
             else
             {
-                std::cout << "reached end of input" << std::endl;
+                //std::cout << "reached end of input" << std::endl;
                 retResult = retResult && false;
             }
         }
@@ -146,12 +176,13 @@ bool lexer_word_constructor::_testScanWords()
             retResult = retResult && false;
         }
 
-        std::cout << std::endl;
+        //std::cout << std::endl;
+    }
     }
 
     stopwatch.getElapsedAndPrintfd("ScanWordTest: done ALL search while loops in %3.3f milliseconds\n\n");
 
-    std::cout << "--about to return " << retResult << std::endl;
+    std::cout << "--Scan Word Test Result: " << (retResult? "Success" : "FAILED") << std::endl;
 
     return retResult;
 }
@@ -228,6 +259,8 @@ bool lexer_word_constructor::_testMergedRepresentation()
     StopWatch stopwatch;
     stopwatch.start();
 
+    for (int round = 0; round < 10000; round++)
+    {
     for (int k = 0; k < 3; k++)
     {
         auto word = _startWordForMergedRepr;
@@ -246,14 +279,14 @@ bool lexer_word_constructor::_testMergedRepresentation()
 
         do
         {//search for a beginning
-            std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+            //std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
             auto aNextDfa = curr->getNextDfaForInput(seq[count]);
             count++; 
 
             if (aNextDfa != nullptr)
             {
                 nextDfa = aNextDfa;
-                std::cout << "break" << std::endl;
+                //std::cout << "break" << std::endl;
                 break;
             }
         } while(count < seq_length);
@@ -263,7 +296,7 @@ bool lexer_word_constructor::_testMergedRepresentation()
             curr = const_cast<lexer_dfa*>(nextDfa);
             nextDfa = curr->getNextDfaForInput(seq[count]);
 
-            std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+            //std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
 
             if (nextDfa == nullptr)
             {
@@ -273,7 +306,7 @@ bool lexer_word_constructor::_testMergedRepresentation()
                 {//search for a beginning
                     curr = word;    //reset 'state' to 'state' at worbase | reset current dfa
 
-                    std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+                    //std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
 
                     auto aNextDfa = curr->getNextDfaForInput(seq[count]);
                     if (aNextDfa != nullptr)
@@ -294,17 +327,17 @@ bool lexer_word_constructor::_testMergedRepresentation()
             }
         }
 
-        std::cout << "done search while loop in ";
+        //std::cout << "done search while loop in ";
 
         if (nextDfa == nullptr)
         {
-            std::cout << "nothing" << std::endl;
+            //std::cout << "nothing" << std::endl;
             retResult = retResult && false;
         }
         else if (dfaManager.isAcceptingNode(nextDfa->getId()))
         {
             auto foundWord = dfaManager.getAcceptingNodeName(nextDfa->getId());
-            std::cout << "found word! word=(" << foundWord << ")" << std::endl;
+            //std::cout << "found word! word=(" << foundWord << ")" << std::endl;
             retResult = retResult && true;
         }
         else if (count >= seq_length)
@@ -313,12 +346,12 @@ bool lexer_word_constructor::_testMergedRepresentation()
 
             if (isAcceptingBool)
             {
-                std::cout << "found word!!" << std::endl;
+                //std::cout << "found word!!" << std::endl;
                 retResult = retResult && true;
             }
             else
             {
-                std::cout << "reached end of input" << std::endl;
+                //std::cout << "reached end of input" << std::endl;
                 retResult = retResult && false;
             }
         }
@@ -327,7 +360,8 @@ bool lexer_word_constructor::_testMergedRepresentation()
             retResult = retResult && false;
         }
 
-        std::cout << std::endl;
+        //std::cout << std::endl;
+    }
     }
 
     stopwatch.getElapsedAndPrintfd("Merged Word Repr Test: done ALL search while loops in %3.3f milliseconds\n\n");
@@ -802,38 +836,6 @@ void lexer_word_constructor::_destructDfasAndTransitions()
         _dfaTransitions.pop_back();
         std::cout << "Deleted a group of DfaTransitions successfully" << std::endl;
     }
-}
-
-void lexer_word_constructor::_initWords()
-{
-    //the first in container is a pair with lexer_dfa accessible
-    //the second in container is a reminder for us to delete DfaTransitions when we're done
-
-    auto repWordNamedIteration = _constructKeyword_REPS_WithNamedIteration();
-    _words.push_back(repWordNamedIteration.first);
-    _dfaTransitions.push_back(repWordNamedIteration.second);
-
-    //scope
-    auto scopeWord = _constructSquareBracketReps();
-    _words.push_back(scopeWord.first);
-    _dfaTransitions.push_back(scopeWord.second);
-	
-    /*
-    //reps stadalone no parameters - useless
-    auto repWord = _constructPercentReps();
-    _words.push_back(repWord.first);
-    _dfaTransitions.push_back(repWord.second);
-    */
-
-    auto endWord = _constructEnd();
-    _words.push_back(endWord.first);
-    _dfaTransitions.push_back(endWord.second);
-
-    /*
-    auto repWordNamedIteration = _constructKeyword_REPS_WithNamedIteration();
-    _words.push_back(repWordNamedIteration.first);
-    _dfaTransitions.push_back(repWordNamedIteration.second);
-    */
 }
 
 void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, char seq[], size_t seq_length)

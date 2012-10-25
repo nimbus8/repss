@@ -62,7 +62,9 @@ public:
             return lexerStateAndInput;
         }
         const lexer_dfa* getDfaNode() const { return _dfaNode; }
+
         bool getIsRanged() const { return _stateAndInput.getIsRanged(); }
+        bool getIsAnythingBut() const { return _stateAndInput.getIsAnythingBut(); }
 
         ~LexerTransition() {}
 };
@@ -204,15 +206,15 @@ public:
                 //std::cout << "\tlexerDfa::getNextDfaForInput -- input key RANGED\n"; //commented in order to benchmark diff between ScanWords
 
                 //inputKeyValue = rangeCategor
-                std::string isValidRangedInputLog("calling isValidRangedInput(");
-                isValidRangedInputLog.append(1, inputKeyValue);
-                isValidRangedInputLog.append(1,',');
-                isValidRangedInputLog.append(1,input);
-                isValidRangedInputLog.append(")\n");
+                //std::string isValidRangedInputLog("calling isValidRangedInput(");
+                //isValidRangedInputLog.append(1, inputKeyValue);
+                //isValidRangedInputLog.append(1,',');
+                //isValidRangedInputLog.append(1,input);
+                //isValidRangedInputLog.append(")\n");
 
 
                 //std::cout << "\t" << isValidRangedInputLog; //commented in order to benchmark diff between ScanWords
-                DLOG(isValidRangedInputLog.c_str());
+                //DLOG(isValidRangedInputLog.c_str());
                 if (isValidRangedInput(inputKeyValue, input))
                 {
                     const auto retDfaPtr = iter.second;

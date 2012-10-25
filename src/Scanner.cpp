@@ -25,7 +25,8 @@
 #include "deps/includes/utils/Stopwatch.hpp"
 #include "deps/includes/lexer/construction/model_representation/dfa_manager.hpp"
 
-#define DEBUG YES
+
+//#define DEBUG YES
 
 #ifdef DEBUG
     #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)

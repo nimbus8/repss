@@ -37,8 +37,6 @@ inline void clearCharacters(char* const buffer, const size_t length)
 		*ptr = endChar;
 		ptr = buffer + ++count;
 	} 
-
-	std::cout << "cleared Array";
 }
 
 inline void appendCharacter(char* buffer, const size_t pos, const char c)
