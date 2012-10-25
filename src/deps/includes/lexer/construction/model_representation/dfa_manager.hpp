@@ -141,16 +141,16 @@ public:
 
     bool isAcceptingNode(const int id) const
     {
-        //std::cout << "isAcceptingNode called: id=(" << id << ")" << std::endl;
+        std::cout << "isAcceptingNode called: id=(" << id << ")" << std::endl;
         auto fetched = _endStateNameMap.find(id);
 
         if (fetched == _endStateNameMap.end())
         {
-            //std::cout << "isAcceptingNode RESPONSE false" << std::endl;
+            std::cout << "isAcceptingNode RESPONSE false" << std::endl;
             return false;
         }
 
-        //std::cout << "isAcceptingNode RESPONSE: true" << std::endl;
+        std::cout << "isAcceptingNode RESPONSE: true" << std::endl;
         return true;
     }
 

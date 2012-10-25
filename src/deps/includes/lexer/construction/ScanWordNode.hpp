@@ -65,73 +65,6 @@ private:
     bool _hasAnythingButTransition;
     bool _hasRangedTransition;
 
-    std::function<bool (unsigned int, char)> __fnIsInputWithinRange; //helper func from lexerDfa
-    ScanWordNode* _getNextScanWordNodeOrNullForRangedInput(const char rangedInput) const //composite helper
-    {
-        //todo:will this seems almost silly, revisit -- i think its just so we can iterate...maybe we can put this somewhere else...
-        //revisited, oct 13 - this could be a good(easy...) way to order evaluation - i.e. order more specigic before more general - which is pretty important as our algorithm is somewhat 'greedy'(probably horrible wording)
-        char rangedSI_categories[] {SI_CHARS_LOWER, SI_CHARS_UPPER, SI_CHARS_ANY, SI_NUMBERS_0, SI_NUMBERS_1to9, SI_NUMBERS_0to9,SI_EMPTY};
-
-        ScanWordNode* mappedNode = nullptr;
-
-        std::function<size_t (char)> rangedSIToIndex =
-            [](char rangedSItype)->size_t
-            {
-                size_t index;
-
-                switch (rangedSItype)
-                {
-                    case SI_EMPTY:
-                        index = 0;
-                        break;
-                    case SI_CHARS_LOWER:
-                        index = 1;
-                        break;
-                    case SI_CHARS_UPPER:
-                        index = 2;
-                        break;
-                    case SI_CHARS_ANY:
-                        index = 3;
-                        break;
-                    case SI_NUMBERS_0:
-                        index = 4;
-                        break;
-                    case SI_NUMBERS_1to9:
-                        index = 5;
-                        break;
-                    case SI_NUMBERS_0to9:
-                        index = 6;
-                        break;
-                    default:
-                        index = 7; //should never happen, but if so lets have it blow up
-                        break;
-                };
-
-                return index;
-            };
-
-        for (size_t i = 0; i < NUMBER_OF_RANGED_SI_CATEGORIES; i++)
-        {
-            //simulating 'mapping'
-            const auto rangedCategory = rangedSI_categories[i];
-            //std::cout << "\tcalling _fnIsInputWithinRange("
-            //          << rangedCategory << ", " << rangedInput << ")"
-            //          << std::endl;
-
-            if (__fnIsInputWithinRange(rangedCategory, rangedInput))
-            {
-                const auto rangedCategoryIndex = rangedSIToIndex(rangedCategory); 
-                //mappedNode = _rangedTransitionsByCategory[rangedCategoryIndex];
-
-                if (mappedNode != nullptr)
-                {
-                    break;
-                }
-            }
-        }        
-
-        return mappedNode;
-    }
 public:
     ScanWordNode() { _id = 2^(32)-1; _lexerDfa = nullptr; _hasAnythingButTransition = false; _hasRangedTransition = false; }
     explicit ScanWordNode(const lexer_dfa* lexerDfa)
@@ -167,7 +100,7 @@ public:
 
         if (!_hasRangedTransition && !_hasAnythingButTransition)
         {
-            //std::cout << "\t::Trying normal way" <<std::endl;
+            std::cout << "\t::Trying normal way" <<std::endl;
             //finally, if all else fails - try normal case
             const TransitionInputKey transitionMapKey(theIdInKey, input, false, false, false);
             ret = transitionMap->getNextScanWordNode(transitionMapKey);
@@ -176,22 +109,35 @@ public:
         }
         else
         {
-            //std::cout << "\t::Trying Ranged" << std::endl;
-            const TransitionInputKey transitionMapKey(theIdInKey, input, true, false, false);
-            ret = transitionMap->getNextScanWordNode(transitionMapKey);
 
-            if (ret != nullptr) return ret; //is this anything?
+            if (_hasRangedTransition)
+            {
+                std::cout << "\t::Trying Ranged" << std::endl;
+                const TransitionInputKey transitionMapKey(theIdInKey, input, true, false, false);
+                ret = transitionMap->getNextScanWordNode(transitionMapKey);
+
+                if (ret != nullptr) return ret; //is this anything?
+            }
+
+            if (_hasRangedTransition && _hasAnythingButTransition)
+            {
+                std::cout << "\t::Trying Ranged +  Anything but" << std::endl;
+                const TransitionInputKey transitionMapKey(theIdInKey, input, true, true, false);
+                ret = transitionMap->getNextScanWordNode(transitionMapKey);
+
+                if (ret != nullptr) return ret; //is this anything?
+            }
 
             if (_hasAnythingButTransition)
             {
-                //std::cout << "\t::Trying Ranged and HasAnythingBut" << std::endl;
-                const TransitionInputKey transitionMapKey2(theIdInKey, input, true, true, false);
+                std::cout << "\t::Trying just HasAnythingBut" << std::endl;
+                const TransitionInputKey transitionMapKey2(theIdInKey, input, false, true, false);
                 ret = transitionMap->getNextScanWordNode(transitionMapKey2);
 
                 if (ret != nullptr) return ret;
             }
 
-            //std::cout << "\t::Trying normal way" <<std::endl;
+            std::cout << "\t::Finally Trying normal way" <<std::endl;
             //finally, if all else fails - try normal case
             const TransitionInputKey transitionMapKey3(theIdInKey, input, false, false, false);
             ret = transitionMap->getNextScanWordNode(transitionMapKey3);

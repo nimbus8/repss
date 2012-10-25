@@ -61,7 +61,7 @@ All went home poorer than they left. But you know in this world there are much m
 /[/]
 /[/]
 
-Unbelievable eh? That's adawe fo you! The innocent stay Away from the madness.
+/[(Unbelievable|isn'tit)] eh? That's adawe fo you! The innocent stay Away from the madness.
 
 Footnte:
 [1] In Belgium every second sunday is rarely referred to as "nuit de pieds nu".

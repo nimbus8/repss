@@ -167,7 +167,11 @@ protected:
                 //this looks about right
                 hashIndex = (size_t)1 + ((size_t)scanWordId)*_SPACE_ALOTTED_TO_EACH_SCANWORD + (isAnythingBut? _SIZE_OF_RANGED_ALPHABET + _SIZE_OF_NORMAL_ALPHABET : _SIZE_OF_RANGED_ALPHABET) + (size_t)inputCharacter;
 
-                //std::cout << "\t\tNormal ScanWord-Hash: " << hashIndex << std::endl;
+                if (isAnythingBut)
+                    std::cout << "\t\tAnything but ScanWord-Hash: " << hashIndex << std::endl;
+                else
+                    std::cout << "\t\tNormal ScanWord-Hash: " << hashIndex << std::endl;
+
            }
 
             return hashIndex;
@@ -194,12 +198,30 @@ public:
 
     void emplace(const std::pair<TransitionInputKey, ScanWordNode*>& keyAndValue)
     {
-        _nextScanWordNode.emplace(keyAndValue);
 
-        //std::cout << "ScanWordTransitionMap::emplace(...) called. Size now: " << _nextScanWordNode.size() << std::endl;
-        //std::cout << "\t { " << keyAndValue.first.getScanWordId() << ", " << keyAndValue.first.getIsRanged() << ","
-        //          << keyAndValue.first.getIsAnythingBut() << ", " << keyAndValue.first.getInputCharacter()
-        //          << " } -> Scan-Word()" << std::endl;
+       if (keyAndValue.first.getIsAnythingBut())
+       {
+           for (int c = 0; c < 255; c++)
+           {
+               if (((char)c) != keyAndValue.first.getInputCharacter())
+               {
+                   TransitionInputKey anythingButKey(keyAndValue.first.getScanWordId(), (char) c, keyAndValue.first.getIsRanged(), true, true);
+                   std::cout << "{" << anythingButKey.getScanWordId() << ", " << anythingButKey.getIsRanged() << ", " << anythingButKey.getIsAnythingBut() << "}" << anythingButKey.getInputCharacter() << std::endl;
+                   _nextScanWordNode.emplace(anythingButKey);
+               }
+           }
+
+           std::cout << "Added entire alphabet not " << keyAndValue.first.getInputCharacter() << " to table for scanword(" << keyAndValue.first.getScanWordId() << ")" << std::endl;
+       }
+       else
+       {
+          _nextScanWordNode.emplace(keyAndValue);
+       
+          std::cout << "ScanWordTransitionMap::emplace(...) called. Size now: " << _nextScanWordNode.size() << std::endl;
+          std::cout << "\t { " << keyAndValue.first.getScanWordId() << ", " << keyAndValue.first.getIsRanged() << ","
+                  << keyAndValue.first.getIsAnythingBut() << ", " << keyAndValue.first.getInputCharacter()
+                  << " } -> Scan-Word()" << std::endl;
+       }
     }
 
 
@@ -330,8 +352,10 @@ public:
         else
         {
             ret = nullptr;
-            //std::cout << "Could NOT find match" << std::endl;
+            std::cout << "Could NOT find match" << std::endl;
         }
+
+
         }
 
        return ret;

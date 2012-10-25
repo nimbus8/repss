@@ -185,6 +185,8 @@ public:
     //std::cout << "\t_nextStates::size = " << _nextStates.size() << std::endl; //commented in order to benchmark diff between ScanWords
     //_printTransitions();
 
+        //here we shoudl accout for the special ANYTHING BUT
+
         for (auto iter : _nextStates)
         {
             const auto inputKey = iter.first;

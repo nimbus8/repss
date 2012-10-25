@@ -136,8 +136,8 @@ void ScanWordNode::init(ScanWordTransitionMap* const transitionMap, const std::u
 
         //todo:will remember we have to check for isAnythingBut and then handle that case
  
-        auto isRangedTransition = aTransition.getIsRanged();
-        auto isAnythingBut = aTransition.getIsAnythingBut();        
+        const auto isRangedTransition = aTransition.getIsRanged();
+        const auto isAnythingBut = aTransition.getIsAnythingBut();        
 
         if (isRangedTransition)
         {
@@ -182,15 +182,23 @@ void ScanWordNode::init(ScanWordTransitionMap* const transitionMap, const std::u
 
                 if (shouldAddToTransitionMap)
                 {
-                    TransitionInputKey transitionMapKey(getId(), possibility, true, false, true);
+                    TransitionInputKey transitionMapKey(getId(), possibility, true, isAnythingBut, true);
                     std::pair<TransitionInputKey, ScanWordNode*> transitionMapKeyAndValue{ transitionMapKey, nextScanWordNode };
                     transitionMap->emplace(transitionMapKeyAndValue);
 
                     _hasRangedTransition = true;
+                    
+                    if (isAnythingBut) _hasAnythingButTransition = true;
                 }
             }
 
             std::cout << "\tSuccessfully set value for index in _RangedTransitionsByCategory" << std::endl;
+        }
+        else if (isAnythingBut)
+        {
+            TransitionInputKey transitionMapKey(getId(), input, false, true, true);
+            std::pair<TransitionInputKey, ScanWordNode*> transitionMapKeyAndValue{ transitionMapKey, nextScanWordNode };
+            transitionMap->emplace(transitionMapKeyAndValue);
         }
         else
         {
