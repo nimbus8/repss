@@ -20,7 +20,7 @@
 
 /[rep(s)]  
 
-lowly rolly polly olly.
+llowly rolly polly olly.
 
 /[/]
 
