@@ -271,13 +271,6 @@ bool lexer_word_constructor::_testMergedRepresentation()
     for (int k = 0; k < 4; k++)
     {
         auto word = _startWordForMergedRepr;
-        //char seq[17];
-        //strcpy(seq, (k==0? seq1 : seq2));
-        //const size_t seq_length = (k == 0? 17 : 8);
-
-//        char seq[20];
-//        strcpy(seq, (k==0? seq1 : (k==1? seq2 : seq3)));
-//        const size_t seq_length = (k == 0? 7 : (k==1? 8 : 17));
 
         char seq[25];
         strcpy(seq, (k==0? seq1 : (k==1? seq2 : (k==2? seq3 : seq4))));
@@ -402,6 +395,8 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlteration()
 
 //note to self, anything buts should be evaluated after normal and ranged - poor solution but im not sure how to handle this well
 
+    //this works for single characters
+
     StateAndInput<int,char> stateInput1(ST_1,'/');
     StateAndInput<int,char> stateInput2(ST_2,'[');
     StateAndInput<int,char> stateInput3(ST_3,'(');
@@ -420,7 +415,6 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlteration()
         auto idfa5a = dfaManager.createDfaTransition(&stateInput5a, DFA_6);
         auto idfa5b = dfaManager.createDfaTransition(&stateInput5b, DFA_7);
     auto idfa4b = dfaManager.createDfaTransition(&stateInput4b, DFA_6);
-        auto idfa6a = dfaManager.createDfaTransition(&stateInput6a, DFA_5);
         auto idfa6b = dfaManager.createDfaTransition(&stateInput6b, DFA_7);
             auto idfa7 = dfaManager.createDfaTransition(&stateInput7, DFA_8);
 
@@ -453,7 +447,7 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlteration()
 
         std::cout << std::endl << "Constructed SCO" << std::endl;
 
-        char seq[] = { 'k', '\n','/', '[', '(', 'a','b', '|', 'c', '|', 'd', 'e', ')', ']', ' ', 'H' };
+        char seq[] = { 'k', '\n','/', '[', '(', 'a','|', 'c', '|', 'd', '|', 'e', ')', ']', ' ', 'H' };
         const size_t seq_length = 16;
         debug_printDfa(dfaManager, word_base, seq, seq_length);
     }

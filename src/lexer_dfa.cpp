@@ -148,14 +148,61 @@ const lexer_dfa* lexer_dfa::getNextDfa(const LexerStateAndInput& lexerStateAndIn
         }
         else if (input >= 'A' && input <= 'Z')
         {
+            //std::cout << "\tChecking uppercase ranged" << std::endl; //commented in order to benchmark diff between ScanWords
+
             StateAndInput<int,char> rangedInput(stateAndInput.getState(), SI_CHARS_UPPER, true);
-            StateAndInput<int,char> rangedInput2(stateAndInput.getState(), SI_CHARS_ANY, true);
+
+            //std::cout << "\t\t";
+            //_printInputHash(rangedInput, "rangedInput"); //commented in order to benchmark diff between ScanWords
+
+            //std::cout << "\t\tlexer_dfa::getNextState(...): (state,input) = (" << stateAndInput.getState() << ", SI_CHARS_UPPER)" << std::endl;
+
+            std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals>::const_iterator fetchedCharsUpper
+                = _nextStates.find(rangedInput);
+
+            if (fetchedCharsUpper != _nextStates.end())
+            {
+                //std::cout << "\tFound rangedChars:[A-Z]" << std::endl; //commented in order to benchmark diff between ScanWords
+                ret = fetchedCharsUpper->second;
+            }
+            else
+            {
+                StateAndInput<int,char> rangedInput2(stateAndInput.getState(), SI_CHARS_ANY, true);
+
+                //std::cout << "\t\t";
+                //_printInputHash(rangedInput, "rangedInput"); //commented in order to benchmark diff between ScanWords
+
+                //std::cout << "\t\tlexer_dfa::getNextState(...): (state,input) = (" << stateAndInput.getState() << ", SI_CHARS_ANY)" << std::endl;
+
+                std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals>::const_iterator fetchedCharsAny
+                    = _nextStates.find(rangedInput2);
+
+                if (fetchedCharsAny != _nextStates.end())
+                {
+                    //std::cout << "rangedChars:([a-z]|[A-Z])" << std::endl; //commented in order to benchmark diff between ScanWords
+                    ret = fetchedCharsAny->second;
+                }
+            }
         }
 
         //if by now ret has not been set to soemething other than nullptr, we have one last restort in the empty char
         if (ret == nullptr)
         {
-            if (!matchedRangedInput)
+            //we check for 'anythingBut' before we finally check for empty string -- this is the going protocol for now
+            if (_anythingButTransition != nullptr)
+            {
+                if (_anythingButTransition->getIsRanged())
+                {
+                    //todo: perform range checks for anything buts
+                }
+                else if (input != _anythingButTransition->getStateAndInput().getInput())
+                {
+                   ret = const_cast<lexer_dfa*>(_anythingButTransition->getDfaNode());
+                }
+            }
+
+            //btw, !matchedRangedInput here at this point, goes without saying
+            if (ret == nullptr)
             {
                 //check case of empty char
                 StateAndInput<int,char> stateAndEmptyCharInput(stateAndInput.getState(), '\0');

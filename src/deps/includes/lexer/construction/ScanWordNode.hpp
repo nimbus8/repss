@@ -28,6 +28,28 @@
 #include "model_representation/finite_autonoma/lexer_dfa.hpp"
 #include "ScanWordTransitionMap.hpp"
 
+enum class ScanWordProperties_t : unsigned int
+{
+    SCAN_WORD_PROPERTY_NOTHING				= 0x00,
+    SCAN_WORD_PROPERTY_HAS_RANGED_TRANSITION 		= 0x02,
+    SCAN_WORD_PROPERTY_HAS_ANYTHING_BUT_TRANSITION	= 0x04
+   // = 0x8, 0x10, 0x20, 0x80, 0x100, 0x200, 0x400, 0x800 ...
+};
+
+inline void addProperty(unsigned int &propertyContainer, ScanWordProperties_t propertyToAdd)
+{
+    unsigned int propertyToAddUINT = static_cast<unsigned int>(propertyToAdd);
+    if (!(propertyContainer & propertyToAddUINT))
+    {
+        propertyContainer ^= propertyToAddUINT;
+
+        if (!(propertyContainer & propertyToAddUINT))
+        {
+            std::cout << "add property failed!!! oops!" << std::endl;
+            exit(1);
+        }
+    }
+} 
 
 #ifdef DEBUG
      #ifndef DLOG(str)
@@ -43,37 +65,31 @@
 class ScanWordNode
 {
 private:
-    class InputHashFunction {
-    public:
-        ::std::size_t operator ()(const char &input) const
-        {
-            return (size_t) input;
-        }
-    };
-
-    class InputEquals {
-    public:
-        bool operator ()(const char &lhs, const char &rhs) const
-        {
-            return lhs == rhs;
-        }
-    };
-
-    unsigned int _id; //ok so you may ask why have id, when its the same in _lexerDfa? well, we may want to delete lexer_dfa, and use this class as preferred representation (thats the plan). if we move the init into constructor, we wouldn't even need to hold ont to reference to lexer_dfa.
+    unsigned int _id;
     const lexer_dfa* _lexerDfa;
 
-    bool _hasAnythingButTransition;
-    bool _hasRangedTransition;
+    unsigned int _properties;
 
+    std::pair<TransitionInputKey, ScanWordNode*>* _anythingButTransition; //lets new this the moment we know how much we need
 public:
-    ScanWordNode() { _id = 2^(32)-1; _lexerDfa = nullptr; _hasAnythingButTransition = false; _hasRangedTransition = false; }
+    ScanWordNode()
+    {
+        _id = 0xFFFFFFFF;
+        _lexerDfa = nullptr;
+
+        _properties = static_cast<unsigned int>(ScanWordProperties_t::SCAN_WORD_PROPERTY_NOTHING);
+
+        _anythingButTransition = nullptr;
+    }
+
     explicit ScanWordNode(const lexer_dfa* lexerDfa)
     {
         _id = lexerDfa->getId();
         _lexerDfa = lexerDfa;
 
-        _hasAnythingButTransition = false;
-        _hasRangedTransition = false;
+        _properties = static_cast<unsigned int>(ScanWordProperties_t::SCAN_WORD_PROPERTY_NOTHING);
+
+        _anythingButTransition = nullptr;
     }
 
     void init(ScanWordTransitionMap* const transitionMap, const std::unordered_set<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd);
@@ -90,15 +106,18 @@ public:
 
     const ScanWordNode* getNextScanWordNode(const ScanWordTransitionMap* const transitionMap, const char input) const
     {
+//      SCAN_WORD_PROPERTY_NOTHING                          = 0x00,
+//      SCAN_WORD_PROPERTY_HAS_RANGED_TRANSITION            = 0x02,
+//      SCAN_WORD_PROPERTY_HAS_ANYTHING_BUT_TRANSITION      = 0x04
+
         //_printTransitions();
 
         const ScanWordNode* ret = nullptr;
 
-        //1) check for ranged
-
         const auto theIdInKey = getId();
 
-        if (!_hasRangedTransition && !_hasAnythingButTransition)
+        //case 1: are there NO ranged OR anythignBut transitions? If so we needn't test for them
+        if ( _properties == static_cast<unsigned int>(ScanWordProperties_t::SCAN_WORD_PROPERTY_NOTHING))
         {
             std::cout << "\t::Trying normal way" <<std::endl;
             //finally, if all else fails - try normal case
@@ -107,67 +126,78 @@ public:
 
             return ret;
         }
-        else
+        else 
         {
-
-            if (_hasRangedTransition)
+            //case 2: we know we have ranged transitions and NO anythingButTransitions, just check for the former
+            //first and then for the unranged equivalent after that
+            if ((_properties & (static_cast<unsigned int>(ScanWordProperties_t::SCAN_WORD_PROPERTY_HAS_RANGED_TRANSITION))) 
+              && !(_properties & static_cast<unsigned int>(ScanWordProperties_t::SCAN_WORD_PROPERTY_HAS_ANYTHING_BUT_TRANSITION)))  
             {
                 std::cout << "\t::Trying Ranged" << std::endl;
-                const TransitionInputKey transitionMapKey(theIdInKey, input, true, false, false);
+                const TransitionInputKey transitionMapKeyRanged(theIdInKey, input, true, false, false);
+                ret = transitionMap->getNextScanWordNode(transitionMapKeyRanged);
+
+                //trying normal - the rule here is that normal transitions & ranged take precedence over anything but
+                //and we should probably do some checking at lower levels so transitions don't condlict.
+                if (ret == nullptr)
+                {
+                    const TransitionInputKey transitionMapKeyNormal(theIdInKey, input, false, false, false);
+                    ret = transitionMap->getNextScanWordNode(transitionMapKeyNormal);
+                }
+            }
+            else if ((_properties & (static_cast<unsigned int>(ScanWordProperties_t::SCAN_WORD_PROPERTY_HAS_RANGED_TRANSITION)))
+                   && (_properties & static_cast<unsigned int>(ScanWordProperties_t::SCAN_WORD_PROPERTY_HAS_ANYTHING_BUT_TRANSITION)))
+            {
+                //case 3: we know there are ranged transtions AND anything but transitions
+                //         we must test for both individual and/or in combination.
+                const TransitionInputKey transitionMapKeyRanged(theIdInKey, input, true, false, false);
+                ret = transitionMap->getNextScanWordNode(transitionMapKeyRanged);
+
+                //if no hit for ranged try normal case, before anythingBut
+                if (ret == nullptr)
+                {
+                    const TransitionInputKey transitionMapKey(theIdInKey, input, false, false, false);
+                    ret = transitionMap->getNextScanWordNode(transitionMapKey);
+                }
+
+                if (ret == nullptr)
+                {
+                    const auto inputAndType = _anythingButTransition->first;
+
+                    if (inputAndType.getIsRanged())
+                    {
+                        const auto anyThingButCharacterRange = inputAndType.getInputCharacter();
+                        
+                        //todo:will a switch on the ranges possible
+                    }
+                    else
+                    {
+                        if (input != inputAndType.getInputCharacter())
+                        {
+                            ret = _anythingButTransition->second;
+                        }
+                    }
+                }
+            }
+            else if(_properties & static_cast<unsigned int>(ScanWordProperties_t::SCAN_WORD_PROPERTY_HAS_ANYTHING_BUT_TRANSITION))
+            {
+                //case 4: we know that there ARE'NT any ranged transitions, but there are anythingBut transitions
+                //         we need test for the normal(unranged) case first, THEN the anythingBut case (if norm fail)
+                const TransitionInputKey transitionMapKey(theIdInKey, input, false, false, false);
                 ret = transitionMap->getNextScanWordNode(transitionMapKey);
 
-                if (ret != nullptr) return ret; //is this anything?
+                if (ret == nullptr)
+                {
+                    const auto inputAndType = _anythingButTransition->first;
+
+                    if (input != inputAndType.getInputCharacter())
+                    {
+                        ret = _anythingButTransition->second;
+                    }
+                }
             }
-
-            if (_hasRangedTransition && _hasAnythingButTransition)
-            {
-                std::cout << "\t::Trying Ranged +  Anything but" << std::endl;
-                const TransitionInputKey transitionMapKey(theIdInKey, input, true, true, false);
-                ret = transitionMap->getNextScanWordNode(transitionMapKey);
-
-                if (ret != nullptr) return ret; //is this anything?
-            }
-
-            if (_hasAnythingButTransition)
-            {
-                std::cout << "\t::Trying just HasAnythingBut" << std::endl;
-                const TransitionInputKey transitionMapKey2(theIdInKey, input, false, true, false);
-                ret = transitionMap->getNextScanWordNode(transitionMapKey2);
-
-                if (ret != nullptr) return ret;
-            }
-
-            std::cout << "\t::Finally Trying normal way" <<std::endl;
-            //finally, if all else fails - try normal case
-            const TransitionInputKey transitionMapKey3(theIdInKey, input, false, false, false);
-            ret = transitionMap->getNextScanWordNode(transitionMapKey3);
         }
             
-/*
-        if (ret == nullptr && _hasRangedTransition && _hasAnythingButTransition)
-        {
-            //std::cout << "\t::Trying Ranged and HasAnythingBut" << std::endl;
-            const TransitionInputKey transitionMapKey(theIdInKey, input, true, true, false);
-            ret = transitionMap->getNextScanWordNode(transitionMapKey);
-        }
-
-        if (ret == nullptr && _hasAnythingButTransition)
-        {
-            //std::cout << "\t::Trying hasAnythingbut" << std::endl;
-           //iunno this is to say it has an anything but, but this wasn't covered w/ the rnge
-            const TransitionInputKey transitionMapKey(theIdInKey, input, false, true, false);
-            ret = transitionMap->getNextScanWordNode(transitionMapKey); 
-        }
-
-        if (ret == nullptr)
-        {
-            //std::cout << "\t::Trying normal way" <<std::endl;
-            //finally, if all else fails - try normal case
-            const TransitionInputKey transitionMapKey(theIdInKey, input, false, false, false);
-            ret = transitionMap->getNextScanWordNode(transitionMapKey);
-        }
-*/
-
         return ret;
     }
 };

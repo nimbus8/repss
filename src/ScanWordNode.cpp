@@ -182,13 +182,33 @@ void ScanWordNode::init(ScanWordTransitionMap* const transitionMap, const std::u
 
                 if (shouldAddToTransitionMap)
                 {
-                    TransitionInputKey transitionMapKey(getId(), possibility, true, isAnythingBut, true);
-                    std::pair<TransitionInputKey, ScanWordNode*> transitionMapKeyAndValue{ transitionMapKey, nextScanWordNode };
-                    transitionMap->emplace(transitionMapKeyAndValue);
+                    if (!isAnythingBut)
+                    {
+                        TransitionInputKey transitionMapKeyRanged(getId(), possibility, true, false, true);
+                        std::pair<TransitionInputKey, ScanWordNode*> transitionMapKeyAndValue{ transitionMapKeyRanged, nextScanWordNode };
+                        transitionMap->emplace(transitionMapKeyAndValue);
 
-                    _hasRangedTransition = true;
-                    
-                    if (isAnythingBut) _hasAnythingButTransition = true;
+                        //_hasRangedTransition = true;
+                        addProperty(_properties, ScanWordProperties_t::SCAN_WORD_PROPERTY_HAS_RANGED_TRANSITION);                        }
+                    else
+                    {
+                        if (_anythingButTransition != nullptr)
+                        {
+                            std::cout << "Ooops, somehow we managed to define two 'anythingBut' transitions"
+                                      << ", this almost certainly leads to undefined behaviour. Quitting." << std::endl;
+
+                            exit(1);
+                        }
+
+                        //_hasAnythingButTransition = true; //deprecate this!
+
+                        TransitionInputKey transitionKeyAnythingButRange(getId(), possibility, true, true, false);
+                        std::pair<TransitionInputKey, ScanWordNode*>* transitionKeyAndValue = new std::pair<TransitionInputKey, ScanWordNode*>(transitionKeyAnythingButRange, nextScanWordNode);
+
+                        _anythingButTransition = transitionKeyAndValue;
+
+                        addProperty(_properties, ScanWordProperties_t::SCAN_WORD_PROPERTY_HAS_ANYTHING_BUT_TRANSITION);
+                    }
                 }
             }
 
@@ -196,9 +216,22 @@ void ScanWordNode::init(ScanWordTransitionMap* const transitionMap, const std::u
         }
         else if (isAnythingBut)
         {
-            TransitionInputKey transitionMapKey(getId(), input, false, true, true);
-            std::pair<TransitionInputKey, ScanWordNode*> transitionMapKeyAndValue{ transitionMapKey, nextScanWordNode };
-            transitionMap->emplace(transitionMapKeyAndValue);
+            if (_anythingButTransition != nullptr)
+            {
+                std::cout << "Ooops, somehow we managed to define two 'anythingBut' transitions"
+                          << ", this almost certainly leads to undefined behaviour. Quitting." << std::endl;
+
+                exit(1);
+            }
+
+            //last parameter doesn't matter here
+            TransitionInputKey transitionKeyAnythingButUnranged(getId(), input, false, true, false);
+            std::pair<TransitionInputKey, ScanWordNode*>* transitionKeyAndValue = new std::pair<TransitionInputKey, ScanWordNode*>(transitionKeyAnythingButUnranged, nextScanWordNode);
+
+            _anythingButTransition = transitionKeyAndValue;
+
+            //_hasAnythingButTransition = true;  //deprecate this
+            addProperty(_properties, ScanWordProperties_t::SCAN_WORD_PROPERTY_HAS_ANYTHING_BUT_TRANSITION);
         }
         else
         {

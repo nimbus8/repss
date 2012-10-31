@@ -74,6 +74,8 @@ class lexer_dfa
 private:
     mutable std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals> _nextStates;
 
+    LexerTransition* _anythingButTransition;
+
     int _id;
 
     void _printInputHash(const StateAndInput<int,char>& stateAndInput, const std::string& name) const
@@ -82,9 +84,15 @@ private:
         //std::cout << "\tHash(" << name << ") = " << hashFunc(stateAndInput) << std::endl; //commented in order to benchmark diff between ScanWords
     }
 public:
-    explicit lexer_dfa(int id) : _id(id) {}
+    explicit lexer_dfa(int id) : _id(id), _anythingButTransition(nullptr) {}
 
-    ~lexer_dfa() {}
+    ~lexer_dfa()
+    {
+        if (_anythingButTransition != nullptr)
+        {
+            delete _anythingButTransition;
+        }
+    }
 
     void _printTransitions() const
     {
@@ -97,12 +105,37 @@ public:
               //  << "dfa-id(" << dfaPtr->getId() << "))"
               //  << "\t- hash(" << hashFunc(inputKey)  << ")" << std::endl; //commented in order to benchmark diff between ScanWords
         }
+
+        if (_anythingButTransition != nullptr)
+        {
+            auto stateAndInput = _anythingButTransition->getStateAndInput();
+            auto dfaPtr = _anythingButTransition->getDfaNode();
+            //std::cout << "\t(<" << stateAndInput.getState() << ", " << stateAndInput.getInput()
+                      //<< ", ranged?(" << (stateAndInput.getIsRanged()? "yes" : "no") << ")>,"
+                      //<< "dfa-id(" << dfaPtr->getId() << "))" << std::endl; //commented in order to benchmark diff b/w Scanwords
+        }
     }
 
-    void add_next_dfa(const StateAndInput<int,char> stateAndInput, const lexer_dfa* nextDfa) const 
+    void add_next_dfa(const StateAndInput<int,char> stateAndInput, const lexer_dfa* nextDfa) 
     {
-        std::pair<StateAndInput<int,char>, lexer_dfa*> stateInputAndDfa{stateAndInput, const_cast<lexer_dfa*>(nextDfa)}; 
-        _nextStates.emplace(stateInputAndDfa); 
+        if (!stateAndInput.getIsAnythingBut())
+        {
+            std::pair<StateAndInput<int,char>, lexer_dfa*> stateInputAndDfa{stateAndInput, const_cast<lexer_dfa*>(nextDfa)}; 
+            _nextStates.emplace(stateInputAndDfa);
+        }
+        else
+        {
+            if (_anythingButTransition != nullptr)
+            {
+                std::cout << "Ooops, cannot define more tha one anythingButTransition for a single Dfa!!! Exiting." << std::endl;
+
+                exit(1);
+            }
+
+            std::cout << "Adding AnythingButTransition!" << std::endl;
+            const LexerTransition* anythingButTransition = new LexerTransition(stateAndInput, nextDfa);
+            _anythingButTransition = const_cast<LexerTransition*>(anythingButTransition);
+        }
     }
 
     int getId() const { return _id; }
@@ -116,7 +149,12 @@ public:
         {
             const auto inputKey = iter.first;
             const auto inputKeyValue = inputKey.getInput();
-            if (inputKeyValue == input)
+
+            if (inputKey.getIsAnythingBut() && inputKeyValue != input)
+            {
+                return true;           
+            }
+            else if (inputKeyValue == input)
             {
                 return true;
             }
@@ -186,7 +224,7 @@ public:
     //_printTransitions();
 
         //here we shoudl accout for the special ANYTHING BUT
-
+        
         for (auto iter : _nextStates)
         {
             const auto inputKey = iter.first;
@@ -197,6 +235,7 @@ public:
             if (!inputKey.getIsRanged())
             {
                 //std::cout << "\tlexerDfa::getNextDfaForInput -- input key UNranged\n"; //commented in order to benchmark diff between ScanWords
+
                 if (inputKeyValue == input)
                 {
                     const auto retDfaPtr = iter.second;
@@ -217,17 +256,33 @@ public:
 
                 //std::cout << "\t" << isValidRangedInputLog; //commented in order to benchmark diff between ScanWords
                 //DLOG(isValidRangedInputLog.c_str());
-                if (isValidRangedInput(inputKeyValue, input))
-                {
+
+                 if (isValidRangedInput(inputKeyValue, input))
+                 {
                     const auto retDfaPtr = iter.second;
                     return retDfaPtr;
-                }
+                 }
             }
-       }
+        }    
 
-        return nullptr;
+        if (_anythingButTransition != nullptr)
+        {
+            const auto stateAndInput = _anythingButTransition->getStateAndInput();
+            const auto anythingButInput = stateAndInput.getInput();
+            if (_anythingButTransition->getIsRanged() && !isValidRangedInput(anythingButInput, input))
+            {
+                const auto retDfaPtr = _anythingButTransition->getDfaNode();
+                return retDfaPtr;
+            }
+            else if (anythingButInput != input)
+            {
+                const auto retDfaPtr = _anythingButTransition->getDfaNode();
+                return retDfaPtr;
+            }
+        }
+            return nullptr;
     }
-
+    
     const lexer_dfa* getNextDfa(const LexerStateAndInput& lexerStateAndInput) const;
 
     std::vector<LexerTransition> getTransitions() const
@@ -241,6 +296,11 @@ public:
 
             const LexerTransition aTransition(inputKey, dfaPtr);
             allTransitions.push_back(aTransition);
+        }
+
+        if (_anythingButTransition != nullptr)
+        {
+            allTransitions.push_back(*_anythingButTransition);
         }
 
         return allTransitions;

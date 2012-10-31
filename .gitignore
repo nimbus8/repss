@@ -28,6 +28,7 @@
 *.sql
 *.sqlite
 sampleFileDoNotSubmit.txt
+functionalityTests
 
 # OS generated files #
 ######################
