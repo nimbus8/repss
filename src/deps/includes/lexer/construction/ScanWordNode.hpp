@@ -119,7 +119,7 @@ public:
         //case 1: are there NO ranged OR anythignBut transitions? If so we needn't test for them
         if ( _properties == static_cast<unsigned int>(ScanWordProperties_t::SCAN_WORD_PROPERTY_NOTHING))
         {
-            std::cout << "\t::Trying normal way" <<std::endl;
+            //std::cout << "\t::Trying normal way" <<std::endl;
             //finally, if all else fails - try normal case
             const TransitionInputKey transitionMapKey(theIdInKey, input, false, false, false);
             ret = transitionMap->getNextScanWordNode(transitionMapKey);
@@ -133,7 +133,7 @@ public:
             if ((_properties & (static_cast<unsigned int>(ScanWordProperties_t::SCAN_WORD_PROPERTY_HAS_RANGED_TRANSITION))) 
               && !(_properties & static_cast<unsigned int>(ScanWordProperties_t::SCAN_WORD_PROPERTY_HAS_ANYTHING_BUT_TRANSITION)))  
             {
-                std::cout << "\t::Trying Ranged" << std::endl;
+                //std::cout << "\t::Trying Ranged" << std::endl;
                 const TransitionInputKey transitionMapKeyRanged(theIdInKey, input, true, false, false);
                 ret = transitionMap->getNextScanWordNode(transitionMapKeyRanged);
 

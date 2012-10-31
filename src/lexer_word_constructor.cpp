@@ -60,7 +60,10 @@ void lexer_word_constructor::_initWords()
     _dfaTransitions.push_back(alterationWord.second);
 }
 
-
+//oct 31: optimization with scanwords failed hard. it could be just the smallness and similarity of our
+//         base language constructs. May want to just wait for the language to reach 90%, and come back to this.
+//         still agree that scanwords needs to be there to hide internals, but question is whether it behave
+//         more like mergedWords.
 bool lexer_word_constructor::_testScanWords()
 {
     bool retResult = true;
@@ -71,10 +74,6 @@ bool lexer_word_constructor::_testScanWords()
     const char seq4[] = { 'a', 'b', 's', 'o', 'l', 'u', 't', '/', '[', 'p', 'a', 'r', '/', '[', '(', 'a', '|', 'p', '|', 'e', ')', ']', ' ', '\0' };
 
 
-//    const char seq1[] = {'5', '/','/', '[','/', ']', 'H', '\0'};
-//    const char seq2[] = {'b','/', '[', 's', 'c','o', ']', ' ', '\0'};
-//    const char seq3[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ','a','=','2',':','1', '0', '\n', '\0' }; 
-
     std::cout << std::endl;
     std::cout << "Starting Scan Words Test" << std::endl
               << "------------------------" << std::endl;
@@ -82,7 +81,7 @@ bool lexer_word_constructor::_testScanWords()
     StopWatch stopwatch;
     stopwatch.start();
 
-    for (int round = 0; round < 1/*0000*/; round++)
+    for (int round = 0; round < 10000; round++)
     { 
     for (int k = 0; k < 4; k++)
     {
@@ -99,7 +98,7 @@ bool lexer_word_constructor::_testScanWords()
 
         do
         {//search for a beginning
-            std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+            //std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
             const auto aNextDfa = curr->getNextScanWordNode(_scanWordTransitionMap, seq[count]);
             count++;
 
@@ -116,7 +115,7 @@ bool lexer_word_constructor::_testScanWords()
             curr = const_cast<ScanWordNode*>(nextDfa);
             nextDfa = curr->getNextScanWordNode(_scanWordTransitionMap, seq[count]);
 
-            std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+            //std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
 
             if (nextDfa == nullptr)
             {
@@ -127,7 +126,7 @@ bool lexer_word_constructor::_testScanWords()
                 {//search for a beginning
                     curr = word;    //reset 'state' to 'state' at worbase | reset current dfa
 
-                    std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
+                    //std::cout << "(id, input-idx, input): " << curr->getId() << ", " << count << ", " << seq[count] << std::endl;
 
                     const auto aNextDfa = curr->getNextScanWordNode(_scanWordTransitionMap, seq[count]);
                     if (aNextDfa != nullptr)
@@ -158,7 +157,7 @@ bool lexer_word_constructor::_testScanWords()
         else if (dfaManager.isAcceptingNode(nextDfa->getId()))
         {
             auto foundWord = dfaManager.getAcceptingNodeName(nextDfa->getId());
-            std::cout << "found word! word=(" << foundWord << ")" << std::endl;
+            //std::cout << "found word! word=(" << foundWord << ")" << std::endl;
             retResult = retResult && true;
         }
         else if (count >= seq_length)
@@ -266,7 +265,7 @@ bool lexer_word_constructor::_testMergedRepresentation()
     StopWatch stopwatch;
     stopwatch.start();
 
-    for (int round = 0; round < 1/*0000*/; round++)
+    for (int round = 0; round < 10000; round++)
     {
     for (int k = 0; k < 4; k++)
     {
@@ -393,31 +392,31 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlteration()
     const auto ST_2 = DFA_2->getId(), ST_3 = DFA_3->getId(), ST_4 = DFA_4->getId(), ST_5 = DFA_5->getId(), ST_6 = DFA_6->getId();
     const auto ST_7 = DFA_7->getId();
 
-//note to self, anything buts should be evaluated after normal and ranged - poor solution but im not sure how to handle this well
-
-    //this works for single characters
+    //note to self, 'anything buts' are evaluated after normal and ranged - poor solution but im not sure how to handle this well
 
     StateAndInput<int,char> stateInput1(ST_1,'/');
     StateAndInput<int,char> stateInput2(ST_2,'[');
     StateAndInput<int,char> stateInput3(ST_3,'(');
-    StateAndInput<int,char> stateInput4a(ST_4, '|', false, true); //non-ranged anything but -- i kno kinda horrible eh? change to enum or (combined uint repr)
-        StateAndInput<int,char> stateInput5a(ST_5,'|');
-        StateAndInput<int,char> stateInput5b(ST_5,')');
-    StateAndInput<int,char> stateInput4b(ST_4, '|');
-        StateAndInput<int,char> stateInput6a(ST_6,'|', false, true);
-        StateAndInput<int,char> stateInput6b(ST_6,')');
+    StateAndInput<int,char> stateInput4a(ST_4,'|');
+        StateAndInput<int,char> stateInput5(ST_5,'|',false,true); //goes to 6
+    StateAndInput<int,char> stateInput4b(ST_4, ')');
             StateAndInput<int,char> stateInput7(ST_7, ']');
+    StateAndInput<int,char> stateInput4c(ST_4, '|', false, true); //non-ranged anything but -- i kno kinda horrible eh? change to enum or (combined uint repr)
+        StateAndInput<int,char> stateInput6a(ST_6,'|'); //goes to 5
+        StateAndInput<int,char> stateInput6b(ST_6,')'); //goes to 7
+        StateAndInput<int,char> stateInput6c(ST_6,'|', false, true); //goes to 6
 
     const DfaTransition* idfa1 = dfaManager.createDfaTransition(&stateInput1,DFA_2);
     auto idfa2 = dfaManager.createDfaTransition(&stateInput2, DFA_3);
     auto idfa3 = dfaManager.createDfaTransition(&stateInput3, DFA_4);
     auto idfa4a = dfaManager.createDfaTransition(&stateInput4a, DFA_5);
-        auto idfa5a = dfaManager.createDfaTransition(&stateInput5a, DFA_6);
-        auto idfa5b = dfaManager.createDfaTransition(&stateInput5b, DFA_7);
-    auto idfa4b = dfaManager.createDfaTransition(&stateInput4b, DFA_6);
-        auto idfa6b = dfaManager.createDfaTransition(&stateInput6b, DFA_7);
+        auto idfa5 = dfaManager.createDfaTransition(&stateInput5, DFA_6);
+    auto idfa4b = dfaManager.createDfaTransition(&stateInput4b, DFA_7);
             auto idfa7 = dfaManager.createDfaTransition(&stateInput7, DFA_8);
-
+    auto idfa4c = dfaManager.createDfaTransition(&stateInput4c, DFA_6);
+        auto idfa6a = dfaManager.createDfaTransition(&stateInput6a, DFA_5);
+        auto idfa6b = dfaManager.createDfaTransition(&stateInput6b, DFA_7);
+        auto idfa6c = dfaManager.createDfaTransition(&stateInput6c, DFA_6);
 
     const lexer_dfa_builder lexer_builder;
     const ApplyImmutableFunc<DfaTransition*> applyObj(1,idfa1);
@@ -429,14 +428,14 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlteration()
     const ApplyImmutableFunc<DfaTransition*> applyObj3to4(1,idfa3);
     bool wasSuccess3 = lexer_builder.addDfa(DFA_3, applyObj3to4);
 
-    const ApplyImmutableFunc<DfaTransition*> applyObj4to5n6(2,idfa4a,idfa4b);
-    bool wasSuccess4 = lexer_builder.addDfa(DFA_4, applyObj4to5n6);
+    const ApplyImmutableFunc<DfaTransition*> applyObj4to5n7n6(3,idfa4a,idfa4b,idfa4c);
+    bool wasSuccess4 = lexer_builder.addDfa(DFA_4, applyObj4to5n7n6);
 
-    const ApplyImmutableFunc<DfaTransition*> applyObj5to6n7(2,idfa5a,idfa5b);
-    bool wasSuccess5 = lexer_builder.addDfa(DFA_5, applyObj5to6n7);
+    const ApplyImmutableFunc<DfaTransition*> applyObj5to6(1,idfa5);
+    bool wasSuccess5 = lexer_builder.addDfa(DFA_5, applyObj5to6);
 
-    const ApplyImmutableFunc<DfaTransition*> applyObj6to5n7(2,idfa6a,idfa6b);
-    bool wasSuccess6 = lexer_builder.addDfa(DFA_6, applyObj6to5n7);
+    const ApplyImmutableFunc<DfaTransition*> applyObj6to5n7n6(3,idfa6a,idfa6b,idfa6c);
+    bool wasSuccess6 = lexer_builder.addDfa(DFA_6, applyObj6to5n7n6);
 
     const ApplyImmutableFunc<DfaTransition*> applyObj7to8(1,idfa7);
     bool wasSuccess7 = lexer_builder.addDfa(DFA_7, applyObj7to8);
@@ -458,8 +457,8 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlteration()
     std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*> innerRet (word_base, aggrAndDel);
 
     AggregatePtrsAndDelete<DfaTransition*>* aggrAndDelDfaTransitions =
-        new AggregateDfaTransitionsAndDelete<DfaTransition*>(10,
-            idfa1, idfa2, idfa3, idfa4a,idfa4b, idfa5a, idfa5b, idfa6a, idfa6b, idfa7);
+        new AggregateDfaTransitionsAndDelete<DfaTransition*>(11,
+            idfa1, idfa2, idfa3, idfa4a, idfa4b, idfa4c, idfa5, idfa6a, idfa6b, idfa6c, idfa7);
     std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> ret(innerRet, aggrAndDelDfaTransitions);
 
     return ret;
