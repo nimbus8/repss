@@ -54,6 +54,7 @@ private:
     lexer_word_repr* _startWordForMergedRepr;
 
     //third/final phase of construction - run time optimization / (maybe todo: phase 1 & 2 cleanup)
+    std::pair<ScanWords*, AggregatePtrsAndDelete<ScanWordNode*>*>* _scanWordStartAndPtrAggregation; 
     ScanWordTransitionMap* _scanWordTransitionMap;
     ScanWords* _scanWords;
   
@@ -113,6 +114,12 @@ public:
         delete  _startWordForMergedRepr;
 
         delete _scanWordTransitionMap;
+
+        std::cout << "Deleting Scanwords..." << std::endl;
+        delete _scanWordStartAndPtrAggregation->second;
+        delete _scanWordStartAndPtrAggregation;
+        std::cout << "Successfully deleted ScanWords!" << std::endl;
+   
 
         std::cout << "Sucessfully deleted lexer word constructor!" << std::endl;
     }

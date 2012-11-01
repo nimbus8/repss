@@ -234,7 +234,10 @@ bool lexer_word_constructor::_constructScanWords()
         transferDifference(existingScanWordNodes, nodesToBeInitd);
     }
 
-    _scanWords = startScanWordNode;
+    _scanWords = startScanWordNode; //may be deprecated in favor of pair w/ aggregateAndDelete
+    //--std::pair<ScanWords*, AggregatePtrsAndDelete<ScanWordNode*>*> _scanWordStartAndPtrAggregation;
+    AggregatePtrsAndDelete<ScanWordNode*>* scanWordPtrAggr = new AggregatePtrsAndDelete<ScanWordNode*>(existingScanWordNodes);
+    _scanWordStartAndPtrAggregation = new std::pair<ScanWords*, AggregatePtrsAndDelete<ScanWordNode*>*>(startScanWordNode, scanWordPtrAggr);
 
     std::cout << "Beginning ScanWord Test" << std::endl;
 

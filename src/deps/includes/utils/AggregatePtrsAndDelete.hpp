@@ -18,6 +18,8 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <unordered_set>
+
 #include "AggregateAndApplyFuncBase.hpp"
 #include "../lexer/construction/model_representation/dfa_manager.hpp"
 
@@ -40,15 +42,29 @@ private:
         }
 
 protected:
-        void init(const size_t num, va_list arglist)
+    void init(const size_t num, va_list arglist)
+    {
+        if (_initEnabled)
         {
-		if (_initEnabled)
-		{
-                	_handleVargs(num, arglist);
-			_initEnabled = false;
-		}
-		//throw exception or warning
+            _handleVargs(num, arglist);
+            _initEnabled = false;
         }
+	//throw exception or warning, else
+    }
+
+    void init(std::unordered_set<T>& setOfPtrs)
+    {
+        if (_initEnabled)
+        {
+            size_t n = 0;
+            for (T aPtr : setOfPtrs)
+            {
+                this->addAt(n, aPtr);
+                n++;
+            }
+        }
+        //throw exception or warning, else
+    }
 public:
 
         AggregatePtrsAndDelete() : AggregateAndApplyFuncBase<T>() {}
@@ -64,6 +80,16 @@ public:
                 va_end(arguments);
                 std::cout << std::endl;
         }*/
+
+        AggregatePtrsAndDelete(std::unordered_set<T>& setOfPtrs) : AggregateAndApplyFuncBase<T>(setOfPtrs.size()), _initEnabled(false)
+        {
+            size_t n = 0;
+            for (T aPtr : setOfPtrs)
+            {
+                this->addAt(n, aPtr);
+                n++;
+            }
+        }
 
 	explicit AggregatePtrsAndDelete(const size_t num)
 		: AggregateAndApplyFuncBase<T>(num), _initEnabled(true)
@@ -92,7 +118,7 @@ public:
 		return true; 
 	}
 
-	virtual bool applyDelete(DfaManager&) = 0;
+	virtual bool applyDelete(DfaManager&) {} //= 0;
 };
 
 #endif
