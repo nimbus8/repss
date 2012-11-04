@@ -39,14 +39,19 @@ public:
     }
 };
 
+//oops, here I think we need to use hash function...
 class StateAndInputEquals {
 public:
     bool operator ()(const StateAndInput<int,char> &lhs, const StateAndInput<int,char> &rhs) const 
     {
-        if ((lhs.getState() != rhs.getState()) || (lhs.getInput() != rhs.getInput()))
-                return false;
+        if (lhs.getIsAnythingBut() != rhs.getIsAnythingBut())
+        {
+            return false;
+        }
 
-        return true;
+        StateAndInputHashFunction hashFunc;        
+
+        return (hashFunc(lhs) == hashFunc(rhs));
     }
 };
 

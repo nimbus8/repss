@@ -36,6 +36,8 @@ private:
 public:
     PhasedExecution()
     {
+        std::cout << "PhasedExecution::PhasedExecution()" << std::endl;
+
         ContextManager contextManager;
         const lexer_configuration config;
 

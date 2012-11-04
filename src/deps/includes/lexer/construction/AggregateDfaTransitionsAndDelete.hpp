@@ -8,40 +8,40 @@ template <class T>
 class AggregateDfaTransitionsAndDelete : public AggregatePtrsAndDelete<T>
 {
 public:
-	AggregateDfaTransitionsAndDelete() : AggregatePtrsAndDelete<T>(0) {}
-	AggregateDfaTransitionsAndDelete(const size_t num, ...) : AggregatePtrsAndDelete<T>(num) 
-	{
-                va_list arguments;
-                va_start(arguments, num);
+    AggregateDfaTransitionsAndDelete() : AggregatePtrsAndDelete<T>(0) {}
+    AggregateDfaTransitionsAndDelete(const size_t num, ...) : AggregatePtrsAndDelete<T>(num) 
+    {
+        va_list arguments;
+        va_start(arguments, num);
 
-                this->init(num, arguments);
+        this->init(num, arguments);
 
-                va_end(arguments);
-                std::cout << std::endl;
-	}
-	~AggregateDfaTransitionsAndDelete() 
-	{
-		std::cout << "Destructor for AggregateDfaTransitionsAndDelete called"
-			<< std::endl;
-	}
+        va_end(arguments);
+        std::cout << std::endl;
+    }
+    ~AggregateDfaTransitionsAndDelete() 
+    {
+        std::cout << "Destructor for AggregateDfaTransitionsAndDelete called"
+                  << std::endl;
+    }
 
-	bool applyDelete(DfaManager& dfaManager)
-	{
-                if (this->size() == 0)
-                {
-                        return false;
-                }
+    virtual bool applyDelete(DfaManager& dfaManager)
+    {
+        if (this->size() == 0)
+        {
+            return false;
+        }
 
-                for (int index = 0; index < this->size(); index++)
-                {
-                        T obj = this->getAt(index);
-                        std::cout << "Destroying Dfa Transition id(" << obj 
-				<< ") the RIGHT way." << std::endl;
-                        dfaManager.destroyDfaTransition(obj);
-                }
+        for (int index = 0; index < this->size(); index++)
+        {
+            T obj = this->getAt(index);
+            std::cout << "Destroying Dfa Transition id(" << obj 
+                      << ") the RIGHT way." << std::endl;
+            dfaManager.destroyDfaTransition(obj);
+        }
 
-                return true;
-	}
+        return true;
+    }
 };
 
 #endif

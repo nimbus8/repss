@@ -1,0 +1,1009 @@
+== REPSS ==
+
+(input-stream): 
+a	b	c	d	e	f	
+
+(output-stream): 
+d	f	h	j	l	n	
+
+./repss
+abc==abc: 0 len(a): 3
+
+==%%: -1
+%==%%: -1
+woot==hoot: -1, len(a):4 len(b):4
+%%==%%: 0
+%!==%%: -1
+%%==%%: 0
+%%==%%: 0
+foo1: 1, foo2: 2
+CREATING end state mapping: endStateToName=(8=>repetition)
+
+Successfully appended 'named_iteration' to tentative end state name => 'repetition.named_iteration'
+
+
+
+
+
+
+
+
+
+Successfully constructed name=x:y
+Construction Test: (,k
+foobar=1:10 H
+?w1ynNc, 16)
+Starting state: 9, startingDfaId: 9
+search for a beginning: (state, seq,c): 9, 0, k
+'k' - DfaNode(9) ~ stateAndInput=(state, seq,c): (10, 1, 
+)
+'
+' - DfaNode(9) ~ stateAndInput=(state, seq,c): (9, 2, f)
+'f' - DfaNode(9) ~ stateAndInput=(state, seq,c): (10, 3, o)
+'o' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 4, o)
+'o' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 5, b)
+'b' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 6, a)
+'a' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 7, r)
+'r' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 8, =)
+'=' - DfaNode(10) ~ stateAndInput=(state, seq,c): (11, 9, 1)
+'1' - DfaNode(11) ~ stateAndInput=(state, seq,c): (12, 10, :)
+':' - DfaNode(12) ~ stateAndInput=(state, seq,c): (14, 11, 1)
+'1' - DfaNode(14) ~ stateAndInput=(state, seq,c): (15, 12, 0)
+'0' - DfaNode(15) ~ stateAndInput=(state, seq,c): (15, 13,  )
+found word!word=(repetition.named_iteration)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+
+
+
+
+
+
+
+Successfully constructed /[rep] var=x:y
+Construction Test: (,fyi/[rep] a=2:81 , 17)
+Starting state: 1, startingDfaId: 1
+search for a beginning: (state, seq,c): 1, 0, f
+search for a beginning: (state, seq,c): 1, 1, y
+search for a beginning: (state, seq,c): 1, 2, i
+search for a beginning: (state, seq,c): 1, 3, /
+'/' - DfaNode(1) ~ stateAndInput=(state, seq,c): (2, 4, [)
+'[' - DfaNode(2) ~ stateAndInput=(state, seq,c): (3, 5, r)
+'r' - DfaNode(3) ~ stateAndInput=(state, seq,c): (4, 6, e)
+'e' - DfaNode(4) ~ stateAndInput=(state, seq,c): (5, 7, p)
+'p' - DfaNode(5) ~ stateAndInput=(state, seq,c): (6, 8, ])
+']' - DfaNode(6) ~ stateAndInput=(state, seq,c): (7, 9,  )
+' ' - DfaNode(7) ~ stateAndInput=(state, seq,c): (9, 10, a)
+'a' - DfaNode(9) ~ stateAndInput=(state, seq,c): (10, 11, =)
+'=' - DfaNode(10) ~ stateAndInput=(state, seq,c): (11, 12, 2)
+'2' - DfaNode(11) ~ stateAndInput=(state, seq,c): (12, 13, :)
+':' - DfaNode(12) ~ stateAndInput=(state, seq,c): (14, 14, 8)
+'8' - DfaNode(14) ~ stateAndInput=(state, seq,c): (15, 15, 1)
+'1' - DfaNode(15) ~ stateAndInput=(state, seq,c): (15, 16,  )
+found word!word=(repetition.named_iteration)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+CREATING end state mapping: endStateToName=(24=>scope)
+
+
+
+
+
+
+
+
+Successfully constructed /[sco]
+Construction Test: (,k
+/[sco] HP1?, 10)
+Starting state: 17, startingDfaId: 17
+search for a beginning: (state, seq,c): 17, 0, k
+search for a beginning: (state, seq,c): 17, 1, 
+
+search for a beginning: (state, seq,c): 17, 2, /
+'/' - DfaNode(17) ~ stateAndInput=(state, seq,c): (18, 3, [)
+'[' - DfaNode(18) ~ stateAndInput=(state, seq,c): (19, 4, s)
+'s' - DfaNode(19) ~ stateAndInput=(state, seq,c): (20, 5, c)
+'c' - DfaNode(20) ~ stateAndInput=(state, seq,c): (21, 6, o)
+'o' - DfaNode(21) ~ stateAndInput=(state, seq,c): (22, 7, ])
+']' - DfaNode(22) ~ stateAndInput=(state, seq,c): (23, 8,  )
+found word!word=(scope)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+CREATING end state mapping: endStateToName=(29=>general_end)
+
+
+
+
+Successfully constructed /[/] 
+Construction Test: (,fyi/[rep]HH/[/], 15)
+Starting state: 25, startingDfaId: 25
+search for a beginning: (state, seq,c): 25, 0, f
+search for a beginning: (state, seq,c): 25, 1, y
+search for a beginning: (state, seq,c): 25, 2, i
+search for a beginning: (state, seq,c): 25, 3, /
+'/' - DfaNode(25) ~ stateAndInput=(state, seq,c): (26, 4, [)
+'[' - DfaNode(26) ~ stateAndInput=(state, seq,c): (27, 5, r)
+'r' - DfaNode(25) ~ stateAndInput=(state, seq,c): (25, 6, e)
+'e' - DfaNode(25) ~ stateAndInput=(state, seq,c): (25, 7, p)
+'p' - DfaNode(25) ~ stateAndInput=(state, seq,c): (25, 8, ])
+']' - DfaNode(25) ~ stateAndInput=(state, seq,c): (25, 9, H)
+'H' - DfaNode(25) ~ stateAndInput=(state, seq,c): (25, 10, H)
+'H' - DfaNode(25) ~ stateAndInput=(state, seq,c): (25, 11, /)
+'/' - DfaNode(25) ~ stateAndInput=(state, seq,c): (26, 12, [)
+'[' - DfaNode(26) ~ stateAndInput=(state, seq,c): (27, 13, /)
+'/' - DfaNode(27) ~ stateAndInput=(state, seq,c): (28, 14, ])
+found word!word=(general_end)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+CREATING end state mapping: endStateToName=(37=>alteration)
+
+
+
+
+Adding AnythingButTransition!
+
+Adding AnythingButTransition!
+
+Adding AnythingButTransition!
+
+
+Successfully constructed /[(a|l|t|e|r|n|a|t|i|o|n)]
+Construction Test: (,k
+/[(a|c|d|e)] H?, 16)
+Starting state: 30, startingDfaId: 30
+search for a beginning: (state, seq,c): 30, 0, k
+search for a beginning: (state, seq,c): 30, 1, 
+
+search for a beginning: (state, seq,c): 30, 2, /
+'/' - DfaNode(30) ~ stateAndInput=(state, seq,c): (31, 3, [)
+'[' - DfaNode(31) ~ stateAndInput=(state, seq,c): (32, 4, ()
+'(' - DfaNode(32) ~ stateAndInput=(state, seq,c): (33, 5, a)
+'a' - DfaNode(33) ~ stateAndInput=(state, seq,c): (35, 6, |)
+'|' - DfaNode(35) ~ stateAndInput=(state, seq,c): (34, 7, c)
+'c' - DfaNode(34) ~ stateAndInput=(state, seq,c): (35, 8, |)
+'|' - DfaNode(35) ~ stateAndInput=(state, seq,c): (34, 9, d)
+'d' - DfaNode(34) ~ stateAndInput=(state, seq,c): (35, 10, |)
+'|' - DfaNode(35) ~ stateAndInput=(state, seq,c): (34, 11, e)
+'e' - DfaNode(34) ~ stateAndInput=(state, seq,c): (35, 12, ))
+')' - DfaNode(35) ~ stateAndInput=(state, seq,c): (36, 13, ])
+found word!word=(alteration)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+CREATING end state mapping: endStateToName=(49=>repetition)
+
+Successfully appended 'named_list' to tentative end state name => 'repetition.named_list'
+
+
+
+
+
+Adding AnythingButTransition!
+
+
+
+Successfully constructed named=('l','i','s','t')
+Construction Test: (,k
+foobar=('a:1:8','abc')
+?)k?, 25)
+Starting state: 50, startingDfaId: 50
+search for a beginning: (state, seq,c): 50, 0, k
+'k' - DfaNode(50) ~ stateAndInput=(state, seq,c): (51, 1, 
+)
+'
+' - DfaNode(50) ~ stateAndInput=(state, seq,c): (50, 2, f)
+'f' - DfaNode(50) ~ stateAndInput=(state, seq,c): (51, 3, o)
+'o' - DfaNode(51) ~ stateAndInput=(state, seq,c): (51, 4, o)
+'o' - DfaNode(51) ~ stateAndInput=(state, seq,c): (51, 5, b)
+'b' - DfaNode(51) ~ stateAndInput=(state, seq,c): (51, 6, a)
+'a' - DfaNode(51) ~ stateAndInput=(state, seq,c): (51, 7, r)
+'r' - DfaNode(51) ~ stateAndInput=(state, seq,c): (51, 8, =)
+'=' - DfaNode(51) ~ stateAndInput=(state, seq,c): (52, 9, ()
+'(' - DfaNode(52) ~ stateAndInput=(state, seq,c): (53, 10, ')
+''' - DfaNode(53) ~ stateAndInput=(state, seq,c): (54, 11, a)
+'a' - DfaNode(54) ~ stateAndInput=(state, seq,c): (54, 12, :)
+':' - DfaNode(54) ~ stateAndInput=(state, seq,c): (54, 13, 1)
+'1' - DfaNode(54) ~ stateAndInput=(state, seq,c): (54, 14, :)
+':' - DfaNode(54) ~ stateAndInput=(state, seq,c): (54, 15, 8)
+'8' - DfaNode(54) ~ stateAndInput=(state, seq,c): (54, 16, ')
+''' - DfaNode(54) ~ stateAndInput=(state, seq,c): (55, 17, ,)
+',' - DfaNode(55) ~ stateAndInput=(state, seq,c): (56, 18, ')
+''' - DfaNode(56) ~ stateAndInput=(state, seq,c): (54, 19, a)
+'a' - DfaNode(54) ~ stateAndInput=(state, seq,c): (54, 20, b)
+'b' - DfaNode(54) ~ stateAndInput=(state, seq,c): (54, 21, c)
+'c' - DfaNode(54) ~ stateAndInput=(state, seq,c): (54, 22, ')
+''' - DfaNode(54) ~ stateAndInput=(state, seq,c): (55, 23, ))
+found word!word=(repetition.named_list)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+
+
+
+
+
+
+
+
+
+
+
+Successfully constructed /[rep(ss)] var=('e','l','e','m','e','n','t','s')
+Construction Test: (,fyi/[rep(ss)] a=('8') , 22)
+Starting state: 38, startingDfaId: 38
+search for a beginning: (state, seq,c): 38, 0, f
+search for a beginning: (state, seq,c): 38, 1, y
+search for a beginning: (state, seq,c): 38, 2, i
+search for a beginning: (state, seq,c): 38, 3, /
+'/' - DfaNode(38) ~ stateAndInput=(state, seq,c): (39, 4, [)
+'[' - DfaNode(39) ~ stateAndInput=(state, seq,c): (40, 5, r)
+'r' - DfaNode(40) ~ stateAndInput=(state, seq,c): (41, 6, e)
+'e' - DfaNode(41) ~ stateAndInput=(state, seq,c): (42, 7, p)
+'p' - DfaNode(42) ~ stateAndInput=(state, seq,c): (43, 8, ()
+'(' - DfaNode(43) ~ stateAndInput=(state, seq,c): (44, 9, s)
+'s' - DfaNode(44) ~ stateAndInput=(state, seq,c): (45, 10, s)
+'s' - DfaNode(45) ~ stateAndInput=(state, seq,c): (46, 11, ))
+')' - DfaNode(46) ~ stateAndInput=(state, seq,c): (47, 12, ])
+']' - DfaNode(47) ~ stateAndInput=(state, seq,c): (48, 13,  )
+' ' - DfaNode(48) ~ stateAndInput=(state, seq,c): (50, 14, a)
+'a' - DfaNode(50) ~ stateAndInput=(state, seq,c): (51, 15, =)
+'=' - DfaNode(51) ~ stateAndInput=(state, seq,c): (52, 16, ()
+'(' - DfaNode(52) ~ stateAndInput=(state, seq,c): (53, 17, ')
+''' - DfaNode(53) ~ stateAndInput=(state, seq,c): (54, 18, 8)
+'8' - DfaNode(54) ~ stateAndInput=(state, seq,c): (54, 19, ')
+''' - DfaNode(54) ~ stateAndInput=(state, seq,c): (55, 20, ))
+found word!word=(repetition.named_list)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Pushing back dfa to mergeDfas parameter: dfa(1)
+Pushing back dfa to mergeDfas parameter: dfa(17)
+Pushing back dfa to mergeDfas parameter: dfa(25)
+Pushing back dfa to mergeDfas parameter: dfa(30)
+Pushing back dfa to mergeDfas parameter: dfa(38)
+
+Merging dfas to one, words size: 5
+0x7f99315000f0
+1
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+0x7f9931500e70
+17
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+0x7f99315013c0
+25
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+0x7f99315017e0
+30
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+0x7f9931501ea0
+38
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+Merge Process: 5 jobs total
+Processing Job line #0
+There are 1 in job vector. Processing Job #1
+is there nextDfaPtr? no0x0
+::adding transition([1, '/']->2) to dfa(57)
+Processing Job line #1
+There are 1 in job vector. Processing Job #2
+is there nextDfaPtr? yes0x7f9931500130
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #2
+is there nextDfaPtr? yes0x7f9931500180
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #2
+is there nextDfaPtr? no0x0
+::adding transition([19, 's']->20) to dfa(3)
+Processing Job line #2
+There are 1 in job vector. Processing Job #3
+is there nextDfaPtr? yes0x7f9931500130
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #3
+is there nextDfaPtr? yes0x7f9931500180
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #3
+is there nextDfaPtr? no0x0
+::adding transition([27, '/']->28) to dfa(3)
+Processing Job line #3
+There are 1 in job vector. Processing Job #4
+is there nextDfaPtr? yes0x7f9931500130
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #4
+is there nextDfaPtr? yes0x7f9931500180
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #4
+is there nextDfaPtr? no0x0
+::adding transition([32, '(']->33) to dfa(3)
+Processing Job line #4
+There are 1 in job vector. Processing Job #5
+is there nextDfaPtr? yes0x7f9931500130
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #5
+is there nextDfaPtr? yes0x7f9931500180
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #5
+is there nextDfaPtr? yes0x7f99315001e0
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #5
+is there nextDfaPtr? yes0x7f9931500220
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #5
+is there nextDfaPtr? yes0x7f99315002a0
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #5
+is there nextDfaPtr? no0x0
+::adding transition([43, '(']->44) to dfa(6)
+Finished jobs!
+
+Starting Merged Representation Test
+-----------------------------------
+Merged Word Repr Test: done ALL search while loops in 92.241 milliseconds
+
+Merge Test SUCCEEDED!
+
+
+Constructing ScanWords
+......................
+
+Popped back from 'nodesToBeInitd': node{ id=(57)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(2)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(3)}
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(4)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(5)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(6)}
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(7)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(9)}
+	isRangedTransition=true
+	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(10)}
+	isRangedTransition=false
+	isRangedTransition=true
+	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(11)}
+	isRangedTransition=true
+	Successfully set value for index in _RangedTransitionsByCategory
+	isRangedTransition=true
+	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(12)}
+	isRangedTransition=false
+	isRangedTransition=true
+	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(14)}
+	isRangedTransition=true
+	Successfully set value for index in _RangedTransitionsByCategory
+	isRangedTransition=true
+	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(15)}
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=true
+	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(8)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(16)}
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(13)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(44)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(45)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(46)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(47)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(48)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(50)}
+	isRangedTransition=true
+	Successfully set value for index in _RangedTransitionsByCategory
+	isRangedTransition=true
+	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(51)}
+	isRangedTransition=false
+	isRangedTransition=true
+	Successfully set value for index in _RangedTransitionsByCategory
+	isRangedTransition=true
+	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(52)}
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(53)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(54)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(55)}
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(56)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(49)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(20)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(21)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(22)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(23)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(24)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(28)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(29)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(33)}
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(35)}
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(34)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(36)}
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(37)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Beginning ScanWord Test
+
+Starting Scan Words Test
+------------------------
+ScanWordTest: done ALL search while loops in 120.671 milliseconds
+
+--Scan Word Test Result: Success
+Done Scan Word Test - result:1
+LexerManager:: First ScanWordNode (id: 57)
+initLexerDataProxyImpl:: just about to initialize lexer data proxy with const cast
+getDfaManager()
+getScanWordTransitionMap()
+getRecognizedKeywords()
+
+
+Scanning: done scanning in 0.738 milliseconds
+CtxMan TypedContext <> setAnnotatedData
+Setting annotated data with vector size = 72
+
+Printing Annotated Data
+CtxMan TypedContext <> printAnnotatedData
+{data_line:/*}
+{data_line: REPSS}
+{data_line: Copyright (C) 2012  Khalique Williams}
+{data_line:empty_str}
+{data_line: This file is part of REPSS.}
+{data_line:empty_str}
+{data_line: REPSS is free software: you can redistribute it and/or modify}
+{data_line: it under the terms of the   GNU General Public License as published by}
+{data_line: the Free Software Foundation, either version 3 of the License, or}
+{data_line: (at your option) any later version.}
+{data_line:empty_str}
+{data_line: REPSS is distributed in the hope that it will be useful,}
+{data_line: but WITHOUT ANY WARRANTY; without even the implied warranty of}
+{data_line: MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}
+{data_line: GNU General Public License for more details.}
+{data_line:empty_str}
+{data_line: You should have received a copy of the GNU General Public License}
+{data_line: along with REPSS.  If not, see <http://www.gnu.org/licenses/>.}
+{data_line: */}
+{data_line:empty_str}
+{key_word:repetition.named_list=<'/[rep(ss)] var=('one','mississippi','two mississippi','three mississippi, four!')'>}
+{data_line: }
+{data_line:+}
+{data_line:+}
+{key_word:general_end=<'/[/]'>}
+{data_line:empty_str}
+{data_line:empty_str}
+{data_line:An Eg:}
+{data_line:A short list of "People who don't like me":}
+{key_word:repetition.named_list=<'/[rep(ss)] person=('dairy','jacob','carrie','peter','meg','anne Laurie')'>}
+{data_line: }
+{data_line:+}
+{key_word:general_end=<'/[/]'>}
+{data_line:empty_str}
+{data_line:empty_str}
+{data_line:>> dairy doesn't like my haircut. ~ Note to self: stay away from [dairy] until it grows back.}
+{data_line:   jacob doesn't like my haircut. ~ Note to self: stay away from [jacob] until it grows back.}
+{data_line:   carrie doesn't like my haircut. ~ Note to self: stay away from [carrie] until it grows back.}
+{data_line:   ...}
+{data_line:   ...}
+{data_line:   }
+{data_line:I guess this is bad example...not everyone is gonna like you [ha]}
+{data_line:empty_str}
+{data_line:--------------}
+{data_line:empty_str}
+{data_line:If you haven't noticed most stories are pretty much the same. We're not bothered }
+{key_word:alteration=<'/[(of course | at all by this)]'>}
+{data_line: }
+{key_word:alteration=<'/[(|because what intrests most of us lie in the details)]'>}
+{data_line:.  Though I imagine the man or woman who makes their living writing fiction must have a }
+{key_word:alteration=<'/[(terrible|horrible)]'>}
+{data_line: time trying to }
+{key_word:alteration=<'/[(figure|flesh out)]'>}
+{data_line: simple things like how to bring people into a scene, kick }
+{key_word:alteration=<'/[(them|people)]'>}
+{data_line: out, and have others just pass through, etc, without boring the reader.}
+{data_line:We're not talking about textbooks here. Professors write textbooks, usually. And when they do they can rest easy knowing that their text will sell no matter how bland or poorly written it may be - especially if they list it as mandatory reading in their }
+{key_word:alteration=<'/[(syllabus|syllabi)]'>}
+{data_line:.}
+{data_line:Not to say all textbooks are rubbish, a few had me hooked and going 'w}
+{key_word:repetition.named_iteration=<'/[rep] it=1:20 '>}
+{data_line:e }
+{key_word:general_end=<'/[/]'>}
+{data_line:' all the way into the "wh/[rep]1:10 e}
+{key_word:general_end=<'/[/]'>}
+{data_line:" hours of the morning - okay thats not totally true. But I remember once taking one with me when I went to the l}
+{key_word:repetition.named_iteration=<'/[rep] it=1:2 '>}
+{data_line:o}
+{key_word:general_end=<'/[/]'>}
+{data_line:...to visit a friend studying engineering...byob, byotb!}
+{data_line:empty_str}
+{data_line:empty_str}
+
+Finished printing anotated data
+Destroying Dfa id(0x7f9931501ea0) the RIGHT way.
+Destroying Dfa id(0x7f9931501ee0) the RIGHT way.
+Destroying Dfa id(0x7f9931501f20) the RIGHT way.
+Destroying Dfa id(0x7f9931501f60) the RIGHT way.
+Destroying Dfa id(0x7f9931501fa0) the RIGHT way.
+Destroying Dfa id(0x7f99315020e0) the RIGHT way.
+Destroying Dfa id(0x7f9931502120) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7f9931400000) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931400040) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931400050) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931400060) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931400070) the RIGHT way.
+Destroying Dfa Transition id(0x7f99314000c0) the RIGHT way.
+Destroying Dfa Transition id(0x7f99314000d0) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x7f99315017e0) the RIGHT way.
+Destroying Dfa id(0x7f9931501820) the RIGHT way.
+Destroying Dfa id(0x7f9931501860) the RIGHT way.
+Destroying Dfa id(0x7f99315018a0) the RIGHT way.
+Destroying Dfa id(0x7f9931500eb0) the RIGHT way.
+Destroying Dfa id(0x7f9931500ef0) the RIGHT way.
+Destroying Dfa id(0x7f9931500f30) the RIGHT way.
+Destroying Dfa id(0x7f9931501ae0) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+setting member (7) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7f99315007d0) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931500fa0) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931500480) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931501260) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931500c30) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931501b30) the RIGHT way.
+Destroying Dfa Transition id(0x7f99315012e0) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931501b40) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931501b50) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931501b60) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931501b20) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+setting member (7) to null
+setting member (8) to null
+setting member (9) to null
+setting member (10) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x7f99315013c0) the RIGHT way.
+Destroying Dfa id(0x7f9931501400) the RIGHT way.
+Destroying Dfa id(0x7f9931501440) the RIGHT way.
+Destroying Dfa id(0x7f9931501480) the RIGHT way.
+Destroying Dfa id(0x7f9931501520) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7f9931500170) the RIGHT way.
+Destroying Dfa Transition id(0x7f99315006e0) the RIGHT way.
+Destroying Dfa Transition id(0x7f99315011b0) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931500440) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x7f9931500e70) the RIGHT way.
+Destroying Dfa id(0x7f9931500fb0) the RIGHT way.
+Destroying Dfa id(0x7f9931500ff0) the RIGHT way.
+Destroying Dfa id(0x7f9931501030) the RIGHT way.
+Destroying Dfa id(0x7f9931501070) the RIGHT way.
+Destroying Dfa id(0x7f99315010b0) the RIGHT way.
+Destroying Dfa id(0x7f99315010f0) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7f9931500720) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931500cd0) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931500d10) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931500d50) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931500d90) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931500cb0) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x7f99315000f0) the RIGHT way.
+Destroying Dfa id(0x7f9931500130) the RIGHT way.
+Destroying Dfa id(0x7f9931500180) the RIGHT way.
+Destroying Dfa id(0x7f99315001e0) the RIGHT way.
+Destroying Dfa id(0x7f9931500220) the RIGHT way.
+Destroying Dfa id(0x7f99315002a0) the RIGHT way.
+Destroying Dfa id(0x7f99315002e0) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7f99315007a0) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931500660) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931500830) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931500890) the RIGHT way.
+Destroying Dfa Transition id(0x7f99315008f0) the RIGHT way.
+Destroying Dfa Transition id(0x7f9931500930) the RIGHT way.
+Destroying Dfa Transition id(0x7f99315009d0) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Deleting Scanwords...
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+setting member (7) to null
+setting member (8) to null
+setting member (9) to null
+setting member (10) to null
+setting member (11) to null
+setting member (12) to null
+setting member (13) to null
+setting member (14) to null
+setting member (15) to null
+setting member (16) to null
+setting member (17) to null
+setting member (18) to null
+setting member (19) to null
+setting member (20) to null
+setting member (21) to null
+setting member (22) to null
+setting member (23) to null
+setting member (24) to null
+setting member (25) to null
+setting member (26) to null
+setting member (27) to null
+setting member (28) to null
+setting member (29) to null
+setting member (30) to null
+setting member (31) to null
+setting member (32) to null
+setting member (33) to null
+setting member (34) to null
+setting member (35) to null
+setting member (36) to null
+setting member (37) to null
+setting member (38) to null
+setting member (39) to null
+setting member (40) to null
+deleting array with delete[]
+Successfully deleted ScanWords!
+Sucessfully deleted lexer word constructor!

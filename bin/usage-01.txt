@@ -1,0 +1,46 @@
+/*
+ REPSS
+ Copyright (C) 2012  Khalique Williams
+
+ This file is part of REPSS.
+
+ REPSS is free software: you can redistribute it and/or modify
+ it under the terms of the   GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ REPSS is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/[rep(ss)] var=('one','mississippi','two mississippi','three mississippi, four!') 
++
++
+/[/]
+
+An Eg:
+A short list of "People who don't like me":
+/[rep(ss)] person=('dairy','jacob','carrie','peter','meg','anne Laurie') 
++
+/[/]
+
+>> dairy doesn't like my haircut. ~ Note to self: stay away from [dairy] until it grows back.
+   jacob doesn't like my haircut. ~ Note to self: stay away from [jacob] until it grows back.
+   carrie doesn't like my haircut. ~ Note to self: stay away from [carrie] until it grows back.
+   ...
+   ...
+   
+I guess this is bad example...not everyone is gonna like you [ha]
+
+--------------
+
+If you haven't noticed most stories are pretty much the same. We're not bothered /[(of course | at all by this)] /[(|because what intrests most of us lie in the details)].  Though I imagine the man or woman who makes their living writing fiction must have a /[(terrible|horrible)] time trying to /[(figure|flesh out)] simple things like how to bring people into a scene, kick /[(them|people)] out, and have others just pass through, etc, without boring the reader.
+We're not talking about textbooks here. Professors write textbooks, usually. And when they do they can rest easy knowing that their text will sell no matter how bland or poorly written it may be - especially if they list it as mandatory reading in their /[(syllabus|syllabi)].
+Not to say all textbooks are rubbish, a few had me hooked and going 'w/[rep] it=1:20 e /[/]' all the way into the "wh/[rep]1:10 e/[/]" hours of the morning - okay thats not totally true. But I remember once taking one with me when I went to the l/[rep] it=1:2 o/[/]...to visit a friend studying engineering...byob, byotb!
+
+

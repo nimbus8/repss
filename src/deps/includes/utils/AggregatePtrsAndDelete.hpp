@@ -30,17 +30,16 @@ template<class T>
 class AggregatePtrsAndDelete : public AggregateAndApplyFuncBase<T>
 {
 private:
-	bool _initEnabled;
+    bool _initEnabled;
 
-        void _handleVargs(size_t num, va_list arglist)
+    void _handleVargs(size_t num, va_list arglist)
+    {
+        for (size_t n = 0; n < num; n++)
         {
-                for (size_t n = 0; n < num; n++)
-                {
-                        T argval = va_arg(arglist,T);
-                        this->addAt(n, argval);
-                }
+            T argval = va_arg(arglist,T);
+            this->addAt(n, argval);
         }
-
+    }
 protected:
     void init(const size_t num, va_list arglist)
     {
@@ -66,59 +65,45 @@ protected:
         //throw exception or warning, else
     }
 public:
-
-        AggregatePtrsAndDelete() : AggregateAndApplyFuncBase<T>() {}
-	/*
-        AggregatePtrsAndDelete(const size_t num, ...) 
-		: AggregateAndApplyFuncBase<T>(num), _initEnabled(false)
+    AggregatePtrsAndDelete() : AggregateAndApplyFuncBase<T>() {}
+    AggregatePtrsAndDelete(std::unordered_set<T>& setOfPtrs) : AggregateAndApplyFuncBase<T>(setOfPtrs.size()), _initEnabled(false)
+    {
+        size_t n = 0;
+        for (T aPtr : setOfPtrs)
         {
-                va_list arguments;
-                va_start(arguments, num);
-                
-                _handleVargs(num,arguments);
+            this->addAt(n, aPtr);
+            n++;
+        }
+    }
 
-                va_end(arguments);
-                std::cout << std::endl;
-        }*/
+    explicit AggregatePtrsAndDelete(const size_t num)
+        : AggregateAndApplyFuncBase<T>(num), _initEnabled(true)
+    {
+        //init needs to be called by subclass
+    }
 
-        AggregatePtrsAndDelete(std::unordered_set<T>& setOfPtrs) : AggregateAndApplyFuncBase<T>(setOfPtrs.size()), _initEnabled(false)
+    virtual ~AggregatePtrsAndDelete() 
+    {
+        std::cout << "Destructor for AggregatePtrsAndDelete called" << std::endl;
+    }
+
+    bool applyDelete() {
+        if (this->size() == 0) 
         {
-            size_t n = 0;
-            for (T aPtr : setOfPtrs)
-            {
-                this->addAt(n, aPtr);
-                n++;
-            }
+            return false;
         }
 
-	explicit AggregatePtrsAndDelete(const size_t num)
-		: AggregateAndApplyFuncBase<T>(num), _initEnabled(true)
-	{
-		//init needs to be called by subclass
-	}
+        for (int index = 0; index < this->size(); index++)
+        {
+            T obj = this->getAt(index);
+            std::cout << obj << std::endl;
+            delete obj;
+        }
 
-        virtual ~AggregatePtrsAndDelete() 
-	{
-		std::cout << "Destructor for AggregatePtrsAndDelete called" << std::endl;
-	}
+        return true; 
+    }
 
-        bool applyDelete() {
-		if (this->size() == 0) 
-		{
-			return false;
-		}
-
-		for (int index = 0; index < this->size(); index++)
-		{
-			T obj = this->getAt(index);
-			std::cout << obj << std::endl;
-			delete obj;
-		}
-
-		return true; 
-	}
-
-	virtual bool applyDelete(DfaManager&) {} //= 0;
+    virtual bool applyDelete(DfaManager& dfaManager) { return false; };
 };
 
 #endif

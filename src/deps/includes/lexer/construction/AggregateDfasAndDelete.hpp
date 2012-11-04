@@ -8,40 +8,40 @@ template <class T>
 class AggregateDfasAndDelete : public AggregatePtrsAndDelete<T>
 {
 public:
-	AggregateDfasAndDelete() : AggregatePtrsAndDelete<T>(0) {}
-	AggregateDfasAndDelete(const size_t num, ...) : AggregatePtrsAndDelete<T>(num) 
-	{
-                va_list arguments;
-                va_start(arguments, num);
+    AggregateDfasAndDelete() : AggregatePtrsAndDelete<T>(0) {}
+    AggregateDfasAndDelete(const size_t num, ...) : AggregatePtrsAndDelete<T>(num) 
+    {
+        va_list arguments;
+        va_start(arguments, num);
 
-                this->init(num, arguments);
+        this->init(num, arguments);
 
-                va_end(arguments);
-                std::cout << std::endl;
-	}
-	~AggregateDfasAndDelete() 
-	{
-		std::cout << "Destructor for AggregateDfasAndDelete called"
-			<< std::endl;
-	}
+        va_end(arguments);
+        std::cout << std::endl;
+    }
+    ~AggregateDfasAndDelete() 
+    {
+        std::cout << "Destructor for AggregateDfasAndDelete called"
+            << std::endl;
+    }
 
-	bool applyDelete(DfaManager& dfaManager)
-	{
-                if (this->size() == 0)
-                {
-                        return false;
-                }
+    virtual bool applyDelete(DfaManager& dfaManager)
+    {
+        if (this->size() == 0)
+        {
+            return false;
+        }
 
-                for (int index = 0; index < this->size(); index++)
-                {
-                        T obj = this->getAt(index);
-                        std::cout << "Destroying Dfa id(" << obj 
-				<< ") the RIGHT way." << std::endl;
-                        dfaManager.destroyDfa(obj);
-                }
+        for (int index = 0; index < this->size(); index++)
+        {
+            T obj = this->getAt(index);
+            std::cout << "Destroying Dfa id(" << obj 
+                << ") the RIGHT way." << std::endl;
+            dfaManager.destroyDfa(obj);
+        }
 
-                return true;
-	}
+        return true;
+    }
 };
 
 #endif

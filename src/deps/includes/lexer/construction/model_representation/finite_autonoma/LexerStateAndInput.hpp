@@ -21,7 +21,7 @@
 #define _LEXER_STATE_AND_INPUT_
 
 
-//what seperates this from StateAndInput is there is no concept of ranged.
+//what seperates this from StateAndInput is there is no concept of ranged, and types are set.
 class LexerStateAndInput
 {
 private:

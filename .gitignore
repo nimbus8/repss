@@ -29,6 +29,7 @@
 *.sqlite
 sampleFileDoNotSubmit.txt
 functionalityTests
+doNotSubmit
 
 # OS generated files #
 ######################

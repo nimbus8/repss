@@ -65,8 +65,11 @@ private:
     std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructSquareBracketReps();
 
     wordrepr_and_transition_Pair_t __insertNamedRepitionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, unsigned int tentativeNameKey);
+    wordrepr_and_transition_Pair_t __insertNamedListParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, const unsigned int tentativeNameKey);
     wordrepr_and_transition_Pair_t _constructEnd();
-    wordrepr_and_transition_Pair_t _constructKeyword_REPS_WithNamedIteration();
+    wordrepr_and_transition_Pair_t _constructKeyword_REPS_withNamedIteration();
+    wordrepr_and_transition_Pair_t _constructKeyword_REPS_withNamedListIteration();
+    wordrepr_and_transition_Pair_t _constructKeyword_eval();
     wordrepr_and_transition_Pair_t _constructAlteration();
     wordrepr_and_transition_Pair_t _constructAlterationAndJoin();
 

@@ -42,7 +42,11 @@ class Context
 private:
     //Lexer Specific
     ILexerDataProxy* _lexerDataProxy; //this is to access constant objects of dfaManager, scanWords, etc
+
     std::vector<std::string> _annotatedData;
+    std::vector<std::string> _parserAnnotatedData;
+    std::vector<std::string> _generatorAnnotatedData;
+
     ScanWords* _scanWords; //put this into LexerDataProxy
 
 public:
@@ -196,7 +200,6 @@ class ContextManager::TypedContext <ContextType::AllowedTypes, ContextType::Lexe
 {
 private:
     Context* _refContext;
-    //ILexerDataProxy* _lexerDataProxy;
 public:
     ContextManager::TypedContext() {}
     explicit TypedContext(Context* ctx) : _refContext(ctx) {}
@@ -238,18 +241,6 @@ public:
         return _refContext->getScanWordsImpl(ContextType::Lexer);
     }
 
-    /*
-    void appendToAnnotatedData(const std::string& data)
-    {
-        std::cout << "CtxMan TypedContext <> addToAnnotatedData" << std::endl;
-        Context::appendToAnnotatedData(ContextType::Lexer, data);
-    }
-    void printAnnotatedData() const
-    {
-        std::cout << "CtxMan TypedContext <> printAnnotatedData" << std::endl;
-        _refContext->printAnnotatedData(ContextType::Lexer);
-    }*/
-
     void doMe() { _refContext->doMe(ContextType::Lexer); }
 };
 
@@ -263,6 +254,10 @@ public:
     explicit TypedContext(Context* ctx) : _refContext(ctx) {}
     void doMe() { _refContext->doMe(11); }
 };
+
+//todo:will make an 'Analysis' Context-Type {comprehension, conception, reorganization}
+
+//todo:will make a 'Generator' Context-Type {generation, [optional:feed_back]}
 
 template<>
 class ContextManager::TypedContext <ContextType::AllowedTypes, ContextType::NoType> : public Context

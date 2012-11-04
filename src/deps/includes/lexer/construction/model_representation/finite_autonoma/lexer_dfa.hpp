@@ -36,10 +36,10 @@
 #include "state_functors.hpp"
 #include "LexerStateAndInput.hpp"
 
+#define DEBUG
+//#undef DEBUG
 #ifdef DEBUG
-     #ifndef DLOG(str)
-         #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
-     #endif
+    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
 #else
     #define DLOG(str)
 #endif
@@ -308,5 +308,8 @@ public:
 };
 
 typedef lexer_dfa lexer_word_repr;
+
+#undef DEBUG
+#undef DLOG
 
 #endif

@@ -123,7 +123,10 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                     {
                         bool isKeyword = false;
 
-                        char scanWordNameBuffer[50];
+                        
+                        //this won't do. A refactor here is needed. Just because some keywords can have 'infinite' data within their 'recognized definition'
+                        const size_t MAX_SCAN_WORD_BUFFER_LENGTH = 1024;
+                        char scanWordNameBuffer[MAX_SCAN_WORD_BUFFER_LENGTH];
                         scanWordNameBuffer[0] = '\0';
 
                         if (dfaManager->isAcceptingNode(nextScanWordNode->getId()))
@@ -153,7 +156,7 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                         //(line delimited scanning)
 
                         size_t nameBufferLen = strlen(scanWordNameBuffer);
-                        captureBufferAndWrapData(scanWordNameBuffer, nameBufferLen, 50, isKeyword);
+                        captureBufferAndWrapData(scanWordNameBuffer, nameBufferLen, MAX_SCAN_WORD_BUFFER_LENGTH, isKeyword);
 
                         currentPlace = startPlace;
                         isFollowingKeyWord = false;

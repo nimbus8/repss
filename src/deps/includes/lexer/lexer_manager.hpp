@@ -29,19 +29,22 @@
 #ifndef _LEX_MANAGER_
 #define _LEX_MANAGER_
 
-#include "lexer_configuration.hpp"
-#include "LexerDataProxy.hpp"
-
-//todo:will change this to LexerContext - find where it defined
-#include "ILexerContext.hpp"
-
 #define DEBUG YES
 
 #ifdef DEBUG
-    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
+    #ifndef DLOG
+        #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
+    #endif
 #else
-    #define DLOG(str)
+    #ifndef DLOG
+        #define DLOG(str)
+    #endif
 #endif
+
+#include "lexer_configuration.hpp"
+#include "LexerDataProxy.hpp"
+
+#include "ILexerContext.hpp"
 
 //todo:will put context manager in here...
 class lexer_manager
@@ -60,38 +63,16 @@ public:
             auto scanWordTransitionMap = config->getScanWordTransitionMap();
             auto scanWords = config->getScanWords();
             std::cout << "LexerManager:: First ScanWordNode (id: " << scanWords->getId() << ")" << std::endl;    
-            //start scanning here
-            //...
-            //actually with dataproxy construct, scanning doesn't necessarily need to be done here.
-            // it could actually just be done in a phased execution engine of some sort - just
-            // so that most of important functionality is in the same place.
-            // so this 'manager' would jsut be to initialize the dataproxy (I'm gonna admit my ignorance here
-            // I have no idea whether we need to (here) keep track lexerdataproxy to allow it to be deleted
-            // properly from memory (its liek another part of it is living somewhere else, but can we ensure
-            // that the 'substance' is being deleted if we don't delete the derived class(LexerContext)
-            // in a context that we KNOW the derived class (here)? - I think this may be where virtual
-            // constructors come in...I hope so. (check it out).
+            
             auto dfaManager = config->getDfaManager();
 
             _lexerDataProxy = new LexerDataProxy(dfaManager, scanWordTransitionMap, scanWords);
-
             DLOG("Initializing lexer data proxy\n");
 
             context->initLexerDataProxy((const ILexerDataProxy*)_lexerDataProxy);
-//            context->initScanWords(scanWords);
-
             DLOG("initialized lexer data proxy successfully\n");
 
-            auto dataProxy = context->getLexerDataProxy();
-
-            DLOG("got lexer data proxy from context\n");
-
-            auto recKeys = dataProxy->getRecognizedKeywords();
-
-            auto scanTransMap = dataProxy->getScanWordTransitionMap();
-
             DLOG(" finished intializing lexer_manager\n");
-           
 	}
 
         ~lexer_manager() {}
