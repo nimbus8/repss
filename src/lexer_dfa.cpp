@@ -20,14 +20,23 @@
 
 #include "deps/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp"
 
+#define DEBUG
+//#undef DEBUG
+#ifdef DEBUG
+    #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
+    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
+#else
+    #define DeLOG(str)
+    #define DLOG(str)
+#endif
+
 const lexer_dfa* lexer_dfa::getNextDfa(const LexerStateAndInput& lexerStateAndInput) const
 {
     const StateAndInput<int,char> stateAndInput(lexerStateAndInput.getState(), 
         lexerStateAndInput.getInput(), false);
 
     //_printInputHash(stateAndInput, "stateAndInput"); //commented in order to benchmark diff between ScanWords
-
-    //std::cout << "\t_nextStates::size = " << _nextStates.size() << std::endl; //commented in order to benchmark diff between ScanWords
+    DeLOG(std::string{"\t_nextStates::size = "}.append(std::to_string(_nextStates.size())).append("\n").c_str());
     //_printTransitions(); //commented in order to benchmark diff between ScanWords
 
     lexer_dfa* ret;
@@ -40,7 +49,6 @@ const lexer_dfa* lexer_dfa::getNextDfa(const LexerStateAndInput& lexerStateAndIn
     //to a unique index in hashmap (its in the formulae)
     if (fetched == _nextStates.end())
     {
-        bool matchedRangedInput = false;
         ret = nullptr;
 
         char input = stateAndInput.getInput();
@@ -201,7 +209,6 @@ const lexer_dfa* lexer_dfa::getNextDfa(const LexerStateAndInput& lexerStateAndIn
                 }
             }
 
-            //btw, !matchedRangedInput here at this point, goes without saying
             if (ret == nullptr)
             {
                 //check case of empty char
@@ -234,3 +241,6 @@ const lexer_dfa* lexer_dfa::getNextDfa(const LexerStateAndInput& lexerStateAndIn
     return ret;
 }
 
+#undef DEBUG
+#undef DLOG
+#undef DeLOG

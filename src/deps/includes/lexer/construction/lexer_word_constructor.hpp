@@ -38,6 +38,16 @@
 #ifndef _LEXER_WORD_CONSTRUCTOR_
 #define _LEXER_WORD_CONSTRUCTOR_
 
+#define DEBUG
+//#undef DEBUG
+#ifdef DEBUG
+    #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
+    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
+#else
+    #define DeLOG(str)
+    #define DLOG(str)
+#endif
+
 typedef std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> wordrepr_and_transition_Pair_t;
 
 //lexer_word constructor
@@ -98,7 +108,7 @@ private:
 
         bool resultOfMergedDataTest = _testMergedRepresentation();
  
-        std::cout << "Merge Test " << (resultOfMergedDataTest? "SUCCEEDED!" : "FAILED!!") << std::endl << std::endl;
+        DeLOG(std::string{"Merge Test "}.append(resultOfMergedDataTest? "SUCCEEDED!\n" : "FAILED!!\n").c_str());
     
         return resultOfMergedDataTest;
     }
@@ -114,17 +124,14 @@ public:
     ~lexer_word_constructor()
     {
         _destructDfasAndTransitions();
+
         delete  _startWordForMergedRepr;
-
         delete _scanWordTransitionMap;
-
-        std::cout << "Deleting Scanwords..." << std::endl;
         delete _scanWordStartAndPtrAggregation->second;
         delete _scanWordStartAndPtrAggregation;
-        std::cout << "Successfully deleted ScanWords!" << std::endl;
-   
+        DeLOG("Successfully Deleted ScanWords!\n");
 
-        std::cout << "Sucessfully deleted lexer word constructor!" << std::endl;
+        DeLOG("Sucessfully deleted lexer word constructor!\n");
     }
 
     const ScanWordTransitionMap* getScanWordTransitionMap() const
@@ -148,5 +155,9 @@ public:
         return _words;
     }
 };
+
+#undef DEBUG
+#undef DLOG
+#undef DeLOG
 
 #endif

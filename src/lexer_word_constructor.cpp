@@ -64,6 +64,11 @@ void lexer_word_constructor::_initWords()
     auto repWordNamedList = _constructKeyword_REPS_withNamedListIteration();
     _words.push_back(repWordNamedList.first);
     _dfaTransitions.push_back(repWordNamedList.second);
+
+    //evaluation
+    auto repWordEvaluation = _constructKeyword_eval();
+    _words.push_back(repWordEvaluation.first);
+    _dfaTransitions.push_back(repWordEvaluation.second);
 }
 
 //oct 31: optimization with scanwords failed hard. it could be just the smallness and similarity of our
@@ -78,7 +83,7 @@ bool lexer_word_constructor::_testScanWords()
     const char seq2[] = {'b','/', '[', 's', 'c','o', ']', ' ', '\0'};
     const char seq3[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ','a','=','2',':','8', '1', '\n', '\0' };
     const char seq4[] = { 'a', 'b', 's', 'o', 'l', 'u', 't', '/', '[', 'p', 'a', 'r', '/', '[', '(', 'a', '|', 'p', '|', 'e', ')', ']', ' ', '\0' };
-
+    const char seq5[] = { 'k', '\n', ',', '/', '[', '}', '/', '[', '[', 'y','a', 'b', 'b', 'a', '_', 'd', 'a', 'b', ']', ']', 'H', '\0' };
 
     std::cout << std::endl;
     std::cout << "Starting Scan Words Test" << std::endl
@@ -89,13 +94,13 @@ bool lexer_word_constructor::_testScanWords()
 
     for (int round = 0; round < 10000; round++)
     { 
-    for (int k = 0; k < 4; k++)
+    for (int k = 0; k < 5; k++)
     {
         auto word = _scanWords;
-        char seq[25];
-        strcpy(seq, (k==0? seq1 : (k==1? seq2 : (k==2? seq3 : seq4))));
 
-        const size_t seq_length = (k == 0? 7 : (k==1? 8 : (k==2? 17 : 23)));
+        char seq[25];
+        strcpy(seq, (k==0? seq1 : (k==1? seq2 : (k==2? seq3 : (k==3? seq4 : seq5)))));
+        const size_t seq_length = (k == 0? 7 : (k==1? 8 : (k==2? 17 : (k==3? 23 : 21))));
 
         int count = 0;
         auto curr = word;
@@ -261,11 +266,7 @@ bool lexer_word_constructor::_testMergedRepresentation()
     const char seq2[] = {'b','/', '[', 's', 'c','o', ']', ' ', '\0'};
     const char seq3[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ','a','=','2',':','8', '1', '\n', '\0' };
     const char seq4[] = { 'a', 'b', 's', 'o', 'l', 'u', 't', '/', '[', 'p', 'a', 'r', '/', '[', '(', 'a', '|', 'p', '|', 'e', ')', ']', ' ', '\0' };
-
-
-    //const char seq1[] = { 'f','y','i','/', '[', 'r', 'e','p', ']', ' ','a','=','0',':','1', ' ', ' ', '\0' };
-    ////const char seq1[] = {'/', '[', 'r', 'e','p', ']', ' ', 'a', '=', '1', ':', '8', '\n', '\0'};
-    //const char seq2[] = {'b','/', '[', 's', 'c','o', ']', ' ', '\0'};
+    const char seq5[] = { 'k', '\n', ',', '/', '[', '}', '/', '[', '[', 'y','a', 'b', 'b', 'a', '_', 'd', 'a', 'b', ']', ']', 'H', '\0' };
 
     std::cout << "Starting Merged Representation Test" << std::endl
               << "-----------------------------------" << std::endl;
@@ -275,14 +276,13 @@ bool lexer_word_constructor::_testMergedRepresentation()
 
     for (int round = 0; round < 10000; round++)
     {
-    for (int k = 0; k < 4; k++)
+    for (int k = 0; k < 5; k++)
     {
         auto word = _startWordForMergedRepr;
 
         char seq[25];
-        strcpy(seq, (k==0? seq1 : (k==1? seq2 : (k==2? seq3 : seq4))));
-
-        const size_t seq_length = (k == 0? 7 : (k==1? 8 : (k==2? 17 : 23)));
+        strcpy(seq, (k==0? seq1 : (k==1? seq2 : (k==2? seq3 : (k==3? seq4 : seq5)))));
+        const size_t seq_length = (k == 0? 7 : (k==1? 8 : (k==2? 17 : (k==3? 23 : 21))));
 
         int count = 0;
         auto curr = word;
@@ -505,7 +505,123 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructKeyword_REPS_wi
 
 wordrepr_and_transition_Pair_t lexer_word_constructor::_constructKeyword_eval()
 {
+    const std::string WORD_NAME("evaluation");
 
+    lexer_word_repr* word_base = dfaManager.createLexerWordRepr();
+
+    lexer_dfa* DFA_1 = dfaManager.createDfa();
+    auto DFA_2 = dfaManager.createDfa();
+    auto DFA_3 = dfaManager.createDfa();
+    auto DFA_4 = dfaManager.createDfa();
+    auto DFA_5 = dfaManager.createDfa();
+    auto DFA_6 = dfaManager.createDfa();
+    auto DFA_7 = dfaManager.createDfa();
+    auto DFA_END = dfaManager.createAcceptingDfa(WORD_NAME);
+
+    const auto ST_BASE = word_base->getId();
+    const auto ST_1 = DFA_1->getId(), ST_2 = DFA_2->getId(), ST_3 = DFA_3->getId(), ST_4 = DFA_4->getId(); 
+    const auto ST_5 = DFA_5->getId(), ST_6 = DFA_6->getId(), ST_7 = DFA_7->getId();
+
+    StateAndInput<int,char> stateInputBase(ST_BASE,'/');
+    StateAndInput<int,char> stateInput1(ST_1, '[');
+    StateAndInput<int,char> stateInput2(ST_2, '[');
+    StateAndInput<int,char> stateInput3a(ST_3, '_', false, false);
+    StateAndInput<int,char> stateInput3b(ST_3, SI_CHARS_ANY, true, false);
+        StateAndInput<int,char> stateInput4a(ST_4, SI_CHARS_ANY, true, false);
+        StateAndInput<int,char> stateInput4b(ST_4, SI_NUMBERS_0to9, true, false);
+            StateAndInput<int,char> stateInput5a(ST_5, SI_NUMBERS_0to9, true, false);
+            StateAndInput<int,char> stateInput5b(ST_5, SI_CHARS_ANY, true, false);
+            StateAndInput<int,char> stateInput5c(ST_5, ']', false, false);
+            StateAndInput<int,char> stateInput5d_a(ST_5, '-', false, false);
+            StateAndInput<int,char> stateInput5d_b(ST_5, '_', false, false);
+        StateAndInput<int,char> stateInput4c_a(ST_4, '-', false, false);
+        StateAndInput<int,char> stateInput4c_b(ST_4, '_', false, false);
+            StateAndInput<int,char> stateInput6a_a(ST_6, '-', false, false);
+            StateAndInput<int,char> stateInput6a_b(ST_6, '_', false, false);
+            StateAndInput<int,char> stateInput6b(ST_6, SI_CHARS_ANY, true, false);
+            StateAndInput<int,char> stateInput6c(ST_6, ']', false, false);
+            StateAndInput<int,char> stateInput6d(ST_6, SI_NUMBERS_0to9, true, false);
+        StateAndInput<int,char> stateInput4d(ST_4, ']', false, false);
+            StateAndInput<int,char> stateInput7(ST_7, ']', false, false);
+
+
+    const DfaTransition* idfaBase = dfaManager.createDfaTransition(&stateInputBase,DFA_1);
+    auto idfa1 = dfaManager.createDfaTransition(&stateInput1, DFA_2);
+    auto idfa2 = dfaManager.createDfaTransition(&stateInput2, DFA_3);
+    auto idfa3a = dfaManager.createDfaTransition(&stateInput3a, DFA_6);
+    auto idfa3b = dfaManager.createDfaTransition(&stateInput3b, DFA_4);
+        auto idfa4a = dfaManager.createDfaTransition(&stateInput4a, DFA_4);
+        auto idfa4b = dfaManager.createDfaTransition(&stateInput4b, DFA_5);
+            auto idfa5a = dfaManager.createDfaTransition(&stateInput5a, DFA_5);
+            auto idfa5b = dfaManager.createDfaTransition(&stateInput5b, DFA_4);
+            auto idfa5c = dfaManager.createDfaTransition(&stateInput5c, DFA_7);
+            auto idfa5d_a = dfaManager.createDfaTransition(&stateInput5d_a, DFA_6);
+            auto idfa5d_b = dfaManager.createDfaTransition(&stateInput5d_b, DFA_6);
+        auto idfa4c_a = dfaManager.createDfaTransition(&stateInput4c_a, DFA_6);
+        auto idfa4c_b = dfaManager.createDfaTransition(&stateInput4c_b, DFA_6);
+            auto idfa6a_a = dfaManager.createDfaTransition(&stateInput6a_a, DFA_6);
+            auto idfa6a_b = dfaManager.createDfaTransition(&stateInput6a_b, DFA_6);
+            auto idfa6b = dfaManager.createDfaTransition(&stateInput6b, DFA_4);
+            auto idfa6c = dfaManager.createDfaTransition(&stateInput6c, DFA_7);
+            auto idfa6d = dfaManager.createDfaTransition(&stateInput6d, DFA_5);
+        auto idfa4d = dfaManager.createDfaTransition(&stateInput4d, DFA_7);
+            auto idfa7 = dfaManager.createDfaTransition(&stateInput7, DFA_END);
+
+
+    const lexer_dfa_builder lexer_builder;
+    const ApplyImmutableFunc<DfaTransition*> applyObj(1,idfaBase);
+    bool wasSuccess =  lexer_builder.addDfa(word_base, applyObj);
+
+    const ApplyImmutableFunc<DfaTransition*> applyObj1to2(1,idfa1);
+    bool wasSuccess2 = lexer_builder.addDfa(DFA_1, applyObj1to2);
+
+    const ApplyImmutableFunc<DfaTransition*> applyObj2to3(1,idfa2);
+    bool wasSuccess3 = lexer_builder.addDfa(DFA_2, applyObj2to3);
+
+    const ApplyImmutableFunc<DfaTransition*> applyObj3to4n6(2,idfa3a,idfa3b);
+    bool wasSuccess4 = lexer_builder.addDfa(DFA_3, applyObj3to4n6);
+
+    const ApplyImmutableFunc<DfaTransition*> applyObj4to4n5n6n7(5, idfa4a, idfa4b, idfa4c_a, idfa4c_b, idfa4d);
+    bool wasSuccess5 = lexer_builder.addDfa(DFA_4, applyObj4to4n5n6n7);
+
+    const ApplyImmutableFunc<DfaTransition*> applyObj5to4n5n6n7(5, idfa5a, idfa5b, idfa5c, idfa5d_a, idfa5d_b);
+    bool wasSuccess6 = lexer_builder.addDfa(DFA_5, applyObj5to4n5n6n7);
+
+    const ApplyImmutableFunc<DfaTransition*> applyObj6to4n5n6n7(5, idfa6a_a, idfa6a_b, idfa6b, idfa6c, idfa6d);
+    bool wasSuccess7 = lexer_builder.addDfa(DFA_6, applyObj6to4n5n6n7);
+
+    const ApplyImmutableFunc<DfaTransition*> applyObj7toEnd(1,idfa7);
+    bool wasSuccess8 =  lexer_builder.addDfa(DFA_7, applyObj7toEnd);
+
+
+    if (wasSuccess && wasSuccess2 && wasSuccess3 && wasSuccess4 && wasSuccess5 && wasSuccess6
+        && wasSuccess7 && wasSuccess8)
+    {
+
+        std::cout << std::endl << "Successfully constructed /[[variable]]" << std::endl;
+
+        char seq[] = { 'k', '\n','/', '[', '[', 'y','a', 'b', 'b', 'a', '_', 'd', 'a', 'b', ']', ']', 'H' };
+        const size_t seq_length = 17;
+        debug_printDfa(dfaManager, word_base, seq, seq_length);
+    }
+
+    AggregatePtrsAndDelete<lexer_dfa*>* aggrAndDel =
+        new AggregateDfasAndDelete<lexer_dfa*>(7, word_base,
+                        DFA_1, DFA_2, DFA_3, DFA_4, DFA_5, DFA_6, DFA_7, DFA_END);
+    std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*> innerRet (word_base, aggrAndDel);
+
+    AggregatePtrsAndDelete<DfaTransition*>* aggrAndDelDfaTransitions =
+        new AggregateDfaTransitionsAndDelete<DfaTransition*>(
+            21, idfaBase, idfa1, idfa2, idfa3a, idfa3b, 
+            idfa4a, idfa4b, idfa4c_a, idfa4c_b, idfa4d,
+            idfa5a, idfa5b, idfa5c, idfa5d_a, idfa5d_b,
+            idfa6a_a, idfa6a_b, idfa6b, idfa6c, idfa6d,
+            idfa7
+        );
+ 
+    std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> ret(innerRet, aggrAndDelDfaTransitions);
+
+    return ret;
 }
 
 wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlteration()
@@ -600,6 +716,8 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlteration()
 
 wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlterationAndJoin()
 {
+    //...
+    return wordrepr_and_transition_Pair_t(std::pair<lexer_word_repr *, AggregatePtrsAndDelete<lexer_dfa *> *>(nullptr,nullptr), new AggregateDfaTransitionsAndDelete<DfaTransition*>(1,nullptr));
 }
 
 wordrepr_and_transition_Pair_t lexer_word_constructor::__insertNamedListParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, const unsigned int tentativeNameKey)
@@ -615,10 +733,6 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::__insertNamedListParamsDf
     auto DFA_4 = dfaManager.createDfa();
     auto DFA_5 = dfaManager.createDfa();
     auto DFA_6 = dfaManager.createDfa();
-
-    //auto DFA_7 = dfaManager.createAcceptingDfa(WORD_NAME);
-  
-    //there is not accepting dfa here
 
     const auto ST_BASE = word_base->getId(); //word_base->getId();
     const auto ST_1 = DFA_1->getId(), ST_2 = DFA_2->getId(), ST_3 = DFA_3->getId(), ST_4 = DFA_4->getId();

@@ -29,16 +29,14 @@
 #ifndef _LEX_MANAGER_
 #define _LEX_MANAGER_
 
-#define DEBUG YES
-
+#define DEBUG
+//#undef DEBUG
 #ifdef DEBUG
-    #ifndef DLOG
-        #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
-    #endif
+    #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
+    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
 #else
-    #ifndef DLOG
-        #define DLOG(str)
-    #endif
+    #define DeLOG(str)
+    #define DLOG(str)
 #endif
 
 #include "lexer_configuration.hpp"
@@ -77,5 +75,9 @@ public:
 
         ~lexer_manager() {}
 };
+
+#undef DEBUG
+#undef DLOG
+#undef DeLOG
 
 #endif

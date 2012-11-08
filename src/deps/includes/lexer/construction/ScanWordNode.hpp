@@ -28,6 +28,16 @@
 #include "model_representation/finite_autonoma/lexer_dfa.hpp"
 #include "ScanWordTransitionMap.hpp"
 
+#define DEBUG
+//#undef DEBUG
+#ifdef DEBUG
+    #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
+    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
+#else
+    #define DeLOG(str)
+    #define DLOG(str)
+#endif
+
 enum class ScanWordProperties_t : unsigned int
 {
     SCAN_WORD_PROPERTY_NOTHING				= 0x00,
@@ -50,14 +60,6 @@ inline void addProperty(unsigned int &propertyContainer, ScanWordProperties_t pr
         }
     }
 } 
-
-#ifdef DEBUG
-     #ifndef DLOG(str)
-         #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
-     #endif
-#else
-    #define DLOG(str)
-#endif
 
 //Scan Word is simply meant to be a simpler interface of lexer_dfa. 
 //most importantly, its a bit of a runtime optimization: 
@@ -166,8 +168,7 @@ public:
 
                     if (inputAndType.getIsRanged())
                     {
-                        const auto anyThingButCharacterRange = inputAndType.getInputCharacter();
-                        
+                        //const auto anyThingButCharacterRange = inputAndType.getInputCharacter();
                         //todo:will a switch on the ranges possible
                     }
                     else
@@ -203,5 +204,9 @@ public:
 };
 
 typedef ScanWordNode ScanWords;
+
+#undef DEBUG
+#undef DLOG
+#undef DeLOG
 
 #endif

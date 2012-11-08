@@ -109,7 +109,7 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
                 }   
                 else
                 {
-                    bool isKeyword = false;
+                    //bool isKeyword = false;
 
                     if (currentPlace == startPlace)
                     {

@@ -36,6 +36,16 @@ using namespace std;
 #include "deps/includes/lexer/lexer_manager.hpp"
 #include "deps/includes/lexer/Scanner.hpp"
 
+#define DEBUG
+//#undef DEBUG
+#ifdef DEBUG
+    #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
+    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
+#else
+    #define DeLOG(str)
+    #define DLOG(str)
+#endif
+
 namespace ImplTest
 {
 	/*
@@ -227,3 +237,7 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
+
+#undef DEBUG
+#undef DLOG
+#undef DeLOG

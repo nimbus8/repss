@@ -20,27 +20,31 @@
 
 #include "deps/includes/lexer/construction/ScanWordNode.hpp"
 
-//this is a bit tricky, haven't thought about it too deeply. (something tells me this isn't trivial)
-//-we create a ScanWordNode with a lexerDfa reference that we hold on to.
-//-this is basically only because we want to have a list of ScanWordNode objects we
-//-create implicitly as a consequence of creating a ScanWordNode explicitly.
-//-so as it goes, outside this class, we'll maintain a list of implicitly/explicitly created
-//-ScanWordNodes, so we know not to create one (with existing id) explicitly or even
-//-implicitly (hence vector param in init()) - if one already exists we just use the existing reference.
-//maybe we can actually, move all this init stuff into constructor make ScanWordNode const??
+#define DEBUG
+//#undef DEBUG
+#ifdef DEBUG
+    #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
+    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
+#else
+    #define DeLOG(str)
+    #define DLOG(str)
+#endif
+
+//Outside this class (lexer_word_constructor right now), we maintain a list of implicitly/explicitly created
+// ScanWordNodes, this ensures we know not to create a ScanWordNode with an existing id explicitly
+// if we children are needed for an object we only create it if there doesn't already exist a reference for it -
+// this node created here or elsewhere need not have been init'd yet.
+//     tothinkabout:will 'maybe' we can actually move all this init stuff into constructor make ScanWordNode const??
 void ScanWordNode::init(ScanWordTransitionMap* const transitionMap, const std::unordered_set<ScanWordNode*>& existingScanWordNodes, std::vector<ScanWordNode*>& wordsToBeInitd)
 {
     if (_lexerDfa == nullptr)
     {
-        std::cout << "API Misuse: Either init has already been called, or nullptr was given to ScanWordNode constructor. Both bad." << std::endl;
+        DeLOG("Error - API Misuse: Either init has already been called, or nullptr was given to ScanWordNode constructor. Both bad.\n");
         exit(1);
     }
 
-    //note: To handle case where two transitions point to same lexer dfa ( say with different
-    //       inputs, eg: partially ranged input (a|b|c)->some_lexer_dfa ) we have locallyCreatedScanWordNodes.
-    //note: This is not so important now, but should we ever want to support accepting partially
-    //       ranged input (construction is already possible) [todo:will] we may want to test to see     
-    //       if what we're doing here is acceptable. Maybe we need to check the code for the merge process as well.
+    //To handle case where 2 or more transitions point to same lexer dfa we have locallCreatedScanWordNodes.
+    // eg: 'partially ranged' input (a|b|c)->some_lexer_dfa [1]
     std::vector<ScanWordNode*> locallyCreatedScanWordNodes;
 
     _id = _lexerDfa->getId();
@@ -94,60 +98,16 @@ void ScanWordNode::init(ScanWordTransitionMap* const transitionMap, const std::u
 
         //2) at this point nextScanWordNode is guaranteed to be set to something (not nullptr)
 
-        //we need to check to see if input is ranged for this state (stateAndInput). If so we MUST accomodate for this
-        //begining: oct 11, 2012
-
-        //todo: make this a private method, and use (maybe) in _getNext...RangedInput(..) to map category to index       
-        std::function<size_t (char)> rangedSIToIndex = 
-            [](char rangedSItype)->size_t
-            {
-                size_t index;
-
-                switch (rangedSItype)
-                {
-                    case SI_EMPTY:
-                        index = 0;
-                        break;
-                    case SI_CHARS_LOWER:
-                        index = 1;
-                        break;
-                    case SI_CHARS_UPPER:
-                        index = 2;
-                        break;
-                    case SI_CHARS_ANY:
-                        index = 3;
-                        break;
-                    case SI_NUMBERS_0:
-                        index = 4;
-                        break;
-                    case SI_NUMBERS_1to9:
-                        index = 5;
-                        break;
-                    case SI_NUMBERS_0to9:
-                        index = 6;
-                        break;
-                    default:
-                        index = 7; //should never happen, but if so lets have it blow up
-                        break;
-                };
-
-                return index;
-            };
-
-        //todo:will remember we have to check for isAnythingBut and then handle that case
- 
         const auto isRangedTransition = aTransition.getIsRanged();
         const auto isAnythingBut = aTransition.getIsAnythingBut();        
 
         if (isRangedTransition)
         {
-            std::cout << "\tisRangedTransition=true" << std::endl;
-
-            //for ranged transitions we have a special data structure in place (an array :o)
-            //btw: rangedSItoIndex is fn internal to ScanWord
-            auto rangedInputCategory = stateAndInput.getInput();
+            DeLOG("\tisRangedTransition=true\n");
 
             char rangedPossibilities[] = {SI_CHARS_LOWER, SI_CHARS_UPPER, SI_CHARS_ANY, SI_NUMBERS_0, SI_NUMBERS_1to9, SI_NUMBERS_0to9, SI_EMPTY};
+
+            auto rangedInputCategory = stateAndInput.getInput();
 
             for (auto possibility : rangedPossibilities)
             {
@@ -188,23 +148,17 @@ void ScanWordNode::init(ScanWordTransitionMap* const transitionMap, const std::u
                         std::pair<TransitionInputKey, ScanWordNode*> transitionMapKeyAndValue{ transitionMapKeyRanged, nextScanWordNode };
                         transitionMap->emplace(transitionMapKeyAndValue);
 
-                        //_hasRangedTransition = true;
-                        addProperty(_properties, ScanWordProperties_t::SCAN_WORD_PROPERTY_HAS_RANGED_TRANSITION);                        }
+                        addProperty(_properties, ScanWordProperties_t::SCAN_WORD_PROPERTY_HAS_RANGED_TRANSITION);                             }
                     else
                     {
                         if (_anythingButTransition != nullptr)
                         {
-                            std::cout << "Ooops, somehow we managed to define two 'anythingBut' transitions"
-                                      << ", this almost certainly leads to undefined behaviour. Quitting." << std::endl;
-
+                            DeLOG("Ooops, somehow we managed to define two 'anythingBut' transitions, this almost certainly leads to undefined behaviour. Quitting.\n");
                             exit(1);
                         }
 
-                        //_hasAnythingButTransition = true; //deprecate this!
-
                         TransitionInputKey transitionKeyAnythingButRange(getId(), possibility, true, true, false);
                         std::pair<TransitionInputKey, ScanWordNode*>* transitionKeyAndValue = new std::pair<TransitionInputKey, ScanWordNode*>(transitionKeyAnythingButRange, nextScanWordNode);
-
                         _anythingButTransition = transitionKeyAndValue;
 
                         addProperty(_properties, ScanWordProperties_t::SCAN_WORD_PROPERTY_HAS_ANYTHING_BUT_TRANSITION);
@@ -212,25 +166,20 @@ void ScanWordNode::init(ScanWordTransitionMap* const transitionMap, const std::u
                 }
             }
 
-            std::cout << "\tSuccessfully set value for index in _RangedTransitionsByCategory" << std::endl;
+            DeLOG("\tSuccessfully set value for index in _RangedTransitionsByCategory\n");
         }
         else if (isAnythingBut)
         {
             if (_anythingButTransition != nullptr)
             {
-                std::cout << "Ooops, somehow we managed to define two 'anythingBut' transitions"
-                          << ", this almost certainly leads to undefined behaviour. Quitting." << std::endl;
-
+                DeLOG("Ooops, somehow we managed to define two 'anythingBut' transitions, this almost certainly leads to undefined behaviour. Quitting.\n");
                 exit(1);
             }
 
-            //last parameter doesn't matter here
             TransitionInputKey transitionKeyAnythingButUnranged(getId(), input, false, true, false);
             std::pair<TransitionInputKey, ScanWordNode*>* transitionKeyAndValue = new std::pair<TransitionInputKey, ScanWordNode*>(transitionKeyAnythingButUnranged, nextScanWordNode);
-
             _anythingButTransition = transitionKeyAndValue;
 
-            //_hasAnythingButTransition = true;  //deprecate this
             addProperty(_properties, ScanWordProperties_t::SCAN_WORD_PROPERTY_HAS_ANYTHING_BUT_TRANSITION);
         }
         else
@@ -246,3 +195,30 @@ void ScanWordNode::init(ScanWordTransitionMap* const transitionMap, const std::u
     _lexerDfa = nullptr; //we don't need lexerDfa anymore. todo: after scanwords are made lexerDfas not needed at all
 }
 
+#undef DEBUG
+#undef DLOG
+#undef DeLOG
+
+//Footnotes: 
+//[1] This is not so important now, but should we ever want to support accepting partially
+// ranged input (construction is already possible) we may want to test to see
+// if what we're doing here is acceptable. Maybe we need to check the code for the merge process as well.
+//    Update: This seems to work. But I noticed we introduced an unchecked source of error in merge process.
+//             if actual ranged inputs from two different keywords (up that point identical) overlap, there's serious
+//             ambguity.  I actually DON'T want this to be a concession! [todo:will] figure out if we can support
+//             this sort of overlapping 
+//                 (1) my current thinking is that on merge we can accept ambiguity but at runtime we'll allow for the 
+//                     recognition of multiple 'possible' languages at a time asynchronously? (so long as they are all 
+//                     equal up to that point) diverting a hard decision to some point FURTHER down the line.
+//                     As long as the two language constructs aren't entirely ambiguous this would work: just make sure
+//                     not go crazy and define like 10 lengthy strands all equal 'cept for the last couple inputs.
+//                     This has particular ramifications for 'alternation' and 'alternationAndJoin'.
+//                 (2) the other option would be to complete rework the tentative naming system. i.e. have it internally,
+//                     represent branches, and let the actual name be runtime dependant. (the more I think about it,
+//                     the more I think that's what I was going for at the beginning...AND it MIGHT actually be
+//                     TRIVIAL to implement....almost trivial. Well the addition to language construction would be:
+//                       something like newTentativeNameKey = addBranchName(tentativeNameKey, name, dfa-id? ...), 
+//                         then use newTentativeNameKey for granchildren of branch (no change here needed) etc etc. 
+//                           -> This will cut down on code! ...and kindof fits into our goal schema!
+//                     then on the tentativeNameManagement side, every cal to addBranchName(...)
+                   

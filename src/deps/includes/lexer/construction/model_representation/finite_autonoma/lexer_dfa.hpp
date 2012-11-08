@@ -39,8 +39,10 @@
 #define DEBUG
 //#undef DEBUG
 #ifdef DEBUG
+    #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
     #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
 #else
+    #define DeLOG(str)
     #define DLOG(str)
 #endif
 
@@ -72,17 +74,20 @@ public:
 class lexer_dfa
 {
 private:
-    mutable std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals> _nextStates;
+    typedef std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals> state_to_dfa_map_t;
 
-    LexerTransition* _anythingButTransition;
+    mutable state_to_dfa_map_t	_nextStates;
+    int				_id;		//todo:will put this as unsigned int
+    LexerTransition*		_anythingButTransition;
 
-    int _id;
+    lexer_dfa() : _id(-1), _anythingButTransition(nullptr) {}
 
     void _printInputHash(const StateAndInput<int,char>& stateAndInput, const std::string& name) const
     {
         StateAndInputHashFunction hashFunc;
-        //std::cout << "\tHash(" << name << ") = " << hashFunc(stateAndInput) << std::endl; //commented in order to benchmark diff between ScanWords
+        DeLOG(std::string{"\tHash("}.append(name).append(") = ").append(sizeof(char), (char)hashFunc(stateAndInput)).append("\n").c_str());
     }
+
 public:
     explicit lexer_dfa(int id) : _id(id), _anythingButTransition(nullptr) {}
 
@@ -101,18 +106,20 @@ public:
         {
             auto inputKey = iter.first;
             auto dfaPtr = iter.second;
-            //std::cout << "\t(<" << inputKey.getState() << ", " << inputKey.getInput() << ", ranged?(" << (inputKey.getIsRanged()? "yes" : "no") << ")>, "
-              //  << "dfa-id(" << dfaPtr->getId() << "))"
-              //  << "\t- hash(" << hashFunc(inputKey)  << ")" << std::endl; //commented in order to benchmark diff between ScanWords
+
+            #ifdef DEBUG
+                DeLOG(std::string{"\n\t("}.append(std::to_string(inputKey.getState())).append(",").append(sizeof(char),(char)inputKey.getInput()).append(", ranged?(").append(inputKey.getIsRanged()?"yes":"no").append(")>, dfa-id(").append(std::to_string(dfaPtr->getId())).append("))\t- hash(").append(std::to_string(hashFunc(inputKey))).append(")\n").c_str());
+            #endif
         }
 
         if (_anythingButTransition != nullptr)
         {
             auto stateAndInput = _anythingButTransition->getStateAndInput();
             auto dfaPtr = _anythingButTransition->getDfaNode();
-            //std::cout << "\t(<" << stateAndInput.getState() << ", " << stateAndInput.getInput()
-                      //<< ", ranged?(" << (stateAndInput.getIsRanged()? "yes" : "no") << ")>,"
-                      //<< "dfa-id(" << dfaPtr->getId() << "))" << std::endl; //commented in order to benchmark diff b/w Scanwords
+
+            #ifdef DEBUG
+                DeLOG(std::string{"\n\t("}.append(std::to_string(stateAndInput.getState())).append(",").append(sizeof(char),stateAndInput.getInput()).append(", ranged?(no)>, dfa-id(").append(std::to_string(dfaPtr->getId())).append("))\n").c_str());
+            #endif
         }
     }
 
@@ -311,5 +318,6 @@ typedef lexer_dfa lexer_word_repr;
 
 #undef DEBUG
 #undef DLOG
+#undef DeLOG
 
 #endif
