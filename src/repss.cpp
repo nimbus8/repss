@@ -210,9 +210,9 @@ int main(int argc, char* argv[])
 	        const lexer_configuration config;
 
                 auto lexerContext = contextManager.getContext<ContextType::AllowedTypes, ContextType::Lexer>();
-	        const lexer_manager lexMan(&lexerContext,&config);
+	        const lexer_manager lexMan(&lexerContext, config);
                
-                DLOG("past lexer manager creation.\n");
+                DeLOG("past lexer manager creation.\n");
  
                 if (argc < 4)
                 {
@@ -225,10 +225,6 @@ int main(int argc, char* argv[])
                 Scanner *scanner = new Scanner(&lexerContext);
 
                 scanner->processFile(filename, permissions);
-
-		//TestContextMan();
-		//ImplTest::runClosureAndScanTests(&contextManager,argc, argv);
-
 }
 	catch (std::exception& e) 
 	{ 

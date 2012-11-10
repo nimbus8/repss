@@ -112,11 +112,14 @@ private:
 
     std::string wrapKeyword(const std::string& partOfGrammer, const char* const keyWord) const
     {
-        std::string wrappedString("{");
-        wrappedString.append(partOfGrammer);
-        wrappedString.append(":");
-        wrappedString.append(keyWord);
-        wrappedString.append("}");
+        std::string wrappedString{
+            std::string(sizeof(char), '{').append(partOfGrammer).append(sizeof(char),':').append(keyWord).append(sizeof(char), '}')
+        };
+
+//        wrappedString.append(partOfGrammer);
+//        wrappedString.append(":");
+//        wrappedString.append(keyWord);
+//        wrappedString.append("}");
 
         return wrappedString;
     }

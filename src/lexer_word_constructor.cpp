@@ -649,6 +649,7 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlteration()
     StateAndInput<int,char> stateInput3(ST_3,'(');
     StateAndInput<int,char> stateInput4a(ST_4,'|');
         StateAndInput<int,char> stateInput5(ST_5,'|',false,true); //goes to 6
+        StateAndInput<int,char> stateInput5b(ST_5, '\n', false, false); //goes back into 5 //should go to a state that doesn't accept '\n'
     StateAndInput<int,char> stateInput4b(ST_4, ')');
             StateAndInput<int,char> stateInput7(ST_7, ']');
     StateAndInput<int,char> stateInput4c(ST_4, '|', false, true); //non-ranged anything but -- i kno kinda horrible eh? change to enum or (combined uint repr)
@@ -661,6 +662,7 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlteration()
     auto idfa3 = dfaManager.createDfaTransition(&stateInput3, DFA_4);
     auto idfa4a = dfaManager.createDfaTransition(&stateInput4a, DFA_5);
         auto idfa5 = dfaManager.createDfaTransition(&stateInput5, DFA_6);
+        auto idfa5b = dfaManager.createDfaTransition(&stateInput5b, DFA_5);
     auto idfa4b = dfaManager.createDfaTransition(&stateInput4b, DFA_7);
             auto idfa7 = dfaManager.createDfaTransition(&stateInput7, DFA_8);
     auto idfa4c = dfaManager.createDfaTransition(&stateInput4c, DFA_6);
@@ -681,7 +683,7 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlteration()
     const ApplyImmutableFunc<DfaTransition*> applyObj4to5n7n6(3,idfa4a,idfa4b,idfa4c);
     bool wasSuccess4 = lexer_builder.addDfa(DFA_4, applyObj4to5n7n6);
 
-    const ApplyImmutableFunc<DfaTransition*> applyObj5to6(1,idfa5);
+    const ApplyImmutableFunc<DfaTransition*> applyObj5to6(2,idfa5, idfa5b);
     bool wasSuccess5 = lexer_builder.addDfa(DFA_5, applyObj5to6);
 
     const ApplyImmutableFunc<DfaTransition*> applyObj6to5n7n6(3,idfa6a,idfa6b,idfa6c);
@@ -707,8 +709,8 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlteration()
     std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*> innerRet (word_base, aggrAndDel);
 
     AggregatePtrsAndDelete<DfaTransition*>* aggrAndDelDfaTransitions =
-        new AggregateDfaTransitionsAndDelete<DfaTransition*>(11,
-            idfa1, idfa2, idfa3, idfa4a, idfa4b, idfa4c, idfa5, idfa6a, idfa6b, idfa6c, idfa7);
+        new AggregateDfaTransitionsAndDelete<DfaTransition*>(12,
+            idfa1, idfa2, idfa3, idfa4a, idfa4b, idfa4c, idfa5, idfa5b, idfa6a, idfa6b, idfa6c, idfa7);
     std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> ret(innerRet, aggrAndDelDfaTransitions);
 
     return ret;

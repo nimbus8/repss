@@ -17,25 +17,27 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#ifndef _GRAMMAR_MANAGER_
+#define _GRAMMAR_MANAGER_
 
-#ifndef _ILEXER_CONTEXT_
-#define _ILEXER_CONTEXT_
-
-#include "../ILexerDataProxy.hpp"
-#include "construction/ScanWordNode.hpp"
-
-class ILexerContext
+class GrammarManager
 {
-protected:
-    virtual ~ILexerContext() {}
-
+private:
+    IGrammarDataProxy *_grammarDataProxy; 
 public:
-    virtual void initLexerDataProxy(const ILexerDataProxy* lexerDataProxy) = 0;
-    virtual const ILexerDataProxy* getLexerDataProxy() const = 0;
+    GrammarManager(IGrammarContext* context)
+    {
+        //...from configuration get grammar keywords and rules etc
 
-    virtual void setAnnotatedData(const std::vector<std::string>& data) = 0;
+        _grammarDataProxy = nullptr;
+        //create grammarDataProxy and transfer config fata to it through constructor
+    }
 
-    virtual void printAnnotatedData() const = 0;
+    ~GrammarManager()
+    {
+        if (_grammarDataProxy != nullptr)
+            delete _grammarDataProxy;
+    }
 };
 
 #endif

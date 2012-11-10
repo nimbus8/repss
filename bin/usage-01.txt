@@ -27,8 +27,8 @@
 
 An Eg:
 A short list of "People who don't like me":
-/[rep(ss)] person=('dairy','jacob','carrie','peter','meg','anne Laurie') 
-+    /[[var]] doesn't like my haircut. ~ Note to self: stay away from /[[var]] until it grows back.
+/[rep(ss)] this_person=('dairy','jacob','carrie','peter','meg','anne Laurie') 
++    /[[this_person]] doesn't like my haircut. ~ Note to self: stay away from /[[this_person]] until it grows back.
 /[/]
 
 >> dairy doesn't like my haircut. ~ Note to self: stay away from [dairy] until it grows back.
@@ -54,31 +54,30 @@ I'd be surprised if you couldn't peice together a hundred memes to tell an EPIC 
 
 
 ....
-Just before she left, she told me to leave a glass upside down over the sink, whether I was there or not. I had given myself away. /[(|My ignorance was telling.)] /[(Oh and she laaauugghed,
-l|And she laughed L)]ike she always does, at every new immigrant and import to the city where the rodents outnumber the population tenfold, sometimes in just one single apartment, 
+Just before she left, she told me to leave a glass upside down over the sink, whether I was there or not. I had given myself away. /[(|My ignorance was telling.)] /[(Oh and she laaauugghed, l|And she laughed l)]ike 
+she always does, at every new immigrant and import to the city where the rodents outnumber the population tenfold, sometimes in just one single apartment, 
 /[(under|beneath)] the sink. I was /[(to cover the hole so as to force |to cover the hole so that I'd force)] the moth*********s through the cracks in the 
-/([hardwood floors | floorboard)] - which, apparently /[(|as a whole)] is known to be a much /[(greater|more effective)] rate limiting factor. I shuddered. Suddenly, the charm wore off. I began to smell the fish, and didn't like it. But still she tried to convince me, that this was a whole lot better than anywhere else.
+/([hardwood floors | floorboard)] - which, apparently /[(|as a whole)] is known to be a much /[(greater|more effective)] rate limiting factor. I shuddered. Suddenly,
+the charm wore off. I began to smell the fish, and didn't like it. But still she tried to convince me, that this was a whole lot better than anywhere else.
 <<What made this /[(dirty|decrepit)] little corner so much better than /[(the next | anywhere else)]?>>, I asked.
 This was the first time that I'd heard here it, that growl. It was to be my official welcome; she pointed to a spot out the window /[(with emphasis|dramitically)] /[(adding a| with a resounding)] 
-flurry of expletives I half understood. I traced an arrow from that bawny finger of hers over the padded cot, and past /[(the toilet of fully exposed plumbing | the toilet with 
-it's plumbing fully exposed)] out through a bright and magnificent 12th story window all the way to the peak of Ellis Island. One can/[(\'t help but| only)] dream-up images of a 
-people not unlike ourselves, in a time not unlike the present, without asking 'Where Had They Went?'. It was like they had all stood up for an instant and collapsed. /[(And the mudd rippled like water
- |Causing the mudd to ripple like water
- |Sending ripples of concetric circles through the mudd like a drop of rain in the water.)]
+flurry of expletives I half understood. I traced an arrow from that bawny finger of hers over the padded cot, and past /[(the toilet of fully exposed plumbing | the toilet with it's plumbing fully exposed)] 
+out through a bright and /[(brilliant | magnificent)] 12th story window all the way to the peak of Ellis Island. One can/[(\'t help but| only)] dream-up images of a 
+people not unlike ourselves, in a time not unlike the present, without asking 'Where Had They Went?'. It was like they had all stood up for an instant and collapsed.
+/[(And the mudd rippled like water. |Causing the mudd to ripple like water. |Sending ripples of concetric circles through the mudd like a drop of rain in the water.)]
 I thought perhaps /[(maybe|by chance)] we were built from the same stuff and it followed that we might carry their essence - along with their struggles, their debt, 
 their hopes and dreams, and those tiny fragments of ineffable joy /[(scattered|sprinkled)] inbetween the rocks and buoys. What brand of apathy would they smoke and teach their
 children, if any. Squarely in the midst of a vivid experience, I tried to find myself amoung the lines of the elderly, the graduates, the swindlers, the mothers tending to coughing 
 children and their fathers - but I was interrupted. Her pointed finger lowered to the exposed pipe /[(protruding|coming)] out from the floorboard /[(|,the one resembling the trunk
-of an old /[(oak|tree)] chopped waist high, and covered with moss)]. I'd be remiss to mention, the matching green tub right beside it. 
-<<Those 'ill do ya. Another glass and cover that with one as large a condom as possible>>, she said crudely.
-I had seen it before, no doubt. I wouldn't admit it to myself, or to anyone else /[(had they asked|for that matter)], that it was what had ultimately drew me to the place.
-The two objects stood out and belonged together, making this narrow corridor much more than an enclosed space clustered with a standing assortment of 'necessities'. And I'll admit to having 
-open-eye hallucinations of /[(a short round-bellied italian dressed in blue overalls and a red cap who|of a sort, featuring a brave and war-worn italian man with a red cap who)] would jump out from the pipe
-emphatically and shake himself dry. You couldn't help but like the guy, salt of the earth really. I felt inclined to help him.
-/[(I'd have a chat with him, overlooking much of Manhattan, counselling him through his grief, assuring him that he could do a hellofalot better - while pointing out some inconsistencies..
-  |Overlooking much of Manahttan, I would counsel him through this grief; assuring M that he could do a hellofalot better - while pointing out some inconsistencies.)]
+of an old /[(oak|tree)] chopped waist high, and covered with moss)]. I'd be remiss, also, not to mention the matching green tub /[(right beside it | to left of it | just to the right of it)]. 
+<<Those 'ill do ya. Another glass and cover that one with as large a condom as /[(possible|you can find)]>>, she said crudely.
+I had seen /[(it | the two | the pair | them)] before, no doubt. I wouldn't admit it to myself, or to anyone else /[(had they asked|for that matter)], that /[(it was|they were)] what had ultimately drawn me to the place /[(|to begin with|and convinced me to sign)].
+The two objects stood out and belonged together, making this narrow corridor much more than an enclosed space clustered with a standing assortment of 'necessities'. And I'll admit /[(to having|I had|I continue to have)] 
+open-eye hallucinations of /[(a short round-bellied italian dressed in blue overalls and a red cap who|of a sort, featuring a brave and war-worn italian man with a red cap who)] would jump out from /[(the|this)] pipe
+emphatically /[(and|then)] shake himself dry. You couldn't help but like the guy, salt of the earth really. I felt inclined to help him.
+/[(I'd have a chat with him, overlooking much of Manhattan, counselling him through his grief, assuring him that he could indeed do a hellofalot better - while pointing out some inconsistencies..|Overlooking much of Manahttan, I would counsel him through this grief; assuring M that he could do a hellofalot better - while pointing out some inconsistencies.)]
 I still don't know why I rented the place when I did, I didn't sleep - much less live - there for a good 3 months until I'd made certain that I was indeed the envy of all my 
 friends - who were living in the worst of conditions and for a price that would exhaust a shieks fortune (in little under a year). 
-Oh and I should tell you about the area I lived in!
+Oh and I should tell you about the area I live in!
 Georgious. Lenny from down the hall said a famous singer might live 3 floors up. I wouldn't doubt it.
 

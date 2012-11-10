@@ -18,23 +18,17 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-//In this file we assume that everything is in proper order (i.e. parsed) and go data through methodically
+#include "execution/grammaticalForm/GrammarKeywords.hpp"
 
-class GrammarBlockAggregate : virtual public IGrammarBlockAggregate
+#ifndef _IGRAMMAR_DATA_PROXY_
+#define _IGRAMMAR_DATA_PROXY_
+
+class IGrammarDataProxy
 {
 public:
-    GrammarBlockAggregate() {}
-    virtual ~GrammarBlockAggregate() {}
+    virtual ~IGrammarDataProxy() {};
 
-    //this should only be called once: in the 'analysis' context
-    virtual const void exportToVectorAsReadOnlyElements(std::vector<ReadOnlyElement*> readOnlyElements) const = 0;
+    virtual GrammarKeywords* getGrammarKeywords() const = 0;
 };
 
-class GrammarBlockAggregator
-{
-private:
-    GrammarBlockAggregate _aggregatedBlocks;
-public:
-    GrammarBlockAggregator() {}
-    ~GrammarBlockAggregator() {}
-};
+#endif

@@ -22,10 +22,10 @@
 
 #include "ReadOnlyElement.hpp"
 
-class IGrammerBlockAggregate
+class IGrammarBlockAggregate
 {
 public:
-    virtual ~IGrammerBlockAggregate() {};
+    virtual ~IGrammarBlockAggregate() {};
 
     //this should only be called once: in the 'analysis' context
     virtual const void exportToVectorAsReadOnlyElements(std::vector<ReadOnlyElement*> readOnlyElements) const = 0;

@@ -29,11 +29,9 @@
 #ifndef _LEX_MANAGER_
 #define _LEX_MANAGER_
 
-#define DEBUG
-//#undef DEBUG
+/*#undef*/#define DEBUG
 #ifdef DEBUG
     #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
-    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
 #else
     #define DeLOG(str)
     #define DLOG(str)
@@ -44,37 +42,46 @@
 
 #include "ILexerContext.hpp"
 
-//todo:will put context manager in here...
 class lexer_manager
 {
 private:
-        ILexerContext* _context;
-        const lexer_configuration* _config;
-        const LexerDataProxy* _lexerDataProxy;
-        void mergeDfas();
+    ILexerContext* _context;
+    const LexerDataProxy* _lexerDataProxy;
 public:
-        lexer_manager(ILexerContext* context, const lexer_configuration* config)
-        {
-            _context = context;
-            _config = config;
+    lexer_manager(ILexerContext* context, const lexer_configuration& config)
+    {
+        _context = context;
 
-            auto scanWordTransitionMap = config->getScanWordTransitionMap();
-            auto scanWords = config->getScanWords();
-            std::cout << "LexerManager:: First ScanWordNode (id: " << scanWords->getId() << ")" << std::endl;    
-            
-            auto dfaManager = config->getDfaManager();
+        auto scanWordTransitionMap = config.getScanWordTransitionMap();
+        auto scanWords = config.getScanWords();
+        auto dfaManager = config.getDfaManager();
 
-            _lexerDataProxy = new LexerDataProxy(dfaManager, scanWordTransitionMap, scanWords);
-            DLOG("Initializing lexer data proxy\n");
+        _lexerDataProxy = new LexerDataProxy(dfaManager, scanWordTransitionMap, scanWords);
+        context->initLexerDataProxy((const ILexerDataProxy*)_lexerDataProxy);
 
-            context->initLexerDataProxy((const ILexerDataProxy*)_lexerDataProxy);
-            DLOG("initialized lexer data proxy successfully\n");
+        DeLOG("Initialized Lexer Data Proxy Successfully.\nSuccessfully Intialized LexerManager\n");
+    }
 
-            DLOG(" finished intializing lexer_manager\n");
-	}
+    const LexerDataProxy* getLexerDataProxy()
+    {
+        return _lexerDataProxy;
+    }
 
-        ~lexer_manager() {}
+    ~lexer_manager()
+    {
+        delete _lexerDataProxy;
+    }    
 };
+
+/**
+ *    LexerManager: 
+ *        Main purpose of this class is to (1) initialize LexerDataProxy. This may or may not include grammar rules, to be passed on...
+ *
+ *        Also since it's the platform upon which we've created LexerDataProxy, it has the responsibility of destroying it.
+ *           Important note: This is NOT to destroy ptr's to instance data inside of LexerDataProxy.
+ *                            Reason being, we would like to leave the door open to being able to process a number of files
+ *                            at a time (and leave yet another door open to processing them each more than once).
+ */
 
 #undef DEBUG
 #undef DLOG

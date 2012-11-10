@@ -25,6 +25,14 @@
 #ifndef _CONTEXT_MANAGER_
 #define _CONTEXT_MANAGER_
 
+#define DEBUG
+//#undef DEBUG
+#ifdef DEBUG
+    #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
+#else
+    #define DeLOG(str)
+#endif
+
 #include "lexer/construction/ScanWordNode.hpp" 
 #include "lexer/ILexerContext.hpp"
 
@@ -33,21 +41,29 @@ class ContextType
 public:
     typedef enum
     {
-        NoType=1, Lexer, Parser
+        NoType=1, Lexer, Parser, Grammar, Analysis, Generation
     } AllowedTypes;
 };
+
+typedef ContextType::AllowedTypes _AllowedTypes_;
 
 class Context
 {
 private:
     //Lexer Specific
     ILexerDataProxy* _lexerDataProxy; //this is to access constant objects of dfaManager, scanWords, etc
-
     std::vector<std::string> _annotatedData;
-    std::vector<std::string> _parserAnnotatedData;
-    std::vector<std::string> _generatorAnnotatedData;
-
     ScanWords* _scanWords; //put this into LexerDataProxy
+
+    //Parser Specific
+    std::vector<std::string> _parserAnnotatedData;
+
+    //Grammar Specific
+
+    //Analysis Specific
+
+    //Generation Specific
+    std::vector<std::string> _generatorAnnotatedData;
 
 public:
     Context() : _lexerDataProxy(nullptr), _scanWords(nullptr) {}
@@ -74,32 +90,6 @@ public:
     const ILexerDataProxy* getLexerDataProxyImpl(ContextType::AllowedTypes) const
     {
         return _lexerDataProxy;
-    }
-
-    void initScanWordsImpl(ContextType::AllowedTypes contextTypeAsLexer, const ScanWords* const scanWords)
-    {
-        if (contextTypeAsLexer != ContextType::Lexer)
-        {
-            return;
-        }
-
-        if (_scanWords != nullptr)
-        {
-            std::cout << "Warning, trying to initialize context TWICE - this is NOT allowed" << std::endl;
-            return;
-        }
-
-        _scanWords = const_cast<ScanWords*>(scanWords);
-    }
-
-    const ScanWords* const getScanWordsImpl(ContextType::AllowedTypes contextTypeAsLexer) const
-    {
-        if (contextTypeAsLexer != ContextType::Lexer)
-        {
-            return nullptr;
-        }
-
-        return _scanWords;
     }
 
     void setAnnotatedDataImpl(ContextType::AllowedTypes contextTypeAsLexer,
@@ -134,6 +124,7 @@ public:
         std::cout << "Ooops. Way off - Context Not Being Retrieved Correctly." 
                   << std::endl; 
     }
+
     void doMe(ContextType::AllowedTypes something) {
         switch(something)
         {
@@ -163,6 +154,9 @@ public:
     }
     ~Context() {}
 };	
+
+typedef ContextType::AllowedTypes _AllowedTypes_;
+
 
 class ContextManager
 {
@@ -195,7 +189,7 @@ public:
 };
 
 template<>
-class ContextManager::TypedContext <ContextType::AllowedTypes, ContextType::Lexer>
+class ContextManager::TypedContext </*ContextType::*/_AllowedTypes_, ContextType::Lexer>
     : virtual public ILexerContext
 {
 private:
@@ -218,11 +212,6 @@ public:
         return _refContext->getLexerDataProxyImpl(ContextType::Lexer);
     }
 
-    virtual void initScanWords(const ScanWords* scanWords)
-    {
-        _refContext->initScanWordsImpl(ContextType::Lexer, scanWords);
-    }
-
     virtual void setAnnotatedData(const std::vector<std::string>& data)
     {
         std::cout << "CtxMan TypedContext <> setAnnotatedData" << std::endl;
@@ -233,12 +222,6 @@ public:
     {
         std::cout << "CtxMan TypedContext <> printAnnotatedData" << std::endl;
         _refContext->printAnnotatedDataImpl(ContextType::Lexer);
-    }
-
-    virtual const ScanWords* getScanWords() const
-    {
-        std::cout << "CtxMan TypedContext <> getScanWords" << std::endl;
-        return _refContext->getScanWordsImpl(ContextType::Lexer);
     }
 
     void doMe() { _refContext->doMe(ContextType::Lexer); }
@@ -255,9 +238,56 @@ public:
     void doMe() { _refContext->doMe(11); }
 };
 
-//todo:will make an 'Analysis' Context-Type {comprehension, conception, reorganization}
+template<>
+class ContextManager::TypedContext <_AllowedTypes_, ContextType::Grammar>
+{
+private:
+    Context* _refContext;
+public:
+    ContextManager::TypedContext() {}
+    explicit TypedContext(Context* ctx) : _refContext(ctx) {}
 
-//todo:will make a 'Generator' Context-Type {generation, [optional:feed_back]}
+    ~TypedContext()
+    {
+    }
+
+    void doMe() { _refContext->doMe(ContextType::Grammar); }
+};
+
+//'Analysis' Context-Type {comprehension, conception, reorganization}
+template<>
+class ContextManager::TypedContext <_AllowedTypes_, ContextType::Analysis> : public Context
+{
+private:
+    Context* _refContext;
+public:
+    TypedContext() {}
+    explicit TypedContext(Context* ctx) : _refContext(ctx) {}
+
+    ~TypedContext()
+    {
+    }
+
+    void doMe() { _refContext->doMe(ContextType::Analysis); }
+};
+
+//'Generator' Context-Type {generation, [optional:feed_back]}
+template<>
+class ContextManager::TypedContext <_AllowedTypes_, ContextType::Generation> : public Context
+{
+private:
+    Context* _refContext;
+public:
+    TypedContext() {}
+    explicit TypedContext(Context* ctx) : _refContext(ctx) {}
+
+    ~TypedContext()
+    {
+    }
+
+    void doMe() { _refContext->doMe(ContextType::Generation); }
+};
+
 
 template<>
 class ContextManager::TypedContext <ContextType::AllowedTypes, ContextType::NoType> : public Context
@@ -272,7 +302,7 @@ public:
     {
     }
 
-    void doMe() { Context::doMe(ContextType::NoType); }
+    void doMe() { _refContext->doMe(ContextType::NoType); }
 };
 
 int TestContextMan();

@@ -18,25 +18,38 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define DEBUG
+//#undef DEBUG
+#ifdef DEBUG
+    #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
+#else
+    #define DeLOG(str)
+#endif
+
 class PhasedExecution
 {
 private:
     lexer_configuration* _config;
 
     //lexing
-    void executePhase1()
-    {
+    void executePhase1(ILexerContext* lexerContext);
 
-    }
+    //parsing -- note: we're skipping this for now (hard n fast, throwing caution to the wind, etc.)
 
-    void executePhase2()
-    {
+    //grammar aggregation
+    void executePhase2(IGrammarContext* grammarContext);
 
-    }
+    //analysis & tree/level construction
+    void executePhase3();
+
+    //generation -- summary: keyword elimination
+    void executePhase3();
 public:
     PhasedExecution()
     {
-        std::cout << "PhasedExecution::PhasedExecution()" << std::endl;
+        DeLog("PhasedExecution::PhasedExecution()\n");
+
+        //...this entire function needs rework
 
         ContextManager contextManager;
         const lexer_configuration config;
@@ -44,7 +57,7 @@ public:
         auto lexerContext = contextManager.getContext<ContextType::AllowedTypes, ContextType::Lexer>();
         const lexer_manager lexMan(&lexerContext,&config);
 
-        DLOG("past lexer manager creation.\n");
+        DeLOG("past lexer manager creation.\n");
 
         if (argc < 4)
         {
@@ -61,3 +74,8 @@ public:
     }
     void execute();
 };
+
+#undef DEBUG
+#undef DeLOG
+
+#endif
