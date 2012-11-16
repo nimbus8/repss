@@ -23,6 +23,8 @@
 
 #include <iostream>
 
+#include "GrammarKeywordDefn.hpp"
+
 namespace std
 {
 
@@ -41,7 +43,7 @@ class GrammarKeywordIter
         return _pos != other._pos;
     }
  
-    int operator* () const;
+    GrammarKeywordDefn operator* () const;
  
     const GrammarKeywordIter& operator++ ()
     {
@@ -54,14 +56,16 @@ class GrammarKeywordIter
     const GrammarKeywords *_p_vec;
 };
 
+//maybe we should have this generated? and have the 'array' defined in place from some sort
+//of definition language?
 class GrammarKeywords
 {
 public:
-    GrammarKeywords()
+    GrammarKeywords() : _count(0)
     {
     }
  
-    int get (int col) const
+    const GrammarKeywordDefn get (int col) const
     {
         return _data[ col ];
     }
@@ -75,30 +79,37 @@ public:
     {
         return GrammarKeywordIter( this, 100 );
     }
+
+    void add(const GrammarKeywordDefn grammarKeywordDefn)
+    {
+        _data[_count] = grammarKeywordDefn;
+        _count++;
+    }
  
-    void set (int index, int val)
+    void set (int index, GrammarKeywordDefn&& val)
     {
         _data[ index ] = val;
     }
  
 private:
-    int _data[ 100 ];
+    GrammarKeywordDefn _data[ 100 ];
+    size_t _count;
 };
 
-int
-GrammarKeywordIter::operator* () const
+
+inline GrammarKeywordDefn GrammarKeywordIter::operator* () const
 {
      return _p_vec->get( _pos );
 }
 
-void testGrammarKeywords()
+inline void testGrammarKeywords()
 {
     GrammarKeywords v;
     for ( int i = 0; i < 100; i++ )
     {
-        v.set( i , i );
+        v.set( i , GrammarKeywordDefn{(i % 2 == 0? GrammarType_t::VARIABLE : GrammarType_t::TERMINAL)});
     }
-    for ( int i : v ) { cout << i << endl; }
+    for ( GrammarKeywordDefn i : v ) { cout << i << endl; }
 }
 
 }

@@ -29,13 +29,10 @@
 #include "ScanWordTransitionMap.hpp"
 
 #define DEBUG
-//#undef DEBUG
 #ifdef DEBUG
     #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
-    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
 #else
     #define DeLOG(str)
-    #define DLOG(str)
 #endif
 
 enum class ScanWordProperties_t : unsigned int
@@ -206,7 +203,6 @@ public:
 typedef ScanWordNode ScanWords;
 
 #undef DEBUG
-#undef DLOG
 #undef DeLOG
 
 #endif

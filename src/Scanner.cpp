@@ -26,8 +26,7 @@
 #include "deps/includes/lexer/construction/model_representation/dfa_manager.hpp"
 
 
-//#define DEBUG YES
-
+/*#define*/ #undef DEBUG
 #ifdef DEBUG
     #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
 #else
@@ -290,3 +289,5 @@ void Scanner::processFileTest(const std::string& filename, const std::string& pe
     printAnotatedData();
 }
 
+#undef DEBUG
+#undef DLOG

@@ -21,13 +21,10 @@
 #include "deps/includes/lexer/construction/ScanWordNode.hpp"
 
 #define DEBUG
-//#undef DEBUG
 #ifdef DEBUG
     #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
-    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
 #else
     #define DeLOG(str)
-    #define DLOG(str)
 #endif
 
 //Outside this class (lexer_word_constructor right now), we maintain a list of implicitly/explicitly created
@@ -196,7 +193,6 @@ void ScanWordNode::init(ScanWordTransitionMap* const transitionMap, const std::u
 }
 
 #undef DEBUG
-#undef DLOG
 #undef DeLOG
 
 //Footnotes: 
@@ -213,7 +209,7 @@ void ScanWordNode::init(ScanWordTransitionMap* const transitionMap, const std::u
 //                     As long as the two language constructs aren't entirely ambiguous this would work: just make sure
 //                     not go crazy and define like 10 lengthy strands all equal 'cept for the last couple inputs.
 //                     This has particular ramifications for 'alternation' and 'alternationAndJoin'.
-//                 (2) the other option would be to complete rework the tentative naming system. i.e. have it internally,
+//                 (2) the other option would be to completely rework the tentative naming system. i.e. have it internally,
 //                     represent branches, and let the actual name be runtime dependant. (the more I think about it,
 //                     the more I think that's what I was going for at the beginning...AND it MIGHT actually be
 //                     TRIVIAL to implement....almost trivial. Well the addition to language construction would be:

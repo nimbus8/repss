@@ -36,6 +36,8 @@ using namespace std;
 #include "deps/includes/lexer/lexer_manager.hpp"
 #include "deps/includes/lexer/Scanner.hpp"
 
+#include "deps/includes/execution_phase/grammaticalForm/GrammarKeywords.hpp"
+
 #define DEBUG
 //#undef DEBUG
 #ifdef DEBUG
@@ -225,6 +227,8 @@ int main(int argc, char* argv[])
                 Scanner *scanner = new Scanner(&lexerContext);
 
                 scanner->processFile(filename, permissions);
+
+                std::testGrammarKeywords();
 }
 	catch (std::exception& e) 
 	{ 
