@@ -39,7 +39,6 @@ using namespace std;
 #include "lib/includes/execution_phase/grammaticalForm/GrammarKeywords.hpp"
 
 #define DEBUG
-//#undef DEBUG
 #ifdef DEBUG
     #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
     #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)

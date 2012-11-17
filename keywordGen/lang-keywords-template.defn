@@ -1,0 +1,64 @@
+IKeywords:obj {
+@@ Done Already @@
+    +reps.named_iteration { VARIABLE, RepsNamedIteration }
+    +scope { VARIABLE, Scope }
+    +alternation { TERMINAL, Alternation  }
+    +evaluation { TERMINAL, Eval }
+    +general_end { TERMINAL, End }
+
+    +path { ../src/lib/includes/GeneratedIRecognizedKeywords.hpp }
+
+@@ To Do @@
+ @   +reps.unnamed_iteration { VARIABLE, RepsUnnamedIteration }
+ @   +scope._something_ { VARIABLE, Scope_And_Something_ }
+}
+
+excerpt of what I'm gunning for:
+
+../src/lib/includes/GeneratedIRecognizedKeywords.hpp:
+
+            #include <vector>
+            //...
+
+            class IKeywordDefn
+            {
+                //...
+            };
+
+            class AbstrKeywordDefn : public IKeywordDefn
+            {
+                //...
+            };
+
+            class AbstrKeywords
+            {
+            private:
+                virtual ~IKeywords() = 0;
+            protected:
+                class KeywordsData
+                {
+                private:
+                    const size_t _size = 12;
+                    const AbstrKeywordDefn keywords[_size] =
+                      {
+                        AbstrKeywordDefn{ "scope", GrammarType_t::VARIABLE },
+                                                . .
+                                                . .
+                                                . .
+                        AbstrKeywordDefn{ "general_end", GrammartType_t::TERMINAL }
+                      };
+                public:
+                    KeywordsData() {}
+
+                    size_t getSize() { return _size; }
+                    AbstrKeywordDefn getAt(size_t index)
+                    {
+                        //...
+                    }
+                };
+
+                const KeywordsData _data;
+            public:
+                template<T>
+                virtual const std::vector<T> getKeywords() = 0;
+            };

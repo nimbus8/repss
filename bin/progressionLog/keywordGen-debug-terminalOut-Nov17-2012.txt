@@ -1,0 +1,55 @@
+./keywordGen lang.txt
+keywordGen.cpp 387:  About to read file
+
+keywordGen.cpp 223:  Splittng string 'IKeywords:obj {' into tokens.
+keywordGen.cpp 234:  Identifier string: 'IKeywords' into tokens.
+keywordGen.cpp 247:  Object-type string: 'obj'
+
+keywordGen.cpp 287:  case: looking for object details
+keywordGen.cpp 309:  Splittng string '@@ Done Already @@' into tokens.
+
+keywordGen.cpp 287:  case: looking for object details
+keywordGen.cpp 309:  Splittng string '    +reps.named_iteration { VARIABLE }' into tokens.
+keywordGen.cpp 327:  KeywordName string: 'reps.named_iteration '.
+keywordGen.cpp 338:  KeywordGrammarType string: 'VARIABLE'.
+
+keywordGen.cpp 287:  case: looking for object details
+keywordGen.cpp 309:  Splittng string '    +scope { VARIABLE }' into tokens.
+keywordGen.cpp 327:  KeywordName string: 'scope '.
+keywordGen.cpp 338:  KeywordGrammarType string: 'VARIABLE'.
+
+keywordGen.cpp 287:  case: looking for object details
+keywordGen.cpp 309:  Splittng string '    +alternation { TERMINAL }' into tokens.
+keywordGen.cpp 327:  KeywordName string: 'alternation '.
+keywordGen.cpp 338:  KeywordGrammarType string: 'TERMINAL'.
+
+keywordGen.cpp 287:  case: looking for object details
+keywordGen.cpp 309:  Splittng string '    +evaluation { TERMINAL }' into tokens.
+keywordGen.cpp 327:  KeywordName string: 'evaluation '.
+keywordGen.cpp 338:  KeywordGrammarType string: 'TERMINAL'.
+
+keywordGen.cpp 287:  case: looking for object details
+keywordGen.cpp 309:  Splittng string '    +general_end { TERMINAL }' into tokens.
+keywordGen.cpp 327:  KeywordName string: 'general_end '.
+keywordGen.cpp 338:  KeywordGrammarType string: 'TERMINAL'.
+
+keywordGen.cpp 287:  case: looking for object details
+keywordGen.cpp 309:  Splittng string '' into tokens.
+
+keywordGen.cpp 287:  case: looking for object details
+keywordGen.cpp 309:  Splittng string '    +path { ../src/lib/includes/Genrtd_IKeywords.hpp }' into tokens.
+keywordGen.cpp 327:  KeywordName string: 'path '.
+keywordGen.cpp 338:  KeywordGrammarType string: '../src/lib/includes/Genrtd_IKeywords.hpp'.
+
+keywordGen.cpp 287:  case: looking for object details
+keywordGen.cpp 287:  case: looking for object details
+keywordGen.cpp 309:  Splittng string '' into tokens.
+
+keywordGen.cpp 354:  Obj-Id:	IKeywords
+keywordGen.cpp 355:  Obj-Type:	obj
+keywordGen.cpp 360:    Obj-Detail:  reps.named_iteration =VARIABLE
+keywordGen.cpp 360:    Obj-Detail:  scope =VARIABLE
+keywordGen.cpp 360:    Obj-Detail:  alternation =TERMINAL
+keywordGen.cpp 360:    Obj-Detail:  evaluation =TERMINAL
+keywordGen.cpp 360:    Obj-Detail:  general_end =TERMINAL
+keywordGen.cpp 360:    Obj-Detail:  path =../src/lib/includes/Genrtd_IKeywords.hpp
