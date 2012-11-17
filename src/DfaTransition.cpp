@@ -18,7 +18,7 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "deps/includes/lexer/construction/model_representation/finite_autonoma/DfaTransition.hpp"
+#include "lib/includes/lexer/construction/model_representation/finite_autonoma/DfaTransition.hpp"
 
 DfaTransition* CreateDfaTransition(const StateAndInput<int,char>* stateAndInput, const lexer_dfa* dfa_ptr)
 {

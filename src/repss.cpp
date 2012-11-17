@@ -28,15 +28,15 @@
 using namespace std;
 #include <stdio.h>
 
-#include "deps/includes/repss.hpp"
+#include "lib/includes/repss.hpp"
 #include "tests/test_repss_string.cpp"
 
-#include "deps/includes/ContextManager.hpp"
-#include "deps/includes/lexer/lexer_configuration.hpp"
-#include "deps/includes/lexer/lexer_manager.hpp"
-#include "deps/includes/lexer/Scanner.hpp"
+#include "lib/includes/ContextManager.hpp"
+#include "lib/includes/lexer/lexer_configuration.hpp"
+#include "lib/includes/lexer/lexer_manager.hpp"
+#include "lib/includes/lexer/Scanner.hpp"
 
-#include "deps/includes/execution_phase/grammaticalForm/GrammarKeywords.hpp"
+#include "lib/includes/execution_phase/grammaticalForm/GrammarKeywords.hpp"
 
 #define DEBUG
 //#undef DEBUG

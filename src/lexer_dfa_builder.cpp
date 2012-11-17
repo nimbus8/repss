@@ -18,8 +18,8 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "deps/includes/lexer/construction/lexer_dfa_builder.hpp"
-#include "deps/includes/lexer/construction/model_representation/finite_autonoma/LexerStateAndInput.hpp"
+#include "lib/includes/lexer/construction/lexer_dfa_builder.hpp"
+#include "lib/includes/lexer/construction/model_representation/finite_autonoma/LexerStateAndInput.hpp"
 
 #include <vector>
 #include <iostream>

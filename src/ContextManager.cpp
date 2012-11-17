@@ -21,7 +21,7 @@
 #include <iostream>
 #include <string>
 
-#include "deps/includes/ContextManager.hpp"
+#include "lib/includes/ContextManager.hpp"
 
 int TestContextMan()
 {

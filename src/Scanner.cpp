@@ -21,9 +21,9 @@
 #include <iostream>
 #include <stdio.h>
 
-#include "deps/includes/lexer/Scanner.hpp"
-#include "deps/includes/utils/Stopwatch.hpp"
-#include "deps/includes/lexer/construction/model_representation/dfa_manager.hpp"
+#include "lib/includes/lexer/Scanner.hpp"
+#include "lib/includes/utils/Stopwatch.hpp"
+#include "lib/includes/lexer/construction/model_representation/dfa_manager.hpp"
 
 
 /*#define*/ #undef DEBUG

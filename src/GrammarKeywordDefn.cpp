@@ -20,7 +20,7 @@
 
 #include <iostream>
 
-#include "deps/includes/execution_phase/grammaticalForm/GrammarKeywordDefn.hpp"
+#include "lib/includes/execution_phase/grammaticalForm/GrammarKeywordDefn.hpp"
 
 #define DEBUG
 #ifdef DEBUG

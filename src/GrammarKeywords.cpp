@@ -18,5 +18,5 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "deps/includes/execution_phase/grammaticalForm/GrammarKeywords.hpp"
+#include "lib/includes/execution_phase/grammaticalForm/GrammarKeywords.hpp"
 

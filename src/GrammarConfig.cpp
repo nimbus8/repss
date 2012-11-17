@@ -18,10 +18,10 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "deps/includes/execution_phase/grammaticalForm/GrammarConfig.hpp"
-#include "deps/includes/execution_phase/grammaticalForm/GrammarKeywordDefn.hpp"
+#include "lib/includes/execution_phase/grammaticalForm/GrammarConfig.hpp"
+#include "lib/includes/execution_phase/grammaticalForm/GrammarKeywordDefn.hpp"
 
-/*#undef*/ #define DEBUG
+#define DEBUG
 #ifdef DEBUG
     #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
 #else
