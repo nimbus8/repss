@@ -400,22 +400,22 @@ int main(int argc, char *argv[])
  + Footnote:
 
      + [1] : Exclusive Hexadecimal Counting
-              - made up phrasing, intended to mean the
-                way to count in hexadecimal so that,
+              - made up phrasing, meaning the
+                way we count in hexadecimal so that,
                 by assigning each number to a enumeration value,
-                we can use simple addition in combination with the
-                Exclusive OR operation (XOR, '^' in c) to allow one
-                variable to represent a single or a combination of
-                states within the system.
+                we can use simple the logical AND ('&') in combination 
+                with the Exclusive OR operation (XOR, '^' in c) to let one
+                variable represent a great number of combinations of options
+                and states represented by enumerations.
 
                    eg:
                        Thursday=0x0, Friday=0x2, Saturday=0x4, RecognizedNonPartyDay=0x8
                        Partying=0x20, Studying=0x40, DrunkAt2am=0x80
 
                        This is a particularly terrible example, because, for example we're
-                       insuating that it can be Thursday, Friday, and Saturday all at the same
+                       insuating that it can be Thursday, Friday, AND Saturday all at the same
                        time. Also, Friday may be one of those 'Recognized Non Party Days',
-                       which is of course false. And I've personally never partied and
+                       which is of course a false reaility. And I've personally never partied and
                        studyed in the same day (we all know that ONE guy, but of course he
                        lies). College students in particular are exempt from the whole
                        RecognizedNonPartyDay concept, alot of people don't like that -
@@ -424,16 +424,16 @@ int main(int argc, char *argv[])
                        In all seriousnesss,
                        here, correctness isn't as important as is the representation. Ensuring
                        all interesting possibilies are defined and properly enumerated.
-                       Maybe we SHOULD enforce correctness here. My only oppsition to that
-                       is that it would require more thought and definately a bit more
-                       work. There's no reason that the rules to restrict this 'system'
+                       Maybe we SHOULD enforce correctness here. But my only oppsition to that
+                       is that it would require much more thought and definately a bit more
+                       work. Furthermore, there's no reason that the rules to restrict this 'system'
                        could not be done at a higher level, where these representations are
                        a given and from that hugher level are unchangeable.
 
-                           Whats good about this, is that we can accurately described a great
-                           deal about my life. It let's me state, correctly, that it's
+                           Whats particularly good about this, is that we can accurately describe
+                           my current situation. It let's me state, correctly, that it's
                            Friday=0x2, I'm Studying=0x40 and I'm NOT partying (which lucky
-                           for us, goes without saying).
+                           for us, just kindof goes without saying).
                                 To represent this as a number stored in 
                                 hexadecimal (re:computers) format:
 
@@ -451,7 +451,7 @@ int main(int argc, char *argv[])
                            ...
                            It's  a bit too early (1:00am) to say whether I'll be
                            drunk at 2:00am. But say I am, such a state can be represented
-                           by: Friday=0x2, Studying=0x40, DrunkAt2a=0x80
+                           by: Friday=0x2, Studying=0x40, DrunkAt2am=0x80
                                To represent this as a number stored in hexadecimal:
 
                                     Friday        0x02
@@ -461,15 +461,17 @@ int main(int argc, char *argv[])
                                     Less Lame     0xc2
 
                                This may look foreign, but it's no coincidence the 2 at the end
-                               is present both here and our previous example. It's because
+                               is present both here and in our previous example. It's because
                                each digit in a hexadecimal number is like a column, and
-                               additions take place inside the columns. This of course isn't
-                               new, it's the same is normal decimal represention. But here,
-                               (1) instead of 10 being the limit that can never be reached 
-                               it's 16. Oh and (2) because we counted so nicely and don't 
-                               permit multiple additions of the same number(name) we needn't 
-                               worry about overflow. So technically we can add the contents
-                               of each column in any order we please and the end result we be
+                               additions take place inside the columns of those stacked
+                               hexadecimal numbers. Your likely familiar with ths. It's not
+                               new, it's the same as with the more common decimal represention. 
+                               But here, (1) instead of 10 being the limit that can never be 
+                               reached it's 16. Oh and (2)because we counted so nicely and don't 
+                               permit multiple additions of the same number(name), we needn't 
+                               worry about overflow. So technically we can add multiple
+                               add hexadecimal numbers, specifically  the contents
+                               of each column in any order we please and the end result will be
                                the same. And so here in this example:
                                   4 + 8 = 12 => c          | a=10, b=11, c=12, ..., f=15.  
                                And so well, what if we were Partying=0x20, Studying=0x40, 
@@ -478,8 +480,8 @@ int main(int argc, char *argv[])
                                have:
                                    2 + 4 + 8 = 14 => e
                                Which given our scheme, is just about the only way 14(e) will
-                               show up. To recap we have a set of options that can be combined 
+                               show up. To recap, we have a set of options that can be combined 
                                into a single number, then later picked apart knowing only the 
-                               domain of possible options and representations - this schema 
+                               domain of possible options available - this schema works, and it
                                isn't terrible.
 */
