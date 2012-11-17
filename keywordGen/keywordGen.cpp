@@ -403,10 +403,10 @@ int main(int argc, char *argv[])
               - made up phrasing, meaning the
                 way we count in hexadecimal so that,
                 by assigning each number to a enumeration value,
-                we can use simple the logical AND ('&') in combination 
+                we can use the logical AND ('&') in combination 
                 with the Exclusive OR operation (XOR, '^' in c) to let one
                 variable represent a great number of combinations of options
-                and states represented by enumerations.
+                and states defined in a given enumeration.
 
                    eg:
                        Thursday=0x0, Friday=0x2, Saturday=0x4, RecognizedNonPartyDay=0x8
