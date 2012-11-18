@@ -93,10 +93,18 @@
             };
 */
 
+
+#include <sys/stat.h>
+#include <sys/types.h>
+
 #include <stdio.h>
 #include <string.h>
+#include <sstream>
 #include <iostream>
 #include <vector>
+
+#include "templates.hpp"
+
 #define DEBUG
 #ifdef DEBUG
     #define DeLOG(str) printf("%s %d:  %s\n", __FILE__, __LINE__, str);
@@ -109,7 +117,7 @@
 enum class ModeInfo_t : unsigned int
 {
     EMPTY                         = 0x000,
-    ERROR                         = 0xfff,
+    ERROR                         = 0x000,
 
     READ_DONE                     = 0x002,
     WRITE_DONE                    = 0x004,
@@ -171,16 +179,48 @@ bool confirmFirstNonWhiteSpaceInBuffer(char *buffer, size_t len, char character)
     return false;
 }
 
+enum class FilterType_t { MATCH, ANYTHING_BUT };
+
+//note to self, maybe templatize tis stuff. Seems useful, maybe there std functions for it?
+//def typedef some of this
+
+std::vector<std::pair<std::string, std::string>> filterPairs(std::vector<std::pair<std::string, std::string>> pairs, FilterType_t filterType, std::string key)
+{
+    std::vector<std::pair<std::string, std::string>> retPairs;
+
+    for (auto aPair : pairs)
+    {
+        if (filterType == FilterType_t::MATCH)
+        {
+            if (aPair.first.compare(key) == 0)
+            {
+                retPairs.push_back(aPair);
+            }
+        }
+        else if (filterType == FilterType_t::ANYTHING_BUT)
+        {
+            if (aPair.first.compare(key) != 0)
+            {
+                retPairs.push_back(aPair);
+            }
+        }
+    }
+
+    return retPairs;
+}
+
 void clearArray(char *buffer, size_t size)
 {
     memset(buffer, 0, size);
 }
 
 
-typedef std::vector<std::tuple<std::string,std::string,std::pair<std::string,std::string>>> ObjectDataVector_t;
+typedef std::vector<std::tuple<std::string,std::string,std::vector<std::pair<std::string,std::string>>>> ObjectDataVector_t;
+const size_t ID_INDEX_IN_OBJ_TUPLE = 0;
+const size_t TYPE_INDEX_IN_OBJ_TUPLE = 1;
+const size_t DETAILS_INDEX_IN_OBJ_TUPLE = 2;
 
-Status
-readInformation(ObjectDataVector_t& objects, FILE* const file)
+Status readInformation(ObjectDataVector_t& objects, FILE* const file)
 {
     const size_t MAX_LINE_LENGTH = 1028;
 
@@ -321,6 +361,13 @@ readInformation(ObjectDataVector_t& objects, FILE* const file)
                         break;
                     }
                     std::string keywordName(token);
+
+                    //here we trim the string (we know that there may be a space at end)
+                    std::stringstream trimmer;
+                    trimmer << keywordName;
+                    keywordName.clear();
+                    trimmer >> keywordName;
+
                     DeLOG(
                         std::string{"KeywordName string: '"}.append(keywordName).append("'.").c_str()
                     );
@@ -355,31 +402,80 @@ readInformation(ObjectDataVector_t& objects, FILE* const file)
         for (auto details : objDetails)
         {
             DeLOG(
-                std::string("  Obj-Detail:  ").append(details.first).append("=").append(details.second).c_str()
+                std::string("  Obj-Detail:  ").append(details.first).append(" =").append(details.second).c_str()
             );
         }
+
+        std::tuple<std::string,std::string,std::vector<std::pair<std::string,std::string>>> createdObj{};
+        std::get<ID_INDEX_IN_OBJ_TUPLE>(createdObj) = objId;
+        std::get<TYPE_INDEX_IN_OBJ_TUPLE>(createdObj) = objType;
+        std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(createdObj) = objDetails;
+
+        objects.push_back(createdObj);
     }
     else
     {
         perror ("Error opening file");
+        
+        return Status{ ModeInfo_t::ERROR };
     }
+
     return Status{ ModeInfo_t::READ_DONE };
 }
 
-Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& prevStatus)
+Status writeGeneratedContent(const ObjectDataVector_t& objects, const std::string& outputFilename, const Status& prevStatus)
 {
+    if (prevStatus.isError())
+    {
+        perror("Cannot write generated content to file, error occured earlier.");
+
+        return prevStatus;
+    } 
+
     Status currentStatus{prevStatus};
+
+    //if file already exists [readonly], this allows us to overwrite it. 
+    chmod(outputFilename.c_str(), S_IRUSR | S_IWUSR);
+    FILE* outputFile = fopen(outputFilename.c_str(), "wt");
+
+    for (auto obj : objects)
+    {
+        DeLOG("iteration over object\n");
+        auto objName = std::get<ID_INDEX_IN_OBJ_TUPLE>(obj);
+        if (objName.compare("IKeywords") == 0)
+        {
+            KeywordsTemplate keywordTemplate;
+
+            auto signatureAndClose = keywordTemplate.generateClass(objName);
+
+            auto objDetailPairs = std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(obj);
+
+            std::vector<std::pair<std::string, std::string>> keywordDefns 
+                = filterPairs(objDetailPairs, FilterType_t::ANYTHING_BUT, "path"); //todo: strip trailing space
+
+            auto keywordsData = keywordTemplate.generateKeywordsData(keywordDefns);
+
+            fputs(signatureAndClose.first.c_str(), outputFile); 
+            fputs(keywordsData.c_str(), outputFile);           
+            fputs(signatureAndClose.second.c_str(), outputFile);
+        }
+    }
+   
+    //Making file 'readonly'. This is not even a real measure. Just another hoop, to remind us NOT to
+    //change files that've been generated.
+    chmod(outputFilename.c_str(), S_IRUSR);
 
     return currentStatus;   
 }
 
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
+    if (argc != 3)
     {
         DeLOG("Usage: ./keywordGen [input-filename.ext] [output-filename.ext]"); 
     }
 
+    std::string outputFilename(argv[2]);
     ObjectDataVector_t objects;
     FILE* defnFile = fopen(argv[1], "rt");
 
@@ -388,7 +484,7 @@ int main(int argc, char *argv[])
 
     fclose(defnFile);
 
-    const Status writeStatus = writeGeneratedContent(objects, readStatus);
+    const Status writeStatus = writeGeneratedContent(objects, outputFilename, readStatus);
 
     return 0;
 }
@@ -470,11 +566,11 @@ int main(int argc, char *argv[])
                                reached it's 16. Oh and (2)because we counted so nicely and don't 
                                permit multiple additions of the same number(name), we needn't 
                                worry about overflow. So technically we can add multiple
-                               add hexadecimal numbers, specifically  the contents
-                               of each column in any order we please and the end result will be
+                               hexadecimal numbers, specifically  the contents of each column,
+                               together in any order we please and the end result will be
                                the same. And so here in this example:
                                   4 + 8 = 12 => c          | a=10, b=11, c=12, ..., f=15.  
-                               And so well, what if we were Partying=0x20, Studying=0x40, 
+                               You may ask, well, what if we were Partying=0x20, Studying=0x40, 
                                and DrunkAt2am=0x80? (The infamous Trifecta) Partying btw 
                                involving at least 3 other people than yourself. Well then we'd 
                                have:

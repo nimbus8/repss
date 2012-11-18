@@ -18,10 +18,7 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _GRAMMAR_KEYWORD_DEFN_
-#define _GRAMMAR_KEYWORD_DEFN_
-
-#include <iostream>
+//Should you modify this file? NO
 
 enum class GrammarType_t : char
 {
@@ -30,18 +27,21 @@ enum class GrammarType_t : char
     VARIABLE   = 'V'
 };
 
-class GrammarKeywordDefn
+class AbstrKeywords
 {
 private:
-    GrammarType_t _grammarType;
-public:
-    GrammarKeywordDefn() : _grammarType(GrammarType_t::UNDEFINED) {}
-    explicit GrammarKeywordDefn(GrammarType_t grammarType) : _grammarType(grammarType) {}
-    ~GrammarKeywordDefn() {}
-
-    GrammarType_t getGrammarType() const { return _grammarType; }
-
-    friend std::ostream &operator<<( std::ostream &out, const GrammarKeywordDefn &GKD );
+    virtual IKeywords() = 0;
+protected:
+    class KeywordsData
+    {
+    private:
+        const AbstrKeywordDefn keywords[5] =
+          {
+            AbstractKeywordDefn{ "reps.named_iteration", GrammarType_t::VARIABLE },
+            AbstractKeywordDefn{ "scope", GrammarType_t::VARIABLE },
+            AbstractKeywordDefn{ "alternation", GrammarType_t::TERMINAL },
+            AbstractKeywordDefn{ "evaluation", GrammarType_t::TERMINAL },
+            AbstractKeywordDefn{ "general_end", GrammarType_t::TERMINAL }
+          };
+    };
 };
-
-#endif

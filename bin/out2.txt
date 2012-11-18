@@ -1,0 +1,7 @@
+//Can you delete this file? NO
+
+class AbstrKeywords
+{
+private:
+    virtual IKeywords() = 0;
+};
