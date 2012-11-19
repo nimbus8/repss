@@ -21,12 +21,13 @@
 Keywords:obj-collection {
     +elementName { Keyword }
 
-@@ Done Already @@
+    @@ Done Already @@
     +reps.named_iteration { VARIABLE }
     +scope { VARIABLE }
     +alternation { TERMINAL }
     +evaluation { TERMINAL }
     +general_end { TERMINAL }
 
-    +path { ../src/lib/includes/Genrtd_IKeywords.hpp }
-}  
+    +path { src/lib/includes/Genrtd_Keywords.hpp }
+}
+

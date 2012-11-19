@@ -116,13 +116,13 @@
 
 enum class ModeInfo_t : unsigned int
 {
-    EMPTY                         = 0x000,
-    ERROR                         = 0x000,
+    EMPTY                         = 0x002,
+    ERROR                         = 0x004,
 
-    READ_DONE                     = 0x002,
-    WRITE_DONE                    = 0x004,
+    READ_DONE                     = 0x008,
+    WRITE_DONE                    = 0x020,
 
-    SAVED_READ_DATA_TO_TEMP_FILE  = 0x008
+    SAVED_READ_DATA_TO_TEMP_FILE  = 0x040
 
     // exlusive hexadecimal counting: 0x0008, 0x0020, 0x0040, 0x0080, 0x0200, etc [1]
 };
@@ -362,7 +362,29 @@ Status readInformation(ObjectDataVector_t& objects, FILE* const file)
                         //then cleanup recorded temporary objects
                         //...
 
-                        currentAttentionState = LOOKING_FOR_OBJECT_DETAILS;
+                        DeLOG("Found right curly brace!\n");
+
+        DeLOG(std::string("Obj-Id:\t").append(objId).c_str());
+        DeLOG(std::string("Obj-Type:\t").append(objType).c_str());
+        for (auto details : objDetails)
+        {
+            DeLOG(
+                std::string("  Obj-Detail:  ").append(details.first).append(" =").append(details.second).c_str()
+            );
+        }
+
+        std::tuple<std::string,std::string,std::vector<std::pair<std::string,std::string>>> createdObj{};
+        std::get<ID_INDEX_IN_OBJ_TUPLE>(createdObj) = objId;
+        std::get<TYPE_INDEX_IN_OBJ_TUPLE>(createdObj) = objType;
+        std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(createdObj) = objDetails;
+
+        objects.push_back(createdObj);
+
+        objDetails.clear();
+        objId.clear();
+        objType.clear();
+
+                        currentAttentionState = LOOKING_FOR_OBJECT;
                         break;
                     }
 
@@ -421,7 +443,7 @@ Status readInformation(ObjectDataVector_t& objects, FILE* const file)
 
             clearArray(buffer, MAX_LINE_LENGTH);
         }
-
+/*
         DeLOG(std::string("Obj-Id:\t").append(objId).c_str());
         DeLOG(std::string("Obj-Type:\t").append(objType).c_str());
         for (auto details : objDetails)
@@ -437,6 +459,7 @@ Status readInformation(ObjectDataVector_t& objects, FILE* const file)
         std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(createdObj) = objDetails;
 
         objects.push_back(createdObj);
+*/
     }
     else
     {
@@ -459,10 +482,6 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const std::strin
 
     Status currentStatus{prevStatus};
 
-    //if file already exists [readonly], this allows us to overwrite it. 
-    chmod(outputFilename.c_str(), S_IRUSR | S_IWUSR);
-    FILE* outputFile = fopen(outputFilename.c_str(), "wt");
-
     for (auto obj : objects)
     {
         DeLOG("iteration over object\n");
@@ -475,40 +494,78 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const std::strin
 
             const auto objDetailPairs = std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(obj);
 
-            std::string elementObjName;
+            const std::vector<std::pair<std::string,std::string>> matchesForPath =
+                    filterPairs(objDetailPairs, FilterType_t::MATCH, "path");
 
-            if (objType.compare("obj-collection") == 0)
+            if (matchesForPath.size() == 0)
             {
-                const std::vector<std::pair<std::string,std::string>> matchesForElementName =
-                    filterPairs(objDetailPairs, FilterType_t::MATCH, "elementName");
+                perror(std::string{"Error: A path is REQUIRED for an object defintion. Skipping :"}.append(objName).append(" definition.\n").c_str());
 
-                elementObjName = (matchesForElementName.size() > 0? matchesForElementName[0].second : objName);
+                currentStatus.addModeInfo(ModeInfo_t::ERROR);
             }
             else
             {
-                //note: INSIDE template objName is prepended with 'I' or 'Abstr' to make
-                // two seperate classes, so there is no conflict with 'objName' class.
-                elementObjName = objName;
+                std::string outputFilename = matchesForPath[0].second; 
+
+                //if file already exists [readonly], this allows us to overwrite it.
+                chmod(outputFilename.c_str(), S_IRUSR | S_IWUSR);
+                FILE* outputFile = fopen(outputFilename.c_str(), "wt");
+
+                if (outputFile == NULL)
+                {
+                    perror(std::string{"Error: Could not open output file:"}.append(outputFilename).append(". Skipping :").append(objName).append(" definition\n").c_str());
+
+                    currentStatus.addModeInfo(ModeInfo_t::ERROR);
+                }
+                else
+                {
+                    std::string elementObjName;
+
+                    if (objType.compare("obj-collection") == 0)
+                    {
+                        const std::vector<std::pair<std::string,std::string>> matchesForElementName =
+                        filterPairs(objDetailPairs, FilterType_t::MATCH, "elementName");
+
+                        elementObjName = (matchesForElementName.size() > 0? matchesForElementName[0].second : objName);
+                    }
+                    else
+                    {
+                        //note: INSIDE template objName is prepended with 'I' or 'Abstr' to make
+                        // two seperate classes, so there is no conflict with 'objName' class.
+                        elementObjName = objName;
+                    }
+
+                    auto signatureAndClose = keywordTemplate.generateClass(objName, elementObjName);
+
+                    std::vector<std::string> ignoreStrings = { "path", "elementName" };
+
+                    std::vector<std::pair<std::string, std::string>> keywordDefns 
+                        = filterPairs(objDetailPairs, FilterType_t::ANYTHING_BUT, ignoreStrings);
+
+                    auto keywordsData = keywordTemplate.generateKeywordsData(keywordDefns, elementObjName);
+
+                    fputs(signatureAndClose.first.c_str(), outputFile); 
+                    fputs(keywordsData.c_str(), outputFile);           
+                    fputs(signatureAndClose.second.c_str(), outputFile);
+
+                    fclose(outputFile);
+
+                    //Making file 'readonly'. This is not even a real measure. Just another hoop, to remind us NOT to
+                    //change files that've been generated.
+                    chmod(outputFilename.c_str(), S_IRUSR);
+                }
             }
-
-            auto signatureAndClose = keywordTemplate.generateClass(objName, elementObjName);
-
-            std::vector<std::string> ignoreStrings = { "path", "elementName" };
-
-            std::vector<std::pair<std::string, std::string>> keywordDefns 
-                = filterPairs(objDetailPairs, FilterType_t::ANYTHING_BUT, ignoreStrings);
-
-            auto keywordsData = keywordTemplate.generateKeywordsData(keywordDefns, elementObjName);
-
-            fputs(signatureAndClose.first.c_str(), outputFile); 
-            fputs(keywordsData.c_str(), outputFile);           
-            fputs(signatureAndClose.second.c_str(), outputFile);
         }
     }
-   
-    //Making file 'readonly'. This is not even a real measure. Just another hoop, to remind us NOT to
-    //change files that've been generated.
-    chmod(outputFilename.c_str(), S_IRUSR);
+
+    if (currentStatus.isError())
+    {
+        DeLOG("Generation finished with some errors. Generation skips what it can, but it's best to investigate the cause(s)\n");
+    }
+    else
+    {
+        DeLOG("Generation finished SUCESSFULLY.");
+    }
 
     return currentStatus;   
 }
