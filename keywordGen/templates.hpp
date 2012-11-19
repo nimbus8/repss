@@ -57,10 +57,12 @@ public:
     KeywordsTemplate() {}
     ~KeywordsTemplate() {}
 
-    std::pair<std::string, std::string> generateClass(std::string& className)
+    std::pair<std::string, std::string> generateClass(const std::string& collectionClassName, std::string& singularClassName)
     {
         auto toWriteStart = createCopyright();
         toWriteStart.append("\n//Should you modify this file? NO\n");
+
+        toWriteStart.append("\n#include <string>\n");
 
         toWriteStart.append("\nenum class GrammarType_t : char\n");
         toWriteStart.append("{\n");
@@ -69,28 +71,61 @@ public:
         toWriteStart.append("    VARIABLE   = 'V'\n");
         toWriteStart.append("};\n");
 
-        toWriteStart.append("\nclass AbstrKeywords\n{\nprivate:\n    virtual ");
-        toWriteStart.append(className);
+        toWriteStart.append("\nclass I");
+        toWriteStart.append(singularClassName);
+        toWriteStart.append("\n{\n");
+        toWriteStart.append("    virtual std::string getName() const = 0;\n");
+        toWriteStart.append("};\n");
+
+        toWriteStart.append("\nclass Abstr");
+        toWriteStart.append(singularClassName);
+        //--//
+        toWriteStart.append(" : public I");
+        toWriteStart.append(singularClassName);
+        toWriteStart.append("\n{\n");
+        //--
+        toWriteStart.append("private:\n");
+        toWriteStart.append("    const std::string	_name;\n");
+        toWriteStart.append("    const GrammarType_t	_grammarType;\n");
+        toWriteStart.append("public:\n");
+        toWriteStart.append("    Abstr");
+        toWriteStart.append(singularClassName);
+        toWriteStart.append("(const std::string& name, const GrammarType_t grammarType)\n");
+        toWriteStart.append("        : _name(name), _grammarType(grammarType) {}\n");
+        toWriteStart.append("\n    virtual std::string getName() const { return _name; }\n");
+        toWriteStart.append("    GrammarType_t getGrammarType() const { return _grammarType; }\n");
+        toWriteStart.append("};\n");
+
+        toWriteStart.append("\nclass ");
+        toWriteStart.append(collectionClassName);
+        toWriteStart.append("\n{\nprivate:\n    virtual ~");
+        toWriteStart.append(collectionClassName);
         toWriteStart.append("() = 0;");
 
-        std::string toWriteEnd("\n};");
+        std::string toWriteEnd("\n};\n");
 
         return std::pair<std::string,std::string>(toWriteStart, toWriteEnd);
     }
 
     //one
-    std::string generateKeywordsData(std::vector<std::pair<std::string, std::string>> keywordDetails)
+    std::string generateKeywordsData(const std::vector<std::pair<std::string, std::string>>& keywordDetails, std::string& singularName)
     {
         auto numberOfKeywords = keywordDetails.size();
-        std::string output("\nprotected:\n    class KeywordsData\n    {\n    private:\n");
-        output.append("        const AbstrKeywordDefn keywords[");
+        std::string output("\nprotected:\n    const class KeywordsData\n    {\n    private:\n");
+
+        output.append("        const Abstr");
+        output.append(singularName);
+        output.append(" keywords[");
         output.append(std::to_string(numberOfKeywords));
-        output.append("] =\n          {\n");
+        output.append("] =\n");
+        output.append("          {\n");
 
         int count = 0;
         for (auto keywordPair : keywordDetails)
         {
-            output.append("            AbstractKeywordDefn{ \"");
+            output.append("            Abstr");
+            output.append(singularName);
+            output.append("{ \"");
             output.append(keywordPair.first);
             output.append("\", GrammarType_t::");
             output.append(keywordPair.second);
@@ -105,7 +140,20 @@ public:
             count ++;
         }
 
-        output.append("          };\n    };");
+        output.append("          };\n");
+
+        output.append("    public:\n");
+        output.append("        Abstr");
+        output.append(singularName);
+        output.append(" getAt(const size_t index) const\n");
+        output.append("        {\n");
+        output.append("             return keywords[index];\n");
+        output.append("        }\n");
+        output.append("\n        size_t getSize() const { return ");
+        output.append(std::to_string(numberOfKeywords));
+        output.append("; }\n");
+
+        output.append("    } _data;\n");
 
         return output;
     }

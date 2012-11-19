@@ -184,7 +184,7 @@ enum class FilterType_t { MATCH, ANYTHING_BUT };
 //note to self, maybe templatize tis stuff. Seems useful, maybe there std functions for it?
 //def typedef some of this
 
-std::vector<std::pair<std::string, std::string>> filterPairs(std::vector<std::pair<std::string, std::string>> pairs, FilterType_t filterType, std::string key)
+std::vector<std::pair<std::string, std::string>> filterPairs(const std::vector<std::pair<std::string, std::string>>& pairs, const FilterType_t filterType, const std::vector<std::string>& keys)
 {
     std::vector<std::pair<std::string, std::string>> retPairs;
 
@@ -192,21 +192,46 @@ std::vector<std::pair<std::string, std::string>> filterPairs(std::vector<std::pa
     {
         if (filterType == FilterType_t::MATCH)
         {
-            if (aPair.first.compare(key) == 0)
-            {
-                retPairs.push_back(aPair);
-            }
+           bool isMatch = false;
+           
+           for (auto matchKey : keys)
+           {
+               if (aPair.first.compare(matchKey) == 0)
+               {
+                   isMatch = true;
+               }
+           }
+
+           if (isMatch)
+           {
+               retPairs.push_back(aPair);
+           }
         }
         else if (filterType == FilterType_t::ANYTHING_BUT)
         {
-            if (aPair.first.compare(key) != 0)
-            {
-                retPairs.push_back(aPair);
-            }
+           bool keepThisPair = true;
+             
+           for (auto ignoreKey : keys)
+           {
+               if (aPair.first.compare(ignoreKey) == 0)
+               {
+                   keepThisPair = false;
+               }
+           }
+
+           if (keepThisPair) 
+           {
+               retPairs.push_back(aPair);
+           }
         }
     }
 
     return retPairs;
+}
+
+std::vector<std::pair<std::string, std::string>> filterPairs(const std::vector<std::pair<std::string, std::string>>& pairs, const FilterType_t& filterType, const std::string& key)
+{
+   return filterPairs(pairs, filterType, std::vector<std::string>{key});
 }
 
 void clearArray(char *buffer, size_t size)
@@ -442,18 +467,36 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const std::strin
     {
         DeLOG("iteration over object\n");
         auto objName = std::get<ID_INDEX_IN_OBJ_TUPLE>(obj);
-        if (objName.compare("IKeywords") == 0)
+        auto objType = std::get<TYPE_INDEX_IN_OBJ_TUPLE>(obj);
+
+        if (objName.compare("Keywords") == 0)
         {
             KeywordsTemplate keywordTemplate;
 
-            auto signatureAndClose = keywordTemplate.generateClass(objName);
+            const auto objDetailPairs = std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(obj);
 
-            auto objDetailPairs = std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(obj);
+            std::string singularObjName;
+
+            if (objType.compare("obj-collection") == 0)
+            {
+                const std::vector<std::pair<std::string,std::string>> matchesForSingularId =
+                    filterPairs(objDetailPairs, FilterType_t::MATCH, "singularName");
+
+                singularObjName = (matchesForSingularId.size() > 0? matchesForSingularId[0].second : objName);
+            }
+            else
+            {
+                singularObjName = objName;
+            }
+
+            auto signatureAndClose = keywordTemplate.generateClass(objName, singularObjName);
+
+            std::vector<std::string> ignoreStrings = { "path", "singularName" };
 
             std::vector<std::pair<std::string, std::string>> keywordDefns 
-                = filterPairs(objDetailPairs, FilterType_t::ANYTHING_BUT, "path"); //todo: strip trailing space
+                = filterPairs(objDetailPairs, FilterType_t::ANYTHING_BUT, ignoreStrings);
 
-            auto keywordsData = keywordTemplate.generateKeywordsData(keywordDefns);
+            auto keywordsData = keywordTemplate.generateKeywordsData(keywordDefns, singularObjName);
 
             fputs(signatureAndClose.first.c_str(), outputFile); 
             fputs(keywordsData.c_str(), outputFile);           

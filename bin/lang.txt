@@ -18,7 +18,7 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-IKeywords:obj {
+Keywords:obj {
 @@ Done Already @@
     +reps.named_iteration { VARIABLE }
     +scope { VARIABLE }

@@ -18,7 +18,9 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-IKeywords:obj {
+IKeywords:obj-collection {
+    +elementName { IKeyword }
+
 @@ Done Already @@
     +reps.named_iteration { VARIABLE, RepsNamedIteration }
     +scope { VARIABLE, Scope }
@@ -47,7 +49,15 @@ excerpt of what I'm gunning for:
 
             class AbstrKeywordDefn : public IKeywordDefn
             {
-                //...
+            private:
+                const std::string	_name;
+                const GrammarType_t	_grammarType;
+            public:
+                AbstrKeywordDefn(const std::string& name, const GrammarType_t grammarType)
+                    : _name(name), _grammarType(grammarType) {}
+
+                std::string getName() const { return _name; }
+                std::string getGrammarType() const { return _grammarType; }
             };
 
             class AbstrKeywords
@@ -55,11 +65,10 @@ excerpt of what I'm gunning for:
             private:
                 virtual ~IKeywords() = 0;
             protected:
-                class KeywordsData
+                const class KeywordsData
                 {
                 private:
-                    const size_t _size = 12;
-                    const AbstrKeywordDefn keywords[_size] =
+                    const AbstrKeywordDefn keywords[N] =
                       {
                         AbstrKeywordDefn{ "scope", GrammarType_t::VARIABLE },
                                                 . .
@@ -70,14 +79,12 @@ excerpt of what I'm gunning for:
                 public:
                     KeywordsData() {}
 
-                    size_t getSize() { return _size; }
-                    AbstrKeywordDefn getAt(size_t index)
+                    size_t getSize() const { return N; }
+                    AbstrKeywordDefn getAt(const size_t index) const
                     {
                         //...
                     }
-                };
-
-                const KeywordsData _data;
+                } _data;
             public:
                 template<T>
                 virtual const std::vector<T> getKeywords() = 0;

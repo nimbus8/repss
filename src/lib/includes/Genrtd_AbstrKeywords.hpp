@@ -20,6 +20,8 @@
 
 //Should you modify this file? NO
 
+#include <string>
+
 enum class GrammarType_t : char
 {
     UNDEFINED  = 'U',
@@ -27,21 +29,47 @@ enum class GrammarType_t : char
     VARIABLE   = 'V'
 };
 
-class AbstrKeywords
+class IKeywords
+{
+    virtual std::string getName() const = 0;
+};
+
+class AbstrKeywords : public IKeywords
 {
 private:
-    virtual IKeywords() = 0;
+    const std::string	_name;
+    const GrammarType_t	_grammarType;
+public:
+    AbstrKeywords(const std::string& name, const GrammarType_t grammarType)
+        : _name(name), _grammarType(grammarType) {}
+
+    virtual std::string getName() const { return _name; }
+    GrammarType_t getGrammarType() const { return _grammarType; }
+};
+
+class Keywords
+{
+private:
+    virtual ~Keywords() = 0;
 protected:
-    class KeywordsData
+    const class KeywordsData
     {
     private:
-        const AbstrKeywordDefn keywords[5] =
+        const AbstrKeywords keywords[5] =
           {
-            AbstractKeywordDefn{ "reps.named_iteration", GrammarType_t::VARIABLE },
-            AbstractKeywordDefn{ "scope", GrammarType_t::VARIABLE },
-            AbstractKeywordDefn{ "alternation", GrammarType_t::TERMINAL },
-            AbstractKeywordDefn{ "evaluation", GrammarType_t::TERMINAL },
-            AbstractKeywordDefn{ "general_end", GrammarType_t::TERMINAL }
+            AbstrKeywords{ "reps.named_iteration", GrammarType_t::VARIABLE },
+            AbstrKeywords{ "scope", GrammarType_t::VARIABLE },
+            AbstrKeywords{ "alternation", GrammarType_t::TERMINAL },
+            AbstrKeywords{ "evaluation", GrammarType_t::TERMINAL },
+            AbstrKeywords{ "general_end", GrammarType_t::TERMINAL }
           };
-    };
+    public:
+        AbstrKeywords getAt(const size_t index) const
+        {
+             return keywords[index];
+        }
+
+        size_t getSize() const { return 5; }
+    } _data;
+
 };
