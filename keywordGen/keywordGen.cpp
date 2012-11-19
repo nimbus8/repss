@@ -358,12 +358,6 @@ Status readInformation(ObjectDataVector_t& objects, FILE* const file)
                         confirmFirstNonWhiteSpaceInBuffer(buffer, strlen(buffer), '}');
                     if (isRightCurlyBraceFirstNonWhiteSpace)
                     {
-                        //make recorded objects into a tuple, add it to vector
-                        //then cleanup recorded temporary objects
-                        //...
-
-                        DeLOG("Found right curly brace!\n");
-
                         DeLOG(std::string("Obj-Id:\t").append(objId).c_str());
                         DeLOG(std::string("Obj-Type:\t").append(objType).c_str());
                         for (auto details : objDetails)
@@ -463,8 +457,7 @@ Status readInformation(ObjectDataVector_t& objects, FILE* const file)
     }
     else
     {
-        perror ("Error opening file");
-        
+        perror ("Error opening file");        
         return Status{ ModeInfo_t::ERROR };
     }
 
