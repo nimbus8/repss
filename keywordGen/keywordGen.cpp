@@ -364,25 +364,25 @@ Status readInformation(ObjectDataVector_t& objects, FILE* const file)
 
                         DeLOG("Found right curly brace!\n");
 
-        DeLOG(std::string("Obj-Id:\t").append(objId).c_str());
-        DeLOG(std::string("Obj-Type:\t").append(objType).c_str());
-        for (auto details : objDetails)
-        {
-            DeLOG(
-                std::string("  Obj-Detail:  ").append(details.first).append(" =").append(details.second).c_str()
-            );
-        }
+                        DeLOG(std::string("Obj-Id:\t").append(objId).c_str());
+                        DeLOG(std::string("Obj-Type:\t").append(objType).c_str());
+                        for (auto details : objDetails)
+                        {
+                            DeLOG(
+                                std::string("  Obj-Detail:  ").append(details.first).append(" =").append(details.second).c_str()
+                            );
+                        }
 
-        std::tuple<std::string,std::string,std::vector<std::pair<std::string,std::string>>> createdObj{};
-        std::get<ID_INDEX_IN_OBJ_TUPLE>(createdObj) = objId;
-        std::get<TYPE_INDEX_IN_OBJ_TUPLE>(createdObj) = objType;
-        std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(createdObj) = objDetails;
+                        std::tuple<std::string,std::string,std::vector<std::pair<std::string,std::string>>> createdObj{};
+                        std::get<ID_INDEX_IN_OBJ_TUPLE>(createdObj) = objId;
+                        std::get<TYPE_INDEX_IN_OBJ_TUPLE>(createdObj) = objType;
+                        std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(createdObj) = objDetails;
 
-        objects.push_back(createdObj);
+                        objects.push_back(createdObj);
 
-        objDetails.clear();
-        objId.clear();
-        objType.clear();
+                        objDetails.clear();
+                        objId.clear();
+                        objType.clear();
 
                         currentAttentionState = LOOKING_FOR_OBJECT;
                         break;
