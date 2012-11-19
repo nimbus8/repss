@@ -464,7 +464,7 @@ Status readInformation(ObjectDataVector_t& objects, FILE* const file)
     return Status{ ModeInfo_t::READ_DONE };
 }
 
-Status writeGeneratedContent(const ObjectDataVector_t& objects, const std::string& outputFilename, const Status& prevStatus)
+Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& prevStatus)
 {
     if (prevStatus.isError())
     {
@@ -567,10 +567,9 @@ int main(int argc, char *argv[])
 {
     if (argc != 3)
     {
-        DeLOG("Usage: ./keywordGen [input-filename.ext] [output-filename.ext]"); 
+        DeLOG("Usage: ./keywordGen [input-filename.ext]"); 
     }
 
-    std::string outputFilename(argv[2]);
     ObjectDataVector_t objects;
     FILE* defnFile = fopen(argv[1], "rt");
 
@@ -579,7 +578,7 @@ int main(int argc, char *argv[])
 
     fclose(defnFile);
 
-    const Status writeStatus = writeGeneratedContent(objects, outputFilename, readStatus);
+    const Status writeStatus = writeGeneratedContent(objects, readStatus);
 
     return 0;
 }
