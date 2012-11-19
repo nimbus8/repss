@@ -475,28 +475,30 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const std::strin
 
             const auto objDetailPairs = std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(obj);
 
-            std::string singularObjName;
+            std::string elementObjName;
 
             if (objType.compare("obj-collection") == 0)
             {
-                const std::vector<std::pair<std::string,std::string>> matchesForSingularId =
-                    filterPairs(objDetailPairs, FilterType_t::MATCH, "singularName");
+                const std::vector<std::pair<std::string,std::string>> matchesForElementName =
+                    filterPairs(objDetailPairs, FilterType_t::MATCH, "elementName");
 
-                singularObjName = (matchesForSingularId.size() > 0? matchesForSingularId[0].second : objName);
+                elementObjName = (matchesForElementName.size() > 0? matchesForElementName[0].second : objName);
             }
             else
             {
-                singularObjName = objName;
+                //note: INSIDE template objName is prepended with 'I' or 'Abstr' to make
+                // two seperate classes, so there is no conflict with 'objName' class.
+                elementObjName = objName;
             }
 
-            auto signatureAndClose = keywordTemplate.generateClass(objName, singularObjName);
+            auto signatureAndClose = keywordTemplate.generateClass(objName, elementObjName);
 
-            std::vector<std::string> ignoreStrings = { "path", "singularName" };
+            std::vector<std::string> ignoreStrings = { "path", "elementName" };
 
             std::vector<std::pair<std::string, std::string>> keywordDefns 
                 = filterPairs(objDetailPairs, FilterType_t::ANYTHING_BUT, ignoreStrings);
 
-            auto keywordsData = keywordTemplate.generateKeywordsData(keywordDefns, singularObjName);
+            auto keywordsData = keywordTemplate.generateKeywordsData(keywordDefns, elementObjName);
 
             fputs(signatureAndClose.first.c_str(), outputFile); 
             fputs(keywordsData.c_str(), outputFile);           

@@ -29,18 +29,18 @@ enum class GrammarType_t : char
     VARIABLE   = 'V'
 };
 
-class IKeywords
+class IKeyword
 {
     virtual std::string getName() const = 0;
 };
 
-class AbstrKeywords : public IKeywords
+class AbstrKeyword : public IKeyword
 {
 private:
     const std::string	_name;
     const GrammarType_t	_grammarType;
 public:
-    AbstrKeywords(const std::string& name, const GrammarType_t grammarType)
+    AbstrKeyword(const std::string& name, const GrammarType_t grammarType)
         : _name(name), _grammarType(grammarType) {}
 
     virtual std::string getName() const { return _name; }
@@ -55,16 +55,16 @@ protected:
     const class KeywordsData
     {
     private:
-        const AbstrKeywords keywords[5] =
+        const AbstrKeyword keywords[5] =
           {
-            AbstrKeywords{ "reps.named_iteration", GrammarType_t::VARIABLE },
-            AbstrKeywords{ "scope", GrammarType_t::VARIABLE },
-            AbstrKeywords{ "alternation", GrammarType_t::TERMINAL },
-            AbstrKeywords{ "evaluation", GrammarType_t::TERMINAL },
-            AbstrKeywords{ "general_end", GrammarType_t::TERMINAL }
+            AbstrKeyword{ "reps.named_iteration", GrammarType_t::VARIABLE },
+            AbstrKeyword{ "scope", GrammarType_t::VARIABLE },
+            AbstrKeyword{ "alternation", GrammarType_t::TERMINAL },
+            AbstrKeyword{ "evaluation", GrammarType_t::TERMINAL },
+            AbstrKeyword{ "general_end", GrammarType_t::TERMINAL }
           };
     public:
-        AbstrKeywords getAt(const size_t index) const
+        AbstrKeyword getAt(const size_t index) const
         {
              return keywords[index];
         }
