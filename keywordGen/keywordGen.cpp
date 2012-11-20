@@ -589,7 +589,7 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
                         const auto matchesForElementName =
                         filterTuples(objDetailTuples, FilterType_t::MATCH, "elementName");
 
-                        elementObjName = (matchesForElementName.size() > 0? std::get<0>(matchesForElementName[0]) : objName);
+                        elementObjName = (matchesForElementName.size() > 0? std::get<1>(matchesForElementName[0]) : objName);
                     }
                     else
                     {
