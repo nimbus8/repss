@@ -27,13 +27,16 @@
 #include <functional>
 #include <unordered_map>
 
-#include "model_representation/finite_autonoma/lexer_dfa.hpp"
 #include "model_representation/dfa_manager.hpp"
+
+#include "ConstructionTypedefs.hpp"
+
 #include "lexer_dfa_builder.hpp"
 #include "ScanWordNode.hpp"
 #include "ScanWordTransitionMap.hpp"
 
 #include "../../utils/AggregatePtrsAndDelete.hpp"
+#include "../Genrtd_AbstrLexerWordConstructor.hpp"
 
 #ifndef _LEXER_WORD_CONSTRUCTOR_
 #define _LEXER_WORD_CONSTRUCTOR_
@@ -48,17 +51,15 @@
     #define DLOG(str)
 #endif
 
-typedef std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> wordrepr_and_transition_Pair_t;
-
 //lexer_word constructor
-class lexer_word_constructor
+class lexer_word_constructor : public AbstrLexerWordConstructor
 {
 private:
     DfaManager dfaManager;      //dfa manager handles references, create/destroy fn pairs
 
     //first phase of construction - language component definition & aggregation
-    std::vector<std::pair<lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>> _words;
-    std::vector<AggregatePtrsAndDelete<DfaTransition*>*> _dfaTransitions;
+//    std::vector<word_start_and_aggregated_nodes_Pair_t> _words;
+//    std::vector<aggregated_transitions_ptr_t> _dfaTransitions;
 
     //second phase of construction - merging of aggregated language components
     lexer_word_repr* _startWordForMergedRepr;
@@ -68,20 +69,26 @@ private:
     ScanWordTransitionMap* _scanWordTransitionMap;
     ScanWords* _scanWords;
   
-    typedef std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> wordrepr_and_transition_Pair_t;
-
     //intermediate functions for first phase
-    std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructPercentReps();
-    std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> _constructSquareBracketReps();
 
+    wordrepr_and_transition_Pair_t _constructAlterationAndJoin();
+
+    //todo:will make something for this in keywordGen, maybe have it AUTOMATICALLY for EVERY keyword
     wordrepr_and_transition_Pair_t __insertNamedRepitionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, unsigned int tentativeNameKey);
     wordrepr_and_transition_Pair_t __insertNamedListParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, const unsigned int tentativeNameKey);
+
+
+
+   
+    //already in AbstrLexerWordConstructor
+    wordrepr_and_transition_Pair_t _constructPercentReps();
+    wordrepr_and_transition_Pair_t _constructSquareBracketReps();
     wordrepr_and_transition_Pair_t _constructEnd();
     wordrepr_and_transition_Pair_t _constructKeyword_REPS_withNamedIteration();
     wordrepr_and_transition_Pair_t _constructKeyword_REPS_withNamedListIteration();
     wordrepr_and_transition_Pair_t _constructKeyword_eval();
     wordrepr_and_transition_Pair_t _constructAlteration();
-    wordrepr_and_transition_Pair_t _constructAlterationAndJoin();
+
 
     void _destructDfasAndTransitions();
 
@@ -92,7 +99,8 @@ private:
     bool _testScanWords();
 
     //internal interface functions for each phase
-    void _initWords();
+    //void _initWords();
+
     bool _mergeWords()
     {
         std::vector<lexer_dfa*>* dfaWords = new std::vector<lexer_dfa*>();

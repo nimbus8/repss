@@ -107,8 +107,7 @@ public:
         return std::pair<std::string,std::string>(toWriteStart, toWriteEnd);
     }
 
-    //one
-    std::string generateKeywordsData(const std::vector<std::pair<std::string, std::string>>& keywordDetails, std::string& singularName)
+    std::string generateKeywordsData(const std::vector<std::tuple<std::string, std::string, std::string>>& keywordDetails, std::string& singularName)
     {
         auto numberOfKeywords = keywordDetails.size();
         std::string output("\nprotected:\n    const class KeywordsData\n    {\n    private:\n");
@@ -126,9 +125,9 @@ public:
             output.append("            Abstr");
             output.append(singularName);
             output.append("{ \"");
-            output.append(keywordPair.first);
+            output.append(std::get<0>(keywordPair));
             output.append("\", GrammarType_t::");
-            output.append(keywordPair.second);
+            output.append(std::get<1>(keywordPair));
             output.append(" }");
 
             if (count < numberOfKeywords - 1)
@@ -154,6 +153,70 @@ public:
         output.append("; }\n");
 
         output.append("    } _data;\n");
+
+        return output;
+    }
+
+    //construction AbstractClass - to be updated and enforced (AbstrLexerWordConstructor)
+    std::string generateAbstrLexerWordConstructorClass(const std::vector<std::string>& keywordNamesAlphaOnly)
+    {
+        //this is very specific
+        //some keyword names are essentially compositions reps.named_iteration, which
+        //lets us play with language constructs like building blocks. By additionally
+        //requiring an equivalent 'AlphaOnly' name, we setup a naming convention for
+        //function names that refer to routines that build and return the representation
+        //for any particular language construct.
+
+        std::string output = createCopyright();
+
+        output.append("\n#include \"construction/ConstructionTypedefs.hpp\"\n");
+
+        output.append("\n#ifndef _ABSTR_LEXER_WORD_CONSTRUCTOR_\n#define _ABSTR_LEXER_WORD_CONSTRUCTOR_\n");
+
+        output.append("\nclass AbstrLexerWordConstructor\n");
+        output.append("{\n");
+        output.append("protected:\n");
+        output.append("    std::vector<word_start_and_aggregated_nodes_Pair_t> _words;\n");
+        output.append("    std::vector<aggregated_transitions_ptr_t> _dfaTransitions;\n");
+
+        output.append("\n    virtual ~AbstrLexerWordConstructor()\n    {\n");
+        output.append("        //...\n");
+        output.append("    }\n");
+
+        output.append("public:\n");
+        output.append("    void _initWords()\n");
+        output.append("    {\n");
+        output.append("        //the first in container is a pair with lexer_dfa accessible\n");
+        output.append("        //the second in container is a reminder for us to delete DfaTransitions when we're done\n");
+
+        for (auto keywordName : keywordNamesAlphaOnly)
+        {
+            output.append("\n        auto a");
+            output.append(keywordName);
+            output.append("Word = _construct");
+            output.append(keywordName);
+            output.append("();\n");
+
+            output.append("        _words.push_back(a");
+            output.append(keywordName);
+            output.append("Word.first);\n");
+
+            output.append("        _dfaTransitions.push_back(a");
+            output.append(keywordName);
+            output.append("Word.second);\n");
+        }
+
+        output.append("    }\n\n");
+
+        for (auto keywordName : keywordNamesAlphaOnly)
+        {
+            output.append("    virtual wordrepr_and_transition_Pair_t _construct");
+            output.append(keywordName);
+            output.append("() = 0;\n");
+        }
+
+
+        output.append("};\n\n#endif\n");
 
         return output;
     }

@@ -55,15 +55,13 @@ protected:
     const class KeywordsData
     {
     private:
-        const AbstrelementName keywords[7] =
+        const AbstrelementName keywords[5] =
           {
-            AbstrelementName{ "reps", GrammarType_t::VARIABLE },
-            AbstrelementName{ "reps.named_iteration", GrammarType_t::VARIABLE },
-            AbstrelementName{ "scope", GrammarType_t::VARIABLE },
-            AbstrelementName{ "alternation", GrammarType_t::TERMINAL },
-            AbstrelementName{ "evaluation", GrammarType_t::TERMINAL },
-            AbstrelementName{ "general_end", GrammarType_t::TERMINAL },
-            AbstrelementName{ "reps.named_list_iteration", GrammarType_t::VARIABLE }
+            AbstrelementName{ "reps.named_iteration", GrammarType_t::     },
+            AbstrelementName{ "scope", GrammarType_t::     },
+            AbstrelementName{ "alternation", GrammarType_t::     },
+            AbstrelementName{ "evaluation", GrammarType_t::     },
+            AbstrelementName{ "general_end", GrammarType_t::     }
           };
     public:
         AbstrelementName getAt(const size_t index) const
@@ -71,7 +69,7 @@ protected:
              return keywords[index];
         }
 
-        size_t getSize() const { return 7; }
+        size_t getSize() const { return 5; }
     } _data;
 
 };

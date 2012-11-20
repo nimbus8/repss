@@ -18,24 +18,21 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/[rep(s)]  
 
-llowly rolly polly olly.
-
-/[/]
+/[rep(ss)] a=('ana','gra','mma','ati','cal') 4 /[(mums|rum is not possible)] with just the word and letters./[/]
 
 Cockroaches!
 ------------
 I assure you not nearly a week has passed.
 Not since men in cardigans sat about a fire consuming roaches.
-The fire itself was unremarkable. All that felt it's warmth thought it unremarkable.
+The fire itself was unremarkable. For all that felt it's warmth thought it unremarkable.
 Fire to them merely a tool necessary to their occupations; to be jettisoned, lampooned, and left on it's own -
 to simmer - ensuring no seed cwould ever prosper in it's wake etcetera etc. 
 A means to a ruinous end essentially. Therein that moment, its purpose was as equally self-serving. 
 The flames danced in and about the dark pits of their eyes (the pupils) as the men devoured roach after roach
 one at a time, (like) a true group of dining philosophers - a joke often repeated. 
 That night roaches were on the menu, and these roaches, I tell you, were no ordinary roaches.
-Few roaches can be considered ordinary to begin, but we recognize these roaches by the attention that they command
+Few roaches can be considered ordinary to begin, but we recognize these particular roaches by the attention that they command
 - the delicacy with which they're handled. For many there exists no greater horror...for these men that horror was ecstacy. 
 I nor they themselves can explain just %why% exactly, one gets that deep feeling of revulsion
 - an involuntary reflex if you will - that causes [the] blood to flee the part of the brain that gives us calm, -
@@ -48,35 +45,41 @@ has (actually) tempered relations between neighbouring states and provinces the 
 second half /[/]
 Those who cared - the *artisans*, the *connaisseurs*, *the politicians* - were never so interested in their local varieties.
 The stench of familiarity so great, even amoungst the most enthused, that governments and private contractors -
-chartered steamboats, military jets, and lunar space shuttles to be packed to the tilt. 
-The roaches were transported from the far reaches of the congo to the dirty underground basements 
+chartered /[(sailboats|steamboats)], military jets, and lunar space shuttles to be packed to the tilt. 
+The roaches were transported from the far reaches of the Congo to the dirty underground basements 
 %where the cardigan clad men would congregate%, often sporting beaded masks in a lazy attempt to hide their %identities% [1]. 
-Needless to say the %boatsmen%, the %pilots%, and the %astronauts% were never in such precarious situations 
+Needless to say the /[(sailors | %boatsmen%)], the %pilots%, and the %astronauts% were never in such precarious situations 
 - every man/woman/andindivudual received a gold brick for every roach they kept their hands off of.
-All went home poorer than they left. But you know in this world there are much more important things...
+All went home poorer than they left. But you know in this world there are much more important things /[(|you know)]...
+
 /[sco] 
 /[rep]  
         this isnt it.
 /[/]
-/[rep] b=21:8020 
-        that is all.
+/[rep] time-b=22:2100 
+        i think.
 /[/]
-/[rep] foobar=21:8020
+/[rep] foobar=20:40
         that is all.
 /[/]
 /[/]
 
 Footnte:
 [1] In Belgium every second sunday is rarely referred to as "nuit de pieds nu".
-     (one might hear colloquialisms of the same humour spoken elsewhere of similar events)
+     (one might hear colloquialisms of the same humour spoken elsewhere of similar events, if one were so lucky!)
 
 
-/[rep(ss)] a=('aaa','bbb','ccc')
 
 /[(a|p|e)]
 Oh! /[(the bird|the boxes|the men|the apes|and the tangerines)] those orange things they spoiled so quickly!
 Oh boy... I need to get a life, /[(o|b|v|i|o|u|s|l|y)]. 
 
 /[(r|e|p|s|s)]
+
+/[rep(s)]
+
+llowly rolly polly olly.
+
+/[/]
 
 End of sample file.

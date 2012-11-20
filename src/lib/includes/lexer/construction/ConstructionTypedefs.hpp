@@ -18,20 +18,22 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-Keywords:obj-collection {
-    +elementName { Keyword }
+//This file should hold all typedefs specific to "construction"
 
-    @@ Example keywords -- To Delete @@
-    +reps { VARIABLE, PercentReps }
+#ifndef _CONSTRUCTION_TYPEDEFS_
+#define _CONSTRUCTION_TYPEDEFS_
 
-    @@ Done Already @@
-    +reps.named_iteration { VARIABLE, Keyword_REPS_withNamedIteration }
-    +scope { VARIABLE, SquareBracketReps }
-    +alternation { TERMINAL, Alteration }
-    +evaluation { TERMINAL, Keyword_eval }
-    +general_end { TERMINAL, End }
-    +reps.named_list_iteration { VARIABLE, Keyword_REPS_withNamedListIteration }
+#include "model_representation/dfa_manager.hpp"
 
-    +path { src/lib/includes/Genrtd_Keywords.hpp }
-}
+#include "../../utils/AggregatePtrsAndDelete.hpp"
+
+typedef std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*> word_start_and_aggregated_nodes_Pair_t;
+
+typedef AggregatePtrsAndDelete<DfaTransition*>* aggregated_transitions_ptr_t;
+
+
+typedef std::pair<word_start_and_aggregated_nodes_Pair_t, aggregated_transitions_ptr_t> wordrepr_and_transition_Pair_t;
+
+
+#endif
 

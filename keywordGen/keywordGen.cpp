@@ -18,6 +18,8 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define ABSTR_LEXER_WORD_CONSTRUCTOR_PATH "src/lib/includes/lexer/Genrtd_AbstrLexerWordConstructor.hpp"
+
 //read in keywords-list.defn
 //+ file should be organized, by line:
 //                                                                
@@ -184,11 +186,11 @@ enum class FilterType_t { MATCH, ANYTHING_BUT };
 //note to self, maybe templatize tis stuff. Seems useful, maybe there std functions for it?
 //def typedef some of this
 
-std::vector<std::pair<std::string, std::string>> filterPairs(const std::vector<std::pair<std::string, std::string>>& pairs, const FilterType_t filterType, const std::vector<std::string>& keys)
+std::vector<std::tuple<std::string, std::string, std::string>> filterTuples(const std::vector<std::tuple<std::string, std::string, std::string>>& tuples, const FilterType_t filterType, const std::vector<std::string>& keys)
 {
-    std::vector<std::pair<std::string, std::string>> retPairs;
+    std::vector<std::tuple<std::string, std::string, std::string>> retTuples;
 
-    for (auto aPair : pairs)
+    for (auto aTuple : tuples)
     {
         if (filterType == FilterType_t::MATCH)
         {
@@ -196,7 +198,7 @@ std::vector<std::pair<std::string, std::string>> filterPairs(const std::vector<s
            
            for (auto matchKey : keys)
            {
-               if (aPair.first.compare(matchKey) == 0)
+               if (std::get<0>(aTuple).compare(matchKey) == 0)
                {
                    isMatch = true;
                }
@@ -204,34 +206,34 @@ std::vector<std::pair<std::string, std::string>> filterPairs(const std::vector<s
 
            if (isMatch)
            {
-               retPairs.push_back(aPair);
+               retTuples.push_back(aTuple);
            }
         }
         else if (filterType == FilterType_t::ANYTHING_BUT)
         {
-           bool keepThisPair = true;
+           bool keepThisTuple = true;
              
            for (auto ignoreKey : keys)
            {
-               if (aPair.first.compare(ignoreKey) == 0)
+               if (std::get<0>(aTuple).compare(ignoreKey) == 0)
                {
-                   keepThisPair = false;
+                   keepThisTuple = false;
                }
            }
 
-           if (keepThisPair) 
+           if (keepThisTuple) 
            {
-               retPairs.push_back(aPair);
+               retTuples.push_back(aTuple);
            }
         }
     }
 
-    return retPairs;
+    return retTuples;
 }
 
-std::vector<std::pair<std::string, std::string>> filterPairs(const std::vector<std::pair<std::string, std::string>>& pairs, const FilterType_t& filterType, const std::string& key)
+std::vector<std::tuple<std::string, std::string, std::string>> filterTuples(const std::vector<std::tuple<std::string, std::string, std::string>>& tuples, const FilterType_t& filterType, const std::string& key)
 {
-   return filterPairs(pairs, filterType, std::vector<std::string>{key});
+   return filterTuples(tuples, filterType, std::vector<std::string>{key});
 }
 
 void clearArray(char *buffer, size_t size)
@@ -239,8 +241,34 @@ void clearArray(char *buffer, size_t size)
     memset(buffer, 0, size);
 }
 
+bool checkIfTheTwoCharactersFollow(const std::string& str, char first, char second, std::vector<char> cannotAcceptInBetween)
+{
+    bool inExpectingMode = false;
+    for (const char& c : str)
+    {
+        if (!inExpectingMode)
+        {
+            if (c == first)
+            {
+                inExpectingMode = true;
+            }
+        }
+        else
+        {
+            for (const char& c2 : cannotAcceptInBetween)
+            {
+                if (c == c2) return false;
+            }
 
-typedef std::vector<std::tuple<std::string,std::string,std::vector<std::pair<std::string,std::string>>>> ObjectDataVector_t;
+            if (c == second) return true;
+        }
+    }
+
+    return false;
+}
+
+
+typedef std::vector<std::tuple<std::string,std::string,std::vector<std::tuple<std::string,std::string,std::string>>>> ObjectDataVector_t;
 const size_t ID_INDEX_IN_OBJ_TUPLE = 0;
 const size_t TYPE_INDEX_IN_OBJ_TUPLE = 1;
 const size_t DETAILS_INDEX_IN_OBJ_TUPLE = 2;
@@ -248,6 +276,15 @@ const size_t DETAILS_INDEX_IN_OBJ_TUPLE = 2;
 Status readInformation(ObjectDataVector_t& objects, FILE* const file)
 {
     const size_t MAX_LINE_LENGTH = 1028;
+
+    //some useful lambda functions
+    auto trim_string = [] (std::string& str)
+      {
+        std::stringstream trimmer;
+        trimmer << str;
+        str.clear();
+        trimmer >> str;
+      };
 
     if (file != NULL)
     {
@@ -264,7 +301,8 @@ Status readInformation(ObjectDataVector_t& objects, FILE* const file)
 
         std::string                                     objId;
         std::string                                     objType;
-        std::vector<std::pair<std::string,std::string>> objDetails;
+        std::string					objIdAllAlpha;
+        std::vector<std::tuple<std::string,std::string, std::string>> objDetails;
 
         while (!feof(file))
         {
@@ -275,6 +313,8 @@ Status readInformation(ObjectDataVector_t& objects, FILE* const file)
             {
                 buffer[len-1] = 0;
             }
+
+            bool isThereValidComma = checkIfTheTwoCharactersFollow(buffer,'{',',', std::vector<char>{ '}' });
 
             //tokenize line based on 'attention state'
             switch (currentAttentionState)
@@ -363,11 +403,11 @@ Status readInformation(ObjectDataVector_t& objects, FILE* const file)
                         for (auto details : objDetails)
                         {
                             DeLOG(
-                                std::string("  Obj-Detail:  ").append(details.first).append(" =").append(details.second).c_str()
+                                std::string("  Obj-Detail:  ").append(std::get<0>(details)).append(" =").append(std::get<1>(details)).append(", ").append(std::get<2>(details)).c_str()
                             );
                         }
 
-                        std::tuple<std::string,std::string,std::vector<std::pair<std::string,std::string>>> createdObj{};
+                        std::tuple<std::string,std::string, std::vector<std::tuple<std::string,std::string,std::string>>> createdObj{};
                         std::get<ID_INDEX_IN_OBJ_TUPLE>(createdObj) = objId;
                         std::get<TYPE_INDEX_IN_OBJ_TUPLE>(createdObj) = objType;
                         std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(createdObj) = objDetails;
@@ -379,53 +419,100 @@ Status readInformation(ObjectDataVector_t& objects, FILE* const file)
                         objType.clear();
 
                         currentAttentionState = LOOKING_FOR_OBJECT;
-                        break;
+                        //break;
                     }
-
-                    //if at any place we encounter something unexpected erase, temp objects and 
-                    //change attentionState to LOOKING_FOR_OBJECT (reset)
-                    DeLOG(
-                        std::string{"Splittng string '"}.append(buffer).append("' into tokens.").c_str()
-                    );
-                    token = strtok(buffer, "+");
-                    if (token == NULL)
+                    else
                     {
-                        //insert temp object cleanup...here
-                        DeNEWLINE(); 
-                        break;
+
+                        //if at any place we encounter something unexpected erase, temp objects and 
+                        //change attentionState to LOOKING_FOR_OBJECT (reset)
+                        DeLOG(
+                            std::string{"Splittng string '"}.append(buffer).append("' into tokens.").c_str()
+                        );
+                        token = strtok(buffer, "+");
+                        if (token == NULL)
+                        {
+                            //insert temp object cleanup...here
+                            DeNEWLINE(); 
+                            break;
+                        }
+                        token = strtok(NULL, "{");
+                        if (token == NULL)
+                        {
+                            //insert temp object cleanup...here
+                            DeNEWLINE();
+                            break;
+                        }
+                        std::string keywordName(token);
+
+                        //here we trim the string (we know that there may be a space at end)
+
+                        trim_string(keywordName);
+
+                        DeLOG(
+                            std::string{"KeywordName string: '"}.append(keywordName).append("'.").c_str()
+                        );
+
+
+                        //try looking for ',': this means there's > 1 parameter
+                        if (isThereValidComma)
+                        {
+                            DeLOG("Found , trying to get multiple params\n");
+
+                            token = strtok(NULL, ",");
+                            std::string keywordGrammarType(token);
+
+                            trim_string(keywordGrammarType);
+                            DeLOG(
+                                std::string{"KeywordGrammarType string: '"}.append(keywordGrammarType).append("'.\n").c_str()
+                            );
+
+                            //here we can do some sort of recursion to keep checking for
+                            //extra values.  For Now we look for just ONE.
+                            token = strtok(NULL, " ");
+                            if (token == NULL)
+                            {
+                                //this is lax processing...
+                                //we skip this [line] and continue
+                                // looking for more object details
+                                // ...btw, we might want to mark/repory this as a soft error.
+                                // . . . chances are they wanted to do something just misformatted it
+
+                                DeNEWLINE();
+                                break;
+                            }
+
+                            //record second value (specify this here as : keywordNameAllAlpha)
+                            std::string keywordNameAllAlpha(token);
+                            trim_string(keywordNameAllAlpha);
+
+                            DeLOG(
+                                std::string{"KeywordNameAllAlpha string: '"}.append(keywordNameAllAlpha).append("'.").c_str()
+                            );
+
+                            objDetails.push_back(std::make_tuple(keywordName, keywordGrammarType, keywordNameAllAlpha));
+                        }
+                        else
+                        {
+                            DeLOG("Could not find ',' assuming only single param\n");
+                            token = strtok(NULL, " ");
+                            if (token == NULL)
+                            {
+                                //insert temp object cleanup...here
+                                DeNEWLINE();
+                                break;
+                            }
+                            std::string keywordGrammarType(token);
+                            trim_string(keywordGrammarType);
+
+                            DeLOG(
+                                std::string{"KeywordGrammarType string: '"}.append(keywordGrammarType).append("'.\n").c_str()
+                            );
+
+                            objDetails.push_back(std::make_tuple(keywordName, keywordGrammarType, keywordName));                    
+                        }
                     }
-                    token = strtok(NULL, "{");
-                    if (token == NULL)
-                    {
-                        //insert temp object cleanup...here
-                        DeNEWLINE();
-                        break;
-                    }
-                    std::string keywordName(token);
 
-                    //here we trim the string (we know that there may be a space at end)
-                    std::stringstream trimmer;
-                    trimmer << keywordName;
-                    keywordName.clear();
-                    trimmer >> keywordName;
-
-                    DeLOG(
-                        std::string{"KeywordName string: '"}.append(keywordName).append("'.").c_str()
-                    );
-                    token = strtok(NULL, " ");
-                    if (token == NULL)
-                    {
-                        //insert temp object cleanup...here
-                        DeNEWLINE();
-                        break;
-                    }
-                    std::string keywordGrammarType(token);
-                    DeLOG(
-                        std::string{"KeywordGrammarType string: '"}.append(keywordGrammarType).append("'.\n").c_str()
-                    );
-
-
-                    objDetails.push_back(std::make_pair(keywordName, keywordGrammarType));                    
                     break;
                 }
                 default:
@@ -468,10 +555,10 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
         {
             KeywordsTemplate keywordTemplate;
 
-            const auto objDetailPairs = std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(obj);
+            const auto objDetailTuples = std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(obj);
 
-            const std::vector<std::pair<std::string,std::string>> matchesForPath =
-                    filterPairs(objDetailPairs, FilterType_t::MATCH, "path");
+            const auto matchesForPath =
+                    filterTuples(objDetailTuples, FilterType_t::MATCH, "path");
 
             if (matchesForPath.size() == 0)
             {
@@ -481,7 +568,7 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
             }
             else
             {
-                std::string outputFilename = matchesForPath[0].second; 
+                std::string outputFilename = std::get<1>(matchesForPath[0]); 
 
                 //if file already exists [readonly], this allows us to overwrite it.
                 chmod(outputFilename.c_str(), S_IRUSR | S_IWUSR);
@@ -499,10 +586,10 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
 
                     if (objType.compare("obj-collection") == 0)
                     {
-                        const std::vector<std::pair<std::string,std::string>> matchesForElementName =
-                        filterPairs(objDetailPairs, FilterType_t::MATCH, "elementName");
+                        const auto matchesForElementName =
+                        filterTuples(objDetailTuples, FilterType_t::MATCH, "elementName");
 
-                        elementObjName = (matchesForElementName.size() > 0? matchesForElementName[0].second : objName);
+                        elementObjName = (matchesForElementName.size() > 0? std::get<0>(matchesForElementName[0]) : objName);
                     }
                     else
                     {
@@ -515,8 +602,8 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
 
                     std::vector<std::string> ignoreStrings = { "path", "elementName" };
 
-                    std::vector<std::pair<std::string, std::string>> keywordDefns 
-                        = filterPairs(objDetailPairs, FilterType_t::ANYTHING_BUT, ignoreStrings);
+                    auto keywordDefns 
+                        = filterTuples(objDetailTuples, FilterType_t::ANYTHING_BUT, ignoreStrings);
 
                     auto keywordsData = keywordTemplate.generateKeywordsData(keywordDefns, elementObjName);
 
@@ -529,6 +616,28 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
                     //Making file 'readonly'. This is not even a real measure. Just another hoop, to remind us NOT to
                     //change files that've been generated.
                     chmod(outputFilename.c_str(), S_IRUSR);
+
+                    //do work to get alpha names from details into a a new vector of strings, then feed that to generateAbstrLexerWordConstructorClass() in KeywordsTemplate
+
+                    std::vector<std::string> keywordNamesAllAlpha;
+
+                    auto onlyKeywordElementDetails = filterTuples(objDetailTuples, FilterType_t::ANYTHING_BUT, std::vector<std::string>{ "path", "elementName" });
+                    for (auto detailTuple : onlyKeywordElementDetails)
+                    { 
+                        keywordNamesAllAlpha.push_back(std::get<2>(detailTuple));
+                    }
+
+                    auto lexerWordConstructorFileContents = keywordTemplate.generateAbstrLexerWordConstructorClass(keywordNamesAllAlpha);
+
+                    chmod(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, S_IRUSR | S_IWUSR);
+
+                    FILE* lexerWordConstructorOutputFile = fopen(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, "wt");
+
+                    fputs(lexerWordConstructorFileContents.c_str(), lexerWordConstructorOutputFile);
+
+                    fclose(lexerWordConstructorOutputFile);
+                    chmod(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, S_IRUSR);
+
                 }
             }
         }

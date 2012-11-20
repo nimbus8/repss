@@ -18,70 +18,85 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/[rep(ss)] var=('one','mississippi','two mississippi','three mississippi, four!') 
-+    /[[_-_-_]]
-+    /[[_---_]]
-+    /[[-___-]]
-+    /[[-_|_-]]
-/[/]
 
-An Eg:
-A short list of "People who don't like me":
-/[rep(ss)] this_person=('dairy','jacob','carrie','peter','meg','anne Laurie') 
-+    /[[this_person]] doesn't like my haircut. ~ Note to self: stay away from /[[this_person]] until it grows back.
-/[/]
+- then it hit me, every story I'd ever /[(heard|read)] was exactly the same. You'd think I'd be outraged
+But no, I wasn't bothered, how could I be? Besides the devil's in the details, 
+and boy that /[(guy| m************r)]'s a drama queen. /[(I swear it|It)]'s every little thing 
+with /[(him|this guy)], you won't hear the end of it - nor should you if the pages fall 
+anywhere short of inspiring /[(and|or)] insightful. How many books have you put down? Obviously not enough.
 
->> dairy doesn't like my haircut. ~ Note to self: stay away from [dairy] until it grows back.
-   jacob doesn't like my haircut. ~ Note to self: stay away from [jacob] until it grows back.
-   carrie doesn't like my haircut. ~ Note to self: stay away from [carrie] until it grows back.
-   ...
-   ...
-   
-I guess this is bad example...not everyone is gonna like you [ha]
 
---------------
-If you haven't noticed most stories are pretty much the same. We're not bothered /[(of course | at all by this)] /[(|because what intrests most of us lie in the details)].
-Though I imagine the man or woman who makes their living writing fiction must have a /[(terrible|horrible)] time trying to /[(figure|flesh out)] simple things like how to bring 
-people into a scene, kick /[(them|people)] out, and have others /[(|just)] pass through /[(|inconspicuously)], etc, without boring the reader.  No bunny likes pedantry [1].
-We're not talking about textbooks here. Professors write textbooks, usually. And when they do they can rest easy knowing that their text will sell no matter how bland or poorly written it may be - especially if they list it as mandatory reading in their /[(syllabus|syllabi)].
-Not to say all textbooks are rubbish, a few had me hooked and going 'w/[rep] it=1:20 e /[/]' all the way into the "wh/[rep]1:10 e/[/]" hours of the morning - okay thats not totally true. But I remember once taking one with me when I went to the l/[rep] it=1:2 o/[/]...to visit a friend studying engineering...byob, byotb!
 
-[1] It's really all downhill from here; what with our tilomere-like attention spans, 30 second commercials, misrepresentative sound bites,
-and a new obsession with a word meant to muddy and generalize for sake of expediency - and for the fact both that parties are probably hopped up on caffeine. Caffeine, according to a friend,
-, being the word /[(you play begrundgingly | your forced to spell)] /[(|in Scrabble)] when you draw two F's /[(and you really had your heart set on|and can no longer justify holding out for)] the 'OC' /[(|, in this game of Scrabble we call life)].
-Let's not forget the memes. With one picture an entire generation gets the /[(idea|point)]. A writers gotta have a lot of hustle to compete with that. I don't know how they do it.
-I'd be surprised if you couldn't peice together a hundred memes to tell a TRULY EPIC story - that'd draw accolades and comparisons to Mark Twain's Huckleberry Finn 
-and Twenty Thousand Leagues Under the Sea - /[(oh wait I think|you know,)] I might have saw something like that on Youtube last week!
+Though I imagine the man or woman who makes their living writing fiction must have a /[(terrible|gawd awful)] time trying to /[(figure out|flesh out)] simple things like how to bring 
+people into a scene, kick them out, and have others /[(|just)] pass through 
+/[(|inconspicuously)] without boring the reader.  No bunny likes pedantry [1]. Not while their 
+"hopped" up on caffeine, no. Silly bunnies, when caught once with caffeine they claimed dislexia
+- and got off.
 
 
 ....
-Just before she left, she told me to leave a glass upside down over the sink at all times, whether I was there or not. I had given myself away. /[(|My ignorance was telling.)] 
-/[(And boy, she laaaaauuugghhhhed, l| Oh and she laaauugghed, l|And she laughed l)]ike 
-she always does, at every new immigrant and import to the city where the rodents outnumber the population tenfold in every alley and /[(undiscovered|neglected)] crevice.
-Unbenknownst to /[(many|most)] /[(it|the infestation)] had become the cities third leading cause of death; often coupled with heart disease and lung failure for lack of /[(any specific|a)] nationally recognized category.
-Common wisdom had it that you '/[(Cover the hole so as to force |to cover the hole so that I'd force)] the moth*********s through the cracks in the 
-/([hardwood floors | floorboard)]' - which, apparently as a whole is known to be a much /[(greater|more effective)] rate limiting factor. I shuddered. 
-Suddenly the charm wore off. I began to smell the fish and didn't like it. But still she tried to convince me, that this was a whole lot better than anywhere else.
+As she casually led me from one end to the other of this sunny apartment, I remember I had nearly dozed off.
+Somewhere after her stern caution to me that I'M NOT TO PAINT THE WALLS, 
+/[(a sudden worry that the lengthy elevator up and down would prove too much. 2 minutes both ways, everyday, sometimes twice, lets say half th- | I began to wonder whether I'd be able to stomach the long elevaor up.)].
+I was sure this time she wanted to tell me ever to drink from the carton and use only fine cutlery. She
+was tapping at the bottom of a crystal mug that sat in the middle of the sink. 
+<<Did you hear what I just said?>>   
+No.
+<<Huh? Sorry, ugh there's a dishwasher, yes?>>
+<<Like I said, only take this off when your washing up. There's some spray underneath.>>
+I had given myself away, of course.  Oh and she laaauugghed! Like she always does, at every new
+immigrant and import to the city where the rodents outnumber the population tenfold in every alley and 
+undiscovered crevice. How they  managed to cover up that /[(it|the infestation)] had become the cities 
+third leading cause of /[(hospitalization|death)], I don't know.  I met a nurse who claimed they'd often couple 
+it with heart disease and lung failure for lack of /[(any specific|a)] nationally recognized category. 
+I thought she may have been short for conversation. But no, it was true, and need only be evidenced by 
+the ambulances and the haunting hollering of the dogs, followed by the hollering of their owners on what
+seemed like every second tuesday somewhere in our building.
+We held our breath and covered our ears outside and prayed for those trampled underfoot - as the worse
+was yet to come for them and the fire department was never quite quick enough. Sadly they would do more good 
+had they run through several more red lights, and with that taken a dozen other folks underneath them, in response.
+Such the was the sad irony of this oft occuring madness. And once you'd seen one of these Infestivals the 
+Convential Wisdom was etched into your mind forever: 'Just Cover The Hole And Force The Moth*********'s 
+Through The Cracks In The /([Floorboard | Hardwood floors)]' - which, apparently as a whole is known to
+be a much greater rate limiting factor. I shuddered.  Suddenly the charm wore off. I started to smell 
+the fish and didn't like it. But still she tried to convince me that this was a whole lot better than 
+anywhere else.
 <<What made this /[(dirty|decrepit)] little corner so much better than /[(the next | anywhere else)]?>>, I asked.
-This was the first time that I'd heard here it, that growl. It was to be my official welcome; she pointed to a spot out the window /[(with emphasis|dramitically)] /[(adding a| with a resounding)] 
-flurry of expletives I half understood. I traced an arrow from that bawny finger of hers over the padded cot, and past /[(the toilet of fully exposed plumbing | the toilet with it's plumbing fully exposed)] 
-out through this bright and /[(brilliant | magnificent)] 12th story window all the way to the peak of Ellis Island. One can/[(\'t help but| only)] dream-up images of a 
-people not unlike ourselves, in a time not unlike the present, without asking 'Where Had They Went?'. It was like they had all stood up for an instant and collapsed.
-/[(And the mudd rippled like water. |Causing the mudd to ripple like water. |Sending ripples of concetric circles through the mudd like a drop of rain in a lake.)]
-I thought perhaps /[(maybe|by chance)] we were built from the same stuff and it followed that we might carry /[(|with us)] their essence - along with their struggles, their debt, 
-their hopes and dreams, and those tiny fragments of ineffable joy /[(scattered|sprinkled)] inbetween the rocks and buoys. What brand of apathy would they smoke and teach their
-children if any. Squarely in the midst of a vivid experience, I tried /[(to find|finding)] myself amoungst the lines of the elderly, the graduates, the swindlers, the mothers tending to coughing 
-children and their fathers - but I was interrupted. Her pointed finger lowered to the exposed pipe /[(protruding|coming)] out from the floorboard /[(|; the one resembling the trunk
-of an old /[(oak|tree)] chopped waist high, and covered with moss)]. I'd be remiss, also, not to mention the matching green tub /[(right beside it | to left of it | just to the right of it)]. 
+This was the first time that I'd heard here it, so powerful and full of pride like the roar of lion. 
+It was to be my official welcome; she pointed to a spot out the window /[(with emphasis|dramitically)] /[(adding a| with a resounding)] 
+flurry of expletives I half understood. I traced an arrow from that bawny finger of hers over the padded
+cot, and past /[(the toilet of fully exposed plumbing | the toilet with it's plumbing fully exposed)] 
+out through this bright and /[(brilliant | magnificent)] 12th story window all the way to the peak of 
+Ellis Island. One can/[(\'t help but| only)] dream-up images of a people not unlike ourselves, in a time
+not unlike the present, without asking 'Where Had They Went?'. It was like they had all stood up for an 
+instant and collapsed.
+/[(And the mudd rippled like water. | Sending ripples of concetric circles through the mudd like a drop of rain in a lake.)]
+I thought perhaps /[(just maybe|by chance)] we were built from the same stuff and it followed that we
+might carry /[(|with us)] their essence - along with their struggles, their debt, their hopes and dreams, and 
+those tiny fragments of ineffable joy /[(scattered|sprinkled)] inbetween the rocks and buoys. 
+What brand of apathy would they smoke and teach their children if any? Squarely in the midst of a vivid 
+experience, I tried /[(finding|to find)] myself amoungst the lines of the elderly, the graduates, the 
+swindlers, the mothers tending to coughing children and their fathers - but I was interrupted. Her 
+pointed finger lowered to the exposed pipe /[(protruding|coming)] out from the floorboard 
+; the one resembling the trunk of an old /[(oak|tree)] chopped waist high, and covered with moss. 
+I'd be remiss, also, not to mention the matching green tub /[(right beside it | to left of it | just to the right of it)]. 
 <<Those 'ill do ya. Another glass and cover that one with as large a condom as /[(possible|you can find)]>>, she said crudely.
-I had seen /[(it | the two | the pair | them)] before, no doubt. I wouldn't admit it to myself, or to anyone else /[(had they asked|for that matter)], that they were he only reason I liked the place.
-These two objects stood out and belonged together, inseperably tied together by a plumbing seen and /[(out of sight|unseen)], /[(making|and made)] this narrow corridor much more than an enclosed space /[(clustered|littered|sparsely littered)] with the usual standing assortment of /[(|common)] 'necessities'. /[(I admit I had visions of a sort, | And I'll admit /[(to having|I had|I continue to have)] )]
-open-eye hallucinations of /[(a short round-bellied italian /[(|man)] dressed in blue overalls who'd|of a sort, featuring a brave and war-worn italian man with a red cap who'd)] empahtically /[(spring up|leap|jump)] out from the mouth of this green pillar
-and shake himself dry.
-He'd /[(soiled|dirtied)] my curtains, but you couldn't help but like the guy - salt of the earth really. I felt inclined to help him.
-Overlooking much of Manahttan, I would counsel him through this grief; assuring M that he could surely do a hellofalot better - hoping that it, and where his travels had led him, would trigger some grand realization.)]
-I still don't know why I rented the place when I did, I didn't sleep - much less live - there for a good 3 months until I'd made certain that I was indeed the envy of all my 
-friends - who were living in the worst of conditions and for a price that would exhaust a shieks fortune (in little under a year). 
+I had seen /[(the two | the pair | them)] before, no doubt. I wouldn't admit it to myself, or to 
+anyone else /[(had they asked|for that matter)], that they were the only reason why I liked the place.
+These two objects stood out and belonged together, inseperably tied together by a plumbing seen and 
+/[(out of sight|unseen)], /[(which made | making|and made)] this narrow corridor much more than an enclosed space 
+/[(clustered|littered|sparsley littered)] with the usual standing assortment of 
+/[(|common)] modern-day 'necessities', and into a home. They called out to me, about as strongly as I imagine the earth does from
+this elevation. /[(In confidence, I admit I had visions of a sort; | And I'll admit /[(to having|I had)] )]
+open-eye hallucinations of a short round-bellied italian /[(|man)] dressed in blue overalls who'd
+/[(spring up|leap|jump)] out from the mouth of this green pillar with /[(|much)] vigour /[(and|then)] shake himself dry.
+He'd /[(soil|dirty)] my curtains, but you couldn't stay angry at the guy - salt of the earth really. 
+I felt inclined to help him. Overlooking much of Manahttan, I would counsel him through this grief; assuring M that he could certainly do a hellofalot better -  hoping that 'it' and where his travels had led him,
+would spark some /[(brand|sort)] of all-encompassing epiphany, and that perhaps he'd share, for I too had
+become the worse for wear.
+I still don't know why I rented the place when I did, I didn't sleep - much less live - there for a good
+3 months until I'd made certain that I was indeed the envy of all my friends - who were living in the 
+worst of conditions and for a price that would exhaust a shieks fortune (in little under a year). 
 Oh and I should tell you about the area I live in!
-Georgious. Lenny from down the hall said a famous singer might live 3 floors up. I wouldn't doubt it.
+Georgious. Lenny from down the hall said a famous singer might live /[(3|4)] floors up. I wouldn't doubt it.
 

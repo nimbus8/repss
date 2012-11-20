@@ -27,12 +27,10 @@
 #include <functional>
 #include <unordered_map>
 
+#include "model_representation/dfa_manager.hpp"
+
 #include "../../utils/AggregateAndApplyFuncBase.hpp"
 #include "../../utils/ApplyImmutableFunc.hpp"
-
-#include "model_representation/dfa_manager.hpp"
-#include "model_representation/finite_autonoma/lexer_dfa.hpp"
-#include "model_representation/finite_autonoma/DfaTransition.hpp"
 
 #ifndef _LEXER_DFA_BUILDER_
 #define _LEXER_DFA_BUILDER_
@@ -42,30 +40,30 @@
 class lexer_dfa_builder
 {
 public:
-        lexer_dfa_builder() {}
-        ~lexer_dfa_builder() {}
+    lexer_dfa_builder() {}
+    ~lexer_dfa_builder() {}
 
-        bool addDfa(lexer_word_repr* word_base, const ApplyImmutableFunc<DfaTransition*>& applyObj) const
-        {
-                std::function<bool (const AggregateAndApplyFuncBase<DfaTransition*>*)> applyFunc =
-                        [&word_base,applyObj](const AggregateAndApplyFuncBase<DfaTransition*>* aggr)->bool
-                        {
-                                //adds to the word base, all InputAndDfaNode objects defined in args list
-                                for (int index = 0; index < applyObj.size(); index++)
-                                {
-                                        DfaTransition* stateInputAndDfa = applyObj.getAt(index);
-                                        word_base->add_next_dfa(*(stateInputAndDfa->getStateAndInput()), stateInputAndDfa->getDfaNode());
-                                }
+    bool addDfa(lexer_word_repr* word_base, const ApplyImmutableFunc<DfaTransition*>& applyObj) const
+    {
+        std::function<bool (const AggregateAndApplyFuncBase<DfaTransition*>*)> applyFunc =
+            [&word_base,applyObj](const AggregateAndApplyFuncBase<DfaTransition*>* aggr)->bool
+              {
+                  //adds to the word base, all InputAndDfaNode objects defined in args list
+                  for (size_t index = 0; index < applyObj.size(); index++)
+                  {
+                      DfaTransition* stateInputAndDfa = applyObj.getAt(index);
+                      word_base->add_next_dfa(*(stateInputAndDfa->getStateAndInput()), stateInputAndDfa->getDfaNode());
+                  }
 
-                                return true;
-                        };
+                  return true;
+              };
 
-                const bool wasSuccess = applyObj.apply(applyFunc);
+        const bool wasSuccess = applyObj.apply(applyFunc);
 
-                return wasSuccess;
-        }
+        return wasSuccess;
+    }
 
-        lexer_word_repr* mergeDfas(const std::vector<lexer_word_repr*>* words, DfaManager& dfaManager) const;
+    lexer_word_repr* mergeDfas(const std::vector<lexer_word_repr*>* words, DfaManager& dfaManager) const;
 };
 
 #endif

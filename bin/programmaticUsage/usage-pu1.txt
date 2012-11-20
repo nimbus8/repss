@@ -1,0 +1,18 @@
+/[rep(ss)] var=('one','mississippi','two mississippi','three mississippi, four!')
++    /[[_-_-_]]
++    /[[_---_]]
++    /[[-___-]]
++    /[[-_|_-]]
+/[/]
+
+An Eg:
+A short list of "People who don't like me":
+/[rep(ss)] this_person=('dairy','jacob','carrie','peter','meg','anne Laurie')
++    /[[this_person]] doesn't like my haircut. ~ Note to self: stay away from /[[this_person]] until it grows back.
+/[/]
+
+>> dairy doesn't like my haircut. ~ Note to self: stay away from [dairy] until it grows back.
+   jacob doesn't like my haircut. ~ Note to self: stay away from [jacob] until it grows back.
+   carrie doesn't like my haircut. ~ Note to self: stay away from [carrie] until it grows back.
+   ...
+   ...

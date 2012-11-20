@@ -18,20 +18,8 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-Keywords:obj-collection {
-    +elementName { Keyword }
+//unfinished, add to as necessary
 
-    @@ Example keywords -- To Delete @@
-    +reps { VARIABLE, PercentReps }
+//meant to holdtypedefs for 'everything' or almost everything below this level (the lexer module)
 
-    @@ Done Already @@
-    +reps.named_iteration { VARIABLE, Keyword_REPS_withNamedIteration }
-    +scope { VARIABLE, SquareBracketReps }
-    +alternation { TERMINAL, Alteration }
-    +evaluation { TERMINAL, Keyword_eval }
-    +general_end { TERMINAL, End }
-    +reps.named_list_iteration { VARIABLE, Keyword_REPS_withNamedListIteration }
-
-    +path { src/lib/includes/Genrtd_Keywords.hpp }
-}
-
+#include "construction/ConstructionTypedefs.hpp"

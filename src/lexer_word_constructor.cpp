@@ -35,42 +35,6 @@
 
 void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, char seq[], size_t seq_length);
 
-void lexer_word_constructor::_initWords()
-{
-    //the first in container is a pair with lexer_dfa accessible
-    //the second in container is a reminder for us to delete DfaTransitions when we're done
-
-    //reps with named iteration
-    auto repWordNamedIteration = _constructKeyword_REPS_withNamedIteration();
-    _words.push_back(repWordNamedIteration.first);
-    _dfaTransitions.push_back(repWordNamedIteration.second);
-
-    //scope todo:will change the method name
-    auto scopeWord = _constructSquareBracketReps();
-    _words.push_back(scopeWord.first);
-    _dfaTransitions.push_back(scopeWord.second);
-
-    //general end
-    auto endWord = _constructEnd();
-    _words.push_back(endWord.first);
-    _dfaTransitions.push_back(endWord.second);
-
-    //alternation
-    auto alterationWord = _constructAlteration();
-    _words.push_back(alterationWord.first);
-    _dfaTransitions.push_back(alterationWord.second);
-
-    //reps with named list iteration
-    auto repWordNamedList = _constructKeyword_REPS_withNamedListIteration();
-    _words.push_back(repWordNamedList.first);
-    _dfaTransitions.push_back(repWordNamedList.second);
-
-    //evaluation
-    auto repWordEvaluation = _constructKeyword_eval();
-    _words.push_back(repWordEvaluation.first);
-    _dfaTransitions.push_back(repWordEvaluation.second);
-}
-
 //oct 31: optimization with scanwords failed hard. it could be just the smallness and similarity of our
 //         base language constructs. May want to just wait for the language to reach 90%, and come back to this.
 //         still agree that scanwords needs to be there to hide internals, but question is whether it behave
