@@ -55,9 +55,10 @@ protected:
     const class KeywordsData
     {
     private:
-        const AbstrKeyword keywords[7] =
+        const AbstrKeyword keywords[8] =
           {
             AbstrKeyword{ "reps", GrammarType_t::VARIABLE },
+            AbstrKeyword{ "alteration.join", GrammarType_t::TERMINAL },
             AbstrKeyword{ "reps.named_iteration", GrammarType_t::VARIABLE },
             AbstrKeyword{ "scope", GrammarType_t::VARIABLE },
             AbstrKeyword{ "alternation", GrammarType_t::TERMINAL },
@@ -71,7 +72,7 @@ protected:
              return keywords[index];
         }
 
-        size_t getSize() const { return 7; }
+        size_t getSize() const { return 8; }
     } _data;
 
 };

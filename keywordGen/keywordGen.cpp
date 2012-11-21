@@ -551,7 +551,11 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
         auto objName = std::get<ID_INDEX_IN_OBJ_TUPLE>(obj);
         auto objType = std::get<TYPE_INDEX_IN_OBJ_TUPLE>(obj);
 
-        if (objName.compare("Keywords") == 0)
+        if (objName.compare("EmbeddedKeywords") == 0 && objType.compare("functions") == 0)
+        {
+
+        }
+        else if (objName.compare("Keywords") == 0 && objType.compare("obj-collection") == 0)
         {
             KeywordsTemplate keywordTemplate;
 
@@ -627,13 +631,21 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
                         keywordNamesAllAlpha.push_back(std::get<2>(detailTuple));
                     }
 
-                    auto lexerWordConstructorFileContents = keywordTemplate.generateAbstrLexerWordConstructorClass(keywordNamesAllAlpha);
+
+                    AbstrLexerWordConstructorTemplate lwcTemplate;
+                    auto lexerWordConstructorStartOfClass = lwcTemplate.generateStartOfClass();
+                    auto lexerWordConstructorInitAndWordFunctions = lwcTemplate.generateInitAndWordFunctions(keywordNamesAllAlpha);
+                    auto lexerWordConstructorEmbeddedFunctions = lwcTemplate.generateEmbeddedWordFunctions(keywordNamesAllAlpha);
+                    auto lexerWordConstructorEndOfClass = lwcTemplate.generateEndOfClass();
 
                     chmod(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, S_IRUSR | S_IWUSR);
 
                     FILE* lexerWordConstructorOutputFile = fopen(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, "wt");
 
-                    fputs(lexerWordConstructorFileContents.c_str(), lexerWordConstructorOutputFile);
+                    fputs(lexerWordConstructorStartOfClass.c_str(), lexerWordConstructorOutputFile);
+                    fputs(lexerWordConstructorInitAndWordFunctions.c_str(), lexerWordConstructorOutputFile);
+                    fputs(lexerWordConstructorEmbeddedFunctions.c_str(), lexerWordConstructorOutputFile);
+                    fputs(lexerWordConstructorEndOfClass.c_str(), lexerWordConstructorOutputFile);
 
                     fclose(lexerWordConstructorOutputFile);
                     chmod(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, S_IRUSR);

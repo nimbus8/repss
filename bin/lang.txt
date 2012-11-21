@@ -18,11 +18,25 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+@@ Keywords That Can Be Embedded In Other Keywords @@
+EmbeddedKeywords:functions
+{
+    @@ Done Already @@
+      +named_iteration { NamedList }
+      @@ rename to named_iteration
+      +named_repitition { NamedRepitition }
+
+    +path { }
+}
+
 Keywords:obj-collection {
     +elementName { Keyword }
 
     @@ Example keywords -- To Delete @@
     +reps { VARIABLE, PercentReps }
+
+    @@ To Implement @@
+    +alteration.join { TERMINAL, AlterationAndJoin }
 
     @@ Done Already @@
     +reps.named_iteration { VARIABLE, Keyword_REPS_withNamedIteration }

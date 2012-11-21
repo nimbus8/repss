@@ -57,10 +57,6 @@ class lexer_word_constructor : public AbstrLexerWordConstructor
 private:
     DfaManager dfaManager;      //dfa manager handles references, create/destroy fn pairs
 
-    //first phase of construction - language component definition & aggregation
-//    std::vector<word_start_and_aggregated_nodes_Pair_t> _words;
-//    std::vector<aggregated_transitions_ptr_t> _dfaTransitions;
-
     //second phase of construction - merging of aggregated language components
     lexer_word_repr* _startWordForMergedRepr;
 

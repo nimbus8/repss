@@ -27,7 +27,10 @@
 
 #include "../../utils/AggregatePtrsAndDelete.hpp"
 
-typedef std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*> word_start_and_aggregated_nodes_Pair_t;
+typedef lexer_dfa* lexer_dfa_ptr_t;
+typedef lexer_word_repr* lexer_word_repr_ptr_t;
+
+typedef std::pair <lexer_word_repr_ptr_t, AggregatePtrsAndDelete<lexer_dfa_ptr_t>*> word_start_and_aggregated_nodes_Pair_t;
 
 typedef AggregatePtrsAndDelete<DfaTransition*>* aggregated_transitions_ptr_t;
 

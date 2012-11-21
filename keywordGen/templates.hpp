@@ -57,7 +57,7 @@ public:
     KeywordsTemplate() {}
     ~KeywordsTemplate() {}
 
-    std::pair<std::string, std::string> generateClass(const std::string& collectionClassName, std::string& singularClassName)
+    std::pair<std::string, std::string> generateClass(const std::string& collectionClassName, std::string& singularClassName) const
     {
         auto toWriteStart = createCopyright();
         toWriteStart.append("\n//Should you modify this file? NO\n");
@@ -107,7 +107,7 @@ public:
         return std::pair<std::string,std::string>(toWriteStart, toWriteEnd);
     }
 
-    std::string generateKeywordsData(const std::vector<std::tuple<std::string, std::string, std::string>>& keywordDetails, std::string& singularName)
+    std::string generateKeywordsData(const std::vector<std::tuple<std::string, std::string, std::string>>& keywordDetails, std::string& singularName) const
     {
         auto numberOfKeywords = keywordDetails.size();
         std::string output("\nprotected:\n    const class KeywordsData\n    {\n    private:\n");
@@ -156,9 +156,13 @@ public:
 
         return output;
     }
+};
 
+class AbstrLexerWordConstructorTemplate
+{
+public:
     //construction AbstractClass - to be updated and enforced (AbstrLexerWordConstructor)
-    std::string generateAbstrLexerWordConstructorClass(const std::vector<std::string>& keywordNamesAlphaOnly)
+    std::string generateStartOfClass() const
     {
         //this is very specific
         //some keyword names are essentially compositions reps.named_iteration, which
@@ -184,6 +188,14 @@ public:
         output.append("    }\n");
 
         output.append("public:\n");
+
+        return output;
+    }
+
+    std::string generateInitAndWordFunctions(const std::vector<std::string>& keywordNamesAlphaOnly) const
+    {
+        std::string output;
+
         output.append("    void _initWords()\n");
         output.append("    {\n");
         output.append("        //the first in container is a pair with lexer_dfa accessible\n");
@@ -215,6 +227,26 @@ public:
             output.append("() = 0;\n");
         }
 
+        return output;
+    }
+
+    std::string generateEmbeddedWordFunctions(const std::vector<std::string>& embeddedFunctionNames) const
+    {
+        std::string output("\n");
+
+        for (auto embeddedFunctionName : embeddedFunctionNames)
+        {
+            output.append("    virtual wordrepr_and_transition_Pair_t __insert");
+            output.append(embeddedFunctionName);
+            output.append("ParamsDfa(lexer_dfa_ptr_t fromDfa, lexer_dfa_ptr_t toDfa, unsigned int tentativeNameKey) {}\n");
+        }
+
+        return output;
+    }
+
+    std::string generateEndOfClass() const
+    {
+        std::string output;
 
         output.append("};\n\n#endif\n");
 
