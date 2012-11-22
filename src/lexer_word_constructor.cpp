@@ -845,7 +845,7 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructEnd()
     return ret;
 }
 
-//__insertNamedRepitionParamsDfa(A,B);
+//__insertNamedRepititionParamsDfa(A,B);
 wordrepr_and_transition_Pair_t lexer_word_constructor::_constructKeyword_REPS_withNamedIteration()
 {
     const std::string WORD_NAME("repetition");
@@ -876,7 +876,7 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructKeyword_REPS_wi
     StateAndInput<int,char> stateInput6(ST_E,']');
     StateAndInput<int,char> stateInput6a(ST_E_a, ' ');
 
-    auto repititionPair = __insertNamedRepitionParamsDfa(E_a,F, tentativeNameKey);
+    auto repititionPair = __insertNamedRepititionParamsDfa(E_a,F, tentativeNameKey);
     auto E_b = repititionPair.first.first; //space after E_a
 
     StateAndInput<int,char> stateInput7(ST_ACCEPT, EMPTY_CHAR);
@@ -1096,7 +1096,7 @@ std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, Agg
     return ret;
 }
 
-wordrepr_and_transition_Pair_t lexer_word_constructor::__insertNamedRepitionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, unsigned int tentativeNameKey)
+wordrepr_and_transition_Pair_t lexer_word_constructor::__insertNamedRepititionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, unsigned int tentativeNameKey)
 {
     const std::string WORD_NAME("named_iteration");
     dfaManager.appendToTentativeName(tentativeNameKey, WORD_NAME);

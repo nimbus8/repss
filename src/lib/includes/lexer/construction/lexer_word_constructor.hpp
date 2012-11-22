@@ -65,26 +65,19 @@ private:
     ScanWordTransitionMap* _scanWordTransitionMap;
     ScanWords* _scanWords;
   
-    //intermediate functions for first phase
+    //intermediate functions for first phase (req. virtual fn's in AbstrLexerWordConstructor)
 
-    wordrepr_and_transition_Pair_t _constructAlterationAndJoin();
+    virtual wordrepr_and_transition_Pair_t _constructPercentReps();
+    virtual wordrepr_and_transition_Pair_t _constructSquareBracketReps();
+    virtual wordrepr_and_transition_Pair_t _constructEnd();
+    virtual wordrepr_and_transition_Pair_t _constructKeyword_REPS_withNamedIteration();
+    virtual wordrepr_and_transition_Pair_t _constructKeyword_REPS_withNamedListIteration();
+    virtual wordrepr_and_transition_Pair_t _constructKeyword_eval();
+    virtual wordrepr_and_transition_Pair_t _constructAlteration();
+    virtual wordrepr_and_transition_Pair_t _constructAlterationAndJoin();
 
-    //todo:will make something for this in keywordGen, maybe have it AUTOMATICALLY for EVERY keyword
-    wordrepr_and_transition_Pair_t __insertNamedRepitionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, unsigned int tentativeNameKey);
-    wordrepr_and_transition_Pair_t __insertNamedListParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, const unsigned int tentativeNameKey);
-
-
-
-   
-    //already in AbstrLexerWordConstructor
-    wordrepr_and_transition_Pair_t _constructPercentReps();
-    wordrepr_and_transition_Pair_t _constructSquareBracketReps();
-    wordrepr_and_transition_Pair_t _constructEnd();
-    wordrepr_and_transition_Pair_t _constructKeyword_REPS_withNamedIteration();
-    wordrepr_and_transition_Pair_t _constructKeyword_REPS_withNamedListIteration();
-    wordrepr_and_transition_Pair_t _constructKeyword_eval();
-    wordrepr_and_transition_Pair_t _constructAlteration();
-
+    virtual wordrepr_and_transition_Pair_t __insertNamedRepititionParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, unsigned int tentativeNameKey);
+    virtual wordrepr_and_transition_Pair_t __insertNamedListParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, const unsigned int tentativeNameKey);
 
     void _destructDfasAndTransitions();
 

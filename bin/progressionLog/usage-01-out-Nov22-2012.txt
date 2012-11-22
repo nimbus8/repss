@@ -1,0 +1,1673 @@
+./repss woot hoot usage-01.txt 
+== REPSS ==
+
+(input-stream): 
+a	b	c	d	e	f	
+
+(output-stream): 
+d	f	h	j	l	n	
+
+./repss
+abc==abc: 0 len(a): 3
+
+==%%: -1
+%==%%: -1
+woot==hoot: -1, len(a):4 len(b):4
+%%==%%: 0
+%!==%%: -1
+%%==%%: 0
+%%==%%: 0
+foo1: 1, foo2: 2
+CREATING end state mapping: endStateToName=(8=>repetition)
+
+Successfully appended 'named_iteration' to tentative end state name => 'repetition.named_iteration'
+
+
+
+
+
+
+
+
+
+Successfully constructed name=x:y
+Construction Test: (,k
+foobar=1:10 H
+?, 16)
+Starting state: 9, startingDfaId: 9
+search for a beginning: (state, seq,c): 9, 0, k
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'k' - DfaNode(9) ~ stateAndInput=(state, seq,c): (10, 1, 
+)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'
+' - DfaNode(9) ~ stateAndInput=(state, seq,c): (9, 2, f)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'f' - DfaNode(9) ~ stateAndInput=(state, seq,c): (10, 3, o)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'o' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 4, o)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'o' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 5, b)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'b' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 6, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'a' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 7, r)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'r' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 8, =)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'=' - DfaNode(10) ~ stateAndInput=(state, seq,c): (11, 9, 1)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'1' - DfaNode(11) ~ stateAndInput=(state, seq,c): (12, 10, :)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+':' - DfaNode(12) ~ stateAndInput=(state, seq,c): (14, 11, 1)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'1' - DfaNode(14) ~ stateAndInput=(state, seq,c): (15, 12, 0)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'0' - DfaNode(15) ~ stateAndInput=(state, seq,c): (15, 13,  )
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+found word!word=(repetition.named_iteration)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+
+
+
+
+
+
+
+Successfully constructed /[rep] var=x:y
+Construction Test: (,fyi/[rep] a=2:81 
+, 17)
+Starting state: 1, startingDfaId: 1
+search for a beginning: (state, seq,c): 1, 0, f
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 1, 1, y
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 1, 2, i
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 1, 3, /
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(1) ~ stateAndInput=(state, seq,c): (2, 4, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(2) ~ stateAndInput=(state, seq,c): (3, 5, r)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'r' - DfaNode(3) ~ stateAndInput=(state, seq,c): (4, 6, e)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'e' - DfaNode(4) ~ stateAndInput=(state, seq,c): (5, 7, p)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'p' - DfaNode(5) ~ stateAndInput=(state, seq,c): (6, 8, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+']' - DfaNode(6) ~ stateAndInput=(state, seq,c): (7, 9,  )
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+' ' - DfaNode(7) ~ stateAndInput=(state, seq,c): (9, 10, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'a' - DfaNode(9) ~ stateAndInput=(state, seq,c): (10, 11, =)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'=' - DfaNode(10) ~ stateAndInput=(state, seq,c): (11, 12, 2)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'2' - DfaNode(11) ~ stateAndInput=(state, seq,c): (12, 13, :)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+':' - DfaNode(12) ~ stateAndInput=(state, seq,c): (14, 14, 8)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'8' - DfaNode(14) ~ stateAndInput=(state, seq,c): (15, 15, 1)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'1' - DfaNode(15) ~ stateAndInput=(state, seq,c): (15, 16,  )
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+found word!word=(repetition.named_iteration)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+CREATING end state mapping: endStateToName=(24=>scope)
+
+
+
+
+
+
+
+
+Successfully constructed /[sco]
+Construction Test: (,k
+/[sco] H???, 10)
+Starting state: 17, startingDfaId: 17
+search for a beginning: (state, seq,c): 17, 0, k
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 17, 1, 
+
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 17, 2, /
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(17) ~ stateAndInput=(state, seq,c): (18, 3, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(18) ~ stateAndInput=(state, seq,c): (19, 4, s)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'s' - DfaNode(19) ~ stateAndInput=(state, seq,c): (20, 5, c)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'c' - DfaNode(20) ~ stateAndInput=(state, seq,c): (21, 6, o)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'o' - DfaNode(21) ~ stateAndInput=(state, seq,c): (22, 7, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+']' - DfaNode(22) ~ stateAndInput=(state, seq,c): (23, 8,  )
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+found word!word=(scope)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+CREATING end state mapping: endStateToName=(32=>alteration)
+
+
+
+
+Adding AnythingButTransition!
+
+Adding AnythingButTransition!
+
+Adding AnythingButTransition!
+
+
+Successfully constructed /[(a|l|t|e|r|n|a|t|i|o|n)]
+Construction Test: (,k
+?, 16)|d|e)] H&~???
+Starting state: 25, startingDfaId: 25
+search for a beginning: (state, seq,c): 25, 0, k
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 25, 1, 
+
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 25, 2, /
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(25) ~ stateAndInput=(state, seq,c): (26, 3, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(26) ~ stateAndInput=(state, seq,c): (27, 4, ()
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'(' - DfaNode(27) ~ stateAndInput=(state, seq,c): (28, 5, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'a' - DfaNode(28) ~ stateAndInput=(state, seq,c): (30, 6, |)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'|' - DfaNode(30) ~ stateAndInput=(state, seq,c): (29, 7, c)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'c' - DfaNode(29) ~ stateAndInput=(state, seq,c): (30, 8, |)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'|' - DfaNode(30) ~ stateAndInput=(state, seq,c): (29, 9, d)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'d' - DfaNode(29) ~ stateAndInput=(state, seq,c): (30, 10, |)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'|' - DfaNode(30) ~ stateAndInput=(state, seq,c): (29, 11, e)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'e' - DfaNode(29) ~ stateAndInput=(state, seq,c): (30, 12, ))
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+')' - DfaNode(30) ~ stateAndInput=(state, seq,c): (31, 13, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+found word!word=(alteration)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+CREATING end state mapping: endStateToName=(41=>evaluation)
+
+
+
+
+
+
+
+
+
+Successfully constructed /[[variable]]
+Construction Test: (,k
+/[[yabba_dab]]H???, 17)
+Starting state: 33, startingDfaId: 33
+search for a beginning: (state, seq,c): 33, 0, k
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 33, 1, 
+
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 33, 2, /
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(33) ~ stateAndInput=(state, seq,c): (34, 3, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(34) ~ stateAndInput=(state, seq,c): (35, 4, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(35) ~ stateAndInput=(state, seq,c): (36, 5, y)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'y' - DfaNode(36) ~ stateAndInput=(state, seq,c): (37, 6, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'a' - DfaNode(37) ~ stateAndInput=(state, seq,c): (37, 7, b)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'b' - DfaNode(37) ~ stateAndInput=(state, seq,c): (37, 8, b)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'b' - DfaNode(37) ~ stateAndInput=(state, seq,c): (37, 9, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'a' - DfaNode(37) ~ stateAndInput=(state, seq,c): (37, 10, _)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'_' - DfaNode(37) ~ stateAndInput=(state, seq,c): (39, 11, d)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'d' - DfaNode(39) ~ stateAndInput=(state, seq,c): (37, 12, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'a' - DfaNode(37) ~ stateAndInput=(state, seq,c): (37, 13, b)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'b' - DfaNode(37) ~ stateAndInput=(state, seq,c): (37, 14, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+']' - DfaNode(37) ~ stateAndInput=(state, seq,c): (40, 15, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+found word!word=(evaluation)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+CREATING end state mapping: endStateToName=(46=>general_end)
+
+
+
+
+Successfully constructed /[/] 
+Construction Test: (,fyi/[rep]HH/[/], 15)
+Starting state: 42, startingDfaId: 42
+search for a beginning: (state, seq,c): 42, 0, f
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 42, 1, y
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 42, 2, i
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 42, 3, /
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(42) ~ stateAndInput=(state, seq,c): (43, 4, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(43) ~ stateAndInput=(state, seq,c): (44, 5, r)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'r' - DfaNode(42) ~ stateAndInput=(state, seq,c): (42, 6, e)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'e' - DfaNode(42) ~ stateAndInput=(state, seq,c): (42, 7, p)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'p' - DfaNode(42) ~ stateAndInput=(state, seq,c): (42, 8, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+']' - DfaNode(42) ~ stateAndInput=(state, seq,c): (42, 9, H)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'H' - DfaNode(42) ~ stateAndInput=(state, seq,c): (42, 10, H)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'H' - DfaNode(42) ~ stateAndInput=(state, seq,c): (42, 11, /)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(42) ~ stateAndInput=(state, seq,c): (43, 12, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(43) ~ stateAndInput=(state, seq,c): (44, 13, /)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(44) ~ stateAndInput=(state, seq,c): (45, 14, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+found word!word=(general_end)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+CREATING end state mapping: endStateToName=(58=>repetition)
+
+Successfully appended 'named_list' to tentative end state name => 'repetition.named_list'
+
+
+
+
+
+Adding AnythingButTransition!
+
+
+
+Successfully constructed named=('l','i','s','t')
+Construction Test: (,k
+foobar=('a:1:8','abc')
+PLl?, 25)
+Starting state: 59, startingDfaId: 59
+search for a beginning: (state, seq,c): 59, 0, k
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'k' - DfaNode(59) ~ stateAndInput=(state, seq,c): (60, 1, 
+)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'
+' - DfaNode(59) ~ stateAndInput=(state, seq,c): (59, 2, f)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'f' - DfaNode(59) ~ stateAndInput=(state, seq,c): (60, 3, o)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'o' - DfaNode(60) ~ stateAndInput=(state, seq,c): (60, 4, o)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'o' - DfaNode(60) ~ stateAndInput=(state, seq,c): (60, 5, b)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'b' - DfaNode(60) ~ stateAndInput=(state, seq,c): (60, 6, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'a' - DfaNode(60) ~ stateAndInput=(state, seq,c): (60, 7, r)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'r' - DfaNode(60) ~ stateAndInput=(state, seq,c): (60, 8, =)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'=' - DfaNode(60) ~ stateAndInput=(state, seq,c): (61, 9, ()
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'(' - DfaNode(61) ~ stateAndInput=(state, seq,c): (62, 10, ')
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+''' - DfaNode(62) ~ stateAndInput=(state, seq,c): (63, 11, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'a' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 12, :)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+':' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 13, 1)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'1' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 14, :)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+':' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 15, 8)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'8' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 16, ')
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+''' - DfaNode(63) ~ stateAndInput=(state, seq,c): (64, 17, ,)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+',' - DfaNode(64) ~ stateAndInput=(state, seq,c): (65, 18, ')
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+''' - DfaNode(65) ~ stateAndInput=(state, seq,c): (63, 19, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'a' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 20, b)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'b' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 21, c)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'c' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 22, ')
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+''' - DfaNode(63) ~ stateAndInput=(state, seq,c): (64, 23, ))
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+found word!word=(repetition.named_list)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+
+
+
+
+
+
+
+
+
+
+
+Successfully constructed /[rep(ss)] var=('e','l','e','m','e','n','t','s')
+Construction Test: (,fyi/[rep(ss)] a=('8') , 22)
+Starting state: 47, startingDfaId: 47
+search for a beginning: (state, seq,c): 47, 0, f
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 47, 1, y
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 47, 2, i
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 47, 3, /
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(47) ~ stateAndInput=(state, seq,c): (48, 4, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(48) ~ stateAndInput=(state, seq,c): (49, 5, r)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'r' - DfaNode(49) ~ stateAndInput=(state, seq,c): (50, 6, e)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'e' - DfaNode(50) ~ stateAndInput=(state, seq,c): (51, 7, p)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'p' - DfaNode(51) ~ stateAndInput=(state, seq,c): (52, 8, ()
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'(' - DfaNode(52) ~ stateAndInput=(state, seq,c): (53, 9, s)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'s' - DfaNode(53) ~ stateAndInput=(state, seq,c): (54, 10, s)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'s' - DfaNode(54) ~ stateAndInput=(state, seq,c): (55, 11, ))
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+')' - DfaNode(55) ~ stateAndInput=(state, seq,c): (56, 12, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+']' - DfaNode(56) ~ stateAndInput=(state, seq,c): (57, 13,  )
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+' ' - DfaNode(57) ~ stateAndInput=(state, seq,c): (59, 14, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'a' - DfaNode(59) ~ stateAndInput=(state, seq,c): (60, 15, =)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'=' - DfaNode(60) ~ stateAndInput=(state, seq,c): (61, 16, ()
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'(' - DfaNode(61) ~ stateAndInput=(state, seq,c): (62, 17, ')
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+''' - DfaNode(62) ~ stateAndInput=(state, seq,c): (63, 18, 8)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'8' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 19, ')
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+''' - DfaNode(63) ~ stateAndInput=(state, seq,c): (64, 20, ))
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+found word!word=(repetition.named_list)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Pushing back dfa to mergeDfas parameter: dfa(1)
+Pushing back dfa to mergeDfas parameter: dfa(17)
+Pushing back dfa to mergeDfas parameter: dfa(25)
+Pushing back dfa to mergeDfas parameter: dfa(33)
+Pushing back dfa to mergeDfas parameter: dfa(42)
+Pushing back dfa to mergeDfas parameter: dfa(47)
+
+Merging dfas to one, words size: 6
+0x7ff3b8c001b0
+1
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+0x7ff3b8c00e80
+17
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+0x7ff3b8c013d0
+25
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+0x7ff3b8c00bd0
+33
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+0x7ff3b8c024b0
+42
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+0x7ff3b8c017a0
+47
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+Merge Process: 6 jobs total
+Processing Job line #0
+There are 1 in job vector. Processing Job #1
+is there nextDfaPtr? no0x0
+::adding transition([1, '/']->2) to dfa(66)
+Processing Job line #1
+There are 1 in job vector. Processing Job #2
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
+is there nextDfaPtr? yes0x7ff3b8c001f0
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #2
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
+is there nextDfaPtr? yes0x7ff3b8c00000
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #2
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(3,r, ranged?(no)>, dfa-id(4))	- hash(885)
+is there nextDfaPtr? no0x0
+::adding transition([19, 's']->20) to dfa(3)
+Processing Job line #2
+There are 1 in job vector. Processing Job #3
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
+is there nextDfaPtr? yes0x7ff3b8c001f0
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #3
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
+is there nextDfaPtr? yes0x7ff3b8c00000
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #3
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(19,s, ranged?(no)>, dfa-id(20))	- hash(4998)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(3,r, ranged?(no)>, dfa-id(4))	- hash(885)
+is there nextDfaPtr? no0x0
+::adding transition([27, '(']->28) to dfa(3)
+Processing Job line #3
+There are 1 in job vector. Processing Job #4
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
+is there nextDfaPtr? yes0x7ff3b8c001f0
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #4
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
+is there nextDfaPtr? yes0x7ff3b8c00000
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #4
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(27,(, ranged?(no)>, dfa-id(28))	- hash(6979)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(19,s, ranged?(no)>, dfa-id(20))	- hash(4998)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(3,r, ranged?(no)>, dfa-id(4))	- hash(885)
+is there nextDfaPtr? no0x0
+::adding transition([35, '[']->36) to dfa(3)
+Processing Job line #4
+There are 1 in job vector. Processing Job #5
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
+is there nextDfaPtr? yes0x7ff3b8c001f0
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #5
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
+is there nextDfaPtr? yes0x7ff3b8c00000
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #5
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(35,[, ranged?(no)>, dfa-id(36))	- hash(9086)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(27,(, ranged?(no)>, dfa-id(28))	- hash(6979)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(19,s, ranged?(no)>, dfa-id(20))	- hash(4998)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(3,r, ranged?(no)>, dfa-id(4))	- hash(885)
+is there nextDfaPtr? no0x0
+::adding transition([44, '/']->45) to dfa(3)
+Processing Job line #5
+There are 1 in job vector. Processing Job #6
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
+is there nextDfaPtr? yes0x7ff3b8c001f0
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #6
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
+is there nextDfaPtr? yes0x7ff3b8c00000
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #6
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(35,[, ranged?(no)>, dfa-id(36))	- hash(9086)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(27,(, ranged?(no)>, dfa-id(28))	- hash(6979)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(19,s, ranged?(no)>, dfa-id(20))	- hash(4998)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(44,/, ranged?(no)>, dfa-id(45))	- hash(11355)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(3,r, ranged?(no)>, dfa-id(4))	- hash(885)
+is there nextDfaPtr? yes0x7ff3b8c00060
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #6
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(4,e, ranged?(no)>, dfa-id(5))	- hash(1129)
+is there nextDfaPtr? yes0x7ff3b8c00230
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #6
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(5,p, ranged?(no)>, dfa-id(6))	- hash(1397)
+is there nextDfaPtr? yes0x7ff3b8c002b0
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #6
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(6,], ranged?(no)>, dfa-id(7))	- hash(1635)
+is there nextDfaPtr? no0x0
+::adding transition([52, '(']->53) to dfa(6)
+Finished jobs!
+
+Starting Merged Representation Test
+-----------------------------------
+Merged Word Repr Test: done ALL search while loops in 143.902 milliseconds
+
+src/lib/includes/lexer/construction/lexer_word_constructor.hpp 108:Merge Test SUCCEEDED!
+
+Constructing ScanWords
+......................
+
+Popped back from 'nodesToBeInitd': node{ id=(66)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(2)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(3)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(35,[, ranged?(no)>, dfa-id(36))	- hash(9086)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(27,(, ranged?(no)>, dfa-id(28))	- hash(6979)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(19,s, ranged?(no)>, dfa-id(20))	- hash(4998)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(44,/, ranged?(no)>, dfa-id(45))	- hash(11355)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(3,r, ranged?(no)>, dfa-id(4))	- hash(885)
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(4)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(4,e, ranged?(no)>, dfa-id(5))	- hash(1129)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(5)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(5,p, ranged?(no)>, dfa-id(6))	- hash(1397)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(6)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(52,(, ranged?(no)>, dfa-id(53))	- hash(13404)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(6,], ranged?(no)>, dfa-id(7))	- hash(1635)
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(7)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(7, , ranged?(no)>, dfa-id(9))	- hash(1831)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(9)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(9,n, ranged?(yes)>, dfa-id(10))	- hash(4736)
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(10)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(10,=, ranged?(no)>, dfa-id(11))	- hash(2631)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(10,n, ranged?(yes)>, dfa-id(10))	- hash(5250)
+	isRangedTransition=false
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(11)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(11,0, ranged?(yes)>, dfa-id(13))	- hash(5702)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(11,1, ranged?(yes)>, dfa-id(12))	- hash(5703)
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(12)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(12,:, ranged?(no)>, dfa-id(14))	- hash(3142)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(12,1, ranged?(yes)>, dfa-id(12))	- hash(6217)
+	isRangedTransition=false
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(14)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(14,0, ranged?(yes)>, dfa-id(16))	- hash(7244)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(14,1, ranged?(yes)>, dfa-id(15))	- hash(7245)
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(15)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(15, , ranged?(no)>, dfa-id(8))	- hash(3887)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(15,
+, ranged?(no)>, dfa-id(8))	- hash(3865)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(15,2, ranged?(yes)>, dfa-id(15))	- hash(7760)
+	isRangedTransition=false
+	isRangedTransition=false
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(8)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(16)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(16,
+, ranged?(no)>, dfa-id(8))	- hash(4122)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(16, , ranged?(no)>, dfa-id(8))	- hash(4144)
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(13)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(13,:, ranged?(no)>, dfa-id(14))	- hash(3399)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(53)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(53,s, ranged?(no)>, dfa-id(54))	- hash(13736)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(54)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(54,s, ranged?(no)>, dfa-id(55))	- hash(13993)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(55)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(55,), ranged?(no)>, dfa-id(56))	- hash(14176)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(56)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(56,], ranged?(no)>, dfa-id(57))	- hash(14485)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(57)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(57, , ranged?(no)>, dfa-id(59))	- hash(14681)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(59)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(59,2, ranged?(yes)>, dfa-id(60))	- hash(30376)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(59,n, ranged?(yes)>, dfa-id(60))	- hash(30436)
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(60)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(60,=, ranged?(no)>, dfa-id(61))	- hash(15481)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(60,2, ranged?(yes)>, dfa-id(60))	- hash(30890)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(60,n, ranged?(yes)>, dfa-id(60))	- hash(30950)
+	isRangedTransition=false
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(61)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(61,(, ranged?(no)>, dfa-id(62))	- hash(15717)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(61, , ranged?(no)>, dfa-id(61))	- hash(15709)
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(62)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(62,', ranged?(no)>, dfa-id(63))	- hash(15973)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(63)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(63,', ranged?(no)>, dfa-id(64))	- hash(16230)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 121:
+	(63,', ranged?(no)>, dfa-id(63))
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(64)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(64,), ranged?(no)>, dfa-id(58))	- hash(16489)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(64,', ranged?(no)>, dfa-id(63))	- hash(16487)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(64,,, ranged?(no)>, dfa-id(65))	- hash(16492)
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(65)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(65,', ranged?(no)>, dfa-id(63))	- hash(16744)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(58)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(45)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(45,], ranged?(no)>, dfa-id(46))	- hash(11658)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(46)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(20)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(20,c, ranged?(no)>, dfa-id(21))	- hash(5239)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(21)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(21,o, ranged?(no)>, dfa-id(22))	- hash(5508)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(22)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(22,], ranged?(no)>, dfa-id(23))	- hash(5747)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(23)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(23, , ranged?(no)>, dfa-id(24))	- hash(5943)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(24)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(28)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(28,), ranged?(no)>, dfa-id(31))	- hash(7237)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(28,|, ranged?(no)>, dfa-id(29))	- hash(7320)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 121:
+	(28,|, ranged?(no)>, dfa-id(30))
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(30)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(30,), ranged?(no)>, dfa-id(31))	- hash(7751)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(30,|, ranged?(no)>, dfa-id(29))	- hash(7834)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 121:
+	(30,|, ranged?(no)>, dfa-id(30))
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(29)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(29,
+, ranged?(no)>, dfa-id(29))	- hash(7463)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 121:
+	(29,|, ranged?(no)>, dfa-id(30))
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(31)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(31,], ranged?(no)>, dfa-id(32))	- hash(8060)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(32)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(36)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(36,n, ranged?(yes)>, dfa-id(37))	- hash(18614)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(36,_, ranged?(no)>, dfa-id(39))	- hash(9347)
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(39)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(39,2, ranged?(yes)>, dfa-id(38))	- hash(20096)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(39,], ranged?(no)>, dfa-id(40))	- hash(10116)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(39,n, ranged?(yes)>, dfa-id(37))	- hash(20156)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(39,_, ranged?(no)>, dfa-id(39))	- hash(10118)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(39,-, ranged?(no)>, dfa-id(39))	- hash(10068)
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+	isRangedTransition=false
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(40)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(40,], ranged?(no)>, dfa-id(41))	- hash(10373)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(41)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(38)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(38,_, ranged?(no)>, dfa-id(39))	- hash(9861)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(38,-, ranged?(no)>, dfa-id(39))	- hash(9811)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(38,], ranged?(no)>, dfa-id(40))	- hash(9859)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(38,n, ranged?(yes)>, dfa-id(37))	- hash(19642)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(38,2, ranged?(yes)>, dfa-id(38))	- hash(19582)
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(37)}
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(37,], ranged?(no)>, dfa-id(40))	- hash(9602)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(37,_, ranged?(no)>, dfa-id(39))	- hash(9604)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(37,-, ranged?(no)>, dfa-id(39))	- hash(9554)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(37,2, ranged?(yes)>, dfa-id(38))	- hash(19068)
+src/lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(37,n, ranged?(yes)>, dfa-id(37))	- hash(19128)
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Beginning ScanWord Test
+
+Starting Scan Words Test
+------------------------
+ScanWordTest: done ALL search while loops in 182.515 milliseconds
+
+--Scan Word Test Result: Success
+Done Scan Word Test - result:1
+initLexerDataProxyImpl:: just about to initialize lexer data proxy with const cast
+src/lib/includes/lexer/lexer_manager.hpp 62:Initialized Lexer Data Proxy Successfully.
+Successfully Intialized LexerManager
+src/repss.cpp 216:past lexer manager creation.
+getDfaManager()
+getScanWordTransitionMap()
+getRecognizedKeywords()
+
+
+Scanning: done scanning in 2.322 milliseconds
+CtxMan TypedContext <> setAnnotatedData
+Setting annotated data with vector size = 186
+
+Printing Annotated Data
+CtxMan TypedContext <> printAnnotatedData
+{data_line:/*}
+{data_line: REPSS}
+{data_line: Copyright (C) 2012  Khalique Williams}
+{data_line:empty_str}
+{data_line: This file is part of REPSS.}
+{data_line:empty_str}
+{data_line: REPSS is free software: you can redistribute it and/or modify}
+{data_line: it under the terms of the   GNU General Public License as published by}
+{data_line: the Free Software Foundation, either version 3 of the License, or}
+{data_line: (at your option) any later version.}
+{data_line:empty_str}
+{data_line: REPSS is distributed in the hope that it will be useful,}
+{data_line: but WITHOUT ANY WARRANTY; without even the implied warranty of}
+{data_line: MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}
+{data_line: GNU General Public License for more details.}
+{data_line:empty_str}
+{data_line: You should have received a copy of the GNU General Public License}
+{data_line: along with REPSS.  If not, see <http://www.gnu.org/licenses/>.}
+{data_line: */}
+{data_line:empty_str}
+{data_line:empty_str}
+{data_line:- then it hit me, every story I'd ever }
+{key_word:alteration=<'/[(heard|read)]'>}
+{data_line: was exactly the same. You'd think I'd be outraged}
+{data_line:But no, I wasn't bothered, how could I be? Besides the devil's in the details, }
+{data_line:and boy that }
+{key_word:alteration=<'/[(guy| m************r)]'>}
+{data_line:'s a drama queen. }
+{key_word:alteration=<'/[(I swear it|It)]'>}
+{data_line:'s every little thing }
+{data_line:with }
+{key_word:alteration=<'/[(him|this guy)]'>}
+{data_line:, you won't hear the end of it - nor should you if the pages fall }
+{data_line:anywhere short of inspiring }
+{key_word:alteration=<'/[(and|or)]'>}
+{data_line: insightful. How many books have you put down? Obviously not enough.}
+{data_line:empty_str}
+{data_line:empty_str}
+{data_line:empty_str}
+{data_line:Though I imagine the man or woman who makes their living writing fiction must have a }
+{key_word:alteration=<'/[(terrible|gawd awful)]'>}
+{data_line:empty_str}
+{data_line:time trying to }
+{key_word:alteration=<'/[(figure out|flesh out)]'>}
+{data_line: simple things like how to bring }
+{data_line:people into a scene, kick them out, and have others }
+{key_word:alteration=<'/[(|just)]'>}
+{data_line: pass through }
+{key_word:alteration=<'/[(|inconspicuously)]'>}
+{data_line: without boring the reader.  No bunny likes pedantry [1]. Not while their }
+{data_line:"hopped" up on caffeine, no. Silly bunnies, when caught once with caffeine they claimed dislexia}
+{data_line:- and got off.}
+{data_line:empty_str}
+{data_line:empty_str}
+{data_line:....}
+{data_line:As she casually led me from one end to the other of this sunny apartment, I remember I had nearly dozed off.}
+{data_line:Somewhere after her stern caution to me that I'M NOT TO PAINT THE WALLS, }
+{key_word:alteration=<'/[(a sudden worry that the lengthy elevator up and down would prove too much. 2 minutes both ways, everyday, sometimes twice, lets say half th- | I began to wonder whether I'd be able to stomach the long elevaor up.)]'>}
+{data_line:.}
+{data_line:I was sure this time she wanted to tell me }
+{key_word:alteration=<'/[(not|never)]'>}
+{data_line: to drink from the carton and to use only fine cutlery. She}
+{data_line:was tapping at the bottom of this crystal mug that sat in the middle of the sink. }
+{data_line:<<Did you hear what I just said?>>   }
+{data_line:No.}
+{data_line:<<Huh? Sorry, ugh there's a dishwasher, yes?>>}
+{data_line:<<Like I said, only take this off when your washing up. There's some spray underneath.>>}
+{data_line:I had given myself away, of course.  Oh and she laaauugghed! Like she always does, at every new}
+{data_line:immigrant and import to the city where the rodents outnumber the population tenfold in every alley and }
+{data_line:undiscovered crevice. How they  managed to cover up that }
+{key_word:alteration=<'/[(it|the infestation)]'>}
+{data_line: had become the cities }
+{data_line:third leading cause of }
+{key_word:alteration=<'/[(hospitalization|death)]'>}
+{data_line:, I don't know.  I met a nurse who claimed they'd often couple }
+{data_line:it with heart disease and lung failure for lack of }
+{key_word:alteration=<'/[(any specific|a)]'>}
+{data_line: nationally recognized category. }
+{data_line:I thought she may have been short for conversation. But no, it was true, and need only be evidenced by }
+{data_line:the ambulances and the haunting hollering of the dogs, followed by the hollering of their owners on what}
+{data_line:seemed like every second tuesday somewhere in our building.}
+{data_line:We held our breath and covered our ears outside and prayed for those trampled underfoot - as the worse}
+{data_line:was yet to come for them and the fire department was never quite quick enough. Sadly they would do more good }
+{data_line:had they run through several more red lights, and with that taken a dozen other folks underneath them, in response.}
+{data_line:Such the was the sad irony of this oft occuring madness. And once you'd seen one of these Infestivals the }
+{data_line:Convential Wisdom was etched into your mind forever: 'Just Cover The Hole And Force The Moth*********'s }
+{data_line:Through The Cracks In The }
+{key_word:alteration=<'/[(Floorboard | Hardwood floors)]'>}
+{data_line:' - which, apparently as a whole is known to}
+{data_line:be a much greater rate limiting factor. I shuddered.  Suddenly the charm wore off. I started to smell }
+{data_line:the fish and didn't like it. But still she tried to convince me that this was a whole lot better than }
+{data_line:anywhere else.}
+{data_line:<<What made this }
+{key_word:alteration=<'/[(dirty|decrepit)]'>}
+{data_line: little corner so much better than }
+{key_word:alteration=<'/[(the next | anywhere else)]'>}
+{data_line:?>>, I asked.}
+{data_line:This was the first time that I'd heard here it, so powerful and full of pride like the roar of lion. }
+{data_line:It was to be my official welcome; she pointed to a spot out the window }
+{key_word:alteration=<'/[(with emphasis|dramitically)]'>}
+{data_line: }
+{key_word:alteration=<'/[(adding a| with a resounding)]'>}
+{data_line: }
+{data_line:flurry of expletives I half understood. I traced an arrow from that bawny finger of hers over the padded}
+{data_line:cot, and past }
+{key_word:alteration=<'/[(the toilet of fully exposed plumbing | the toilet with it's plumbing fully exposed)]'>}
+{data_line: }
+{data_line:out through this bright and }
+{key_word:alteration=<'/[(brilliant | magnificent)]'>}
+{data_line: 12th story window all the way to the peak of }
+{data_line:Ellis Island. One can}
+{key_word:alteration=<'/[(\'t help but| only)]'>}
+{data_line: dream-up images of a people not unlike ourselves, in a time}
+{data_line:not unlike the present, without asking 'Where Had They Went?'. It was like they had all stood up for an }
+{data_line:instant and collapsed.}
+{key_word:alteration=<'/[(And the mudd rippled like water. | Sending ripples of concetric circles through the mudd like a drop of rain in a lake.)]'>}
+{data_line:empty_str}
+{data_line:I thought perhaps }
+{key_word:alteration=<'/[(just maybe|by chance)]'>}
+{data_line: we were built from the same stuff and it followed that we}
+{data_line:might carry }
+{key_word:alteration=<'/[(|with us)]'>}
+{data_line: their essence - along with their struggles, their debt, their hopes and dreams, and }
+{data_line:those tiny fragments of ineffable joy }
+{key_word:alteration=<'/[(scattered|sprinkled)]'>}
+{data_line: inbetween the rocks and buoys. }
+{data_line:What brand of apathy would they smoke and teach their children if any? Squarely in the midst of a vivid }
+{data_line:experience, I tried }
+{key_word:alteration=<'/[(finding|to find)]'>}
+{data_line: myself amoungst the lines of the elderly, the graduates, the }
+{data_line:swindlers, the mothers tending to coughing children and their fathers - but I was interrupted. Her }
+{data_line:pointed finger lowered to the exposed pipe }
+{key_word:alteration=<'/[(protruding|coming)]'>}
+{data_line: out from the floorboard }
+{data_line:; the one resembling the trunk of an old }
+{key_word:alteration=<'/[(oak|tree)]'>}
+{data_line: chopped waist high, and covered with moss. }
+{data_line:I'd be remiss, also, not to mention the matching green tub }
+{key_word:alteration=<'/[(right beside it | to left of it | just to the right of it)]'>}
+{data_line:. }
+{data_line:<<Those 'ill do ya. Another glass and cover that one with as large a condom as }
+{key_word:alteration=<'/[(possible|you can find)]'>}
+{data_line:>>, she said crudely.}
+{data_line:I had seen }
+{key_word:alteration=<'/[(the two | the pair | them)]'>}
+{data_line: before, no doubt. I wouldn't admit it to myself, or to }
+{data_line:anyone else }
+{key_word:alteration=<'/[(had they asked|for that matter)]'>}
+{data_line:, that they were the only reason why I liked the place.}
+{data_line:These two objects stood out and belonged together, inseperably tied together by a plumbing seen and }
+{key_word:alteration=<'/[(out of sight|unseen)]'>}
+{data_line:, }
+{key_word:alteration=<'/[(which made | making|and made)]'>}
+{data_line: this narrow corridor much more than an enclosed space }
+{key_word:alteration=<'/[(clustered|littered|sparsley littered)]'>}
+{data_line: with the usual standing assortment of }
+{key_word:alteration=<'/[(|common)]'>}
+{data_line: modern-day 'necessities', and into a home. They called out to me, about as strongly as I imagine the earth does from}
+{data_line:this elevation. }
+{key_word:alteration=<'/[(In confidence, I admit I had visions of a sort; | And I'll admit /[(to having|I had)]'>}
+{data_line: )]}
+{data_line:open-eye hallucinations of a short round-bellied italian }
+{key_word:alteration=<'/[(|man)]'>}
+{data_line: dressed in blue overalls who'd}
+{key_word:alteration=<'/[(spring up|leap|jump)]'>}
+{data_line: out from the mouth of this green pillar with }
+{key_word:alteration=<'/[(|much)]'>}
+{data_line: vigour }
+{key_word:alteration=<'/[(and|then)]'>}
+{data_line: shake himself dry.}
+{data_line:He'd }
+{key_word:alteration=<'/[(soil|dirty)]'>}
+{data_line: my curtains, but you couldn't stay angry at the guy - salt of the earth really. }
+{data_line:I felt inclined to help him. Overlooking much of Manahttan, I would counsel him through this grief; assuring M that he could certainly do a hellofalot better -  hoping that 'it' and where his travels had led him,}
+{data_line:would spark some }
+{key_word:alteration=<'/[(brand|sort)]'>}
+{data_line: of all-encompassing epiphany, and that perhaps he'd share, for I too had}
+{data_line:become the worse for wear.}
+{data_line:I still don't know why I rented the place when I did, I didn't sleep - much less live - there for a good}
+{data_line:3 months until I'd made certain that I was indeed the envy of all my friends - who were living in the }
+{data_line:worst of conditions and for a price that would exhaust a shieks fortune (in little under a year). }
+{data_line:Oh and I should tell you about the area I live in!}
+{data_line:Georgious. Lenny from down the hall said a famous singer might live }
+{key_word:alteration=<'/[(3|4)]'>}
+{data_line: floors up. I wouldn't doubt it.}
+{data_line:empty_str}
+
+Finished printing anotated data
+Destroying Dfa id(0x7ff3b8c017a0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c017e0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c025f0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c02630) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c02670) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c027b0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c027f0) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x10ca008b0) the RIGHT way.
+Destroying Dfa Transition id(0x10ca00a00) the RIGHT way.
+Destroying Dfa Transition id(0x10ca00a10) the RIGHT way.
+Destroying Dfa Transition id(0x10ca00a20) the RIGHT way.
+Destroying Dfa Transition id(0x10ca00a30) the RIGHT way.
+Destroying Dfa Transition id(0x10ca00a80) the RIGHT way.
+Destroying Dfa Transition id(0x10ca00a90) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x7ff3b8c024b0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c024f0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c02530) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c02570) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c025b0) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7ff3b8c01ef0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01f60) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01fa0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01fe0) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x7ff3b8c00bd0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c00ec0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c00f00) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c00f40) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c00f80) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c01d00) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c01d40) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7ff3b8c007e0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00c40) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00c80) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c018d0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c019a0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01850) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01860) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01e60) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01e70) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01ed0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01920) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01930) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01e30) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01e40) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01e50) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01e80) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01e90) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01ea0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01eb0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01ec0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01ee0) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+setting member (7) to null
+setting member (8) to null
+setting member (9) to null
+setting member (10) to null
+setting member (11) to null
+setting member (12) to null
+setting member (13) to null
+setting member (14) to null
+setting member (15) to null
+setting member (16) to null
+setting member (17) to null
+setting member (18) to null
+setting member (19) to null
+setting member (20) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x7ff3b8c013d0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c01410) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c01450) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c01490) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c014d0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c01510) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c01550) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c015f0) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+setting member (7) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7ff3b8c000a0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c006f0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c011c0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00450) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01270) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c012f0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00490) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c01230) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00ba0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00bb0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00bc0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c012b0) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+setting member (7) to null
+setting member (8) to null
+setting member (9) to null
+setting member (10) to null
+setting member (11) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x7ff3b8c00e80) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c00fc0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c01000) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c01040) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c01080) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c010c0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c01100) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7ff3b8c00730) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00ce0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00d20) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00d60) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00da0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00cc0) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x7ff3b8c001b0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c001f0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c00000) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c00060) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c00230) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c002b0) the RIGHT way.
+Destroying Dfa id(0x7ff3b8c002f0) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7ff3b8c007b0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00670) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00840) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c008a0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00900) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c00940) the RIGHT way.
+Destroying Dfa Transition id(0x7ff3b8c009e0) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+setting member (7) to null
+setting member (8) to null
+setting member (9) to null
+setting member (10) to null
+setting member (11) to null
+setting member (12) to null
+setting member (13) to null
+setting member (14) to null
+setting member (15) to null
+setting member (16) to null
+setting member (17) to null
+setting member (18) to null
+setting member (19) to null
+setting member (20) to null
+setting member (21) to null
+setting member (22) to null
+setting member (23) to null
+setting member (24) to null
+setting member (25) to null
+setting member (26) to null
+setting member (27) to null
+setting member (28) to null
+setting member (29) to null
+setting member (30) to null
+setting member (31) to null
+setting member (32) to null
+setting member (33) to null
+setting member (34) to null
+setting member (35) to null
+setting member (36) to null
+setting member (37) to null
+setting member (38) to null
+setting member (39) to null
+setting member (40) to null
+setting member (41) to null
+setting member (42) to null
+setting member (43) to null
+setting member (44) to null
+setting member (45) to null
+setting member (46) to null
+deleting array with delete[]
+src/lib/includes/lexer/construction/lexer_word_constructor.hpp 129:Successfully Deleted ScanWords!
+src/lib/includes/lexer/construction/lexer_word_constructor.hpp 131:Sucessfully deleted lexer word constructor!
+

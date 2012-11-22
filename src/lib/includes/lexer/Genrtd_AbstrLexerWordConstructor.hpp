@@ -39,14 +39,6 @@ public:
         //the first in container is a pair with lexer_dfa accessible
         //the second in container is a reminder for us to delete DfaTransitions when we're done
 
-        auto aPercentRepsWord = _constructPercentReps();
-        _words.push_back(aPercentRepsWord.first);
-        _dfaTransitions.push_back(aPercentRepsWord.second);
-
-        auto aAlterationAndJoinWord = _constructAlterationAndJoin();
-        _words.push_back(aAlterationAndJoinWord.first);
-        _dfaTransitions.push_back(aAlterationAndJoinWord.second);
-
         auto aKeyword_REPS_withNamedIterationWord = _constructKeyword_REPS_withNamedIteration();
         _words.push_back(aKeyword_REPS_withNamedIterationWord.first);
         _dfaTransitions.push_back(aKeyword_REPS_withNamedIterationWord.second);
@@ -72,8 +64,6 @@ public:
         _dfaTransitions.push_back(aKeyword_REPS_withNamedListIterationWord.second);
     }
 
-    virtual wordrepr_and_transition_Pair_t _constructPercentReps() = 0;
-    virtual wordrepr_and_transition_Pair_t _constructAlterationAndJoin() = 0;
     virtual wordrepr_and_transition_Pair_t _constructKeyword_REPS_withNamedIteration() = 0;
     virtual wordrepr_and_transition_Pair_t _constructSquareBracketReps() = 0;
     virtual wordrepr_and_transition_Pair_t _constructAlteration() = 0;
@@ -81,14 +71,8 @@ public:
     virtual wordrepr_and_transition_Pair_t _constructEnd() = 0;
     virtual wordrepr_and_transition_Pair_t _constructKeyword_REPS_withNamedListIteration() = 0;
 
-    virtual wordrepr_and_transition_Pair_t __insertPercentRepsParamsDfa(lexer_dfa_ptr_t fromDfa, lexer_dfa_ptr_t toDfa, unsigned int tentativeNameKey) {}
-    virtual wordrepr_and_transition_Pair_t __insertAlterationAndJoinParamsDfa(lexer_dfa_ptr_t fromDfa, lexer_dfa_ptr_t toDfa, unsigned int tentativeNameKey) {}
-    virtual wordrepr_and_transition_Pair_t __insertKeyword_REPS_withNamedIterationParamsDfa(lexer_dfa_ptr_t fromDfa, lexer_dfa_ptr_t toDfa, unsigned int tentativeNameKey) {}
-    virtual wordrepr_and_transition_Pair_t __insertSquareBracketRepsParamsDfa(lexer_dfa_ptr_t fromDfa, lexer_dfa_ptr_t toDfa, unsigned int tentativeNameKey) {}
-    virtual wordrepr_and_transition_Pair_t __insertAlterationParamsDfa(lexer_dfa_ptr_t fromDfa, lexer_dfa_ptr_t toDfa, unsigned int tentativeNameKey) {}
-    virtual wordrepr_and_transition_Pair_t __insertKeyword_evalParamsDfa(lexer_dfa_ptr_t fromDfa, lexer_dfa_ptr_t toDfa, unsigned int tentativeNameKey) {}
-    virtual wordrepr_and_transition_Pair_t __insertEndParamsDfa(lexer_dfa_ptr_t fromDfa, lexer_dfa_ptr_t toDfa, unsigned int tentativeNameKey) {}
-    virtual wordrepr_and_transition_Pair_t __insertKeyword_REPS_withNamedListIterationParamsDfa(lexer_dfa_ptr_t fromDfa, lexer_dfa_ptr_t toDfa, unsigned int tentativeNameKey) {}
+    virtual wordrepr_and_transition_Pair_t __insertNamedListParamsDfa(lexer_dfa_ptr_t fromDfa, lexer_dfa_ptr_t toDfa, unsigned int tentativeNameKey) = 0;
+    virtual wordrepr_and_transition_Pair_t __insertNamedRepititionParamsDfa(lexer_dfa_ptr_t fromDfa, lexer_dfa_ptr_t toDfa, unsigned int tentativeNameKey) = 0;
 };
 
 #endif

@@ -545,6 +545,9 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
 
     Status currentStatus{prevStatus};
 
+    std::vector<std::string> keywordNamesAllAlpha;
+    std::vector<std::string> embeddedKeywordNames;
+
     for (auto obj : objects)
     {
         DeLOG("iteration over object\n");
@@ -553,7 +556,14 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
 
         if (objName.compare("EmbeddedKeywords") == 0 && objType.compare("functions") == 0)
         {
+            const auto objDetailTuples = std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(obj);
 
+            auto onlyKeywordElementDetails = filterTuples(objDetailTuples, FilterType_t::ANYTHING_BUT, std::vector<std::string>{ "path", "elementName" });
+            for (auto detailTuple : onlyKeywordElementDetails)
+            {
+                DeLOG(std::string{"Pushing"}.append(std::get<2>(detailTuple)).append("back to embedded keyword names").c_str());
+                embeddedKeywordNames.push_back(std::get<2>(detailTuple));
+            } 
         }
         else if (objName.compare("Keywords") == 0 && objType.compare("obj-collection") == 0)
         {
@@ -623,7 +633,7 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
 
                     //do work to get alpha names from details into a a new vector of strings, then feed that to generateAbstrLexerWordConstructorClass() in KeywordsTemplate
 
-                    std::vector<std::string> keywordNamesAllAlpha;
+//                    std::vector<std::string> keywordNamesAllAlpha;
 
                     auto onlyKeywordElementDetails = filterTuples(objDetailTuples, FilterType_t::ANYTHING_BUT, std::vector<std::string>{ "path", "elementName" });
                     for (auto detailTuple : onlyKeywordElementDetails)
@@ -631,7 +641,8 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
                         keywordNamesAllAlpha.push_back(std::get<2>(detailTuple));
                     }
 
-
+                    //todo: hold off on this part...i.e. wait until ALL objects have read and we know, for instance, what embedded functions (if any) need to be present in the interface for LexerWordConstructor. not too hard, just move keywordNamesAllAlpha up one level.
+/*
                     AbstrLexerWordConstructorTemplate lwcTemplate;
                     auto lexerWordConstructorStartOfClass = lwcTemplate.generateStartOfClass();
                     auto lexerWordConstructorInitAndWordFunctions = lwcTemplate.generateInitAndWordFunctions(keywordNamesAllAlpha);
@@ -649,11 +660,31 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
 
                     fclose(lexerWordConstructorOutputFile);
                     chmod(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, S_IRUSR);
-
+*/
                 }
+
+
             }
         }
     }
+
+    AbstrLexerWordConstructorTemplate lwcTemplate;
+    auto lexerWordConstructorStartOfClass = lwcTemplate.generateStartOfClass();
+    auto lexerWordConstructorInitAndWordFunctions = lwcTemplate.generateInitAndWordFunctions(keywordNamesAllAlpha);
+    auto lexerWordConstructorEmbeddedFunctions = lwcTemplate.generateEmbeddedWordFunctions(embeddedKeywordNames);
+    auto lexerWordConstructorEndOfClass = lwcTemplate.generateEndOfClass();
+
+    chmod(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, S_IRUSR | S_IWUSR);
+
+    FILE* lexerWordConstructorOutputFile = fopen(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, "wt");
+
+    fputs(lexerWordConstructorStartOfClass.c_str(), lexerWordConstructorOutputFile);
+    fputs(lexerWordConstructorInitAndWordFunctions.c_str(), lexerWordConstructorOutputFile);
+    fputs(lexerWordConstructorEmbeddedFunctions.c_str(), lexerWordConstructorOutputFile);
+    fputs(lexerWordConstructorEndOfClass.c_str(), lexerWordConstructorOutputFile);
+
+    fclose(lexerWordConstructorOutputFile);
+    chmod(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, S_IRUSR);
 
     if (currentStatus.isError())
     {

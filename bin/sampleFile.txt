@@ -71,7 +71,7 @@ Footnte:
 
 
 /[(a|p|e)]
-Oh! /[(the bird|the boxes|the men|the apes|and the tangerines)] those orange things they spoiled so quickly!
+Oh! /[(the birds|the boxes|the men|the apes|and the tangerines)] those orange things they spoiled /[(so|too)] quickly!
 Oh boy... I need to get a life, /[(o|b|v|i|o|u|s|l|y)]. 
 
 /[(r|e|p|s|s)]

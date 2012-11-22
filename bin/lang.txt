@@ -19,24 +19,22 @@
  */
 
 @@ Keywords That Can Be Embedded In Other Keywords @@
-EmbeddedKeywords:functions
-{
+@@   Note: the EMBEDDED value is 'symbolic', because processing of the functionName is positional atm @@
+@@          , to avoid treating EbeddedKeywords and Keywords much differently in read phase. Should   @@
+@@          eventually do this and eliminating any 'weirdness' from the structure of this file - for  @@
+@@          for instance here 'path' decl. is irrelevant(and empty) but if not present will draw an   @@
+@@          error.                                                                                    @@
+EmbeddedKeywords:functions {
     @@ Done Already @@
-      +named_iteration { NamedList }
+      +named_iteration { EMBEDDED, NamedList }
       @@ rename to named_iteration
-      +named_repitition { NamedRepitition }
+      +named_repitition { EMBEDDED, NamedRepitition }
 
     +path { }
 }
 
 Keywords:obj-collection {
     +elementName { Keyword }
-
-    @@ Example keywords -- To Delete @@
-    +reps { VARIABLE, PercentReps }
-
-    @@ To Implement @@
-    +alteration.join { TERMINAL, AlterationAndJoin }
 
     @@ Done Already @@
     +reps.named_iteration { VARIABLE, Keyword_REPS_withNamedIteration }
@@ -47,5 +45,5 @@ Keywords:obj-collection {
     +reps.named_list_iteration { VARIABLE, Keyword_REPS_withNamedListIteration }
 
     +path { src/lib/includes/Genrtd_Keywords.hpp }
-}
+}  @@ to implement @@ +alteration.join { TERMINAL, AlterationAndJoin }
 

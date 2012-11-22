@@ -102,14 +102,22 @@ inline GrammarKeywordDefn GrammarKeywordIter::operator* () const
      return _p_vec->get( _pos );
 }
 
-inline void testGrammarKeywords()
+inline bool testGrammarKeywords()
 {
+    size_t NUMBER_OF_KEYWORDS = 100;
     GrammarKeywords v;
-    for ( int i = 0; i < 100; i++ )
+    for ( int i = 0; i < NUMBER_OF_KEYWORDS; i++ )
     {
         v.set( i , GrammarKeywordDefn{(i % 2 == 0? GrammarType_t::VARIABLE : GrammarType_t::TERMINAL)});
     }
-    for ( GrammarKeywordDefn i : v ) { cout << i << endl; }
+
+    size_t counted = 0;
+    for ( GrammarKeywordDefn i : v ) 
+    { 
+        counted++;
+    }
+
+    return (counted == NUMBER_OF_KEYWORDS);
 }
 
 }

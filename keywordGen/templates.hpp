@@ -238,7 +238,7 @@ public:
         {
             output.append("    virtual wordrepr_and_transition_Pair_t __insert");
             output.append(embeddedFunctionName);
-            output.append("ParamsDfa(lexer_dfa_ptr_t fromDfa, lexer_dfa_ptr_t toDfa, unsigned int tentativeNameKey) {}\n");
+            output.append("ParamsDfa(lexer_dfa_ptr_t fromDfa, lexer_dfa_ptr_t toDfa, unsigned int tentativeNameKey) = 0;\n");
         }
 
         return output;
