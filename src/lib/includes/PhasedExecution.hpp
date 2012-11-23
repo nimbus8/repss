@@ -40,56 +40,27 @@ class PhasedExecution
 {
 private:
     lexer_configuration _config;
-
     ContextManager* _contextManager;
-
-    //lexing
-    void executePhase1(ILexerContext* lexerContext);
-
-    //parsing -- note: we're skipping this for now (hard n fast, throwing caution to the wind, etc.)
-
-    //grammar aggregation
-    //void executePhase2(IGrammarContext* grammarContext);
-
-    //analysis & tree/level construction
-    void executePhase3();
-
-    //generation -- summary: keyword elimination
-    void executePhase4();
 public:
     PhasedExecution();
- /*   {
-        DeLog("PhasedExecution::PhasedExecution()\n");
-
-        //...this entire function needs rework
-
-        ContextManager contextManager;
-
-        auto lexerContext = contextManager.getContext<ContextType::AllowedTypes, ContextType::Lexer>();
-        const lexer_configuration config;
-        const lexer_manager lexMan(&lexerContext, config);
-
-        DeLOG("Past lexer manager creation.\n");
-
-        if (argc < 4)
-        {
-            std::cerr << "Error, correct usage:  repss str_cmp1 str_cmp2 input_file" << std::endl;
-        }
-
-        const string filename{argv[3]};
-        const string permissions{"rt"};
-
-        Scanner *scanner = new Scanner(&lexerContext);
-
-        scanner->processFile(filename, permissions);
-
-    }*/
 
     //todo:will return tuple of status and string -- so handle exceptions inside here too
     std::string execute(int argc, char* argv[]);
 
+    //lexing
     void runLexer(ILexerContext* const lexerContext, std::string inputFileName);
 
+    //parsing -- note: we're skipping this for now (hard n fast, throwing caution to the wind, etc.)
+    void runParser();
+
+    //grammar aggregation
+    void runGrammarAggregation();
+
+    //analysis & tree/level construction
+    void runAnalysis();
+
+    //generation -- summary: keyword elimination
+    std::string runGeneration();
 };
 
 #undef DEBUG

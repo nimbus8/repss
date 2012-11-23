@@ -46,18 +46,25 @@ class lexer_manager
 {
 private:
     ILexerContext* _context;
-    const LexerDataProxy* _lexerDataProxy;
+    LexerDataProxy* _lexerDataProxy;
 public:
-    lexer_manager(ILexerContext* context, const lexer_configuration& config)
+    lexer_manager(ILexerContext* context)
+            : _context(context), _lexerDataProxy(nullptr) {}
+
+    void init(const lexer_configuration& config)
     {
-        _context = context;
+        if (_lexerDataProxy != nullptr)
+        {
+            perror("LexerManager/LexerDataProxy have already been initialized. Doing nothing...");
+            return;
+        }
 
         auto scanWordTransitionMap = config.getScanWordTransitionMap();
         auto scanWords = config.getScanWords();
         auto dfaManager = config.getDfaManager();
 
         _lexerDataProxy = new LexerDataProxy(dfaManager, scanWordTransitionMap, scanWords);
-        context->initLexerDataProxy((const ILexerDataProxy*)_lexerDataProxy);
+        _context->initLexerDataProxy((const ILexerDataProxy*)_lexerDataProxy);
 
         DeLOG("Initialized Lexer Data Proxy Successfully.\nSuccessfully Intialized LexerManager\n");
     }

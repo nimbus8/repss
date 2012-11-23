@@ -60,11 +60,15 @@ std::string PhasedExecution::execute(int argc, char* argv[])
 
 
     delete _contextManager;
+
+    std::string generatedOutput;
+    return generatedOutput;
 }
 
 void PhasedExecution::runLexer(ILexerContext* const lexerContext, std::string inputFileName)
 {
-    lexer_manager lexerMan(lexerContext, _config);
+    lexer_manager lexerMan(lexerContext);
+    lexerMan.init(_config);
 
     Scanner scanner(lexerContext);
     scanner.processFile(inputFileName, std::string{"rt"});

@@ -107,6 +107,26 @@ public:
         }
     }
 
+    std::vector<std::string> getAnnotatedDataImpl(ContextType::AllowedTypes contextType)
+    {
+        if (contextType == ContextType::Grammar)
+        {
+           const std::vector<std::string> retVector{_annotatedData};
+           _annotatedData.clear();
+
+           return retVector; 
+        }
+        else  if (contextType == ContextType::Parser)
+        {
+            const std::vector<std::string> retVector{_annotatedData};
+            _annotatedData.clear();
+
+            return retVector;
+        }
+
+        return std::vector<std::string>{};
+    }
+
     void printAnnotatedDataImpl(ContextType::AllowedTypes contextTypeAsLexer) const
     {
         if (contextTypeAsLexer == ContextType::Lexer)
