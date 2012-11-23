@@ -48,7 +48,7 @@ public:
     StateAndInput(const S state, const I input, bool isRanged) : _state(state), _input(input), _isRanged(isRanged), _isAnythingBut(false) {}
     StateAndInput(const S state, const I input, bool isRanged, bool isAnythingBut) : _state(state), _input(input), _isRanged(isRanged), _isAnythingBut(isAnythingBut) {}
     StateAndInput(const StateAndInput&  other) : _state(other._state), _input(other._input), _isRanged(other._isRanged), _isAnythingBut(other._isAnythingBut) {}
-    StateAndInput(const StateAndInput&& other) : _state(other._state), _input(other._input), _isRanged(other._isRanged), _isAnythingBut(other._isAnythingBut) {}
+    StateAndInput(StateAndInput&& other) : _state(other._state), _input(other._input), _isRanged(other._isRanged), _isAnythingBut(other._isAnythingBut) {}
     ~StateAndInput() {}
 
     S getState() const { return _state; }

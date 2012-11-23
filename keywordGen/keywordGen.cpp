@@ -18,7 +18,7 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define ABSTR_LEXER_WORD_CONSTRUCTOR_PATH "src/lib/includes/lexer/Genrtd_AbstrLexerWordConstructor.hpp"
+#define ABSTR_LEXER_WORD_CONSTRUCTOR_PATH "src/lib/includes/execution_phase/lexer/Genrtd_AbstrLexerWordConstructor.hpp"
 
 //read in keywords-list.defn
 //+ file should be organized, by line:
@@ -548,6 +548,8 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
     std::vector<std::string> keywordNamesAllAlpha;
     std::vector<std::string> embeddedKeywordNames;
 
+    DeLOG("About to write based on objects\n");
+
     for (auto obj : objects)
     {
         DeLOG("iteration over object\n");
@@ -668,23 +670,38 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
         }
     }
 
+    DeLOG("\nFinished reading objects\n");
+
     AbstrLexerWordConstructorTemplate lwcTemplate;
     auto lexerWordConstructorStartOfClass = lwcTemplate.generateStartOfClass();
     auto lexerWordConstructorInitAndWordFunctions = lwcTemplate.generateInitAndWordFunctions(keywordNamesAllAlpha);
     auto lexerWordConstructorEmbeddedFunctions = lwcTemplate.generateEmbeddedWordFunctions(embeddedKeywordNames);
     auto lexerWordConstructorEndOfClass = lwcTemplate.generateEndOfClass();
 
+    DeLOG("Finished creating content\n");
+
     chmod(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, S_IRUSR | S_IWUSR);
 
+    DeLOG("Finished Changing Permissions Of AbstrLexerWordConstructor.hpp\n");
+
     FILE* lexerWordConstructorOutputFile = fopen(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, "wt");
+
+    DeLOG("Opened AbstrLexerWordConstructor.hpp\n");
 
     fputs(lexerWordConstructorStartOfClass.c_str(), lexerWordConstructorOutputFile);
     fputs(lexerWordConstructorInitAndWordFunctions.c_str(), lexerWordConstructorOutputFile);
     fputs(lexerWordConstructorEmbeddedFunctions.c_str(), lexerWordConstructorOutputFile);
     fputs(lexerWordConstructorEndOfClass.c_str(), lexerWordConstructorOutputFile);
 
+    DeLOG("Finished writing to files\n");
+
     fclose(lexerWordConstructorOutputFile);
+
+    DeLOG("Closing file");
+
     chmod(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, S_IRUSR);
+
+    DeLOG("Changing permissions to READ on written file\n");
 
     if (currentStatus.isError())
     {

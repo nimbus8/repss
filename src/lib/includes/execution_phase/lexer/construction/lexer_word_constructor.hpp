@@ -88,7 +88,6 @@ private:
     bool _testScanWords();
 
     //internal interface functions for each phase
-    //void _initWords();
 
     bool _mergeWords()
     {
@@ -103,12 +102,15 @@ private:
         const lexer_dfa_builder lexerBuilder;
         _startWordForMergedRepr = lexerBuilder.mergeDfas(dfaWords, dfaManager);
 
+        delete dfaWords;
+
         bool resultOfMergedDataTest = _testMergedRepresentation();
  
         DeLOG(std::string{"Merge Test "}.append(resultOfMergedDataTest? "SUCCEEDED!\n" : "FAILED!!\n").c_str());
     
         return resultOfMergedDataTest;
     }
+
     bool _constructScanWords();
 public:
     lexer_word_constructor()
