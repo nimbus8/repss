@@ -91,8 +91,10 @@ GrammarConfig::GrammarConfig()
     //                  . .
     //     void init()
     //     {
-    //         _defineGrammarKeyword_RepititionNamedIteration(_keywords.);
-    //         _defineGrammarKeyword_Scope();
+    //         _defineGrammarKeyword_RepititionNamedIteration(std::make_pair<std::string,std::string>("reps.named_iteration", _keywords.getTypeForName("reps.named_iteration")));
+    //         _defineGrammarKeyword_Scope(std::make_pair<std::string,std::string>("scope", _keywords.getTypeForName("scope")));
+    //         ....
+    //         ....
     //         ....
     //     }
     // }
