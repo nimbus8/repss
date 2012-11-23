@@ -21,17 +21,9 @@
 #ifndef _GRAMMAR_BLOCK_AGGREGATOR_
 #define _GRAMMAR_BLOCK_AGGREGATOR_
 
+#include "GrammarBlockAggregate.hpp"
+
 //In this file we assume that everything is in proper order (i.e. parsed) and go data through methodically
-
-class GrammarBlockAggregate : virtual public IGrammarBlockAggregate
-{
-public:
-    GrammarBlockAggregate() {}
-    virtual ~GrammarBlockAggregate() {}
-
-    //this should only be called once: in the 'analysis' context
-    virtual const void exportToVectorAsReadOnlyElements(std::vector<ReadOnlyElement*> readOnlyElements) const = 0;
-};
 
 class GrammarBlockAggregator
 {

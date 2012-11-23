@@ -18,29 +18,16 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _IGRAMMAR_CONTEXT_
-#define _IGRAMMAR_CONTEXT_
+#ifndef _READ_ONLY_ELEMENT_
+#define _READ_ONLY_ELEMENT_
 
-#include "../../utils/ConstVector.hpp"
-
-#include "../../IGrammarDataProxy.hpp"
-
-#include "GrammarBlockAggregate.hpp"
-
-//grammar keywords are of two types: open, closed
-
-class IGrammarContext
+class ReadOnlyElement
 {
-protected:
-    virtual ~IGrammarContext() {}
+private:
+
 public:
-    virtual ConstVector<std::string> getAnnotatedData() const = 0;
-
-    virtual void initGrammarDataProxy(const IGrammarDataProxy* grammarDataProxy) = 0;
-    virtual const IGrammarDataProxy* getGrammarDataProxy() const = 0;
-
-    virtual void setGrammarBlockAggregate(const GrammarBlockAggregate* grammarBlockAggregate) = 0;
-    virtual void printGrammarBlockAggregateData() const = 0;
+     ReadOnlyElement() {}
+     ~ReadOnlyElement() {}
 };
 
 #endif

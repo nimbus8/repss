@@ -22,6 +22,8 @@
 #include <vector>
 #include <string>
 
+#include "utils/ConstVector.hpp"
+
 #ifndef _CONTEXT_MANAGER_
 #define _CONTEXT_MANAGER_
 
@@ -34,7 +36,9 @@
 #endif
 
 #include "execution_phase/lexer/construction/ScanWordNode.hpp" 
+
 #include "execution_phase/lexer/ILexerContext.hpp"
+#include "execution_phase/grammaticalForm/IGrammarContext.hpp"
 
 class ContextType
 {
@@ -107,27 +111,23 @@ public:
         }
     }
 
-    std::vector<std::string> getAnnotatedDataImpl(ContextType::AllowedTypes contextType)
+    ConstVector<std::string> getAnnotatedDataImpl(ContextType::AllowedTypes contextType)
     {
         //this is a terrible way BTW. todo: create a wrapper class for 
         //the vector(const) and return it.
 
         if (contextType == ContextType::Grammar)
         {
-           const std::vector<std::string> retVector{_annotatedData};
-           _annotatedData.clear();
-
+           ConstVector<std::string> retVector(&_annotatedData);
            return retVector; 
         }
         else  if (contextType == ContextType::Parser)
         {
-            const std::vector<std::string> retVector{_annotatedData};
-            _annotatedData.clear();
-
+            ConstVector<std::string> retVector(&_annotatedData);
             return retVector;
         }
 
-        return std::vector<std::string>{};
+        return ConstVector<std::string>(nullptr);
     }
 
     void printAnnotatedDataImpl(ContextType::AllowedTypes contextTypeAsLexer) const
@@ -212,7 +212,7 @@ public:
 };
 
 template<>
-class ContextManager::TypedContext </*ContextType::*/_AllowedTypes_, ContextType::Lexer>
+class ContextManager::TypedContext <_AllowedTypes_, ContextType::Lexer>
     : virtual public ILexerContext
 {
 private:
@@ -262,7 +262,7 @@ public:
 };
 
 template<>
-class ContextManager::TypedContext <_AllowedTypes_, ContextType::Grammar>
+class ContextManager::TypedContext <_AllowedTypes_, ContextType::Grammar> : public IGrammarContext
 {
 private:
     Context* _refContext;

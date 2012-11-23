@@ -31,14 +31,72 @@
 
 GrammarConfig::GrammarConfig()
 {
-    //Defining GrammarKeywords -- this is not done here anymore: DELETE
+    //GrammarKeywords are already as simply Keywords.
+    // - Each keyword has name and grammar type
 
-    const std::string keywordName{"general_end"};
-
-    AbstrKeyword keyword{ keywordName, GrammarType_t::VARIABLE};
-    grammarKeywords.add(GrammarKeywordDefn{ &keyword });
+    //So here, what we do is define MORE SPECIFICALLY each type
+    // todo:will So we need to add to keyword generator so that FOR EACH
+    //            keyword, we force language writer to specfy terms for
+    //            for EACH keyword. So for instance we might define that yes
+    //            reps.named_iteration had a grammarType VARIABLE,
+    //            but exactly what can it expand to?
+    //                RepsNamedItertation -> ANY  general_end
+    //                 ANY -> RepsNamedIteration general_end |
+    //                        scope general_end |
+    //                        alteration |
+    //                        evaluation
+    //
+    // NOTE: This can ALL be done through the keywordGenerator. For now NO.
+    //        Perhaps ALL would be best, but I need to work fast. This is
+    //        faster (? maybe - if it gets to be to much bite the bullet),
+    //        and seems more concret as it's evident that we're requesting
+    //        to define a particular keyword...instead of assuming one
+    //        we defined later, and having to build up an internal repr.
+    //        inside keyword generator that checks itself and w/e.
+    //        I'd like to keep keyword generator straightforward (for now...)
+    //
+    // The way the code should look:
+    //
+    // class GrammarConfig : public AbstrGrammarConfig
+    // {
+    //     Keywords* _keywords;
+    //     ...
+    //     void _defineGrammarKeyword_RepititionNamedIteration(std::pair<std::string, std::string> nameAndGrammarType)
+    //     {
+    //    
+    //     }
+    // }
+    //
+    //  To make things easier for generator we'll modify Keywords to have
+    //   public function that acts like a map (retrieves GrammarType for a keyword name (easy, b/c in generator we know what index belongs to what object)
+    //    or returns an INVALID or UNDEFINED. So, we can generate boiler
+    //    plate for AbstrGrammarConfig that queries Keywords class using
+    //    name(pretty much the key(main identifier) for every keyword in 
+    //    generator). And we can serve a new distinct object to each
+    //    parameter of defineGrammar....() functions and forcing it to return
+    //    a class of some sort with all the grammar expansion rules. The
+    //    combined data (name, type, (grammar-expansion-rules)) will make up
+    //    new data object to be used in execution (instead of KeywordsData
+    //    in Keywords).
+    //
+    // The way GENERATED CODE should look like:
+    // class AbstrGrammarConfig
+    // {
+    // protected:
+    //     ReadOnlyData* _keywords;  //change this to something more specific?
+    //
+    //     void _defineGrammarKeyword_RepititionNamedIteration(std::pair<std::string, std::string> nameAndGrammarType__RepititionNamedIteration__VARIABLE) = 0;
+    //     void _defineGrammarKeyword_Scope(std::pair<std::string, std::string> nameAndGrammarType__Scope__VARIABLE) = 0;
+    //                  . .
+    //                  . .
+    //     void init()
+    //     {
+    //         _defineGrammarKeyword_RepititionNamedIteration(_keywords.);
+    //         _defineGrammarKeyword_Scope();
+    //         ....
+    //     }
+    // }
 }
-
 
 #undef DEBUG
 #undef DeLOG

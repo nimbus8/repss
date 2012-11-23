@@ -18,7 +18,8 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "execution/grammaticalForm/GrammarKeywords.hpp"
+#include "execution_phase/grammaticalForm/GrammarKeywords.hpp"
+#include "execution_phase/grammaticalForm/GrammarBlockAggregate.hpp"
 
 #ifndef _IGRAMMAR_DATA_PROXY_
 #define _IGRAMMAR_DATA_PROXY_
@@ -28,7 +29,8 @@ class IGrammarDataProxy
 public:
     virtual ~IGrammarDataProxy() {};
 
-    virtual GrammarKeywords* getGrammarKeywords() const = 0;
+    virtual std::GrammarKeywords* getGrammarKeywords() const = 0;
+    virtual void setGrammarBlockAggregate(const GrammarBlockAggregate* grammarBlockAggregate) = 0;
 };
 
 #endif

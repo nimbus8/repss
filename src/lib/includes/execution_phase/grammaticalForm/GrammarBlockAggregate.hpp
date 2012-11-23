@@ -18,15 +18,16 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <vector>
+#ifndef _GRAMMAR_BLOCK_AGGREGATE_
+#define _GRAMMAR_BLOCK_AGGREGATE_
 
-#include "ReadOnlyElement.hpp"
+//In this file we assume that everything is in proper order (i.e. parsed) and go data through methodically
 
-class IGrammarBlockAggregate
+class GrammarBlockAggregate
 {
 public:
-    virtual ~IGrammarBlockAggregate() {};
-
-    //this should only be called once: in the 'analysis' context
-    virtual const void exportToVectorAsReadOnlyElements(std::vector<ReadOnlyElement*> readOnlyElements) const = 0;
+    GrammarBlockAggregate() {}
+    virtual ~GrammarBlockAggregate() {}
 };
+
+#endif
