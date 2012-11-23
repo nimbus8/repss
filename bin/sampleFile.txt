@@ -56,7 +56,7 @@ All went home poorer than they left. But you know in this world there are much m
 /[rep]  
         this isnt it.
 /[/]
-/[rep] time-b=22:2100 
+/[rep] timeb=22:2100 
         i think.
 /[/]
 /[rep] foobar=20:40

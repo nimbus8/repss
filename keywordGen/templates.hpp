@@ -62,6 +62,8 @@ public:
         auto toWriteStart = createCopyright();
         toWriteStart.append("\n//Should you modify this file? NO\n");
 
+        toWriteStart.append("#ifndef _GENRTD_KEYWORDS_\n#define _GENRTD_KEYWORDS_\n");
+
         toWriteStart.append("\n#include <string>\n");
 
         //grammar type enum
@@ -132,9 +134,9 @@ public:
         //-- private destructor
         toWriteStart.append("\n{\nprivate:\n    virtual ~");
         toWriteStart.append(collectionClassName);
-        toWriteStart.append("() = 0;");
+        toWriteStart.append("() {}");
 
-        std::string toWriteEnd("\n};\n");
+        std::string toWriteEnd("\n};\n#endif\n");
 
         return std::pair<std::string,std::string>(toWriteStart, toWriteEnd);
     }

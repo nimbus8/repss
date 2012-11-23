@@ -33,9 +33,7 @@ using namespace std;
 
 #include "lib/includes/ContextManager.hpp"
 
-#include "lib/includes/execution_phase/lexer/lexer_configuration.hpp"
-#include "lib/includes/execution_phase/lexer/lexer_manager.hpp"
-#include "lib/includes/execution_phase/lexer/Scanner.hpp"
+#include "lib/includes/PhasedExecution.hpp"
 
 #include "lib/includes/execution_phase/grammaticalForm/GrammarKeywords.hpp"
 
@@ -47,6 +45,8 @@ using namespace std;
     #define DeLOG(str)
     #define DLOG(str)
 #endif
+
+std::string createCopyright();
 
 namespace ImplTest
 {
@@ -112,20 +112,6 @@ namespace ImplTest
 	}
 
 	int _currentStage = 0;
-	void process(ContextManager* const contextMan, int argc, char *argv[])
-	{
-		if (argc < 4)
-		{
-			std::cerr << "Error, correct usage:  repss str_cmp1 str_cmp2 input_file" << std::endl;
-		}
-
-		const string filename{argv[3]};
-		const string permissions{"rt"};
-
-		auto context = contextMan->getContext<ContextType::AllowedTypes, ContextType::Lexer>();
-		Scanner scanner(&context);
-		scanner.processFile(filename, permissions);		
-	}
 
 	void runClosureAndScanTests(ContextManager* const contextMan, int argc, char *argv[])
 	{
@@ -146,7 +132,6 @@ namespace ImplTest
 		std::cout << "Stack entry - nextState: " << stackEntry1.getNextState()
 				<< std::endl;
 
-		process(contextMan, argc, argv);
 	}
 }
 
@@ -207,6 +192,7 @@ int main(int argc, char* argv[])
 
 		ThreadTesting::testAsync(vector<double> { 1.0, 2.0 });
 
+/*
 		//configuring & initializing lexer
 		ContextManager contextManager;
 	        const lexer_configuration config;
@@ -227,6 +213,10 @@ int main(int argc, char* argv[])
                 Scanner *scanner = new Scanner(&lexerContext);
 
                 scanner->processFile(filename, permissions);
+*/
+
+                PhasedExecution program;
+                program.execute(argc, argv);
 
                 std::testGrammarKeywords();
 }
@@ -236,6 +226,33 @@ int main(int argc, char* argv[])
 	}
 
 	return 0;
+}
+
+std::string createCopyright()
+{
+    std::string str;
+
+    str.append("/*\n");
+    str.append(" REPSS\n");
+    str.append(" Copyright (C) 2012  Khalique Williams\n");
+    str.append("\n");
+    str.append(" This file is part of REPSS.\n");
+    str.append("\n");
+    str.append(" REPSS is free software: you can redistribute it and/or modify\n");
+    str.append(" it under the terms of the   GNU General Public License as published by\n");
+    str.append(" the Free Software Foundation, either version 3 of the License, or\n");
+    str.append(" (at your option) any later version.\n");
+    str.append("\n");
+    str.append(" REPSS is distributed in the hope that it will be useful,\n");
+    str.append(" but WITHOUT ANY WARRANTY; without even the implied warranty of\n");
+    str.append(" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n");
+    str.append(" GNU General Public License for more details.\n");
+    str.append("\n");
+    str.append(" You should have received a copy of the GNU General Public License\n");
+    str.append(" along with REPSS.  If not, see <http://www.gnu.org/licenses/>.\n");
+    str.append(" */\n");
+
+    return str;
 }
 
 #undef DEBUG

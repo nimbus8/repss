@@ -19,6 +19,8 @@
  */
 
 //Should you modify this file? NO
+#ifndef _GENRTD_KEYWORDS_
+#define _GENRTD_KEYWORDS_
 
 #include <string>
 
@@ -57,7 +59,7 @@ public:
 class Keywords
 {
 private:
-    virtual ~Keywords() = 0;
+    virtual ~Keywords() {}
 protected:
     const class KeywordsData
     {
@@ -81,3 +83,4 @@ protected:
     } _data;
 
 };
+#endif

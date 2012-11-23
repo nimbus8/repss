@@ -693,7 +693,7 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
     fputs(lexerWordConstructorEmbeddedFunctions.c_str(), lexerWordConstructorOutputFile);
     fputs(lexerWordConstructorEndOfClass.c_str(), lexerWordConstructorOutputFile);
 
-    DeLOG("Finished writing to files\n");
+    DeLOG("Finished writing to file\n");
 
     fclose(lexerWordConstructorOutputFile);
 

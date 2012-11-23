@@ -18,18 +18,30 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define DEBUG
-//#undef DEBUG
+#ifndef _PHASED_EXECUTION_
+#define _PHASED_EXECUTION_
+
+/*#unded*/ #define DEBUG
 #ifdef DEBUG
     #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
 #else
     #define DeLOG(str)
 #endif
 
+#include <string>
+
+#include "ContextManager.hpp"
+#include "Genrtd_Keywords.hpp"
+
+#include "execution_phase/lexer/ILexerContext.hpp"
+#include "execution_phase/lexer/lexer_configuration.hpp"
+
 class PhasedExecution
 {
 private:
-    lexer_configuration* _config;
+    lexer_configuration _config;
+
+    ContextManager* _contextManager;
 
     //lexing
     void executePhase1(ILexerContext* lexerContext);
@@ -37,27 +49,27 @@ private:
     //parsing -- note: we're skipping this for now (hard n fast, throwing caution to the wind, etc.)
 
     //grammar aggregation
-    void executePhase2(IGrammarContext* grammarContext);
+    //void executePhase2(IGrammarContext* grammarContext);
 
     //analysis & tree/level construction
     void executePhase3();
 
     //generation -- summary: keyword elimination
-    void executePhase3();
+    void executePhase4();
 public:
-    PhasedExecution()
-    {
+    PhasedExecution();
+ /*   {
         DeLog("PhasedExecution::PhasedExecution()\n");
 
         //...this entire function needs rework
 
         ContextManager contextManager;
-        const lexer_configuration config;
 
         auto lexerContext = contextManager.getContext<ContextType::AllowedTypes, ContextType::Lexer>();
-        const lexer_manager lexMan(&lexerContext,&config);
+        const lexer_configuration config;
+        const lexer_manager lexMan(&lexerContext, config);
 
-        DeLOG("past lexer manager creation.\n");
+        DeLOG("Past lexer manager creation.\n");
 
         if (argc < 4)
         {
@@ -71,8 +83,13 @@ public:
 
         scanner->processFile(filename, permissions);
 
-    }
-    void execute();
+    }*/
+
+    //todo:will return tuple of status and string -- so handle exceptions inside here too
+    std::string execute(int argc, char* argv[]);
+
+    void runLexer(ILexerContext* const lexerContext, std::string inputFileName);
+
 };
 
 #undef DEBUG

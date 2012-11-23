@@ -1,1 +1,1 @@
-bin/keywordGen bin/lang.txt
+bin/keywordGen language_specs/lang.txt
