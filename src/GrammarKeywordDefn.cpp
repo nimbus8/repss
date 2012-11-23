@@ -32,7 +32,11 @@
 std::ostream &operator<<( std::ostream &out, const GrammarKeywordDefn &GKD )
 {
     GrammarType_t gkdType = GKD.getGrammarType();
-    out << "GrammarKeywordDef{ type: ";
+    out << "GrammarKeywordDef{ name: ";
+
+    out << GKD.getName() << " ";
+
+    out << "type: ";
 
     if (gkdType == GrammarType_t::TERMINAL)
     {

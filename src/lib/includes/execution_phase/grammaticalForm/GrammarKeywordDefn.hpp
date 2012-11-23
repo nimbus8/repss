@@ -23,23 +23,26 @@
 
 #include <iostream>
 
-enum class GrammarType_t : char
-{
-    UNDEFINED  = 'U',
-    TERMINAL   = 'T',
-    VARIABLE   = 'V'
-};
-
+#include "../../Genrtd_Keywords.hpp"
+ 
 class GrammarKeywordDefn
 {
 private:
-    GrammarType_t _grammarType;
+    //(1) rename AbstrKeyword to Keyword. (2) we're going to have to give Keyword a copy/move constructor
+    AbstrKeyword *_keyword;
 public:
-    GrammarKeywordDefn() : _grammarType(GrammarType_t::UNDEFINED) {}
-    explicit GrammarKeywordDefn(GrammarType_t grammarType) : _grammarType(grammarType) {}
+    GrammarKeywordDefn() : _keyword(nullptr) {} //not sure if we keep this
+    GrammarKeywordDefn(const GrammarKeywordDefn& other) : _keyword(other._keyword) {}
+    explicit GrammarKeywordDefn(const AbstrKeyword* keyword) : _keyword(const_cast<AbstrKeyword*>(keyword)) {}
     ~GrammarKeywordDefn() {}
 
-    GrammarType_t getGrammarType() const { return _grammarType; }
+    void setKeyword(const AbstrKeyword* keyword)
+    {
+        _keyword = const_cast<AbstrKeyword*>(keyword);
+    } 
+
+    std::string getName() const { return (_keyword != nullptr? _keyword->getName() : ""); }
+    GrammarType_t getGrammarType() const { return (_keyword != nullptr? _keyword->getGrammarType() : GrammarType_t::UNDEFINED); }
 
     friend std::ostream &operator<<( std::ostream &out, const GrammarKeywordDefn &GKD );
 };

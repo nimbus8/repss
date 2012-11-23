@@ -31,6 +31,8 @@ enum class GrammarType_t : char
 
 class IKeyword
 {
+public:
+    virtual ~IKeyword() {}
     virtual std::string getName() const = 0;
 };
 
@@ -42,8 +44,13 @@ private:
 public:
     AbstrKeyword(const std::string& name, const GrammarType_t grammarType)
         : _name(name), _grammarType(grammarType) {}
+    AbstrKeyword(const AbstrKeyword& other)
+        : _name(other._name), _grammarType(other._grammarType) {}
+    AbstrKeyword(AbstrKeyword&& other)
+        : _name(other._name), _grammarType(other._grammarType) {}
+    ~AbstrKeyword() {}
 
-    virtual std::string getName() const { return _name; }
+    std::string getName() const { return _name; }
     GrammarType_t getGrammarType() const { return _grammarType; }
 };
 

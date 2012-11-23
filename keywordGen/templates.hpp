@@ -64,6 +64,7 @@ public:
 
         toWriteStart.append("\n#include <string>\n");
 
+        //grammar type enum
         toWriteStart.append("\nenum class GrammarType_t : char\n");
         toWriteStart.append("{\n");
         toWriteStart.append("    UNDEFINED  = 'U',\n");
@@ -71,9 +72,13 @@ public:
         toWriteStart.append("    VARIABLE   = 'V'\n");
         toWriteStart.append("};\n");
 
+        //interface
         toWriteStart.append("\nclass I");
         toWriteStart.append(singularClassName);
-        toWriteStart.append("\n{\n");
+        toWriteStart.append("\n{\npublic:\n");
+        toWriteStart.append("    virtual ~I");
+        toWriteStart.append(singularClassName);
+        toWriteStart.append("() {}\n");
         toWriteStart.append("    virtual std::string getName() const = 0;\n");
         toWriteStart.append("};\n");
 
@@ -88,16 +93,43 @@ public:
         toWriteStart.append("    const std::string	_name;\n");
         toWriteStart.append("    const GrammarType_t	_grammarType;\n");
         toWriteStart.append("public:\n");
+
+        //concrete class
+        //-- constructor
         toWriteStart.append("    Abstr");
         toWriteStart.append(singularClassName);
         toWriteStart.append("(const std::string& name, const GrammarType_t grammarType)\n");
         toWriteStart.append("        : _name(name), _grammarType(grammarType) {}\n");
-        toWriteStart.append("\n    virtual std::string getName() const { return _name; }\n");
+
+        //-- copy/move constructor
+        toWriteStart.append("    Abstr");
+        toWriteStart.append(singularClassName);
+        toWriteStart.append("(const Abstr");
+        toWriteStart.append(singularClassName);
+        toWriteStart.append("& other)\n        : _name(other._name), _grammarType(other._grammarType) {}\n");
+
+        toWriteStart.append("    Abstr");
+        toWriteStart.append(singularClassName);
+        toWriteStart.append("(Abstr");
+        toWriteStart.append(singularClassName);
+        toWriteStart.append("&& other)\n        : _name(other._name), _grammarType(other._grammarType) {}\n");
+
+        //-- destructor
+        toWriteStart.append("    ~Abstr");
+        toWriteStart.append(singularClassName);
+        toWriteStart.append("() {}\n");
+
+        //-- functions
+        toWriteStart.append("\n    std::string getName() const { return _name; }\n");
         toWriteStart.append("    GrammarType_t getGrammarType() const { return _grammarType; }\n");
         toWriteStart.append("};\n");
 
+
+        //abstract collection class (start)
         toWriteStart.append("\nclass ");
         toWriteStart.append(collectionClassName);
+
+        //-- private destructor
         toWriteStart.append("\n{\nprivate:\n    virtual ~");
         toWriteStart.append(collectionClassName);
         toWriteStart.append("() = 0;");

@@ -31,10 +31,12 @@
 
 GrammarConfig::GrammarConfig()
 {
-    //Defining GrammarKeywords
+    //Defining GrammarKeywords -- this is not done here anymore: DELETE
 
     const std::string keywordName{"general_end"};
-    grammarKeywords.add(GrammarKeywordDefn{GrammarType_t::VARIABLE});
+
+    AbstrKeyword keyword{ keywordName, GrammarType_t::VARIABLE};
+    grammarKeywords.add(GrammarKeywordDefn{ &keyword });
 }
 
 

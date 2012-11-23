@@ -20,3 +20,59 @@
 
 #include "lib/includes/execution_phase/grammaticalForm/GrammarKeywords.hpp"
 
+/*#undef*/ #define DEBUG
+#ifdef DEBUG
+    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
+#else
+    #define DLOG(str)
+#endif
+
+namespace std
+{
+
+bool testGrammarKeywords()
+{
+    size_t NUMBER_OF_KEYWORDS = 100;
+    GrammarKeywords v;
+
+    AbstrKeyword* keywords[NUMBER_OF_KEYWORDS];
+    for (size_t index = 0; index < NUMBER_OF_KEYWORDS; index++)
+    {
+        keywords[index] = new AbstrKeyword(std::to_string(index), (index % 2 == 0? GrammarType_t::VARIABLE : GrammarType_t::TERMINAL));
+    }
+
+    for ( int i = 0; i < NUMBER_OF_KEYWORDS; i++ )
+    {
+        v.set( i , GrammarKeywordDefn{ keywords[i] });
+    }
+
+    size_t counted = 0;
+    for ( GrammarKeywordDefn i : v )
+    {
+        std::string grammarKeywordName = i.getName();
+        if (grammarKeywordName.compare(std::to_string(counted)) != 0)
+        {
+            //cleanup
+            for (size_t index = 0; index < NUMBER_OF_KEYWORDS; index++)
+            {
+                delete keywords[index];
+            }
+
+            perror("Grammar Keyword Test FAILED!");
+            return false;
+        }
+
+        std::cout << i << std::endl;
+
+        counted++;
+    }
+
+    for (size_t index = 0; index < NUMBER_OF_KEYWORDS; index++)
+    {
+        delete keywords[index];
+    }
+
+    return (counted == NUMBER_OF_KEYWORDS);
+}
+
+}
