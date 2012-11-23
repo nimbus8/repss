@@ -109,6 +109,9 @@ public:
 
     std::vector<std::string> getAnnotatedDataImpl(ContextType::AllowedTypes contextType)
     {
+        //this is a terrible way BTW. todo: create a wrapper class for 
+        //the vector(const) and return it.
+
         if (contextType == ContextType::Grammar)
         {
            const std::vector<std::string> retVector{_annotatedData};
