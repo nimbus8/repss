@@ -20,12 +20,12 @@
 
 #include <unordered_set>
 
-#include "lib/includes/lexer/construction/lexer_word_constructor.hpp"
-#include "lib/includes/lexer/construction/model_representation/finite_autonoma/StateAndInput.hpp"
-#include "lib/includes/lexer/construction/model_representation/finite_autonoma/DfaTransition.hpp"
-#include "lib/includes/lexer/construction/AggregateDfasAndDelete.hpp"
-#include "lib/includes/lexer/construction/AggregateDfaTransitionsAndDelete.hpp"
-#include "lib/includes/lexer/construction/model_representation/finite_autonoma/LexerStateAndInput.hpp"
+#include "lib/includes/execution_phase/lexer/construction/lexer_word_constructor.hpp"
+#include "lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/StateAndInput.hpp"
+#include "lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/DfaTransition.hpp"
+#include "lib/includes/execution_phase/lexer/construction/AggregateDfasAndDelete.hpp"
+#include "lib/includes/execution_phase/lexer/construction/AggregateDfaTransitionsAndDelete.hpp"
+#include "lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/LexerStateAndInput.hpp"
 #include "lib/includes/utils/Stopwatch.hpp"
 
 //todo: should be moved to lexer_word_constructor.hpp file

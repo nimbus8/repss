@@ -21,7 +21,7 @@
 #ifndef _ILEXER_CONTEXT_
 #define _ILEXER_CONTEXT_
 
-#include "../ILexerDataProxy.hpp"
+#include "../../ILexerDataProxy.hpp"
 #include "construction/ScanWordNode.hpp"
 
 class ILexerContext

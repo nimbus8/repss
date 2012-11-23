@@ -21,7 +21,7 @@
 #ifndef _LEXER_DATA_PROXY_
 #define _LEXER_DATA_PROXY_
 
-#include "../ILexerDataProxy.hpp"
+#include "../../ILexerDataProxy.hpp"
 
 //interface for set of functions allowing seperate classes sharing same context
 // to 'speak' with eachother.

@@ -24,8 +24,8 @@
 //interface for set of functions allowing seperate classes sharing same context
 // to 'speak' with eachother.
 
-#include "lexer/construction/model_representation/dfa_manager.hpp"
-#include "lexer/construction/ScanWordNode.hpp"
+#include "execution_phase/lexer/construction/model_representation/dfa_manager.hpp"
+#include "execution_phase/lexer/construction/ScanWordNode.hpp"
 
 class ILexerDataProxy
 {

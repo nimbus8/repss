@@ -22,9 +22,9 @@
 
 /*#undef*/ #define DEBUG
 #ifdef DEBUG
-    #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
+    #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
 #else
-    #define DLOG(str)
+    #define DeLOG(str)
 #endif
 
 namespace std
@@ -76,3 +76,6 @@ bool testGrammarKeywords()
 }
 
 }
+
+#undef DEBUG
+#undef DeLOG

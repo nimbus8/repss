@@ -18,7 +18,7 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "lib/includes/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp"
+#include "lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp"
 
 #define DEBUG
 //#undef DEBUG

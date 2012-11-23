@@ -18,7 +18,7 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "lib/includes/lexer/construction/ScanWordNode.hpp"
+#include "lib/includes/execution_phase/lexer/construction/ScanWordNode.hpp"
 
 #define DEBUG
 #ifdef DEBUG

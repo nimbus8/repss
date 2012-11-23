@@ -33,8 +33,8 @@
     #define DeLOG(str)
 #endif
 
-#include "lexer/construction/ScanWordNode.hpp" 
-#include "lexer/ILexerContext.hpp"
+#include "execution_phase/lexer/construction/ScanWordNode.hpp" 
+#include "execution_phase/lexer/ILexerContext.hpp"
 
 class ContextType
 {

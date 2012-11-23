@@ -35,7 +35,7 @@
 #include "ScanWordNode.hpp"
 #include "ScanWordTransitionMap.hpp"
 
-#include "../../utils/AggregatePtrsAndDelete.hpp"
+#include "../../../utils/AggregatePtrsAndDelete.hpp"
 #include "../Genrtd_AbstrLexerWordConstructor.hpp"
 
 #ifndef _LEXER_WORD_CONSTRUCTOR_

@@ -32,9 +32,10 @@ using namespace std;
 #include "tests/test_repss_string.cpp"
 
 #include "lib/includes/ContextManager.hpp"
-#include "lib/includes/lexer/lexer_configuration.hpp"
-#include "lib/includes/lexer/lexer_manager.hpp"
-#include "lib/includes/lexer/Scanner.hpp"
+
+#include "lib/includes/execution_phase/lexer/lexer_configuration.hpp"
+#include "lib/includes/execution_phase/lexer/lexer_manager.hpp"
+#include "lib/includes/execution_phase/lexer/Scanner.hpp"
 
 #include "lib/includes/execution_phase/grammaticalForm/GrammarKeywords.hpp"
 

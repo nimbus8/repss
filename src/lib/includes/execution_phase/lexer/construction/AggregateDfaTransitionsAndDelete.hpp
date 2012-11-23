@@ -1,4 +1,4 @@
-#include "../../utils/AggregatePtrsAndDelete.hpp"
+#include "../../../utils/AggregatePtrsAndDelete.hpp"
 #include "model_representation/dfa_manager.hpp"
 
 #ifndef _AGGREGATE_DFA_TRANSITIONS_AND_DELETE_

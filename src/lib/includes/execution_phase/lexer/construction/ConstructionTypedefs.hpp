@@ -25,7 +25,7 @@
 
 #include "model_representation/dfa_manager.hpp"
 
-#include "../../utils/AggregatePtrsAndDelete.hpp"
+#include "../../../utils/AggregatePtrsAndDelete.hpp"
 
 typedef lexer_dfa* lexer_dfa_ptr_t;
 typedef lexer_word_repr* lexer_word_repr_ptr_t;

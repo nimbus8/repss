@@ -28,7 +28,7 @@
 #define _SCANNER_HPP_
 
 //todo:will really think about not doing this
-#include "../repss.hpp"
+#include "../../repss.hpp"
 
 #include "ILexerContext.hpp"
 

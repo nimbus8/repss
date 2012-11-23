@@ -29,8 +29,8 @@
 
 #include "model_representation/dfa_manager.hpp"
 
-#include "../../utils/AggregateAndApplyFuncBase.hpp"
-#include "../../utils/ApplyImmutableFunc.hpp"
+#include "../../../utils/AggregateAndApplyFuncBase.hpp"
+#include "../../../utils/ApplyImmutableFunc.hpp"
 
 #ifndef _LEXER_DFA_BUILDER_
 #define _LEXER_DFA_BUILDER_
