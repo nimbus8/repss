@@ -25,45 +25,58 @@
 
 #include <string>
 #include <vector>
-#include "src/lib/includes/Genrtd_Keywords.hpp"
+
+#include "../../../src/lib/includes/Genrtd_Keywords.hpp"
+#include "ILanguageAndGrammar.hpp"
+#include "utils/ReadOnlyData.hpp"
 
 class AbstrGrammarConfig
 {
 private:
     Keywords _keywords;
 protected:
-    ReadOnlyData<std::tuple<std::string, std::string, std::vector<GrammarRules::Term>>> _grammarRules;
+    ReadOnlyData<std::vector<std::tuple<std::string, std::string, std::vector<GrammarRules::Term*>>>>* _grammarRules;
 
-    std::vector<GrammarRules::Term> defineGrammarKeyword_Keyword_REPS_withNamedIteration(std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedIteration__VARIABLE) == 0;
-    std::vector<GrammarRules::Term> defineGrammarKeyword_SquareBracketReps(std::pair<std::string, std::string> nameAndGrammarType__SquareBracketReps__VARIABLE) == 0;
-    std::vector<GrammarRules::Term> defineGrammarKeyword_Alteration(std::pair<std::string, std::string> nameAndGrammarType__Alteration__TERMINAL) == 0;
-    std::vector<GrammarRules::Term> defineGrammarKeyword_Keyword_eval(std::pair<std::string, std::string> nameAndGrammarType__Keyword_eval__TERMINAL) == 0;
-    std::vector<GrammarRules::Term> defineGrammarKeyword_End(std::pair<std::string, std::string> nameAndGrammarType__End__TERMINAL) == 0;
-    std::vector<GrammarRules::Term> defineGrammarKeyword_Keyword_REPS_withNamedListIteration(std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedListIteration__VARIABLE) == 0;
+    virtual ~AbstrGrammarConfig()
+    {
+        delete _grammarRules;
+    }
+public:
+    AbstrGrammarConfig()
+    {
+    }
 
     void _init()
     {
-        auto grammarRules__Keyword_REPS_withNamedIteration = _defineGrammarKeyword_Keyword_REPS_withNamedIteration(std::make_pair("reps.named_iteration", _keywords.getTypeForKeywordName("reps.named_iteration"));
-        _grammarRules.addRule("reps.named_iteration", "VARIABLE", grammarRules__Keyword_REPS_withNamedIteration);
+        std::vector<std::tuple<std::string, std::string, std::vector<GrammarRules::Term*>>> _grammarRulesData;
 
-        auto grammarRules__SquareBracketReps = _defineGrammarKeyword_SquareBracketReps(std::make_pair("scope", _keywords.getTypeForKeywordName("scope"));
-        _grammarRules.addRule("scope", "VARIABLE", grammarRules__SquareBracketReps);
+        auto grammarRules__Keyword_REPS_withNamedIteration = _defineGrammarKeyword_Keyword_REPS_withNamedIteration(std::make_pair("reps.named_iteration", _keywords.getGrammarTypeForName("reps.named_iteration")));
+        _grammarRulesData.push_back(std::make_tuple("reps.named_iteration", "VARIABLE", grammarRules__Keyword_REPS_withNamedIteration));
 
-        auto grammarRules__Alteration = _defineGrammarKeyword_Alteration(std::make_pair("alternation", _keywords.getTypeForKeywordName("alternation"));
-        _grammarRules.addRule("alternation", "TERMINAL", grammarRules__Alteration);
+        auto grammarRules__SquareBracketReps = _defineGrammarKeyword_SquareBracketReps(std::make_pair("scope", _keywords.getGrammarTypeForName("scope")));
+        _grammarRulesData.push_back(std::make_tuple("scope", "VARIABLE", grammarRules__SquareBracketReps));
 
-        auto grammarRules__Keyword_eval = _defineGrammarKeyword_Keyword_eval(std::make_pair("evaluation", _keywords.getTypeForKeywordName("evaluation"));
-        _grammarRules.addRule("evaluation", "TERMINAL", grammarRules__Keyword_eval);
+        auto grammarRules__Alteration = _defineGrammarKeyword_Alteration(std::make_pair("alternation", _keywords.getGrammarTypeForName("alternation")));
+        _grammarRulesData.push_back(std::make_tuple("alternation", "TERMINAL", grammarRules__Alteration));
 
-        auto grammarRules__End = _defineGrammarKeyword_End(std::make_pair("general_end", _keywords.getTypeForKeywordName("general_end"));
-        _grammarRules.addRule("general_end", "TERMINAL", grammarRules__End);
+        auto grammarRules__Keyword_eval = _defineGrammarKeyword_Keyword_eval(std::make_pair("evaluation", _keywords.getGrammarTypeForName("evaluation")));
+        _grammarRulesData.push_back(std::make_tuple("evaluation", "TERMINAL", grammarRules__Keyword_eval));
 
-        auto grammarRules__Keyword_REPS_withNamedListIteration = _defineGrammarKeyword_Keyword_REPS_withNamedListIteration(std::make_pair("reps.named_list_iteration", _keywords.getTypeForKeywordName("reps.named_list_iteration"));
-        _grammarRules.addRule("reps.named_list_iteration", "VARIABLE", grammarRules__Keyword_REPS_withNamedListIteration);
+        auto grammarRules__End = _defineGrammarKeyword_End(std::make_pair("general_end", _keywords.getGrammarTypeForName("general_end")));
+        _grammarRulesData.push_back(std::make_tuple("general_end", "TERMINAL", grammarRules__End));
 
-    virtual ~AbstrGrammarConfig
-    {
+        auto grammarRules__Keyword_REPS_withNamedListIteration = _defineGrammarKeyword_Keyword_REPS_withNamedListIteration(std::make_pair("reps.named_list_iteration", _keywords.getGrammarTypeForName("reps.named_list_iteration")));
+        _grammarRulesData.push_back(std::make_tuple("reps.named_list_iteration", "VARIABLE", grammarRules__Keyword_REPS_withNamedListIteration));
+
+        _grammarRules = new ReadOnlyData<std::vector<std::tuple<std::string, std::string, std::vector<GrammarRules::Term*>>>>(static_cast<std::vector<std::tuple<std::string, std::string, std::vector<GrammarRules::Term*>>>&&>(_grammarRulesData));
     }
+
+    virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Keyword_REPS_withNamedIteration(std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedIteration__VARIABLE) = 0;
+    virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_SquareBracketReps(std::pair<std::string, std::string> nameAndGrammarType__SquareBracketReps__VARIABLE) = 0;
+    virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Alteration(std::pair<std::string, std::string> nameAndGrammarType__Alteration__TERMINAL) = 0;
+    virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Keyword_eval(std::pair<std::string, std::string> nameAndGrammarType__Keyword_eval__TERMINAL) = 0;
+    virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_End(std::pair<std::string, std::string> nameAndGrammarType__End__TERMINAL) = 0;
+    virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Keyword_REPS_withNamedListIteration(std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedListIteration__VARIABLE) = 0;
 };
 
 #endif

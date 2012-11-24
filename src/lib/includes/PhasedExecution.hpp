@@ -21,13 +21,6 @@
 #ifndef _PHASED_EXECUTION_
 #define _PHASED_EXECUTION_
 
-/*#unded*/ #define DEBUG
-#ifdef DEBUG
-    #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
-#else
-    #define DeLOG(str)
-#endif
-
 #include <string>
 
 #include "ContextManager.hpp"
@@ -35,14 +28,34 @@
 
 #include "execution_phase/lexer/ILexerContext.hpp"
 #include "execution_phase/lexer/lexer_configuration.hpp"
+#include "execution_phase/grammaticalForm/GrammarConfig.hpp"
+
+#define DEBUG
+#ifdef DEBUG
+    #define DeLOG(str) printf("%s %d:  %s\n", __FILE__, __LINE__, str);
+    #define DeNEWLINE() printf("\n");
+#else
+    #define DeLOG(str)
+    #define DeNEWLINE()
+#endif
 
 class PhasedExecution
 {
 private:
-    lexer_configuration _config;
+    GrammarConfig _grammarConfig;
+    lexer_configuration _lexerConfig;
     ContextManager* _contextManager;
 public:
     PhasedExecution();
+    ~PhasedExecution()
+    {
+        if (_contextManager != nullptr) 
+        {
+            delete _contextManager;
+        }
+
+        DeLOG("Successfully Deleted PhasedExecution\n");
+    }
 
     //todo:will return tuple of status and string -- so handle exceptions inside here too
     std::string execute(int argc, char* argv[]);

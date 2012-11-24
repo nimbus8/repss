@@ -192,33 +192,10 @@ int main(int argc, char* argv[])
 
 		ThreadTesting::testAsync(vector<double> { 1.0, 2.0 });
 
-/*
-		//configuring & initializing lexer
-		ContextManager contextManager;
-	        const lexer_configuration config;
-
-                auto lexerContext = contextManager.getContext<ContextType::AllowedTypes, ContextType::Lexer>();
-	        const lexer_manager lexMan(&lexerContext, config);
-               
-                DeLOG("past lexer manager creation.\n");
- 
-                if (argc < 4)
-                {
-                        std::cerr << "Error, correct usage:  repss str_cmp1 str_cmp2 input_file" << std::endl;
-                }
-
-                const string filename{argv[3]};
-                const string permissions{"rt"};
-
-                Scanner *scanner = new Scanner(&lexerContext);
-
-                scanner->processFile(filename, permissions);
-*/
-
                 PhasedExecution program;
                 program.execute(argc, argv);
 
-                std::testGrammarKeywords();
+                //std::testGrammarKeywords();
 }
 	catch (std::exception& e) 
 	{ 

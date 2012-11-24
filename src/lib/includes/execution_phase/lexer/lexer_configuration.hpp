@@ -35,6 +35,13 @@
 #ifndef _LEXER_CONFIGURATION_
 #define _LEXER_CONFIGURATION_
 
+#define DEBUG
+#ifdef DEBUG
+    #define DeLOG(str) printf("%s %d:  %s\n", __FILE__, __LINE__, str);
+#else
+    #define DeLOG(str)
+#endif
+
 class lexer_configuration
 {
 private:
@@ -44,6 +51,7 @@ public:
     ~lexer_configuration() 
     {
         delete _wordConstructor;
+        DeLOG("Successfully Deleted Lexer Configuration\n");   
     }
 
     void init() {}
@@ -69,4 +77,6 @@ public:
     }
 };
 
+#undef DEBUG
+#undef DeLOG
 #endif

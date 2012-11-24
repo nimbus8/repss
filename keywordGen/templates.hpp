@@ -57,8 +57,6 @@ std::string createCopyright()
 class TemplateSystem
 {
 private:
-    std::unordered_map<std::string, int> _keywordNameToIndexInKeywordsData;
-
     std::string _generatedKeywordsFilePath;
     std::string _generatedAbstractGrammaConfigFilePath;
     std::string _generatedAbstractLexerWordConstructorFilePath;
@@ -68,7 +66,8 @@ private:
     std::string _keywordsCollectionClassName;
     std::string _abstractGrammarConfigClassName;
 public:
-    TemplateSystem(std::string generatedAbstractGrammaConfigFilePath, std::string generatedAbstractLexerWordConstructorFilePath) : _generatedAbstractGrammaConfigFilePath(generatedAbstractGrammaConfigFilePath), _generatedAbstractLexerWordConstructorFilePath(generatedAbstractLexerWordConstructorFilePath) {}
+    TemplateSystem(std::string generatedAbstractGrammaConfigFilePath, std::string generatedAbstractLexerWordConstructorFilePath)
+            : _generatedAbstractGrammaConfigFilePath(generatedAbstractGrammaConfigFilePath), _generatedAbstractLexerWordConstructorFilePath(generatedAbstractLexerWordConstructorFilePath) {}
 
     //this is for write component of keywords.cpp. Actual path is runtime dependant, defined in some input file.
     void setGeneratedKeywordsFilePath(const std::string& generatedKeywordsFilePath)
@@ -178,23 +177,30 @@ public:
             toWriteStart.append(_system->_keywordsCollectionClassName);
 
             //-- private destructor
-            toWriteStart.append("\n{\nprivate:\n    virtual ~");
+            toWriteStart.append("\n{\nprivate:\n    //virtual ~");
             toWriteStart.append(_system->_keywordsCollectionClassName);
             toWriteStart.append("() {}");
 
 
             //the ending, second part of return pair
-            std::string toWriteEnd("\n};\n#endif\n");
+            std::string toWriteEnd("\n    ");
+            toWriteEnd.append(_system->_keywordsCollectionClassName);
+            toWriteEnd.append("()\n");
+            toWriteEnd.append("    {\n");
+            toWriteEnd.append("    }\n");
+            toWriteEnd.append("\n};\n#endif\n");
 
             return std::pair<std::string,std::string>(toWriteStart, toWriteEnd);
         }
 
         std::string generateKeywordsData(const std::vector<std::tuple<std::string, std::string, std::string>>& keywordDetails) const
         {
-            auto numberOfKeywords = keywordDetails.size();
-            std::string output("\nprotected:\n    const class KeywordsData\n    {\n    private:\n");
+            std::unordered_map<std::string, std::string> keywordNameToGrammarType;
 
-            output.append("        const ");
+            auto numberOfKeywords = keywordDetails.size();
+            std::string output("\nprotected:\n    class KeywordsData\n    {\n    private:\n");
+
+            output.append("        ");
             output.append(_system->_keywordClassName);
             output.append(" keywords[");
             output.append(std::to_string(numberOfKeywords));
@@ -204,13 +210,18 @@ public:
             int count = 0;
             for (auto keywordPair : keywordDetails)
             {
+                const std::string keywordName(std::get<0>(keywordPair));
+                const std::string grammarType(std::get<1>(keywordPair));
                 output.append("            ");
                 output.append(_system->_keywordClassName);
                 output.append("{ \"");
-                output.append(std::get<0>(keywordPair));
+                output.append(keywordName);
                 output.append("\", GrammarType_t::");
-                output.append(std::get<1>(keywordPair));
+                output.append(grammarType);
                 output.append(" }");
+
+                //add keywordName => GrammarType mapping
+                keywordNameToGrammarType.emplace(std::pair<std::string,std::string>(keywordName, grammarType));
 
                 if (count < numberOfKeywords - 1)
                 {
@@ -224,7 +235,7 @@ public:
             output.append("          };\n");
 
             output.append("    public:\n");
-            output.append("        ");
+            output.append("       const ");
             output.append(_system->_keywordClassName);
             output.append(" getAt(const size_t index) const\n");
             output.append("        {\n");
@@ -235,6 +246,41 @@ public:
             output.append("; }\n");
 
             output.append("    } _data;\n");
+
+            output.append("\npublic:\n    std::string getGrammarTypeForName(const std::string& keywordName) const\n");
+            output.append("    {\n");
+
+            count = 0;
+            for (auto keywordNameAndType : keywordNameToGrammarType)
+            {
+                if (count == 0)
+                {
+                    output.append("        if (keywordName.compare(\"");
+                    output.append(keywordNameAndType.first);
+                    output.append("\") == 0)\n");
+                    output.append("        {\n");
+                    output.append("            return \"");
+                    output.append(keywordNameAndType.second);
+                    output.append("\";\n");
+                    output.append("        }\n");
+                }
+                else
+                {
+                    output.append("        else if (keywordName.compare(\"");
+                    output.append(keywordNameAndType.first);
+                    output.append("\") == 0)\n");
+                    output.append("        {\n");
+                    output.append("            return \"");
+                    output.append(keywordNameAndType.second);
+                    output.append("\";\n");
+                    output.append("        }\n");
+                }
+
+                count++;
+            }
+
+            output.append("\n        return \"INVALID\";\n");
+            output.append("    }\n");
 
             return output;
         }
@@ -315,6 +361,8 @@ public:
                 output.append("() = 0;\n");
             }
 
+            //here we have a mapping function: keywordName => index, 
+
             return output;
         }
 
@@ -386,9 +434,14 @@ public:
              output.append("\n#ifndef _ABSTR_GRAMMAR_CONFIG_\n#define _ABSTR_GRAMMAR_CONFIG\n");
              output.append("\n#include <string>\n#include <vector>\n");
 
-             output.append("#include \"");
+             output.append("\n#include \"../../../");
              output.append(_system->_generatedKeywordsFilePath);
              output.append("\"\n");
+
+             output.append("#include \"ILanguageAndGrammar.hpp\"\n");
+
+             output.append("#include \"utils/ReadOnlyData.hpp\"\n");
+
 
              _system->_abstractGrammarConfigClassName = "AbstrGrammarConfig";
 
@@ -398,23 +451,24 @@ public:
              output.append("private:\n    ");
              output.append(_system->_keywordsCollectionClassName);
              output.append(" _keywords;\n");
-             output.append("protected:\n    ReadOnlyData<std::tuple<std::string, std::string, std::vector<GrammarRules::Term>>> _grammarRules;\n");
+             output.append("protected:\n    ReadOnlyData<std::vector<std::tuple<std::string, std::string, std::vector<GrammarRules::Term*>>>>* _grammarRules;\n");
 
-             output.append("\n");
+             output.append("\n    virtual ~");
+             output.append(_system->_abstractGrammarConfigClassName);
+             output.append("()\n    {\n        delete _grammarRules;\n    }\n");
 
-             for (auto grammarKeywordInfoObj : grammarKeywords)
-             {
-                 output.append("    std::vector<GrammarRules::Term> defineGrammarKeyword_");
-                 output.append(grammarKeywordInfoObj.getAllAlphaName());
-                 output.append("(std::pair<std::string, std::string> nameAndGrammarType__");
-                 output.append(grammarKeywordInfoObj.getAllAlphaName());
-                 output.append("__");
-                 output.append(grammarKeywordInfoObj.getGrammarType());
-                 output.append(") == 0;\n");
-             }
+             output.append("public:\n");
+
+             output.append("    ");
+             output.append(_system->_abstractGrammarConfigClassName);
+             output.append("()\n    {\n    }\n");
+
+             //init function
 
              output.append("\n    void _init()\n");
-             output.append("    {");
+             output.append("    {\n");
+
+             output.append("        std::vector<std::tuple<std::string, std::string, std::vector<GrammarRules::Term*>>> _grammarRulesData;\n");
 
              for (auto grammarKeywordInfoObj : grammarKeywords)
              {
@@ -424,24 +478,37 @@ public:
                  output.append(grammarKeywordInfoObj.getAllAlphaName());
                  output.append("(std::make_pair(\"");
                  output.append(grammarKeywordInfoObj.getName());
-                 output.append("\", _keywords.getTypeForKeywordName(\"");
+                 output.append("\", _keywords.getGrammarTypeForName(\"");
                  output.append(grammarKeywordInfoObj.getName());
-                 output.append("\"));\n");
+                 output.append("\")));\n");
 
-                 output.append("        _grammarRules.addRule(\"");
+                 output.append("        _grammarRulesData.push_back(std::make_tuple(\"");
                  output.append(grammarKeywordInfoObj.getName());
                  output.append("\", \"");
                  output.append(grammarKeywordInfoObj.getGrammarType());
                  output.append("\", grammarRules__");
                  output.append(grammarKeywordInfoObj.getAllAlphaName());
-                 output.append(");\n");
+                 output.append("));\n");
              }
 
-             output.append("\n    virtual ~");
-             output.append(_system->_abstractGrammarConfigClassName);
-             output.append("\n    {\n    }\n");
+             output.append("\n        _grammarRules = new ReadOnlyData<std::vector<std::tuple<std::string, std::string, std::vector<GrammarRules::Term*>>>>(static_cast<std::vector<std::tuple<std::string, std::string, std::vector<GrammarRules::Term*>>>&&>(_grammarRulesData));\n");
 
-             output.append("};\n\n#endif");
+             output.append("    }\n\n");
+
+             //virtual functions
+
+             for (auto grammarKeywordInfoObj : grammarKeywords)
+             {
+                 output.append("    virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_");
+                 output.append(grammarKeywordInfoObj.getAllAlphaName());
+                 output.append("(std::pair<std::string, std::string> nameAndGrammarType__");
+                 output.append(grammarKeywordInfoObj.getAllAlphaName());
+                 output.append("__");
+                 output.append(grammarKeywordInfoObj.getGrammarType());
+                 output.append(") = 0;\n");
+             }
+
+             output.append("};\n\n#endif\n");
 
              return output;
         }

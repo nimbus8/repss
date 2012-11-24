@@ -18,8 +18,10 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define ABSTR_LEXER_WORD_CONSTRUCTOR_PATH "src/lib/includes/execution_phase/lexer/Genrtd_AbstrLexerWordConstructor.hpp"
-#define ABSTR_GRAMMAR_CONFIG_PATH "src/lib/includes/Genrtd_AbstrGrammarConfig.hpp"
+#define ABSTR_LEXER_WORD_CONSTRUCTOR_FROM_INCLUDES_PATH "execution_phase/lexer/Genrtd_AbstrLexerWordConstructor.hpp"
+#define ABSTR_LEXER_WORD_CONSTRUCTOR_PATH "src/lib/includes/"ABSTR_LEXER_WORD_CONSTRUCTOR_FROM_INCLUDES_PATH
+#define ABSTR_GRAMMAR_CONFIG_FROM_INCLUDES_PATH "Genrtd_AbstrGrammarConfig.hpp"
+#define ABSTR_GRAMMAR_CONFIG_PATH "src/lib/includes/"ABSTR_GRAMMAR_CONFIG_FROM_INCLUDES_PATH
 
 //read in keywords-list.defn
 //+ file should be organized, by line:
@@ -547,7 +549,7 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
     Status currentStatus{prevStatus};
 
     //we hook all our templates to TemplateSystem, so it can record/use common info - reducing redundancy
-    TemplateSystem theMainTemplateSystem(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, ABSTR_GRAMMAR_CONFIG_PATH);
+    TemplateSystem theMainTemplateSystem(ABSTR_LEXER_WORD_CONSTRUCTOR_FROM_INCLUDES_PATH, ABSTR_GRAMMAR_CONFIG_FROM_INCLUDES_PATH);
 
     std::vector<std::string> keywordNamesAllAlpha;
     std::vector<std::string> embeddedKeywordNames;

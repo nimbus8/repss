@@ -27,6 +27,11 @@
 #ifndef _CONTEXT_MANAGER_
 #define _CONTEXT_MANAGER_
 
+#include "execution_phase/lexer/construction/ScanWordNode.hpp" 
+
+#include "execution_phase/lexer/ILexerContext.hpp"
+#include "execution_phase/grammaticalForm/IGrammarContext.hpp"
+
 #define DEBUG
 //#undef DEBUG
 #ifdef DEBUG
@@ -34,11 +39,6 @@
 #else
     #define DeLOG(str)
 #endif
-
-#include "execution_phase/lexer/construction/ScanWordNode.hpp" 
-
-#include "execution_phase/lexer/ILexerContext.hpp"
-#include "execution_phase/grammaticalForm/IGrammarContext.hpp"
 
 class ContextType
 {
@@ -175,7 +175,7 @@ public:
         _annotatedData = ctx->_annotatedData;
         _scanWords = ctx->_scanWords;      
     }
-    ~Context() {}
+    ~Context() { DeLOG("Context was successfully destroyed\n"); }
 };	
 
 typedef ContextType::AllowedTypes _AllowedTypes_;

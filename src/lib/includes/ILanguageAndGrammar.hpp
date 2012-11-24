@@ -18,6 +18,9 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _ILANGAGE_AND_GRAMMAR_
+#define _ILANGAGE_AND_GRAMMAR_
+
 #define DEBUG
 //#undef DEBUG
 #ifdef DEBUG
@@ -29,19 +32,18 @@
 #include <string>
 #include <vector>
 
-class GrammerRules::Term;
+#include "utils/AggregatePtrsAndDelete.hpp"
 
 class GrammarRules
 {
-private:
-    std::vector<GrammerRules*> _rules;
 public:
     class Term
     {
     private:
         std::string _name;
     public:
-        Term() _name(""){};
+        Term() : _name(""){};
+        Term(std::string& name) : _name(name) {}
         Term(Term& other) : _name(other._name) {}
         virtual ~Term() = 0;
 
@@ -63,19 +65,18 @@ public:
         explicit Variable(std::string& name, AggregatePtrsAndDelete<Term*>* directlyDerivedTerms)
             : Term(name), _directlyDerivedTerms(directlyDerivedTerms) {}
 
-        //move constructor? try it
-        std::vector<Terms>& getDerivations();
+        //todo:will change this to use ConstVector
+        std::vector<Term*>& getDerivations();
 
         ~Variable() 
         {
            delete _directlyDerivedTerms;
         }
     };
+private:
+    std::vector<Term*> _rules;
 };
 
-class ILanguageAndGrammar
-{
-public:
-    getLanguageKeywords();
-    getGrammarRules();
-};
+#undef DEBUG
+#undef DeLOG
+#endif

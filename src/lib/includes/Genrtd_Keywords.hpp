@@ -59,12 +59,12 @@ public:
 class Keywords
 {
 private:
-    virtual ~Keywords() {}
+    //virtual ~Keywords() {}
 protected:
-    const class KeywordsData
+    class KeywordsData
     {
     private:
-        const AbstrKeyword keywords[6] =
+        AbstrKeyword keywords[6] =
           {
             AbstrKeyword{ "reps.named_iteration", GrammarType_t::VARIABLE },
             AbstrKeyword{ "scope", GrammarType_t::VARIABLE },
@@ -74,13 +74,48 @@ protected:
             AbstrKeyword{ "reps.named_list_iteration", GrammarType_t::VARIABLE }
           };
     public:
-        AbstrKeyword getAt(const size_t index) const
+       const AbstrKeyword getAt(const size_t index) const
         {
              return keywords[index];
         }
 
         size_t getSize() const { return 6; }
     } _data;
+
+public:
+    std::string getGrammarTypeForName(const std::string& keywordName) const
+    {
+        if (keywordName.compare("reps.named_list_iteration") == 0)
+        {
+            return "VARIABLE";
+        }
+        else if (keywordName.compare("reps.named_iteration") == 0)
+        {
+            return "VARIABLE";
+        }
+        else if (keywordName.compare("general_end") == 0)
+        {
+            return "TERMINAL";
+        }
+        else if (keywordName.compare("scope") == 0)
+        {
+            return "VARIABLE";
+        }
+        else if (keywordName.compare("evaluation") == 0)
+        {
+            return "TERMINAL";
+        }
+        else if (keywordName.compare("alternation") == 0)
+        {
+            return "TERMINAL";
+        }
+
+        return "INVALID";
+    }
+
+    Keywords()
+    {
+    }
 
 };
 #endif
