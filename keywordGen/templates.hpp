@@ -52,16 +52,36 @@ std::string createCopyright()
     return str;
 }
 
+//Note: Order is VERY important when using any of the templates. The order they are defined below in the TempalteSystem
+//      should ALWAYS work.
 class TemplateSystem
 {
 private:
     std::unordered_map<std::string, int> _keywordNameToIndexInKeywordsData;
+
+    std::string _generatedKeywordsFilePath;
+    std::string _generatedAbstractGrammaConfigFilePath;
+    std::string _generatedAbstractLexerWordConstructorFilePath;
 
     std::string _keywordInterfaceName;
     std::string _keywordClassName;
     std::string _keywordsCollectionClassName;
     std::string _abstractGrammarConfigClassName;
 public:
+    TemplateSystem(std::string generatedAbstractGrammaConfigFilePath, std::string generatedAbstractLexerWordConstructorFilePath) : _generatedAbstractGrammaConfigFilePath(generatedAbstractGrammaConfigFilePath), _generatedAbstractLexerWordConstructorFilePath(generatedAbstractLexerWordConstructorFilePath) {}
+
+    //this is for write component of keywords.cpp. Actual path is runtime dependant, defined in some input file.
+    void setGeneratedKeywordsFilePath(const std::string& generatedKeywordsFilePath)
+    {
+        if (!_generatedKeywordsFilePath.empty())
+        {
+            perror("Error: you MAY NOT set the path for Keywords file TWICE. Only ONCE. Exitting...");
+            exit(1);
+        }
+
+        _generatedKeywordsFilePath = generatedKeywordsFilePath;
+    }
+
     class KeywordsTemplate;
     class AbstrLexerWordConstructorTemplate;
     class AbstrGrammarConfigTemplate; 
@@ -239,6 +259,7 @@ public:
             //for any particular language construct.
 
             std::string output = createCopyright();
+            output.append("\n//Should you modify this file? NO\n");
 
             output.append("\n#include \"construction/ConstructionTypedefs.hpp\"\n");
 
@@ -357,16 +378,21 @@ public:
             std::string getAllAlphaName() const { return _allAlphaName; }
         };
 
-        std::string generateClass(std::vector<GrammarKeywordInfo> grammarKeywords)
+        std::string generateClass(const std::vector<GrammarKeywordInfo> grammarKeywords)
         {
              std::string output = createCopyright();
+             output.append("\n//Should you modify this file? NO\n");
 
-             output.append("#ifndef _ABSTR_GRAMMAR_CONFIG_\n#define _ABSTR_GRAMMAR_CONFIG\n");
+             output.append("\n#ifndef _ABSTR_GRAMMAR_CONFIG_\n#define _ABSTR_GRAMMAR_CONFIG\n");
              output.append("\n#include <string>\n#include <vector>\n");
+
+             output.append("#include \"");
+             output.append(_system->_generatedKeywordsFilePath);
+             output.append("\"\n");
 
              _system->_abstractGrammarConfigClassName = "AbstrGrammarConfig";
 
-             output.append("class ");
+             output.append("\nclass ");
              output.append(_system->_abstractGrammarConfigClassName);
              output.append("\n{\n");
              output.append("private:\n    ");
@@ -378,7 +404,7 @@ public:
 
              for (auto grammarKeywordInfoObj : grammarKeywords)
              {
-                 output.append("    _defineGrammarKeyword_");
+                 output.append("    std::vector<GrammarRules::Term> defineGrammarKeyword_");
                  output.append(grammarKeywordInfoObj.getAllAlphaName());
                  output.append("(std::pair<std::string, std::string> nameAndGrammarType__");
                  output.append(grammarKeywordInfoObj.getAllAlphaName());

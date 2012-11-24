@@ -547,7 +547,7 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
     Status currentStatus{prevStatus};
 
     //we hook all our templates to TemplateSystem, so it can record/use common info - reducing redundancy
-    TemplateSystem theMainTemplateSystem;
+    TemplateSystem theMainTemplateSystem(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, ABSTR_GRAMMAR_CONFIG_PATH);
 
     std::vector<std::string> keywordNamesAllAlpha;
     std::vector<std::string> embeddedKeywordNames;
@@ -592,6 +592,8 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
             else
             {
                 std::string outputFilename = std::get<1>(matchesForPath[0]); 
+
+                theMainTemplateSystem.setGeneratedKeywordsFilePath(outputFilename);
 
                 //if file already exists [readonly], this allows us to overwrite it.
                 chmod(outputFilename.c_str(), S_IRUSR | S_IWUSR);

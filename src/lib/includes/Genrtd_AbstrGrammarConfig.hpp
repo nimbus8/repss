@@ -17,11 +17,16 @@
  You should have received a copy of the GNU General Public License
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+//Should you modify this file? NO
+
 #ifndef _ABSTR_GRAMMAR_CONFIG_
 #define _ABSTR_GRAMMAR_CONFIG
 
 #include <string>
 #include <vector>
+#include "src/lib/includes/Genrtd_Keywords.hpp"
+
 class AbstrGrammarConfig
 {
 private:
@@ -29,12 +34,12 @@ private:
 protected:
     ReadOnlyData<std::tuple<std::string, std::string, std::vector<GrammarRules::Term>>> _grammarRules;
 
-    _defineGrammarKeyword_Keyword_REPS_withNamedIteration(std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedIteration__VARIABLE) == 0;
-    _defineGrammarKeyword_SquareBracketReps(std::pair<std::string, std::string> nameAndGrammarType__SquareBracketReps__VARIABLE) == 0;
-    _defineGrammarKeyword_Alteration(std::pair<std::string, std::string> nameAndGrammarType__Alteration__TERMINAL) == 0;
-    _defineGrammarKeyword_Keyword_eval(std::pair<std::string, std::string> nameAndGrammarType__Keyword_eval__TERMINAL) == 0;
-    _defineGrammarKeyword_End(std::pair<std::string, std::string> nameAndGrammarType__End__TERMINAL) == 0;
-    _defineGrammarKeyword_Keyword_REPS_withNamedListIteration(std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedListIteration__VARIABLE) == 0;
+    std::vector<GrammarRules::Term> defineGrammarKeyword_Keyword_REPS_withNamedIteration(std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedIteration__VARIABLE) == 0;
+    std::vector<GrammarRules::Term> defineGrammarKeyword_SquareBracketReps(std::pair<std::string, std::string> nameAndGrammarType__SquareBracketReps__VARIABLE) == 0;
+    std::vector<GrammarRules::Term> defineGrammarKeyword_Alteration(std::pair<std::string, std::string> nameAndGrammarType__Alteration__TERMINAL) == 0;
+    std::vector<GrammarRules::Term> defineGrammarKeyword_Keyword_eval(std::pair<std::string, std::string> nameAndGrammarType__Keyword_eval__TERMINAL) == 0;
+    std::vector<GrammarRules::Term> defineGrammarKeyword_End(std::pair<std::string, std::string> nameAndGrammarType__End__TERMINAL) == 0;
+    std::vector<GrammarRules::Term> defineGrammarKeyword_Keyword_REPS_withNamedListIteration(std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedListIteration__VARIABLE) == 0;
 
     void _init()
     {

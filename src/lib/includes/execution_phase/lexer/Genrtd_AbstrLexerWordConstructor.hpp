@@ -18,6 +18,8 @@
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+//Should you modify this file? NO
+
 #include "construction/ConstructionTypedefs.hpp"
 
 #ifndef _ABSTR_LEXER_WORD_CONSTRUCTOR_
