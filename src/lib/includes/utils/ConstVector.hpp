@@ -32,8 +32,9 @@ private:
 public:
     explicit ConstVector(const std::vector<T> *vector) : _vector(vector) {}
     ConstVector(const ConstVector& other) : _vector(other._vector) {}
-    ConstVector(ConstVector&& other) : _vector(other._vector)
+    ConstVector(ConstVector&& other) : _vector(nullptr)
     {
+        _vector = other._vector;
         other._vector = nullptr;
     }
 

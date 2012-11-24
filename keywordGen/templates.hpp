@@ -60,6 +60,7 @@ private:
     std::string _keywordInterfaceName;
     std::string _keywordClassName;
     std::string _keywordsCollectionClassName;
+    std::string _abstractGrammarConfigClassName;
 public:
     class KeywordsTemplate;
     class AbstrLexerWordConstructorTemplate;
@@ -327,6 +328,97 @@ public:
     public:
         AbstrGrammarConfigTemplate(TemplateSystem* aSystem) : _system(aSystem) {}
         ~AbstrGrammarConfigTemplate() {}
+
+        class GrammarKeywordInfo
+        {
+        private:
+            std::string _name;
+            std::string _type;
+            std::string _allAlphaName;
+        public:
+            GrammarKeywordInfo(std::string& name, std::string& type, std::string& allAlphaName)
+                : _name(name), _type(type), _allAlphaName(allAlphaName) {}
+            GrammarKeywordInfo(const GrammarKeywordInfo& other)
+                : _name(other._name), _type(other._type), _allAlphaName(other._allAlphaName) {}
+            GrammarKeywordInfo(GrammarKeywordInfo&& other)
+                : _name(""), _type(""), _allAlphaName("")
+            {
+                _name = other._name;
+                _type = other._type;
+                _allAlphaName = other._allAlphaName;
+
+                other._name = "";
+                other._type = "";
+                other._allAlphaName = "";
+            }
+
+            std::string getName() const { return _name; }
+            std::string getGrammarType() const { return _type; }
+            std::string getAllAlphaName() const { return _allAlphaName; }
+        };
+
+        std::string generateClass(std::vector<GrammarKeywordInfo> grammarKeywords)
+        {
+             std::string output = createCopyright();
+
+             output.append("#ifndef _ABSTR_GRAMMAR_CONFIG_\n#define _ABSTR_GRAMMAR_CONFIG\n");
+             output.append("\n#include <string>\n#include <vector>\n");
+
+             _system->_abstractGrammarConfigClassName = "AbstrGrammarConfig";
+
+             output.append("class ");
+             output.append(_system->_abstractGrammarConfigClassName);
+             output.append("\n{\n");
+             output.append("private:\n    ");
+             output.append(_system->_keywordsCollectionClassName);
+             output.append(" _keywords;\n");
+             output.append("protected:\n    ReadOnlyData<std::tuple<std::string, std::string, std::vector<GrammarRules::Term>>> _grammarRules;\n");
+
+             output.append("\n");
+
+             for (auto grammarKeywordInfoObj : grammarKeywords)
+             {
+                 output.append("    _defineGrammarKeyword_");
+                 output.append(grammarKeywordInfoObj.getAllAlphaName());
+                 output.append("(std::pair<std::string, std::string> nameAndGrammarType__");
+                 output.append(grammarKeywordInfoObj.getAllAlphaName());
+                 output.append("__");
+                 output.append(grammarKeywordInfoObj.getGrammarType());
+                 output.append(") == 0;\n");
+             }
+
+             output.append("\n    void _init()\n");
+             output.append("    {");
+
+             for (auto grammarKeywordInfoObj : grammarKeywords)
+             {
+                 output.append("\n        auto grammarRules__");
+                 output.append(grammarKeywordInfoObj.getAllAlphaName());
+                 output.append(" = _defineGrammarKeyword_");
+                 output.append(grammarKeywordInfoObj.getAllAlphaName());
+                 output.append("(std::make_pair(\"");
+                 output.append(grammarKeywordInfoObj.getName());
+                 output.append("\", _keywords.getTypeForKeywordName(\"");
+                 output.append(grammarKeywordInfoObj.getName());
+                 output.append("\"));\n");
+
+                 output.append("        _grammarRules.addRule(\"");
+                 output.append(grammarKeywordInfoObj.getName());
+                 output.append("\", \"");
+                 output.append(grammarKeywordInfoObj.getGrammarType());
+                 output.append("\", grammarRules__");
+                 output.append(grammarKeywordInfoObj.getAllAlphaName());
+                 output.append(");\n");
+             }
+
+             output.append("\n    virtual ~");
+             output.append(_system->_abstractGrammarConfigClassName);
+             output.append("\n    {\n    }\n");
+
+             output.append("};\n\n#endif");
+
+             return output;
+        }
     };
 };
 

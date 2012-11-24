@@ -21,13 +21,24 @@
 #ifndef _READ_ONLY_ELEMENT_
 #define _READ_ONLY_ELEMENT_
 
+//used to define complex object structures - as a nonspecific base level representation
+// and maybe even a transfer object. Type will usually be some stl container with possibly
+// more stl containers as template parameters.
+
+template<class T>
 class ReadOnlyElement
 {
 private:
-
+    const T* data;
 public:
-     ReadOnlyElement() {}
-     ~ReadOnlyElement() {}
+    explicit ReadOnlyElement(T* data) {}
+    ReadOnlyElement(const ReadOnlyElement other) : _data(other._data) {}
+    ReadOnlyElement(ReadOnlyElement&& other) : _data(nullptr)
+    {
+        _data = _other._data;
+        _other.data = nullptr;
+    }
+    ~ReadOnlyElement() {}
 };
 
 #endif

@@ -19,6 +19,7 @@
  */
 
 #define ABSTR_LEXER_WORD_CONSTRUCTOR_PATH "src/lib/includes/execution_phase/lexer/Genrtd_AbstrLexerWordConstructor.hpp"
+#define ABSTR_GRAMMAR_CONFIG_PATH "src/lib/includes/Genrtd_AbstrGrammarConfig.hpp"
 
 //read in keywords-list.defn
 //+ file should be organized, by line:
@@ -551,6 +552,9 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
     std::vector<std::string> keywordNamesAllAlpha;
     std::vector<std::string> embeddedKeywordNames;
 
+    typedef TemplateSystem::AbstrGrammarConfigTemplate::GrammarKeywordInfo GrammarKeywordInfo_t;
+    std::vector<GrammarKeywordInfo_t> grammarKeywordInfoObjs;
+
     DeLOG("About to write based on objects\n");
 
     for (auto obj : objects)
@@ -644,6 +648,9 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
                     for (auto detailTuple : onlyKeywordElementDetails)
                     { 
                         keywordNamesAllAlpha.push_back(std::get<2>(detailTuple));
+
+                        //while we're at it lets add GrammarKeywordInfo_t to a vector
+                        grammarKeywordInfoObjs.push_back(GrammarKeywordInfo_t(std::get<0>(detailTuple), std::get<1>(detailTuple), std::get<2>(detailTuple)));
                     }
                 }
 
@@ -682,6 +689,30 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
     DeLOG("Closing file");
 
     chmod(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, S_IRUSR);
+
+    DeLOG("Changing permissions to READ on written file\n");
+
+
+//TemplateSystem::AbstrGrammarConfigTemplate::GrammarKeywordInfo
+    TemplateSystem::AbstrGrammarConfigTemplate abstrGrammarTemplate(&theMainTemplateSystem);
+    chmod(ABSTR_GRAMMAR_CONFIG_PATH, S_IRUSR | S_IWUSR);
+
+    DeLOG("Finished Changing Permissions Of AbstrGrammarConfig.hpp\n");
+
+    FILE* abstrGrammarConfigOutputFile = fopen(ABSTR_GRAMMAR_CONFIG_PATH, "wt");
+
+    DeLOG("Opened AbstrGrammarConfig.hpp\n");
+
+    std::string abstrConfigFileContents = abstrGrammarTemplate.generateClass(grammarKeywordInfoObjs);
+    fputs(abstrConfigFileContents.c_str(), abstrGrammarConfigOutputFile);
+
+    DeLOG("Finished writing to file\n");
+
+    fclose(abstrGrammarConfigOutputFile);
+
+    DeLOG("Closing file");
+
+    chmod(ABSTR_GRAMMAR_CONFIG_PATH, S_IRUSR);
 
     DeLOG("Changing permissions to READ on written file\n");
 
