@@ -200,7 +200,7 @@ public:
             auto numberOfKeywords = keywordDetails.size();
             std::string output("\nprotected:\n    class KeywordsData\n    {\n    private:\n");
 
-            output.append("        ");
+            output.append("       const ");
             output.append(_system->_keywordClassName);
             output.append(" keywords[");
             output.append(std::to_string(numberOfKeywords));

@@ -64,7 +64,7 @@ protected:
     class KeywordsData
     {
     private:
-        AbstrKeyword keywords[6] =
+       const AbstrKeyword keywords[6] =
           {
             AbstrKeyword{ "reps.named_iteration", GrammarType_t::VARIABLE },
             AbstrKeyword{ "scope", GrammarType_t::VARIABLE },
