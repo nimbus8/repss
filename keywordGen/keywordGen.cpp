@@ -545,6 +545,9 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
 
     Status currentStatus{prevStatus};
 
+    //we hook all our templates to TemplateSystem, so it can record/use common info - reducing redundancy
+    TemplateSystem theMainTemplateSystem;
+
     std::vector<std::string> keywordNamesAllAlpha;
     std::vector<std::string> embeddedKeywordNames;
 
@@ -569,7 +572,7 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
         }
         else if (objName.compare("Keywords") == 0 && objType.compare("obj-collection") == 0)
         {
-            KeywordsTemplate keywordTemplate;
+            TemplateSystem::KeywordsTemplate keywordTemplate(&theMainTemplateSystem);
 
             const auto objDetailTuples = std::get<DETAILS_INDEX_IN_OBJ_TUPLE>(obj);
 
@@ -621,7 +624,7 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
                     auto keywordDefns 
                         = filterTuples(objDetailTuples, FilterType_t::ANYTHING_BUT, ignoreStrings);
 
-                    auto keywordsData = keywordTemplate.generateKeywordsData(keywordDefns, elementObjName);
+                    auto keywordsData = keywordTemplate.generateKeywordsData(keywordDefns);
 
                     fputs(signatureAndClose.first.c_str(), outputFile); 
                     fputs(keywordsData.c_str(), outputFile);           
@@ -642,27 +645,6 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
                     { 
                         keywordNamesAllAlpha.push_back(std::get<2>(detailTuple));
                     }
-
-                    //todo: hold off on this part...i.e. wait until ALL objects have read and we know, for instance, what embedded functions (if any) need to be present in the interface for LexerWordConstructor. not too hard, just move keywordNamesAllAlpha up one level.
-/*
-                    AbstrLexerWordConstructorTemplate lwcTemplate;
-                    auto lexerWordConstructorStartOfClass = lwcTemplate.generateStartOfClass();
-                    auto lexerWordConstructorInitAndWordFunctions = lwcTemplate.generateInitAndWordFunctions(keywordNamesAllAlpha);
-                    auto lexerWordConstructorEmbeddedFunctions = lwcTemplate.generateEmbeddedWordFunctions(keywordNamesAllAlpha);
-                    auto lexerWordConstructorEndOfClass = lwcTemplate.generateEndOfClass();
-
-                    chmod(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, S_IRUSR | S_IWUSR);
-
-                    FILE* lexerWordConstructorOutputFile = fopen(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, "wt");
-
-                    fputs(lexerWordConstructorStartOfClass.c_str(), lexerWordConstructorOutputFile);
-                    fputs(lexerWordConstructorInitAndWordFunctions.c_str(), lexerWordConstructorOutputFile);
-                    fputs(lexerWordConstructorEmbeddedFunctions.c_str(), lexerWordConstructorOutputFile);
-                    fputs(lexerWordConstructorEndOfClass.c_str(), lexerWordConstructorOutputFile);
-
-                    fclose(lexerWordConstructorOutputFile);
-                    chmod(ABSTR_LEXER_WORD_CONSTRUCTOR_PATH, S_IRUSR);
-*/
                 }
 
 
@@ -672,7 +654,7 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
 
     DeLOG("\nFinished reading objects\n");
 
-    AbstrLexerWordConstructorTemplate lwcTemplate;
+    TemplateSystem::AbstrLexerWordConstructorTemplate lwcTemplate(&theMainTemplateSystem);
     auto lexerWordConstructorStartOfClass = lwcTemplate.generateStartOfClass();
     auto lexerWordConstructorInitAndWordFunctions = lwcTemplate.generateInitAndWordFunctions(keywordNamesAllAlpha);
     auto lexerWordConstructorEmbeddedFunctions = lwcTemplate.generateEmbeddedWordFunctions(embeddedKeywordNames);

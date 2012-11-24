@@ -23,6 +23,7 @@
 
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 std::string createCopyright()
 {
@@ -51,103 +52,129 @@ std::string createCopyright()
     return str;
 }
 
-class KeywordsTemplate
+class TemplateSystem
 {
+private:
+    std::unordered_map<std::string, int> _keywordNameToIndexInKeywordsData;
+
+    std::string _keywordInterfaceName;
+    std::string _keywordClassName;
+    std::string _keywordsCollectionClassName;
 public:
-    KeywordsTemplate() {}
-    ~KeywordsTemplate() {}
+    class KeywordsTemplate;
+    class AbstrLexerWordConstructorTemplate;
+    class AbstrGrammarConfigTemplate; 
+ 
+    friend class KeywordsTemplate;
+    friend class AbstrLexerWordConstructorTemplate;
+    friend class AbstrGrammarConfigTemplate;
 
-    std::pair<std::string, std::string> generateClass(const std::string& collectionClassName, std::string& singularClassName) const
+    class KeywordsTemplate
     {
-        auto toWriteStart = createCopyright();
-        toWriteStart.append("\n//Should you modify this file? NO\n");
+    private:
+        TemplateSystem *_system;
+    public:
+        KeywordsTemplate(TemplateSystem* aSystem) : _system(aSystem) {}
+        ~KeywordsTemplate() {}
 
-        toWriteStart.append("#ifndef _GENRTD_KEYWORDS_\n#define _GENRTD_KEYWORDS_\n");
+        std::pair<std::string, std::string> generateClass(const std::string& collectionClassName, std::string& singularClassName) const
+        {
+            auto toWriteStart = createCopyright();
+            toWriteStart.append("\n//Should you modify this file? NO\n");
 
-        toWriteStart.append("\n#include <string>\n");
+            toWriteStart.append("#ifndef _GENRTD_KEYWORDS_\n#define _GENRTD_KEYWORDS_\n");
 
-        //grammar type enum
-        toWriteStart.append("\nenum class GrammarType_t : char\n");
-        toWriteStart.append("{\n");
-        toWriteStart.append("    UNDEFINED  = 'U',\n");
-        toWriteStart.append("    TERMINAL   = 'T',\n");
-        toWriteStart.append("    VARIABLE   = 'V'\n");
-        toWriteStart.append("};\n");
+            toWriteStart.append("\n#include <string>\n");
 
-        //interface
-        toWriteStart.append("\nclass I");
-        toWriteStart.append(singularClassName);
-        toWriteStart.append("\n{\npublic:\n");
-        toWriteStart.append("    virtual ~I");
-        toWriteStart.append(singularClassName);
-        toWriteStart.append("() {}\n");
-        toWriteStart.append("    virtual std::string getName() const = 0;\n");
-        toWriteStart.append("};\n");
+            //grammar type enum
+            toWriteStart.append("\nenum class GrammarType_t : char\n");
+            toWriteStart.append("{\n");
+            toWriteStart.append("    UNDEFINED  = 'U',\n");
+            toWriteStart.append("    TERMINAL   = 'T',\n");
+            toWriteStart.append("    VARIABLE   = 'V'\n");
+            toWriteStart.append("};\n");
 
-        toWriteStart.append("\nclass Abstr");
-        toWriteStart.append(singularClassName);
-        //--//
-        toWriteStart.append(" : public I");
-        toWriteStart.append(singularClassName);
-        toWriteStart.append("\n{\n");
-        //--
-        toWriteStart.append("private:\n");
-        toWriteStart.append("    const std::string	_name;\n");
-        toWriteStart.append("    const GrammarType_t	_grammarType;\n");
-        toWriteStart.append("public:\n");
+            //interface
+            _system->_keywordInterfaceName = std::string{"I"}.append(singularClassName);
 
-        //concrete class
-        //-- constructor
-        toWriteStart.append("    Abstr");
-        toWriteStart.append(singularClassName);
-        toWriteStart.append("(const std::string& name, const GrammarType_t grammarType)\n");
-        toWriteStart.append("        : _name(name), _grammarType(grammarType) {}\n");
+            toWriteStart.append("\nclass ");
+            toWriteStart.append(_system->_keywordInterfaceName);
+            toWriteStart.append("\n{\npublic:\n");
+            toWriteStart.append("    virtual ~");
+            toWriteStart.append(_system->_keywordInterfaceName);
+            toWriteStart.append("() {}\n");
+            toWriteStart.append("    virtual std::string getName() const = 0;\n");
+            toWriteStart.append("};\n");
 
-        //-- copy/move constructor
-        toWriteStart.append("    Abstr");
-        toWriteStart.append(singularClassName);
-        toWriteStart.append("(const Abstr");
-        toWriteStart.append(singularClassName);
-        toWriteStart.append("& other)\n        : _name(other._name), _grammarType(other._grammarType) {}\n");
+            //Concrete class: Keyword
+            _system->_keywordClassName = std::string{"Abstr"}.append(singularClassName);
 
-        toWriteStart.append("    Abstr");
-        toWriteStart.append(singularClassName);
-        toWriteStart.append("(Abstr");
-        toWriteStart.append(singularClassName);
-        toWriteStart.append("&& other)\n        : _name(other._name), _grammarType(other._grammarType) {}\n");
+            toWriteStart.append("\nclass ");
+            toWriteStart.append(_system->_keywordClassName);
+            //--//
+            toWriteStart.append(" : public ");
+            toWriteStart.append(_system->_keywordInterfaceName);
+            toWriteStart.append("\n{\n");
+            //--
+            toWriteStart.append("private:\n");
+            toWriteStart.append("    const std::string	_name;\n");
+            toWriteStart.append("    const GrammarType_t	_grammarType;\n");
+            toWriteStart.append("public:\n");
 
-        //-- destructor
-        toWriteStart.append("    ~Abstr");
-        toWriteStart.append(singularClassName);
-        toWriteStart.append("() {}\n");
+            //-- constructor
+            toWriteStart.append("    ");
+            toWriteStart.append(_system->_keywordClassName);
+            toWriteStart.append("(const std::string& name, const GrammarType_t grammarType)\n");
+            toWriteStart.append("        : _name(name), _grammarType(grammarType) {}\n");
 
-        //-- functions
-        toWriteStart.append("\n    std::string getName() const { return _name; }\n");
-        toWriteStart.append("    GrammarType_t getGrammarType() const { return _grammarType; }\n");
-        toWriteStart.append("};\n");
+            //-- copy/move constructor
+            toWriteStart.append("    ");
+            toWriteStart.append(_system->_keywordClassName);
+            toWriteStart.append("(const ");
+            toWriteStart.append(_system->_keywordClassName);
+            toWriteStart.append("& other)\n        : _name(other._name), _grammarType(other._grammarType) {}\n");
+
+            toWriteStart.append("    ");
+            toWriteStart.append(_system->_keywordClassName);
+            toWriteStart.append("(");
+            toWriteStart.append(_system->_keywordClassName);
+            toWriteStart.append("&& other)\n        : _name(other._name), _grammarType(other._grammarType) {}\n");
+
+            //-- destructor
+            toWriteStart.append("    ~");
+            toWriteStart.append(_system->_keywordClassName);
+            toWriteStart.append("() {}\n");
+
+            //-- functions
+            toWriteStart.append("\n    std::string getName() const { return _name; }\n");
+            toWriteStart.append("    GrammarType_t getGrammarType() const { return _grammarType; }\n");
+            toWriteStart.append("};\n");
+
+            _system->_keywordsCollectionClassName = collectionClassName;
+
+            //abstract collection class (start)
+            toWriteStart.append("\nclass ");
+            toWriteStart.append(_system->_keywordsCollectionClassName);
+
+            //-- private destructor
+            toWriteStart.append("\n{\nprivate:\n    virtual ~");
+            toWriteStart.append(_system->_keywordsCollectionClassName);
+            toWriteStart.append("() {}");
 
 
-        //abstract collection class (start)
-        toWriteStart.append("\nclass ");
-        toWriteStart.append(collectionClassName);
+            //the ending, second part of return pair
+            std::string toWriteEnd("\n};\n#endif\n");
 
-        //-- private destructor
-        toWriteStart.append("\n{\nprivate:\n    virtual ~");
-        toWriteStart.append(collectionClassName);
-        toWriteStart.append("() {}");
-
-        std::string toWriteEnd("\n};\n#endif\n");
-
-        return std::pair<std::string,std::string>(toWriteStart, toWriteEnd);
+            return std::pair<std::string,std::string>(toWriteStart, toWriteEnd);
     }
 
-    std::string generateKeywordsData(const std::vector<std::tuple<std::string, std::string, std::string>>& keywordDetails, std::string& singularName) const
+    std::string generateKeywordsData(const std::vector<std::tuple<std::string, std::string, std::string>>& keywordDetails) const
     {
         auto numberOfKeywords = keywordDetails.size();
         std::string output("\nprotected:\n    const class KeywordsData\n    {\n    private:\n");
 
-        output.append("        const Abstr");
-        output.append(singularName);
+        output.append("        const ");
+        output.append(_system->_keywordClassName);
         output.append(" keywords[");
         output.append(std::to_string(numberOfKeywords));
         output.append("] =\n");
@@ -156,8 +183,8 @@ public:
         int count = 0;
         for (auto keywordPair : keywordDetails)
         {
-            output.append("            Abstr");
-            output.append(singularName);
+            output.append("            ");
+            output.append(_system->_keywordClassName);
             output.append("{ \"");
             output.append(std::get<0>(keywordPair));
             output.append("\", GrammarType_t::");
@@ -176,8 +203,8 @@ public:
         output.append("          };\n");
 
         output.append("    public:\n");
-        output.append("        Abstr");
-        output.append(singularName);
+        output.append("        ");
+        output.append(_system->_keywordClassName);
         output.append(" getAt(const size_t index) const\n");
         output.append("        {\n");
         output.append("             return keywords[index];\n");
@@ -194,7 +221,12 @@ public:
 
 class AbstrLexerWordConstructorTemplate
 {
+private:
+    TemplateSystem* _system;
 public:
+    AbstrLexerWordConstructorTemplate(TemplateSystem* aSystem) : _system(aSystem) {}
+    ~AbstrLexerWordConstructorTemplate() {}
+
     //construction AbstractClass - to be updated and enforced (AbstrLexerWordConstructor)
     std::string generateStartOfClass() const
     {
@@ -286,6 +318,17 @@ public:
 
         return output;
     }
+};
+
+class AbstrGrammarConfigTemplate
+{
+private:
+    TemplateSystem* _system;
+public:
+    AbstrGrammarConfigTemplate(TemplateSystem* aSystem) : _system(aSystem) {}
+    ~AbstrGrammarConfigTemplate() {}
+};
+
 };
 
 #endif
