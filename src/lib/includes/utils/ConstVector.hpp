@@ -38,9 +38,14 @@ public:
         other._vector = nullptr;
     }
 
-    T getAt(size_t index) const
+    const T getAt(size_t index) const
     {
         return _vector->at(index);
+    }
+
+    size_t size()
+    {
+        return _vector->size();
     }
 };
 

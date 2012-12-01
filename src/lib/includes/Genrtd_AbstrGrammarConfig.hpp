@@ -28,7 +28,12 @@
 
 #include "../../../src/lib/includes/Genrtd_Keywords.hpp"
 #include "ILanguageAndGrammar.hpp"
+
+#include "execution_phase/grammaticalForm/GrammarTypedefs.hpp"
+#include "execution_phase/grammaticalForm/GrammarConstruct.hpp"
 #include "utils/ReadOnlyData.hpp"
+
+#define stringify( name ) # name
 
 class AbstrGrammarConfig
 {
@@ -41,7 +46,6 @@ protected:
     {
         delete _grammarRules;
     }
-public:
     AbstrGrammarConfig()
     {
     }
@@ -63,7 +67,7 @@ public:
         _grammarRulesData.push_back(std::make_tuple("evaluation", "TERMINAL", grammarRules__Keyword_eval));
 
         auto grammarRules__End = _defineGrammarKeyword_End(std::make_pair("general_end", _keywords.getGrammarTypeForName("general_end")));
-        _grammarRulesData.push_back(std::make_tuple("general_end", "TERMINAL", grammarRules__End));
+        _grammarRulesData.push_back(std::make_tuple("general_end", "CLOSURE", grammarRules__End));
 
         auto grammarRules__Keyword_REPS_withNamedListIteration = _defineGrammarKeyword_Keyword_REPS_withNamedListIteration(std::make_pair("reps.named_list_iteration", _keywords.getGrammarTypeForName("reps.named_list_iteration")));
         _grammarRulesData.push_back(std::make_tuple("reps.named_list_iteration", "VARIABLE", grammarRules__Keyword_REPS_withNamedListIteration));
@@ -75,8 +79,25 @@ public:
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_SquareBracketReps(std::pair<std::string, std::string> nameAndGrammarType__SquareBracketReps__VARIABLE) = 0;
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Alteration(std::pair<std::string, std::string> nameAndGrammarType__Alteration__TERMINAL) = 0;
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Keyword_eval(std::pair<std::string, std::string> nameAndGrammarType__Keyword_eval__TERMINAL) = 0;
-    virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_End(std::pair<std::string, std::string> nameAndGrammarType__End__TERMINAL) = 0;
+    virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_End(std::pair<std::string, std::string> nameAndGrammarType__End__CLOSURE) = 0;
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Keyword_REPS_withNamedListIteration(std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedListIteration__VARIABLE) = 0;
+    //here we have helper functions for the virtual functions to be defined in subclass
+    class VARIABLE
+    {
+    public:
+        std::function<GrammarConstruct()> GET_VARIABLE =
+          []()
+          {
+              return GrammarConstruct(
+                  "var", "VARIABLE",
+                  std::vector<GrammarRules::Term*>{
+                      new GrammarRules::VariableRef("reps.named_iteration"),
+                      new GrammarRules::VariableRef("scope"),
+                      new GrammarRules::VariableRef("reps.named_list_iteration"),
+                  }
+              );
+          };
+    };
 };
 
 #endif

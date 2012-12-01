@@ -31,6 +31,7 @@ public:
 
         _grammarDataProxy = nullptr;
         //create grammarDataProxy and transfer config fata to it through constructor
+        //set the grammarDataProxy in Context
     }
 
     ~GrammarManager()

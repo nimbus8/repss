@@ -109,9 +109,11 @@ public:
             //grammar type enum
             toWriteStart.append("\nenum class GrammarType_t : char\n");
             toWriteStart.append("{\n");
+            toWriteStart.append("    INVALID    = 'I',\n");
             toWriteStart.append("    UNDEFINED  = 'U',\n");
             toWriteStart.append("    TERMINAL   = 'T',\n");
-            toWriteStart.append("    VARIABLE   = 'V'\n");
+            toWriteStart.append("    VARIABLE   = 'V',\n");
+            toWriteStart.append("    CLOSURE    = 'C'\n");
             toWriteStart.append("};\n");
 
             //interface
@@ -200,7 +202,7 @@ public:
             auto numberOfKeywords = keywordDetails.size();
             std::string output("\nprotected:\n    class KeywordsData\n    {\n    private:\n");
 
-            output.append("       const ");
+            output.append("          const ");
             output.append(_system->_keywordClassName);
             output.append(" keywords[");
             output.append(std::to_string(numberOfKeywords));
@@ -440,8 +442,11 @@ public:
 
              output.append("#include \"ILanguageAndGrammar.hpp\"\n");
 
+             output.append("\n#include \"execution_phase/grammaticalForm/GrammarTypedefs.hpp\"\n");
+             output.append("#include \"execution_phase/grammaticalForm/GrammarConstruct.hpp\"\n");
              output.append("#include \"utils/ReadOnlyData.hpp\"\n");
 
+             output.append("\n#define stringify( name ) # name\n");
 
              _system->_abstractGrammarConfigClassName = "AbstrGrammarConfig";
 
@@ -457,7 +462,7 @@ public:
              output.append(_system->_abstractGrammarConfigClassName);
              output.append("()\n    {\n        delete _grammarRules;\n    }\n");
 
-             output.append("public:\n");
+             //output.append("public:\n");
 
              output.append("    ");
              output.append(_system->_abstractGrammarConfigClassName);
@@ -507,6 +512,52 @@ public:
                  output.append(grammarKeywordInfoObj.getGrammarType());
                  output.append(") = 0;\n");
              }
+
+             //here we have helper functions for the virtual functions to be defined in subclass
+             output.append("    //here we have helper functions for the virtual functions to be defined in subclass\n");
+             output.append("    class VARIABLE\n");
+             output.append("    {\n");
+            
+             output.append("    public:\n");
+             output.append("        std::function<GrammarConstruct()> GET_VARIABLE =\n");
+             output.append("          []()\n");
+             output.append("          {\n");
+             output.append("              return GrammarConstruct(\n");
+             output.append("                  \"var\", \"VARIABLE\",\n");
+             output.append("                  std::vector<GrammarRules::Term*>{\n");
+
+
+             //put all variable names into a seperate container
+             std::vector<std::string> variableNames;
+             for (auto grammarKeywordInfoObj : grammarKeywords)
+             {
+                 auto grammarType = grammarKeywordInfoObj.getGrammarType();
+                 if (grammarType.compare("VARIABLE") == 0)
+                 {
+                     variableNames.push_back(grammarKeywordInfoObj.getName());
+                 }
+             }
+
+             auto variableNamesSize = variableNames.size();
+             size_t currentCount = 0;
+             for (auto variableName : variableNames)
+             {
+                 output.append("                      new GrammarRules::VariableRef(\"");
+                 output.append(variableName);
+                 output.append("\")");
+
+                 if (currentCount < variableNamesSize - 1)
+                 {
+                     output.append(",");
+                 }
+
+                 output.append("\n");
+             }
+
+             output.append("                  }\n");
+             output.append("              );\n");
+             output.append("          };\n");
+             output.append("    };\n");
 
              output.append("};\n\n#endif\n");
 

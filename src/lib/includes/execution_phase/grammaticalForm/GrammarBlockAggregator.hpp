@@ -16,25 +16,29 @@
 
  You should have received a copy of the GNU General Public License
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
+
+ If you wish to contact the author of REPSS, you may do so at
+ kwillia.pub@gmail.com
  */
 
-#ifndef _ILANGAGE_AND_GRAMMAR_
-#define _ILANGAGE_AND_GRAMMAR_
+#ifndef _GRAMMAR_BLOCK_AGGREGATOR_
+#define _GRAMMAR_BLOCK_AGGREGATOR_
 
-#define DEBUG
-//#undef DEBUG
-#ifdef DEBUG
-    #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
-#else
-    #define DeLOG(str)
-#endif
+#include "GrammarBlockAggregate.hpp"
+#include "IGrammarContext.hpp"
 
-#include <string>
-#include <vector>
+//In this file we assume that everything is in proper order (i.e. parsed) and go data through methodically
 
-#include "utils/AggregatePtrsAndDelete.hpp"
+class GrammarBlockAggregator
+{
+private:
+    GrammarBlockAggregate _aggregatedBlocks;
+public:
+    GrammarBlockAggregator() {}
+    ~GrammarBlockAggregator() {}
+
+    void run(IGrammarContext* const context);
+};
 
 
-#undef DEBUG
-#undef DeLOG
 #endif

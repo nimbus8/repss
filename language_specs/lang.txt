@@ -41,7 +41,7 @@ Keywords:obj-collection {
     +scope { VARIABLE, SquareBracketReps }
     +alternation { TERMINAL, Alteration }
     +evaluation { TERMINAL, Keyword_eval }
-    +general_end { TERMINAL, End }
+    +general_end { CLOSURE, End }
     +reps.named_list_iteration { VARIABLE, Keyword_REPS_withNamedListIteration }
 
     +path { src/lib/includes/Genrtd_Keywords.hpp }

@@ -17,21 +17,3 @@
  You should have received a copy of the GNU General Public License
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-#ifndef _GRAMMAR_BLOCK_AGGREGATOR_
-#define _GRAMMAR_BLOCK_AGGREGATOR_
-
-#include "GrammarBlockAggregate.hpp"
-
-//In this file we assume that everything is in proper order (i.e. parsed) and go data through methodically
-
-class GrammarBlockAggregator
-{
-private:
-    GrammarBlockAggregate _aggregatedBlocks;
-public:
-    GrammarBlockAggregator() {}
-    ~GrammarBlockAggregator() {}
-};
-
-#endf

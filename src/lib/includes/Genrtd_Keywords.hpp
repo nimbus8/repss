@@ -26,9 +26,11 @@
 
 enum class GrammarType_t : char
 {
+    INVALID    = 'I',
     UNDEFINED  = 'U',
     TERMINAL   = 'T',
-    VARIABLE   = 'V'
+    VARIABLE   = 'V',
+    CLOSURE    = 'C'
 };
 
 class IKeyword
@@ -64,13 +66,13 @@ protected:
     class KeywordsData
     {
     private:
-       const AbstrKeyword keywords[6] =
+          const AbstrKeyword keywords[6] =
           {
             AbstrKeyword{ "reps.named_iteration", GrammarType_t::VARIABLE },
             AbstrKeyword{ "scope", GrammarType_t::VARIABLE },
             AbstrKeyword{ "alternation", GrammarType_t::TERMINAL },
             AbstrKeyword{ "evaluation", GrammarType_t::TERMINAL },
-            AbstrKeyword{ "general_end", GrammarType_t::TERMINAL },
+            AbstrKeyword{ "general_end", GrammarType_t::CLOSURE },
             AbstrKeyword{ "reps.named_list_iteration", GrammarType_t::VARIABLE }
           };
     public:
@@ -95,7 +97,7 @@ public:
         }
         else if (keywordName.compare("general_end") == 0)
         {
-            return "TERMINAL";
+            return "CLOSURE";
         }
         else if (keywordName.compare("scope") == 0)
         {

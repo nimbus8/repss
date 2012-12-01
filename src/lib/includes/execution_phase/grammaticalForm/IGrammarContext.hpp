@@ -39,7 +39,7 @@ public:
     virtual void initGrammarDataProxy(const IGrammarDataProxy* grammarDataProxy) = 0;
     virtual const IGrammarDataProxy* getGrammarDataProxy() const = 0;
 
-    virtual void setGrammarBlockAggregate(const GrammarBlockAggregate* grammarBlockAggregate) = 0;
+    virtual void setGrammarBlockAggregate(GrammarBlockAggregate&& grammarBlockAggregate);
     virtual void printGrammarBlockAggregateData() const = 0;
 };
 
