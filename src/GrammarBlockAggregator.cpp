@@ -131,8 +131,6 @@ std::pair<std::string, std::string> getKeywordNameAndContentFromAnnotatedData(co
             return std::make_pair("invalid", "");
         }
 
-        //token = strtok(NULL, "<");
-
         endOfContentDelimeter = ">";
     }
 
@@ -147,6 +145,12 @@ std::pair<std::string, std::string> getKeywordNameAndContentFromAnnotatedData(co
     {
         DeLOG("Error: Ooops. It looks like the grammar module is expecting a syntax different from the annotated output of lexer");
         return std::make_pair("invalid", "");
+    }
+
+    if (keywordName.compare("key_word") == 0 && strlen(token) > 1)
+    {
+        //This takes care of leading '<' imediately after the = sign in annotated data.
+        token = (token+1);
     }
 
     do
@@ -172,12 +176,4 @@ std::pair<std::string, std::string> getKeywordNameAndContentFromAnnotatedData(co
 
     return std::make_pair(keywordName, content);
 }
-/*
-    virtual ConstVector<std::string> getAnnotatedData() const = 0;
 
-    virtual void initGrammarDataProxy(const IGrammarDataProxy* grammarDataProxy) = 0;
-    virtual const IGrammarDataProxy* getGrammarDataProxy() const = 0;
-
-    virtual void setGrammarBlockAggregate(const GrammarBlockAggregate* grammarBlockAggregate) = 0;
-    virtual void printGrammarBlockAggregateData() const = 0;
-*/

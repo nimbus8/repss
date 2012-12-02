@@ -31,7 +31,7 @@ Successfully appended 'named_iteration' to tentative end state name => 'repetiti
 Successfully constructed name=x:y
 Construction Test: (,k
 foobar=1:10 H
-!??,U, 16)
+????x??, 16)
 Starting state: 9, startingDfaId: 9
 search for a beginning: (state, seq,c): 9, 0, k
 src/lexer_dfa.cpp 39:	_nextStates::size = 1
@@ -106,7 +106,7 @@ deleting array with delete[]
 
 
 Successfully constructed /[rep] var=x:y
-Construction Test: (,fyi/[rep] a=2:81 ??f?, 17)
+Construction Test: (,fyi/[rep] a=2:81 ?c?, 17)
 Starting state: 1, startingDfaId: 1
 search for a beginning: (state, seq,c): 1, 0, f
 src/lexer_dfa.cpp 39:	_nextStates::size = 1
@@ -178,7 +178,7 @@ CREATING end state mapping: endStateToName=(24=>scope)
 
 Successfully constructed /[sco]
 Construction Test: (,k
-/[sco] H?k?, 10)
+/[sco] H@Ȧ, 10)
 Starting state: 17, startingDfaId: 17
 search for a beginning: (state, seq,c): 17, 0, k
 src/lexer_dfa.cpp 39:	_nextStates::size = 1
@@ -238,7 +238,7 @@ Adding AnythingButTransition!
 
 Successfully constructed /[(a|l|t|e|r|n|a|t|i|o|n)]
 Construction Test: (,k
-/[(a|c|d|e)] H!??,U, 16)
+/[(a|c|d|e)] H????x??, 16)
 Starting state: 25, startingDfaId: 25
 search for a beginning: (state, seq,c): 25, 0, k
 src/lexer_dfa.cpp 39:	_nextStates::size = 1
@@ -311,7 +311,7 @@ CREATING end state mapping: endStateToName=(41=>evaluation)
 
 Successfully constructed /[[variable]]
 Construction Test: (,k
-/[[yabba_dab]]H?k?, 17)
+/[[yabba_dab]]H@Ȧ, 17)
 Starting state: 33, startingDfaId: 33
 search for a beginning: (state, seq,c): 33, 0, k
 src/lexer_dfa.cpp 39:	_nextStates::size = 1
@@ -456,7 +456,7 @@ Adding AnythingButTransition!
 Successfully constructed named=('l','i','s','t')
 Construction Test: (,k
 foobar=('a:1:8','abc')
-ݓf?, 25)
+?c?, 25)
 Starting state: 59, startingDfaId: 59
 search for a beginning: (state, seq,c): 59, 0, k
 src/lexer_dfa.cpp 39:	_nextStates::size = 2
@@ -641,32 +641,32 @@ Pushing back dfa to mergeDfas parameter: dfa(42)
 Pushing back dfa to mergeDfas parameter: dfa(47)
 
 Merging dfas to one, words size: 6
-0x7ff46bc00060
+0x7fa6c8400060
 1
 is word null?? false
 Getting transitions for word
 Adding job to job Queue
-0x7ff46bd000e0
+0x7fa6c8401090
 17
 is word null?? false
 Getting transitions for word
 Adding job to job Queue
-0x7ff46bd00710
+0x7fa6c84015e0
 25
 is word null?? false
 Getting transitions for word
 Adding job to job Queue
-0x7ff46bd00bb0
+0x7fa6c8400de0
 33
 is word null?? false
 Getting transitions for word
 Adding job to job Queue
-0x7ff46bd01900
+0x7fa6c84026c0
 42
 is word null?? false
 Getting transitions for word
 Adding job to job Queue
-0x7ff46be000c0
+0x7fa6c84019b0
 47
 is word null?? false
 Getting transitions for word
@@ -680,12 +680,12 @@ Processing Job line #1
 There are 1 in job vector. Processing Job #2
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
 	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
-is there nextDfaPtr? yes0x7ff46bc00380
+is there nextDfaPtr? yes0x7fa6c8400380
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #2
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
 	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
-is there nextDfaPtr? yes0x7ff46bc003c0
+is there nextDfaPtr? yes0x7fa6c84003c0
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #2
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
@@ -696,12 +696,12 @@ Processing Job line #2
 There are 1 in job vector. Processing Job #3
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
 	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
-is there nextDfaPtr? yes0x7ff46bc00380
+is there nextDfaPtr? yes0x7fa6c8400380
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #3
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
 	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
-is there nextDfaPtr? yes0x7ff46bc003c0
+is there nextDfaPtr? yes0x7fa6c84003c0
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #3
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
@@ -714,12 +714,12 @@ Processing Job line #3
 There are 1 in job vector. Processing Job #4
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
 	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
-is there nextDfaPtr? yes0x7ff46bc00380
+is there nextDfaPtr? yes0x7fa6c8400380
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #4
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
 	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
-is there nextDfaPtr? yes0x7ff46bc003c0
+is there nextDfaPtr? yes0x7fa6c84003c0
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #4
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
@@ -734,12 +734,12 @@ Processing Job line #4
 There are 1 in job vector. Processing Job #5
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
 	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
-is there nextDfaPtr? yes0x7ff46bc00380
+is there nextDfaPtr? yes0x7fa6c8400380
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #5
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
 	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
-is there nextDfaPtr? yes0x7ff46bc003c0
+is there nextDfaPtr? yes0x7fa6c84003c0
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #5
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
@@ -756,12 +756,12 @@ Processing Job line #5
 There are 1 in job vector. Processing Job #6
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
 	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
-is there nextDfaPtr? yes0x7ff46bc00380
+is there nextDfaPtr? yes0x7fa6c8400380
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #6
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
 	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
-is there nextDfaPtr? yes0x7ff46bc003c0
+is there nextDfaPtr? yes0x7fa6c84003c0
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #6
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
@@ -774,17 +774,17 @@ src/lib/includes/execution_phase/lexer/construction/model_representation/finite_
 	(44,/, ranged?(no)>, dfa-id(45))	- hash(11355)
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
 	(3,r, ranged?(no)>, dfa-id(4))	- hash(885)
-is there nextDfaPtr? yes0x7ff46bc00400
+is there nextDfaPtr? yes0x7fa6c8400400
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #6
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
 	(4,e, ranged?(no)>, dfa-id(5))	- hash(1129)
-is there nextDfaPtr? yes0x7ff46bc00440
+is there nextDfaPtr? yes0x7fa6c8400440
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #6
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
 	(5,p, ranged?(no)>, dfa-id(6))	- hash(1397)
-is there nextDfaPtr? yes0x7ff46bc004d0
+is there nextDfaPtr? yes0x7fa6c84004d0
 Couldn't find an opening, pushing back job
 There are 1 in job vector. Processing Job #6
 src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
@@ -795,7 +795,7 @@ Finished jobs!
 
 Starting Merged Representation Test
 -----------------------------------
-Merged Word Repr Test: done ALL search while loops in 144.111 milliseconds
+Merged Word Repr Test: done ALL search while loops in 141.851 milliseconds
 
 src/lib/includes/execution_phase/lexer/construction/lexer_word_constructor.hpp 109:Merge Test SUCCEEDED!
 
@@ -1152,7 +1152,7 @@ Beginning ScanWord Test
 
 Starting Scan Words Test
 ------------------------
-ScanWordTest: done ALL search while loops in 177.622 milliseconds
+ScanWordTest: done ALL search while loops in 173.486 milliseconds
 
 --Scan Word Test Result: Success
 Done Scan Word Test - result:1
@@ -1165,9 +1165,9 @@ getScanWordTransitionMap()
 getRecognizedKeywords()
 
 
-Scanning: done scanning in 2.472 milliseconds
+Scanning: done scanning in 2.733 milliseconds
 CtxMan TypedContext <> setAnnotatedData
-Setting annotated data with vector size = 195
+Setting annotated data with vector size = 223
 
 Printing Annotated Data
 CtxMan TypedContext <> printAnnotatedData
@@ -1230,18 +1230,25 @@ CtxMan TypedContext <> printAnnotatedData
 {data_line:empty_str}
 {data_line:....}
 {data_line:As we made our way through what just minutes ago had officially become my apartment, I was thouroughly briefed}
-{data_line:to make sure my stay would stay within the rules of the building. I wasn't much interested and retreated to a }
-{data_line:standing state of slumber. Half alert, somewhere after her warning that I WEREN'T TO PAINT THE WALLS, }
-{data_line:/[(a sudden worry that the lengthy elevator up (and down) would prove too much. 2 minutes both ways, everyday, sometimes twice, lets say - | I began to wonder whether I'd be able to stomach the long elevaor up.)].}
-{data_line:A sharp whistle broke through that made me take notice. She was tapping at the bottom of this crystal mug sitting in the middle of the sink. }
+{data_line:to make sure }
+{key_word:alteration=<'/[(that during my time I'd keep to|my stay would stay within)]'>}
+{data_line: the rules of the building. I wasn't much interested and retreated to a }
+{data_line:standing state of slumber. Half alert, barely awake, somewhere after her warning that I WEREN'T TO PAINT THE WALLS, }
+{data_line:/[(I was struck with a sudden worry that the lengthy elevator up (and down) would prove too much. 2 minutes both ways, everyday, sometimes twice, lets say - | I began to wonder whether I'd be able to stomach the long elevaor up.)].}
+{data_line:A sharp whistle broke through }
+{key_word:alteration=<'/[(that made me take notice|requesting that I take notice)]'>}
+{data_line:. The landlord was tapping at the bottom of }
+{key_word:alteration=<'/[(this|a)]'>}
+{data_line: crystal mug sitting in the middle of the sink. }
 {data_line:<<Did you hear what I just said?>>   }
 {data_line:No.}
 {data_line:<<Huh? Sorry, ugh there's a dishwasher, yes?>>}
 {data_line:<<Like I said, only take this off when your washing up. There's some spray underneath in case you need.>>}
-{data_line:I had given myself away, of course.  Oh and she laaauugghed! Like she always does, at every new}
-{data_line:immigrant and import to the city where the rodents outnumber the population tenfold in every alley and }
-{key_word:alteration=<'/[(|corner|undiscovered crevice)]'>}
-{data_line:. How they  managed to cover up the fact }
+{data_line:I had no idea what she was talking about. I had given myself away, of course.  Oh and she laaauugghed! Like she always does, at every new}
+{data_line:immigrant and import to the city where the rodents outnumber the population tenfold in every alley }
+{key_word:alteration=<'/[(|,corner, creek, and crevice|creand corner|and undiscovered crevice|, creek, and crevice)]'>}
+{key_word:alteration=<'/[(.|!)]'>}
+{data_line: How they  managed to cover up the fact }
 {key_word:alteration=<'/[(it|, that the infestation)]'>}
 {data_line: had become the cities }
 {data_line:third leading cause of }
@@ -1251,14 +1258,20 @@ CtxMan TypedContext <> printAnnotatedData
 {key_word:alteration=<'/[(any specific|a)]'>}
 {data_line: nationally recognized category. }
 {data_line:I thought she may have been short for conversation. But no, it was true, and need only be evidenced by }
-{data_line:the ambulances and the haunting hollering of the dogs, followed of course by the hollering of their owners, on what}
+{data_line:the ambulances and the haunting hollering of the dogs, followed of course by the hollering of their owners}
+{key_word:alteration=<'/[(|,)]'>}
+{data_line: on what}
 {data_line:seemed like every other second tuesday somewhere in our building.}
 {data_line:We held our breath and covered our ears outside whilst praying for those trampled underfoot - as the worse}
-{data_line:was yet to come for them. And the fire department was never quite quick enough; Once they ran through several more red }
+{data_line:was yet to come for them. And the fire department was never quite quick enough; once they ran through several more red }
 {data_line:lights than usual, taking dozens of folks underneath them in response. The mayor called it the most courageous }
-{key_word:alteration=<'/[(act|gesture)]'>}
+{key_word:alteration=<'/[(act|gesture|thing)]'>}
 {data_line: he'd ever }
-{data_line:witnessed - For the many more live's they'd saved. I'd tend to agree. Such was the sad irony of this oft occuring madness. }
+{data_line:witnessed }
+{key_word:alteration=<'/[(-|.)]'>}
+{data_line: For the many more live's they'd saved}
+{key_word:alteration=<'/[(.|,)]'>}
+{data_line: I'd tend to agree. Such was the sad irony of this oft occuring madness. }
 {key_word:alteration=<'/[(And Once|Once)]'>}
 {data_line: you'd seen one of these Infestivals, the Conventional Wisdom was etched into the mind forever: }
 {data_line:'Just Cover The }
@@ -1266,8 +1279,8 @@ CtxMan TypedContext <> printAnnotatedData
 {data_line: Hole And Force The Moth*********'s Through The Cracks In The }
 {key_word:alteration=<'/[(Floorboard | Hardwood floors)]'>}
 {data_line:' }
-{data_line:- which, apparently as a whole is known to be a much greater rate limiting factor. I shuddered.  Suddenly the charm wore off. I started to smell }
-{data_line:the fish and didn't like it. But still she tried convince me that this was a whole lot better than }
+{data_line:- which, apparently as a whole is known to be a much greater rate limiting factor. I shuddered.  Suddenly the charm wore off.}
+{data_line:I started to smell the fish and didn't like it. But still she tried to convince me that this was a whole lot better than }
 {data_line:anywhere else.}
 {data_line:<<What made this }
 {key_word:alteration=<'/[(dirty|decrepit)]'>}
@@ -1292,7 +1305,7 @@ CtxMan TypedContext <> printAnnotatedData
 {data_line: dream-up images of a people not unlike ourselves, in a time}
 {data_line:not unlike the present, without asking 'Where Had They Went?'. It was like they had all stood up for an }
 {data_line:instant and collapsed.}
-{key_word:alteration=<'/[(And the mudd rippled like water. | Sending ripples of concetric circles through the mudd like a drop of rain in a lake.)]'>}
+{key_word:alteration=<'/[(And the mudd rippled like water. | Sending ripples of concetric circles through the mudd like a drop of rain in a still body of water.)]'>}
 {data_line:empty_str}
 {data_line:I thought perhaps }
 {key_word:alteration=<'/[(just maybe|by chance)]'>}
@@ -1324,40 +1337,55 @@ CtxMan TypedContext <> printAnnotatedData
 {key_word:alteration=<'/[(the two | the pair | them)]'>}
 {data_line: before, no doubt. I wouldn't admit it to myself, or to }
 {data_line:anyone else }
-{key_word:alteration=<'/[(had they asked|for that matter)]'>}
+{key_word:alteration=<'/[(|had they asked|for that matter)]'>}
 {data_line:, that they were indeed the only reason why I liked the place.}
-{data_line:These two objects stood out and belonged together, inseperably tied together by a plumbing seen and }
+{key_word:alteration=<'/[(T|Quite simply t)]'>}
+{data_line:hese two objects stood out and belonged together, inseperably }
+{key_word:alteration=<'/[(bound together| bound each-to-the-other|bound|tied together)]'>}
+{data_line: by a plumbing }
+{key_word:alteration=<'/[(|both)]'>}
+{data_line:seen and }
 {key_word:alteration=<'/[(out of sight|unseen)]'>}
 {data_line:, }
-{key_word:alteration=<'/[(which made | making|and made)]'>}
-{data_line: this narrow corridor much more than an enclosed space }
-{key_word:alteration=<'/[(clustered|littered|sparsley littered)]'>}
+{key_word:alteration=<'/[(which made | making|and made|and I must say it made)]'>}
+{data_line: this narrow }
+{key_word:alteration=<'/[(|little)]'>}
+{data_line: corridor }
+{key_word:alteration=<'/[(|so)]'>}
+{data_line: much more than an enclosed space }
+{key_word:alteration=<'/[(littered|sparsley littered)]'>}
 {data_line: with the usual standing }
 {key_word:alteration=<'/[(sort|assortment)]'>}
 {data_line: of }
-{key_word:alteration=<'/[(|common)]'>}
-{data_line: modern-day 'necessities', into a place I could call home. They called out to me, about as strongly as I imagine the earth does from}
-{data_line:this elevation. }
-{key_word:alteration=<'/[(In confidence, I admit I had visions of a sort; | And I'll admit /[(to having|I had)]'>}
-{data_line: )]}
-{data_line:open-eye hallucinations of a short round-bellied italian }
+{key_word:alteration=<'/[(|common,)]'>}
+{key_word:alteration=<'/[(modern, everday|modern-day)]'>}
+{data_line: 'necessities'. They made it a place I could call home - and they called out to me! }
+{data_line:About as strongly as I imagine the earth does from }
+{key_word:alteration=<'/[(this|that)]'>}
+{data_line: elevation. And as I stared straight down into }
+{data_line:the abyss I'll admit I had visions of a sort: open-eye hallucinations of a short round-bellied italian }
 {key_word:alteration=<'/[(|man)]'>}
-{data_line: dressed in blue overalls who'd}
+{data_line:empty_str}
+{data_line:dressed in blue overalls who'd }
 {key_word:alteration=<'/[(spring up|leap|jump)]'>}
-{data_line: out from the mouth of this green pillar with }
-{key_word:alteration=<'/[(|much)]'>}
-{data_line: vigour }
-{key_word:alteration=<'/[(and|then)]'>}
-{data_line: shake himself dry.}
-{data_line:He'd }
-{key_word:alteration=<'/[(soil|dirty)]'>}
-{data_line: my curtains }
-{key_word:alteration=<'/[(|every time)]'>}
-{data_line:, but you couldn't stay angry at the guy - salt of the earth really. }
-{data_line:I felt inclined to help him. Overlooking much of Manhattan, I would counsel him through this grief; assuring M that he }
-{data_line:could certainly do a hellofalot better -  hoping that these encouragements and the reality of where his travels had led him,}
-{data_line:would spark in him some sortt of all-encompassing epiphany, and that perhaps he'd share, for I too had}
-{data_line:become the worse for wear.}
+{data_line: out from the mouth of this green pillar [...] and shake himself dry.}
+{data_line:The culmination of some grand }
+{key_word:alteration=<'/[(movement or of a labourious effort|and labourious effort)]'>}
+{data_line:, I'm sure. What ever it was, he was damp, spent, and wanted nothing more }
+{key_word:alteration=<'/[(but|than)]'>}
+{data_line: to collapse }
+{key_word:alteration=<'/[(on|to)]'>}
+{data_line: }
+{key_word:alteration=<'/[(|the floor)]'>}
+{data_line:.}
+{data_line:Of course I hadn't the stomach to help him up, let alone touch him. But I felt inclined to help the minute he came }
+{key_word:alteration=<'/[(about|too)]'>}
+{data_line:.}
+{data_line:Overlooking much of Manhattan, I would counsel him through this grief; assuring M that he }
+{data_line:could certainly do a hellofalot better -  in the hopes that these few encouragements plus the reality of}
+{key_word:alteration=<'/[(how far his browser had been led him astray | where his travels had led him,)]'>}
+{data_line:empty_str}
+{data_line:would spark in him some sort of all-encompassing epiphany, the content of which perhaps he'd share, for I too had become the worse for wear.}
 {data_line:I still don't know why I rented the place when I did, I didn't sleep - much less live - there for a good}
 {data_line:3 months until I'd made certain that I was indeed the envy of all my friends - who were living in the }
 {data_line:worst of conditions and for a price that would exhaust a shieks fortune (in little under a year). }
@@ -1450,7 +1478,7 @@ src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line, - then it hit me, every story I'd ever 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #25
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(heard|read)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(heard|read)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #26
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line,  was exactly the same. You'd think I'd be outraged
@@ -1462,13 +1490,13 @@ src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line, and boy that 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #29
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(guy| m************r)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(guy| m************r)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #30
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line, 's a drama queen. 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #31
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(I swear it|It)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(I swear it|It)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #32
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line, 's every little thing 
@@ -1477,7 +1505,7 @@ src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line, with 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #34
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(him|this guy)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(him|this guy)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #35
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line, , you won't hear the end of it - nor should you if the pages fall 
@@ -1486,7 +1514,7 @@ src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line, anywhere short of inspiring 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #37
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(and|or)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(and|or)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #38
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line,  insightful. How many books have you put down? Maybe not enough.
@@ -1504,7 +1532,7 @@ src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line, Though I imagine the man or woman who makes their living writing fiction must have a 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #43
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(terrible|gawd awful)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(terrible|gawd awful)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #44
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line, empty_str
@@ -1513,7 +1541,7 @@ src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line, time trying to 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #46
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(figure out|flesh out)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(figure out|flesh out)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #47
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line,  simple things like how to bring 
@@ -1522,13 +1550,13 @@ src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line, people into a scene, kick them out, and have others 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #49
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|just)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(|just)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #50
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line,  pass through 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #51
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|inconspicuously)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(|inconspicuously)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #52
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line,  without boring the reader.  No bunny likes pedantry [1]. Not while their 
@@ -1552,410 +1580,494 @@ src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line, As we made our way through what just minutes ago had officially become my apartment, I was thouroughly briefed
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #59
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, to make sure my stay would stay within the rules of the building. I wasn't much interested and retreated to a 
+src/GrammarBlockAggregator.cpp 60:data_line, to make sure 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #60
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, standing state of slumber. Half alert, somewhere after her warning that I WEREN'T TO PAINT THE WALLS, 
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(that during my time I'd keep to|my stay would stay within)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #61
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, /[(a sudden worry that the lengthy elevator up (and down) would prove too much. 2 minutes both ways, everyday, sometimes twice, lets say - | I began to wonder whether I'd be able to stomach the long elevaor up.)].
+src/GrammarBlockAggregator.cpp 60:data_line,  the rules of the building. I wasn't much interested and retreated to a 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #62
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, A sharp whistle broke through that made me take notice. She was tapping at the bottom of this crystal mug sitting in the middle of the sink. 
+src/GrammarBlockAggregator.cpp 60:data_line, standing state of slumber. Half alert, barely awake, somewhere after her warning that I WEREN'T TO PAINT THE WALLS, 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #63
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, <<Did you hear what I just said?>>   
+src/GrammarBlockAggregator.cpp 60:data_line, /[(I was struck with a sudden worry that the lengthy elevator up (and down) would prove too much. 2 minutes both ways, everyday, sometimes twice, lets say - | I began to wonder whether I'd be able to stomach the long elevaor up.)].
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #64
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, No.
+src/GrammarBlockAggregator.cpp 60:data_line, A sharp whistle broke through 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #65
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, <<Huh? Sorry, ugh there's a dishwasher, yes?>>
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(that made me take notice|requesting that I take notice)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #66
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, <<Like I said, only take this off when your washing up. There's some spray underneath in case you need.>>
+src/GrammarBlockAggregator.cpp 60:data_line, . The landlord was tapping at the bottom of 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #67
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, I had given myself away, of course.  Oh and she laaauugghed! Like she always does, at every new
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(this|a)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #68
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, immigrant and import to the city where the rodents outnumber the population tenfold in every alley and 
+src/GrammarBlockAggregator.cpp 60:data_line,  crystal mug sitting in the middle of the sink. 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #69
-src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|corner|undiscovered crevice)]'
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, <<Did you hear what I just said?>>   
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #70
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, . How they  managed to cover up the fact 
+src/GrammarBlockAggregator.cpp 60:data_line, No.
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #71
-src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(it|, that the infestation)]'
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, <<Huh? Sorry, ugh there's a dishwasher, yes?>>
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #72
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  had become the cities 
+src/GrammarBlockAggregator.cpp 60:data_line, <<Like I said, only take this off when your washing up. There's some spray underneath in case you need.>>
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #73
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, third leading cause of 
+src/GrammarBlockAggregator.cpp 60:data_line, I had no idea what she was talking about. I had given myself away, of course.  Oh and she laaauugghed! Like she always does, at every new
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #74
-src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(hospitalization|death)]'
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, immigrant and import to the city where the rodents outnumber the population tenfold in every alley 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #75
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, , I don't know.  I met a nurse who claimed they'd often couple 
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #76
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, it with heart disease and lung failure for lack of 
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #77
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(any specific|a)]'
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #78
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(|,corner, creek, and crevice|creand corner|and undiscovered crevice|, creek, and crevice)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #76
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(.|!)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #77
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  nationally recognized category. 
+src/GrammarBlockAggregator.cpp 60:data_line,  How they  managed to cover up the fact 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #78
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(it|, that the infestation)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #79
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, I thought she may have been short for conversation. But no, it was true, and need only be evidenced by 
+src/GrammarBlockAggregator.cpp 60:data_line,  had become the cities 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #80
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, the ambulances and the haunting hollering of the dogs, followed of course by the hollering of their owners, on what
+src/GrammarBlockAggregator.cpp 60:data_line, third leading cause of 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #81
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, seemed like every other second tuesday somewhere in our building.
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(hospitalization|death)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #82
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, We held our breath and covered our ears outside whilst praying for those trampled underfoot - as the worse
+src/GrammarBlockAggregator.cpp 60:data_line, , I don't know.  I met a nurse who claimed they'd often couple 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #83
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, was yet to come for them. And the fire department was never quite quick enough; Once they ran through several more red 
+src/GrammarBlockAggregator.cpp 60:data_line, it with heart disease and lung failure for lack of 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #84
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, lights than usual, taking dozens of folks underneath them in response. The mayor called it the most courageous 
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #85
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(act|gesture)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(any specific|a)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #85
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  nationally recognized category. 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #86
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  he'd ever 
+src/GrammarBlockAggregator.cpp 60:data_line, I thought she may have been short for conversation. But no, it was true, and need only be evidenced by 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #87
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, witnessed - For the many more live's they'd saved. I'd tend to agree. Such was the sad irony of this oft occuring madness. 
+src/GrammarBlockAggregator.cpp 60:data_line, the ambulances and the haunting hollering of the dogs, followed of course by the hollering of their owners
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #88
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(And Once|Once)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(|,)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #89
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  you'd seen one of these Infestivals, the Conventional Wisdom was etched into the mind forever: 
+src/GrammarBlockAggregator.cpp 60:data_line,  on what
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #90
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, 'Just Cover The 
+src/GrammarBlockAggregator.cpp 60:data_line, seemed like every other second tuesday somewhere in our building.
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #91
-src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|Bloody)]'
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, We held our breath and covered our ears outside whilst praying for those trampled underfoot - as the worse
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #92
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  Hole And Force The Moth*********'s Through The Cracks In The 
+src/GrammarBlockAggregator.cpp 60:data_line, was yet to come for them. And the fire department was never quite quick enough; once they ran through several more red 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #93
-src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(Floorboard | Hardwood floors)]'
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #94
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, ' 
+src/GrammarBlockAggregator.cpp 60:data_line, lights than usual, taking dozens of folks underneath them in response. The mayor called it the most courageous 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #94
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(act|gesture|thing)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #95
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, - which, apparently as a whole is known to be a much greater rate limiting factor. I shuddered.  Suddenly the charm wore off. I started to smell 
+src/GrammarBlockAggregator.cpp 60:data_line,  he'd ever 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #96
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, the fish and didn't like it. But still she tried convince me that this was a whole lot better than 
+src/GrammarBlockAggregator.cpp 60:data_line, witnessed 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #97
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, anywhere else.
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(-|.)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #98
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, <<What made this 
+src/GrammarBlockAggregator.cpp 60:data_line,  For the many more live's they'd saved
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #99
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(dirty|decrepit)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(.|,)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #100
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  little corner so much better than 
+src/GrammarBlockAggregator.cpp 60:data_line,  I'd tend to agree. Such was the sad irony of this oft occuring madness. 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #101
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(the next | anywhere else)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(And Once|Once)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #102
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, ?>>, I asked.
+src/GrammarBlockAggregator.cpp 60:data_line,  you'd seen one of these Infestivals, the Conventional Wisdom was etched into the mind forever: 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #103
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, This was the first time that I'd here it, so powerful and full of pride like the roar of lion. 
+src/GrammarBlockAggregator.cpp 60:data_line, 'Just Cover The 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #104
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, It was to be my official welcome; she pointed to a spot out the window 
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(|Bloody)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #105
-src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(with emphasis|dramitically)]'
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #106
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #107
+src/GrammarBlockAggregator.cpp 60:data_line,  Hole And Force The Moth*********'s Through The Cracks In The 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #106
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(adding a| with a resounding)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(Floorboard | Hardwood floors)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #107
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, ' 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #108
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  
+src/GrammarBlockAggregator.cpp 60:data_line, - which, apparently as a whole is known to be a much greater rate limiting factor. I shuddered.  Suddenly the charm wore off.
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #109
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, flurry of expletives I half understood. I traced an arrow from that lanky finger of hers over the padded
+src/GrammarBlockAggregator.cpp 60:data_line, I started to smell the fish and didn't like it. But still she tried to convince me that this was a whole lot better than 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #110
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, cot, and past 
+src/GrammarBlockAggregator.cpp 60:data_line, anywhere else.
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #111
-src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(the toilet of fully exposed plumbing | the toilet with it's plumbing fully exposed)]'
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #112
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  
+src/GrammarBlockAggregator.cpp 60:data_line, <<What made this 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #112
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(dirty|decrepit)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #113
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, out through this bright and 
+src/GrammarBlockAggregator.cpp 60:data_line,  little corner so much better than 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #114
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(brilliant | magnificent)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(the next | anywhere else)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #115
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  12th story window all the way to the peak of 
+src/GrammarBlockAggregator.cpp 60:data_line, ?>>, I asked.
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #116
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, Ellis Island. One can
+src/GrammarBlockAggregator.cpp 60:data_line, This was the first time that I'd here it, so powerful and full of pride like the roar of lion. 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #117
-src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(\'t help but| only)]'
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #118
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  dream-up images of a people not unlike ourselves, in a time
+src/GrammarBlockAggregator.cpp 60:data_line, It was to be my official welcome; she pointed to a spot out the window 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #118
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(with emphasis|dramitically)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #119
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, not unlike the present, without asking 'Where Had They Went?'. It was like they had all stood up for an 
+src/GrammarBlockAggregator.cpp 60:data_line,  
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #120
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, instant and collapsed.
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #121
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(And the mudd rippled like water. | Sending ripples of concetric circles through the mudd like a drop of rain in a lake.)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(adding a| with a resounding)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #121
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #122
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 60:data_line, flurry of expletives I half understood. I traced an arrow from that lanky finger of hers over the padded
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #123
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, I thought perhaps 
+src/GrammarBlockAggregator.cpp 60:data_line, cot, and past 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #124
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(just maybe|by chance)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(the toilet of fully exposed plumbing | the toilet with it's plumbing fully exposed)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #125
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  we were built from the same stuff and it followed that we
+src/GrammarBlockAggregator.cpp 60:data_line,  
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #126
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, might carry 
+src/GrammarBlockAggregator.cpp 60:data_line, out through this bright and 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #127
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|with us)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(brilliant | magnificent)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #128
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  their essence - along with their struggles, their debt, their hopes and dreams, and 
+src/GrammarBlockAggregator.cpp 60:data_line,  12th story window all the way to the peak of 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #129
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, those tiny fragments of ineffable joy 
+src/GrammarBlockAggregator.cpp 60:data_line, Ellis Island. One can
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #130
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(scattered|sprinkled)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(\'t help but| only)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #131
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  inbetween the rocks and buoys. 
+src/GrammarBlockAggregator.cpp 60:data_line,  dream-up images of a people not unlike ourselves, in a time
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #132
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, What brand of apathy would they smoke and teach their children if any? Squarely in the midst of a vivid 
+src/GrammarBlockAggregator.cpp 60:data_line, not unlike the present, without asking 'Where Had They Went?'. It was like they had all stood up for an 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #133
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, experience, I tried 
+src/GrammarBlockAggregator.cpp 60:data_line, instant and collapsed.
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #134
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(finding|to find)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(And the mudd rippled like water. | Sending ripples of concetric circles through the mudd like a drop of rain in a still body of water.)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #135
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  myself amoungst the lines of the elderly, the graduates, the 
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #136
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, swindlers, the mothers tending to coughing children and their fathers - but I was interrupted. Her 
+src/GrammarBlockAggregator.cpp 60:data_line, I thought perhaps 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #137
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, pointed finger lowered to the exposed pipe 
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #138
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(protruding|coming)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(just maybe|by chance)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #138
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  we were built from the same stuff and it followed that we
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #139
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  out from the floorboard 
+src/GrammarBlockAggregator.cpp 60:data_line, might carry 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #140
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, ; the one resembling the trunk of an old 
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #141
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(oak|tree)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(|with us)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #141
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  their essence - along with their struggles, their debt, their hopes and dreams, and 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #142
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  chopped waist high, and covered with moss. 
+src/GrammarBlockAggregator.cpp 60:data_line, those tiny fragments of ineffable joy 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #143
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, I'd be remiss, also, not to mention the matching green tub 
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #144
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(right beside it | to left of it | just to the right of it)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(scattered|sprinkled)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #144
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  inbetween the rocks and buoys. 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #145
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, . 
+src/GrammarBlockAggregator.cpp 60:data_line, What brand of apathy would they smoke and teach their children if any? Squarely in the midst of a vivid 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #146
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, <<Those 'ill do ya. Another glass and cover that one with as large a condom as 
+src/GrammarBlockAggregator.cpp 60:data_line, experience, I tried 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #147
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(possible|you can find)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(finding|to find)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #148
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, >>, she said crudely.
+src/GrammarBlockAggregator.cpp 60:data_line,  myself amoungst the lines of the elderly, the graduates, the 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #149
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, I had seen 
+src/GrammarBlockAggregator.cpp 60:data_line, swindlers, the mothers tending to coughing children and their fathers - but I was interrupted. Her 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #150
-src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(the two | the pair | them)]'
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #151
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  before, no doubt. I wouldn't admit it to myself, or to 
+src/GrammarBlockAggregator.cpp 60:data_line, pointed finger lowered to the exposed pipe 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #151
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(protruding|coming)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #152
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, anyone else 
+src/GrammarBlockAggregator.cpp 60:data_line,  out from the floorboard 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #153
-src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(had they asked|for that matter)]'
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #154
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, , that they were indeed the only reason why I liked the place.
+src/GrammarBlockAggregator.cpp 60:data_line, ; the one resembling the trunk of an old 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #154
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(oak|tree)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #155
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, These two objects stood out and belonged together, inseperably tied together by a plumbing seen and 
+src/GrammarBlockAggregator.cpp 60:data_line,  chopped waist high, and covered with moss. 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #156
-src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(out of sight|unseen)]'
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #157
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, , 
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #158
+src/GrammarBlockAggregator.cpp 60:data_line, I'd be remiss, also, not to mention the matching green tub 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #157
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(which made | making|and made)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(right beside it | to left of it | just to the right of it)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #158
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, . 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #159
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  this narrow corridor much more than an enclosed space 
+src/GrammarBlockAggregator.cpp 60:data_line, <<Those 'ill do ya. Another glass and cover that one with as large a condom as 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #160
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(clustered|littered|sparsley littered)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(possible|you can find)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #161
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  with the usual standing 
+src/GrammarBlockAggregator.cpp 60:data_line, >>, she said crudely.
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #162
-src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(sort|assortment)]'
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #163
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  of 
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #164
+src/GrammarBlockAggregator.cpp 60:data_line, I had seen 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #163
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|common)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(the two | the pair | them)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #164
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  before, no doubt. I wouldn't admit it to myself, or to 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #165
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  modern-day 'necessities', into a place I could call home. They called out to me, about as strongly as I imagine the earth does from
+src/GrammarBlockAggregator.cpp 60:data_line, anyone else 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #166
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, this elevation. 
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #167
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(In confidence, I admit I had visions of a sort; | And I'll admit /[(to having|I had)]'
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #168
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(|had they asked|for that matter)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #167
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  )]
+src/GrammarBlockAggregator.cpp 60:data_line, , that they were indeed the only reason why I liked the place.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #168
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(T|Quite simply t)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #169
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, open-eye hallucinations of a short round-bellied italian 
+src/GrammarBlockAggregator.cpp 60:data_line, hese two objects stood out and belonged together, inseperably 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #170
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|man)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(bound together| bound each-to-the-other|bound|tied together)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #171
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  dressed in blue overalls who'd
+src/GrammarBlockAggregator.cpp 60:data_line,  by a plumbing 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #172
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(spring up|leap|jump)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(|both)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #173
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  out from the mouth of this green pillar with 
+src/GrammarBlockAggregator.cpp 60:data_line, seen and 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #174
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|much)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(out of sight|unseen)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #175
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  vigour 
+src/GrammarBlockAggregator.cpp 60:data_line, , 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #176
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(and|then)]'
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(which made | making|and made|and I must say it made)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #177
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  shake himself dry.
+src/GrammarBlockAggregator.cpp 60:data_line,  this narrow 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #178
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, He'd 
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(|little)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #179
-src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(soil|dirty)]'
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  corridor 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #180
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line,  my curtains 
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #181
 src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|every time)]'
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #182
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(|so)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #181
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, , but you couldn't stay angry at the guy - salt of the earth really. 
+src/GrammarBlockAggregator.cpp 60:data_line,  much more than an enclosed space 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #182
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(littered|sparsley littered)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #183
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, I felt inclined to help him. Overlooking much of Manhattan, I would counsel him through this grief; assuring M that he 
+src/GrammarBlockAggregator.cpp 60:data_line,  with the usual standing 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #184
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, could certainly do a hellofalot better -  hoping that these encouragements and the reality of where his travels had led him,
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(sort|assortment)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #185
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, would spark in him some sortt of all-encompassing epiphany, and that perhaps he'd share, for I too had
+src/GrammarBlockAggregator.cpp 60:data_line,  of 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #186
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, become the worse for wear.
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(|common,)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #187
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, I still don't know why I rented the place when I did, I didn't sleep - much less live - there for a good
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(modern, everday|modern-day)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #188
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, 3 months until I'd made certain that I was indeed the envy of all my friends - who were living in the 
+src/GrammarBlockAggregator.cpp 60:data_line,  'necessities'. They made it a place I could call home - and they called out to me! 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #189
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, worst of conditions and for a price that would exhaust a shieks fortune (in little under a year). 
+src/GrammarBlockAggregator.cpp 60:data_line, About as strongly as I imagine the earth does from 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #190
-src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, Oh and I should tell you about the area I live in!
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(this|that)]'
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #191
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
-src/GrammarBlockAggregator.cpp 60:data_line, Georgious. Lenny from down the hall said a famous singer might live 
+src/GrammarBlockAggregator.cpp 60:data_line,  elevation. And as I stared straight down into 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #192
-src/GrammarBlockAggregator.cpp 125:	Identified keyword
-src/GrammarBlockAggregator.cpp 60:key_word, <'/[(3|4)]'
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, the abyss I'll admit I had visions of a sort: open-eye hallucinations of a short round-bellied italian 
 src/GrammarBlockAggregator.cpp 50:Processing annotatedData #193
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(|man)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #194
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #195
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, dressed in blue overalls who'd 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #196
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(spring up|leap|jump)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #197
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  out from the mouth of this green pillar [...] and shake himself dry.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #198
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, The culmination of some grand 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #199
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(movement or of a labourious effort|and labourious effort)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #200
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, , I'm sure. What ever it was, he was damp, spent, and wanted nothing more 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #201
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(but|than)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #202
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  to collapse 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #203
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(on|to)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #204
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #205
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(|the floor)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #206
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, .
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #207
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, Of course I hadn't the stomach to help him up, let alone touch him. But I felt inclined to help the minute he came 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #208
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(about|too)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #209
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, .
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #210
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, Overlooking much of Manhattan, I would counsel him through this grief; assuring M that he 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #211
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, could certainly do a hellofalot better -  in the hopes that these few encouragements plus the reality of
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #212
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(how far his browser had been led him astray | where his travels had led him,)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #213
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #214
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, would spark in him some sort of all-encompassing epiphany, the content of which perhaps he'd share, for I too had become the worse for wear.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #215
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, I still don't know why I rented the place when I did, I didn't sleep - much less live - there for a good
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #216
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, 3 months until I'd made certain that I was indeed the envy of all my friends - who were living in the 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #217
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, worst of conditions and for a price that would exhaust a shieks fortune (in little under a year). 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #218
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, Oh and I should tell you about the area I live in!
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #219
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, Georgious. Lenny from down the hall said a famous singer might live 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #220
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, '/[(3|4)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #221
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line,  floors up. I wouldn't doubt it.
-src/GrammarBlockAggregator.cpp 50:Processing annotatedData #194
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #222
 src/GrammarBlockAggregator.cpp 119:	Identified data_line
 src/GrammarBlockAggregator.cpp 60:data_line, empty_str
 src/lib/includes/execution_phase/grammaticalForm/GrammarManager.hpp 72:Destroying GrammarManager
@@ -1963,13 +2075,13 @@ src/lib/includes/ContextManager.hpp 241:Context was successfully destroyed
 src/PhasedExecution.cpp 69:Finished PhasedExecution
 src/lib/includes/PhasedExecution.hpp 58:  Successfully Deleted PhasedExecution
 
-Destroying Dfa id(0x7ff46be000c0) the RIGHT way.
-Destroying Dfa id(0x7ff46be00100) the RIGHT way.
-Destroying Dfa id(0x7ff46be00140) the RIGHT way.
-Destroying Dfa id(0x7ff46be00180) the RIGHT way.
-Destroying Dfa id(0x7ff46be001c0) the RIGHT way.
-Destroying Dfa id(0x7ff46be00300) the RIGHT way.
-Destroying Dfa id(0x7ff46be00340) the RIGHT way.
+Destroying Dfa id(0x7fa6c84019b0) the RIGHT way.
+Destroying Dfa id(0x7fa6c84019f0) the RIGHT way.
+Destroying Dfa id(0x7fa6c8402800) the RIGHT way.
+Destroying Dfa id(0x7fa6c8402840) the RIGHT way.
+Destroying Dfa id(0x7fa6c8402880) the RIGHT way.
+Destroying Dfa id(0x7fa6c84029c0) the RIGHT way.
+Destroying Dfa id(0x7fa6c8402a00) the RIGHT way.
 Destructor for AggregateDfasAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -1982,13 +2094,13 @@ setting member (5) to null
 setting member (6) to null
 deleting array with delete[]
 Deleted one lexer_word successfully
-Destroying Dfa Transition id(0x7ff46bd014e0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd016a0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00980) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd009c0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00b40) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00f30) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00f40) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8401d70) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8401e40) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8402cd0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8402d10) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8402da0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8401d80) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8401d90) the RIGHT way.
 Destructor for AggregateDfaTransitionsAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -2001,11 +2113,11 @@ setting member (5) to null
 setting member (6) to null
 deleting array with delete[]
 Deleted a group of DfaTransitions successfully
-Destroying Dfa id(0x7ff46bd01900) the RIGHT way.
-Destroying Dfa id(0x7ff46bd01940) the RIGHT way.
-Destroying Dfa id(0x7ff46bd01980) the RIGHT way.
-Destroying Dfa id(0x7ff46bd019c0) the RIGHT way.
-Destroying Dfa id(0x7ff46bd01a00) the RIGHT way.
+Destroying Dfa id(0x7fa6c84026c0) the RIGHT way.
+Destroying Dfa id(0x7fa6c8402700) the RIGHT way.
+Destroying Dfa id(0x7fa6c8402740) the RIGHT way.
+Destroying Dfa id(0x7fa6c8402780) the RIGHT way.
+Destroying Dfa id(0x7fa6c84027c0) the RIGHT way.
 Destructor for AggregateDfasAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -2016,10 +2128,10 @@ setting member (3) to null
 setting member (4) to null
 deleting array with delete[]
 Deleted one lexer_word successfully
-Destroying Dfa Transition id(0x7ff46bd01340) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd013b0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd013f0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd01430) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8402100) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8402170) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c84021b0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c84021f0) the RIGHT way.
 Destructor for AggregateDfaTransitionsAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -2029,13 +2141,13 @@ setting member (2) to null
 setting member (3) to null
 deleting array with delete[]
 Deleted a group of DfaTransitions successfully
-Destroying Dfa id(0x7ff46bd00bb0) the RIGHT way.
-Destroying Dfa id(0x7ff46bd00120) the RIGHT way.
-Destroying Dfa id(0x7ff46bd00160) the RIGHT way.
-Destroying Dfa id(0x7ff46bd001a0) the RIGHT way.
-Destroying Dfa id(0x7ff46bd001e0) the RIGHT way.
-Destroying Dfa id(0x7ff46bd01150) the RIGHT way.
-Destroying Dfa id(0x7ff46bd01190) the RIGHT way.
+Destroying Dfa id(0x7fa6c8400de0) the RIGHT way.
+Destroying Dfa id(0x7fa6c84010d0) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401110) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401150) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401190) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401f10) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401f50) the RIGHT way.
 Destructor for AggregateDfasAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -2048,27 +2160,27 @@ setting member (5) to null
 setting member (6) to null
 deleting array with delete[]
 Deleted one lexer_word successfully
-Destroying Dfa Transition id(0x7ff46bd000c0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00c20) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00c60) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00d20) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00df0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00ca0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00cb0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd012b0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd012c0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd01320) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00d70) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00d80) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd01280) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd01290) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd012a0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd012d0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd012e0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd012f0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd01300) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd01310) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd01330) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c84009f0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400e50) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400e90) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8401ae0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8401bb0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8401a60) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8401a70) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8402070) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8402080) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c84020e0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8401b30) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8401b40) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8402040) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8402050) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8402060) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8402090) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c84020a0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c84020b0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c84020c0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c84020d0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c84020f0) the RIGHT way.
 Destructor for AggregateDfaTransitionsAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -2095,14 +2207,14 @@ setting member (19) to null
 setting member (20) to null
 deleting array with delete[]
 Deleted a group of DfaTransitions successfully
-Destroying Dfa id(0x7ff46bd00710) the RIGHT way.
-Destroying Dfa id(0x7ff46bd00750) the RIGHT way.
-Destroying Dfa id(0x7ff46bd00790) the RIGHT way.
-Destroying Dfa id(0x7ff46bd007d0) the RIGHT way.
-Destroying Dfa id(0x7ff46bd00810) the RIGHT way.
-Destroying Dfa id(0x7ff46bd00850) the RIGHT way.
-Destroying Dfa id(0x7ff46bd00890) the RIGHT way.
-Destroying Dfa id(0x7ff46bd00930) the RIGHT way.
+Destroying Dfa id(0x7fa6c84015e0) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401620) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401660) the RIGHT way.
+Destroying Dfa id(0x7fa6c84016a0) the RIGHT way.
+Destroying Dfa id(0x7fa6c84016e0) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401720) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401760) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401800) the RIGHT way.
 Destructor for AggregateDfasAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -2116,18 +2228,18 @@ setting member (6) to null
 setting member (7) to null
 deleting array with delete[]
 Deleted one lexer_word successfully
-Destroying Dfa Transition id(0x7ff46bd000d0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00480) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd004f0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00530) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd005f0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00b70) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00570) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd005b0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00b80) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00b90) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00ba0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00630) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c84004c0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400900) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c84013d0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400670) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8401480) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8401500) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c84006b0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8401440) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400db0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400dc0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400dd0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c84014c0) the RIGHT way.
 Destructor for AggregateDfaTransitionsAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -2145,13 +2257,13 @@ setting member (10) to null
 setting member (11) to null
 deleting array with delete[]
 Deleted a group of DfaTransitions successfully
-Destroying Dfa id(0x7ff46bd000e0) the RIGHT way.
-Destroying Dfa id(0x7ff46bd00220) the RIGHT way.
-Destroying Dfa id(0x7ff46bd00260) the RIGHT way.
-Destroying Dfa id(0x7ff46bd002a0) the RIGHT way.
-Destroying Dfa id(0x7ff46bd002e0) the RIGHT way.
-Destroying Dfa id(0x7ff46bd00320) the RIGHT way.
-Destroying Dfa id(0x7ff46bd00360) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401090) the RIGHT way.
+Destroying Dfa id(0x7fa6c84011d0) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401210) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401250) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401290) the RIGHT way.
+Destroying Dfa id(0x7fa6c84012d0) the RIGHT way.
+Destroying Dfa id(0x7fa6c8401310) the RIGHT way.
 Destructor for AggregateDfasAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -2164,12 +2276,12 @@ setting member (5) to null
 setting member (6) to null
 deleting array with delete[]
 Deleted one lexer_word successfully
-Destroying Dfa Transition id(0x7ff46bd00410) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00420) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00430) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00440) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00450) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bd00460) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400940) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400ef0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400f30) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400f70) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400fb0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400ed0) the RIGHT way.
 Destructor for AggregateDfaTransitionsAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -2181,13 +2293,13 @@ setting member (4) to null
 setting member (5) to null
 deleting array with delete[]
 Deleted a group of DfaTransitions successfully
-Destroying Dfa id(0x7ff46bc00060) the RIGHT way.
-Destroying Dfa id(0x7ff46bc00380) the RIGHT way.
-Destroying Dfa id(0x7ff46bc003c0) the RIGHT way.
-Destroying Dfa id(0x7ff46bc00400) the RIGHT way.
-Destroying Dfa id(0x7ff46bc00440) the RIGHT way.
-Destroying Dfa id(0x7ff46bc004d0) the RIGHT way.
-Destroying Dfa id(0x7ff46bc00510) the RIGHT way.
+Destroying Dfa id(0x7fa6c8400060) the RIGHT way.
+Destroying Dfa id(0x7fa6c8400380) the RIGHT way.
+Destroying Dfa id(0x7fa6c84003c0) the RIGHT way.
+Destroying Dfa id(0x7fa6c8400400) the RIGHT way.
+Destroying Dfa id(0x7fa6c8400440) the RIGHT way.
+Destroying Dfa id(0x7fa6c84004d0) the RIGHT way.
+Destroying Dfa id(0x7fa6c8400510) the RIGHT way.
 Destructor for AggregateDfasAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -2200,13 +2312,13 @@ setting member (5) to null
 setting member (6) to null
 deleting array with delete[]
 Deleted one lexer_word successfully
-Destroying Dfa Transition id(0x7ff46bc009c0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bc00880) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bc00a50) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bc00ab0) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bc00b10) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bc00b50) the RIGHT way.
-Destroying Dfa Transition id(0x7ff46bc00bf0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c84009c0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400880) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400a50) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400ab0) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400b10) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400b50) the RIGHT way.
+Destroying Dfa Transition id(0x7fa6c8400bf0) the RIGHT way.
 Destructor for AggregateDfaTransitionsAndDelete called
 Destructor for AggregatePtrsAndDelete called
 Desructor for AggregateAndApplyFuncBase called
@@ -2274,5 +2386,3 @@ src/lib/includes/execution_phase/lexer/construction/lexer_word_constructor.hpp 1
 src/lib/includes/execution_phase/lexer/lexer_configuration.hpp 54:  Successfully Deleted Lexer Configuration
 
 src/lib/includes/execution_phase/grammaticalForm/GrammarConfig.hpp 55:  Successfully Deleted Grammar Configuration
-
-
