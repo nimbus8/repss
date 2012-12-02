@@ -23,6 +23,8 @@
 #include "lib/includes/execution_phase/lexer/lexer_manager.hpp"
 #include "lib/includes/execution_phase/lexer/Scanner.hpp"
 
+#include "lib/includes/execution_phase/grammaticalForm/GrammarManager.hpp"
+
 /*#undef*/ #define DEBUG
 #ifdef DEBUG
     #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
@@ -58,6 +60,8 @@ std::string PhasedExecution::execute(int argc, char* argv[])
     std::string inputFileName{argv[3]};
     runLexer(&lexerContext, inputFileName);  
 
+    auto grammarContext = _contextManager->getContext<ContextType::AllowedTypes, ContextType::Grammar>();
+    runGrammarAggregation(&grammarContext);
 
     delete _contextManager;
     _contextManager = nullptr;
@@ -79,6 +83,11 @@ void PhasedExecution::runLexer(ILexerContext* const lexerContext, std::string in
     //todo: when lexer_man goes out of scope, it cleans of LexerDatProxy
     //       so its this routines job to return whatever is necessary for
     //       parser or grmammer phase...
+}
+
+void PhasedExecution::runGrammarAggregation(IGrammarContext* const grammarContext)
+{
+    GrammarManager grammarMan(grammarContext);
 }
 
 #undef DEBUG

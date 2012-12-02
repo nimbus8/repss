@@ -28,6 +28,7 @@
 
 #include "execution_phase/lexer/ILexerContext.hpp"
 #include "execution_phase/lexer/lexer_configuration.hpp"
+#include "execution_phase/grammaticalForm/IGrammarContext.hpp"
 #include "execution_phase/grammaticalForm/GrammarConfig.hpp"
 
 #define DEBUG
@@ -67,7 +68,7 @@ public:
     void runParser();
 
     //grammar aggregation
-    void runGrammarAggregation();
+    void runGrammarAggregation(IGrammarContext* const grammarContext);
 
     //analysis & tree/level construction
     void runAnalysis();

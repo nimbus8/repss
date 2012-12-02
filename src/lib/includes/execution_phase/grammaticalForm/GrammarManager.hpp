@@ -20,6 +20,15 @@
 #ifndef _GRAMMAR_MANAGER_
 #define _GRAMMAR_MANAGER_
 
+/*#undef*/ #define DEBUG
+#ifdef DEBUG
+    #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
+#else
+    #define DeLOG(str)
+#endif
+
+#include <stdio.h>
+
 class GrammarManager
 {
 private:
@@ -27,6 +36,8 @@ private:
 public:
     GrammarManager(IGrammarContext* context)
     {
+        DeLOG("Constructor for GrammarManager\n");
+
         //...from configuration get grammar keywords and rules etc
 
         _grammarDataProxy = nullptr;
@@ -34,8 +45,29 @@ public:
         //set the grammarDataProxy in Context
     }
 
+    void init(const GrammarConfig& config)
+    {
+        if (_grammarDataProxy != nullptr)
+        {
+
+            perror("GrammarManager/GrammarDataProxy have already been initialiazed. Doing nothing");
+            return;
+        }
+
+        //auto grammarKeywords = ...
+
+        DeLOG("Initialized Lexer Data Proxy Successfully.\nSucessfully Initialized GrammarManager\n");
+    }
+
+    const IGrammarDataProxy* getGrammarDataProxy() const
+    {
+        return _grammarDataProxy;
+    }
+
     ~GrammarManager()
     {
+        DeLOG("Destroying GrammarManager\n");
+
         if (_grammarDataProxy != nullptr)
             delete _grammarDataProxy;
     }

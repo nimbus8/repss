@@ -56,6 +56,8 @@ class Context
 private:
     //Lexer Specific
     ILexerDataProxy* _lexerDataProxy; //this is to access constant objects of dfaManager, scanWords, etc
+    IGrammarDataProxy* _grammarDataProxy;
+
     std::vector<std::string> _annotatedData;
     ScanWords* _scanWords; //put this into LexerDataProxy
 
@@ -72,6 +74,7 @@ private:
 public:
     Context() : _lexerDataProxy(nullptr), _scanWords(nullptr) {}
 
+    //Lexer
     void initLexerDataProxyImpl(ContextType::AllowedTypes contextTypeAsLexer, const ILexerDataProxy* lexerDataProxy)
     {
         if (contextTypeAsLexer != ContextType::Lexer)
@@ -139,6 +142,66 @@ public:
                 std::cout << blockStr << std::endl;
             }
         }
+    }
+
+    //Grammar
+/*
+        return _refContext->getAnnotatedDataImpl(ContextType::Grammar);
+    }
+
+    virtual void initGrammarDataProxy(const IGrammarDataProxy* grammarDataProxy)
+    {
+        _refContext->initGrammarDataProxyImpl(ContextType::Grammar, grammarDataProxy);
+    }
+
+    virtual const IGrammarDataProxy* getGrammarDataProxy() const
+    {
+        return _refContext->getGrammarDataProxyImpl(ContextType::Grammar);
+    }
+
+    virtual void setGrammarBlockAggregate(GrammarBlockAggregate&& grammarBlockAggregate)
+    {
+        _refContext->setGrammarBlockAggregateImpl(ContextType::Grammar, grammarBlockAggregate);
+    }
+
+    virtual void printGrammarBlockAggregateData() const
+    {
+        _refContext->printGrammarBlockAggregateDataImpl(ContextType::Grammar);
+*/
+
+ 
+    void initGrammarDataProxyImpl(ContextType::AllowedTypes contextTypeAsGrammar, const IGrammarDataProxy* grammarDataProxy)
+    {
+        if (contextTypeAsGrammar != ContextType::Grammar)
+        {
+            std::cout << "initGrammarDataProxyImpl can only be called by ContextType::Grammar" << std::endl;
+            return;
+        }
+
+        if (_grammarDataProxy != nullptr)
+        {
+            std::cout << "Warning, trying to initialized grammarDataProxy TWICE - this is NOT allowed" << std::endl;
+            return;
+        }
+
+        std::cout << "initGrammarDataProxyImpl:: just about to initialize grammar data proxy with const cast" << std::endl;
+
+        _grammarDataProxy = const_cast<IGrammarDataProxy*>(grammarDataProxy); 
+    }
+
+    const IGrammarDataProxy* getGrammarDataProxyImpl(ContextType::AllowedTypes contextTypeAsGrammar)
+    {
+        return _grammarDataProxy;
+    }
+
+    void setGrammarBlockAggregateImpl(ContextType::AllowedTypes contextTypeAsGrammar, GrammarBlockAggregate grammarBlockAggregate)
+    {
+
+    }
+
+    void printGrammarBlockAggregateDataImpl(ContextType::AllowedTypes contextTypeAsGrammar)
+    {
+
     }
 
     //example: doMe - how and how not to
@@ -262,7 +325,7 @@ public:
 };
 
 template<>
-class ContextManager::TypedContext <_AllowedTypes_, ContextType::Grammar> : public IGrammarContext
+class ContextManager::TypedContext <_AllowedTypes_, ContextType::Grammar> : virtual public IGrammarContext
 {
 private:
     Context* _refContext;
@@ -272,6 +335,31 @@ public:
 
     ~TypedContext()
     {
+    }
+
+    virtual ConstVector<std::string> getAnnotatedData() const
+    {
+        return _refContext->getAnnotatedDataImpl(ContextType::Grammar);    
+    }
+
+    virtual void initGrammarDataProxy(const IGrammarDataProxy* grammarDataProxy)
+    {
+        _refContext->initGrammarDataProxyImpl(ContextType::Grammar, grammarDataProxy);
+    }
+
+    virtual const IGrammarDataProxy* getGrammarDataProxy() const
+    {
+        return _refContext->getGrammarDataProxyImpl(ContextType::Grammar);
+    }
+
+    virtual void setGrammarBlockAggregate(GrammarBlockAggregate&& grammarBlockAggregate)
+    {
+        _refContext->setGrammarBlockAggregateImpl(ContextType::Grammar, grammarBlockAggregate);
+    }
+
+    virtual void printGrammarBlockAggregateData() const
+    {
+        _refContext->printGrammarBlockAggregateDataImpl(ContextType::Grammar);
     }
 
     void doMe() { _refContext->doMe(ContextType::Grammar); }

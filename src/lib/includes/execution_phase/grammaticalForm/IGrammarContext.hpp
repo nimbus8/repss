@@ -35,11 +35,10 @@ protected:
     virtual ~IGrammarContext() {}
 public:
     virtual ConstVector<std::string> getAnnotatedData() const = 0;
-
     virtual void initGrammarDataProxy(const IGrammarDataProxy* grammarDataProxy) = 0;
-    virtual const IGrammarDataProxy* getGrammarDataProxy() const = 0;
 
-    virtual void setGrammarBlockAggregate(GrammarBlockAggregate&& grammarBlockAggregate);
+    virtual const IGrammarDataProxy* getGrammarDataProxy() const = 0;
+    virtual void setGrammarBlockAggregate(GrammarBlockAggregate&& grammarBlockAggregate) = 0;
     virtual void printGrammarBlockAggregateData() const = 0;
 };
 
