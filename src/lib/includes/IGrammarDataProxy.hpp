@@ -26,11 +26,9 @@
 
 class IGrammarDataProxy
 {
-public:
+protected:
     virtual ~IGrammarDataProxy() {};
-
-    virtual std::GrammarKeywords* getGrammarKeywords() const = 0;
-    virtual void setGrammarBlockAggregate(const GrammarBlockAggregate* grammarBlockAggregate) = 0;
+    virtual const std::GrammarKeywords* const getGrammarKeywords() const = 0;
 };
 
 #endif

@@ -1,0 +1,2278 @@
+== REPSS ==
+
+(input-stream): 
+a	b	c	d	e	f	
+
+(output-stream): 
+d	f	h	j	l	n	
+
+./repss
+abc==abc: 0 len(a): 3
+==%%: -1
+%==%%: -1
+woot==hoot: -1, len(a):4 len(b):4
+%%==%%: 0
+%!==%%: -1
+%%==%%: 0
+%%==%%: 0
+foo1: 1, foo2: 2
+CREATING end state mapping: endStateToName=(8=>repetition)
+
+Successfully appended 'named_iteration' to tentative end state name => 'repetition.named_iteration'
+
+
+
+
+
+
+
+
+
+Successfully constructed name=x:y
+Construction Test: (,k
+foobar=1:10 H
+!??,U, 16)
+Starting state: 9, startingDfaId: 9
+search for a beginning: (state, seq,c): 9, 0, k
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'k' - DfaNode(9) ~ stateAndInput=(state, seq,c): (10, 1, 
+)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'
+' - DfaNode(9) ~ stateAndInput=(state, seq,c): (9, 2, f)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'f' - DfaNode(9) ~ stateAndInput=(state, seq,c): (10, 3, o)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'o' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 4, o)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'o' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 5, b)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'b' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 6, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'a' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 7, r)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'r' - DfaNode(10) ~ stateAndInput=(state, seq,c): (10, 8, =)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'=' - DfaNode(10) ~ stateAndInput=(state, seq,c): (11, 9, 1)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'1' - DfaNode(11) ~ stateAndInput=(state, seq,c): (12, 10, :)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+':' - DfaNode(12) ~ stateAndInput=(state, seq,c): (14, 11, 1)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'1' - DfaNode(14) ~ stateAndInput=(state, seq,c): (15, 12, 0)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'0' - DfaNode(15) ~ stateAndInput=(state, seq,c): (15, 13,  )
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+found word!word=(repetition.named_iteration)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+
+
+
+
+
+
+
+Successfully constructed /[rep] var=x:y
+Construction Test: (,fyi/[rep] a=2:81 ??f?, 17)
+Starting state: 1, startingDfaId: 1
+search for a beginning: (state, seq,c): 1, 0, f
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 1, 1, y
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 1, 2, i
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 1, 3, /
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(1) ~ stateAndInput=(state, seq,c): (2, 4, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(2) ~ stateAndInput=(state, seq,c): (3, 5, r)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'r' - DfaNode(3) ~ stateAndInput=(state, seq,c): (4, 6, e)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'e' - DfaNode(4) ~ stateAndInput=(state, seq,c): (5, 7, p)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'p' - DfaNode(5) ~ stateAndInput=(state, seq,c): (6, 8, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+']' - DfaNode(6) ~ stateAndInput=(state, seq,c): (7, 9,  )
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+' ' - DfaNode(7) ~ stateAndInput=(state, seq,c): (9, 10, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'a' - DfaNode(9) ~ stateAndInput=(state, seq,c): (10, 11, =)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'=' - DfaNode(10) ~ stateAndInput=(state, seq,c): (11, 12, 2)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'2' - DfaNode(11) ~ stateAndInput=(state, seq,c): (12, 13, :)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+':' - DfaNode(12) ~ stateAndInput=(state, seq,c): (14, 14, 8)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'8' - DfaNode(14) ~ stateAndInput=(state, seq,c): (15, 15, 1)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'1' - DfaNode(15) ~ stateAndInput=(state, seq,c): (15, 16,  )
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+found word!word=(repetition.named_iteration)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+CREATING end state mapping: endStateToName=(24=>scope)
+
+
+
+
+
+
+
+
+Successfully constructed /[sco]
+Construction Test: (,k
+/[sco] H?k?, 10)
+Starting state: 17, startingDfaId: 17
+search for a beginning: (state, seq,c): 17, 0, k
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 17, 1, 
+
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 17, 2, /
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(17) ~ stateAndInput=(state, seq,c): (18, 3, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(18) ~ stateAndInput=(state, seq,c): (19, 4, s)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'s' - DfaNode(19) ~ stateAndInput=(state, seq,c): (20, 5, c)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'c' - DfaNode(20) ~ stateAndInput=(state, seq,c): (21, 6, o)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'o' - DfaNode(21) ~ stateAndInput=(state, seq,c): (22, 7, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+']' - DfaNode(22) ~ stateAndInput=(state, seq,c): (23, 8,  )
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+found word!word=(scope)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+CREATING end state mapping: endStateToName=(32=>alteration)
+
+
+
+
+Adding AnythingButTransition!
+
+Adding AnythingButTransition!
+
+Adding AnythingButTransition!
+
+
+Successfully constructed /[(a|l|t|e|r|n|a|t|i|o|n)]
+Construction Test: (,k
+/[(a|c|d|e)] H!??,U, 16)
+Starting state: 25, startingDfaId: 25
+search for a beginning: (state, seq,c): 25, 0, k
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 25, 1, 
+
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 25, 2, /
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(25) ~ stateAndInput=(state, seq,c): (26, 3, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(26) ~ stateAndInput=(state, seq,c): (27, 4, ()
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'(' - DfaNode(27) ~ stateAndInput=(state, seq,c): (28, 5, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'a' - DfaNode(28) ~ stateAndInput=(state, seq,c): (30, 6, |)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'|' - DfaNode(30) ~ stateAndInput=(state, seq,c): (29, 7, c)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'c' - DfaNode(29) ~ stateAndInput=(state, seq,c): (30, 8, |)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'|' - DfaNode(30) ~ stateAndInput=(state, seq,c): (29, 9, d)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'d' - DfaNode(29) ~ stateAndInput=(state, seq,c): (30, 10, |)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'|' - DfaNode(30) ~ stateAndInput=(state, seq,c): (29, 11, e)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'e' - DfaNode(29) ~ stateAndInput=(state, seq,c): (30, 12, ))
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+')' - DfaNode(30) ~ stateAndInput=(state, seq,c): (31, 13, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+found word!word=(alteration)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+CREATING end state mapping: endStateToName=(41=>evaluation)
+
+
+
+
+
+
+
+
+
+Successfully constructed /[[variable]]
+Construction Test: (,k
+/[[yabba_dab]]H?k?, 17)
+Starting state: 33, startingDfaId: 33
+search for a beginning: (state, seq,c): 33, 0, k
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 33, 1, 
+
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 33, 2, /
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(33) ~ stateAndInput=(state, seq,c): (34, 3, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(34) ~ stateAndInput=(state, seq,c): (35, 4, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(35) ~ stateAndInput=(state, seq,c): (36, 5, y)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'y' - DfaNode(36) ~ stateAndInput=(state, seq,c): (37, 6, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'a' - DfaNode(37) ~ stateAndInput=(state, seq,c): (37, 7, b)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'b' - DfaNode(37) ~ stateAndInput=(state, seq,c): (37, 8, b)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'b' - DfaNode(37) ~ stateAndInput=(state, seq,c): (37, 9, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'a' - DfaNode(37) ~ stateAndInput=(state, seq,c): (37, 10, _)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'_' - DfaNode(37) ~ stateAndInput=(state, seq,c): (39, 11, d)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'d' - DfaNode(39) ~ stateAndInput=(state, seq,c): (37, 12, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'a' - DfaNode(37) ~ stateAndInput=(state, seq,c): (37, 13, b)
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+'b' - DfaNode(37) ~ stateAndInput=(state, seq,c): (37, 14, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 5
+']' - DfaNode(37) ~ stateAndInput=(state, seq,c): (40, 15, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+found word!word=(evaluation)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+CREATING end state mapping: endStateToName=(46=>general_end)
+
+
+
+
+Successfully constructed /[/] 
+Construction Test: (,fyi/[rep]HH/[/], 15)
+Starting state: 42, startingDfaId: 42
+search for a beginning: (state, seq,c): 42, 0, f
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 42, 1, y
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 42, 2, i
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 42, 3, /
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(42) ~ stateAndInput=(state, seq,c): (43, 4, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(43) ~ stateAndInput=(state, seq,c): (44, 5, r)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'r' - DfaNode(42) ~ stateAndInput=(state, seq,c): (42, 6, e)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'e' - DfaNode(42) ~ stateAndInput=(state, seq,c): (42, 7, p)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'p' - DfaNode(42) ~ stateAndInput=(state, seq,c): (42, 8, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+']' - DfaNode(42) ~ stateAndInput=(state, seq,c): (42, 9, H)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'H' - DfaNode(42) ~ stateAndInput=(state, seq,c): (42, 10, H)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'H' - DfaNode(42) ~ stateAndInput=(state, seq,c): (42, 11, /)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(42) ~ stateAndInput=(state, seq,c): (43, 12, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(43) ~ stateAndInput=(state, seq,c): (44, 13, /)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(44) ~ stateAndInput=(state, seq,c): (45, 14, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+found word!word=(general_end)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+CREATING end state mapping: endStateToName=(58=>repetition)
+
+Successfully appended 'named_list' to tentative end state name => 'repetition.named_list'
+
+
+
+
+
+Adding AnythingButTransition!
+
+
+
+Successfully constructed named=('l','i','s','t')
+Construction Test: (,k
+foobar=('a:1:8','abc')
+ݓf?, 25)
+Starting state: 59, startingDfaId: 59
+search for a beginning: (state, seq,c): 59, 0, k
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'k' - DfaNode(59) ~ stateAndInput=(state, seq,c): (60, 1, 
+)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'
+' - DfaNode(59) ~ stateAndInput=(state, seq,c): (59, 2, f)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'f' - DfaNode(59) ~ stateAndInput=(state, seq,c): (60, 3, o)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'o' - DfaNode(60) ~ stateAndInput=(state, seq,c): (60, 4, o)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'o' - DfaNode(60) ~ stateAndInput=(state, seq,c): (60, 5, b)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'b' - DfaNode(60) ~ stateAndInput=(state, seq,c): (60, 6, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'a' - DfaNode(60) ~ stateAndInput=(state, seq,c): (60, 7, r)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'r' - DfaNode(60) ~ stateAndInput=(state, seq,c): (60, 8, =)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'=' - DfaNode(60) ~ stateAndInput=(state, seq,c): (61, 9, ()
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'(' - DfaNode(61) ~ stateAndInput=(state, seq,c): (62, 10, ')
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+''' - DfaNode(62) ~ stateAndInput=(state, seq,c): (63, 11, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'a' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 12, :)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+':' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 13, 1)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'1' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 14, :)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+':' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 15, 8)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'8' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 16, ')
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+''' - DfaNode(63) ~ stateAndInput=(state, seq,c): (64, 17, ,)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+',' - DfaNode(64) ~ stateAndInput=(state, seq,c): (65, 18, ')
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+''' - DfaNode(65) ~ stateAndInput=(state, seq,c): (63, 19, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'a' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 20, b)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'b' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 21, c)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'c' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 22, ')
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+''' - DfaNode(63) ~ stateAndInput=(state, seq,c): (64, 23, ))
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+found word!word=(repetition.named_list)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+deleting array with delete[]
+
+
+
+
+
+
+
+
+
+
+
+Successfully constructed /[rep(ss)] var=('e','l','e','m','e','n','t','s')
+Construction Test: (,fyi/[rep(ss)] a=('8') , 22)
+Starting state: 47, startingDfaId: 47
+search for a beginning: (state, seq,c): 47, 0, f
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 47, 1, y
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 47, 2, i
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+search for a beginning: (state, seq,c): 47, 3, /
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'/' - DfaNode(47) ~ stateAndInput=(state, seq,c): (48, 4, [)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'[' - DfaNode(48) ~ stateAndInput=(state, seq,c): (49, 5, r)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'r' - DfaNode(49) ~ stateAndInput=(state, seq,c): (50, 6, e)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'e' - DfaNode(50) ~ stateAndInput=(state, seq,c): (51, 7, p)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'p' - DfaNode(51) ~ stateAndInput=(state, seq,c): (52, 8, ()
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'(' - DfaNode(52) ~ stateAndInput=(state, seq,c): (53, 9, s)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'s' - DfaNode(53) ~ stateAndInput=(state, seq,c): (54, 10, s)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'s' - DfaNode(54) ~ stateAndInput=(state, seq,c): (55, 11, ))
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+')' - DfaNode(55) ~ stateAndInput=(state, seq,c): (56, 12, ])
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+']' - DfaNode(56) ~ stateAndInput=(state, seq,c): (57, 13,  )
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+' ' - DfaNode(57) ~ stateAndInput=(state, seq,c): (59, 14, a)
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'a' - DfaNode(59) ~ stateAndInput=(state, seq,c): (60, 15, =)
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+'=' - DfaNode(60) ~ stateAndInput=(state, seq,c): (61, 16, ()
+src/lexer_dfa.cpp 39:	_nextStates::size = 2
+'(' - DfaNode(61) ~ stateAndInput=(state, seq,c): (62, 17, ')
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+''' - DfaNode(62) ~ stateAndInput=(state, seq,c): (63, 18, 8)
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+'8' - DfaNode(63) ~ stateAndInput=(state, seq,c): (63, 19, ')
+src/lexer_dfa.cpp 39:	_nextStates::size = 1
+''' - DfaNode(63) ~ stateAndInput=(state, seq,c): (64, 20, ))
+src/lexer_dfa.cpp 39:	_nextStates::size = 3
+found word!word=(repetition.named_list)
+
+
+
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+deleting array with delete[]
+Pushing back dfa to mergeDfas parameter: dfa(1)
+Pushing back dfa to mergeDfas parameter: dfa(17)
+Pushing back dfa to mergeDfas parameter: dfa(25)
+Pushing back dfa to mergeDfas parameter: dfa(33)
+Pushing back dfa to mergeDfas parameter: dfa(42)
+Pushing back dfa to mergeDfas parameter: dfa(47)
+
+Merging dfas to one, words size: 6
+0x7ff46bc00060
+1
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+0x7ff46bd000e0
+17
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+0x7ff46bd00710
+25
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+0x7ff46bd00bb0
+33
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+0x7ff46bd01900
+42
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+0x7ff46be000c0
+47
+is word null?? false
+Getting transitions for word
+Adding job to job Queue
+Merge Process: 6 jobs total
+Processing Job line #0
+There are 1 in job vector. Processing Job #1
+is there nextDfaPtr? no0x0
+::adding transition([1, '/']->2) to dfa(66)
+Processing Job line #1
+There are 1 in job vector. Processing Job #2
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
+is there nextDfaPtr? yes0x7ff46bc00380
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #2
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
+is there nextDfaPtr? yes0x7ff46bc003c0
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #2
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(3,r, ranged?(no)>, dfa-id(4))	- hash(885)
+is there nextDfaPtr? no0x0
+::adding transition([19, 's']->20) to dfa(3)
+Processing Job line #2
+There are 1 in job vector. Processing Job #3
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
+is there nextDfaPtr? yes0x7ff46bc00380
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #3
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
+is there nextDfaPtr? yes0x7ff46bc003c0
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #3
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(19,s, ranged?(no)>, dfa-id(20))	- hash(4998)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(3,r, ranged?(no)>, dfa-id(4))	- hash(885)
+is there nextDfaPtr? no0x0
+::adding transition([27, '(']->28) to dfa(3)
+Processing Job line #3
+There are 1 in job vector. Processing Job #4
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
+is there nextDfaPtr? yes0x7ff46bc00380
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #4
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
+is there nextDfaPtr? yes0x7ff46bc003c0
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #4
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(27,(, ranged?(no)>, dfa-id(28))	- hash(6979)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(19,s, ranged?(no)>, dfa-id(20))	- hash(4998)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(3,r, ranged?(no)>, dfa-id(4))	- hash(885)
+is there nextDfaPtr? no0x0
+::adding transition([35, '[']->36) to dfa(3)
+Processing Job line #4
+There are 1 in job vector. Processing Job #5
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
+is there nextDfaPtr? yes0x7ff46bc00380
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #5
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
+is there nextDfaPtr? yes0x7ff46bc003c0
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #5
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(35,[, ranged?(no)>, dfa-id(36))	- hash(9086)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(27,(, ranged?(no)>, dfa-id(28))	- hash(6979)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(19,s, ranged?(no)>, dfa-id(20))	- hash(4998)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(3,r, ranged?(no)>, dfa-id(4))	- hash(885)
+is there nextDfaPtr? no0x0
+::adding transition([44, '/']->45) to dfa(3)
+Processing Job line #5
+There are 1 in job vector. Processing Job #6
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
+is there nextDfaPtr? yes0x7ff46bc00380
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #6
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
+is there nextDfaPtr? yes0x7ff46bc003c0
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #6
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(35,[, ranged?(no)>, dfa-id(36))	- hash(9086)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(27,(, ranged?(no)>, dfa-id(28))	- hash(6979)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(19,s, ranged?(no)>, dfa-id(20))	- hash(4998)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(44,/, ranged?(no)>, dfa-id(45))	- hash(11355)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(3,r, ranged?(no)>, dfa-id(4))	- hash(885)
+is there nextDfaPtr? yes0x7ff46bc00400
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #6
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(4,e, ranged?(no)>, dfa-id(5))	- hash(1129)
+is there nextDfaPtr? yes0x7ff46bc00440
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #6
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(5,p, ranged?(no)>, dfa-id(6))	- hash(1397)
+is there nextDfaPtr? yes0x7ff46bc004d0
+Couldn't find an opening, pushing back job
+There are 1 in job vector. Processing Job #6
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(6,], ranged?(no)>, dfa-id(7))	- hash(1635)
+is there nextDfaPtr? no0x0
+::adding transition([52, '(']->53) to dfa(6)
+Finished jobs!
+
+Starting Merged Representation Test
+-----------------------------------
+Merged Word Repr Test: done ALL search while loops in 144.111 milliseconds
+
+src/lib/includes/execution_phase/lexer/construction/lexer_word_constructor.hpp 109:Merge Test SUCCEEDED!
+
+Constructing ScanWords
+......................
+
+Popped back from 'nodesToBeInitd': node{ id=(66)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(1,/, ranged?(no)>, dfa-id(2))	- hash(304)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(2)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(2,[, ranged?(no)>, dfa-id(3))	- hash(605)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(3)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(35,[, ranged?(no)>, dfa-id(36))	- hash(9086)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(27,(, ranged?(no)>, dfa-id(28))	- hash(6979)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(19,s, ranged?(no)>, dfa-id(20))	- hash(4998)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(44,/, ranged?(no)>, dfa-id(45))	- hash(11355)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(3,r, ranged?(no)>, dfa-id(4))	- hash(885)
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(4)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(4,e, ranged?(no)>, dfa-id(5))	- hash(1129)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(5)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(5,p, ranged?(no)>, dfa-id(6))	- hash(1397)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(6)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(52,(, ranged?(no)>, dfa-id(53))	- hash(13404)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(6,], ranged?(no)>, dfa-id(7))	- hash(1635)
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(7)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(7, , ranged?(no)>, dfa-id(9))	- hash(1831)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(9)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(9,n, ranged?(yes)>, dfa-id(10))	- hash(4736)
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(10)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(10,=, ranged?(no)>, dfa-id(11))	- hash(2631)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(10,n, ranged?(yes)>, dfa-id(10))	- hash(5250)
+	isRangedTransition=false
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(11)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(11,0, ranged?(yes)>, dfa-id(13))	- hash(5702)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(11,1, ranged?(yes)>, dfa-id(12))	- hash(5703)
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(12)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(12,:, ranged?(no)>, dfa-id(14))	- hash(3142)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(12,1, ranged?(yes)>, dfa-id(12))	- hash(6217)
+	isRangedTransition=false
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(14)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(14,0, ranged?(yes)>, dfa-id(16))	- hash(7244)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(14,1, ranged?(yes)>, dfa-id(15))	- hash(7245)
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(15)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(15, , ranged?(no)>, dfa-id(8))	- hash(3887)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(15,
+, ranged?(no)>, dfa-id(8))	- hash(3865)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(15,2, ranged?(yes)>, dfa-id(15))	- hash(7760)
+	isRangedTransition=false
+	isRangedTransition=false
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(8)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(16)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(16,
+, ranged?(no)>, dfa-id(8))	- hash(4122)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(16, , ranged?(no)>, dfa-id(8))	- hash(4144)
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(13)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(13,:, ranged?(no)>, dfa-id(14))	- hash(3399)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(53)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(53,s, ranged?(no)>, dfa-id(54))	- hash(13736)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(54)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(54,s, ranged?(no)>, dfa-id(55))	- hash(13993)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(55)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(55,), ranged?(no)>, dfa-id(56))	- hash(14176)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(56)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(56,], ranged?(no)>, dfa-id(57))	- hash(14485)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(57)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(57, , ranged?(no)>, dfa-id(59))	- hash(14681)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(59)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(59,2, ranged?(yes)>, dfa-id(60))	- hash(30376)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(59,n, ranged?(yes)>, dfa-id(60))	- hash(30436)
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(60)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(60,=, ranged?(no)>, dfa-id(61))	- hash(15481)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(60,2, ranged?(yes)>, dfa-id(60))	- hash(30890)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(60,n, ranged?(yes)>, dfa-id(60))	- hash(30950)
+	isRangedTransition=false
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(61)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(61,(, ranged?(no)>, dfa-id(62))	- hash(15717)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(61, , ranged?(no)>, dfa-id(61))	- hash(15709)
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(62)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(62,', ranged?(no)>, dfa-id(63))	- hash(15973)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(63)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(63,', ranged?(no)>, dfa-id(64))	- hash(16230)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 121:
+	(63,', ranged?(no)>, dfa-id(63))
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(64)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(64,), ranged?(no)>, dfa-id(58))	- hash(16489)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(64,', ranged?(no)>, dfa-id(63))	- hash(16487)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(64,,, ranged?(no)>, dfa-id(65))	- hash(16492)
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(65)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(65,', ranged?(no)>, dfa-id(63))	- hash(16744)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(58)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(45)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(45,], ranged?(no)>, dfa-id(46))	- hash(11658)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(46)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(20)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(20,c, ranged?(no)>, dfa-id(21))	- hash(5239)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(21)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(21,o, ranged?(no)>, dfa-id(22))	- hash(5508)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(22)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(22,], ranged?(no)>, dfa-id(23))	- hash(5747)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(23)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(23, , ranged?(no)>, dfa-id(24))	- hash(5943)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(24)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(28)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(28,), ranged?(no)>, dfa-id(31))	- hash(7237)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(28,|, ranged?(no)>, dfa-id(29))	- hash(7320)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 121:
+	(28,|, ranged?(no)>, dfa-id(30))
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(30)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(30,), ranged?(no)>, dfa-id(31))	- hash(7751)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(30,|, ranged?(no)>, dfa-id(29))	- hash(7834)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 121:
+	(30,|, ranged?(no)>, dfa-id(30))
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(29)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(29,
+, ranged?(no)>, dfa-id(29))	- hash(7463)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 121:
+	(29,|, ranged?(no)>, dfa-id(30))
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(31)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(31,], ranged?(no)>, dfa-id(32))	- hash(8060)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(32)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(36)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(36,n, ranged?(yes)>, dfa-id(37))	- hash(18614)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(36,_, ranged?(no)>, dfa-id(39))	- hash(9347)
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(39)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(39,2, ranged?(yes)>, dfa-id(38))	- hash(20096)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(39,], ranged?(no)>, dfa-id(40))	- hash(10116)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(39,n, ranged?(yes)>, dfa-id(37))	- hash(20156)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(39,_, ranged?(no)>, dfa-id(39))	- hash(10118)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(39,-, ranged?(no)>, dfa-id(39))	- hash(10068)
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+	isRangedTransition=false
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+	isRangedTransition=false
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(40)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(40,], ranged?(no)>, dfa-id(41))	- hash(10373)
+	isRangedTransition=false
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(41)}
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(38)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(38,_, ranged?(no)>, dfa-id(39))	- hash(9861)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(38,-, ranged?(no)>, dfa-id(39))	- hash(9811)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(38,], ranged?(no)>, dfa-id(40))	- hash(9859)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(38,n, ranged?(yes)>, dfa-id(37))	- hash(19642)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(38,2, ranged?(yes)>, dfa-id(38))	- hash(19582)
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Popped back from 'nodesToBeInitd': node{ id=(37)}
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(37,], ranged?(no)>, dfa-id(40))	- hash(9602)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(37,_, ranged?(no)>, dfa-id(39))	- hash(9604)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(37,-, ranged?(no)>, dfa-id(39))	- hash(9554)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(37,2, ranged?(yes)>, dfa-id(38))	- hash(19068)
+src/lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp 111:
+	(37,n, ranged?(yes)>, dfa-id(37))	- hash(19128)
+	isRangedTransition=false
+	isRangedTransition=false
+	isRangedTransition=false
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+src/ScanWordNode.cpp 103:	isRangedTransition=true
+src/ScanWordNode.cpp 166:	Successfully set value for index in _RangedTransitionsByCategory
+Copying new entries in 'nodesToBeIntd' to 'existingScanWordNodes'
+Beginning ScanWord Test
+
+Starting Scan Words Test
+------------------------
+ScanWordTest: done ALL search while loops in 177.622 milliseconds
+
+--Scan Word Test Result: Success
+Done Scan Word Test - result:1
+src/PhasedExecution.cpp 38:PhasedExecution::PhasedExecution()
+initLexerDataProxyImpl:: just about to initialize lexer data proxy with const cast
+src/lib/includes/execution_phase/lexer/lexer_manager.hpp 69:Initialized Lexer Data Proxy Successfully.
+Successfully Intialized LexerManager
+getDfaManager()
+getScanWordTransitionMap()
+getRecognizedKeywords()
+
+
+Scanning: done scanning in 2.472 milliseconds
+CtxMan TypedContext <> setAnnotatedData
+Setting annotated data with vector size = 195
+
+Printing Annotated Data
+CtxMan TypedContext <> printAnnotatedData
+{data_line:/*}
+{data_line: REPSS}
+{data_line: Copyright (C) 2012  Khalique Williams}
+{data_line:empty_str}
+{data_line: This file is part of REPSS.}
+{data_line:empty_str}
+{data_line: REPSS is free software: you can redistribute it and/or modify}
+{data_line: it under the terms of the   GNU General Public License as published by}
+{data_line: the Free Software Foundation, either version 3 of the License, or}
+{data_line: (at your option) any later version.}
+{data_line:empty_str}
+{data_line: REPSS is distributed in the hope that it will be useful,}
+{data_line: but WITHOUT ANY WARRANTY; without even the implied warranty of}
+{data_line: MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}
+{data_line: GNU General Public License for more details.}
+{data_line:empty_str}
+{data_line: You should have received a copy of the GNU General Public License}
+{data_line: along with REPSS.  If not, see <http://www.gnu.org/licenses/>.}
+{data_line:empty_str}
+{data_line: If you wish to contact the author of REPSS, you may do so at}
+{data_line: kwillia.pub@gmail.com}
+{data_line: */      }
+{data_line:empty_str}
+{data_line:empty_str}
+{data_line:- then it hit me, every story I'd ever }
+{key_word:alteration=<'/[(heard|read)]'>}
+{data_line: was exactly the same. You'd think I'd be outraged}
+{data_line:But no, I wasn't bothered, how could I be? Besides the devil's in the details, }
+{data_line:and boy that }
+{key_word:alteration=<'/[(guy| m************r)]'>}
+{data_line:'s a drama queen. }
+{key_word:alteration=<'/[(I swear it|It)]'>}
+{data_line:'s every little thing }
+{data_line:with }
+{key_word:alteration=<'/[(him|this guy)]'>}
+{data_line:, you won't hear the end of it - nor should you if the pages fall }
+{data_line:anywhere short of inspiring }
+{key_word:alteration=<'/[(and|or)]'>}
+{data_line: insightful. How many books have you put down? Maybe not enough.}
+{data_line:empty_str}
+{data_line:empty_str}
+{data_line:empty_str}
+{data_line:Though I imagine the man or woman who makes their living writing fiction must have a }
+{key_word:alteration=<'/[(terrible|gawd awful)]'>}
+{data_line:empty_str}
+{data_line:time trying to }
+{key_word:alteration=<'/[(figure out|flesh out)]'>}
+{data_line: simple things like how to bring }
+{data_line:people into a scene, kick them out, and have others }
+{key_word:alteration=<'/[(|just)]'>}
+{data_line: pass through }
+{key_word:alteration=<'/[(|inconspicuously)]'>}
+{data_line: without boring the reader.  No bunny likes pedantry [1]. Not while their }
+{data_line:"hopped" up on caffeine, no. Silly bunnies, when caught once with caffeine they claimed dislexia}
+{data_line:- and got off.}
+{data_line:empty_str}
+{data_line:empty_str}
+{data_line:....}
+{data_line:As we made our way through what just minutes ago had officially become my apartment, I was thouroughly briefed}
+{data_line:to make sure my stay would stay within the rules of the building. I wasn't much interested and retreated to a }
+{data_line:standing state of slumber. Half alert, somewhere after her warning that I WEREN'T TO PAINT THE WALLS, }
+{data_line:/[(a sudden worry that the lengthy elevator up (and down) would prove too much. 2 minutes both ways, everyday, sometimes twice, lets say - | I began to wonder whether I'd be able to stomach the long elevaor up.)].}
+{data_line:A sharp whistle broke through that made me take notice. She was tapping at the bottom of this crystal mug sitting in the middle of the sink. }
+{data_line:<<Did you hear what I just said?>>   }
+{data_line:No.}
+{data_line:<<Huh? Sorry, ugh there's a dishwasher, yes?>>}
+{data_line:<<Like I said, only take this off when your washing up. There's some spray underneath in case you need.>>}
+{data_line:I had given myself away, of course.  Oh and she laaauugghed! Like she always does, at every new}
+{data_line:immigrant and import to the city where the rodents outnumber the population tenfold in every alley and }
+{key_word:alteration=<'/[(|corner|undiscovered crevice)]'>}
+{data_line:. How they  managed to cover up the fact }
+{key_word:alteration=<'/[(it|, that the infestation)]'>}
+{data_line: had become the cities }
+{data_line:third leading cause of }
+{key_word:alteration=<'/[(hospitalization|death)]'>}
+{data_line:, I don't know.  I met a nurse who claimed they'd often couple }
+{data_line:it with heart disease and lung failure for lack of }
+{key_word:alteration=<'/[(any specific|a)]'>}
+{data_line: nationally recognized category. }
+{data_line:I thought she may have been short for conversation. But no, it was true, and need only be evidenced by }
+{data_line:the ambulances and the haunting hollering of the dogs, followed of course by the hollering of their owners, on what}
+{data_line:seemed like every other second tuesday somewhere in our building.}
+{data_line:We held our breath and covered our ears outside whilst praying for those trampled underfoot - as the worse}
+{data_line:was yet to come for them. And the fire department was never quite quick enough; Once they ran through several more red }
+{data_line:lights than usual, taking dozens of folks underneath them in response. The mayor called it the most courageous }
+{key_word:alteration=<'/[(act|gesture)]'>}
+{data_line: he'd ever }
+{data_line:witnessed - For the many more live's they'd saved. I'd tend to agree. Such was the sad irony of this oft occuring madness. }
+{key_word:alteration=<'/[(And Once|Once)]'>}
+{data_line: you'd seen one of these Infestivals, the Conventional Wisdom was etched into the mind forever: }
+{data_line:'Just Cover The }
+{key_word:alteration=<'/[(|Bloody)]'>}
+{data_line: Hole And Force The Moth*********'s Through The Cracks In The }
+{key_word:alteration=<'/[(Floorboard | Hardwood floors)]'>}
+{data_line:' }
+{data_line:- which, apparently as a whole is known to be a much greater rate limiting factor. I shuddered.  Suddenly the charm wore off. I started to smell }
+{data_line:the fish and didn't like it. But still she tried convince me that this was a whole lot better than }
+{data_line:anywhere else.}
+{data_line:<<What made this }
+{key_word:alteration=<'/[(dirty|decrepit)]'>}
+{data_line: little corner so much better than }
+{key_word:alteration=<'/[(the next | anywhere else)]'>}
+{data_line:?>>, I asked.}
+{data_line:This was the first time that I'd here it, so powerful and full of pride like the roar of lion. }
+{data_line:It was to be my official welcome; she pointed to a spot out the window }
+{key_word:alteration=<'/[(with emphasis|dramitically)]'>}
+{data_line: }
+{key_word:alteration=<'/[(adding a| with a resounding)]'>}
+{data_line: }
+{data_line:flurry of expletives I half understood. I traced an arrow from that lanky finger of hers over the padded}
+{data_line:cot, and past }
+{key_word:alteration=<'/[(the toilet of fully exposed plumbing | the toilet with it's plumbing fully exposed)]'>}
+{data_line: }
+{data_line:out through this bright and }
+{key_word:alteration=<'/[(brilliant | magnificent)]'>}
+{data_line: 12th story window all the way to the peak of }
+{data_line:Ellis Island. One can}
+{key_word:alteration=<'/[(\'t help but| only)]'>}
+{data_line: dream-up images of a people not unlike ourselves, in a time}
+{data_line:not unlike the present, without asking 'Where Had They Went?'. It was like they had all stood up for an }
+{data_line:instant and collapsed.}
+{key_word:alteration=<'/[(And the mudd rippled like water. | Sending ripples of concetric circles through the mudd like a drop of rain in a lake.)]'>}
+{data_line:empty_str}
+{data_line:I thought perhaps }
+{key_word:alteration=<'/[(just maybe|by chance)]'>}
+{data_line: we were built from the same stuff and it followed that we}
+{data_line:might carry }
+{key_word:alteration=<'/[(|with us)]'>}
+{data_line: their essence - along with their struggles, their debt, their hopes and dreams, and }
+{data_line:those tiny fragments of ineffable joy }
+{key_word:alteration=<'/[(scattered|sprinkled)]'>}
+{data_line: inbetween the rocks and buoys. }
+{data_line:What brand of apathy would they smoke and teach their children if any? Squarely in the midst of a vivid }
+{data_line:experience, I tried }
+{key_word:alteration=<'/[(finding|to find)]'>}
+{data_line: myself amoungst the lines of the elderly, the graduates, the }
+{data_line:swindlers, the mothers tending to coughing children and their fathers - but I was interrupted. Her }
+{data_line:pointed finger lowered to the exposed pipe }
+{key_word:alteration=<'/[(protruding|coming)]'>}
+{data_line: out from the floorboard }
+{data_line:; the one resembling the trunk of an old }
+{key_word:alteration=<'/[(oak|tree)]'>}
+{data_line: chopped waist high, and covered with moss. }
+{data_line:I'd be remiss, also, not to mention the matching green tub }
+{key_word:alteration=<'/[(right beside it | to left of it | just to the right of it)]'>}
+{data_line:. }
+{data_line:<<Those 'ill do ya. Another glass and cover that one with as large a condom as }
+{key_word:alteration=<'/[(possible|you can find)]'>}
+{data_line:>>, she said crudely.}
+{data_line:I had seen }
+{key_word:alteration=<'/[(the two | the pair | them)]'>}
+{data_line: before, no doubt. I wouldn't admit it to myself, or to }
+{data_line:anyone else }
+{key_word:alteration=<'/[(had they asked|for that matter)]'>}
+{data_line:, that they were indeed the only reason why I liked the place.}
+{data_line:These two objects stood out and belonged together, inseperably tied together by a plumbing seen and }
+{key_word:alteration=<'/[(out of sight|unseen)]'>}
+{data_line:, }
+{key_word:alteration=<'/[(which made | making|and made)]'>}
+{data_line: this narrow corridor much more than an enclosed space }
+{key_word:alteration=<'/[(clustered|littered|sparsley littered)]'>}
+{data_line: with the usual standing }
+{key_word:alteration=<'/[(sort|assortment)]'>}
+{data_line: of }
+{key_word:alteration=<'/[(|common)]'>}
+{data_line: modern-day 'necessities', into a place I could call home. They called out to me, about as strongly as I imagine the earth does from}
+{data_line:this elevation. }
+{key_word:alteration=<'/[(In confidence, I admit I had visions of a sort; | And I'll admit /[(to having|I had)]'>}
+{data_line: )]}
+{data_line:open-eye hallucinations of a short round-bellied italian }
+{key_word:alteration=<'/[(|man)]'>}
+{data_line: dressed in blue overalls who'd}
+{key_word:alteration=<'/[(spring up|leap|jump)]'>}
+{data_line: out from the mouth of this green pillar with }
+{key_word:alteration=<'/[(|much)]'>}
+{data_line: vigour }
+{key_word:alteration=<'/[(and|then)]'>}
+{data_line: shake himself dry.}
+{data_line:He'd }
+{key_word:alteration=<'/[(soil|dirty)]'>}
+{data_line: my curtains }
+{key_word:alteration=<'/[(|every time)]'>}
+{data_line:, but you couldn't stay angry at the guy - salt of the earth really. }
+{data_line:I felt inclined to help him. Overlooking much of Manhattan, I would counsel him through this grief; assuring M that he }
+{data_line:could certainly do a hellofalot better -  hoping that these encouragements and the reality of where his travels had led him,}
+{data_line:would spark in him some sortt of all-encompassing epiphany, and that perhaps he'd share, for I too had}
+{data_line:become the worse for wear.}
+{data_line:I still don't know why I rented the place when I did, I didn't sleep - much less live - there for a good}
+{data_line:3 months until I'd made certain that I was indeed the envy of all my friends - who were living in the }
+{data_line:worst of conditions and for a price that would exhaust a shieks fortune (in little under a year). }
+{data_line:Oh and I should tell you about the area I live in!}
+{data_line:Georgious. Lenny from down the hall said a famous singer might live }
+{key_word:alteration=<'/[(3|4)]'>}
+{data_line: floors up. I wouldn't doubt it.}
+{data_line:empty_str}
+
+Finished printing anotated data
+src/lib/includes/execution_phase/grammaticalForm/GrammarManager.hpp 42:Constructor for GrammarManager
+src/lib/includes/execution_phase/grammaticalForm/GrammarManager.hpp 62:Initialized Lexer Data Proxy Successfully.
+Sucessfully Initialized GrammarManager
+src/GrammarBlockAggregator.cpp 42:Beggining processing of annotated data from Lexer
+src/GrammarBlockAggregator.cpp 43:-------------------------------------------------
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #0
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, /*
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #1
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  REPSS
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #2
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  Copyright (C) 2012  Khalique Williams
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #3
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #4
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  This file is part of REPSS.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #5
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #6
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  REPSS is free software: you can redistribute it and/or modify
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #7
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  it under the terms of the   GNU General Public License as published by
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #8
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  the Free Software Foundation, either version 3 of the License, or
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #9
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  (at your option) any later version.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #10
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #11
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  REPSS is distributed in the hope that it will be useful,
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #12
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  but WITHOUT ANY WARRANTY; without even the implied warranty of
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #13
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #14
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  GNU General Public License for more details.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #15
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #16
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  You should have received a copy of the GNU General Public License
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #17
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #18
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #19
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  If you wish to contact the author of REPSS, you may do so at
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #20
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  kwillia.pub@gmail.com
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #21
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  */      
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #22
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #23
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #24
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, - then it hit me, every story I'd ever 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #25
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(heard|read)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #26
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  was exactly the same. You'd think I'd be outraged
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #27
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, But no, I wasn't bothered, how could I be? Besides the devil's in the details, 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #28
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, and boy that 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #29
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(guy| m************r)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #30
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, 's a drama queen. 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #31
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(I swear it|It)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #32
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, 's every little thing 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #33
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, with 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #34
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(him|this guy)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #35
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, , you won't hear the end of it - nor should you if the pages fall 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #36
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, anywhere short of inspiring 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #37
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(and|or)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #38
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  insightful. How many books have you put down? Maybe not enough.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #39
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #40
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #41
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #42
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, Though I imagine the man or woman who makes their living writing fiction must have a 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #43
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(terrible|gawd awful)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #44
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #45
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, time trying to 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #46
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(figure out|flesh out)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #47
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  simple things like how to bring 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #48
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, people into a scene, kick them out, and have others 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #49
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|just)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #50
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  pass through 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #51
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|inconspicuously)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #52
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  without boring the reader.  No bunny likes pedantry [1]. Not while their 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #53
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, "hopped" up on caffeine, no. Silly bunnies, when caught once with caffeine they claimed dislexia
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #54
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, - and got off.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #55
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #56
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #57
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, ....
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #58
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, As we made our way through what just minutes ago had officially become my apartment, I was thouroughly briefed
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #59
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, to make sure my stay would stay within the rules of the building. I wasn't much interested and retreated to a 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #60
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, standing state of slumber. Half alert, somewhere after her warning that I WEREN'T TO PAINT THE WALLS, 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #61
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, /[(a sudden worry that the lengthy elevator up (and down) would prove too much. 2 minutes both ways, everyday, sometimes twice, lets say - | I began to wonder whether I'd be able to stomach the long elevaor up.)].
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #62
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, A sharp whistle broke through that made me take notice. She was tapping at the bottom of this crystal mug sitting in the middle of the sink. 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #63
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, <<Did you hear what I just said?>>   
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #64
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, No.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #65
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, <<Huh? Sorry, ugh there's a dishwasher, yes?>>
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #66
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, <<Like I said, only take this off when your washing up. There's some spray underneath in case you need.>>
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #67
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, I had given myself away, of course.  Oh and she laaauugghed! Like she always does, at every new
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #68
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, immigrant and import to the city where the rodents outnumber the population tenfold in every alley and 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #69
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|corner|undiscovered crevice)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #70
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, . How they  managed to cover up the fact 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #71
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(it|, that the infestation)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #72
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  had become the cities 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #73
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, third leading cause of 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #74
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(hospitalization|death)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #75
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, , I don't know.  I met a nurse who claimed they'd often couple 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #76
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, it with heart disease and lung failure for lack of 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #77
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(any specific|a)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #78
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  nationally recognized category. 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #79
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, I thought she may have been short for conversation. But no, it was true, and need only be evidenced by 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #80
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, the ambulances and the haunting hollering of the dogs, followed of course by the hollering of their owners, on what
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #81
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, seemed like every other second tuesday somewhere in our building.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #82
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, We held our breath and covered our ears outside whilst praying for those trampled underfoot - as the worse
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #83
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, was yet to come for them. And the fire department was never quite quick enough; Once they ran through several more red 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #84
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, lights than usual, taking dozens of folks underneath them in response. The mayor called it the most courageous 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #85
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(act|gesture)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #86
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  he'd ever 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #87
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, witnessed - For the many more live's they'd saved. I'd tend to agree. Such was the sad irony of this oft occuring madness. 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #88
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(And Once|Once)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #89
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  you'd seen one of these Infestivals, the Conventional Wisdom was etched into the mind forever: 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #90
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, 'Just Cover The 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #91
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|Bloody)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #92
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  Hole And Force The Moth*********'s Through The Cracks In The 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #93
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(Floorboard | Hardwood floors)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #94
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, ' 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #95
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, - which, apparently as a whole is known to be a much greater rate limiting factor. I shuddered.  Suddenly the charm wore off. I started to smell 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #96
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, the fish and didn't like it. But still she tried convince me that this was a whole lot better than 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #97
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, anywhere else.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #98
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, <<What made this 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #99
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(dirty|decrepit)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #100
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  little corner so much better than 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #101
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(the next | anywhere else)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #102
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, ?>>, I asked.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #103
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, This was the first time that I'd here it, so powerful and full of pride like the roar of lion. 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #104
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, It was to be my official welcome; she pointed to a spot out the window 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #105
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(with emphasis|dramitically)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #106
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #107
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(adding a| with a resounding)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #108
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #109
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, flurry of expletives I half understood. I traced an arrow from that lanky finger of hers over the padded
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #110
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, cot, and past 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #111
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(the toilet of fully exposed plumbing | the toilet with it's plumbing fully exposed)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #112
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #113
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, out through this bright and 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #114
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(brilliant | magnificent)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #115
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  12th story window all the way to the peak of 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #116
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, Ellis Island. One can
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #117
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(\'t help but| only)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #118
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  dream-up images of a people not unlike ourselves, in a time
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #119
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, not unlike the present, without asking 'Where Had They Went?'. It was like they had all stood up for an 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #120
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, instant and collapsed.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #121
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(And the mudd rippled like water. | Sending ripples of concetric circles through the mudd like a drop of rain in a lake.)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #122
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #123
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, I thought perhaps 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #124
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(just maybe|by chance)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #125
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  we were built from the same stuff and it followed that we
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #126
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, might carry 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #127
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|with us)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #128
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  their essence - along with their struggles, their debt, their hopes and dreams, and 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #129
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, those tiny fragments of ineffable joy 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #130
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(scattered|sprinkled)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #131
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  inbetween the rocks and buoys. 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #132
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, What brand of apathy would they smoke and teach their children if any? Squarely in the midst of a vivid 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #133
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, experience, I tried 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #134
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(finding|to find)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #135
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  myself amoungst the lines of the elderly, the graduates, the 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #136
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, swindlers, the mothers tending to coughing children and their fathers - but I was interrupted. Her 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #137
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, pointed finger lowered to the exposed pipe 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #138
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(protruding|coming)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #139
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  out from the floorboard 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #140
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, ; the one resembling the trunk of an old 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #141
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(oak|tree)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #142
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  chopped waist high, and covered with moss. 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #143
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, I'd be remiss, also, not to mention the matching green tub 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #144
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(right beside it | to left of it | just to the right of it)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #145
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, . 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #146
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, <<Those 'ill do ya. Another glass and cover that one with as large a condom as 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #147
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(possible|you can find)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #148
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, >>, she said crudely.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #149
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, I had seen 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #150
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(the two | the pair | them)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #151
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  before, no doubt. I wouldn't admit it to myself, or to 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #152
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, anyone else 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #153
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(had they asked|for that matter)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #154
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, , that they were indeed the only reason why I liked the place.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #155
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, These two objects stood out and belonged together, inseperably tied together by a plumbing seen and 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #156
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(out of sight|unseen)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #157
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, , 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #158
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(which made | making|and made)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #159
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  this narrow corridor much more than an enclosed space 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #160
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(clustered|littered|sparsley littered)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #161
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  with the usual standing 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #162
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(sort|assortment)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #163
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  of 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #164
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|common)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #165
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  modern-day 'necessities', into a place I could call home. They called out to me, about as strongly as I imagine the earth does from
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #166
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, this elevation. 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #167
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(In confidence, I admit I had visions of a sort; | And I'll admit /[(to having|I had)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #168
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  )]
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #169
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, open-eye hallucinations of a short round-bellied italian 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #170
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|man)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #171
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  dressed in blue overalls who'd
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #172
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(spring up|leap|jump)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #173
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  out from the mouth of this green pillar with 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #174
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|much)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #175
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  vigour 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #176
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(and|then)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #177
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  shake himself dry.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #178
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, He'd 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #179
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(soil|dirty)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #180
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  my curtains 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #181
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(|every time)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #182
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, , but you couldn't stay angry at the guy - salt of the earth really. 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #183
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, I felt inclined to help him. Overlooking much of Manhattan, I would counsel him through this grief; assuring M that he 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #184
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, could certainly do a hellofalot better -  hoping that these encouragements and the reality of where his travels had led him,
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #185
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, would spark in him some sortt of all-encompassing epiphany, and that perhaps he'd share, for I too had
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #186
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, become the worse for wear.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #187
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, I still don't know why I rented the place when I did, I didn't sleep - much less live - there for a good
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #188
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, 3 months until I'd made certain that I was indeed the envy of all my friends - who were living in the 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #189
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, worst of conditions and for a price that would exhaust a shieks fortune (in little under a year). 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #190
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, Oh and I should tell you about the area I live in!
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #191
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, Georgious. Lenny from down the hall said a famous singer might live 
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #192
+src/GrammarBlockAggregator.cpp 125:	Identified keyword
+src/GrammarBlockAggregator.cpp 60:key_word, <'/[(3|4)]'
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #193
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line,  floors up. I wouldn't doubt it.
+src/GrammarBlockAggregator.cpp 50:Processing annotatedData #194
+src/GrammarBlockAggregator.cpp 119:	Identified data_line
+src/GrammarBlockAggregator.cpp 60:data_line, empty_str
+src/lib/includes/execution_phase/grammaticalForm/GrammarManager.hpp 72:Destroying GrammarManager
+src/lib/includes/ContextManager.hpp 241:Context was successfully destroyed
+src/PhasedExecution.cpp 69:Finished PhasedExecution
+src/lib/includes/PhasedExecution.hpp 58:  Successfully Deleted PhasedExecution
+
+Destroying Dfa id(0x7ff46be000c0) the RIGHT way.
+Destroying Dfa id(0x7ff46be00100) the RIGHT way.
+Destroying Dfa id(0x7ff46be00140) the RIGHT way.
+Destroying Dfa id(0x7ff46be00180) the RIGHT way.
+Destroying Dfa id(0x7ff46be001c0) the RIGHT way.
+Destroying Dfa id(0x7ff46be00300) the RIGHT way.
+Destroying Dfa id(0x7ff46be00340) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7ff46bd014e0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd016a0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00980) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd009c0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00b40) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00f30) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00f40) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x7ff46bd01900) the RIGHT way.
+Destroying Dfa id(0x7ff46bd01940) the RIGHT way.
+Destroying Dfa id(0x7ff46bd01980) the RIGHT way.
+Destroying Dfa id(0x7ff46bd019c0) the RIGHT way.
+Destroying Dfa id(0x7ff46bd01a00) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7ff46bd01340) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd013b0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd013f0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd01430) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x7ff46bd00bb0) the RIGHT way.
+Destroying Dfa id(0x7ff46bd00120) the RIGHT way.
+Destroying Dfa id(0x7ff46bd00160) the RIGHT way.
+Destroying Dfa id(0x7ff46bd001a0) the RIGHT way.
+Destroying Dfa id(0x7ff46bd001e0) the RIGHT way.
+Destroying Dfa id(0x7ff46bd01150) the RIGHT way.
+Destroying Dfa id(0x7ff46bd01190) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7ff46bd000c0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00c20) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00c60) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00d20) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00df0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00ca0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00cb0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd012b0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd012c0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd01320) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00d70) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00d80) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd01280) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd01290) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd012a0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd012d0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd012e0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd012f0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd01300) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd01310) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd01330) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+setting member (7) to null
+setting member (8) to null
+setting member (9) to null
+setting member (10) to null
+setting member (11) to null
+setting member (12) to null
+setting member (13) to null
+setting member (14) to null
+setting member (15) to null
+setting member (16) to null
+setting member (17) to null
+setting member (18) to null
+setting member (19) to null
+setting member (20) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x7ff46bd00710) the RIGHT way.
+Destroying Dfa id(0x7ff46bd00750) the RIGHT way.
+Destroying Dfa id(0x7ff46bd00790) the RIGHT way.
+Destroying Dfa id(0x7ff46bd007d0) the RIGHT way.
+Destroying Dfa id(0x7ff46bd00810) the RIGHT way.
+Destroying Dfa id(0x7ff46bd00850) the RIGHT way.
+Destroying Dfa id(0x7ff46bd00890) the RIGHT way.
+Destroying Dfa id(0x7ff46bd00930) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+setting member (7) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7ff46bd000d0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00480) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd004f0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00530) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd005f0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00b70) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00570) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd005b0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00b80) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00b90) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00ba0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00630) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+setting member (7) to null
+setting member (8) to null
+setting member (9) to null
+setting member (10) to null
+setting member (11) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x7ff46bd000e0) the RIGHT way.
+Destroying Dfa id(0x7ff46bd00220) the RIGHT way.
+Destroying Dfa id(0x7ff46bd00260) the RIGHT way.
+Destroying Dfa id(0x7ff46bd002a0) the RIGHT way.
+Destroying Dfa id(0x7ff46bd002e0) the RIGHT way.
+Destroying Dfa id(0x7ff46bd00320) the RIGHT way.
+Destroying Dfa id(0x7ff46bd00360) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7ff46bd00410) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00420) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00430) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00440) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00450) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bd00460) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destroying Dfa id(0x7ff46bc00060) the RIGHT way.
+Destroying Dfa id(0x7ff46bc00380) the RIGHT way.
+Destroying Dfa id(0x7ff46bc003c0) the RIGHT way.
+Destroying Dfa id(0x7ff46bc00400) the RIGHT way.
+Destroying Dfa id(0x7ff46bc00440) the RIGHT way.
+Destroying Dfa id(0x7ff46bc004d0) the RIGHT way.
+Destroying Dfa id(0x7ff46bc00510) the RIGHT way.
+Destructor for AggregateDfasAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted one lexer_word successfully
+Destroying Dfa Transition id(0x7ff46bc009c0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bc00880) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bc00a50) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bc00ab0) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bc00b10) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bc00b50) the RIGHT way.
+Destroying Dfa Transition id(0x7ff46bc00bf0) the RIGHT way.
+Destructor for AggregateDfaTransitionsAndDelete called
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+deleting array with delete[]
+Deleted a group of DfaTransitions successfully
+Destructor for AggregatePtrsAndDelete called
+Desructor for AggregateAndApplyFuncBase called
+setting member (0) to null
+setting member (1) to null
+setting member (2) to null
+setting member (3) to null
+setting member (4) to null
+setting member (5) to null
+setting member (6) to null
+setting member (7) to null
+setting member (8) to null
+setting member (9) to null
+setting member (10) to null
+setting member (11) to null
+setting member (12) to null
+setting member (13) to null
+setting member (14) to null
+setting member (15) to null
+setting member (16) to null
+setting member (17) to null
+setting member (18) to null
+setting member (19) to null
+setting member (20) to null
+setting member (21) to null
+setting member (22) to null
+setting member (23) to null
+setting member (24) to null
+setting member (25) to null
+setting member (26) to null
+setting member (27) to null
+setting member (28) to null
+setting member (29) to null
+setting member (30) to null
+setting member (31) to null
+setting member (32) to null
+setting member (33) to null
+setting member (34) to null
+setting member (35) to null
+setting member (36) to null
+setting member (37) to null
+setting member (38) to null
+setting member (39) to null
+setting member (40) to null
+setting member (41) to null
+setting member (42) to null
+setting member (43) to null
+setting member (44) to null
+setting member (45) to null
+setting member (46) to null
+deleting array with delete[]
+src/lib/includes/execution_phase/lexer/construction/lexer_word_constructor.hpp 131:Successfully Deleted ScanWords!
+src/lib/includes/execution_phase/lexer/construction/lexer_word_constructor.hpp 133:Sucessfully deleted lexer word constructor!
+src/lib/includes/execution_phase/lexer/lexer_configuration.hpp 54:  Successfully Deleted Lexer Configuration
+
+src/lib/includes/execution_phase/grammaticalForm/GrammarConfig.hpp 55:  Successfully Deleted Grammar Configuration
+
+

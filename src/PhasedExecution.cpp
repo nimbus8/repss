@@ -24,7 +24,7 @@
 #include "lib/includes/execution_phase/lexer/Scanner.hpp"
 
 #include "lib/includes/execution_phase/grammaticalForm/GrammarManager.hpp"
-
+#include "lib/includes/execution_phase/grammaticalForm/GrammarBlockAggregator.hpp"
 /*#undef*/ #define DEBUG
 #ifdef DEBUG
     #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
@@ -88,6 +88,10 @@ void PhasedExecution::runLexer(ILexerContext* const lexerContext, std::string in
 void PhasedExecution::runGrammarAggregation(IGrammarContext* const grammarContext)
 {
     GrammarManager grammarMan(grammarContext);
+    grammarMan.init(_grammarConfig);
+
+    GrammarBlockAggregator grammaggrigator;
+    grammaggrigator.processAnnotatedData(grammarContext); 
 }
 
 #undef DEBUG

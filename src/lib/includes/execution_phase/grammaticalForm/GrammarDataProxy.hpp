@@ -16,29 +16,21 @@
 
  You should have received a copy of the GNU General Public License
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
-
- If you wish to contact the author of REPSS, you may do so at
- kwillia.pub@gmail.com
  */
 
-#ifndef _GRAMMAR_BLOCK_AGGREGATOR_
-#define _GRAMMAR_BLOCK_AGGREGATOR_
+#include "../../IGrammarDataProxy.hpp"
 
-#include "GrammarBlockAggregate.hpp"
-#include "IGrammarContext.hpp"
-
-//In this file we assume that everything is in proper order (i.e. parsed) and go data through methodically
-
-class GrammarBlockAggregator
+class GrammarDataProxy : public IGrammarDataProxy
 {
 private:
-    GrammarBlockAggregate _aggregatedBlocks;
+    const std::GrammarKeywords* _keywords;
 public:
-    GrammarBlockAggregator() {}
-    ~GrammarBlockAggregator() {}
+    explicit GrammarDataProxy(const std::GrammarKeywords* keywords)
+        : _keywords(keywords) {}
+    ~GrammarDataProxy() {}
 
-    void processAnnotatedData(IGrammarContext* const context);
+    virtual const std::GrammarKeywords* const getGrammarKeywords() const
+    {
+        return _keywords;
+    }
 };
-
-
-#endif

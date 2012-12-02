@@ -28,13 +28,16 @@
 #endif
 
 #include <stdio.h>
+#include "GrammarDataProxy.hpp"
 
 class GrammarManager
 {
 private:
+    IGrammarContext* const _context;
     IGrammarDataProxy *_grammarDataProxy; 
 public:
-    GrammarManager(IGrammarContext* context)
+    GrammarManager(IGrammarContext* const context)
+        : _context(context), _grammarDataProxy(nullptr)
     {
         DeLOG("Constructor for GrammarManager\n");
 
@@ -69,7 +72,10 @@ public:
         DeLOG("Destroying GrammarManager\n");
 
         if (_grammarDataProxy != nullptr)
-            delete _grammarDataProxy;
+        {
+            GrammarDataProxy* toDelete = static_cast<GrammarDataProxy*>(_grammarDataProxy);
+            delete toDelete;
+        }
     }
 };
 
