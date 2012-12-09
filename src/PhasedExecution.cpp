@@ -82,10 +82,6 @@ void PhasedExecution::runLexer(ILexerContext* const lexerContext, std::string in
 
     Scanner scanner(lexerContext);
     scanner.processFile(inputFileName, std::string{"rt"});
-
-    //todo: when lexer_man goes out of scope, it cleans of LexerDatProxy
-    //       so its this routines job to return whatever is necessary for
-    //       parser or grmammer phase...
 }
 
 void PhasedExecution::runGrammarAggregation(IGrammarContext* const grammarContext)
