@@ -47,5 +47,5 @@ Keywords:obj-collection {
     +reps.named_list_iteration { VARIABLE, Keyword_REPS_withNamedListIteration }
 
     +path { src/lib/includes/Genrtd_Keywords.hpp }
-}  @@ to implement @@ joingAlteration, reps.countless_named_iteration, nestAlteration(not sure at all how hard this will be)
+}  @@ to implement @@ joingAlteration, reps.countless_named_iteration, nestAlteration(not sure at all how hard this will be,think I have an idea: think infinity. maybe a push down automata...)
 

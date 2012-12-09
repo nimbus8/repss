@@ -16,6 +16,9 @@
 
  You should have received a copy of the GNU General Public License
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
+
+ If you wish to contact the author of REPSS, you may do so at
+ kwillia.pub@gmail.com
  */
 
 #include <unordered_set>

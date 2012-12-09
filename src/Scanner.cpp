@@ -16,6 +16,9 @@
 
  You should have received a copy of the GNU General Public License
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
+
+ If you wish to contact the author of REPSS, you may do so at
+ kwillia.pub@gmail.com
  */
 
 #include <iostream>
@@ -35,11 +38,11 @@
 
 void Scanner::printAnotatedData() const
 {
-	std::cout << std::endl << "Printing Annotated Data" << std::endl;
+    std::cout << std::endl << "Printing Annotated Data" << std::endl;
 
-	_context->printAnnotatedData();
+    _context->printAnnotatedData();
 
-	std::cout << std::endl << "Finished printing anotated data" <<std::endl;
+    std::cout << std::endl << "Finished printing anotated data" <<std::endl;
 }
 
 void Scanner::processFile(const std::string& filename, const std::string& permissions)

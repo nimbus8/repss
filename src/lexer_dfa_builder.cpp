@@ -16,6 +16,9 @@
 
  You should have received a copy of the GNU General Public License
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
+
+ If you wish to contact the author of REPSS, you may do so at
+ kwillia.pub@gmail.com
  */
 
 #include "lib/includes/execution_phase/lexer/construction/lexer_dfa_builder.hpp"
@@ -145,11 +148,9 @@ lexer_word_repr* lexer_dfa_builder::mergeDfas(const std::vector<lexer_word_repr*
 
                     for (auto transitionFromNextMergeFromDfa : nextTransitions)
                     {
-                        //should be not here try going as deep as possible?
-
                         const auto si = transitionFromNextMergeFromDfa.getStateAndInput();
-
                         std::cout << "Couldn't find an opening, pushing back job { to add (" << si.getState() << "," << si.getInput()  << ") from dfa-id(" << nextMergeToDfaPtr->getId() << ") " << std::endl;
+
                         std::tuple<lexer_dfa*, LexerTransition, std::vector<lexer_dfa*>> job(const_cast<lexer_dfa*>(nextMergeToDfaPtr), transitionFromNextMergeFromDfa, ptrsInMergeToAlreadyVisited);
                         jobVector->push_back(job);
                     }

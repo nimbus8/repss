@@ -16,6 +16,9 @@
 
  You should have received a copy of the GNU General Public License
  along with REPSS.  If not, see <http://www.gnu.org/licenses/>.
+
+ If you wish to contact the author of REPSS, you may do so at
+ kwillia.pub@gmail.com
  */
 
 #include <iostream>
@@ -25,16 +28,16 @@
 
 int TestContextMan()
 {
-	std::cout << ContextType::Lexer << ContextType::Parser << std::endl;
+    std::cout << ContextType::Lexer << ContextType::Parser << std::endl;
 
-	ContextManager man;
+    ContextManager man;
 
-	man.getContext<ContextType::AllowedTypes, ContextType::Lexer>().doMe();
-	man.getContext<ContextType::AllowedTypes, ContextType::Parser>().doMe();
-        man.getContext<ContextType::AllowedTypes, ContextType::Lexer>().doMe();
+    man.getContext<ContextType::AllowedTypes, ContextType::Lexer>().doMe();
+    man.getContext<ContextType::AllowedTypes, ContextType::Parser>().doMe();
+    man.getContext<ContextType::AllowedTypes, ContextType::Lexer>().doMe();
 
-	ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer> ctx(nullptr);
-	ctx.doMe();
+    ContextManager::TypedContext<ContextType::AllowedTypes, ContextType::Lexer> ctx(nullptr);
+    ctx.doMe();
 
-	return 0;
+    return 0;
 }
