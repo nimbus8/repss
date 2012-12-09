@@ -28,41 +28,54 @@
     #define DeLOG(str)
 #endif
 
-    std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_Keyword_REPS_withNamedIteration(std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedIteration__VARIABLE)
-    {
-        std::vector<GrammarRules::Term*> topLevelTerms;
-        return topLevelTerms;
-    }
+std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_Keyword_REPS_withNamedIteration(
+    std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedIteration__VARIABLE)
+{
+    std::vector<GrammarRules::Term*> topLevelTerms;
+    return topLevelTerms;
+}
 
-    std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_SquareBracketReps(std::pair<std::string, std::string> nameAndGrammarType__SquareBracketReps__VARIABLE)
-    {
-        std::vector<GrammarRules::Term*> topLevelTerms;
-        return topLevelTerms;
-    }
+std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_SquareBracketReps(
+    std::pair<std::string, std::string> nameAndGrammarType__SquareBracketReps__VARIABLE)
+{
+    std::vector<GrammarRules::Term*> topLevelTerms;
+    return topLevelTerms;
+}
 
-    std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_Alteration(std::pair<std::string, std::string> nameAndGrammarType__Alteration__TERMINAL)
-    {
-        std::vector<GrammarRules::Term*> topLevelTerms;
-        return topLevelTerms;
-    }
+std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_Alteration(
+    std::pair<std::string, std::string> nameAndGrammarType__Alteration__TERMINAL)
+{
+    std::vector<GrammarRules::Term*> topLevelTerms;
+    return topLevelTerms;
+}
 
-    std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_Keyword_eval(std::pair<std::string, std::string> nameAndGrammarType__Keyword_eval__TERMINAL)
-    {
-        std::vector<GrammarRules::Term*> topLevelTerms;
-        return topLevelTerms;
-    }
+std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_AlterationAndJoin(
+    std::pair<std::string, std::string> nameAndGrammarType__AlterationAndJoin__TERMINAL)
+{
+    std::vector<GrammarRules::Term*> topLevelTerms;
+    return topLevelTerms;
+}
 
-    std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_End(std::pair<std::string, std::string> nameAndGrammarType__End__TERMINAL)
-    {
-        std::vector<GrammarRules::Term*> topLevelTerms;
-        return topLevelTerms;
-    }
+std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_Keyword_eval(
+    std::pair<std::string, std::string> nameAndGrammarType__Keyword_eval__TERMINAL)
+{
+    std::vector<GrammarRules::Term*> topLevelTerms;
+    return topLevelTerms;
+}
 
-    std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_Keyword_REPS_withNamedListIteration(std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedListIteration__VARIABLE)
-    {
-        std::vector<GrammarRules::Term*> topLevelTerms;
-        return topLevelTerms;
-    }
+std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_End(
+    std::pair<std::string, std::string> nameAndGrammarType__End__TERMINAL)
+{
+    std::vector<GrammarRules::Term*> topLevelTerms;
+    return topLevelTerms;
+}
+
+std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_Keyword_REPS_withNamedListIteration(
+    std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedListIteration__VARIABLE)
+{
+    std::vector<GrammarRules::Term*> topLevelTerms;
+    return topLevelTerms;
+}
 
 #undef DEBUG
 #undef DeLOG

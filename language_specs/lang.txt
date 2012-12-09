@@ -26,12 +26,13 @@
 @@          error.                                                                                    @@
 EmbeddedKeywords:functions {
     @@ Done Already @@
-      +named_iteration { EMBEDDED, NamedList }
-      @@ rename to named_iteration
-      +named_repitition { EMBEDDED, NamedRepitition }
-
+      @@ rename to named_list_iteration
+      +named_list_iteration { EMBEDDED, NamedListIteration }
+      +named_iteration { EMBEDDED, NamedIteration }
+     
+      +andJoin { EMBEDDED, AndJoin }
     +path { }
-}
+} @@ to implement @@ countless_named_iteration
 
 Keywords:obj-collection {
     +elementName { Keyword }
@@ -39,11 +40,12 @@ Keywords:obj-collection {
     @@ Done Already @@
     +reps.named_iteration { VARIABLE, Keyword_REPS_withNamedIteration }
     +scope { VARIABLE, SquareBracketReps }
+    +alternation.andJoin { TERMINAL, AlterationAndJoin }
     +alternation { TERMINAL, Alteration }
     +evaluation { TERMINAL, Keyword_eval }
     +general_end { CLOSURE, End }
     +reps.named_list_iteration { VARIABLE, Keyword_REPS_withNamedListIteration }
 
     +path { src/lib/includes/Genrtd_Keywords.hpp }
-}  @@ to implement @@ +alteration.join { TERMINAL, AlterationAndJoin }
+}  @@ to implement @@ joingAlteration, reps.countless_named_iteration, nestAlteration(not sure at all how hard this will be)
 

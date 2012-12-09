@@ -60,6 +60,9 @@ protected:
         auto grammarRules__SquareBracketReps = _defineGrammarKeyword_SquareBracketReps(std::make_pair("scope", _keywords.getGrammarTypeForName("scope")));
         _grammarRulesData.push_back(std::make_tuple("scope", "VARIABLE", grammarRules__SquareBracketReps));
 
+        auto grammarRules__AlterationAndJoin = _defineGrammarKeyword_AlterationAndJoin(std::make_pair("alternation.andJoin", _keywords.getGrammarTypeForName("alternation.andJoin")));
+        _grammarRulesData.push_back(std::make_tuple("alternation.andJoin", "TERMINAL", grammarRules__AlterationAndJoin));
+
         auto grammarRules__Alteration = _defineGrammarKeyword_Alteration(std::make_pair("alternation", _keywords.getGrammarTypeForName("alternation")));
         _grammarRulesData.push_back(std::make_tuple("alternation", "TERMINAL", grammarRules__Alteration));
 
@@ -77,6 +80,7 @@ protected:
 
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Keyword_REPS_withNamedIteration(std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedIteration__VARIABLE) = 0;
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_SquareBracketReps(std::pair<std::string, std::string> nameAndGrammarType__SquareBracketReps__VARIABLE) = 0;
+    virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_AlterationAndJoin(std::pair<std::string, std::string> nameAndGrammarType__AlterationAndJoin__TERMINAL) = 0;
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Alteration(std::pair<std::string, std::string> nameAndGrammarType__Alteration__TERMINAL) = 0;
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Keyword_eval(std::pair<std::string, std::string> nameAndGrammarType__Keyword_eval__TERMINAL) = 0;
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_End(std::pair<std::string, std::string> nameAndGrammarType__End__CLOSURE) = 0;

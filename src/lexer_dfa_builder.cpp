@@ -24,16 +24,33 @@
 #include <vector>
 #include <iostream>
 
+#define DEBUG
+//#undef DEBUG
+#ifdef DEBUG
+    #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
+#else
+    #define DeLOG(str)
+#endif
+
 //merges dfas to one dfa for traversal
 lexer_word_repr* lexer_dfa_builder::mergeDfas(const std::vector<lexer_word_repr*>* const words, DfaManager& dfaManager) const
 {
     lexer_word_repr* start = dfaManager.createLexerWordRepr();
 
-    auto jobQueue = new std::vector<std::vector<std::pair<lexer_dfa*, LexerTransition>>*>();
+    //So each JOB consists of:
+    //  1) a ptr to dfa node where we left off in mergeToWord
+    //  2) a transition that we suspect is placeable in mergetToWord
+    //  3) a vector of dfa nodes already visited in mergeTo, this prevents folding the fromDfa back "itself"
+    //      but in reality there should be at path dinstinguishing mergeFrom from mergeTo that doesn't visit
+    //      a node in MergeTo twice. This only makes sense, because the "going back itself" thing is strictly for
+    //      kleen closure like behaviour on runtime. The minimal "description" of automata is actually constant 
+    //      and doesn't need to have two nodes twice.
+    //      repeated.
+    auto jobQueue = new std::vector<std::vector<std::tuple<lexer_dfa*, LexerTransition, std::vector<lexer_dfa*>>>*>();
 
     for (int i = 0; i < words->size(); i++)
     {
-        auto jobVector = new std::vector<std::pair<lexer_dfa*, LexerTransition>>();
+        auto jobVector = new std::vector<std::tuple<lexer_dfa*, LexerTransition, std::vector<lexer_dfa*>>>();
         jobQueue->push_back(jobVector);
     }
 
@@ -46,72 +63,96 @@ lexer_word_repr* lexer_dfa_builder::mergeDfas(const std::vector<lexer_word_repr*
         lexer_dfa* word = words->at(i);
         std::cout << word << std::endl;
         std::cout << word->getId() << std::endl;
+
         lexer_dfa* mergeToDfaPtr = start;
         lexer_dfa* mergeFromDfaPtr = word;
 
-        std::cout << "is word null?? " << (mergeFromDfaPtr == nullptr? "true" : "false") << std::endl;
+        DeLOG(std::string(" -- Is word null?? ").append((mergeFromDfaPtr == nullptr? "true\n" : "false\n")).c_str());
+
         std::vector<LexerTransition> nextTransitions = mergeFromDfaPtr->getTransitions();
 
-        std::cout << "Getting transitions for word" << std::endl;
+        DeLOG("Getting transitions for word\n")
 
         for (auto transition : nextTransitions)
         {
-            std::cout << "Adding job to job Queue" << std::endl;
+            DeLOG("Adding job to job Queue\n");
 
-            std::pair<lexer_dfa*, LexerTransition> job(mergeToDfaPtr, transition);
+            std::tuple<lexer_dfa*, LexerTransition, std::vector<lexer_dfa*>> job(mergeToDfaPtr, transition, std::vector<lexer_dfa*>{});
             (jobQueue->at(jobLineIndex))->push_back(job);
         }
 
         jobLineIndex++;
     }
 
-    std::cout << "Merge Process: " << jobQueue->size() << " jobs total" << std::endl;
+    DeLOG(std::string("Merge Process: ").append(std::to_string(jobQueue->size())).append(" job lines(queues) total").c_str());
+
     for (jobLineIndex = 0; jobLineIndex < jobQueue->size(); jobLineIndex++)
     {
-        std::cout << "Processing Job line #" << jobLineIndex << std::endl;
+        DeLOG(std::string("Processing Job line #").append(std::to_string(jobLineIndex+1)).c_str());
         auto jobVector = jobQueue->at(jobLineIndex);
         while (jobVector->size() != 0)
         {
-            std::cout << "There are " << jobVector->size() << " in job vector. Processing Job #" << jobLineIndex + 1 << std::endl;
-            auto currJobPair = jobVector->back();
+            DeLOG(std::string("There are ").append(std::to_string(jobVector->size())).append(" in job vector. Processing Job #").append(std::to_string(jobLineIndex + 1)).c_str());
+
+            auto currJobTuple = jobVector->back();
             jobVector->pop_back();
 
-            auto currMergeToDfaPtr = currJobPair.first;
+            auto currMergeToDfaPtr = std::get<0>(currJobTuple);
 
-            auto transitionFromCurrMergeFromDfaPtr = currJobPair.second;            
+            //here we'll check the currMergeToDfaPtr against the previously visited ptrs in MergeTo
+            //if we've already visited it, we know to ignore it this transition (and NOT to put job back in queue)
+            auto ptrsInMergeToAlreadyVisited = std::get<2>(currJobTuple);
+            auto skipAndContinue = false;
+            for (auto mergeToDfaPtrVisited : ptrsInMergeToAlreadyVisited)
+            {
+                if (currMergeToDfaPtr == mergeToDfaPtrVisited)
+                {
+                    skipAndContinue = true;
+                    break;
+                }
+            }
+
+            if (skipAndContinue)
+            {
+                continue;
+            }
+
+            ptrsInMergeToAlreadyVisited.push_back(currMergeToDfaPtr);
+
+            auto transitionFromCurrMergeFromDfaPtr = std::get<1>(currJobTuple);            
             auto nextMergeFromDfaPtr = transitionFromCurrMergeFromDfaPtr.getDfaNode();
-
             const auto si = transitionFromCurrMergeFromDfaPtr.getStateAndInput();
+
             auto nextMergeToDfaPtr = (currMergeToDfaPtr != nullptr? currMergeToDfaPtr->getNextDfaForInput(si.getInput()) : nullptr);
           
             currMergeToDfaPtr->_printTransitions();
             std::cout << "is there nextDfaPtr? " << (currMergeToDfaPtr->getNextDfaForInput(si.getInput()) != nullptr ? "yes" : "no")
                       << nextMergeToDfaPtr << std::endl;
 
-            if (nextMergeFromDfaPtr != nullptr)
+            //I'm assuming this means if the toDfaPtr is null, we can insert there
+            if (nextMergeToDfaPtr == nullptr)
             {
-                if (nextMergeToDfaPtr == nullptr)
-                {
                     LexerStateAndInput aLexerStateAndInput = transitionFromCurrMergeFromDfaPtr.getStateAndInput();
                     std::cout << "::adding transition([" << aLexerStateAndInput.getState() << ", '"
                               << aLexerStateAndInput.getInput() << "']->" << nextMergeFromDfaPtr->getId() << ") to dfa("
                               << currMergeToDfaPtr->getId() << ")" <<  std::endl;
                     StateAndInput<int,char> aStateAndInput(aLexerStateAndInput.getState(), aLexerStateAndInput.getInput(), transitionFromCurrMergeFromDfaPtr.getIsRanged());
                     currMergeToDfaPtr->add_next_dfa(aStateAndInput, nextMergeFromDfaPtr);
-                }
-                else
-                {
+            }
+            else if (nextMergeFromDfaPtr != nullptr)
+            {
                     std::vector<LexerTransition> nextTransitions = nextMergeFromDfaPtr->getTransitions();
 
                     for (auto transitionFromNextMergeFromDfa : nextTransitions)
                     {
+                        //should be not here try going as deep as possible?
+
                         const auto si = transitionFromNextMergeFromDfa.getStateAndInput();
-      
-                        std::cout << "Couldn't find an opening, pushing back job" << std::endl;
-                        std::pair<lexer_dfa*, LexerTransition> job(const_cast<lexer_dfa*>(nextMergeToDfaPtr), transitionFromNextMergeFromDfa);
+
+                        std::cout << "Couldn't find an opening, pushing back job { to add (" << si.getState() << "," << si.getInput()  << ") from dfa-id(" << nextMergeToDfaPtr->getId() << ") " << std::endl;
+                        std::tuple<lexer_dfa*, LexerTransition, std::vector<lexer_dfa*>> job(const_cast<lexer_dfa*>(nextMergeToDfaPtr), transitionFromNextMergeFromDfa, ptrsInMergeToAlreadyVisited);
                         jobVector->push_back(job);
                     }
-                }
             }
             else
             {
@@ -129,3 +170,6 @@ lexer_word_repr* lexer_dfa_builder::mergeDfas(const std::vector<lexer_word_repr*
 
     return start;
 }
+
+#undef DEBUG
+#undef DeLOG

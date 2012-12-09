@@ -153,14 +153,30 @@ std::pair<std::string, std::string> getKeywordNameAndContentFromAnnotatedData(co
         token = (token+1);
     }
 
+    size_t count = 0;
     do
     {
         content.append(secondLastToken);
+        if (keywordName.compare("key_word") == 0 && count > 1 && strcmp("}",token) != 0)
+        {
+            content.append(endOfContentDelimeter);
+        }
+
         secondLastToken = lastToken;
         lastToken = std::string(token);
 
         token = strtok(NULL, endOfContentDelimeter.c_str());
+
+        count++;
     } while(token != NULL); 
+
+    if (lastToken.compare("}") == 0)
+    {
+        if (keywordName.compare("key_word") == 0 && count > 1)
+        {
+            content.append(endOfContentDelimeter);
+        }
+    }
 
     content.append(secondLastToken);
 

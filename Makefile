@@ -13,7 +13,7 @@ CC		= clang++
 CFLAGS	= -g -std=c++11 -stdlib=libc++ -O0 -Wall -pedantic 
 
 # Linker Flags
-LFLAGS	= -v 
+LFLAGS	= 
 
 #-------------------------------------
 # Nothing to change below here
