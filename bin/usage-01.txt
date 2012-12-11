@@ -41,7 +41,7 @@ time trying to /[(figure out|flesh out)] simple things like how to bring
 
 Brute force poetry: The idea that if you think and write about something long 
 enough, and know how to /[(navigate and manouever:|navigate/manouever::)] through 
-/[(:those thoughts|::that thinking and writing)] effectively,
+/[(:those thoughts|::that thinking and writing)] /[(:::|, ::::)]effectively/[(:::,|:::: )]
 you'll bang out something better than you would otherwise, not necessarily
 good, but certainly not crap. Writing crap (at least for me) is effortless.
 
