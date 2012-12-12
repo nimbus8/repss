@@ -43,12 +43,17 @@ private:
     const I _input;
     const bool _isRanged;
     const bool _isAnythingBut;
+
+    //some KEYWORDS are recursive, like alternation (alteration inside of alteration), requiring the lexer to do more
+    //most other times though pushdown behaviour and is not required and checking a flag seems like a simple approach.
+    const bool _isPushDownAutomataActivator;
 public:
-    StateAndInput(const S state, const I input) : _state(state), _input(input), _isRanged(false), _isAnythingBut(false) {}
-    StateAndInput(const S state, const I input, bool isRanged) : _state(state), _input(input), _isRanged(isRanged), _isAnythingBut(false) {}
-    StateAndInput(const S state, const I input, bool isRanged, bool isAnythingBut) : _state(state), _input(input), _isRanged(isRanged), _isAnythingBut(isAnythingBut) {}
-    StateAndInput(const StateAndInput&  other) : _state(other._state), _input(other._input), _isRanged(other._isRanged), _isAnythingBut(other._isAnythingBut) {}
-    StateAndInput(StateAndInput&& other) : _state(other._state), _input(other._input), _isRanged(other._isRanged), _isAnythingBut(other._isAnythingBut) {}
+    StateAndInput(const S state, const I input) : _state(state), _input(input), _isRanged(false), _isAnythingBut(false), _isPushDownAutomataActivator(false) {}
+    StateAndInput(const S state, const I input, bool isRanged) : _state(state), _input(input), _isRanged(isRanged), _isAnythingBut(false), _isPushDownAutomataActivator(false) {}
+    StateAndInput(const S state, const I input, bool isRanged, bool isAnythingBut) : _state(state), _input(input), _isRanged(isRanged), _isAnythingBut(isAnythingBut), _isPushDownAutomataActivator(false) {}
+    StateAndInput(const S state, const I input, bool isRanged, bool isAnythingBut, bool isPushDownAutomataActivator) : _state(state), _input(input), _isRanged(isRanged), _isAnythingBut(isAnythingBut), _isPushDownAutomataActivator(isPushDownAutomataActivator) {}
+    StateAndInput(const StateAndInput&  other) : _state(other._state), _input(other._input), _isRanged(other._isRanged), _isAnythingBut(other._isAnythingBut), _isPushDownAutomataActivator(other._isPushDownAutomataActivator) {}
+    StateAndInput(StateAndInput&& other) : _state(other._state), _input(other._input), _isRanged(other._isRanged), _isAnythingBut(other._isAnythingBut), _isPushDownAutomataActivator(other.isPushDownAutomataActivator) {}
     ~StateAndInput() {}
 
     S getState() const { return _state; }
@@ -56,6 +61,7 @@ public:
 
     bool getIsRanged() const { return _isRanged; }
     bool getIsAnythingBut() const { return _isAnythingBut; }
+    bool getIsPushDownAutomataActivator() const { return _isPushDownAutomataActivator; }
 };
 
 #endif
