@@ -74,8 +74,8 @@ It was life's turn to start throwing things at me, and me being sh*t at bat, the
 
 A famous example of a particular tandem repeat is the Fragile X Syndrome
 [Eberhart and Warren, 1996]. Having 3 base pairs at it’s core, CGG, the
-/[(method|disease)] whereby the /[(|repeated)] sequence is lengthened further
-/[(|*during transcription)] is /[(called|name)] trinucleotide repeat expansion. In
+/[(method:|disease::)] whereby the /[(|repeated)] sequence is lengthened further
+/[(|*during transcription)] is /[(called|named)] trinucleotide repeat /[(:expansion|::disorder)]. In
 the normal population /[(we|we’d)] expect to find /[(a contiguous sequence of /[(|the nucleotides|the residues)] CCG repeated|CGG repeated)]
 /[(|anywhere from|about)] 6-52 times at a particular site. For the length of the
 core sequence /[(|of residues)], /[(|that is)] < 6 /[(|in this case 3)],
