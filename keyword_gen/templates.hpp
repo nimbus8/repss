@@ -233,23 +233,23 @@ public:
             for (auto keywordTuple : keywordDetails)
             {
                 const std::string keywordName(std::get<0>(keywordTuple));
-        //do processing on obj type as it can be multiple values, seperated by '|'
-        const auto keywordTypesVector = splitStringBy(std::get<1>(keywordTuple), std::string("|"));
-        std::string akeywordType;
-        //this is kindof icky, take the first non recursive object type descriptor
-        for (const auto aType : keywordTypesVector)
-        {
-            if (aType.compare("RECURSIVE") != 0)
-            {
-                akeywordType = aType;
-                break;
-            }
-        }
+                //do processing on obj type as it can be multiple values, seperated by '|'
+                const auto keywordTypesVector = splitStringBy(std::get<1>(keywordTuple), std::string("|"));
+                std::string akeywordType;
+                //this is kindof icky, take the first non recursive object type descriptor
+                for (const auto aType : keywordTypesVector)
+                {
+                    if (aType.compare("RECURSIVE") != 0)
+                    {
+                        akeywordType = aType;
+                        break;
+                    }
+                }
 
-        if (akeywordType.empty() && keywordTypesVector.size() > 0)
-        {
-            akeywordType = std::string("RECURSIVE");
-        }
+                if (akeywordType.empty() && keywordTypesVector.size() > 0)
+                {
+                    akeywordType = std::string("RECURSIVE");
+                }
 
                 const std::string grammarType(akeywordType);
                 output.append("            ");
