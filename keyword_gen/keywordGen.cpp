@@ -487,6 +487,7 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
     {
         DeLOG("iteration over object\n");
         auto objName = std::get<ID_INDEX_IN_OBJ_TUPLE>(obj);
+
         auto objType = std::get<TYPE_INDEX_IN_OBJ_TUPLE>(obj);
 
         if (objName.compare("EmbeddedKeywords") == 0 && objType.compare("functions") == 0)
@@ -577,8 +578,27 @@ Status writeGeneratedContent(const ObjectDataVector_t& objects, const Status& pr
                     { 
                         keywordNamesAllAlpha.push_back(std::get<2>(detailTuple));
 
+        //do processing on obj type as it can be multiple values, seperated by '|'
+        const auto keywordTypesVector = splitStringBy(std::get<1>(detailTuple), std::string("|"));
+        std::string akeywordType;
+        //this is kindof icky, take the first non recursive object type descriptor
+        for (const auto aType : keywordTypesVector)
+        {
+            if (aType.compare("RECURSIVE") != 0)
+            {
+                akeywordType = aType;
+                break;
+            }
+        }
+
+        if (akeywordType.empty() && keywordTypesVector.size() > 0)
+        {
+            akeywordType = std::string("RECURSIVE");
+        }
+
+
                         //while we're at it lets add GrammarKeywordInfo_t to a vector
-                        grammarKeywordInfoObjs.push_back(GrammarKeywordInfo_t(std::get<0>(detailTuple), std::get<1>(detailTuple), std::get<2>(detailTuple)));
+                        grammarKeywordInfoObjs.push_back(GrammarKeywordInfo_t(std::get<0>(detailTuple), akeywordType, std::get<2>(detailTuple)));
                     }
                 }
 

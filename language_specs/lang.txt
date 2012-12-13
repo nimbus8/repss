@@ -42,6 +42,7 @@ Keywords:obj-collection {
     +scope { VARIABLE, SquareBracketReps }
     +alternation.andJoin { TERMINAL, AlterationAndJoin }
     +alternation { TERMINAL, Alteration }
+    +recursive_alteration { TERMINAL|RECURSIVE, RecursiveAlteration }
     +evaluation { TERMINAL, Keyword_eval }
     +general_end { CLOSURE, End }
     +reps.named_list_iteration { VARIABLE, Keyword_REPS_withNamedListIteration }

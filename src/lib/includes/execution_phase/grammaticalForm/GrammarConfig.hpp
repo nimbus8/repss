@@ -45,6 +45,7 @@ protected:
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Keyword_eval(std::pair<std::string, std::string> nameAndGrammarType__Keyword_eval__TERMINAL);
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_End(std::pair<std::string, std::string> nameAndGrammarType__End__TERMINAL);
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Keyword_REPS_withNamedListIteration(std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedListIteration__VARIABLE);
+    virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_RecursiveAlteration(std::pair<std::string, std::string> nameAndGrammarType__RecursiveAlteration__TERMINAL);
 public:
     GrammarConfig()
     {

@@ -66,12 +66,13 @@ protected:
     class KeywordsData
     {
     private:
-          const AbstrKeyword keywords[7] =
+          const AbstrKeyword keywords[8] =
           {
             AbstrKeyword{ "reps.named_iteration", GrammarType_t::VARIABLE },
             AbstrKeyword{ "scope", GrammarType_t::VARIABLE },
             AbstrKeyword{ "alternation.andJoin", GrammarType_t::TERMINAL },
             AbstrKeyword{ "alternation", GrammarType_t::TERMINAL },
+            AbstrKeyword{ "recursive_alteration", GrammarType_t::TERMINAL },
             AbstrKeyword{ "evaluation", GrammarType_t::TERMINAL },
             AbstrKeyword{ "general_end", GrammarType_t::CLOSURE },
             AbstrKeyword{ "reps.named_list_iteration", GrammarType_t::VARIABLE }
@@ -82,7 +83,7 @@ protected:
              return keywords[index];
         }
 
-        size_t getSize() const { return 7; }
+        size_t getSize() const { return 8; }
     } _data;
 
 public:
@@ -92,11 +93,7 @@ public:
         {
             return "VARIABLE";
         }
-        else if (keywordName.compare("scope") == 0)
-        {
-            return "VARIABLE";
-        }
-        else if (keywordName.compare("evaluation") == 0)
+        else if (keywordName.compare("recursive_alteration") == 0)
         {
             return "TERMINAL";
         }
@@ -107,6 +104,14 @@ public:
         else if (keywordName.compare("alternation.andJoin") == 0)
         {
             return "TERMINAL";
+        }
+        else if (keywordName.compare("evaluation") == 0)
+        {
+            return "TERMINAL";
+        }
+        else if (keywordName.compare("scope") == 0)
+        {
+            return "VARIABLE";
         }
         else if (keywordName.compare("general_end") == 0)
         {

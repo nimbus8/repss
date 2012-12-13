@@ -683,6 +683,11 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlteration()
     return ret;
 }
 
+wordrepr_and_transition_Pair_t lexer_word_constructor::_constructRecursiveAlteration()
+{
+
+}
+
 wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlterationAndJoin()
 {
     const std::string WORD_NAME("alteration");

@@ -75,6 +75,7 @@ private:
     virtual wordrepr_and_transition_Pair_t _constructKeyword_eval();
     virtual wordrepr_and_transition_Pair_t _constructAlteration();
     virtual wordrepr_and_transition_Pair_t _constructAlterationAndJoin();
+    virtual wordrepr_and_transition_Pair_t _constructRecursiveAlteration();
 
     virtual wordrepr_and_transition_Pair_t __insertNamedIterationParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, unsigned int tentativeNameKey);
     virtual wordrepr_and_transition_Pair_t __insertNamedListIterationParamsDfa(lexer_dfa* fromDfa, lexer_dfa* toDfa, const unsigned int tentativeNameKey);

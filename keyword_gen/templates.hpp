@@ -52,6 +52,26 @@ std::string createCopyright()
     return str;
 }
 
+//put this in like a util file for both keywordGen.hpp and template.hpp to access
+std::vector<std::string> splitStringBy(const std::string& str, const std::string seperator)
+{
+    char buffer[str.size()+1];
+    char *token;
+
+    strcpy(buffer, str.c_str());
+
+    token = strtok(buffer, seperator.c_str());
+
+    std::vector<std::string> retTokens;
+    while (token != NULL)
+    {
+        retTokens.push_back(std::string(token));
+        token = strtok(NULL, seperator.c_str());
+    }
+
+    return retTokens;
+}
+
 //Note: Order is VERY important when using any of the templates. The order they are defined below in the TempalteSystem
 //      should ALWAYS work.
 class TemplateSystem
@@ -210,10 +230,28 @@ public:
             output.append("          {\n");
 
             int count = 0;
-            for (auto keywordPair : keywordDetails)
+            for (auto keywordTuple : keywordDetails)
             {
-                const std::string keywordName(std::get<0>(keywordPair));
-                const std::string grammarType(std::get<1>(keywordPair));
+                const std::string keywordName(std::get<0>(keywordTuple));
+        //do processing on obj type as it can be multiple values, seperated by '|'
+        const auto keywordTypesVector = splitStringBy(std::get<1>(keywordTuple), std::string("|"));
+        std::string akeywordType;
+        //this is kindof icky, take the first non recursive object type descriptor
+        for (const auto aType : keywordTypesVector)
+        {
+            if (aType.compare("RECURSIVE") != 0)
+            {
+                akeywordType = aType;
+                break;
+            }
+        }
+
+        if (akeywordType.empty() && keywordTypesVector.size() > 0)
+        {
+            akeywordType = std::string("RECURSIVE");
+        }
+
+                const std::string grammarType(akeywordType);
                 output.append("            ");
                 output.append(_system->_keywordClassName);
                 output.append("{ \"");

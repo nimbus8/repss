@@ -45,6 +45,12 @@ std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_SquareBrac
     return topLevelTerms;
 }
 
+std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_RecursiveAlteration(std::pair<std::string, std::string> nameAndGrammarType__RecursiveAlteration__TERMINAL)
+{
+    std::vector<GrammarRules::Term*> topLevelTerms;
+    return topLevelTerms;
+}
+
 std::vector<GrammarRules::Term*> GrammarConfig::_defineGrammarKeyword_Alteration(
     std::pair<std::string, std::string> nameAndGrammarType__Alteration__TERMINAL)
 {

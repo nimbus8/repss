@@ -66,6 +66,9 @@ protected:
         auto grammarRules__Alteration = _defineGrammarKeyword_Alteration(std::make_pair("alternation", _keywords.getGrammarTypeForName("alternation")));
         _grammarRulesData.push_back(std::make_tuple("alternation", "TERMINAL", grammarRules__Alteration));
 
+        auto grammarRules__RecursiveAlteration = _defineGrammarKeyword_RecursiveAlteration(std::make_pair("recursive_alteration", _keywords.getGrammarTypeForName("recursive_alteration")));
+        _grammarRulesData.push_back(std::make_tuple("recursive_alteration", "TERMINAL", grammarRules__RecursiveAlteration));
+
         auto grammarRules__Keyword_eval = _defineGrammarKeyword_Keyword_eval(std::make_pair("evaluation", _keywords.getGrammarTypeForName("evaluation")));
         _grammarRulesData.push_back(std::make_tuple("evaluation", "TERMINAL", grammarRules__Keyword_eval));
 
@@ -82,6 +85,7 @@ protected:
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_SquareBracketReps(std::pair<std::string, std::string> nameAndGrammarType__SquareBracketReps__VARIABLE) = 0;
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_AlterationAndJoin(std::pair<std::string, std::string> nameAndGrammarType__AlterationAndJoin__TERMINAL) = 0;
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Alteration(std::pair<std::string, std::string> nameAndGrammarType__Alteration__TERMINAL) = 0;
+    virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_RecursiveAlteration(std::pair<std::string, std::string> nameAndGrammarType__RecursiveAlteration__TERMINAL) = 0;
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Keyword_eval(std::pair<std::string, std::string> nameAndGrammarType__Keyword_eval__TERMINAL) = 0;
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_End(std::pair<std::string, std::string> nameAndGrammarType__End__CLOSURE) = 0;
     virtual std::vector<GrammarRules::Term*> _defineGrammarKeyword_Keyword_REPS_withNamedListIteration(std::pair<std::string, std::string> nameAndGrammarType__Keyword_REPS_withNamedListIteration__VARIABLE) = 0;

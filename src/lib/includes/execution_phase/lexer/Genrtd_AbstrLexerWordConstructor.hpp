@@ -57,6 +57,10 @@ public:
         _words.push_back(aAlterationWord.first);
         _dfaTransitions.push_back(aAlterationWord.second);
 
+        auto aRecursiveAlterationWord = _constructRecursiveAlteration();
+        _words.push_back(aRecursiveAlterationWord.first);
+        _dfaTransitions.push_back(aRecursiveAlterationWord.second);
+
         auto aKeyword_evalWord = _constructKeyword_eval();
         _words.push_back(aKeyword_evalWord.first);
         _dfaTransitions.push_back(aKeyword_evalWord.second);
@@ -74,6 +78,7 @@ public:
     virtual wordrepr_and_transition_Pair_t _constructSquareBracketReps() = 0;
     virtual wordrepr_and_transition_Pair_t _constructAlterationAndJoin() = 0;
     virtual wordrepr_and_transition_Pair_t _constructAlteration() = 0;
+    virtual wordrepr_and_transition_Pair_t _constructRecursiveAlteration() = 0;
     virtual wordrepr_and_transition_Pair_t _constructKeyword_eval() = 0;
     virtual wordrepr_and_transition_Pair_t _constructEnd() = 0;
     virtual wordrepr_and_transition_Pair_t _constructKeyword_REPS_withNamedListIteration() = 0;
