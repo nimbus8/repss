@@ -85,6 +85,15 @@ core sequence /[(|of residues)], /[(|that is)] < 6 /[(|in this case 3)],
 affected populations, even where there /[(isn’t|aren’t)] any sort of phenotypical
 expression visible /[(|/[(to the individual | at the individual level | for an individual)])], the number of repeated CGG residues are much greater than /[(in the normal population.|the range found in the normal population)]
 
+
+Short strings /[(called|referred to /[(|normally|hereafter)> >and also<] as)] binding sites are
+/[(|prime)] examples of regulatory motifs /[(where:|that,::)] /[(when environmental or endogenous factors /[(require|permit)> >or <],|:in the normal course of things, :)] 
+/[(|::will be visited by::)] proteins called transcription factors /[(|::/[(. These proteins|that)]::)] 
+will /[(|necessarily)] bind /[(|:themselves:)]  /[(: /[(|to)]:|::to::)] 
+/[(|::/[(the site of the motif|the area|the string(the motif site))]::)]
+encouraging /[(the transcription of /[(:the:|::their::)] /[(|associated:::)] /[(:portions of downstream dna to which they refer|:::downstream genes|downstream /[(portions|segments)] of DNA)] by the RNA polymerase.|encouraging the RNA polymerase to transcribe the /[(|necessary|desired)>or<)] /[(downstream genes | /[(segments|portions)] of DNA)].)]
+[Pevzner ch. 4 pg. 92]
+
  
 Brute force poetry: The idea that if you think and write about something long 
 enough, and know how to /[(navigate and manouever:|navigate/manouever::)] through 
