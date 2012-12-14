@@ -61,7 +61,7 @@ some /[(damn|darn)] fine drawing skills/[(:|, he was by far the most liked on th
 The first bus ride we had together /[(:as a team|:: )]
 he practically drew out the entire 89 edition of Harlequim. The boys would
 spoil it of course and he would tirelessly get to work on several others.
-But he did grow tired of the routine. We knew it /[(:|when::)] at once /[(:when|:: )] he nearly
+But he did grow /[(weary|old|tired)] of the routine. We knew it /[(:|when::)] at once /[(:when|:: )] he nearly
 threw /[(one of us|the closest man to him)] out the window
 /[(|, the poor guy was so distrought he nearly edged himself over)]
 out onto incoming traffic. He was funny that way/[(, and we:|. We::)] were of 
@@ -69,7 +69,7 @@ course privledged if he ever made another one/[(:. S|::, s)]o we tried not to
 ruin them too quickly when he did. I thinkfor that reason, we all, at least subconsciously, made sure /[(to|we'd)] let Larry know last.
 /[(:|If he ever  marries, his wife /[(wouldn't|shouldn't)] have to see him as /[(much|often)] as I did that summer.::)]
 /[(: :|::And though I hated him, it was mostly due to overexposure.::)
-/[(/[(:And as he shimmied past|::I watched him shimmy past::)] a sea of our team members at the bar, over to an expectant Johnny who was ready with double fives and drunken cheers,
+/[(/[(:And as /[(/[(|I watched him as)] he shimmied past|I watched him shimmy past)]|::I watched him shimmy past::)] a sea of our team members at the bar, over to an expectant Johnny who was ready with double fives and drunken cheers,
 /[(I reflected|::reflecting)] on the irony of it all -- /[(::|for I don't think:)] the league champions /[(::wouldn't /[(|have been::)]|:/[(would|would've::::)])] /[(be|::been|::::been)] so /[(jubilant|happy)]!
 /[(You know when life just starts throwin things at ya, and you just about have to dodgem or beat em back (bat em away)? /[(Up u|U)]ntil that point /[(I didn't know anything about /[(it|that)], /[(:|but)] you know, I was a pitcher, that was my identity and I took to it. /[(:But|) I'd soon have to find a new one because /[(those|these)] days though were done for me, /[(though|but|but you know)] I /[(caught|did catch)] a bit of hope /[(that night at the bar|at the bar that night|that night during the festivities)]...even though she'd been /[(throwin|hurling)] darts at /[(me|my head)] the entire season/[(.|!)] |I was cluesless. I couldn't hit a ball if you held it there right in front of me, so the whole thing really /[(did give|gave)] me hope you know.)])]
 
@@ -78,7 +78,7 @@ A famous example of a particular tandem repeat is the Fragile X Syndrome
 /[(method:|disease::)] whereby the /[(|repeated)] sequence is lengthened further
 /[(|*during transcription)] is /[(called|named)] trinucleotide repeat /[(:expansion|::disorder)]. In
 the normal population /[(we|we’d)] expect to find /[(a contiguous sequence of /[(|the nucleotides|the residues)] CCG repeated|CGG repeated)]
-/[(|anywhere from|about)] 6-52 times at a particular site. For the length of the
+/[(|anywhere from|about)><] 6-52 times at a particular site. For the length of the
 core sequence /[(|of residues)], /[(|that is)] < 6 /[(|in this case 3)],
 /[the sites of their occurrences are usually called|we call the sites /[(of their occurrence|where they’re found|wherever they’re found)])] microsatellites. In
 affected populations, even where there /[(isn’t|aren’t)] any sort of phenotypical
