@@ -89,9 +89,9 @@ expression visible /[(|/[(to the individual | at the individual level | for an i
 Short strings /[(called|referred to /[(|normally|hereafter)> >and also<] as)] binding sites are
 /[(|prime)] examples of regulatory motifs /[(where:|that,::)] /[(when environmental or endogenous factors /[(require|permit)> >or <],|:in the normal course of things, :)] 
 /[(|::will be visited by::)] proteins called transcription factors /[(|::/[(. These proteins|that)]::)] 
-will /[(|necessarily)] bind /[(|:themselves:)]  /[(: /[(|to)]:|::to::)] 
+will /[(|necessarily)] bind /[(|:themselves:)]  /[(: /[(|to,)]:|::to::)] 
 /[(|::/[(the site of the motif|the area|the string(the motif site))]::)]
-encouraging /[(the transcription of /[(:the:|::their::)] /[(|associated:::)] /[(:portions of downstream dna to which they refer|:::downstream genes|downstream /[(portions|segments)] of DNA)] by the RNA polymerase.|encouraging the RNA polymerase to transcribe the /[(|necessary|desired)>or<)] /[(downstream genes | /[(segments|portions)] of DNA)].)]
+encouraging /[(the transcription of /[(:the:|::their::)] /[(|::associated:::)] /[(:portions of downstream dna to which they refer|:::downstream genes|downstream /[(portions|segments)] of DNA)] by the RNA polymerase.|encouraging the RNA polymerase to transcribe the /[(|necessary|desired)>or<)] /[(downstream genes | /[(segments|portions)] of DNA)].)]
 [Pevzner ch. 4 pg. 92]
 
  
