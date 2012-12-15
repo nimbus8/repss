@@ -26,7 +26,7 @@
 #include <string>
 #include <vector>
 
-#include "../../../src/lib/includes/Genrtd_Keywords.hpp"
+#include "../../../src/base/includes/Genrtd_Keywords.hpp"
 #include "ILanguageAndGrammar.hpp"
 
 #include "execution_phase/grammaticalForm/GrammarTypedefs.hpp"

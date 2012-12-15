@@ -21,7 +21,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-#include "../lib/includes/runtime_utils/repss_str.hpp"
+#include "../base/includes/runtime_utils/repss_str.hpp"
 
 int repss_str_test(int argc, char *argv[])
 {

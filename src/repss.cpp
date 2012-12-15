@@ -31,14 +31,12 @@
 using namespace std;
 #include <stdio.h>
 
-#include "lib/includes/repss.hpp"
+#include "base/includes/repss.hpp"
+#include "base/includes/ContextManager.hpp"
+#include "base/includes/PhasedExecution.hpp"
+#include "base/includes/execution_phase/grammaticalForm/GrammarKeywords.hpp"
+
 #include "tests/test_repss_string.cpp"
-
-#include "lib/includes/ContextManager.hpp"
-
-#include "lib/includes/PhasedExecution.hpp"
-
-#include "lib/includes/execution_phase/grammaticalForm/GrammarKeywords.hpp"
 
 #define DEBUG
 #ifdef DEBUG

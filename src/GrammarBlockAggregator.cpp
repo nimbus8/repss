@@ -24,7 +24,7 @@
 #include <stdio.h>
 #include <string>
 
-#include "lib/includes/execution_phase/grammaticalForm/GrammarBlockAggregator.hpp"
+#include "base/includes/execution_phase/grammaticalForm/GrammarBlockAggregator.hpp"
 
 #define DEBUG
 #ifdef DEBUG

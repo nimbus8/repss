@@ -21,13 +21,14 @@
  kwillia.pub@gmail.com
  */
 
-#include "lib/includes/PhasedExecution.hpp"
+#include "base/includes/PhasedExecution.hpp"
 
-#include "lib/includes/execution_phase/lexer/lexer_manager.hpp"
-#include "lib/includes/execution_phase/lexer/Scanner.hpp"
+#include "base/includes/execution_phase/lexer/lexer_manager.hpp"
+#include "base/includes/execution_phase/lexer/Scanner.hpp"
 
-#include "lib/includes/execution_phase/grammaticalForm/GrammarManager.hpp"
-#include "lib/includes/execution_phase/grammaticalForm/GrammarBlockAggregator.hpp"
+#include "base/includes/execution_phase/grammaticalForm/GrammarManager.hpp"
+#include "base/includes/execution_phase/grammaticalForm/GrammarBlockAggregator.hpp"
+
 /*#undef*/ #define DEBUG
 #ifdef DEBUG
     #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);

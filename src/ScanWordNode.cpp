@@ -21,7 +21,7 @@
  kwillia.pub@gmail.com
  */
 
-#include "lib/includes/execution_phase/lexer/construction/ScanWordNode.hpp"
+#include "base/includes/execution_phase/lexer/construction/ScanWordNode.hpp"
 
 #define DEBUG
 #ifdef DEBUG

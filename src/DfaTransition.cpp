@@ -21,7 +21,7 @@
  kwillia.pub@gmail.com
  */
 
-#include "lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/DfaTransition.hpp"
+#include "base/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/DfaTransition.hpp"
 
 DfaTransition* CreateDfaTransition(const StateAndInput<int,char>* stateAndInput, const lexer_dfa* dfa_ptr)
 {

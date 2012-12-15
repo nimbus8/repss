@@ -21,8 +21,8 @@
  kwillia.pub@gmail.com
  */
 
-#include "lib/includes/execution_phase/grammaticalForm/GrammarConfig.hpp"
-#include "lib/includes/execution_phase/grammaticalForm/GrammarKeywordDefn.hpp"
+#include "base/includes/execution_phase/grammaticalForm/GrammarConfig.hpp"
+#include "base/includes/execution_phase/grammaticalForm/GrammarKeywordDefn.hpp"
 
 #define DEBUG
 #ifdef DEBUG

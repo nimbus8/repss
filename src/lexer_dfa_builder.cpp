@@ -21,8 +21,8 @@
  kwillia.pub@gmail.com
  */
 
-#include "lib/includes/execution_phase/lexer/construction/lexer_dfa_builder.hpp"
-#include "lib/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/LexerStateAndInput.hpp"
+#include "base/includes/execution_phase/lexer/construction/lexer_dfa_builder.hpp"
+#include "base/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/LexerStateAndInput.hpp"
 
 #include <vector>
 #include <iostream>
