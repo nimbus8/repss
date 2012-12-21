@@ -62,7 +62,7 @@ public:
     std::string execute(int argc, char* argv[]);
 
     //lexing
-    void runLexer(ILexerContext* const lexerContext, std::string inputFileName);
+    void runLexer(ILexerContext* const lexerContext, const std::string& inputFileName);
 
     //parsing -- note: we're skipping this for now (hard n fast, throwing caution to the wind, etc.)
     void runParser();

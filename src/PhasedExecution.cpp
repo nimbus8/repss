@@ -36,8 +36,7 @@
     #define DeLOG(str)
 #endif
 
-PhasedExecution::PhasedExecution()
-        : _contextManager(nullptr)
+PhasedExecution::PhasedExecution() : _contextManager(nullptr)
 {
     DeLOG("PhasedExecution::PhasedExecution()\n");
 }
@@ -76,7 +75,7 @@ std::string PhasedExecution::execute(int argc, char* argv[])
     return generatedOutput;
 }
 
-void PhasedExecution::runLexer(ILexerContext* const lexerContext, std::string inputFileName)
+void PhasedExecution::runLexer(ILexerContext* const lexerContext, const std::string& inputFileName)
 {
     lexer_manager lexerMan(lexerContext);
     lexerMan.init(_lexerConfig);
