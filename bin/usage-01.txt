@@ -1,4 +1,4 @@
-/*
+
  REPSS
  Copyright (C) 2012  Khalique Williams
 
@@ -47,7 +47,7 @@ est /[(:|brusquement::)] tombé /[(:: ::|:brusquement)] à terre, a /[(/[(|bien)
 /[(|::a été|endommagé /[(|et)]|*le scène dune histoire tragique)] érodé par /[(des:::|le somme|tout les forces:)] /[(: :|/[(:::forces:::|force|::de tous les forces)])]
 naturelles /[(:::/[(qu'on|que l'on|quant)] imagine étais pas la fête, mais une torture:::|que je peux seulement imaginer /[(devrait|serait)] | /[(qu'on|que l'on)] peut imaginer serait)] 
 enduré /[(au cours d'un tour a travers le ciel:|quant on est seul au monde, agressivement tiré  vers l'intérieur /[(|::: - et par le lave et fer! )] ::)> ><] 
-/[(:de|::par|::de)] ce planète - tu vas le trouver là, le voyage et période précédente /[(*|longueur duquel)] elle a /[(nommé|appelé)] /[(l'année terminal|la fin)].
+/[(:de|::par|::de)] ce planète - tu vas le trouver là; le voyage et /[(période précédente|longueur duquel)] elle a /[(nommé|appelé)] /[(l'année terminal|la fin)].
 Et /[(|alors,)] ayant perdu un énormément d'énergie jusqu'à ce point là, /[(|j'imagine qu')]elle était pas heureux ou déprimé, juste
 /[(un peu plus|/[(:::::crissement:::::|:::::::ben:::::::)> ><])] /[(stressé|/[(humble|modeste)>>*et<])>* voir <]  -- pas d'temps de rigoler, niaiser, ni faire la fête!
 Et je souhaite, cette affaire-la n'arrivera pas pour moi, ni toi, ni tous nous pour qui l'intensité fait 
