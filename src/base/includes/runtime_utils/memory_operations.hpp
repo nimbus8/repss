@@ -26,48 +26,47 @@
 
 namespace Arrays
 {
-//this method gives great trust to the caller
-inline void clearCharacters(char* const buffer, const size_t length)
-{
-	size_t count = 0;
-	char* ptr = buffer;
-	const char endChar = '\0';
-	while (count < length && *ptr != endChar)
-	{
-		*ptr = endChar;
-		ptr = buffer + ++count;
-	} 
-}
+    //this method gives great trust to the caller
+    inline void clearCharacters(char* const buffer, const size_t length)
+    {
+        size_t count = 0;
+        char* ptr = buffer;
+        const char endChar = '\0';
+        while (count < length && *ptr != endChar)
+        {
+            *ptr = endChar;
+            ptr = buffer + ++count;
+        } 
+    }
 
-inline void appendCharacter(char* buffer, const size_t pos, const char c)
-{
-	*(buffer + pos) = c;
-}
+    inline void appendCharacter(char* buffer, const size_t pos, const char c)
+    {
+        *(buffer + pos) = c;
+    }
 
-template<typename T>
-inline std::function<void (void)> rpss_clearArrayFunc(T buffer[], unsigned int len)
-{
-	return [&buffer,len]()->void {memset(buffer, '\0', len);};
-}
+    template<typename T>
+    inline std::function<void (void)> rpss_clearArrayFunc(T buffer[], unsigned int len)
+    {
+        return [&buffer,len]()->void {memset(buffer, '\0', len);};
+    }
 
-template<typename T>
-inline void rpss_clearArray(T (&buffer)[], unsigned int len)
-{
-	rpss_clearArrayFunc(buffer, len)();
-}
+    template<typename T>
+    inline void rpss_clearArray(T (&buffer)[], unsigned int len)
+    {
+        rpss_clearArrayFunc(buffer, len)();
+    }
 
-template<typename T>
-inline std::function<void (T)> rpss_appendToArrayFunc(T buffer[], unsigned int &insertionIndex)
-{
-	return [&buffer, &insertionIndex](T value)->void {printf("index: %u\n", (int)insertionIndex); buffer[insertionIndex++] = value;};
-}
+    template<typename T>
+    inline std::function<void (T)> rpss_appendToArrayFunc(T buffer[], unsigned int &insertionIndex)
+    {
+        return [&buffer, &insertionIndex](T value)->void {printf("index: %u\n", (int)insertionIndex); buffer[insertionIndex++] = value;};
+    }
 
-template<typename T>
-inline void rpss_appendToArray(T buffer[], unsigned int &insertionIndex, T value)
-{
-	rpss_appendToArrayFunc(buffer, insertionIndex)(value);
-}
-
+    template<typename T>
+    inline void rpss_appendToArray(T buffer[], unsigned int &insertionIndex, T value)
+    {
+        rpss_appendToArrayFunc(buffer, insertionIndex)(value);
+    }
 }
 
 #endif /* MEMORY_OPERATIONS_HPP_ */

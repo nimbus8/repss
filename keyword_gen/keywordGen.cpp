@@ -703,12 +703,12 @@ int main(int argc, char *argv[])
 
      + [1] : Exclusive Hexadecimal Counting
               - made up phrasing, meaning the
-                way we count in hexadecimal so that,
-                by assigning each number to a enumeration value,
-                we can use the logical AND ('&') in combination 
-                with the Exclusive OR operation (XOR, '^' in c) to let one
-                variable represent a great number of combinations of options
-                and states defined in a given enumeration.
+                way we count in hexadecimal so that, by assigning each number to a particular 
+                named enumeration choice, we can use the logical AND ('&') in combination with 
+                the Exclusive OR operation (XOR, '^' in c) to let one unsigned interger variable represent a 
+                great /[(many|number)] of combinations of said choices (states, or configurations, or w\e)
+                defined succinctly as part of a single enumeration instance concretely represented by an unsigned
+                integer.
 
                    eg:
                        Thursday=0x0, Friday=0x2, Saturday=0x4, RecognizedNonPartyDay=0x8
