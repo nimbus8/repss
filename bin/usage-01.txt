@@ -142,10 +142,10 @@ A famous example of a particular tandem repeat is the Fragile X Syndrome
 [Eberhart and Warren, 1996]. Having 3 base pairs at it’s core, CGG, the
 /[(method:|disease::)] whereby the /[(|repeated)] sequence is lengthened further
 /[(|*during transcription)] is /[(called|named)] trinucleotide repeat /[(:expansion|::disorder)]. In
-the normal population /[(we|we’d)] expect to find /[(a contiguous sequence of /[(|the nucleotides|the residues)] CCG repeated|CGG repeated)]
+the normal population /[(we|we’d)] expect to find /[(a contiguous sequence of /[(|the/[(:|se::)] nucleotides /[(: |::, /[(|the residues)] )] |the residues)] CCG repeated|CGG repeated)]
 /[(|anywhere from|about)><] 6-52 times at a particular site. For the length of the
-core sequence /[(|of residues)], /[(|that is)] < 6 /[(|in this case 3)],
-/[the sites of their occurrences are usually called|we call the sites /[(of their occurrence|where they’re found|wherever they’re found)])] microsatellites. In
+core sequence /[(|of residues)], /[(:|* that is,::)] less than 6 /[(|/[(: |::,)] /[(|*and)] in this case 3)],
+/[the sites of their occurrences are usually labelled /[(|/[(*|by)] the term)] | we call these sites /[(of their occurrence|where they’re found|wherever they’re found)])] microsatellites. In
 affected populations, even where there /[(isn’t|aren’t)] any sort of phenotypical
 expression visible /[(|/[(to the individual | at the individual level | for an individual)])], the number of repeated CGG residues are much greater than /[(in the normal population.|the range found in the normal population)]
 
