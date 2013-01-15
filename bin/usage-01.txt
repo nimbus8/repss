@@ -147,7 +147,7 @@ the normal population /[(we|we’d)] expect to find /[(a contiguous sequence of 
 core sequence /[(|of residues)], /[(:|* that is,::)] less than 6 /[(|/[(: |::,)] /[(|*and)] in this case 3)],
 /[the sites of their occurrences are usually labelled /[(|/[(*|by)] the term)] | we call these sites /[(of their occurrence|where they’re found|wherever they’re found)])] microsatellites. In
 affected populations, even where there /[(isn’t|aren’t)] any sort of phenotypical
-expression visible /[(|/[(to the individual | at the individual level | for an individual)])], the number of repeated CGG residues are much greater than /[(in the normal population.|the range found in the normal population)]
+expression visible /[(|/[(to the individual | at the individual level | for an individual)])], the number of repeated CGG residues are /[(|still)] much greater than /[(that /[(of|found|in)] the normal unaffected population.|the range found in the normal population)]
 
 
 Short strings /[(called|referred to /[(|normally|hereafter)> >and also<] as)] binding sites are
