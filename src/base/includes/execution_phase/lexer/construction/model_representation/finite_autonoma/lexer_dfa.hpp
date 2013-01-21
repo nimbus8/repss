@@ -79,15 +79,22 @@ enum class Lexer_Dfa_Properties : unsigned int
     ISA_DOWNCOUNT_INDICATOR	= 0x8
 };
 
-inline void addProperty(unsigned int& properties, Lexer_Dfa_Properties property)
+inline bool checkForProperty(const unsigned int& properties, const Lexer_Dfa_Properties& property)
 {
     unsigned int propertyAsUnsignedInteger = static_cast<unsigned int>(property);
 
-    if (!(properties & propertyAsUnsignedInteger))
+    return (properties & propertyAsUnsignedInteger);
+}
+
+inline void addProperty(unsigned int& properties, const Lexer_Dfa_Properties& property)
+{
+    if (!(checkForProperty(properties, property)))
     {
+        unsigned int propertyAsUnsignedInteger = static_cast<unsigned int>(property);
+
         properties ^= propertyAsUnsignedInteger;
     
-        if (!(properties & propertyAsUnsignedInteger))
+        if (!(checkForProperty(properties, property)))
         {
             perror("Ooops, property assignment doesn't work. Make it work...");
             exit(1);
@@ -99,6 +106,8 @@ inline void addProperty(unsigned int& properties, Lexer_Dfa_Properties property)
         exit(1);
     }
 }
+
+
 
 class lexer_dfa
 {
@@ -130,6 +139,12 @@ public:
             delete _anythingButTransition;
         }
     }
+
+    bool isPushDownActivator() const { return checkForProperty(_properties, Lexer_Dfa_Properties::ISA_PUSH_DOWN_ACTIVATOR); }
+
+    bool isUpCountIndicator() const { return checkForProperty(_properties, Lexer_Dfa_Properties::ISA_UPCOUNT_INDICATOR); }
+
+    bool isDownCountIndicator() const { return checkForProperty(_properties, Lexer_Dfa_Properties::ISA_DOWNCOUNT_INDICATOR); }
 
     void _printTransitions() const
     {

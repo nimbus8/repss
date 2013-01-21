@@ -36,6 +36,13 @@
 #define EMPTY_CHAR '\0'
 #define ST_ACCEPT 1001
 
+#define DEBUG
+#ifdef DEBUG
+    #define DeLOG(str) printf("CONSTRUCTION : LINE %d : %s", __LINE__, str);
+#else
+    #define DeLOG(str)
+#endif
+
 void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, char seq[], size_t seq_length);
 
 //oct 31: optimization with scanwords failed hard. it could be just the smallness and similarity of our
@@ -1453,11 +1460,13 @@ void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, 
 {
     std::cout << "Construction Test: (," << seq << ", " << seq_length << ")" << std::endl;
 
+    std::vector<std::string> adhocStack;
+
     int count = 0;
     int state = word->getId(); //start state (for a specific test) is word_base's identifier
     auto curr = word;
 
-    std::cout << "Starting state: " << state << ", startingDfaId: " << curr->getId() << std::endl;
+    DeLOG(std::string("Starting state: ").append(std::to_string(state)).append(", startingDfaId: ").append(std::to_string(curr->getId())).append("\n").c_str());
 
     const lexer_word_repr* nextDfa;
 
@@ -1530,6 +1539,9 @@ void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, 
         std::cout << "reached end of input" << std::endl << std::endl;
     }
 }
+
+#undef DEBUG
+#undef DeLOG
 
 //Footnotes:
 //[1] It's why we're building our own lexer instead of using the 'lex' tool (a fine tool btw).
