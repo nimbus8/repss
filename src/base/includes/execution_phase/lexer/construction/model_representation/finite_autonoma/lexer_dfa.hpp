@@ -1,6 +1,6 @@
 /*
  REPSS
- Copyright (C) 2012  Khalique Williams
+ Copyright (C) 2012,2013  Khalique Williams
 
  This file is part of REPSS.
 
@@ -51,25 +51,54 @@ class lexer_dfa;
 class LexerTransition
 {
 private:
-        const StateAndInput<int,char> _stateAndInput;
-        const lexer_dfa* _dfaNode;
+    const StateAndInput<int,char> _stateAndInput;
+    const lexer_dfa* _dfaNode;
 public:
-        LexerTransition(const StateAndInput<int,char> stateAndInput, const lexer_dfa* dfaNode)
-                : _stateAndInput(stateAndInput), _dfaNode(dfaNode) {}
+    LexerTransition(const StateAndInput<int,char> stateAndInput, const lexer_dfa* dfaNode)
+        : _stateAndInput(stateAndInput), _dfaNode(dfaNode) {}
 
-        LexerTransition(const LexerTransition& other) : _stateAndInput(other._stateAndInput), _dfaNode(other._dfaNode) {}
-        LexerTransition(const LexerTransition&& other) : _stateAndInput(other._stateAndInput), _dfaNode(other._dfaNode) {}
-        const LexerStateAndInput getStateAndInput() const {
-            LexerStateAndInput lexerStateAndInput(_stateAndInput.getState(), _stateAndInput.getInput());
-            return lexerStateAndInput;
-        }
-        const lexer_dfa* getDfaNode() const { return _dfaNode; }
+    LexerTransition(const LexerTransition& other) : _stateAndInput(other._stateAndInput), _dfaNode(other._dfaNode) {}
+    LexerTransition(const LexerTransition&& other) : _stateAndInput(other._stateAndInput), _dfaNode(other._dfaNode) {}
+    const LexerStateAndInput getStateAndInput() const {
+    LexerStateAndInput lexerStateAndInput(_stateAndInput.getState(), _stateAndInput.getInput());
+        return lexerStateAndInput;
+    }
+    const lexer_dfa* getDfaNode() const { return _dfaNode; }
 
-        bool getIsRanged() const { return _stateAndInput.getIsRanged(); }
-        bool getIsAnythingBut() const { return _stateAndInput.getIsAnythingBut(); }
+    bool getIsRanged() const { return _stateAndInput.getIsRanged(); }
+    bool getIsAnythingBut() const { return _stateAndInput.getIsAnythingBut(); }
 
-        ~LexerTransition() {}
+    ~LexerTransition() {}
 };
+
+
+enum class Lexer_Dfa_Properties : unsigned int
+{
+    ISA_PUSH_DOWN_ACTIVATOR 	= 0x2,
+    ISA_UPCOUNT_INDICATOR	= 0x4,
+    ISA_DOWNCOUNT_INDICATOR	= 0x8
+};
+
+inline void addProperty(unsigned int& properties, Lexer_Dfa_Properties property)
+{
+    unsigned int propertyAsUnsignedInteger = static_cast<unsigned int>(property);
+
+    if (!(properties & propertyAsUnsignedInteger))
+    {
+        properties ^= propertyAsUnsignedInteger;
+    
+        if (!(properties & propertyAsUnsignedInteger))
+        {
+            perror("Ooops, property assignment doesn't work. Make it work...");
+            exit(1);
+        }
+    }
+    else
+    {
+        perror("Already Applied Propery! Ooops, Fix This!");
+        exit(1);
+    }
+}
 
 class lexer_dfa
 {
@@ -77,10 +106,12 @@ private:
     typedef std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals> state_to_dfa_map_t;
 
     mutable state_to_dfa_map_t	_nextStates;
-    int				_id;		//todo:will put this as unsigned int
+    int				_id;    //todo:will put this as unsigned int
     LexerTransition*		_anythingButTransition;
 
-    lexer_dfa() : _id(-1), _anythingButTransition(nullptr) {}
+    const unsigned int		_properties; //a KEYWORD may be recursive[1]
+
+    lexer_dfa() : _id(-1), _anythingButTransition(nullptr), _properties(0x0) {}
 
     void _printInputHash(const StateAndInput<int,char>& stateAndInput, const std::string& name) const
     {
@@ -89,7 +120,8 @@ private:
     }
 
 public:
-    explicit lexer_dfa(int id) : _id(id), _anythingButTransition(nullptr) {}
+    explicit lexer_dfa(int id) : _id(id), _anythingButTransition(nullptr), _properties(0x0) {}
+    lexer_dfa(const int& id, const unsigned int& properties) : _id(id), _anythingButTransition(nullptr), _properties(properties) {}
 
     ~lexer_dfa()
     {
@@ -321,3 +353,16 @@ typedef lexer_dfa lexer_word_repr;
 #undef DeLOG
 
 #endif
+
+/*
+
+[1] Recursive Keywords (Jan 21, 2013) :
+      Most keywords are not recursive, some are (i.e. 'alternation')
+          To handle the recursiveness on during scanning we will employ a stack
+             to keep track of just how far deep we've gone. A flag on a node
+             tells whether this is necessary.
+
+      At higher levels, the flag wont be a field on it's own, but packed into an
+      unsigned integer. We may even bring that down to this low level too but it's not
+      that important at the moment.
+*/

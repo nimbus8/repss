@@ -1,6 +1,6 @@
 /*
  REPSS
- Copyright (C) 2012  Khalique Williams
+ Copyright (C) 2012,2013  Khalique Williams
 
  This file is part of REPSS.
 
@@ -66,12 +66,19 @@ public:
         return ret;
     }
 
+    lexer_word_repr* createLexerWordRepr() { return createDfa(); }
+
+    lexer_word_repr* createRecursiveLexerWordRepr();
+    lexer_word_repr* createInternalRecursiveLexerWordRepresentation();
+    lexer_dfa* createInternalRecursiveAcceptingDfa();
+    lexer_dfa* createRecursiveAcceptingDfa(const std::string endStateName);
+
     lexer_dfa* createAcceptingDfa(const std::string endStateName)
     {
         int nextIdCount = _idCount + 1;
         _idCount++;
 
-        std::cout << "CREATING end state mapping: endStateToName=(" << nextIdCount
+        std::cout << "CREATING end state mapping for NORMAL-DFA: endStateToName=(" << nextIdCount
                   << "=>" << endStateName << ")" << std::endl; 
 
         std::pair<int, std::string> idToEndStateName{nextIdCount, endStateName};
@@ -82,9 +89,7 @@ public:
         return ret;
     }
 
-    //we return a pair of lexer_dfa and an unsigned integer - the latter acts as a key, needed to update tentative
-    //name.
-    //todo:will weds oct 3, 2012 - test this -
+    //we return a pair of lexer_dfa and an unsigned integer - the latter acts as a key, needed to update tentative name.
     std::pair<lexer_dfa*, unsigned int> createAcceptingDfaTentativelyNamed(const std::string initialTentativeName)
     {
         auto lexerDfa = createAcceptingDfa(initialTentativeName);
@@ -165,8 +170,6 @@ public:
 
         return fetched->second;
     }
-
-    lexer_word_repr* createLexerWordRepr() { return createDfa(); }
 
     bool destroyDfa(lexer_dfa* toBeDestroyed) 
     {

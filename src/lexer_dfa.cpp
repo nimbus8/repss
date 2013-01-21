@@ -24,7 +24,6 @@
 #include "base/includes/execution_phase/lexer/construction/model_representation/finite_autonoma/lexer_dfa.hpp"
 
 #define DEBUG
-//#undef DEBUG
 #ifdef DEBUG
     #define DeLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str);
     #define DLOG(str) printf("%s %d:%s", __FILE__, __LINE__, str)
@@ -33,14 +32,21 @@
     #define DLOG(str)
 #endif
 
+#define UNDESIRABLE false
+#define DESIRED true
+
+//used here mostly to negate debug stuff for benchmarking
+#define DONT if(UNDESIRABLE)
+#define DO if(DESIRED)
+
 const lexer_dfa* lexer_dfa::getNextDfa(const LexerStateAndInput& lexerStateAndInput) const
 {
     const StateAndInput<int,char> stateAndInput(lexerStateAndInput.getState(), 
         lexerStateAndInput.getInput(), false);
 
-    //_printInputHash(stateAndInput, "stateAndInput"); //commented in order to benchmark diff between ScanWords
+    DONT _printInputHash(stateAndInput, "stateAndInput");
     DeLOG(std::string{"\t_nextStates::size = "}.append(std::to_string(_nextStates.size())).append("\n").c_str());
-    //_printTransitions(); //commented in order to benchmark diff between ScanWords
+    DONT _printTransitions();
 
     lexer_dfa* ret;
 
@@ -59,29 +65,29 @@ const lexer_dfa* lexer_dfa::getNextDfa(const LexerStateAndInput& lexerStateAndIn
         {
             StateAndInput<int,char> rangedInput(stateAndInput.getState(), SI_NUMBERS_0, true);
 
-            //std::cout << "\t\t"; //commented in order to benchmark diff between ScanWords
-            //_printInputHash(rangedInput, "rangedInput"); //commented in order to benchmark diff between ScanWords
+            DONT std::cout << "\t\t";
+            DONT _printInputHash(rangedInput, "rangedInput");
 
             std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals>::const_iterator fetchedNumbers0
                 = _nextStates.find(rangedInput);
 
             if (fetchedNumbers0 != _nextStates.end())
             {
-                //std::cout << "\tFound rangedNumber! (0)" << std::endl; //commented in order to benchmark diff between ScanWords
+                DONT std::cout << "\tFound rangedNumber! (0)" << std::endl;
                 ret = fetchedNumbers0->second;
             }
             else
             {
                 StateAndInput<int,char> rangedInput2(stateAndInput.getState(), SI_NUMBERS_0to9, true);
-                //std::cout << "\t\t"; //commented in order to benchmark diff between ScanWords
-                //_printInputHash(rangedInput2, "SI_NUMBERS_0to9"); //commented in order to benchmark diff between ScanWords
+                DONT std::cout << "\t\t";
+                DONT _printInputHash(rangedInput2, "SI_NUMBERS_0to9"); 
 
                 std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals>::const_iterator fetchedNumbers0to9
                     = _nextStates.find(rangedInput2);
 
                 if (fetchedNumbers0to9 != _nextStates.end())
                 {
-                    //std::cout << "\trangedNumber:[0-9]" << std::endl; //commented in order to benchmark diff between ScanWords
+                    DONT std::cout << "\trangedNumber:[0-9]" << std::endl; 
                     ret = fetchedNumbers0to9->second;
                 }
             }
@@ -90,68 +96,67 @@ const lexer_dfa* lexer_dfa::getNextDfa(const LexerStateAndInput& lexerStateAndIn
         {
             StateAndInput<int,char> rangedInput0to9(stateAndInput.getState(), SI_NUMBERS_0to9, true);
 
-            //std::cout << "\t\t"; //commented in order to benchmark diff between ScanWords
-            //printInputHash(rangedInput0to9, "rangedInputNumbers0to9"); //commented in order to benchmark diff between ScanWords
+            DONT std::cout << "\t\t"; 
+            DONT _printInputHash(rangedInput0to9, "rangedInputNumbers0to9");
 
             std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals>::const_iterator fetchedNumbers0to9
                 = _nextStates.find(rangedInput0to9);
 
             if (fetchedNumbers0to9 != _nextStates.end())
             {
-                //std::cout << "\tFound rangedNumber! ([0-9])" << std::endl; //commented in order to benchmark diff between ScanWords
+                DONT std::cout << "\tFound rangedNumber! ([0-9])" << std::endl; 
                 ret = fetchedNumbers0to9->second;
             }
             else
             {
                 StateAndInput<int,char> rangedInput1to9(stateAndInput.getState(), SI_NUMBERS_1to9, true);
-                //std::cout << "\t\t"; //commented in order to benchmark diff between ScanWords
-                //_printInputHash(rangedInput1to9, "rangedInputNumbers1to9"); //commented in order to benchmark diff between ScanWords
+                DONT std::cout << "\t\t"; 
+                DONT _printInputHash(rangedInput1to9, "rangedInputNumbers1to9");
 
                 std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals>::const_iterator fetchedNumbers1to9
                     = _nextStates.find(rangedInput1to9);
 
                 if (fetchedNumbers1to9 != _nextStates.end())
                 {
-                    //std::cout << "\trangedNumber:[1-9]" << std::endl; //commented in order to benchmark diff between ScanWords
+                    DONT std::cout << "\trangedNumber:[1-9]" << std::endl; 
                     ret = fetchedNumbers1to9->second;
                 }
             }
         }   
         else if (input >= 'a' && input <= 'z')
         {
-            //std::cout << "\tChecking lowerase ranged" << std::endl; //commented in order to benchmark diff between ScanWords
+            DONT std::cout << "\tChecking lowerase ranged" << std::endl; 
 
             StateAndInput<int,char> rangedInput(stateAndInput.getState(), SI_CHARS_LOWER, true);
 
-            //std::cout << "\t\t";
-            //_printInputHash(rangedInput, "rangedInput"); //commented in order to benchmark diff between ScanWords
+            DONT std::cout << "\t\t";
+            DONT _printInputHash(rangedInput, "rangedInput"); 
 
-            //std::cout << "\t\tlexer_dfa::getNextState(...): (state,input) = (" << stateAndInput.getState() << ", SI_CHARS_LOWER)" << std::endl;
+            DONT std::cout << "\t\tlexer_dfa::getNextState(...): (state,input) = (" << stateAndInput.getState() << ", SI_CHARS_LOWER)" << std::endl;
 
             std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals>::const_iterator fetchedCharsLower
                 = _nextStates.find(rangedInput);
 
             if (fetchedCharsLower != _nextStates.end())
             {
-                //std::cout << "\tFound rangedChars:[a-z]" << std::endl; //commented in order to benchmark diff between ScanWords
+                DONT std::cout << "\tFound rangedChars:[a-z]" << std::endl; 
                 ret = fetchedCharsLower->second;
             }
             else
             {
                 StateAndInput<int,char> rangedInput2(stateAndInput.getState(), SI_CHARS_ANY, true);
 
-                //std::cout << "\t\t"; //commented in order to benchmark diff between ScanWords
-                //_printInputHash(rangedInput2, "rangedInput2"); //commented in order to benchmark diff between ScanWords
+                DONT std::cout << "\t\t"; 
+                DONT _printInputHash(rangedInput2, "rangedInput2"); 
 
-                //std::cout << "\t\tlexer_dfa::getNextState(...): (state,input) = (" 
-                //<< stateAndInput.getState() << ", SI_CHARS_ANY)" << std::endl; //commented in order to benchmark diff between ScanWords
+                DONT std::cout << "\t\tlexer_dfa::getNextState(...): (state,input) = (" << stateAndInput.getState() << ", SI_CHARS_ANY)" << std::endl; 
 
                 std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals>::const_iterator fetchedCharsAny
                     = _nextStates.find(rangedInput2);
 
                 if (fetchedCharsAny != _nextStates.end())
                 {
-                    //std::cout << "rangedChars:([a-z]|[A-Z])" << std::endl; //commented in order to benchmark diff between ScanWords
+                    DONT std::cout << "rangedChars:([a-z]|[A-Z])" << std::endl;
                     ret = fetchedCharsAny->second;
                 }
 
@@ -159,14 +164,14 @@ const lexer_dfa* lexer_dfa::getNextDfa(const LexerStateAndInput& lexerStateAndIn
         }
         else if (input >= 'A' && input <= 'Z')
         {
-            //std::cout << "\tChecking uppercase ranged" << std::endl; //commented in order to benchmark diff between ScanWords
+            DONT std::cout << "\tChecking uppercase ranged" << std::endl; 
 
             StateAndInput<int,char> rangedInput(stateAndInput.getState(), SI_CHARS_UPPER, true);
 
-            //std::cout << "\t\t";
-            //_printInputHash(rangedInput, "rangedInput"); //commented in order to benchmark diff between ScanWords
+            DONT std::cout << "\t\t";
+            DONT _printInputHash(rangedInput, "rangedInput"); 
 
-            //std::cout << "\t\tlexer_dfa::getNextState(...): (state,input) = (" << stateAndInput.getState() << ", SI_CHARS_UPPER)" << std::endl;
+            DONT std::cout << "\t\tlexer_dfa::getNextState(...): (state,input) = (" << stateAndInput.getState() << ", SI_CHARS_UPPER)" << std::endl;
 
             std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals>::const_iterator fetchedCharsUpper
                 = _nextStates.find(rangedInput);
@@ -180,17 +185,17 @@ const lexer_dfa* lexer_dfa::getNextDfa(const LexerStateAndInput& lexerStateAndIn
             {
                 StateAndInput<int,char> rangedInput2(stateAndInput.getState(), SI_CHARS_ANY, true);
 
-                //std::cout << "\t\t";
-                //_printInputHash(rangedInput, "rangedInput"); //commented in order to benchmark diff between ScanWords
+                DONT std::cout << "\t\t";
+                DONT _printInputHash(rangedInput, "rangedInput"); 
 
-                //std::cout << "\t\tlexer_dfa::getNextState(...): (state,input) = (" << stateAndInput.getState() << ", SI_CHARS_ANY)" << std::endl;
+                DONT std::cout << "\t\tlexer_dfa::getNextState(...): (state,input) = (" << stateAndInput.getState() << ", SI_CHARS_ANY)" << std::endl;
 
                 std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals>::const_iterator fetchedCharsAny
                     = _nextStates.find(rangedInput2);
 
                 if (fetchedCharsAny != _nextStates.end())
                 {
-                    //std::cout << "rangedChars:([a-z]|[A-Z])" << std::endl; //commented in order to benchmark diff between ScanWords
+                    DONT std::cout << "rangedChars:([a-z]|[A-Z])" << std::endl;
                     ret = fetchedCharsAny->second;
                 }
             }
@@ -217,20 +222,20 @@ const lexer_dfa* lexer_dfa::getNextDfa(const LexerStateAndInput& lexerStateAndIn
                 //check case of empty char
                 StateAndInput<int,char> stateAndEmptyCharInput(stateAndInput.getState(), '\0');
 
-                //std::cout << "\t\t";
-                //_printInputHash(stateAndEmptyCharInput, "stateAndEmptyInput"); //commented in order to benchmark diff between ScanWords
+                DONT std::cout << "\t\t";
+                DONT _printInputHash(stateAndEmptyCharInput, "stateAndEmptyInput"); 
 
                 std::unordered_map<StateAndInput<int,char>, lexer_dfa*, StateAndInputHashFunction, StateAndInputEquals>::const_iterator fetchedEmptyChar
                     = _nextStates.find(stateAndEmptyCharInput);                
 
                 if (fetchedEmptyChar != _nextStates.end())
                 {
-                    //std::cout << "\tfound empty char!!!" << std::endl;
+                    DONT std::cout << "\tfound empty char!!!" << std::endl;
                     ret = fetchedEmptyChar->second;
                 }
                 else
                 {
-                    //std::cout << "\tkey not found" << std::endl;
+                    DONT std::cout << "\tkey not found" << std::endl;
                     ret = nullptr;
                 }
             }
@@ -247,3 +252,8 @@ const lexer_dfa* lexer_dfa::getNextDfa(const LexerStateAndInput& lexerStateAndIn
 #undef DEBUG
 #undef DLOG
 #undef DeLOG
+
+#undef UNDESIRABLE
+#undef DESIRED
+#undef DO
+#undef DONT

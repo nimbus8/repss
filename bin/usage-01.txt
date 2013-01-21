@@ -1,5 +1,5 @@
  REPSS
- Copyright (C) 2012  Khalique Williams
+ Copyright (C) 2012,2013  Khalique Williams
 
  This file is part of REPSS.
 
@@ -25,7 +25,7 @@
 But no, I wasn't bothered, how could I be? Besides the devil's in the details, /[(*|certainly)] 
 and boy that /[(guy| m************r)]'s a drama queen. /[(I swear to god it|I swear it|It)]'s every little thing 
 with /[(him|this guy)], you won't hear the end of it - nor should you if the pages /[(|should)] fall anywhere 
-short of inspiring /[(and|or)] insightful. 
+short of /[( inspiring /[(and|or)] insightful | /[(insightful | inspiring)> /[(and | or)] <] )]. 
 
 All in moderation of course, /[(|at least)] until that tingly feeling /[(disappears|fades /[(to|into)] a distant memory)> and <] - then go 
 /[(crazy | wild /[(|and rotten /[(|if that pleases you.)] )] )] so long as it doesn't hurt anybody else in the process /[(|of you doing so /[(|and of course in the aftermath of what I might only presume /[(should|would)] be the planting of bomb so vile and nuclear that you'd be lucky /[(if you|to)>>were<have] walked away unscathed )] )],

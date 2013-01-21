@@ -683,9 +683,20 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlteration()
     return ret;
 }
 
+//this needs to be supported by a stack
 wordrepr_and_transition_Pair_t lexer_word_constructor::_constructRecursiveAlteration()
 {
+    const std::string WORD_NAME("recursive_alteration");
 
+    lexer_word_repr* word_base = dfaManager.createRecursiveLexerWordRepr();
+
+    lexer_dfa* DFA_2 = dfaManager.createDfa();
+    auto DFA_3 = dfaManager.createDfa();
+    auto DFA_4 = dfaManager.createDfa();
+    auto DFA_5 = dfaManager.createDfa();
+    auto DFA_6 = dfaManager.createDfa();
+    auto DFA_7 = dfaManager.createDfa();
+    auto DFA_8 = dfaManager.createRecursiveAcceptingDfa(WORD_NAME);
 }
 
 wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlterationAndJoin()
