@@ -57,9 +57,9 @@ public:
         _words.push_back(aAlterationWord.first);
         _dfaTransitions.push_back(aAlterationWord.second);
 
-//        auto aRecursiveAlterationWord = _constructRecursiveAlteration();
-//        _words.push_back(aRecursiveAlterationWord.first);
-//        _dfaTransitions.push_back(aRecursiveAlterationWord.second);
+        auto aRecursiveAlterationWord = _constructRecursiveAlteration();
+        _words.push_back(aRecursiveAlterationWord.first);
+        _dfaTransitions.push_back(aRecursiveAlterationWord.second);
 
         auto aKeyword_evalWord = _constructKeyword_eval();
         _words.push_back(aKeyword_evalWord.first);

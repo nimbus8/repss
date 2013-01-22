@@ -697,6 +697,11 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructRecursiveAltera
 
     lexer_word_repr* word_base = dfaManager.createRecursiveLexerWordRepr();
 
+    //todo: make the the transition to first '(' the upcount indicator, 
+    // this to prevent the stack from being activator with say /[reps] as the merge process
+    // will attribute pushdown activating property to the final merged dfa.
+    //  BTW keep the same node after ']' as the downcount indicator
+
     lexer_dfa* DFA_2 = dfaManager.createDfa();
     auto DFA_3 = dfaManager.createDfa();
     auto DFA_4 = dfaManager.createDfa();
@@ -704,6 +709,129 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructRecursiveAltera
     auto DFA_6 = dfaManager.createDfa();
     auto DFA_7 = dfaManager.createDfa();
     auto DFA_8 = dfaManager.createRecursiveAcceptingDfa(WORD_NAME);
+
+    const auto ST_1 = word_base->getId();
+    const auto ST_2 = DFA_2->getId(), ST_3 = DFA_3->getId(), ST_4 = DFA_4->getId();
+    const auto ST_5 = DFA_5->getId(), ST_6 = DFA_6->getId(), ST_7 = DFA_7->getId();
+
+    //internal dfas
+    auto DFA_INTERNAL_2 = dfaManager.createDfa();
+    auto DFA_INTERNAL_3 = dfaManager.createDfa();
+    auto DFA_INTERNAL_4 = dfaManager.createInternalRecursiveLexerWordRepresentation();
+    auto DFA_INTERNAL_5 = dfaManager.createDfa();
+    auto DFA_INTERNAL_6 = dfaManager.createDfa();
+    auto DFA_INTERNAL_7 = dfaManager.createDfa();
+
+    //internal recursive states
+    const auto ST_INTERNAL_2 = DFA_INTERNAL_2->getId(), ST_INTERNAL_3 = DFA_INTERNAL_3->getId();
+    const auto ST_INTERNAL_4 = DFA_INTERNAL_4->getId(), ST_INTERNAL_5 = DFA_INTERNAL_5->getId();
+    const auto ST_INTERNAL_6 = DFA_INTERNAL_6->getId(), ST_INTERNAL_7 = DFA_INTERNAL_7->getId(); 
+
+    //note to self, 'anything buts' are evaluated after normal and ranged - poor solution but im not sure how to handle this well
+
+    //About Recursion:
+    //initially this wont allow '/' to appear inside the alternations
+    // not sure how much work it would take to make this go away.
+
+    StateAndInput<int,char> stateInput1(ST_1,'/');
+     StateAndInput<int,char> stateInput2(ST_2,'[');
+      StateAndInput<int,char> stateInput3(ST_3,'(');
+       StateAndInput<int,char> stateInput4b(ST_4, ')');
+               StateAndInput<int,char> stateInput7(ST_7, ']');
+       StateAndInput<int,char> stateInput4a(ST_4,'|');
+           StateAndInput<int,char> stateInput5(ST_5,'|',false,true); //goes to 6
+           StateAndInput<int,char> stateInput5b(ST_5, '\n', false, false); //goes back into 5 //should go to a state that doesn't accept '\n'
+       StateAndInput<int,char> stateInput4c(ST_4, '|', false, true); //non-ranged anything but -- i kno kinda horrible eh? change to enum or (combined uint repr)
+           StateAndInput<int,char> stateInput6a(ST_6,'|'); //goes to 5
+           StateAndInput<int,char> stateInput6b(ST_6,')'); //goes to 7
+           StateAndInput<int,char> stateInput6c(ST_6,'|', false, true); //goes to 6
+       StateAndInput<int,char> stateInput4d(ST_4, '/'); //main entry point to internal
+        StateAndInput<int,char> stateInputInternal2(ST_INTERNAL_2, '[');
+         StateAndInput<int,char> stateInputInternal3(ST_INTERNAL_3, '(');
+          StateAndInput<int,char> stateInputInternal4b(ST_INTERNAL_4, ')');
+                  StateAndInput<int,char> stateInputInternal7(ST_INTERNAL_7, ']');
+                     //just about anything goes here... it's very similar ifnot the same as ST_4 choice
+                     //must be handled. it may already be handled... ...
+                      //reaching state seven means ONE internal clause has closed. it says nothing
+                      // about whther satisfying conditions for overall keyword termination have been
+                      // met inside stack. So...I'm thinking it should land on the same ENDING
+                      // platform so that the decision is not made here. This has to do with how its
+                      // transitioned.
+
+          //BTW were not thinking of the upcount mechanism reaching deep into the BASE construct?
+          // todo:check notes. I could just be tired thinking all this is necessary.
+
+          StateAndInput<int,char> stateInputInternal4a(ST_INTERNAL_4, '|');
+              StateAndInput<int,char> stateInputInternal5(ST_INTERNAL_5,'|',false,true); //goes to 6
+              StateAndInput<int,char> stateInputInternal5b(ST_INTERNAL_5, '\n', false, false); //goes back into 5      //should go to a state that doesn't accept '\n'
+          StateAndInput<int,char> stateInputInternal4c(ST_INTERNAL_4, '|', false, true); //non-ranged anything but      -- i kno kinda horrible eh? change to enum or (combined uint repr)
+                StateAndInput<int,char> stateInputInternal6a(ST_INTERNAL_6,'|'); //goes to 5
+                StateAndInput<int,char> stateInputInternal6b(ST_INTERNAL_6,')'); //goes to 7
+                StateAndInput<int,char> stateInputInternal6c(ST_INTERNAL_6,'|', false, true); //goes to 6
+          StateAndInput<int,char> stateInputInternal4d(ST_INTERNAL_4, '/'); //goes to internal node 3
+     
+
+    const DfaTransition* idfa1 = dfaManager.createDfaTransition(&stateInput1,DFA_2);
+    auto idfa2 = dfaManager.createDfaTransition(&stateInput2, DFA_3);
+    auto idfa3 = dfaManager.createDfaTransition(&stateInput3, DFA_4);
+    auto idfa4a = dfaManager.createDfaTransition(&stateInput4a, DFA_5);
+        auto idfa5 = dfaManager.createDfaTransition(&stateInput5, DFA_6);
+        auto idfa5b = dfaManager.createDfaTransition(&stateInput5b, DFA_5);
+    auto idfa4b = dfaManager.createDfaTransition(&stateInput4b, DFA_7);
+            auto idfa7 = dfaManager.createDfaTransition(&stateInput7, DFA_8);
+    auto idfa4c = dfaManager.createDfaTransition(&stateInput4c, DFA_6);
+        auto idfa6a = dfaManager.createDfaTransition(&stateInput6a, DFA_5);
+        auto idfa6b = dfaManager.createDfaTransition(&stateInput6b, DFA_7);
+        auto idfa6c = dfaManager.createDfaTransition(&stateInput6c, DFA_6);
+
+    const lexer_dfa_builder lexer_builder;
+
+    const ApplyImmutableFunc<DfaTransition*> applyObj(1,idfa1);
+    bool wasSuccess =  lexer_builder.addDfa(word_base, applyObj);
+
+    const ApplyImmutableFunc<DfaTransition*> applyObj2to3(1,idfa2);
+    bool wasSuccess2 = lexer_builder.addDfa(DFA_2, applyObj2to3);
+
+    const ApplyImmutableFunc<DfaTransition*> applyObj3to4(1,idfa3);
+    bool wasSuccess3 = lexer_builder.addDfa(DFA_3, applyObj3to4);
+
+    const ApplyImmutableFunc<DfaTransition*> applyObj4to5n7n6(3,idfa4a,idfa4b,idfa4c);
+    bool wasSuccess4 = lexer_builder.addDfa(DFA_4, applyObj4to5n7n6);
+
+    const ApplyImmutableFunc<DfaTransition*> applyObj5to6(2,idfa5, idfa5b);
+    bool wasSuccess5 = lexer_builder.addDfa(DFA_5, applyObj5to6);
+
+    const ApplyImmutableFunc<DfaTransition*> applyObj6to5n7n6(3,idfa6a,idfa6b,idfa6c);
+    bool wasSuccess6 = lexer_builder.addDfa(DFA_6, applyObj6to5n7n6);
+
+    const ApplyImmutableFunc<DfaTransition*> applyObj7to8(1,idfa7);
+    bool wasSuccess7 = lexer_builder.addDfa(DFA_7, applyObj7to8);
+
+
+    if (wasSuccess && wasSuccess2 && wasSuccess3 && wasSuccess4 && wasSuccess5 && wasSuccess6
+        && wasSuccess7)
+    {
+        DeLOG(std::string("Successfully constructed /[(a|l|t|e|r/[(|n)]a|t|i|o|n)]\n").c_str());
+        DeLOG(std::string("-- To be clear we've ALSO successfully constructed /[(a|l|t|e|r/[(n|a)]|t|i|o|n)]\n").c_str());
+        DeLOG(std::string("-- To be clear THIS is STILL NOT constructed /[(a|l|t|e|r/[(n|a)>><]|t|i|o|n)]\n\tBut it's on the wish list!\n").c_str());
+
+        char seq[] = {'k','\n','/','[','(','a','|','c','|','/','[','(','d','|','e',')',']','g',')',']',' ','H'};
+        const size_t seq_length = 22;
+        debug_printDfa(dfaManager, word_base, seq, seq_length);
+    }
+
+    AggregatePtrsAndDelete<lexer_dfa*>* aggrAndDel =
+        new AggregateDfasAndDelete<lexer_dfa*>(8, word_base,
+            DFA_2, DFA_3, DFA_4, DFA_5, DFA_6, DFA_7, DFA_8);
+    std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*> innerRet (word_base, aggrAndDel);
+
+    AggregatePtrsAndDelete<DfaTransition*>* aggrAndDelDfaTransitions =
+        new AggregateDfaTransitionsAndDelete<DfaTransition*>(12,
+            idfa1, idfa2, idfa3, idfa4a, idfa4b, idfa4c, idfa5, idfa5b, idfa6a, idfa6b, idfa6c, idfa7);
+    std::pair<std::pair <lexer_word_repr*, AggregatePtrsAndDelete<lexer_dfa*>*>, AggregatePtrsAndDelete<DfaTransition*>*> ret(innerRet, aggrAndDelDfaTransitions);
+
+    return ret;
+
 }
 
 wordrepr_and_transition_Pair_t lexer_word_constructor::_constructAlterationAndJoin()
@@ -1460,11 +1588,42 @@ void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, 
 {
     std::cout << "Construction Test: (," << seq << ", " << seq_length << ")" << std::endl;
 
-    std::vector<std::string> adhocStack;
+    std::vector<char> adhocStack;
+
+    /*
+        Whenever we encounter an uptick indicator we push to stack.
+        With rec. alt. it's the '[' being pushed and the ']' being popped.
+        When we pop and nothing's left, and we've reached the acceptor,
+        its only then that we've recognized it. If we've reached the internal
+        acceptor and theres structurally nothing else there to support it, we'll
+        eventually clear the stack (its easier with line delimited processing...)
+
+        I have a feeling that it ISN'T possible to reach the top level accepting
+        and have the stack have things in it, all else working...Thats my bet at least.
+    */
+
+    auto debugPrintStack = [](const std::vector<char>& anAdHocStack)
+      {
+          DeLOG(std::string("Stack Size: ").append(std::to_string(anAdHocStack.size())).append("\n").c_str());
+      };
+
 
     int count = 0;
     int state = word->getId(); //start state (for a specific test) is word_base's identifier
     auto curr = word;
+
+    if (curr->isPushDownActivator())
+    {
+        DeLOG(std::string("Found Push Down Activator!\n").c_str());
+
+        if (curr->isUpCountIndicator())
+        {
+            adhocStack.push_back('[');
+
+            debugPrintStack(adhocStack);
+        }
+    }
+
 
     DeLOG(std::string("Starting state: ").append(std::to_string(state)).append(", startingDfaId: ").append(std::to_string(curr->getId())).append("\n").c_str());
 
@@ -1481,6 +1640,19 @@ void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, 
         {
                 state = aNextDfa->getId(); //state++;
                 nextDfa = aNextDfa;
+
+                if (nextDfa->isPushDownActivator())
+                {
+                    DeLOG(std::string("Found Push Down Activator!\n").c_str());
+
+                    if (nextDfa->isUpCountIndicator())
+                    {
+                        adhocStack.push_back('['); 
+
+                        debugPrintStack(adhocStack);
+                    }
+                }
+
                 break;
         }
     } while(count < seq_length);
@@ -1505,9 +1677,7 @@ void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, 
             {//search for a beginning
                 curr = word; //reset current dfa
                 
-                std::cout << "'" << seq[count-1] << "' - DfaNode(" << curr->getId() << ")"
-                        << " ~ stateAndInput=(state, seq,c): (" << state << ", "
-                        << count << ", " << seq[count] << ")" << std::endl;
+                DeLOG(std::string("'").append(std::to_string(seq[count-1])).append("' - DfaNode(").append(std::to_string(curr->getId())).append(")").append(" ~ stateAndInput=(state, seq,c): (").append(std::to_string(state)).append(", ").append(std::to_string(count)).append(", ").append(std::to_string(seq[count])).append(")\n").c_str());
 
                 LexerStateAndInput si0(state, seq[count++]);
                 auto aNextDfa = curr->getNextDfa(si0);
@@ -1522,21 +1692,61 @@ void debug_printDfa(const DfaManager& dfaManager, const lexer_word_repr*  word, 
         else
         {
             state = nextDfa->getId(); //state++;
+
+            if (nextDfa->isPushDownActivator() || (adhocStack.size() > 0 && (nextDfa->isEitherUpCountOrDownCountIndicator())))
+            {
+                //we trust that we dont construct the automata in silly way to have 2 PD
+                //activators ever in sequence...
+                if (adhocStack.size() > 0)
+                {
+                    //nextDfa is assumed NOT to be a PushDownActivator so therefore it must be
+                    //either the "PushDownDeactivator" or an INTERNAL upcount or downcount
+                    //indicator.
+
+                    if (nextDfa->isUpCountIndicator())
+                    {
+                        DeLOG(std::string("Found UpCount Indicator!\n").c_str());
+
+                        adhocStack.push_back('[');
+                        debugPrintStack(adhocStack);
+                    }
+                    else
+                    {
+                        DeLOG(std::string("Found DownCount Indicator!\n").c_str());
+
+                        //more assumptions, if it isn't an upcount indicator, 
+                        // it's a downcount indicator
+                        adhocStack.pop_back();
+                        debugPrintStack(adhocStack);
+                    }
+                }
+                else
+                {
+                    DeLOG(std::string("Found Push Down Activator!\n").c_str());
+                }
+
+                if (nextDfa->isUpCountIndicator())
+                {
+                    adhocStack.push_back('[');
+
+                    debugPrintStack(adhocStack);
+                }
+            }
         }
     }
 
     if (nextDfa == nullptr)
     {
-        std::cout << "nothing" << std::endl << std::endl;
+        DeLOG(std::string("nothing\n\n").c_str());
     }
-    else if (dfaManager.isAcceptingNode(state))
+    else if (dfaManager.isAcceptingNode(state) && adhocStack.empty())
     {
         auto foundWord = dfaManager.getAcceptingNodeName(nextDfa->getId());
-        std::cout << "found word!" << "word=(" << foundWord << ")" << std::endl << std::endl;
+        DeLOG(std::string("found word! word=(").append(foundWord).append(")\n\n").c_str());
     }
     else if (count >= seq_length)
     {
-        std::cout << "reached end of input" << std::endl << std::endl;
+        DeLOG(std::string("reached end of input\n\n").c_str());
     }
 }
 

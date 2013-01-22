@@ -146,6 +146,9 @@ public:
 
     bool isDownCountIndicator() const { return checkForProperty(_properties, Lexer_Dfa_Properties::ISA_DOWNCOUNT_INDICATOR); }
 
+    //we can make this better, by adding a check for propertieS function to check for multiple thinks at a time, or just two as is our use case.
+    bool isEitherUpCountOrDownCountIndicator() const { return checkForProperty(_properties, Lexer_Dfa_Properties::ISA_DOWNCOUNT_INDICATOR) || checkForProperty(_properties, Lexer_Dfa_Properties::ISA_UPCOUNT_INDICATOR); }
+
     void _printTransitions() const
     {
         StateAndInputHashFunction hashFunc;
