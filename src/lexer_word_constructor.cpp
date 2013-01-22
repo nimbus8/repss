@@ -757,6 +757,9 @@ wordrepr_and_transition_Pair_t lexer_word_constructor::_constructRecursiveAltera
                       // met inside stack. So...I'm thinking it should land on the same ENDING
                       // platform so that the decision is not made here. This has to do with how its
                       // transitioned.
+                      // UPDATE: So yes I am just very tired. The whole upcounting thing should be
+                      //  very 'shallow', whatever that means. I think it means it shouldnt refer
+                      //  to itself.
 
           //BTW were not thinking of the upcount mechanism reaching deep into the BASE construct?
           // todo:check notes. I could just be tired thinking all this is necessary.
