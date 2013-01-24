@@ -71,7 +71,7 @@ int main(int argc, char* yourArgument[])
     if (magically(thisNumberShouldBeNegative) == true)
     {
         //This would be, of course, a positive
-        printf("Fun is always greater that the absolute of it!\n");
+        printf("Fun is always (strictly) greater that the absolute of it!\n");
     }
     else if (!magically(thisNumberShouldBeNegative))
     {
