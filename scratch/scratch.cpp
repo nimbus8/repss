@@ -68,13 +68,14 @@ int main(int argc, char* yourArgument[])
     const auto magically = makeFun(theLengthOf(yourArgument[1]));
     const auto thisNumberShouldBeNegative = -10;
 
-    if (magically(thisNumberShouldBeNegative))
+    if (magically(thisNumberShouldBeNegative) == true)
     {
+        //This would be, of course, a positive
         printf("Fun is always greater that the absolute of it!\n");
     }
     else if (!magically(thisNumberShouldBeNegative))
     {
-        printf("Fun's boundaries are set, be we still don't know where were are yet.\n");
+        printf("Fun's boundaries are set, be we still don't know (just) where were are yet.\n");
     }
 
     return 0;
