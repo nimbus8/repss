@@ -188,7 +188,7 @@ ruin them too quickly when he did. I thinkfor that reason, we all, at least subc
 chicanery to /[( make ourselves happy | /[(fool:|delude::) /[(ourselves|yourself)] into /[(:: |:a state)] happiness )]; and to deny/[(*|, emphatically,)] that we weren't all  /[(bloody | flipping | stalk-raving)>><] mad /[(tot|*to)]
 begin /[(|with) )]; telling ourselves little lies to get on with our day; to get on with the moment; to /[(*:|- just - get /[(on|OOOONN)] with it /[(:|already, and::)] )] finish the /[(*|bloody)] story /[(:already/[(*.|*.|, what where you thinking?)] |:: )]. Yeah(Nostalgicly), you know we /[(*|really)] were something/[(!|, /[(|now)] weren't we?)] /[(But /[(we're|we were)] all like this, huddled /[(together in one|away beside ourselves /[(| caught /[(|somehow)] at the edge of the picture - /[(|/[(a | /[|just)] one)] lonely figure)] in the top right hand)] )]  corner | But we were all like this, /[(certainly|I figured)] )], suffering/[(|, and smiling, and laughing, and singing, in spite of it all and /[(our situation | the /[(*|sobering)] hand we'd been given /[(*|*| - we'd managed to find /[(*a|our)] way out of it.)] )] . )]. 
 So /[(*|, you see,)] to see /[(it|*the spectacle)] /[( /[(like:|the way::|*as:::)] I did | on /[(*that::::|the:::::)] scale /[(:::: /[(*|, like)] | :::::that)] ::::)>>* <] /[(|::::I did)] 
-/[(: |:: |:::*that night)], /[( was maddeningly refreshing! | the whole thing really /[( /[(did give|gave)] me hope you know! |* /[(*did cheer me|cheered me)] up for a bit/[(*. The next day I felt like shit. Natures /[(|*natural)] reproach for such sapid lunacy. |, you know that?)] )] )>>* And<] )]
+/[(: |:: |:::*that night)], /[( was maddeningly refreshing! | the whole thing really /[( /[(did give|gave)] me hope you know! |* /[(*did cheer me|cheered me)] up for a bit/[(*. The next day I felt like shit. Natures /[(|*natural)] reproach for such sapid lunacy. |, you know that?)] )] )>>* And<] That's it. )]
 
 
 He said if you're hungry then starve, /[(|and|but)] I hadn't the energy to tell him I/[( wouldn't|'d never)] do that.
@@ -221,9 +221,9 @@ A famous example of a particular tandem repeat is the Fragile X Syndrome
 the normal population /[(we|we’d)] expect to find /[(a contiguous sequence of /[(|the/[(:|se::)] nucleotides /[(: |::, /[(|the residues)] )] |the residues)] CCG repeated|CGG repeated)]
 /[(|anywhere from|about)><] 6-52 times at a particular site. For the length of the
 core sequence /[(|of residues)], /[(:|* that is,::)] less than 6 /[(|/[(: |::,)] /[(|*and)] in this case 3)],
-/[the sites of their occurrences are usually labelled /[(|/[(*|by)] the term)] | we call these sites /[(of their occurrence|where they’re found|wherever they’re found)])] microsatellites. In
+/[the sites of these repetitions are usually labelled /[(|/[(*|by)] the term)] | we call these sites /[(of their occurrence|where they’re found|wherever they’re found)])] microsatellites. In
 affected populations, even where there /[(isn’t|aren’t)] any sort of phenotypical
-expression visible /[(|/[(to the individual | at the individual level | for an individual)])], the number of repeated CGG residues are /[(|still)] much greater than /[(that /[(of|found|in)] the normal unaffected population.|the range found in the normal population)]
+expression/[(|s)] visible/[(:|, as is often the case,::)] /[(|/[(to the individual | at the individual level | for an individual)])], /[(:: |:, as is often the case,)] the number of repeated CGG residues are /[(|still)] much greater than /[(that /[(of|found|in)] the normal unaffected population.|the range found in the normal population)]
 
 
 Short strings /[(called|referred to /[(|normally|hereafter)> >and also<] as)] binding sites are
