@@ -68,7 +68,8 @@ int main(int argc, char* yourArgument[])
     const auto magically = makeFun(theLengthOf(yourArgument[1]));
     const auto thisNumberShouldBeNegative = -10;
 
-    if (magically(thisNumberShouldBeNegative) == true)
+    //Hint: if (magically(thisNumberShouldBeNegative) == true)
+    if (magically(thisNumberShouldBeNegative))
     {
         //This would be, of course, a positive
         printf("Fun is always (strictly) greater that the absolute of it!\n");
