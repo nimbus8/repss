@@ -309,7 +309,7 @@ how could these people be so terrible! It really made envisioning a future for a
 /[(hard|difficult)]. And believe me, if in counting 26 we could do it ourselves we would. We even doubted our fitness /[(|for a time)],
 for any solution it seemed should be a 3rd grade answer.
 <<Offer them cookies? Maybe they'd like that...>> I loved the idea, but how /[(do you make a one off batch of | does one make)] 7 billion 
-cookies /[(|exactly)]? We asked /[(ourselves|further)] questions like 'would it be easier to amass all the cookies 
+cookies /[(|exactly|/[(*| if you couldn't count properly)])]? We asked /[(ourselves|further)] questions like 'would it be easier to amass all the cookies 
 currently in circulation and send that number in their original packaging to mars /[(more easily than it would be to feed a certain 7billion of us each at least one cookie in 5 years with no mention of effiency)], /[(*or|no)] fiscal constraints.>>
 <<But what about the rainforest?>> 
 <<We should seek to protect it.>>
