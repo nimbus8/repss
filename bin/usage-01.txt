@@ -174,8 +174,8 @@ c'est sur, /[(*|/[(|et)] t'a pas besoin d'dire merci,:)] de rien /[(|mon ami)]! 
 
 A famous example of a particular tandem repeat is associated with the Fragile X Syndrome
 [Eberhart and Warren, 1996]. The condition is characterized at the molecular level by an unusually
-/[(large number of occurences of the repeat string | long patterned sequence whereby the 3 base pairs)], CGG,
-appear one after the other /[(|uninterupted)]. This being the the result of a series of mistakes whereby 
+/[(large number of occurences of the repeat string CGG | long patterned sequence whereby the 3 base pairs, CGG,
+appear one after the other /[(|uninterupted)])]. This being the the result of a series of mistakes whereby 
 the /[(|repeated)] sequence, which should already exist in some form in our genetic code, the length of which 
 varying slightly from individual to individual, goes through abnormal unintentional lengthening and duplication
 /[(|*during transcription)]; this is /[(::|an occurence:)] known as trinucleotide repeat /[(:expansion|::disorder)].
