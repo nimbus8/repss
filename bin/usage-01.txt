@@ -172,16 +172,22 @@ c'est sur, /[(*|/[(|et)] t'a pas besoin d'dire merci,:)] de rien /[(|mon ami)]! 
 
 
 
-A famous example of a particular tandem repeat is the Fragile X Syndrome
-[Eberhart and Warren, 1996]. Having 3 base pairs at it’s core, CGG, the
-/[(method:|disease::)] whereby the /[(|repeated)] sequence is lengthened further
-/[(|*during transcription)] is /[(called|named)] trinucleotide repeat /[(:expansion|::disorder)]. In
-the normal population /[(we|we’d)] expect to find /[(a contiguous sequence of /[(|the/[(:|se::)] nucleotides /[(: |::, /[(|the residues)] )] |the residues)] CCG repeated|CGG repeated)]
-/[(|anywhere from|about)><] 6-52 times at a particular site. For the length of the
+A famous example of a particular tandem repeat is associated with Fragile X Syndrome
+[Eberhart and Warren, 1996]. The condition is characterized at the molecular level by an unusually
+/[(large number of occurences of the repeat string | long patterned sequence whereby the 3 base pairs, CGG,
+appear one after the other /[(|uninterupted)]. This being the the result of a series of mistakes whereby 
+the /[(|repeated)] sequence, which should already exist in some form in our genetic code, the length of which 
+varying slightly from individual to individual, goes through abnormal unintentional lengthening and duplication
+/[(|*during transcription)]; this is /[(::|an occurence:)] known as trinucleotide repeat /[(:expansion|::disorder)].
+In the normal population we expect to find this sequence /[(:|at a spot with::)] /[( |, /[( | the residues)])] | the 
+residues)] CCG repeated | CGG repeated)] /[(|anywhere from|about)><] 6-52 times /[(:at a particular site |:: )]. For the length of the
 core sequence /[(|of residues)], /[(:|* that is,::)] less than 6 /[(|/[(: |::,)] /[(|*and)] in this case 3)],
-/[the sites of these repetitions are usually labelled /[(|/[(*|by)] the term)] | we call these sites /[(of their occurrence|where they’re found|wherever they’re found)])] microsatellites. In
-affected populations, even where there /[(isn’t|aren’t)] any sort of phenotypical
-expression/[(|s)] visible/[(:|, as is often the case,::)] /[(|/[(to the individual | at the individual level | for an individual)])], /[(:: |:, as is often the case,)] the number of repeated CGG residues are /[(|still)] much greater than /[(that /[(of|found|in)] the normal unaffected population.|the range found in the normal population)]
+/[the sites of these repetitions are usually labelled /[(|/[(*|by)] the term)] | we call these sites
+/[(of their occurrence | where they’re found | wherever they’re found)])] microsatellites. In affected
+populations, even where there /[(isn’t|aren’t)] any sort of phenotypical expression/[(|s)] visible/[(:|, as is often the case,::)]
+/[(|/[(to the individual | at the individual level | for an individual)])], /[(:: |:, as is often the case,)] the number
+of repeated CGG residues are /[(|still)] much greater than /[(that /[(of|found|in)] the normal unaffected population. | the range
+found in the normal population)]
 
 
 Short strings /[(called|referred to /[(|normally|hereafter)> >and also<] as)] binding sites are
