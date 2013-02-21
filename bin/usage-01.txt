@@ -177,8 +177,8 @@ A famous example of a particular tandem repeat is associated with the Fragile X 
 /[(large number of occurences of the repeat string CGG | long patterned sequence whereby the 3 base pairs, CGG,
 appear one after the other /[(|uninterupted)])]. This being the the result of a series of mistakes whereby 
 the /[(|repeated)] sequence, which should already exist in some form in our genetic code, the length of which 
-varying slightly from individual to individual, goes through abnormal unintentional lengthening and duplication
-/[(|*during transcription)]; this is /[(::|an occurence:)] known as trinucleotide repeat /[(:expansion|::disorder)].
+varying slightly from individual to individual, goes through abnormal /[(|unintentional)] extension and duplication
+/[(|*during transcription)]; this /[(*|mishap)] is /[(::|an occurence:)] known as trinucleotide repeat /[(:expansion|::disorder)].
 In the normal population we expect to find this sequence /[(:|at a spot with::)] /[( |, /[( | the residues)])] | the 
 residues)] CCG repeated | CGG repeated)] /[(|anywhere from|about)><] 6-52 times /[(:at a particular site |:: )]. For the length of the
 core sequence /[(|of residues)], /[(:|* that is,::)] less than 6 /[(|/[(: |::,)] /[(|*and)] in this case 3)],
