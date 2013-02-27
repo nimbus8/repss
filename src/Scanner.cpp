@@ -235,6 +235,12 @@ void Scanner::processFile(const std::string& filename, const std::string& permis
 
 }
 
+//todo:will implement. It will be disgustingly similar to above processFile (i.e. w/o file)
+void Scanner::interpreter_processFullText(const char* const text)
+{
+
+}
+
 void Scanner::processFileTest(const std::string& filename, const std::string& permissions)
 {
     const size_t BUFFER_LEN = 1048576;

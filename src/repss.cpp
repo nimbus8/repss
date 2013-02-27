@@ -160,50 +160,51 @@ namespace ThreadTesting
 
 int main(int argc, char* argv[])
 {
-	try
-	{
-		std::cout << "== REPSS ==\n" << endl;
+    try
+    {
+        std::cout << "== REPSS ==\n" << endl;
 
-		vector<char> character_stream = { 'a', 'b', 'c', 'd', 'e', 'f' };
-		vector<char> output_stream;
+        vector<char> character_stream = { 'a', 'b', 'c', 'd', 'e', 'f' };
+        vector<char> output_stream;
 
-		auto i = 2;
-		auto lambda_func = [&output_stream,&i] (char x, int y) ->int
-		{
-			output_stream.push_back(x+y+i);
-			return i+1;
-		};
+        //lambdas are cool, its nice C++ now has them standard
+        auto i = 2;
+        auto lambda_func = [&output_stream,&i] (char x, int y) ->int
+        {
+            output_stream.push_back(x+y+i);
+            return i+1;
+        };
 
-		std::cout << "(input-stream): " << std::endl;
+        std::cout << "(input-stream): " << std::endl;
 
-		for (auto v : character_stream)
-		{
-			std::cout << v << "\t";
-			i = lambda_func(v, 1);
-		}
+        for (auto v : character_stream)
+        {
+            std::cout << v << "\t";
+            i = lambda_func(v, 1);
+        }
 
-		std::cout << "\n\n(output-stream): " << std::endl;
+        std::cout << "\n\n(output-stream): " << std::endl;
 
-		for (int k = 0; k < output_stream.size(); k++)
-			std::cout << output_stream[k] << "\t";
+        for (int k = 0; k < output_stream.size(); k++)
+        std::cout << output_stream[k] << "\t";
 
-		std::cout << std::endl << std::endl;
+        std::cout << std::endl << std::endl;
 
-		repss_str_test(argc, argv);
+        repss_str_test(argc, argv);
 
-		ThreadTesting::testAsync(vector<double> { 1.0, 2.0 });
+        ThreadTesting::testAsync(vector<double> { 1.0, 2.0 });
 
-                PhasedExecution program;
-                program.execute(argc, argv);
+        PhasedExecution program;
+        program.execute(argc, argv);
 
-                //std::testGrammarKeywords();
-}
-	catch (std::exception& e) 
-	{ 
-		std::cout << e.what() << std::endl;; 
-	}
+        //std::testGrammarKeywords();
+    }
+    catch (std::exception& e) 
+    { 
+        std::cout << "REPSS: Exception!!!" << e.what() << std::endl;; 
+    }
 
-	return 0;
+    return 0;
 }
 
 std::string createCopyright()
@@ -212,7 +213,7 @@ std::string createCopyright()
 
     str.append("/*\n");
     str.append(" REPSS\n");
-    str.append(" Copyright (C) 2012  Khalique Williams\n");
+    str.append(" Copyright (C) 2012,2013  Khalique Williams\n");
     str.append("\n");
     str.append(" This file is part of REPSS.\n");
     str.append("\n");

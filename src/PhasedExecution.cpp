@@ -75,6 +75,21 @@ std::string PhasedExecution::execute(int argc, char* argv[])
     return generatedOutput;
 }
 
+//this is unlike the previous version is designed for the interpreter
+std::string PhasedExecution::interpreter_execute(const char text[])
+{
+    if (_contextManager != nullptr)
+    {
+        delete _contextManager;
+    }
+
+    _contextManager = new ContextManager();
+
+    auto lexerContext = _contextManager->getContext<ContextType::AllowedTypes, ContextType::Lexer>();
+
+    interpreter_runLexer(&lexerContext, text);
+}
+
 void PhasedExecution::runLexer(ILexerContext* const lexerContext, const std::string& inputFileName)
 {
     lexer_manager lexerMan(lexerContext);
@@ -82,6 +97,15 @@ void PhasedExecution::runLexer(ILexerContext* const lexerContext, const std::str
 
     Scanner scanner(lexerContext);
     scanner.processFile(inputFileName, std::string{"rt"});
+}
+
+void PhasedExcution::interpreter_runLexer(ILexerContext* const lexerContext, const char* const text)
+{
+    lexer_manager lexerMan(lexerContext);
+    lexerMan.init(_lexerConfig);
+
+    Scanner scanner(lexerContext);
+    scanner.interpreter_processFullText(text);
 }
 
 void PhasedExecution::runGrammarAggregation(IGrammarContext* const grammarContext)

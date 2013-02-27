@@ -61,8 +61,12 @@ public:
     //todo:will return tuple of status and string -- so handle exceptions inside here too
     std::string execute(int argc, char* argv[]);
 
+    //todo:will return tuple of status and string
+    std::string interpreter_execute(const char text[]);
+
     //lexing
     void runLexer(ILexerContext* const lexerContext, const std::string& inputFileName);
+    void interpreter_runLexer(ILexerContext* const lexerContext, const char* const text);
 
     //parsing -- note: we're skipping this for now (hard n fast, throwing caution to the wind, etc.)
     void runParser();

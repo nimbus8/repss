@@ -1,0 +1,18 @@
+Some Todos:
+
+Right now the way we handle file reading is not scalable. I.e. it has a hard buffer that can easily be filled given not to
+unimaginable input.
+ => The solution, or one that I've been purposefully holding off is to read to be scanned data into memory by large chunks 
+    rather than whatever is happening right now. This has implications as during lexing it then becomes possible that a Repss
+    construct s divided into two halves of sequentially loaded memory blocks - this taken to an even more extreeme the construct
+    may indeed span accross several memory blocks depending on how large we designate memory blocks to be. I don't want to
+    sacrifice anything usage wise, so it shouldn't be that say an alteration MUST be < 100kb or something like that. That would
+    make me very sad. We must handle the border transitions gracefully, and thus much thought has to be put into this part of the
+    systems implementation. 
+
+There are language constructs still unfinished or not started. Start them and finish them.
+
+Build an interpreter. For easier debugging. The interpreter should piggy back almost entirely on existing mechanisms,
+I think PhasedExecution is already designed in such a way that only minor modifications need to be made during the lexing
+process, particularly the Scanner (but thats almost below easy to impl). The read process and output system is the only 
+significant coding part, but its mostly mechanical. (Might actually have C code for this from another project)

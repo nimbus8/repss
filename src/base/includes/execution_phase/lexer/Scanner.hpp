@@ -116,11 +116,6 @@ private:
             std::string(sizeof(char), '{').append(partOfGrammer).append(sizeof(char),':').append(keyWord).append(sizeof(char), '}')
         };
 
-//        wrappedString.append(partOfGrammer);
-//        wrappedString.append(":");
-//        wrappedString.append(keyWord);
-//        wrappedString.append("}");
-
         return wrappedString;
     }
 public:
@@ -130,6 +125,8 @@ public:
 
     void processFileTest(const std::string& filename, const std::string& permissions);
     void processFile(const std::string& filename, const std::string& permissions);
+    void interpreter_processFullText(const char* const text);
+
     void printAnotatedData() const;
 };
 
