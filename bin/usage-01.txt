@@ -64,10 +64,10 @@ hadn't ever treated Gloria too kindly. If it wasn't for the few friends that she
   <<63?>>
   <<And how did you get to that answer, did the lovely Olivia pass you that below the tables. I have half a mind
      to /[(seperate /[(the two of you | you two:)] /[(|:from eachother)] | remove the two of you from eachother)].>>
-/[(The pace of Gloria's thoughts grew wilder | Gloria's mind began to race)], she couldn't stand the thoght of being away from her 
-best friend. Olvia was the only friend she had in class, in fact she was the bestest friend she had in the world. She sat up, scanned
-the the chalkboard and again repeated the correct answer /[(|this time)] with /[(*her reasoning | the appropriate /[(solution 
-| /[(sequence | overview)] of steps /[(required to arrive at a |* leading to a)] /[(solution|correct answer)])])]. 
+/[(The pace of Gloria's thoughts grew wilder: | Gloria's mind began to race::)], she couldn't stand the /[(::thought|:idea)] of being
+away from her best friend. Olvia was the only friend she had in class, in fact she was the bestest friend she had in the world. She 
+sat up, scanned the the chalkboard and again repeated the correct answer /[(|this time)] with /[(*her reasoning | the appropriate 
+/[(solution | /[(sequence | overview)] of steps /[(required to arrive at a |* leading to a)] /[(solution|correct answer)])])]. 
   <<And would you like to come to the board and write it out?>>
   <<Yes Madame Gregory>> she replied, in a robotic pitch of reluctance.
 Madame Gregory made sure to stare the child down as she walked the walk of shame up to the front of the class to
