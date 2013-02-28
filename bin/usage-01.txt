@@ -63,7 +63,7 @@ hadn't ever treated Gloria too kindly. If it wasn't for the few friends that she
   <<Do you have the answer? Or were you not paying attention Miss Gloria?>>
   <<63?>>
   <<And how did you get to that answer, did the lovely Olivia pass you that below the tables. I have half a mind
-     to /[(seperate | remove the two of you from eachother.>>
+     to /[(seperate /[(the two of you | you two:)] /[(|:from eachother)] | remove the two of you from eachother)].>>
 Gloria's mind began to race, she couldn't stand the thoght of being away from her best friend. Olvia was the only friend
 she had in class, in fact she was the bestest friend she had in the world. She sat up, scanned the the chalkboard and
 again repeated the correct answer /[(|this time)] with the appropriate /[(solution | sequence of steps leading to a 
