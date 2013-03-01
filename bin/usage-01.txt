@@ -64,8 +64,8 @@ Primary school hadn't ever treated Gloria too kindly. If it wasn't for the few f
 have surely ran away.
   <<Do you have the answer? Or were you not paying attention Miss Gloria?>>
   <<63?>>
-  <<And how did you get to that answer, did the lovely Olivia pass you that below the tables. I have half a mind
-    to /[(seperate /[(the two of you | you two:)] /[(|:from eachother)] | remove the two of you from eachother)].>>
+  <<And how did you get to that answer, did the lovely Olivia /[(hand|pass)] you that below the tables? I have half a
+    mind to /[(seperate /[(the two of you | you two:)] /[(|:from eachother)] | remove the two of you from eachother)].>>
 /[(The pace of Gloria's thoughts grew wilder: | Gloria's mind began to race::)], she couldn't stand the /[(::thought|
 :idea)] of being away from her best friend. Olvia was the only friend she had in class, in fact she was the bestest
 friend Gloria had in the world. She sat up, scanned the the chalkboard and again repeated the correct answer
