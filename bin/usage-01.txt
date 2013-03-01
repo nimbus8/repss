@@ -73,7 +73,7 @@ friend Gloria had in the world. She sat up, scanned the the chalkboard and again
 to arrive at a |* leading to a)] /[(solution|correct answer)])])]. 
 /[(  <<And would you like to come to the board and write /[(it out | this all out for us)]?>> 
   |  <<Lets see you work this one out /[(:|for us::)] on the board /[(:: | :for us)] now shall we?>> )]
-  <<Yes Madame Gregory>> she replied, in a robotic pitch of reluctance.
+  <<Yes Madame Gregory>> she replied, in /[(that | a)] robotic pitch of /[(*reluctance | obedience)].
 Madame Gregory made sure to stare the child down as she walked the walk of shame up to the front of the class /[(|in 
 order)] to write her solution to the word problem involving none other than apples and oranges. She /[(first drew 
 | began by drawing)] nine apples; each as /[(two capital C's, the second written as if read /[(|directly)] from the
