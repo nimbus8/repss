@@ -64,7 +64,7 @@ Primary school hadn't ever treated Gloria too kindly. If it wasn't for the few f
 have surely ran away.
   <<Do you have the answer? Or were you not paying attention Miss Gloria?>>
   <<63?>>
-  <<And how did you get to that answer, did the lovely Olivia /[(hand|pass)] /[(you that | that to you)] below the
+  <</[(And|Well now)] how did you get that, did the lovely Olivia /[(hand|pass)] it to you below the
     tables? I have half a mind to /[(seperate /[(the two of you | you two:)] /[(|:from eachother)] | remove the two
     of you from eachother)].>>
 /[(The pace of Gloria's thoughts grew wilder: | Gloria's mind began to race::)], she couldn't stand the /[(::thought|
