@@ -14,5 +14,5 @@ There are language constructs still unfinished or not started. Start them and fi
 
 Build an interpreter. For easier debugging. The interpreter should piggy back almost entirely on existing mechanisms,
 I think PhasedExecution is already designed in such a way that only minor modifications need to be made during the lexing
-process, particularly the Scanner (but thats almost below easy to impl). The read process and output system is the only 
+process, particularly to the Scanner (but thats almost below easy to impl). The read process and output system is the only 
 significant coding part, but its mostly mechanical. (Might actually have C code for this from another project)
