@@ -142,13 +142,13 @@ Footenotes:
  [Emp1]
    - I feel I must add here that when Gloria resigned to the idea of leaving her empurpled whiteboard at home 
      (the work of art that it was) because there would be no use for it in a place of learning, Gloria was being 
-     optimistic. For the idea that school was a place of learning, and not just some godforsaken daycare centre, was 
-     so important to her sense of well being, that she had to admit that /[(this|the former)] idea was valid - and that 
-     it justified making sacrifices. Furthermore it held both in general, and in light of her own particular situation. 
-     But, that it was valid, meant that it were at least testably true, and that there was at least some hope, that 
-     even if things were bad, /[(*things | they)] could always /[(change for the | get)] better. If it weren't the case, 
-     by this definition of validity, she would have surely ran away - /[(*|*|taking her empurpled whiteboard /[(|along)] 
-     with her)].
+     optimistic. For the idea /[(that school was a place of learning, and not | of school as being more than)] just 
+     some godforsaken daycare centre, was so important to her /[(sense of | emotional)] well being, that she had to admit
+     that /[(this|the former)] idea was valid - and that it justified making sacrifices. Furthermore it held both in general,
+     and in light of her own particular situation. But, that it was valid, /[(|also)] meant that it were at least testably true,
+     and that there was at least some hope, that even if things were bad, /[(*things | they)] could always /[(change for the | get)]
+     better. If it weren't the case, by this definition of validity, she would have surely ran away - /[(*|*|taking her empurpled 
+     whiteboard /[(|along)] with her)].
 
 
 Everyday for him consisted of rummaging through /[(|other peoples/[(|')] )] garbage; the places where /[(most | people)] /[(needn't look: | didn't care to)>> /[(and|or)] <] /[:(and|*or)]  keep after. /[(As such, h| H)]e had /[(*|the /[(ledge|*privilege)] of)] near unquestioned /[(autonomy|*authority)], and was always weary when the next man, /[(and | the/[(*y| one they)] called)] the next best thing, came thraashing through /[(:|and::)] boorishly /[(:: |:and)] started ordering him around. Telling him where and where not to dig and make his way through. This pissed him off to no end, and in these cases he would stop /[(what he was doing and | and stand in place to)] let the fool make a mess of it before /[(getting on|he got on)] with his business.
