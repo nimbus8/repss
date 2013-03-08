@@ -113,14 +113,14 @@ The schoolmaster was unmoved. She took a very cold and academic approach to emot
 /[(*a line:: | something:)] /[(::*out of a book she /[(:|*once::)] read /[(:: |:once)] | she had read in a book once 
 | :her mother used to say)] /[(|*when she was young)].
   <<Tout le monde /[(*ést|était)] dans le misere,>>
-/[(*|She had lazily adopted the idea for her own, using it as the base for /[(her own | an)] /[(abhorrent|unbending)>>/[(ly|and)] <]
-personal philosphy.)] Each time she said it aloud, right after making someone cry, the idea seemed to /[(cement:|*reinforce::)] itself
-/[(:: |:further)], in her mind. It was /[(|now)] fast approaching /[(/[(universal|eternal)] truth. /[(She thought 
-it quite fitting, /[(*|and was certainly very proud of herself -)] though it would have been /[(nicer|better placed)] 
-if the girl had spoken French. | She was very happy with herself, thinking /[(it|the comment /[(|*to be)])] 
-/[(well delivered|fitting)> and <] at the time. She loved/[(|, what she called,)] these teachable moments, as it allowed
-her to project her way of /[(viewing|seeing)] the world upon impressionable young minds, who, if all things went as planned, 
-would regurgitate it right back out into the world (it was something like the flu - and the grimmness, of /[(this|the)] 
+/[(*|She had lazily adopted the idea for her own, using it as the base for /[(her own | a: | an::)] /[(:horrible|
+::/[(abhorrent|unbending)>>ly <])>>and<] personal philosphy.)] Each time she said it aloud, right after making someone cry, 
+the idea seemed to /[(cement:|*reinforce::)] itself /[(:: |:further)], in her mind. It was /[(|now)] fast approaching 
+/[(/[(universal|eternal)] truth. /[(She thought it quite fitting, /[(*|and was certainly very proud of herself -)] though it 
+would have been /[(nicer|better placed)] if the girl had spoken French. | She was very happy with herself, thinking /[(it|the 
+comment /[(|*to be)])] /[(well delivered|fitting)> and <] at the time. She loved/[(|, what she called,)] these teachable moments,
+as it allowed her to project her way of /[(viewing|seeing)] the world upon impressionable young minds, who, if all things went as
+planned, would regurgitate it right back out into the world (it was something like the flu - and the grimmness, of /[(this|the)] 
 /[(|very)] /[(*thought|picture)], made /[(her|*the schoolmaster:)]/[(:'s pupils dilate /[(|to obscure /[(|the green in)] her iris)]
 | smile)]). For more  than fitting, it was beautiful; /[(and /[(|as such)] | /[(|and)] what other)>>, <] it entirely excused her 
 overreacting. In fact, she hadn't overreacted /[(*|at all)], she /[(thought|assured herself)]; the little girl had baited her into
