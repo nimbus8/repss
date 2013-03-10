@@ -219,6 +219,12 @@ pendant chirurgie - Tant que le son de la musique /[(*est /[(|*fait)] pour jouer
 /[(|*'Suffisant, pour moi aussi/[(.|*, tu vois!)]')]
 
 
+Quand vous avez fini ramasser tout l'hargne autour de vous, vous etes tout de suite plus prevenant; plein d'egard; et heureux - au moins, ce c'etait ce qu'on m'a dit.
+<<Si nous pouvons croiser nos couers - >>
+<<Il aurait ete /[(|deja)] fait.>>
+<<Moi, je ramassais tout l'hargne que tu vois il y a quelques annees. Ca m'a fait plus heureux. /[(Je le porte comme un manteau, /[(hors saison)])]
+
+
 We were singing 'Taaaaaake ME out to the BAAAALL gaaaame, taake ME out to just seeeee'
 all sloshy and drunk - even the coaches joined in with us this time.
 /[(I'd|I've)] never seen the old man /[(wasted|so wasted)], I kept my distance thinking he might come over 
