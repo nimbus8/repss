@@ -32,12 +32,12 @@ If it were to happen, /[(|alas,)] I wouldn't count the /[(*days|hours:)] /[(:gon
  <<But where exactly do you live?>>
  <<)] Up near the other side of the Island, /[(across|by)] the river.>>
 <<What, did you grow up there?>>
-<<No, I transferred /[(last semester from Lava | here last senester, I used to got o Laval)]>>
+<<No, I transferred /[(last semester from Laval | here last senester, I used to got o Laval)]>>
 /[(<</[(L'Universite de Laval>> | <</[(Oh|Ugh)], Laval)], poor thing,>>
  | <<Damn the 12-month lease /[(*|I say)]!>>:
- | <<Ugh, Laval...however did you managed?>>)]
-/[(:Richard said /[(as | before)] he pounder his fist on the table. | Richard was prone to
-gently teasing his female friends, and on this topix, we will say nothing more it.)]
+ | <<Ugh, Laval...however did you manage?>>)]
+/[(:Richard said /[(as | before)] he ponder his fist on the table. | Richard was prone to
+gently teasing his female friends, and on this topic, we will say nothing more it.)]
 <<I'm kidding/[(|, my dear)], the universite de Laval is a fine school /[(, if football
   championships is your /[(type|sort)] of thing/[(!|.)] | if championships are the sortof thing you
   like/[(!|.|...)])]>>
