@@ -36,7 +36,7 @@ If it were to happen, /[(|alas,)] I wouldn't count the /[(*days|hours:)] /[(:gon
 /[(<</[(L'Universite de Laval>> | <</[(O/[(|h)]|Ugh)], /[(Laval, p|Le-val, you say? P)]oor thing,>>
  | <<Damn the 12-month lease /[(*|I say)]!>>:
  | <<Ugh, Le-val...however did you manage?>>)]
-/[(:Richard said /[(as | before)] he pounded his fist on the table. | Richard was prone to
+/[(:Richard said /[(as | before)] he pounded his fist /[(on|against)] the table. | Richard was prone to
 gently teasing his female friends - and on this topic, we will say nothing more of it.)]
 <<I'm kidding/[(|, my dear /[(|, don't worry)])], /[(the Universite | Laval)>> de <] /[(is:|was::)] a fine school 
   /[(:if you /[(fancied|fancy)] winning:|::, if::)] football championships /[::(*were:|are::)] /[(::the type of thing
