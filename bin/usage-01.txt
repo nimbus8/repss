@@ -31,25 +31,25 @@ If it were to happen, /[(|alas,)] I wouldn't count the /[(*days|hours:)] /[(:gon
   I have to tailor my life to it's schedule.>>
  <<But where exactly do you live?>>
  <<)] Up near the other side of the Island, /[(across|by)] the river.>>
-<<What, did you grow up there?>>
-<<No, I transferred /[(last semester from Laval | here last senester, I used to got o Laval)]>>
-/[(<</[(L'Universite de Laval>> | <</[(O/[(|h)]|Ugh)], /[(Laval, p|Le-val, you say? P)]oor thing,>>
+<</[(*What, did you grow up there? | Was it your family that you stayed with?)]>>
+<<No, I transferred /[(/[(*|here)] last semester from Laval | here last senester, I used to got o Laval)]>>
+/[(<</[(/[(|Ahh! L'Universite de Laval, p| <</[(O/[(|h)]|Ugh)], /[(Laval, p|Le-val, you say? P)])]oor thing,>>
  | <<Damn the 12-month lease /[(*|I say)]!>>:
  | <<Ugh, Le-val...however did you manage?>>)]
 /[(:Richard said /[(as | before)] he pounded his fist /[(on|against)] the table. | Richard was prone to
 gently teasing his female friends - and on this topic, we will say nothing more of it.)]
-<<I'm kidding/[(|, my dear /[(|, don't worry)])], /[(the Universite | Laval)>> de <] /[(is:|was::)] a fine school 
-  /[(:if you /[(fancied|fancy)] winning:|::, if::)] football championships /[::(*were:|are::)] /[(the type of thing
+<<I'm kidding/[(|, my dear /[(|, don't worry)])], /[(the Universite | Laval)>> de <] /[(is|*was::)] a fine school 
+  /[(if you /[(fancied|fancy)] winning:|::, if::)] football championships /[(:|::/[(*were:|are::)])] /[(the type of thing
   /[(:that you were|::your)] into | your /[(/[(type|sort)] of thing)] | cup of tea | cup of brandy)]/[(!|.)] /[(*| - there
   wasn't ever anything wrong that, no. You can't simply learn dominance. The students here walk around like the world owes them
-  something, as if the school brand carries more weight than their /[(personality|ability)] - if thats true, it's only
-  fair that /[(we|they)] should sink to the bottom/[(*|of water fishbowl that we're swimming in|, while they float ever
-  still farther above /[(|into)] the heavens. /[(*|*|And I swear God might /[(ask to shake their hands | take /[(|a good)]
-  look under the hood to check that everything was fair | inspect their manufacture)>><]
+  something, as if the school brand carries more weight than their /[(effort|personality|ability)] - if thats true, it's only
+  fair that /[(we|they)] should sink to the bottom/[(*|of whatever fishbowl /[(|that)] we're swimming in|, while /[('they'|the Rouge et Or)]
+  /[(float|*fly)>> and <] ever still farther above /[(|/[(|on)] into)] the heavens. /[(*|*|And I imagine, God might /[(might wanna have a word with them |
+  take /[(|a good)] look under the hood to check that everything was fair | inspect their manufacture | ask to shake their hands)>><]
   | if championships /[(|and winning)] are the sortof thing you like/[(!|.|...)] | I wouldn't undervalue so many national
-  /[(*|titles belonging to one school/[(,|; there's either something in water, or they know something we don't.)]
-  /[(|Its fascinating, really. I couldn't /[(say|tell you)] for certain what tommorows weather was going to /[(bring | be /[(|like)])] 
-  but I could tell you their win/loss record against us for the next 5 years.)] )])]>>
+  /[(*|titles belonging to one school/[(,| - they may have more gold than the federal reserve! | ; there's either something in water, 
+  or they know something we don't. /[(|Its fascinating, really. I couldn't /[(say|tell you)] for certain what tommorows weather /[(will | was going to)]
+  /[(bring | be /[(|like)])], but I could tell you their win/loss record against us for the next 5 years/[(!|.)])])])])])]>>
 Diane couldn't keep herself from laughing.
 <</[(Your too much, /[(Rick|Richard)]>> | Oh stop.>> But of course, she wanted him to continue)]
 She wanted to freeze this moment in time, she wanted to forget that her last train left at 10:00pm everyday and the
