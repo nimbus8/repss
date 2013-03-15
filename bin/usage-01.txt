@@ -32,7 +32,7 @@ If it were to happen, /[(|alas,)] I wouldn't count the /[(*days|hours:)] /[(:gon
  <<But where exactly do you live?>>
  <<)] Up near the other side of the Island, /[(across|by)] the river.>>
 <</[(*What, did you grow up there? | Was it your family that you stayed with?)]>>
-<<No, I transferred /[(/[(*|here)] last semester from Laval | here last senester, I used to got o Laval)]>>
+<<No, I /[(*|actually)] transferred /[(/[(*|here)] last semester from Laval | here last senester, I used to got o Laval)]>>
 /[(<</[(/[(|Ahh! L'Universite de Laval, p| <</[(O/[(|h)]|Ugh)], /[(Laval, p|Le-val, you say? P)])]oor thing,>>
  | <<Damn the 12-month lease /[(*|I say)]!>>:
  | <<Ugh, Le-val...however did you manage?>>)]
