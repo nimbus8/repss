@@ -22,8 +22,11 @@
  */      
 
 If it were to happen, /[(|alas,)] I wouldn't count the /[(*days|hours:)] /[(:gone by.
+/[(that/[(/[('ll:|::)] set|/[(|'ll)] determine:::)] /[(the difference between the present and  | apart 
+the present from | the present apart from)] the moment /[(when I do | I commit to the action)].
 | /[(|that pass)] between /[(now | the present)] and /[(|the moment)] when I do.
 | that pass and /[(mark | set)] the difference between the present and the moment when I do. )]
+
 
 
 <<You wake up so early, /[(how | why)] so?>>
