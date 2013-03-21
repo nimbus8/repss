@@ -411,8 +411,8 @@ good, but certainly not crap. Writing crap (at least for me) is effortless.
 
 ..An interesting syntax, very rounded, and easily identifiable when embedded in text - but the tail very quickly becomes nasty if overused (solution: don't overuse it...)
 @((- @((allo there  | he, you there!)) @((::|:)) | you, beyond the parlor@((*@((::|:))|, get back here immediately @((*::|, boy:))!))
-@(- what be your business, dear sir? | what should I say to man who stands in my way@((*|, and refuses to pass))?))
-@((:: ::|:- has noone told you that little boys aren't allowed back here. I shouldn't warn you more than once, you know.
+@(- what be your business, dear sir? | what should I say to man a who stands in my way@((*|, and refuses to pass))?))
+@((:: ::|:- has noone told you that little boys aren't allowed back here? I shouldn't warn you more than once, you know.
 - I was curious sir@((*|, I couldn't help but follow the edges of these tiles.))
 - What tiles @((say you| do you speak of| *dost thou mention)), @((munchkin|boy))? You know what I do to little boys who like to make trouble?))
 @((- dare I say you shouldn't hit him too hard@((, as the @((::man::|:boy:)) may be limp and overly fragile for @((::@(a gentleman|his age))::|:a youngster:)) his build))))
