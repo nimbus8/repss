@@ -408,6 +408,22 @@ you'll bang out something better than you would otherwise, not necessarily
 good, but certainly not crap. Writing crap (at least for me) is effortless.
 
 
+
+..An interesting syntax, very rounded, and easily identifiable when embedded in text - but the tail very quickly becomes nasty if overused (solution: don't overuse it...)
+@((- @((allo there  | he, you there!)) @((::|:)) | you, beyond the parlor@((*@((::|:))|, get back here immediately @((*::|, boy:))!))
+@(- what be your business, dear sir? | what should I say to man who stands in my way@((*|, and refuses to pass))?))
+@((:: ::|:- has noone told you that little boys aren't allowed back here. I shouldn't warn you more than once, you know.
+- I was curious sir@((*|, I couldn't help but follow the edges of these tiles.))
+- What tiles @((say you | dost thou mention)), boy? You know what I do to little boys who like to make trouble?
+@((- dare I say you shouldn't hit him too hard@((, as the @((::man::|:boy:)) may be limp and overly fragile for @((::@(a gentleman|his age))::|:a youngster:)) his build))))
+@((: - that @((::was|is)) my @((right|thinking @((*|exactly))))@((::|:, boy - @((*|don't bother trying to convince me otherwise. Now go, find your parents with the rest @((,youngin'|,young @((one|friend)))))))))).
+@((:: ::|:Jerry was rather frightened, yet very amused @((|at the @((|same time)))); everyone at the museum stayed in character
+@((*| even as they got angry)) - it was like they were all actors. @(He wasn't convinced yet,@((*|of course,)) but a|A)) wry smile crept 
+accross his face as he wandered off in the direction opposite the old janitor - who looked back at the boy and watched him scramble out
+of sight down the @((*|very)) long hall @((and | where the boy - then @((*|barely recognizable - disappeared:: | a distant figure - had 
+turned @((*|and sprinted)))))) off to his left.))
+
+
 Every now and then /[(through no fault of my own|)] I get into one of these moods, every last one of them had the right to be rotten. This time it's no different.
 
 ....
@@ -567,4 +583,3 @@ Out-takes
    - Don't eat animals that'll readily /[(*ingest | eat | feast on)] their own excrement.
    - But they're /[(so yummy | the yummiest)]
    - I knooow...
-
