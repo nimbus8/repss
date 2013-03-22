@@ -416,7 +416,7 @@ good, but certainly not crap. Writing crap (at least for me) is effortless.
 - I was curious sir@((*|, I couldn't help but follow the edges of these tiles.))
 - What tiles @((say you| do you speak of| *dost thou mention)), @((munchkin|boy))? You know what I do to little boys who like to make trouble?))
 @((- dare I say you shouldn't hit him too hard@((|, as the @((::man::|:boy:)) may be limp and overly fragile for @((::@(a gentleman|his age and)>><)::|:a youngster:)) his build))))
-@((: - that @((::was|is)) my @((right|thinking @((*|exactly))))@((::|:, boy - @((*|don't @((*|you)) bother trying to convince me otherwise. Now go, find your parents with the rest @((,youngin'|,young @((one|friend)))))))))).
+@((: - that @((::was|is)) my @((right|thinking @((*|exactly))))@((::|:, boy - @((*|don't @((*|you)) bother trying to convince me otherwise. Now go, find your parents with the rest @((@((*|of them)) ,youngin'|,young @((one|friend)))))))))).
 @((:: ::|:Jerry was rather frightened, yet very amused @((|at the @((|same time)))); everyone at the museum stayed in character
 @((*| even as they got angry)) - it was like they were all actors. @(He wasn't convinced @((*|quite)) yet,@((*|of course,)) but a|A)) wry smile crept 
 accross his face as he wandered off in the direction opposite the old janitor - who looked back at the boy and watched him scramble out
