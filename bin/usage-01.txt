@@ -167,15 +167,17 @@ she would have surely ran away.
     | remove the two of you from eachother)], | you two had better not be playing some sort of game with me, I'll seperate you
     just as quickly!)]>>
 /[(/[(*|In response to the schoolmaster's menacing /[(tone|*remark)] t|T)]he pace of Gloria's thoughts grew wilder: | Gloria's mind began to race::)],
-she couldn't stand the /[(::thought|:idea)] of being away from her best friend. Olivia was the only friend she had in her grade - in fact she was
-the bestest friend Gloria had in the world. /[(/[(Because of this, | With this in mnd,)] Gloria|She)] /[(*|bravely|stopped from slouching,)] sat up, 
-scanned the the /[(|chalk)]board and again repeated the correct answer /[(*|to the schoolmaster)], /[(|this time)] with /[(*her reasoning | the appropriate /[(solution | /[(sequence | overview)] of steps /[(required
-to arrive at the number |* leading to a /[(solution|correct answer)])])])]. 
-/[(  <<And would you like to come to the board and write /[(it out | this all out for us)]?>> 
+she couldn't stand the /[(::thought|:idea)] of being away from her best friend. Olivia was the only friend she had in her grade - in fact /[(she was
+the bestest friend Gloria | it had dawned on Gloria that Olivia may have been the bestest friend she)] had in the world. /[(/[(Because of this, | With 
+this in mnd,)] Gloria|She)] /[(*|bravely|stopped from slouching,)] sat up, scanned the the /[(|chalk)]board and again repeated the correct answer 
+/[(*|to the schoolmaster)], /[(|this time)] with /[(*her reasoning | the appropriate /[(solution | /[(sequence | overview)] of steps /[(required to
+arrive at the number |* leading to a /[(solution|correct answer)])])])]. 
+/[(  <<And /[(would you care | are you prepared)] to come to the board and write /[(it out | this all out for us)]?>> 
   |  <<Lets see you work this one out /[(:|for us::)] on the board /[(:: | :for us)] now shall we?>> )]
-  <<Yes Madame Gregory>> she replied, in /[(that | a)] robotic /[(pitch|tone)] of /[(*reluctance | obedience)].
-Madame Gregory made sure to stare the child down as she walked the walk of shame up to the front of the class /[(|in 
-order)] to write her solution to the word problem involving none other than apples and oranges. She /[(first drew 
+  <<Yes Madame Gregory>> she replied, in /[(that | a)] robotic /[(pitch|tone)] of /[(*reluctance | obedience
+  /[(common both in childhood and depression | that both children and the depressed use so often)])].
+Madame Gregory made sure to stare the child down as she walked the walk of shame up to the front of the class, /[(|where
+Gloria began)] to write her solution to /[(the|a)] word problem involving none other than apples and oranges. She /[(first drew 
 | began by drawing)] nine apples; each as /[(two capital C's, the second written as if read /[(|directly)] from the
 mirror image of the first. To further distinguish the apples from the oranges she gave each /[(|of them)] a small
 stem. /[(/[(/[(Then u|U)]nderneath /[(each|*one)>>* <] | Then for every)] apple she drew seven oranges | She then 
