@@ -76,7 +76,7 @@ int main(int argc, char* yourArgument[])
     }
     else if (!magically(thisNumberShouldBeNegative))
     {
-        printf("Fun's boundaries are set, be we still don't know (just) where were are yet.\n");
+        printf("Fun's boundaries are set, be we still don't know (just) where we are yet.\n");
     }
 
     return 0;
