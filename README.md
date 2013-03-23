@@ -5,7 +5,7 @@ This project is written in "C++11", for no particular reason.
 What is repss?
   Repss is in part designed to be a scaffolding on top of written language. The designer of the language stresses
   that the whole concept is inherently evil and mad-making, and one should seriously think about the potential ramification
-  or damage to their proper functioning before they invest any of their time into learn something so...ultimately, very stupid.
+  or damage to their proper functioning before they invest any of their time into learning something so...ultimately, very stupid.
   But still he believes that the language could be an incredably beneficial tool (a boon) for writers *[1]*, should they choose to use it;
   and to elementary school teachers, to perhaps enhance their curriculums and promote greater creativity, pride, and ownership
   in student writing. It should be noted that the designer has done no practical work to validate such a hypothesis, and quite
