@@ -25,17 +25,6 @@
 and they finally arrived after /[(spending /[(|half)] | wasting:)] an hour /[(|:of their lives)] /[(|motionless)] in traffic.
 /[(*|*|(It shouldn't /[(be | come as)] a surprise /[(*|to anybody)] that they /[(cursed | hissed)] at eachother /[(|like lizards | in disdain)] all throughout dinner.))]
 
-- How do you feed the right part of your brain?
-- /[(Eat with your /[(*non-dominant | left)] hand. | Bite the hand that feeds you.)]
-[See-out-takes:1]
-
-
-If it were to happen, /[(|alas,)] I wouldn't count the /[(*days|hours:)] /[(:gone by.
-/[(that/[(/[('ll:|::)] set|/[(|'ll)] determine)] /[(the difference between the present and  | /[:,::(apart 
-the present from )] | /[:,::(the present apart from)])] the moment /[(when I do | I commit to the action)].)]
-| /[(|that pass)] between /[(now | the present)] and /[(|the moment)] when I do.
-| that pass and /[(mark | set)] the difference between the present and the moment when I do. )]
-
 
 <<You wake up so early, /[(how | why)] so?>>
 <<I live far away. /[(|There's only one train that goes back and forth, and I can't miss it.
@@ -414,6 +403,18 @@ encouraging /[(the transcription of /[(:the:|::their::)] /[(|::associated:::)] /
 [Pevzner ch. 4 pg. 92]
 
  
+- How do you feed the right part of your brain?
+- /[(Eat with your /[(*non-dominant | left)] hand. | Bite the hand that feeds you.)]
+[See-out-takes:1]
+
+
+If it were to happen, /[(|alas,)] I wouldn't count the /[(*days|hours:)] /[(:gone by.
+/[(that/[(/[('ll:|::)] set|/[(|'ll)] determine)] /[(the difference between the present and  | /[:,::(apart 
+the present from )] | /[:,::(the present apart from)])] the moment /[(when I do | I commit to the action)].)]
+| /[(|that pass)] between /[(now | the present)] and /[(|the moment)] when I do.
+| that pass and /[(mark | set)] the difference between the present and the moment when I do. )]
+
+
 Brute force poetry: The /[(thought|idea)] that if you think and write about something long 
 enough, and know how to /[(navigate and manoeuvre:|navigate/manoeuvre::)] through 
 /[(:those thoughts|::that thinking and writing)>> and <] /[(:::|, ::::)]effectively/[(:::,|:::: )]
