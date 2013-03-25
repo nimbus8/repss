@@ -15,7 +15,7 @@ What is repss?
   and instead focus on how they might potentially leverage the scaffolding to their benefit (as a literary device: to enhance their own creativity;
   to manage their fractured and non-linear thinking patterns; to better represent, explore, and refine their ideas as they come, etc), and
   should they find it useful, interesting, or worthy of a book deal, they might consider emailing me, or *sending me money* if they'd 
-  like for the project to be completed much sooner than it would otherwise, with help from their feedback and their valued input. Just an idea.
+  like for the project to be completed much sooner than it would otherwise aided by their valued input and perhaps a few words of encouragement. Just an idea.
 
 
 
