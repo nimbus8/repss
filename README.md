@@ -4,12 +4,11 @@ This project is written in "C++11", for no particular reason.
 
 What is repss?
 
-  At first, repss was an easy to implement commpiler. Having read a book on compilers, I really wanted to dive head
-  first into being a "compiler designer". I particularly liked the sections on context free grammars, and the potential
-  infiniteness of language - and our inability to accurately describe/interpret a great many alltogether valid languages.
-  This is the kind of stuff that fascinates me, to the point where I wouldn't mind taaching theory of computation
-  to undergrads. But of course I'm probably never going to get a PhD, and thus it's unlikely I'll ever teach undergrads
-  (thank god...), or theory of computation (to anyone who will listen). This project has two facets: 
+  Repss is idea related to context free grammars and the potential infinitum of languages, where many alltogether
+  valid languages are unnacceptable given "machines" that may only act deterministically. This is the kind of stuff
+  that fascinates me, to the point where I wouldn't mind taaching theory of computation to undergrads. But of course
+  I'm probably never going to get a PhD, nor should anyone give me one for that matter, thus it's unlikely I'll ever
+  teach undergrads (thank god...), or theory of computation (to anyone who will listen). This project has two facets: 
 
     1) The first facet is for those who are interested in understanding compilers, and a bit of what they take to build
     2) The second facet is for most people, so we'll see too it first
