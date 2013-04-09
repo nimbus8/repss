@@ -12,7 +12,6 @@ What is repss?
   (thank god...), or theory of computation (to anyone who will listen). This project has two facets: 
 
     1) the first facet is for those who are interested in understanding compilers, and a bit of what they take to build
-
     2) the second facet is for most people, so we'll see too it first
     
 
