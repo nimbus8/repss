@@ -3,6 +3,18 @@
 This project is written in "C++11", for no particular reason.
 
 What is repss?
+
+  At first, repss was an easy to implement commpiler. Having read a book on compilers, I really wanted to dive head
+  first into being a "compiler designer". I particularly liked the sections on context free grammars, and the potential
+  infiniteness of language - and our inability to accurately describe/interpret a great many alltogether languages.
+  This is the kind of stuff that fascinates me, to the point where I wouldn't mind taaching theory of computation
+  to undergrads. But of course I'm probably never going to get a PhD, and thus will probably never teach undergrad
+  theory of computation. This project has two facets: 
+    1) the first facet is for those who are interested in understanding compilers, and a bit of what they take to build
+    2) a the second facet is for most people, so we'll see too it first
+    
+
+  2)
   Repss is in part designed to be a scaffolding on top of written language. The designer of the language stresses
   that the whole concept is inherently evil and mad-making, and one should seriously think about the potential ramification
   or damage to their proper functioning before they invest any amount time into learning something so...ultimately, very stupid.
@@ -16,6 +28,36 @@ What is repss?
   to manage their fractured and non-linear thinking patterns; to better represent, explore, and refine their ideas as they come, etc), and
   should they find it useful, interesting, or worthy of a book deal, they might consider emailing me, or *sending me money* if they'd 
   like for the project to be completed much sooner than it would otherwise aided by their valued input and perhaps a few words of encouragement. Just an idea.
+
+  
+  1)
+  The other part of repss is the code. A look at the code should give one insight on the sort of decisions that
+  must be made along the way. I don't like being held back by languages, so there are very feww limitations here
+  to speak of (at least not in the specification)
+  Hopefully comments are helpful, and my code clear, as I've made a conscious effort to write for others, and not
+  just myself. So, in theory, other programmers, with an appropriately thourough background in basic data structures
+  (stacks, maps, trees, etc), should understand it . It should be enough to understand what considerations there are to
+  made that pop up when trying to tackle fundamental problems. Seeing as how there are usually many ways to
+  do something, I almost always note why I made the decision to go any one way - unless it were trivially obvious why (and I didn't care to elaborate);
+  The code, was designed on some levels with speed in mind, but only after "flexibility" and "expresiveness" have been
+  establshed. The overall concept (lexing+analysis+generation) is fairly complex - without my help - so a well-designed
+  backend architecture was necessary, if it isn't the most important thing, period [note 1]. As long as the principle ideas
+  are sound, I like to think if you have a well well defined structure from the start, most if not everything will just fall
+  into place (it may just have went to hell if it weren't). 
+  
+  Some notes on the Technical Specifications
+  ------------------------------------------
+  The organization of the project was architected to be as simple as possible; split into seperate independant modules,
+  while keeping things consistent, and available only when and where their needed. I should add that the way we accomplish
+  this is through a sub-project whose source is entirely indepedant from the main project. A common theme here (if you catch it,the drift...)
+  is 'meta'. I don't like to consider Repss as a meta-language, nor do I want to consider repss as a translator; both are arguably just that
+  but I believe my argument to the contrary holds more weight, at least here in this tiny locality of textual-processing. My point here is to
+  convince you that compilers are important, and the world didn't end with lisp, as some are so adament - though I do love lisp.
+  I actually learnt lisp AFTER I finished much of the project, ironically. Picking it up was easy, because I dont think it's true
+  to say once youve learnt one language youve learnt them all, but more true to say once you've created from top to bottom a compiler
+  for one language, you've pretty much done them all. I 'm not sure, but I think here I do it twice, if not thrice...
+  
+
 
 
 
