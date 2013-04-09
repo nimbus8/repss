@@ -6,7 +6,7 @@ What is repss?
 
   At first, repss was an easy to implement commpiler. Having read a book on compilers, I really wanted to dive head
   first into being a "compiler designer". I particularly liked the sections on context free grammars, and the potential
-  infiniteness of language - and our inability to accurately describe/interpret a great many alltogether languages.
+  infiniteness of language - and our inability to accurately describe/interpret a great many alltogether valid languages.
   This is the kind of stuff that fascinates me, to the point where I wouldn't mind taaching theory of computation
   to undergrads. But of course I'm probably never going to get a PhD, and thus will probably never teach undergrad
   theory of computation. This project has two facets: 
