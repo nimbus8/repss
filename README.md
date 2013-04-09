@@ -8,8 +8,8 @@ What is repss?
   first into being a "compiler designer". I particularly liked the sections on context free grammars, and the potential
   infiniteness of language - and our inability to accurately describe/interpret a great many alltogether valid languages.
   This is the kind of stuff that fascinates me, to the point where I wouldn't mind taaching theory of computation
-  to undergrads. But of course I'm probably never going to get a PhD, and thus will probably never teach undergrad
-  theory of computation. This project has two facets: 
+  to undergrads. But of course I'm probably never going to get a PhD, and thus it's unlikely I'll ever teach undergrads
+  (thank god...), or theory of computation (to anyone who will listen). This project has two facets: 
     1) the first facet is for those who are interested in understanding compilers, and a bit of what they take to build
     2) a the second facet is for most people, so we'll see too it first
     
