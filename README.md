@@ -30,7 +30,7 @@ What is repss?
   should they find it useful, interesting, or worthy of a book deal, they might consider emailing me, or *sending me money* if they'd 
   like to see this project completed much sooner than it would otherwise. I cherish the value of your input; and I should hope that said input, and
   perhaps a few words of encouragement, might just help me forget about the more uninteresting things in my life like room and board, so that I
-  devote my the bulk of my effort and concentration to domain specific implementations with (obviously) very little general appeal, such as this.
+  devote the bulk of my effort and concentration to domain specific implementations with (obviously) very little general appeal, such as this one.
 
   
   1)
