@@ -17,7 +17,7 @@ What is repss?
 
   2)
   Repss is in part designed to be **a scaffolding atop written language**. The designer of the language first stresses
-  that the whole concept is inherently evil and mad-making, and one should seriously think about the potential ramification
+  that the whole concept is inherently evil and mad-making, and one should seriously think (twice) about the potential ramification
   or damage to their proper functioning before they invest any amount time into learning something so...ultimately, very stupid.
   But still he believes that the language could be an incredably beneficial tool (a boon) for writers *[1]*, should they choose to use it;
   and to elementary school teachers, who might leverage it to enhance their curriculums and promote greater creativity, pride, and ownership
