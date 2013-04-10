@@ -59,8 +59,8 @@ What is repss?
   but I believe my argument to the contrary holds more weight, at least here in this tiny locality of textual-processing. My point here is to
   convince you that compilers are important, and the world didn't end with lisp, as some are so adament - though I do love lisp.
   I actually learnt lisp AFTER I finished much of the project, ironically. Picking it up was easy, because I dont think it's true
-  to say once youve learnt one language youve learnt them all, but more true to say once you've created from top to bottom a compiler
-  for one language, you've pretty much done them all. I 'm not sure, but I think here I do it twice, if not thrice...
+  to say once youve learnt one language youve learnt them all, but more true to say that once you've created from top to bottom a compiler
+  for one language, you've pretty much done them all. I'm not sure, but I think here I do it twice, if not thrice...
   
 
 
