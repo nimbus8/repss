@@ -26,7 +26,7 @@ What is repss?
   the root, should be enough to confirm whether or not this project, or the language at the center of it, might be of any utility or
   at all relevant to the inquisitive individual -- though be warned: should one read it, they should mind the profanity (where it occurs)
   and instead focus on how they might potentially leverage the scaffolding to their benefit (as a literary device: to enhance their own creativity;
-  to manage their fractured and non-linear thinking patterns; to better represent, explore, and refine their ideas as they come, etc), and
+  to manage their fractured and non-linear thinking patterns; and better represent, explore, and refine their ideas as they come, etc), and
   should they find it useful, interesting, or worthy of a book deal, they might consider emailing me, or *sending me money* if they'd 
   like for the project to be completed much sooner than it would otherwise aided by their valued input and perhaps a few words of encouragement. Just an idea.
 
