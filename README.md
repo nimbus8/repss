@@ -6,7 +6,7 @@ What is repss?
 
   Repss is idea related to context free grammars and the potential infinitum of languages; where such intresting tidbits
   exist that say things like 'many valid languages cannot be recognized' given "machines" wholly deterministic in nature
-  (or something like that, don't quote me (unless on an exam, then go ahead)). This is the kind of stuff that fascinates me,
+  (or something like that, don't quote me (unless on an exam, then go right ahead)). This is the kind of stuff that fascinates me,
   to the point where I wouldn't mind teaching theory of computation to undergrads. But of course, I'm probably never going
   to get a PhD, nor should anyone give me one for that matter, thus it's unlikely I'll ever teach undergrads (thank god...),
   or theory of computation (to anyone who will listen). This project has two facets: 
