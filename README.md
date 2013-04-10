@@ -72,7 +72,7 @@ Footnotes:
 [1] *maybe just the mediocre writers like myself...b/c I hear most good writers, the ones worth reading, can write an entire
    novel over the course of a weekend; just one continuous draft written in ink, preferably by feather, without even a hint
    of inspiration - because they have incredably long fingers or a sort of visible abnormality(disfigurement) that makes 
-   them different from most people. They're monsters/[(**.|;/[(|**they're)] mutants, /[(/[(|quite)] possibly /[(|**a)] 
+   them quite different from most people. They're monsters/[(**.|;/[(|**they're)] mutants, /[(/[(|quite)] possibly /[(|**a)] 
    | /[(|**maybe)] even /[(|**a)] | we should count them /[(as | a)>><])] diferent species!)]  I don't know about you, but I'm f***ing *jealous!*
 
 
