@@ -48,7 +48,7 @@ What is repss?
   some levels with speed in mind, but only after "flexibility" and "expresiveness" have been establshed. The overall concept 
   (lexing+analysis+generation) is fairly complex - without my help - so a well-designed backend architecture was necessary, 
   if it isn't the most important thing, period [note 1]. As long as the principle ideas are sound, I like to think if you have
-  a well defined structure from the start, most - if not everything else - will just fall into place (it may just /[(*|(aswell))] have all went to hell (very quickly) if it hadn't!) 
+  a well defined structure from the start, most - if not everything else - will just fall into place (NOTE: I should add that it may just /[(*|(aswell))] have all went to hell (very quickly) if it hadn't!) 
   
   Some notes on the Technical Specifications
   ------------------------------------------
