@@ -54,8 +54,8 @@ What is repss?
   ------------------------------------------
   The organization of the project was architected to be as simple as possible; split into seperate independant modules,
   while keeping things consistent, and available only when and where their needed. I should add that the way we accomplish
-  this is through a sub-project whose source is entirely indepedant from the main project. A common theme here (if you catch it,the drift...)
-  is 'meta'. I don't like to consider Repss as a meta-language, nor do I want to consider repss as a translator; both are arguably just that
+  this is through a sub-project whose source is entirely indepedant from the main project. A common theme here (if you catch my drift...)
+  is 'meta'. I don't like to consider Repss as a meta-language, nor do I want to consider repss as a translator; both are arguably just that,
   but I believe my argument to the contrary holds more weight, at least here in this tiny locality of textual-processing. My point here is to
   convince you that compilers are important, and the world didn't end with lisp, as some are so adament - though I do love lisp.
   I actually learnt lisp AFTER I finished much of the project, ironically. Picking it up was easy, because I dont think it's true
