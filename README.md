@@ -28,7 +28,9 @@ What is repss?
   and instead focus on how they might potentially leverage the scaffolding to their benefit (as a literary device: to enhance their own creativity;
   to manage their fractured and non-linear thinking patterns; and better represent, explore, and refine their ideas as they come, etc), and
   should they find it useful, interesting, or worthy of a book deal, they might consider emailing me, or *sending me money* if they'd 
-  like for the project to be completed much sooner than it would otherwise aided by their valued input and perhaps a few words of encouragement. Just an idea.
+  like to see this project completed much sooner than it would otherwise. I cherish the value of your input; and I should that said input, andd
+  perhaps a few words of encouragement, might just help me forget about the more uninteresting things in my life like room and board, so that I
+  devote my concentration to domain specific implementations with (obviously) very little general appeal, such as this.
 
   
   1)
