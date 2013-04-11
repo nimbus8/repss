@@ -27,7 +27,7 @@ What is repss?
   at all relevant to the inquisitive individual -- though be warned: should one read it, they should mind the profanity (where it occurs)
   and instead focus on how they might potentially leverage the scaffolding to their benefit (as a literary device: to enhance their own creativity;
   to manage their fractured and non-linear thinking patterns; and better represent, explore, and refine their ideas as they come, etc) - and
-  should they find it useful, interesting, or worthy of a book deal, they might consider emailing me, or *sending me money* if they'd 
+  should they find it useful, interesting, or worthy of a book deal, they might consider emailing me, or *sending me money (kwillia.pub@gmail.com)* if they'd 
   like to see this project completed much sooner than it would otherwise. I cherish the value of your input; and I should hope that said input, and
   perhaps a few words of encouragement, might just help me forget about the more uninteresting things in my life like room and board, so that I
   can devote the bulk of my effort and concentration to domain specific implementations with (obviously) very little general appeal, such as this one.
@@ -49,7 +49,8 @@ What is repss?
   The overall concept (lexing+analysis+generation indep.) is fairly complex - without my help - so a well-designed backend
   architecture to tie it all together was necessary, if isn't (re:wasn't) the most important thing, period [note 1]. In my
   view, as long as the principle ideas are sound, I like to think that, if you have a well defined structure from the start(beginning),
-  most - if not everything else - will just fall into place (NOTE: I should add that it may /[(*:|have::)] just /[(: :|::(as easily)::)] /[(:: spiralled out of control in it's descent toward|:have all went to)] hell (very quickly) if it hadn't!) 
+  most - if not everything else - will just fall into place.
+  (NOTE: I should add that it may /[(*:|have::)] just /[(: :|::(as easily)::)] /[(:: spiralled out of control in it's descent toward|:have all went to)] hell (very quickly) if it hadn't!) 
   
   Some notes on the Technical Specifications
   ------------------------------------------
