@@ -38,7 +38,7 @@ What is repss?
   dont you!? Don't think I didn't notice.*
   
   1)
-  The other part of repss is the code. A look at the code should give one insight on the sort of decisions that
+  The other part of repss is the code. A look at the code should give one insight into the sort of decisions that
   were made along the way. Decisions that for the most part are ecountered (in one way or the other) when implementing
   a compiler in general. So I think for this reason, it's very useful, and light reading when compared to compilers for larger languages
   like Python (which would be a good reference too I guess if one were dedicated enough). I don't like being held back by languages,
