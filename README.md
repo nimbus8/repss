@@ -63,6 +63,7 @@ What is repss?
   the most important thing, period [note 1].
   
   In my view, so long as the principle ideas are sound, and there's a well defined structure (present) from the start (the beginning),
+
   most -- if not everything else -- will just fall into place.
 
   I haven't been proven wrong just yet...(but then again I'm not finished)(this must be an axiom!)
