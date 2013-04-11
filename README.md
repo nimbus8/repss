@@ -33,8 +33,8 @@ What is repss?
   forget about the more uninteresting things in my life like room and board, help me (render me capable (and appropriately naive(or insane)) to) devote the
   bulk of my effort and concentration to domain specific implementations, with (obviously) very little general appeal, such as this one. 
   *It's either this or rap.
-  I'm serious, even my swaggers got middle finger, and it writes backwards, saving me the trouble of carrying mirrors with me wherever I go! If you've read this far,
-  You should have already guessed this, I mean c'mon. And for those paragraphe hoppers, you already know what I'm talkin' about, dont you!? Don't think I didn't notice.*
+  I'm serious, even my swaggers got a middle finger, and it writes backwards; saving me the trouble of carrying mirrors with me wherever I go! If you've read this far,
+  you should have already guessed this, I mean, c'mon. And for those paragraphe hoppers, you already know what I'm talkin' about, dont you!? Don't think I didn't notice.*
   
   1)
   The other part of repss is the code. A look at the code should give one insight on the sort of decisions that
