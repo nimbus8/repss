@@ -51,16 +51,16 @@ What is repss?
   of sorts. (Obviously, it's still not done.) (I'd like to be graded now please.) I just don't like being held back by language(s),
   so (in true form :like a boss) there are very feww limitations here to speak of (at least not in the specification). The comments are
   meant to be helpful, and my code clear. Whether this is true (as I wouldn't know), let me assure you that I did (at one point) make a conscious
-  effort to write for others, and not just for myself when I revisit some time way into the future (as I stumble in drunk one evening, alone, to contemplate my life). So, in theory, other programmers, with
-  an appropriately thourough background in the basic data structures (stacks, maps, trees, etc) should have no problem understanding it.
-  On a similar note, seeing as how there are usually many ways to do something, I almost always note why I made a decision to go any one way
-  where a fork in the road exists and it may be unclear to the reader which one (of a few or a plethora of options) is the better path to be taken
-  (counting ones chickens before their hatched). Don't expect me to do so when it's trivially obvious why one option should be chosen over another
-  (what more  not caring to elaborate). The code was always designed on some levels with speed in mind, but only after a high level "flexibility" and
-  "expresiveness" had been establshed. The overall concept (lexing+analysis+generation indep.) is fairly complex - without my complicating it (help) - so a well-designed
-  backend architecture to tie it all together was necessary - if it isn't (re:wasn't) the most important thing, period [note 1].
-  In my view, as long as the principle ideas are sound, I like to think that, if you have a well defined structure from the start(beginning),
-  most - if not everything else - will just fall into place.
+  effort to write for others, and not just for myself when I revisit some time way into the future (as I stumble in drunk one evening, alone, 
+  to contemplate my life). So, in theory, other programmers, with an appropriately thourough background in the basic data structures (stacks, maps,
+  trees, etc) should have no problem understanding it. On a similar note, seeing as how there are usually many ways to do something, I almost always
+  note why I made a decision to go any one way where a fork in the road exists and it may be unclear to the reader which one (of a few or a plethora
+  of options) is the better path to be taken (counting ones chickens before their hatched). Don't expect me to do so when it's trivially obvious why
+  one option should be chosen over another (and not caring to elaborate). The code was always designed on some levels with speed in mind, but only
+  after a high level "flexibility" and "expresiveness" had been establshed. The overall concept (lexing+analysis+generation indep.) is fairly
+  complex -- without my complicating it (what I call help) -- so a well-designed backend architecture to tie it all together was necessary
+  -- if it isn't (re:wasn't) the most important thing, period [note 1]. In my view, as long as the principle ideas are sound, I like to think
+  that, if you have a well defined structure from the start(beginning), most -- if not everything else -- will just fall into place.
 
   (NOTE: I should add that it may /[(*:|have::)] just /[(: :|::(as easily)::)] /[(:: spiralled out of control in it's descent toward|:have all went to)] hell (very quickly) if it hadn't!) 
   
