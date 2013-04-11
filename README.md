@@ -65,7 +65,7 @@ What is repss?
   In my view, so long as the principle ideas are sound and there's a well defined structure (present) from the start(beginning),
   most -- if not everything else -- will just fall into place.
 
-  I haven't been wrong yet...(but then again I'm not finished)(this must be an axiom!)
+  I haven't been proven wrong just yet...(but then again I'm not finished)(this must be an axiom!)
 
   (NOTE: I should add that it may /[(*:|have::)] just /[(: :|::(as easily)::)] /[(:: spiralled out of control in it's descent toward|:have all went to)] hell (very quickly) if it hadn't!) 
   
