@@ -58,7 +58,7 @@ What is repss?
   of options) is the better path to be taken (counting ones chickens before their hatched). Don't expect me to do so when it's trivially obvious why
   one option should be chosen over another (and not caring to elaborate). The code was always designed on some levels with speed in mind, but only
   after a high level "flexibility" and "expresiveness" had been establshed. The overall concept (lexing+analysis+generation indep.) is fairly
-  complex -- without my complicating it (what I call help) -- so a well-designed backend architecture to tie it all together was necessary
+  complex -- without my complicating it (what I call help) -- so a well-designed backend architecture, to tie it all together, was necessary
   -- if it isn't (re:wasn't) the most important thing, period [note 1]. In my view, as long as the principle ideas are sound, I like to think
   that, if you have a well defined structure from the start(beginning), most -- if not everything else -- will just fall into place.
 
