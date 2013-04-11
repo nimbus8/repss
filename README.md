@@ -44,12 +44,14 @@ What is repss?
   for larger languages like Python (which would be a good reference too I guess if one were dedicated enough). My limited experience
   with compiler courses offered at some institutions (...) were awful for the amount of time that I was enrolled. I knew it wasn't worth
   it's weight in much of anything after the prof skipped lexing, almost entirely, literally saying there are already tools out there that
-  are sufficient. I disagreed very silently, and started working on this -- though there's a good argument that I might have benefited from
-  staying with the class as it covered topics in Analysis, Optimization, and Generation, that also completely ignores reality, this is my proof
-  of sorts. (I'd like to be graded now please.) I just don't like being held back by language(s), so (in true form :like a boss) there are very
-  feww limitations here to speak of (at least not in the specification). The comments are meant to be helpful, and my code clear. Whether this is
-  true (as I wouldn't know), let me assure you that I did (at one point) make a conscious effort to write for others, and not just for myself
-  when I revisit it in the future (as I stumble in drunk one evening, alone, to contemplate my life). So, in theory, other programmers, with
+  are sufficient. I silently disagreed very, and started working on this -- there's a good (valid) argument that I might have benefited from
+  staying with the class, as it still covered topics on compiling such as: ASTs, analysis, optimization, and generation; though this argument,
+  in my mind, completely ignores reality. Theres a great deal of details outside the theory, that no one book can cover; I don't claim
+  to be an expert when it comes to all of them, but I don't think a 4 credit course would have helped much their either. This is my proof
+  of sorts. (Obviously, it's still not done.) (I'd like to be graded now please.) I just don't like being held back by language(s),
+  so (in true form :like a boss) there are very feww limitations here to speak of (at least not in the specification). The comments are
+  meant to be helpful, and my code clear. Whether this is true (as I wouldn't know), let me assure you that I did (at one point) make a conscious
+  effort to write for others, and not just for myself when I revisit some time way into the future (as I stumble in drunk one evening, alone, to contemplate my life). So, in theory, other programmers, with
   an appropriately thourough background in the basic data structures (stacks, maps, trees, etc) should have no problem understanding it.
   On a similar note, seeing as how there are usually many ways to do something, I almost always note why I made a decision to go any one way
   where a fork in the road exists and it may be unclear to the reader which one (of a few or a plethora of options) is the better path to be taken
