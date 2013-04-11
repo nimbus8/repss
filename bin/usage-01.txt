@@ -112,7 +112,7 @@ to all others that (though the battle had been fought and lost) the war were har
 be the last -- a|:: )]nd that's all that mattered ((so eat it)) )])].
 
 /[(|- oh, wow, now I don't ever feel like having children.
-- /[(I wouldn't worry about: |* /[(Things like: | Those type things)])] /[:(that:)] /[:(take care of themselves)])]
+- /[(*/[(I wouldn't worry about|* Things like)]: | Those type things)])] /[:(that:)] /[:(take care of themselves)])]
 
 
 
