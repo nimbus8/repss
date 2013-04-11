@@ -54,7 +54,7 @@ What is repss?
   On a similar note, seeing as how there are usually many ways to do something, I almost always note why I made a decision to go any one way
   where a fork in the road exists and it may be unclear to the reader which one (of a few or a plethora of options) is the better path to be taken
   (counting ones chickens before their hatched). Don't expect me to do so when it's trivially obvious why one option should be chosen over another
-  (and then  not caring to elaborate). The code was designed on some levels with speed in mind, but only after "flexibility" and "expresiveness" have
+  (what more then not caring to elaborate). The code was designed on some levels with speed in mind, but only after "flexibility" and "expresiveness" have
   been establshed. The overall concept (lexing+analysis+generation indep.) is fairly complex - without my complicating it (help) - so a well-designed
   backend architecture to tie it all together was necessary - if isn't (re:wasn't) the most important thing, period [note 1].
   In my view, as long as the principle ideas are sound, I like to think that, if you have a well defined structure from the start(beginning),
