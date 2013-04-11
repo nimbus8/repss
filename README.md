@@ -34,7 +34,8 @@ What is repss?
   bulk of my effort and concentration to domain specific implementations, with (obviously) very little general appeal, such as this one. 
   *It's either this or rap.
   I'm serious, even my swaggers got a middle finger, and it writes backwards; saving me the trouble of carrying mirrors with me wherever I go! If you've read this far,
-  you should have already guessed this, I mean, c'mon. And for those paragraphe hoppers, you already know what I'm talkin' about, dont you!? Don't think I didn't notice.*
+  you should have already guessed this; there are no wrong answers here, except for the ones I've written down. And for those paragraphe hoppers, you already know what I'm talkin' about,
+  dont you!? Don't think I didn't notice.*
   
   1)
   The other part of repss is the code. A look at the code should give one insight on the sort of decisions that
