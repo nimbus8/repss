@@ -28,9 +28,10 @@ What is repss?
   and instead focus on how they might potentially leverage the scaffolding to their benefit (as a literary device: to enhance their own creativity;
   to manage their fractured and non-linear thinking patterns; and better represent, explore, and refine their ideas as they come, etc) - and
   should they find it useful, interesting, or worthy of a book deal, they might consider emailing me, or *sending me money (kwillia.pub@gmail.com)* if they'd 
-  like to see this project completed much sooner than it would otherwise. I cherish the value of your input; and I should hope that said input, and
-  perhaps a few words of encouragement, might just help me forget about the more uninteresting things in my life like room and board, so that I
-  can devote the bulk of my effort and concentration to domain specific implementations with (obviously) very little general appeal, such as this one.
+  like to see this project completed much sooner than it would otherwise. I cherish the value of your input; and I'm optimistic that any of said input,
+  whether or not (should it or shouldnt) it include perhaps a few (kind) words of encouragement, will just be enough to help me forget about the more
+  uninteresting things in my life like room and board, so that I might be able (free) to devote the bulk of my effort and concentration to domain specific
+  implementations, with (obviously) very little general appeal, such as this one.
 
   
   1)
