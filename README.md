@@ -36,19 +36,20 @@ What is repss?
   1)
   The other part of repss is the code. A look at the code should give one insight on the sort of decisions that
   were made along the way. Decisions that for the most part are ecountered (in one way or the other) when implementing
-  a compiler in general. So I think for this reason, it's very useful, and light when compared to compilers fo large languages
+  a compiler in general. So I think for this reason, it's very useful, and light reading when compared to compilers for larger languages
   like Python (which would be a good reference too I guess if one were dedicated enough). I don't like being held back by languages,
   so there are very feww limitations here to speak of (at least not in the specification). The comments are meant to be helpful,
-  and my code clear. Whether this is true (as I wouldn't know), let me assure you I did make a conscious effort to write for others,
-  and not just myself when revisting it. So, in theory, other programmers, with an appropriately thourough background in the basic
-  data structures (stacks, maps, trees, etc) should have no problem understanding it. ON a similar note, seeing as how there are usually
-  many ways to do something, I almost always note why I made a decision to go any one way where a fork in the road exists and it may
-  be unclear to the reader which one is the better path to be taken (counting ones chickens before their hatched). Don't expect me to do
-  so when it's trivially obvious why one option should be chosen over another (and I didn't care to elaborate). The code was designed on
-  some levels with speed in mind, but only after "flexibility" and "expresiveness" have been establshed. The overall concept 
-  (lexing+analysis+generation) is fairly complex - without my help - so a well-designed backend architecture was necessary, 
-  if it isn't the most important thing, period [note 1]. As long as the principle ideas are sound, I like to think if you have
-  a well defined structure from the start, most - if not everything else - will just fall into place (NOTE: I should add that it may /[(*:|have::)] just /[(: :|::(as easily)::)] /[(:: spiralled out of control in it's descent toward|:have all went to)] hell (very quickly) if it hadn't!) 
+  and my code clear. Whether this is true (as I wouldn't know), let me assure you that I did (at one point) make a conscious effort
+  to write for others, and not just for myself when I revisit itin the future. So, in theory, other programmers, with an appropriately
+  thourough background in the basic data structures (stacks, maps, trees, etc) should have no problem understanding it. ON a similar note,
+  seeing as how there are usually many ways to do something, I almost always note why I made a decision to go any one way where a fork in
+  the road exists and it may be unclear to the reader which one is the better path to be taken (counting ones chickens before their hatched).
+  Don't expect me to do so when it's trivially obvious why one option should be chosen over another (and I didn't care to elaborate).
+  The code was designed on some levels with speed in mind, but only after "flexibility" and "expresiveness" have been establshed.
+  The overall concept (lexing+analysis+generation indep.) is fairly complex - without my help - so a well-designed backend
+  architecture to tie it all together was necessary, if isn't (re:wasn't) the most important thing, period [note 1]. In my
+  view, as long as the principle ideas are sound, I like to think that, if you have a well defined structure from the start(beginning),
+  most - if not everything else - will just fall into place (NOTE: I should add that it may /[(*:|have::)] just /[(: :|::(as easily)::)] /[(:: spiralled out of control in it's descent toward|:have all went to)] hell (very quickly) if it hadn't!) 
   
   Some notes on the Technical Specifications
   ------------------------------------------
