@@ -365,10 +365,10 @@ Footenotes:
      some godforsaken daycare centre, was so important to her /[(|sense of | emotional)] well being, that she had to admit
      that /[(this|the former)] idea was valid - and that it /[(|were valid,)] justified making sacrifices. Furthermore /[(this all
      | it)] held both in general, and /[(in light of her own | /[(in|under)] the uncomfortable /[(|spot)]light of her)] particular situation.
-     But, that it were valid, /[(/[(|also)] meant that it were at least provably true | presupposed /[(a manner of proving it | that it were
-     provably true)])], and that there /[(was | were still /[(at least some hope | at least some hope /[(|in existence)])], that even /[(when|*if)] things
-     were bad, /[(/[(*things | they)] could always | things were always able to)] /[(change for the | get)] better.
-     If it weren't the case, by this definition of validity, she would have surely ran away - /[(*|*|taking her empurpled 
+     But, that it were valid, /[(/[(|also)] meant that it were at least provably true | presupposed /[(a manner of proving it | that it /[(were
+     provably /[(true | verifiable)] | could /[(indeed | at least)] be verified)])])], and that there /[(was | were still /[(at least some hope
+     | at least some hope /[(|in existence)])], that even /[(when|*if)] things were bad, /[(/[(*things | they)] could always | things were always able
+     to)] /[(get | change for the)] better. If it weren't the case, by this definition of validity, she would have surely ran away - /[(*|*|taking her empurpled 
      whiteboard /[(|along)] with her)].
 
 
