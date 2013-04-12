@@ -62,7 +62,7 @@ What is repss?
   and was constantly revised to make sure that interconnections were rendered as seamless as possible, I belief this is incredably -- if it isn't (re:wasn't)
   the most important thing, period [note 1].
   
-  In my view, so long as the principle ideas are sound, and there's a well defined structure (present) from the start (the beginning), all the way to end
+  In my view, so long as the principle ideas are sound, and there's a well defined structure (present) from the start (the beginning), all the way to end,
   most -- if not everything else -- will just fall into place.
 
   I haven't been proven wrong just yet...(but then again I'm not finished)(this must be an axiom!)
