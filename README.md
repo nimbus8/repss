@@ -35,7 +35,8 @@ What is repss?
   *It's either this or rap.
   I'm serious, even my swaggers got a middle finger, and it writes backwards; saving me the trouble of carrying mirrors with me wherever I go! If you've read this far,
   you should have already guessed this (you should already know); there are no wrong answers here, except for the ones I've written down. And for those paragraphe hoppers, you already feel what I'm talkin' about,
-  dont you!? Don't doubt it, and don't think I didn't notice. I caught your footfalls brustling in the winds (then gave 'em back, you're welcome)*
+  dont you!? Don't doubt it, and don't think I didn't notice. I caught your footfalls brustling in the winds (then gave 'em back, before you even noticed they were gone
+  (strutted about in 'em around the valley to give 'em that well worn feeling they'd never have (I took 'em out and showed 'em the world they'd never see (apart from the ocean))), you're welcome)*
   
   1)
   The other part of repss is the code. A look at the code should give one insight into the sort of decisions that
