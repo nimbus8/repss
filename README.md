@@ -29,8 +29,8 @@ What is repss?
   to manage their fractured and non-linear thinking patterns; and better represent, explore, and refine their ideas as they come, etc) - and
   should they find it useful, interesting, or worthy of a book deal, they might consider emailing me, or *sending me money (kwillia.pub@gmail.com)* if they'd 
   like to see this project completed much sooner than it would otherwise. I cherish the value of your input; and I'm optimistic that any of said input,
-  whether it avoid or maybe to the contrary (should or it shouldnt) perhaps include a few (kind) words of encouragement, it will be just enough to help me
-  forget about the more uninteresting things in my life like room and board, help me (render me capable (and appropriately naive(or insane)) to) devote the
+  whether it avoid or maybe to the contrary (should or it shouldnt) perhaps include a few (kind) words of encouragement, it will nevertheless simply by its existence
+  be just enough to help me forget about the more mundane things in my life like room and board, and help me (render me capable (and appropriately naive(or insane)) to) devote the
   bulk of my effort and concentration to domain specific implementations, with (obviously) very little general appeal, such as this one. 
   *It's either this or rap.
   I'm serious, even my swaggers got a middle finger, and it writes backwards; saving me the trouble of carrying mirrors with me wherever I go! If you've read this far,
