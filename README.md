@@ -30,9 +30,7 @@ This project is written in "C++11", for no particular reason.
   
   For those interested in linguistics, these examples may be familiar.
   
-  **1)** 
-  
-  At 2 in the afternoon **/[(** he **|** she **)]** was due at the dentist.
+  **1)** At 2 in the afternoon **/[(** he **|** she **)]** was due at the dentist.
   
   =
   
@@ -42,9 +40,7 @@ This project is written in "C++11", for no particular reason.
   
   ...best of all we can have fun with this! For example:
   
-  **2)** 
-  
-  At 2 **/[(** **|** in the afternoon **)]** **/[(** he **|** she **)]** was due at the dentist.
+  **2)** At 2 **/[(** **|** in the afternoon **)]** **/[(** he **|** she **)]** was due at the dentist.
 
   =
   
