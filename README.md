@@ -2,7 +2,9 @@
 
 This project is written in "C++11", for no particular reason.
 
-What is repss?
+**What is repss?**
+
+  Good question.
 
   Repss is idea related to context free grammars and the potential infinitum of languages; where such intresting tidbits
   of proof exist that say things like 'many valid languages cannot be recognized' given "machines" wholly deterministic in nature
