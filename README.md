@@ -30,18 +30,20 @@ This project is written in "C++11", for no particular reason.
   
   For those interested in linguistics, these examples may be familiar.
   
-  1) At 2 in the afternoon /[(he|she)] was due at the dentist.
+  1) At 2 in the afternoon **/[(**he**|**she**)]** was due at the dentist.
   
   =
+  
   At 2 in the afternoon **he** was due at the dentist.
 
   At 2 in the afternoon **she** was due at the dentist.
   
   ...best of all we can have fun with this! For example:
   
-  2) At 2 /[(|in the afternoon)] /[(he|she)] was due at the dentist.
+  2) At 2 **/[(****|**in the afternoon**)]** **/[(**he**|**she**)]** was due at the dentist.
 
   =
+  
   At 2 **he** was due at the dentist.
 
   At 2 **she** was due at the dentist.
@@ -50,7 +52,7 @@ This project is written in "C++11", for no particular reason.
   
   At 2 **in the afternoon** *he* was due at the dentist.
   
-  ...now imagine if we replaced **was** with **/[(was|were)]. Here's a math question (bet you didn't expect that!), how many more variations do we add the last set created in example 2) ?
+  ...now imagine if we replaced **was** with **/[(**was**|**were**)]**. Here's a math question (bet you didn't expect that!), how many more variations do we add the last set created in example 2) ?
   
   More to come!
 
