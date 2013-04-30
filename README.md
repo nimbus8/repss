@@ -14,7 +14,7 @@ This project is written in "C++11", for no particular reason.
   literary education, and linguistics, among other things) are advised to read the below for further clarification.
     
     
-  Repss is in part designed to be somewhat like **a scaffolding atop written language**. We believe the language could be an incredably beneficial tool (a boon)
+  Repss is in part designed to be something like **a scaffolding atop written language**. We believe the language could be an incredably beneficial tool (a boon)
   for writers, should they choose to use it; and also for elementary school teachers, who might leverage it to enhance their curriculums and promote greater 
   creativity, pride, and ownership in student writing. As a disclaimer: no practical work has been done to validate this, none that would be considered reliable.
   We have only our personl experience with the language. A quick perusal of the usage-01.txt file, under the bin/ directory at the root, should be enough to confirm
