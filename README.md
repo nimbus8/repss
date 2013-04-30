@@ -53,7 +53,7 @@ This project is written in "C++11", for no particular reason.
   At 2 **in the afternoon** *he* was due at the dentist.
   
   ...now imagine if we replaced **was** with **/[(** was **|** were **)]**. Here's a math question (bet you didn't expect that!), how many more variations do we add the last set created in example 2) ?
-  What musical and phonetic effects do we observe in each case as we replace **was** with **were** and read the passage aloud?
+  What musical and phonetic effects (if any) do we observe in each case as we replace **was** with **were** and read the passage aloud?
   
   More to come!
 
