@@ -9,7 +9,7 @@ This project is written in "C++11", for no particular reason.
   Repss is idea related to context free grammars and the potential infinitum of languages; where such intresting tidbits
   of proof exist that say things like 'many valid languages cannot be recognized' given "machines" wholly deterministic in nature
   (or something like that, quote me at your own risk). This is the kind of stuff that fascinates me, I wouldn't even mind teaching theory 
-  of computation to undergrads -- this won't happen, of course (probably a good thing). This project is made catered to two audiences: technical,
+  of computation to undergrads -- this won't happen, of course (which is probably a good thing). This project is made catered to two audiences: technical,
   and non-technical. The technical audience s advised to rumage through the source code, and non-technical people (people interested in writing,
   literary education, and linguistics, among other things) are advised to read the below for further clarification.
     
