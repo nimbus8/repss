@@ -36,8 +36,7 @@ and they finally arrived after /[(spending /[(|half)] | wasting)] an hour /[(|of
 People in school, if they were studious, they really only cared cared about /[(*|getting good)] grades. These same people
 once they graduated | these same people)] replaced grades with money as their sole reason for living; even though
 /[(*|it were /[(a known fact | well known)] that)] neither grades or money ever guaranteed that they would be happy 
-(/[(*|what was even sillier than the thought of this, was that)] their tax bracket /[(/[(*defined | confined)] | :should
-/[(*define | confine)])] and similarly constrained their personality (full disclosure: I have no money, not a dime to my name
+(/[(*|what/[('s:| was::)] even sillier than the thought of this, /[(:is:|::was)] that)] their tax bracket /[(*defined | :should define and similarly constrained their personality (full disclosure: I have no money, not a dime to my name
 -- so I might be biased.)). /[(And | So)] most of them weren't happy/[(|at all)]; /[(|in fact)] they were f**king miserable/[(.|
 and scowled at you whenever /[(they had the chance | you were near)].)] They wouldn't quit being /[(so sour | as sour as they were)]
 until they made everyone /[(|else)] around them miserable as well. So what we see is a bunch of people competing to be the most 
