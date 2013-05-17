@@ -28,6 +28,8 @@ This project is written in "C++11", for no particular reason.
   the scaffolding to their benefit (as a literary device: to enhance their creativity; to manage their fractured and non-linear thinking patterns; and better represent, explore,
   and refine their ideas as they come, etc) 
   
+  (I know what your thinking, this is silly. Believe me this is not so silly. There are much sillier things published every day.)
+  
   For those interested in linguistics, these examples may be familiar.
   
   **1)** At 2 in the afternoon **/[(** he **|** she **)]** was due at the dentist.
