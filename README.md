@@ -22,7 +22,7 @@ This project is written in "C++11", for no particular reason.
   one uses the scaffolding to their advantage gets larger (I have tried to do this to the best of my ability in the bin/usage-01.txt file).  We believe the
   framework language could be an incredably beneficial tool (a boon) for writers, should they choose to use it; and also for elementary school teachers, who might 
   leverage it to enhance their curriculums and promote greater creativity, pride, and ownership in student writing. As a disclaimer: no practical work has been done
-  to validate this, none that would be considered reliable. We have only our personl experience with the language. A quick perusal of the usage-01.txt file, under the
+  to validate these suggestions, none that would be considered reliable. We have only our own personal experience with the language. A quick perusal of the usage-01.txt file, under the
   bin/ directory at the root, should be enough to confirm whether or not this project, or the language at the center of it, might be of any utility or at all relevant
   to the inquisitive individual -- one is advised to keep an open mind and to try to focus less on the content (the stories) and more on how they might potentially leverage
   the scaffolding to their benefit (as a literary device: to enhance their creativity; to manage their fractured and non-linear thinking patterns; and better represent, explore,
