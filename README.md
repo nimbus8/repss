@@ -57,6 +57,17 @@ This project is written in "C++11", for no particular reason.
   ...now imagine if we replaced **was** with **/[(** was **|** were **)]**. Here's a math question (bet you didn't expect that!), how many more variations do we add to the last set created in example 2) ?
   What musical and phonetic effects (if any) do we observe in each case as we replace **was** with **were** and read the passage aloud?
   
+  [Edit]
+  So I've caught flak for my urging children to substitute **were** for **was** inappropriately. Fine, this is fair.
+  If it were up to me I'd use **were** everywhere in place of **was**(not here of course). The following is more
+  appropriate (still, the focus is on **were**, b/c I have thing for **were**):
+  
+  Were he to have scheduled the appointment properly, at 2 he would be due at the dentist. In which case I'd imagine he were on his way there right now. If not, had he failed miserably as his known to do from time to time(the clown he is), I wouldn't have the faintest idea where he may be.
+  
+  If he had scheduled the appointment properly, at 2 ... .... .... ... 
+  
+  /[(Were he to have | If he had)] scheduled ... ... ... ...
+  
   More to come!
 
 
