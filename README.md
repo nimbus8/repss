@@ -16,7 +16,7 @@ This project is written in "C++11", for no particular reason.
     
   Repss is in part designed to be something like **scaffolding atop written language**. Where usually scaffolding is found on construction sites, in this case
   the scaffolding exists around regions of text that represent uncertainty; those regions, yet to be finalized, are thus "under construction". An interesting
-  point to note here is that the "scaffolding" does NOT presuppose the program built here to handle it and recognize it, or even a computer for that matter, it
+  point to note here is that the "scaffolding" does NOT presuppose the program built here in this project to handle it and recognize it, or even a computer for that matter, it
   can be used on paper quite trivially at anytime, this does not take anything away from the concept or the utility. Computers are to handle repetative
   sets of instructions that a human might easily tire of, thus the program that is being developed here in this project is only important when the number of times
   one uses the scaffolding to their advantage gets larger (I have tried to do this to the best of my ability in the bin/usage-01.txt file).  We believe the
