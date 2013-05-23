@@ -62,10 +62,13 @@ This project is written in "C++11", for no particular reason.
   If it were up to me I'd use **were** everywhere in place of **was**(not here of course). The following is more
   appropriate (still, the focus is on **were**, b/c I have thing for **were**):
   
-  Were he to have scheduled the appointment properly, at 2 he would be due at the dentist. In which case I'd imagine he were on his way there right now. If not, had he failed miserably as his known to do from time to time(the clown he is), I wouldn't have the faintest idea where he may be.
   
+  Were he to have scheduled the appointment properly, at 2 he would be due at the dentist. In which case, judging by time, I'd imagine he were on his way there right now. If not, had he failed miserably as his known to do from time to time(the clown he is), I wouldn't have the faintest idea where he may be.
+ 
+ 
   If he had scheduled the appointment properly, at 2 ... .... .... ... 
-  
+ 
+ 
   /[(Were he to have | If he had)] scheduled ... ... ... ...
   
   More to come!
