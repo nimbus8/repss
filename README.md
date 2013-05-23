@@ -74,4 +74,4 @@ This project is written in "C++11", for no particular reason.
   More to come!
 
 
-
+(C) Copyright 2013, Khalique Williams
