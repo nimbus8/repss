@@ -23,8 +23,8 @@ This project is written in "C++11", for no particular reason.
   leverage it to enhance their curriculums and promote greater creativity, pride, and ownership in student writing. As a disclaimer: no practical work has been done
   to validate these suggestions, none that would be considered reliable. We have only our own personal experience with the language. And again we suggest that a quick 
   perusal of the usage-01.txt file, under the bin/ directory at the root, should be enough to confirm whether or not this project, or the language at the center of it,
-  might be of any utility -- or you can experiment on paper, mmaybe you'll find it not so difficult to use the scaffolding to your advantage\benefit (as a literary device: to enhance their creativity; to manage their fractured and
-  non-linear thinking patterns; and better represent, explore, and refine their ideas as they come, etc) 
+  might be of any utility -- or you can experiment on paper, mmaybe you'll find it not so difficult to use the scaffolding to your advantage\benefit (as a literary device...
+  to enhance your creativity; to manage your fractured and non-linear thinking patterns; to better represent, explore, and refine your ideas as they run through the faucet of your imagination -- maybe you'll find it about as useful as I have -- or maybe not, everyone's different) 
   
   (I know what your thinking, this is silly. Believe me this is not so silly. There are much sillier things published every day.)
   
