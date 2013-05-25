@@ -8,8 +8,7 @@ This project is written in "C++11", for no particular reason.
 
   Repss is idea related to context free grammars and the potential infinitum of languages; where such intresting tidbits
   of proof exist that say things like 'many valid languages cannot be recognized' given "machines" wholly deterministic in nature
-  (or something like that, quote me at your own risk). This is the kind of stuff that fascinates me, I wouldn't even mind teaching theory 
-  of computation to undergrads -- this won't happen, of course (which is probably a good thing). This project is made catered to two audiences: technical,
+  (or something like that, quote me at your own risk). This project is made catered to two audiences: technical,
   and non-technical. The technical audience s advised to rumage through the source code, and non-technical people (people interested in writing,
   literary education, and linguistics, among other things) are advised to read the below for further clarification.
     
@@ -24,8 +23,7 @@ This project is written in "C++11", for no particular reason.
   leverage it to enhance their curriculums and promote greater creativity, pride, and ownership in student writing. As a disclaimer: no practical work has been done
   to validate these suggestions, none that would be considered reliable. We have only our own personal experience with the language. And again we suggest that a quick 
   perusal of the usage-01.txt file, under the bin/ directory at the root, should be enough to confirm whether or not this project, or the language at the center of it,
-  might be of any utility or at all relevant to the inquisitive individual -- one is advised to keep an open mind and to try to focus less on the content (the stories)
-  and more on how they might potentially leverage the scaffolding to their benefit (as a literary device: to enhance their creativity; to manage their fractured and
+  might be of any utility -- or you can experiment on paper, mmaybe you'll find it not so difficult to use the scaffolding to your advantage\benefit (as a literary device: to enhance their creativity; to manage their fractured and
   non-linear thinking patterns; and better represent, explore, and refine their ideas as they come, etc) 
   
   (I know what your thinking, this is silly. Believe me this is not so silly. There are much sillier things published every day.)
