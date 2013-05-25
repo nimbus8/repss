@@ -26,7 +26,7 @@ This project is written in "C++11", for no particular reason.
   might be of any utility -- or you can experiment on paper, mmaybe you'll find it not so difficult to use the scaffolding to your advantage\benefit (as a literary device...
   to enhance your creativity; to manage your fractured and non-linear thinking patterns; to better represent, explore, and refine your ideas as they run through the faucet of your imagination -- maybe you'll find it about as useful as I have -- or maybe not, everyone's different) 
   
-  (I know what your thinking, this is silly. Believe me this is not so silly. There are much sillier things published every day.)
+  (I know what your thinking, this is silly. Believe me this is not so silly. There are much sillier things out there!)
   
   For those interested in linguistics, these examples may be familiar.
   
