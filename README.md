@@ -28,7 +28,7 @@ This project is written in "C++11", for no particular reason.
   
   (I know what your thinking, this is silly. Believe me this is not so silly. There are much sillier things out there!)
   
-  For those interested in linguistics, these examples may be familiar.
+  For those interested in linguistics, these examples may be familiar (and hopefully interesting).
   
   **1)** At 2 in the afternoon **/[(** he **|** she **)]** was due at the dentist.
   
