@@ -23,7 +23,7 @@
     
     
   Repss is  designed to be something like a **scaffolding for written language**. We usually think of scaffolding in terms of on-site construction,
-  and we can view Repss in the same way almost, as it allows writers to more easily revise their work can explore many different ideas concurrently before
+  and we can view Repss in the same way almost, as it allows writers to more easily revise their work and explore many different ideas concurrently before
   they decide upon a final version. The great thing about this, is that the "scaffolding" part does not presuppose the program built here in this project
   to handle it - or even a computer for that matter! It can be used on paper quite easily at anytime (Just try it!), and this does not take away anything
   from the concept or it's ultimate utility. Computers are made to handle repetative sets of instructions that a human might easily tire of, thus the program
