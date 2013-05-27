@@ -1,10 +1,19 @@
-/[(r | e | p | s | s)]/
-
-This project is written in "C++11", for no particular reason.
-
-**What is repss?**
-
-  Good question.
+                         ,-.----.                               |
+    ,-.----.       ,---,.\    /  \    .--.--.    .--.--.        |
+    \    /  \    ,'  .' ||   :    \  /  /    '. /  /    '.      |     A programming language for writers
+    ;   :    \ ,---.'   ||   |  .\ :|  :  /`. /|  :  /`. /      |
+    |   | .\ : |   |   .'.   :  |: |;  |  |--` ;  |  |--`       |
+    .   : |: | :   :  |-,|   |   \ :|  :  ;_   |  :  ;_         |     - Repss is a programming language and paradigm 
+    |   |  \ : :   |  ;/||   : .   / \  \    `. \  \    `.      |       that writers can leverage to organize rough
+    |   : .  / |   :   .';   | |`-'   `----.   \ `----.   \     |       drafts of their work.
+    ;   | |  \ |   |  |-,|   | ;      __ \  \  | __ \  \  |     |
+    |   | ;\  \'   :  ;/|:   ' |     /  /`--'  //  /`--'  /     |     
+    :   ' | \.'|   |    \:   : :    '--'.     /'--'.     /      |     http://repsscompiler.com
+    :   : :-'  |   :   .'|   | :      `--'---'   `--'---'       |     Contact: khalique@repsscompiler.com
+    |   |.'    |   | ,'  `---'.|                                |
+    `---'      `----'      `---`                                |
+                                 
+    
 
   Repss is idea related to context free grammars and the potential infinitum of languages; where such intresting tidbits
   of proof exist that say things like 'many valid languages cannot be recognized' given "machines" wholly deterministic in nature
