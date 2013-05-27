@@ -22,7 +22,7 @@
   (people interested in writing, and education, among other things) would likely benefit from reading below.
     
     
-  Repss is  designed to be something like a **scaffolding the written language**. We usually think of scaffolding in terms of construction,
+  Repss is  designed to be something like a **scaffolding for written language**. We usually think of scaffolding in terms of construction,
   and we think that by using Repss writers more easily revise their work can explore more ideas concurrently. The great thing about this is that
   the "scaffolding" part does not presuppose the program built here in this project to handle it - or even a computer for that matter! 
   It can be used on paper quite easily at anytime, and this does not take anything away from the concept or it's ultimate utility.
@@ -33,9 +33,8 @@
   
   For those interested, here are some short examples:
   
-    **1)** At 2 in the afternoon **/[(** he **|** she **)]** was due at the dentist.
-  
-    =
+    (1) At 2 in the afternoon /[(he|she)] was due at the dentist.
+    ------------------------------------------------------------- 
   
     At 2 in the afternoon **he** was due at the dentist.
 
@@ -43,9 +42,8 @@
   
     ...best of all we can have fun with this! For example:
   
-    **2)** At 2 **/[(** **|** in the afternoon **)]** **/[(** he **|** she **)]** was due at the dentist.
-
-    =
+    (2) At 2 /[(|in the afternoon)] /[(he|she)] was due at the dentist.
+    -------------------------------------------------------------------
   
     At 2 **he** was due at the dentist.
 
