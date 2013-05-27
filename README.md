@@ -17,11 +17,9 @@
 
 # [Repss v0.9.0](http://repsscompiler.com)
  
-  Repss is idea related to context free grammars and the potential infinitum of languages; where such intresting tidbits
-  of proof exist that say things like 'many valid languages cannot be recognized' given "machines" wholly deterministic in nature
-  (or something like that, quote me at your own risk). This project is made catered to two audiences: technical,
-  and non-technical. The technical audience s advised to rumage through the source code, and non-technical people (people interested in writing,
-  literary education, and linguistics, among other things) are advised to read the below for further clarification.
+  This project is made catered to two audiences: technical, and non-technical. The technical audience is advised to 
+  rumage through the source code, I should put up in depth instructions soon. And both technical and non-technical people 
+  (people interested in writing, education, among other things) would likely benefit from reading below.
     
     
   Repss is  designed to be something like a **scaffolding the written language**. We usually think of scaffolding in terms of construction,
