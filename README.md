@@ -18,8 +18,8 @@
 # [Repss v0.9.0](http://repsscompiler.com)
  
   This project is made catered to two audiences: technical, and non-technical. The technical audience is advised to 
-  rumage through the source code, I should put up in depth instructions soon. And both technical and non-technical people 
-  (people interested in writing, education, among other things) would likely benefit from reading below.
+  rumage through the source code, I should put up in depth instructions soon. Both technical and non-technical people 
+  (people interested in writing, and education, among other things) would likely benefit from reading below.
     
     
   Repss is  designed to be something like a **scaffolding the written language**. We usually think of scaffolding in terms of construction,
